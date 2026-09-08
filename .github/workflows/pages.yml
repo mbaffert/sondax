@@ -22,13 +22,19 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Générer les données dérivées
+        run: python scripts/series.py
+
       - name: Préparer l'artefact
         run: |
-          mkdir -p _site/site _site/data
+          mkdir -p _site/site _site/data/derived
           cp -r site/* _site/site/
           cp -r data/*.json _site/data/
-          cp -r data/derived _site/data/derived 2>/dev/null || true
-          # Redirect racine vers site/
+          cp -r data/derived/*.json _site/data/derived/
           echo '<meta http-equiv="refresh" content="0;url=site/">' > _site/index.html
 
       - uses: actions/upload-pages-artifact@v3

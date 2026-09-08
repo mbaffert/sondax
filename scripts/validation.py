@@ -20,6 +20,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
 REVUE_PATH = ROOT / "data" / "derived" / "revue.html"
+REVUE_MD_PATH = ROOT / "data" / "derived" / "revue.md"
 
 
 def load_previous_sondages():
@@ -164,6 +165,53 @@ def generate_revue(sondages, candidats, added, modified):
     REVUE_PATH.parent.mkdir(parents=True, exist_ok=True)
     REVUE_PATH.write_text(html, encoding="utf-8")
     print(f"Page de revue : {REVUE_PATH}")
+
+    # Markdown pour le corps de la PR
+    md = generate_revue_markdown(added, modified)
+    REVUE_MD_PATH.write_text(md, encoding="utf-8")
+    print(f"Revue markdown : {REVUE_MD_PATH}")
+
+
+def _somme_flag(total, tour):
+    """Marqueur pour le markdown : ⚠️ si orange, 🔴 si rouge."""
+    lo, hi = (95, 105) if tour == 1 else (99, 101)
+    if not lo <= total <= hi:
+        return " **HORS BORNES**"
+    warn_lo, warn_hi = (98, 102) if tour == 1 else (99.5, 100.5)
+    if total < warn_lo or total > warn_hi:
+        return " ⚠"
+    return ""
+
+
+def generate_revue_markdown(added, modified):
+    """Génère le résumé markdown de la revue pour le corps de la PR."""
+    lines = ["## Revue de collecte\n"]
+
+    for label, group in [("Ajouté", added), ("Modifié", modified)]:
+        if not group:
+            continue
+        lines.append(f"### {label}s ({len(group)})\n")
+        lines.append("| Institut | Date | Éch. | Hyp. | Cands | Somme |")
+        lines.append("|----------|------|------|------|-------|-------|")
+        for s in group:
+            ech = str(int(s["echantillon"])) if s.get("echantillon") else "—"
+            date = fmt_date(s["terrain_fin"])
+            for i, h in enumerate(s["hypotheses"]):
+                total = sum(h["scores"].values())
+                flag = _somme_flag(total, h["tour"])
+                inst = s["institut"] if i == 0 else ""
+                d = date if i == 0 else ""
+                e = ech if i == 0 else ""
+                lines.append(
+                    f"| {inst} | {d} | {e} | T{h['tour']} hyp.{i+1} "
+                    f"| {len(h['scores'])} | {total:.1f}{flag} |"
+                )
+        lines.append("")
+
+    if not added and not modified:
+        lines.append("Rien de neuf.\n")
+
+    return "\n".join(lines)
 
 
 def main():

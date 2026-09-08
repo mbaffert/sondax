@@ -2,8 +2,7 @@ name: Collecte quotidienne
 
 on:
   schedule:
-    # 10h30 heure de Paris (8h30 UTC en été, 9h30 UTC en hiver)
-    # On cible 9h00 UTC, soit ~11h CEST / ~10h CET
+    # 9h00 UTC → ~11h CEST / ~10h CET
     - cron: '0 9 * * *'
   workflow_dispatch: {}
 
@@ -60,23 +59,6 @@ jobs:
 
           gh pr create \
             --title "Collecte du ${DATE}" \
-            --body "$(cat <<'EOF'
-          ## Collecte automatique
-
-          - Wikipedia : sondages mis à jour
-          - Polymarket : cotes mises à jour
-          - Validation : OK
-          - Séries T1 recalculées
-
-          La page de revue est téléchargeable dans les artifacts du workflow.
-          EOF
-          )" \
+            --body-file data/derived/revue.md \
             --base main \
             --head "$BRANCH"
-
-      - name: Joindre la page de revue
-        if: steps.changes.outputs.changed == 'true'
-        uses: actions/upload-artifact@v4
-        with:
-          name: revue
-          path: data/derived/revue.html

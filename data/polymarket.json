@@ -1,5 +1,5 @@
 {
- "maj": "2026-09-08T09:13:16Z",
+ "maj": "2026-09-08T11:46:22Z",
  "source": "polymarket",
  "event_slug": "next-french-presidential-election",
  "candidats": {
@@ -7,7 +7,7 @@
    "market_id": "679018",
    "slug": "will-marine-le-pen-win-the-2027-french-presidential-election",
    "token_yes": "55764212211467781322980371912612507865974994976253196346176314491480419639168",
-   "prix_actuel": 0.3495,
+   "prix_actuel": 0.3585,
    "historique": [
     {
      "d": "2025-11-14",
@@ -1123,7 +1123,7 @@
     },
     {
      "d": "2026-09-08",
-     "p": 0.3495
+     "p": 0.3585
     }
    ]
   },
@@ -1131,7 +1131,7 @@
    "market_id": "679019",
    "slug": "will-jordan-bardella-win-the-2027-french-presidential-election",
    "token_yes": "1114938555853162662375805609341386795965961002028313810409954359771505507177",
-   "prix_actuel": 0.0205,
+   "prix_actuel": 0.0215,
    "historique": [
     {
      "d": "2025-11-14",
@@ -2223,7 +2223,7 @@
     },
     {
      "d": "2026-09-08",
-     "p": 0.0205
+     "p": 0.0215
     }
    ]
   },
@@ -2231,7 +2231,7 @@
    "market_id": "679021",
    "slug": "will-douard-philippe-win-the-2027-french-presidential-election",
    "token_yes": "84846382165343032223975853870946110241285484772019446686866815597350660955868",
-   "prix_actuel": 0.285,
+   "prix_actuel": 0.305,
    "historique": [
     {
      "d": "2025-11-14",
@@ -3383,7 +3383,7 @@
     },
     {
      "d": "2026-09-08",
-     "p": 0.285
+     "p": 0.305
     }
    ]
   },
@@ -5691,7 +5691,7 @@
    "market_id": "679027",
    "slug": "will-bruno-retailleau-win-the-2027-french-presidential-election",
    "token_yes": "76158784025338420583901765224531190025719662766883390440253608804161057467141",
-   "prix_actuel": 0.0135,
+   "prix_actuel": 0.013,
    "historique": [
     {
      "d": "2025-11-14",
@@ -6843,7 +6843,7 @@
     },
     {
      "d": "2026-09-08",
-     "p": 0.0135
+     "p": 0.013
     }
    ]
   },
@@ -6851,7 +6851,7 @@
    "market_id": "679028",
    "slug": "will-franois-hollande-win-the-2027-french-presidential-election",
    "token_yes": "35420390481420086914303850503269939905315993511859334440549793606783994509563",
-   "prix_actuel": 0.0325,
+   "prix_actuel": 0.0345,
    "historique": [
     {
      "d": "2025-11-14",
@@ -7987,7 +7987,7 @@
     },
     {
      "d": "2026-09-08",
-     "p": 0.0325
+     "p": 0.0345
     }
    ]
   },
@@ -7995,7 +7995,7 @@
    "market_id": "679029",
    "slug": "will-raphal-glucksmann-win-the-2027-french-presidential-election",
    "token_yes": "97531408855841405410232789703119036119573635076996943730887685044477538494161",
-   "prix_actuel": 0.021,
+   "prix_actuel": 0.0205,
    "historique": [
     {
      "d": "2025-11-14",
@@ -9091,7 +9091,7 @@
     },
     {
      "d": "2026-09-08",
-     "p": 0.021
+     "p": 0.0205
     }
    ]
   },
@@ -9099,7 +9099,7 @@
    "market_id": "679030",
    "slug": "will-jean-luc-mlenchon-win-the-2027-french-presidential-election",
    "token_yes": "88550326946437280548248031502775629664259630024343210447063397951616199975032",
-   "prix_actuel": 0.125,
+   "prix_actuel": 0.115,
    "historique": [
     {
      "d": "2025-11-14",
@@ -10223,7 +10223,7 @@
     },
     {
      "d": "2026-09-08",
-     "p": 0.125
+     "p": 0.115
     }
    ]
   },
@@ -10231,7 +10231,7 @@
    "market_id": "679034",
    "slug": "will-dominique-de-villepin-win-the-2027-french-presidential-election",
    "token_yes": "94391324985187701312427605791553049327097814064787849723991205429060004737042",
-   "prix_actuel": 0.018,
+   "prix_actuel": 0.015,
    "historique": [
     {
      "d": "2025-11-14",
@@ -11339,7 +11339,7 @@
     },
     {
      "d": "2026-09-08",
-     "p": 0.018
+     "p": 0.015
     }
    ]
   }

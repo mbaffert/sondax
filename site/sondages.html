@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tous les sondages — Sondax</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-sondax.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu-vif: #0C6CF2;
+    --bleu-nuit: #0B2E6F;
+    --fond: #F7F8F5;
+    --texte: #202632;
+    --gris: #66707D;
+    --titre: 'Space Grotesk', system-ui, sans-serif;
+    --corps: 'IBM Plex Sans', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--corps); background: var(--fond); color: var(--texte); font-size: 15px; line-height: 1.5; }
+
+  header { background: var(--bleu-nuit); color: #fff; padding: 1.5em 2em; }
+  header .header-inner { display: flex; align-items: center; gap: 1em; }
+  header img { height: 2em; }
+  header h1 { font-family: var(--titre); font-size: 1.6em; font-weight: 700; letter-spacing: -0.02em; }
+  header h1 a { color: #fff; text-decoration: none; }
+  header p { font-size: 0.9em; color: rgba(255,255,255,0.75); margin-top: 0.15em; }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 1.5em; }
+  h2 { font-family: var(--titre); font-size: 1.3em; font-weight: 700; margin-bottom: 0.8em; }
+
+  .filters { display: flex; gap: 1em; flex-wrap: wrap; margin-bottom: 1em; align-items: center; }
+  .filters select, .filters input { font-family: var(--corps); padding: 0.35em 0.6em; border: 1px solid #d0d3cd;
+    border-radius: 4px; font-size: 0.85em; }
+  .filters input { flex: 1; min-width: 180px; }
+  .filters label { font-size: 0.85em; color: var(--gris); }
+  .count { font-size: 0.85em; color: var(--gris); margin-bottom: 0.5em; }
+
+  .sondages-table { border-collapse: collapse; width: 100%; font-size: 0.85em; }
+  .sondages-table th, .sondages-table td { border: 1px solid #e2e4e0; padding: 0.4em 0.7em; text-align: left; }
+  .sondages-table th { background: #f5f5f3; font-weight: 600; position: sticky; top: 0; }
+  .sondages-table a { color: var(--bleu-vif); }
+
+  footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.7); padding: 1.5em 2em; font-size: 0.8em; line-height: 1.7; }
+  footer a { color: rgba(255,255,255,0.85); }
+  footer .disclaimer { color: rgba(255,255,255,0.5); font-style: italic; margin-top: 0.8em; }
+
+  @media (max-width: 600px) {
+    header { padding: 1em; }
+    main { padding: 0.8em; }
+    .filters { flex-direction: column; }
+    .filters input { min-width: 0; width: 100%; }
+    .sondages-table { font-size: 0.75em; }
+    .sondages-table th, .sondages-table td { padding: 0.3em 0.4em; }
+    footer { padding: 1em; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <img src="assets/logo-sondax-blanc.svg" alt="Sondax">
+    <div>
+      <h1><a href="index.html">Sondax</a></h1>
+      <p>Voir les rapports de force bouger.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+  <h2>Tous les sondages</h2>
+  <div class="filters">
+    <label>Institut :</label>
+    <select id="filtre-institut"><option value="">Tous</option></select>
+    <input type="search" id="recherche" placeholder="Rechercher...">
+  </div>
+  <p class="count" id="count"></p>
+  <table class="sondages-table" id="table-sondages"></table>
+</main>
+
+<footer>
+  <div>
+    Données sondages : <a href="https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027" target="_blank">Wikipédia</a>,
+    licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank">CC BY-SA 4.0</a> ·
+    Cotes : <a href="https://polymarket.com" target="_blank">Polymarket</a> ·
+    <a href="methodologie.html">Méthodologie</a>
+  </div>
+  <div>Éditeur : [réservé] · Hébergeur : <a href="https://pages.github.com" target="_blank">GitHub Pages</a></div>
+  <div class="disclaimer">Marque indépendante — le bleu et le rouge ne représentent aucun camp politique.</div>
+</footer>
+
+<script>
+function fmtDate(iso) {
+  const [y, m, d] = iso.split('-');
+  return `${d}/${m}/${y}`;
+}
+
+let ALL_SONDAGES = [];
+
+async function init() {
+  const resp = await fetch('../data/sondages.json');
+  ALL_SONDAGES = await resp.json();
+  ALL_SONDAGES.sort((a, b) => b.terrain_fin.localeCompare(a.terrain_fin));
+
+  // Populate institut filter
+  const instituts = [...new Set(ALL_SONDAGES.map(s => s.institut))].sort();
+  const sel = document.getElementById('filtre-institut');
+  for (const inst of instituts) {
+    const opt = document.createElement('option');
+    opt.value = inst;
+    opt.textContent = inst;
+    sel.appendChild(opt);
+  }
+
+  sel.addEventListener('change', render);
+  document.getElementById('recherche').addEventListener('input', render);
+  render();
+}
+
+function render() {
+  const institut = document.getElementById('filtre-institut').value;
+  const query = document.getElementById('recherche').value.toLowerCase().trim();
+
+  let filtered = ALL_SONDAGES;
+  if (institut) filtered = filtered.filter(s => s.institut === institut);
+  if (query) filtered = filtered.filter(s =>
+    s.institut.toLowerCase().includes(query) ||
+    s.terrain_fin.includes(query) ||
+    fmtDate(s.terrain_fin).includes(query) ||
+    s.id.includes(query)
+  );
+
+  document.getElementById('count').textContent = `${filtered.length} sondage${filtered.length > 1 ? 's' : ''}`;
+
+  const table = document.getElementById('table-sondages');
+  let html = '<tr><th>Institut</th><th>Date</th><th>Échantillon</th><th>Hypothèses</th><th>Source</th></tr>';
+  for (const s of filtered) {
+    const ech = s.echantillon ? Math.round(s.echantillon).toLocaleString('fr-FR') : '—';
+    const nhyp = s.hypotheses.length;
+    const source = s.url_source
+      ? `<a href="${s.url_source}" target="_blank">Notice</a>` : '—';
+    html += `<tr><td>${s.institut}</td><td>${fmtDate(s.terrain_fin)}</td><td>${ech}</td><td>${nhyp}</td><td>${source}</td></tr>`;
+  }
+  table.innerHTML = html;
+}
+
+init();
+</script>
+
+</body>
+</html>

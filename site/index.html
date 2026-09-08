@@ -45,10 +45,21 @@
 
   .chart-wrap { position: relative; width: 100%; height: 500px; }
 
-  .candidats { display: flex; flex-wrap: wrap; gap: 0.3em 1em; margin-top: 1em; font-size: 0.82em; }
-  .candidat-cb { display: flex; align-items: center; gap: 0.3em; cursor: pointer; user-select: none; }
+  .candidats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3em 0.5em; margin-top: 1em; font-size: 0.82em; }
+  .candidat-cb { display: grid; grid-template-columns: auto 1fr 3.5em; align-items: center; gap: 0 0.3em; cursor: pointer; user-select: none; }
   .candidat-cb input { accent-color: var(--col); }
-  .candidat-cb .pastille { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .candidat-cb .cb-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; gap: 0.3em; }
+  .candidat-cb .cb-name .pastille { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .candidat-cb .cb-delta { font-size: 0.85em; text-align: right; color: var(--gris); }
+  .candidat-cb.no-delta { grid-template-columns: auto 1fr; }
+  .cb-col-header { display: grid; grid-template-columns: auto 1fr 3.5em; align-items: end; gap: 0 0.3em; }
+  .cb-col-header .cb-delta-header { font-size: 0.75em; color: var(--gris);
+    text-align: right; cursor: help; border-bottom: 1px dotted var(--gris); }
+  .candidats .cb-extra { display: contents; }
+  .candidats .cb-extra.collapsed { display: none; }
+  .candidats .show-more { grid-column: 1 / -1; font-family: var(--corps); font-size: 0.82em;
+    color: var(--bleu-vif); background: none; border: none; cursor: pointer; padding: 0.4em 0;
+    text-align: left; }
 
   .fiche-row { display: flex; gap: 1em; align-items: flex-start; flex-wrap: wrap; margin-bottom: 0.8em; }
   .fiche-row label { font-size: 0.85em; color: var(--gris); }
@@ -73,9 +84,37 @@
   .t2-table th, .t2-table td { border: 1px solid #e2e4e0; padding: 0.4em 0.6em; text-align: left; }
   .t2-table th { background: #f5f5f3; }
 
+  .sondages-table { border-collapse: collapse; width: 100%; font-size: 0.85em; }
+  .sondages-table th, .sondages-table td { border: 1px solid #e2e4e0; padding: 0.4em 0.7em; text-align: left; }
+  .sondages-table th { background: #f5f5f3; font-weight: 600; }
+  .sondages-table a { color: var(--bleu-vif); }
+  .voir-tous { display: inline-block; margin-top: 0.8em; font-size: 0.85em; color: var(--bleu-vif); }
+
   footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.7); padding: 1.5em 2em; font-size: 0.8em; line-height: 1.7; }
   footer a { color: rgba(255,255,255,0.85); }
   footer .disclaimer { color: rgba(255,255,255,0.5); font-style: italic; margin-top: 0.8em; }
+
+  /* Mobile */
+  @media (max-width: 600px) {
+    header { padding: 1em 1em; }
+    header h1 { font-size: 1.3em; }
+    main { padding: 0.8em; }
+    .bloc { padding: 1em; }
+    .chart-wrap { height: 320px; }
+    .fiche-chart-wrap { height: 300px; }
+    .periode { gap: 0.3em; }
+    .periode span { display: none; }
+    .periode button { padding: 0.25em 0.5em; font-size: 0.78em; }
+    .periode input[type="date"] { font-size: 0.78em; }
+    .fiche-row { flex-direction: column; gap: 0.3em; }
+    .fiche-row select { width: 100%; }
+    .duel-select { flex-direction: column; align-items: flex-start; gap: 0.3em; }
+    .duel-select select { width: 100%; }
+    .t2-table { font-size: 0.75em; }
+    .t2-table th, .t2-table td { padding: 0.3em 0.4em; }
+    footer { padding: 1em; }
+    .candidats { grid-template-columns: repeat(2, 1fr); }
+  }
 </style>
 </head>
 <body>
@@ -156,6 +195,13 @@
     </div>
     <div id="fiche-result"></div>
   </div>
+
+  <!-- Bloc 4 : Derniers sondages -->
+  <div class="bloc" id="bloc-derniers">
+    <h2>Derniers sondages agrégés</h2>
+    <table class="sondages-table" id="table-derniers"></table>
+    <a href="sondages.html" class="voir-tous">Voir tous les sondages</a>
+  </div>
 </main>
 
 <footer>
@@ -216,7 +262,7 @@ function computeYMax(datasets) {
   return Math.max(Y_MIN_MAX, Math.ceil(max / 5) * 5);
 }
 
-// Chart.js global defaults for typography
+// Chart.js global defaults
 Chart.defaults.font.family = "'IBM Plex Sans', system-ui, sans-serif";
 Chart.defaults.color = '#202632';
 // Locale française pour l'adaptateur date-fns
@@ -224,6 +270,67 @@ if (window.dateFns && window.dateFns.locale && window.dateFns.locale.fr) {
   Chart.defaults.scales.time = Chart.defaults.scales.time || {};
   Chart.defaults.scales.time.adapters = { date: { locale: window.dateFns.locale.fr } };
 }
+
+const IS_TOUCH = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+const IS_MOBILE = window.innerWidth < 600;
+
+// Config de l'axe X adaptée à la période et à l'écran
+function xAxisConfig(dateDebut, dateFin) {
+  const d0 = new Date(dateDebut), d1 = new Date(dateFin);
+  const days = Math.round((d1 - d0) / 86400000);
+  // Période longue (> 4 mois) : mois abrégé. Courte : jour + mois abrégé.
+  const unit = days > 120 ? 'month' : 'week';
+  const displayFormats = {
+    week: 'd MMM',    // "12 sept."
+    month: 'MMM',     // "sept."
+  };
+  return {
+    type: 'time',
+    time: { unit, displayFormats, tooltipFormat: 'd MMMM yyyy' },
+    adapters: { date: { locale: window.dateFns?.locale?.fr } },
+    ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: IS_MOBILE ? 5 : 9 },
+    grid: { color: '#edeee9' },
+  };
+}
+
+// Tooltip touch-friendly : zone large, reste dans l'écran
+Chart.defaults.plugins.tooltip.position = 'nearest';
+Chart.defaults.plugins.tooltip.caretPadding = 8;
+Chart.defaults.plugins.tooltip.padding = IS_TOUCH ? 10 : 6;
+if (IS_TOUCH) {
+  Chart.defaults.interaction.mode = 'nearest';
+  Chart.defaults.interaction.axis = 'x';
+  Chart.defaults.interaction.intersect = false;
+  // Zone de détection large pour un doigt
+  Chart.defaults.hover.mode = 'nearest';
+  Chart.defaults.hover.axis = 'x';
+  Chart.defaults.hover.intersect = false;
+}
+
+// Plugin global : fermer le tooltip au toucher en dehors du graphique
+const touchDismissPlugin = {
+  id: 'touchDismiss',
+  beforeInit(chart) {
+    if (!IS_TOUCH) return;
+    const handler = (e) => {
+      const rect = chart.canvas.getBoundingClientRect();
+      const x = e.changedTouches[0].clientX;
+      const y = e.changedTouches[0].clientY;
+      if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) {
+        chart.tooltip.setActiveElements([], { x: 0, y: 0 });
+        chart.update('none');
+      }
+    };
+    document.addEventListener('touchstart', handler, { passive: true });
+    chart._touchDismiss = handler;
+  },
+  destroy(chart) {
+    if (chart._touchDismiss) {
+      document.removeEventListener('touchstart', chart._touchDismiss);
+    }
+  }
+};
+Chart.register(touchDismissPlugin);
 
 // =========================================================================
 // Generic bloc controller
@@ -242,9 +349,11 @@ class BlocChart {
     this.setupPeriode();
   }
 
-  setCandidats(candidats, sortFn) {
+  setCandidats(candidats, sortFn, visibleOrder, { showDelta = false } = {}) {
     this.candidats = candidats;
-    this.sortedCids = Object.keys(candidats).sort(sortFn);
+    this.showDelta = showDelta;
+    // visibleOrder: optional ordered list from latest sondage, used for display order
+    this.sortedCids = visibleOrder || Object.keys(candidats).sort(sortFn);
     this.checked.clear();
     for (let i = 0; i < Math.min(this.nbDefault, this.sortedCids.length); i++) {
       this.checked.add(this.sortedCids[i]);
@@ -297,13 +406,52 @@ class BlocChart {
     }
   }
 
+  delta30(cid) {
+    const pts = this.candidats[cid];
+    if (!pts || pts.length === 0) return null;
+    // Last non-null
+    let last = null, lastIdx = -1;
+    for (let i = pts.length - 1; i >= 0; i--) {
+      if (pts[i].v !== null) { last = pts[i]; lastIdx = i; break; }
+    }
+    if (!last) return null;
+    // Value ~30 days before
+    const target = new Date(last.d);
+    target.setDate(target.getDate() - 30);
+    const targetISO = target.toISOString().slice(0, 10);
+    // Find closest point on or before target date
+    let prev = null;
+    for (let i = lastIdx; i >= 0; i--) {
+      if (pts[i].d <= targetISO && pts[i].v !== null) { prev = pts[i]; break; }
+    }
+    if (!prev) return null;
+    return Math.round((last.v - prev.v) * 10) / 10;
+  }
+
   renderCheckboxes() {
+    const VISIBLE = 8;
     this.cbContainer.innerHTML = '';
-    for (const cid of this.sortedCids) {
+
+    // One header cell per visible column, showing "sur 30 j" aligned with the delta
+    if (this.showDelta) {
+      const ncols = IS_MOBILE ? 2 : 4;
+      for (let c = 0; c < ncols; c++) {
+        const hdr = document.createElement('div');
+        hdr.className = 'cb-col-header';
+        hdr.innerHTML = '<span></span><span></span><span class="cb-delta-header" title="Écart entre la valeur lissée d\u2019aujourd\u2019hui et celle d\u2019il y a trente jours, en points de pourcentage">sur 30\u00a0j</span>';
+        this.cbContainer.appendChild(hdr);
+      }
+    }
+
+    let extraWrap = null;
+    let btn = null;
+
+    for (let idx = 0; idx < this.sortedCids.length; idx++) {
+      const cid = this.sortedCids[idx];
       const col = couleur(cid);
-      const last = this.lastVal(cid);
+
       const label = document.createElement('label');
-      label.className = 'candidat-cb';
+      label.className = 'candidat-cb' + (this.showDelta ? '' : ' no-delta');
       label.style.setProperty('--col', col);
 
       const cb = document.createElement('input');
@@ -319,14 +467,45 @@ class BlocChart {
       pastille.className = 'pastille';
       pastille.style.background = col;
 
-      const txt = document.createTextNode(
-        nomCourt(cid)
-      );
+      const nameSpan = document.createElement('span');
+      nameSpan.className = 'cb-name';
+      nameSpan.innerHTML = `<span class="pastille" style="background:${col}"></span> ${nomCourt(cid)}`;
 
       label.appendChild(cb);
-      label.appendChild(pastille);
-      label.appendChild(txt);
-      this.cbContainer.appendChild(label);
+      label.appendChild(nameSpan);
+
+      if (this.showDelta) {
+        const d = this.delta30(cid);
+        const deltaSpan = document.createElement('span');
+        deltaSpan.className = 'cb-delta';
+        if (d !== null) {
+          const sign = d > 0 ? '+' : '';
+          deltaSpan.textContent = `${sign}${d.toFixed(1).replace('.', ',')}`;
+        }
+        label.appendChild(deltaSpan);
+      }
+
+      if (idx < VISIBLE) {
+        this.cbContainer.appendChild(label);
+      } else {
+        if (!extraWrap) {
+          btn = document.createElement('button');
+          btn.className = 'show-more';
+          const remaining = this.sortedCids.length - VISIBLE;
+          btn.textContent = `Voir tous les candidats (+${remaining})`;
+          this.cbContainer.appendChild(btn);
+          extraWrap = document.createElement('div');
+          extraWrap.className = 'cb-extra collapsed';
+          this.cbContainer.appendChild(extraWrap);
+          btn.addEventListener('click', () => {
+            const collapsed = extraWrap.classList.toggle('collapsed');
+            btn.textContent = collapsed
+              ? `Voir tous les candidats (+${remaining})`
+              : 'Moins de candidats';
+          });
+        }
+        extraWrap.appendChild(label);
+      }
     }
   }
 
@@ -405,12 +584,7 @@ class BlocChart {
         maintainAspectRatio: false,
         interaction: { mode: 'nearest', axis: 'x', intersect: false },
         scales: {
-          x: {
-            type: 'time',
-            time: { unit: 'week', tooltipFormat: 'd MMMM yyyy' },
-            adapters: { date: { locale: window.dateFns?.locale?.fr } },
-            grid: { color: '#edeee9' },
-          },
+          x: xAxisConfig(dateDebut, this.dateFin),
           y: {
             min: 0,
             max: yMax,
@@ -606,7 +780,8 @@ class ExplorerSondages {
         maintainAspectRatio: false,
         scales: {
           x: {
-            ticks: { maxRotation: 45, minRotation: 0, autoSkip: false },
+            ticks: { maxRotation: window.innerWidth < 600 ? 90 : 45, minRotation: 0, autoSkip: false,
+              font: { size: window.innerWidth < 600 ? 10 : 12 } },
             grid: { display: false },
           },
           y: {
@@ -841,12 +1016,7 @@ class SecondTour {
         maintainAspectRatio: false,
         interaction: { mode: 'nearest', axis: 'x', intersect: false },
         scales: {
-          x: {
-            type: 'time',
-            time: { unit: 'month', tooltipFormat: 'd MMMM yyyy' },
-            adapters: { date: { locale: window.dateFns?.locale?.fr } },
-            grid: { color: '#edeee9' },
-          },
+          x: xAxisConfig(sorted[0].sondage.terrain_fin, sorted[sorted.length - 1].sondage.terrain_fin),
           y: {
             min: yMin,
             max: yMax,
@@ -865,6 +1035,21 @@ class SecondTour {
       }
     });
   }
+}
+
+// =========================================================================
+// Tableau de sondages (partagé entre page principale et page dédiée)
+// =========================================================================
+function renderSondagesTable(table, sondages) {
+  let html = '<tr><th>Institut</th><th>Date</th><th>Échantillon</th><th>Hypothèses</th><th>Source</th></tr>';
+  for (const s of sondages) {
+    const ech = s.echantillon ? Math.round(s.echantillon).toLocaleString('fr-FR') : '—';
+    const nhyp = s.hypotheses.length;
+    const source = s.url_source
+      ? `<a href="${s.url_source}" target="_blank">Notice</a>` : '—';
+    html += `<tr><td>${s.institut}</td><td>${fmtDate(s.terrain_fin)}</td><td>${ech}</td><td>${nhyp}</td><td>${source}</td></tr>`;
+  }
+  table.innerHTML = html;
 }
 
 // =========================================================================
@@ -895,11 +1080,33 @@ async function init() {
   for (const [cid, pts] of Object.entries(seriesData.series)) {
     sondagesCandidats[cid] = pts.map(p => ({ d: p.d, v: p.v }));
   }
+
+  // Ordre des candidats : tiré du dernier sondage (hyp T1 la plus large)
+  const latestSondage = sondagesData.slice().sort((a, b) => b.terrain_fin.localeCompare(a.terrain_fin))[0];
+  let visibleOrder = null;
+  if (latestSondage) {
+    const t1 = latestSondage.hypotheses.filter(h => h.tour === 1);
+    if (t1.length > 0) {
+      const best = t1.reduce((a, b) => Object.keys(a.scores).length >= Object.keys(b.scores).length ? a : b);
+      // Candidats du dernier sondage par score décroissant, puis les autres par série
+      const fromLatest = Object.entries(best.scores).sort((a, b) => b[1] - a[1]).map(([c]) => c);
+      const lastV = (cid) => {
+        const pts = sondagesCandidats[cid];
+        if (!pts) return 0;
+        for (let i = pts.length - 1; i >= 0; i--) { if (pts[i].v !== null) return pts[i].v; }
+        return 0;
+      };
+      const rest = Object.keys(sondagesCandidats).filter(c => !fromLatest.includes(c))
+        .sort((a, b) => lastV(b) - lastV(a));
+      visibleOrder = [...fromLatest, ...rest];
+    }
+  }
+
   sondagesBloc.setCandidats(sondagesCandidats, (a, b) => {
     const la = sondagesBloc.lastVal(a) || 0;
     const lb = sondagesBloc.lastVal(b) || 0;
     return lb - la;
-  });
+  }, visibleOrder, { showDelta: true });
 
   // --- Bloc Polymarket ---
   let polyDateDebut = '9999-99-99', polyDateFin = '0000-00-00';
@@ -962,6 +1169,12 @@ async function init() {
 
   // --- Bloc explorer les sondages ---
   new ExplorerSondages(sondagesData);
+
+  // Bloc derniers sondages (5 plus récents)
+  renderSondagesTable(
+    document.getElementById('table-derniers'),
+    sondagesData.slice().sort((a, b) => b.terrain_fin.localeCompare(a.terrain_fin)).slice(0, 5)
+  );
 
   // Pied de page : date du dernier run et revid
   const revid = sondagesData.length > 0 ? sondagesData[0].revid : null;

@@ -10,6 +10,12 @@ Produit data/derived/revue.html listant les sondages ajoutés ou modifiés.
 
 import json, sys, pathlib, subprocess, datetime
 
+
+def fmt_date(iso):
+    """'2026-09-03' → '03/09/2026'"""
+    y, m, d = iso.split("-")
+    return f"{d}/{m}/{y}"
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
@@ -104,7 +110,7 @@ def generate_revue(sondages, candidats, added, modified):
                 f'<tr class="sondage-header">'
                 f'<td rowspan="{nhyp + 1}">{label}</td>'
                 f"<td colspan=\"4\"><strong>{s['institut']}</strong> — "
-                f"{s['terrain_debut']} → {s['terrain_fin']} — "
+                f"{fmt_date(s['terrain_fin'])} — "
                 f"n = {ech} — {source}</td>"
                 f"</tr>"
             )

@@ -4,50 +4,122 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sondax — Présidentielle 2027</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-sondax.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --bleu-vif: #0C6CF2;
+    --bleu-nuit: #0B2E6F;
+    --rose: #F23D5B;
+    --brique: #8A241F;
+    --fond: #F7F8F5;
+    --texte: #202632;
+    --gris: #66707D;
+    --titre: 'Space Grotesk', system-ui, sans-serif;
+    --corps: 'IBM Plex Sans', system-ui, sans-serif;
+  }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: system-ui, -apple-system, sans-serif; background: #fafafa; color: #222; }
-  header { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 1.2em 2em; }
-  header h1 { font-size: 1.4em; font-weight: 700; }
-  header p { font-size: 0.85em; color: #666; margin-top: 0.2em; }
+  body { font-family: var(--corps); background: var(--fond); color: var(--texte); font-size: 15px; line-height: 1.5; }
+
+  header { background: var(--bleu-nuit); color: #fff; padding: 1.5em 2em; }
+  header .header-inner { display: flex; align-items: center; gap: 1em; }
+  header img { height: 2em; }
+  header h1 { font-family: var(--titre); font-size: 1.6em; font-weight: 700; letter-spacing: -0.02em; }
+  header p { font-size: 0.9em; color: rgba(255,255,255,0.75); margin-top: 0.15em; }
+
   main { max-width: 1100px; margin: 0 auto; padding: 1.5em; }
-  .bloc { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 1.5em; margin-bottom: 1.5em; }
-  .bloc h2 { font-size: 1.1em; margin-bottom: 0.2em; }
-  .bloc .subtitle { font-size: 0.8em; color: #888; margin-bottom: 1em; }
+
+  .bloc { background: #fff; border: 1px solid #e2e4e0; border-radius: 8px; padding: 1.5em; margin-bottom: 1.5em; }
+  .bloc h2 { font-family: var(--titre); font-size: 1.15em; font-weight: 700; margin-bottom: 0.15em; color: var(--texte); }
+  .bloc .subtitle { font-size: 0.82em; color: var(--gris); margin-bottom: 1em; }
+
   .periode { display: flex; gap: 0.5em; align-items: center; flex-wrap: wrap; margin-bottom: 1em; }
-  .periode button { padding: 0.3em 0.8em; border: 1px solid #ccc; border-radius: 4px;
-    background: #fff; cursor: pointer; font-size: 0.85em; }
-  .periode button.active { background: #333; color: #fff; border-color: #333; }
-  .periode input[type="date"] { padding: 0.25em 0.5em; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85em; }
+  .periode span { font-size: 0.85em; color: var(--gris); }
+  .periode button { font-family: var(--corps); padding: 0.3em 0.8em; border: 1px solid #d0d3cd; border-radius: 4px;
+    background: #fff; cursor: pointer; font-size: 0.85em; color: var(--texte); transition: all 0.15s; }
+  .periode button:hover { border-color: var(--bleu-vif); color: var(--bleu-vif); }
+  .periode button.active { background: var(--bleu-nuit); color: #fff; border-color: var(--bleu-nuit); }
+  .periode input[type="date"] { font-family: var(--corps); padding: 0.25em 0.5em; border: 1px solid #d0d3cd; border-radius: 4px; font-size: 0.85em; }
+
   .chart-wrap { position: relative; width: 100%; height: 500px; }
+
   .candidats { display: flex; flex-wrap: wrap; gap: 0.3em 1em; margin-top: 1em; font-size: 0.82em; }
   .candidat-cb { display: flex; align-items: center; gap: 0.3em; cursor: pointer; user-select: none; }
   .candidat-cb input { accent-color: var(--col); }
   .candidat-cb .pastille { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  .fiche-row { display: flex; gap: 1em; align-items: flex-start; flex-wrap: wrap; margin-bottom: 0.8em; }
+  .fiche-row label { font-size: 0.85em; color: var(--gris); }
+  .fiche-row select { font-family: var(--corps); padding: 0.3em 0.5em; border: 1px solid #d0d3cd; border-radius: 4px; font-size: 0.85em; }
+  .fiche-chart-wrap { position: relative; width: 100%; height: 400px; }
+  .approx { font-size: 0.75em; color: var(--gris); font-style: italic; margin-top: 0.5em; }
+  .fiche-source { font-size: 0.85em; margin-top: 0.8em; }
+  .fiche-source a { color: var(--bleu-vif); }
+  .fiche-meta { font-size: 0.85em; color: var(--gris); margin-bottom: 0.5em; }
+
+  .tabs { display: flex; gap: 0; margin-bottom: 1em; border-bottom: 2px solid #e2e4e0; }
+  .tab { font-family: var(--titre); font-size: 0.95em; font-weight: 500; padding: 0.5em 1.2em;
+    cursor: pointer; border: none; background: none; color: var(--gris); border-bottom: 2px solid transparent;
+    margin-bottom: -2px; transition: all 0.15s; }
+  .tab:hover { color: var(--texte); }
+  .tab.active { color: var(--bleu-nuit); border-bottom-color: var(--bleu-nuit); font-weight: 700; }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+  .duel-select { display: flex; gap: 0.8em; align-items: center; flex-wrap: wrap; margin-bottom: 1em; font-size: 0.85em; }
+  .duel-select select { font-family: var(--corps); padding: 0.3em 0.5em; border: 1px solid #d0d3cd; border-radius: 4px; font-size: 0.85em; }
+  .t2-table { border-collapse: collapse; width: 100%; font-size: 0.85em; margin-top: 0.5em; }
+  .t2-table th, .t2-table td { border: 1px solid #e2e4e0; padding: 0.4em 0.6em; text-align: left; }
+  .t2-table th { background: #f5f5f3; }
+
+  footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.7); padding: 1.5em 2em; font-size: 0.8em; line-height: 1.7; }
+  footer a { color: rgba(255,255,255,0.85); }
+  footer .disclaimer { color: rgba(255,255,255,0.5); font-style: italic; margin-top: 0.8em; }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Sondax</h1>
-  <p>Tendances de l'élection présidentielle française 2027</p>
+  <div class="header-inner">
+    <img src="assets/logo-sondax-blanc.svg" alt="Sondax">
+    <div>
+      <h1>Sondax</h1>
+      <p>Voir les rapports de force bouger.</p>
+    </div>
+  </div>
 </header>
 
 <main>
-  <!-- Bloc 1 : Sondages T1 -->
+  <!-- Bloc 1 : Sondages -->
   <div class="bloc" id="bloc-sondages">
-    <h2>Intentions de vote — Premier tour</h2>
+    <h2>Intentions de vote</h2>
     <p class="subtitle">Moyenne pondérée des sondages, fenêtre glissante de 30 jours</p>
+    <div class="tabs">
+      <button class="tab active" data-tab="t1">Premier tour</button>
+      <button class="tab" data-tab="t2">Second tour</button>
+    </div>
     <div class="periode" data-bloc="sondages">
-      <span style="font-size:0.85em;color:#666;">Période :</span>
+      <span>Période :</span>
       <button data-months="3">3 mois</button>
       <button data-months="6" class="active">6 mois</button>
       <button data-since="2026-01-01">Depuis jan. 2026</button>
       <button data-all="1">Tout</button>
       <input type="date" class="date-libre" title="Date de début libre">
     </div>
-    <div class="chart-wrap"><canvas id="chart-sondages"></canvas></div>
-    <div class="candidats" id="cb-sondages"></div>
+    <div class="tab-panel active" id="panel-t1">
+      <div class="chart-wrap"><canvas id="chart-sondages"></canvas></div>
+      <div class="candidats" id="cb-sondages"></div>
+    </div>
+    <div class="tab-panel" id="panel-t2">
+      <div class="duel-select">
+        <span style="color:var(--gris);">Candidat :</span>
+        <select id="duel-cand1"></select>
+        <span style="color:var(--gris);">contre :</span>
+        <select id="duel-cand2"></select>
+      </div>
+      <div id="t2-content"></div>
+    </div>
   </div>
 
   <!-- Bloc 2 : Polymarket -->
@@ -55,7 +127,7 @@
     <h2>Probabilité de victoire — marchés de prédiction</h2>
     <p class="subtitle">Probabilité estimée par les parieurs d'être élu président, pas un score électoral (source : Polymarket)</p>
     <div class="periode" data-bloc="polymarket">
-      <span style="font-size:0.85em;color:#666;">Période :</span>
+      <span>Période :</span>
       <button data-months="3">3 mois</button>
       <button data-months="6" class="active">6 mois</button>
       <button data-since="2026-01-01">Depuis jan. 2026</button>
@@ -65,15 +137,51 @@
     <div class="chart-wrap"><canvas id="chart-polymarket"></canvas></div>
     <div class="candidats" id="cb-polymarket"></div>
   </div>
+
+  <!-- Bloc 3 : Explorer les sondages -->
+  <div class="bloc" id="bloc-fiche">
+    <h2>Explorer les sondages</h2>
+    <p class="subtitle">Choisissez un sondage puis une configuration pour voir le détail</p>
+    <div class="fiche-row">
+      <label>Sondage :</label>
+      <select id="fiche-sondage"></select>
+    </div>
+    <div class="fiche-row">
+      <label>Configuration :</label>
+      <select id="fiche-hyp"></select>
+    </div>
+    <div id="fiche-result"></div>
+  </div>
 </main>
+
+<footer>
+  <div>
+    Données sondages : <a href="https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027" target="_blank">Wikipédia</a> (CC BY-SA) ·
+    Cotes : <a href="https://polymarket.com" target="_blank">Polymarket</a>
+  </div>
+  <div>Mentions légales : site indépendant, sans affiliation politique ni commerciale.</div>
+  <div class="disclaimer">Marque indépendante — le bleu et le rouge ne représentent aucun camp politique.</div>
+</footer>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/date-fns@3/locale/fr/cdn.min.js"></script>
 <script>
 const NB_DEFAULT = 4;
 const Y_MIN_MAX = 10;
 
 let CANDIDATS = null;
+
+// French number: 24,8\u00a0%
+function fmtPct(v) {
+  return v.toFixed(1).replace('.', ',') + '\u00a0%';
+}
+
+// "2026-09-03" → "03/09/2026"
+function fmtDate(iso) {
+  const [y, m, d] = iso.split('-');
+  return `${d}/${m}/${y}`;
+}
 
 function parseDate(s) {
   const [y, m, d] = s.split('-').map(Number);
@@ -101,6 +209,15 @@ function computeYMax(datasets) {
   return Math.max(Y_MIN_MAX, Math.ceil(max / 5) * 5);
 }
 
+// Chart.js global defaults for typography
+Chart.defaults.font.family = "'IBM Plex Sans', system-ui, sans-serif";
+Chart.defaults.color = '#202632';
+// Locale française pour l'adaptateur date-fns
+if (window.dateFns && window.dateFns.locale && window.dateFns.locale.fr) {
+  Chart.defaults.scales.time = Chart.defaults.scales.time || {};
+  Chart.defaults.scales.time.adapters = { date: { locale: window.dateFns.locale.fr } };
+}
+
 // =========================================================================
 // Generic bloc controller
 // =========================================================================
@@ -114,7 +231,7 @@ class BlocChart {
     this.nbDefault = nbDefault;
     this.chart = null;
     this.checked = new Set();
-    this.candidats = {};  // cid → array of {d, v}
+    this.candidats = {};
     this.setupPeriode();
   }
 
@@ -196,7 +313,7 @@ class BlocChart {
       pastille.style.background = col;
 
       const txt = document.createTextNode(
-        `${nomCourt(cid)}` + (last !== null ? ` (${last.toFixed(1)})` : '')
+        `${nomCourt(cid)}` + (last !== null ? ` (${fmtPct(last)})` : '')
       );
 
       label.appendChild(cb);
@@ -283,14 +400,15 @@ class BlocChart {
         scales: {
           x: {
             type: 'time',
-            time: { unit: 'week', tooltipFormat: 'd MMM yyyy' },
-            grid: { color: '#f0f0f0' },
+            time: { unit: 'week', tooltipFormat: 'd MMMM yyyy' },
+            adapters: { date: { locale: window.dateFns?.locale?.fr } },
+            grid: { color: '#edeee9' },
           },
           y: {
             min: 0,
             max: yMax,
-            title: { display: true, text: '%' },
-            grid: { color: '#f0f0f0' },
+            ticks: { callback: (v) => v + '\u00a0%' },
+            grid: { color: '#edeee9' },
           },
         },
         plugins: {
@@ -300,8 +418,440 @@ class BlocChart {
             callbacks: {
               label: (ctx) => {
                 if (ctx.parsed.y === null || isNaN(ctx.parsed.y)) return '';
-                return `${nomCourt(ctx.dataset._cid)} : ${ctx.parsed.y.toFixed(1)} %`;
+                return `${nomCourt(ctx.dataset._cid)} : ${fmtPct(ctx.parsed.y)}`;
               }
+            }
+          }
+        },
+      }
+    });
+  }
+}
+
+// =========================================================================
+// Bloc 3 : Explorer les sondages
+// =========================================================================
+
+function margeDErreur(p, n) {
+  return 1.96 * Math.sqrt(p * (1 - p) / n) * 100;
+}
+
+function hypLabel(hyp, allT1) {
+  const sets = allT1.map(h => new Set(Object.keys(h.scores)));
+  const common = new Set(sets[0]);
+  for (const s of sets.slice(1)) {
+    for (const c of common) { if (!s.has(c)) common.delete(c); }
+  }
+  const mine = new Set(Object.keys(hyp.scores));
+  const distinctive = [...mine].filter(c => !common.has(c)).map(c => nomCourt(c));
+  if (distinctive.length === 0) return `${Object.keys(hyp.scores).length} candidats`;
+  return `avec ${distinctive.join(', ')}`;
+}
+
+class ExplorerSondages {
+  constructor(sondages) {
+    this.sondages = sondages.slice().sort((a, b) => b.terrain_fin.localeCompare(a.terrain_fin));
+    this.selSondage = document.getElementById('fiche-sondage');
+    this.selHyp = document.getElementById('fiche-hyp');
+    this.result = document.getElementById('fiche-result');
+    this.barChart = null;
+
+    this.populateSondages();
+    this.selSondage.addEventListener('change', () => this.onSondageChange());
+    this.selHyp.addEventListener('change', () => this.renderResult());
+    this.onSondageChange();
+  }
+
+  populateSondages() {
+    this.selSondage.innerHTML = '';
+    for (const s of this.sondages) {
+      const ech = s.echantillon ? Math.round(s.echantillon).toLocaleString('fr-FR') : '?';
+      const opt = document.createElement('option');
+      opt.value = s.id;
+      opt.textContent = `${s.institut} — ${fmtDate(s.terrain_fin)} (n\u00a0=\u00a0${ech})`;
+      this.selSondage.appendChild(opt);
+    }
+  }
+
+  currentSondage() {
+    return this.sondages.find(s => s.id === this.selSondage.value) || null;
+  }
+
+  onSondageChange() {
+    const s = this.currentSondage();
+    this.selHyp.innerHTML = '';
+    if (!s) { this.result.innerHTML = ''; return; }
+
+    const t1 = s.hypotheses.filter(h => h.tour === 1);
+    if (t1.length === 0) {
+      const opt = document.createElement('option');
+      opt.textContent = 'Aucune hypothèse de premier tour';
+      this.selHyp.appendChild(opt);
+      this.result.innerHTML = '';
+      return;
+    }
+
+    t1.forEach((h, i) => {
+      const opt = document.createElement('option');
+      opt.value = i;
+      opt.textContent = hypLabel(h, t1);
+      this.selHyp.appendChild(opt);
+    });
+
+    this.renderResult();
+  }
+
+  renderResult() {
+    const s = this.currentSondage();
+    if (!s) { this.result.innerHTML = ''; return; }
+
+    const t1 = s.hypotheses.filter(h => h.tour === 1);
+    const idx = parseInt(this.selHyp.value);
+    const hyp = t1[idx];
+    if (!hyp) { this.result.innerHTML = ''; return; }
+
+    const ech = s.echantillon ? Math.round(s.echantillon) : null;
+    const echStr = ech ? ech.toLocaleString('fr-FR') : '—';
+    const scores = Object.entries(hyp.scores).sort((a, b) => b[1] - a[1]);
+
+    let html = `<p class="fiche-meta">${s.institut} — ${fmtDate(s.terrain_debut)} \u2192 ${fmtDate(s.terrain_fin)} — Échantillon\u00a0: ${echStr}</p>`;
+    html += '<div class="fiche-chart-wrap"><canvas id="fiche-bar-chart"></canvas></div>';
+    if (ech) {
+      html += '<p class="approx">Marges d\u2019erreur approximatives, calculées sur l\u2019échantillon total du sondage.</p>';
+    }
+    if (s.url_source) {
+      html += `<p class="fiche-source"><a href="${s.url_source}" target="_blank">Source\u00a0: notice de la commission des sondages</a></p>`;
+    }
+    this.result.innerHTML = html;
+
+    const labels = scores.map(([cid]) => nomCourt(cid));
+    const values = scores.map(([, v]) => v);
+    const colors = scores.map(([cid]) => couleur(cid));
+    const errors = scores.map(([, v]) => ech ? margeDErreur(v / 100, ech) : 0);
+
+    const topValues = values.map((v, i) => v + errors[i]);
+    const yMax = Math.ceil((Math.max(...topValues) + 3) / 5) * 5;
+
+    if (this.barChart) this.barChart.destroy();
+
+    const errorBarPlugin = {
+      id: 'errorBars',
+      afterDraw(chart) {
+        const { ctx } = chart;
+        const meta = chart.getDatasetMeta(0);
+        const yScale = chart.scales.y;
+        meta.data.forEach((bar, i) => {
+          const val = values[i];
+          const me = errors[i];
+          if (!me) return;
+          const lo = Math.max(0, val - me);
+          const hi = val + me;
+          const xc = bar.x;
+          const yLo = yScale.getPixelForValue(lo);
+          const yHi = yScale.getPixelForValue(hi);
+          const capW = 6;
+          ctx.save();
+          ctx.strokeStyle = 'rgba(32,38,50,0.45)';
+          ctx.lineWidth = 1.5;
+          ctx.beginPath();
+          ctx.moveTo(xc, yLo); ctx.lineTo(xc, yHi);
+          ctx.moveTo(xc - capW, yLo); ctx.lineTo(xc + capW, yLo);
+          ctx.moveTo(xc - capW, yHi); ctx.lineTo(xc + capW, yHi);
+          ctx.stroke();
+          ctx.restore();
+        });
+      }
+    };
+
+    const valueLabelPlugin = {
+      id: 'valueLabels',
+      afterDraw(chart) {
+        const { ctx } = chart;
+        const meta = chart.getDatasetMeta(0);
+        const yScale = chart.scales.y;
+        ctx.save();
+        ctx.font = "500 12px 'IBM Plex Sans', system-ui, sans-serif";
+        ctx.fillStyle = '#202632';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        meta.data.forEach((bar, i) => {
+          const yPos = yScale.getPixelForValue(values[i]);
+          ctx.fillText(fmtPct(values[i]), bar.x + bar.width / 2 + 6, yPos);
+        });
+        ctx.restore();
+      }
+    };
+
+    this.barChart = new Chart(document.getElementById('fiche-bar-chart'), {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: values,
+          backgroundColor: colors,
+          borderWidth: 0,
+          barPercentage: 0.7,
+        }]
+      },
+      plugins: [errorBarPlugin, valueLabelPlugin],
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            ticks: { maxRotation: 45, minRotation: 0, autoSkip: false },
+            grid: { display: false },
+          },
+          y: {
+            min: 0,
+            max: yMax,
+            ticks: { callback: (v) => v + '\u00a0%' },
+            grid: { color: '#edeee9' },
+          },
+        },
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const me = errors[ctx.dataIndex];
+                const meStr = me ? ` (\u00b1\u00a0${fmtPct(me)})` : '';
+                return `${fmtPct(ctx.parsed.y)}${meStr}`;
+              }
+            }
+          }
+        },
+      }
+    });
+  }
+}
+
+// =========================================================================
+// Bloc 1 bis : Second tour
+// =========================================================================
+class SecondTour {
+  constructor(sondages, periodeEl) {
+    this.periodeEl = periodeEl;
+    this.sel1 = document.getElementById('duel-cand1');
+    this.sel2 = document.getElementById('duel-cand2');
+    this.content = document.getElementById('t2-content');
+    this.chart = null;
+
+    // Extract all T2 duels: "cid1|cid2" (sorted) → [{sondage, hyp}]
+    this.duels = {};
+    for (const s of sondages) {
+      for (const h of s.hypotheses) {
+        if (h.tour !== 2 || Object.keys(h.scores).length !== 2) continue;
+        const pair = Object.keys(h.scores).sort();
+        const key = pair.join('|');
+        if (!this.duels[key]) this.duels[key] = [];
+        this.duels[key].push({ sondage: s, hyp: h });
+      }
+    }
+
+    // All candidates involved in at least one duel, sorted by total duels
+    const candCount = {};
+    for (const [key, entries] of Object.entries(this.duels)) {
+      for (const cid of key.split('|')) {
+        candCount[cid] = (candCount[cid] || 0) + entries.length;
+      }
+    }
+    this.allCands = Object.keys(candCount).sort((a, b) => candCount[b] - candCount[a]);
+
+    this.populateCand1();
+    this.sel1.addEventListener('change', () => { this.populateCand2(); this.render(); });
+    this.sel2.addEventListener('change', () => this.render());
+    this.populateCand2();
+    this.render();
+  }
+
+  populateCand1() {
+    this.sel1.innerHTML = '';
+    for (const cid of this.allCands) {
+      const opt = document.createElement('option');
+      opt.value = cid;
+      opt.textContent = nomCourt(cid);
+      this.sel1.appendChild(opt);
+    }
+  }
+
+  opponentsOf(cid) {
+    const opponents = [];
+    for (const [key, entries] of Object.entries(this.duels)) {
+      const pair = key.split('|');
+      if (!pair.includes(cid)) continue;
+      const other = pair[0] === cid ? pair[1] : pair[0];
+      opponents.push({ cid: other, n: entries.length });
+    }
+    return opponents.sort((a, b) => b.n - a.n);
+  }
+
+  populateCand2() {
+    const cid1 = this.sel1.value;
+    const prev = this.sel2.value;
+    this.sel2.innerHTML = '';
+    const opponents = this.opponentsOf(cid1);
+    for (const { cid, n } of opponents) {
+      const opt = document.createElement('option');
+      opt.value = cid;
+      opt.textContent = `${nomCourt(cid)} (${n} sondage${n > 1 ? 's' : ''})`;
+      if (cid === prev) opt.selected = true;
+      this.sel2.appendChild(opt);
+    }
+  }
+
+  duelKey() {
+    const a = this.sel1.value, b = this.sel2.value;
+    if (!a || !b) return null;
+    return [a, b].sort().join('|');
+  }
+
+  getDateDebut() {
+    const active = this.periodeEl.querySelector('button.active');
+    if (active) {
+      if (active.dataset.all) return '0000-00-00';
+      if (active.dataset.since) return active.dataset.since;
+      if (active.dataset.months) {
+        const allDates = Object.values(this.duels).flat().map(d => d.sondage.terrain_fin);
+        const latest = allDates.sort().pop() || '2026-09-03';
+        const fin = new Date(latest);
+        fin.setMonth(fin.getMonth() - parseInt(active.dataset.months));
+        return fin.toISOString().slice(0, 10);
+      }
+    }
+    const input = this.periodeEl.querySelector('.date-libre');
+    if (input && input.value) return input.value;
+    return '0000-00-00';
+  }
+
+  render() {
+    const key = this.duelKey();
+    if (!key || !this.duels[key]) {
+      this.content.innerHTML = '<p style="color:var(--gris);font-size:0.85em;">Aucune mesure pour ce duel.</p>';
+      if (this.chart) { this.chart.destroy(); this.chart = null; }
+      return;
+    }
+
+    // Always display in the order chosen by the user (sel1 first)
+    const cidA = this.sel1.value, cidB = this.sel2.value;
+    const dateDebut = this.getDateDebut();
+    const entries = this.duels[key]
+      .filter(d => d.sondage.terrain_fin >= dateDebut)
+      .sort((a, b) => b.sondage.terrain_fin.localeCompare(a.sondage.terrain_fin));
+
+    if (entries.length === 0) {
+      this.content.innerHTML = '<p style="color:var(--gris);font-size:0.85em;">Aucune mesure pour cette période.</p>';
+      if (this.chart) { this.chart.destroy(); this.chart = null; }
+      return;
+    }
+
+    if (entries.length < 5) {
+      this.renderTable(entries, cidA, cidB);
+    } else {
+      this.renderChart(entries, cidA, cidB);
+    }
+  }
+
+  renderTable(entries, cidA, cidB) {
+    if (this.chart) { this.chart.destroy(); this.chart = null; }
+    let html = `<table class="t2-table"><tr><th>Institut</th><th>Date</th><th>Échantillon</th><th>${nomCourt(cidA)}</th><th>${nomCourt(cidB)}</th></tr>`;
+    for (const { sondage: s, hyp: h } of entries) {
+      const ech = s.echantillon ? Math.round(s.echantillon).toLocaleString('fr-FR') : '—';
+      html += `<tr><td>${s.institut}</td><td>${fmtDate(s.terrain_fin)}</td><td>${ech}</td><td>${fmtPct(h.scores[cidA])}</td><td>${fmtPct(h.scores[cidB])}</td></tr>`;
+    }
+    html += '</table>';
+    this.content.innerHTML = html;
+  }
+
+  renderChart(entries, cidA, cidB) {
+    const sorted = entries.slice().sort((a, b) => a.sondage.terrain_fin.localeCompare(b.sondage.terrain_fin));
+    const dataA = sorted.map(d => ({ x: parseDate(d.sondage.terrain_fin), y: d.hyp.scores[cidA] }));
+    const dataB = sorted.map(d => ({ x: parseDate(d.sondage.terrain_fin), y: d.hyp.scores[cidB] }));
+
+    // Axe Y : toujours inclure 50 %, cadrer symétriquement
+    const allVals = [...dataA.map(p => p.y), ...dataB.map(p => p.y)];
+    const lo = Math.min(...allVals);
+    const hi = Math.max(...allVals);
+    const yMin = Math.min(Math.floor(lo / 5) * 5, 45);
+    const yMax = Math.max(Math.ceil(hi / 5) * 5, 55);
+
+    this.content.innerHTML = '<div class="chart-wrap"><canvas id="chart-t2"></canvas></div>';
+
+    // Plugin : ligne horizontale à 50 %
+    const ligne50 = {
+      id: 'ligne50',
+      beforeDraw(chart) {
+        const yScale = chart.scales.y;
+        const y = yScale.getPixelForValue(50);
+        const { ctx, chartArea: { left, right } } = chart;
+        ctx.save();
+        ctx.strokeStyle = 'rgba(32,38,50,0.25)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([6, 4]);
+        ctx.beginPath();
+        ctx.moveTo(left, y);
+        ctx.lineTo(right, y);
+        ctx.stroke();
+        // Label
+        ctx.fillStyle = 'rgba(32,38,50,0.4)';
+        ctx.font = "11px 'IBM Plex Sans', sans-serif";
+        ctx.textBaseline = 'bottom';
+        ctx.fillText('50\u00a0%', left + 4, y - 3);
+        ctx.restore();
+      }
+    };
+
+    if (this.chart) this.chart.destroy();
+    this.chart = new Chart(document.getElementById('chart-t2'), {
+      type: 'line',
+      data: {
+        datasets: [
+          {
+            label: nomCourt(cidA),
+            data: dataA,
+            borderColor: couleur(cidA),
+            backgroundColor: couleur(cidA),
+            borderWidth: 2,
+            pointRadius: 4,
+            tension: 0,
+            fill: false,
+          },
+          {
+            label: nomCourt(cidB),
+            data: dataB,
+            borderColor: couleur(cidB),
+            backgroundColor: couleur(cidB),
+            borderWidth: 2,
+            pointRadius: 4,
+            tension: 0,
+            fill: false,
+          },
+        ]
+      },
+      plugins: [ligne50],
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'nearest', axis: 'x', intersect: false },
+        scales: {
+          x: {
+            type: 'time',
+            time: { unit: 'month', tooltipFormat: 'd MMMM yyyy' },
+            adapters: { date: { locale: window.dateFns?.locale?.fr } },
+            grid: { color: '#edeee9' },
+          },
+          y: {
+            min: yMin,
+            max: yMax,
+            ticks: { callback: (v) => v + '\u00a0%' },
+            grid: { color: '#edeee9' },
+          },
+        },
+        plugins: {
+          legend: { display: true, position: 'top', labels: { font: { family: "'IBM Plex Sans'" } } },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => `${ctx.dataset.label}\u00a0: ${fmtPct(ctx.parsed.y)}`
             }
           }
         },
@@ -314,14 +864,16 @@ class BlocChart {
 // Initialization
 // =========================================================================
 async function init() {
-  const [seriesResp, polyResp, candsResp] = await Promise.all([
+  const [seriesResp, polyResp, candsResp, sondagesResp] = await Promise.all([
     fetch('../data/derived/series-t1.json'),
     fetch('../data/polymarket.json'),
     fetch('../data/candidats.json'),
+    fetch('../data/sondages.json'),
   ]);
   const seriesData = await seriesResp.json();
   const polyData = await polyResp.json();
   CANDIDATS = await candsResp.json();
+  const sondagesData = await sondagesResp.json();
 
   // --- Bloc sondages ---
   const sondagesBloc = new BlocChart({
@@ -332,7 +884,6 @@ async function init() {
     dateDebut: seriesData.date_debut,
   });
 
-  // series-t1.json → {cid: [{d, v}, ...]}
   const sondagesCandidats = {};
   for (const [cid, pts] of Object.entries(seriesData.series)) {
     sondagesCandidats[cid] = pts.map(p => ({ d: p.d, v: p.v }));
@@ -344,13 +895,12 @@ async function init() {
   });
 
   // --- Bloc Polymarket ---
-  // Compute date range from historique
   let polyDateDebut = '9999-99-99', polyDateFin = '0000-00-00';
   const polyCandidats = {};
   for (const [cid, info] of Object.entries(polyData.candidats)) {
     polyCandidats[cid] = info.historique.map(p => ({
       d: p.d,
-      v: Math.round(p.p * 1000) / 10,  // 0.355 → 35.5%
+      v: Math.round(p.p * 1000) / 10,
     }));
     if (info.historique.length > 0) {
       const first = info.historique[0].d;
@@ -373,6 +923,38 @@ async function init() {
     const lb = polyBloc.lastVal(b) || 0;
     return lb - la;
   });
+
+  // --- Bloc second tour ---
+  const periodeEl = document.querySelector('.periode[data-bloc="sondages"]');
+  const t2 = new SecondTour(sondagesData, periodeEl);
+
+  // --- Tabs ---
+  const tabs = document.querySelectorAll('#bloc-sondages .tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-t1').classList.toggle('active', tab.dataset.tab === 't1');
+      document.getElementById('panel-t2').classList.toggle('active', tab.dataset.tab === 't2');
+      if (tab.dataset.tab === 't2') t2.render();
+    });
+  });
+
+  // Re-render T2 when period changes
+  periodeEl.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (document.querySelector('#panel-t2.active')) t2.render();
+    });
+  });
+  const dateInput = periodeEl.querySelector('.date-libre');
+  if (dateInput) {
+    dateInput.addEventListener('change', () => {
+      if (document.querySelector('#panel-t2.active')) t2.render();
+    });
+  }
+
+  // --- Bloc explorer les sondages ---
+  new ExplorerSondages(sondagesData);
 }
 
 init();

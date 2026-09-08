@@ -12,7 +12,8 @@
   header p { font-size: 0.85em; color: #666; margin-top: 0.2em; }
   main { max-width: 1100px; margin: 0 auto; padding: 1.5em; }
   .bloc { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 1.5em; margin-bottom: 1.5em; }
-  .bloc h2 { font-size: 1.1em; margin-bottom: 1em; }
+  .bloc h2 { font-size: 1.1em; margin-bottom: 0.2em; }
+  .bloc .subtitle { font-size: 0.8em; color: #888; margin-bottom: 1em; }
   .periode { display: flex; gap: 0.5em; align-items: center; flex-wrap: wrap; margin-bottom: 1em; }
   .periode button { padding: 0.3em 0.8em; border: 1px solid #ccc; border-radius: 4px;
     background: #fff; cursor: pointer; font-size: 0.85em; }
@@ -33,18 +34,36 @@
 </header>
 
 <main>
-  <div class="bloc">
+  <!-- Bloc 1 : Sondages T1 -->
+  <div class="bloc" id="bloc-sondages">
     <h2>Intentions de vote — Premier tour</h2>
-    <div class="periode">
+    <p class="subtitle">Moyenne pondérée des sondages, fenêtre glissante de 30 jours</p>
+    <div class="periode" data-bloc="sondages">
       <span style="font-size:0.85em;color:#666;">Période :</span>
       <button data-months="3">3 mois</button>
       <button data-months="6" class="active">6 mois</button>
       <button data-since="2026-01-01">Depuis jan. 2026</button>
       <button data-all="1">Tout</button>
-      <input type="date" id="date-libre" title="Date de début libre">
+      <input type="date" class="date-libre" title="Date de début libre">
     </div>
-    <div class="chart-wrap"><canvas id="chart"></canvas></div>
-    <div class="candidats" id="candidats"></div>
+    <div class="chart-wrap"><canvas id="chart-sondages"></canvas></div>
+    <div class="candidats" id="cb-sondages"></div>
+  </div>
+
+  <!-- Bloc 2 : Polymarket -->
+  <div class="bloc" id="bloc-polymarket">
+    <h2>Probabilité de victoire — marchés de prédiction</h2>
+    <p class="subtitle">Probabilité estimée par les parieurs d'être élu président, pas un score électoral (source : Polymarket)</p>
+    <div class="periode" data-bloc="polymarket">
+      <span style="font-size:0.85em;color:#666;">Période :</span>
+      <button data-months="3">3 mois</button>
+      <button data-months="6" class="active">6 mois</button>
+      <button data-since="2026-01-01">Depuis jan. 2026</button>
+      <button data-all="1">Tout</button>
+      <input type="date" class="date-libre" title="Date de début libre">
+    </div>
+    <div class="chart-wrap"><canvas id="chart-polymarket"></canvas></div>
+    <div class="candidats" id="cb-polymarket"></div>
   </div>
 </main>
 
@@ -54,33 +73,11 @@
 const NB_DEFAULT = 4;
 const Y_MIN_MAX = 10;
 
-let chartInstance = null;
-let DATA = null;
 let CANDIDATS = null;
-let checkedCandidats = new Set();
 
 function parseDate(s) {
   const [y, m, d] = s.split('-').map(Number);
   return new Date(y, m - 1, d);
-}
-
-async function init() {
-  const [seriesResp, candsResp] = await Promise.all([
-    fetch('../data/derived/series-t1.json'),
-    fetch('../data/candidats.json'),
-  ]);
-  DATA = await seriesResp.json();
-  CANDIDATS = await candsResp.json();
-
-  // Top 4 checked by default
-  const sorted = sortedCandidats();
-  for (let i = 0; i < Math.min(NB_DEFAULT, sorted.length); i++) {
-    checkedCandidats.add(sorted[i]);
-  }
-
-  setupPeriode();
-  renderCheckboxes();
-  render();
 }
 
 function couleur(cid) {
@@ -93,198 +90,288 @@ function nomCourt(cid) {
   return c ? c.nom : cid;
 }
 
-function lastValue(cid) {
-  const pts = DATA.series[cid];
-  for (let i = pts.length - 1; i >= 0; i--) {
-    if (pts[i].v !== null) return pts[i].v;
-  }
-  return null;
-}
-
-function getDateDebut() {
-  const active = document.querySelector('.periode button.active');
-  if (active) {
-    if (active.dataset.all) return DATA.date_debut;
-    if (active.dataset.since) return active.dataset.since;
-    if (active.dataset.months) {
-      const fin = new Date(DATA.date_fin);
-      fin.setMonth(fin.getMonth() - parseInt(active.dataset.months));
-      return fin.toISOString().slice(0, 10);
-    }
-  }
-  const input = document.getElementById('date-libre');
-  if (input.value) return input.value;
-  return DATA.date_debut;
-}
-
-function setupPeriode() {
-  document.querySelectorAll('.periode button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.periode button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('date-libre').value = '';
-      render();
-    });
-  });
-  document.getElementById('date-libre').addEventListener('change', () => {
-    document.querySelectorAll('.periode button').forEach(b => b.classList.remove('active'));
-    render();
-  });
-}
-
-function sortedCandidats() {
-  const cids = Object.keys(DATA.series);
-  return cids.sort((a, b) => (lastValue(b) || 0) - (lastValue(a) || 0));
-}
-
-function buildGhostSegments(cid, dateDebut) {
-  const raw = DATA.series[cid].filter(p => p.d >= dateDebut);
-  const segments = [];
-  let lastNonNull = null;
-  let inGap = false;
-  for (const p of raw) {
-    if (p.v !== null) {
-      if (inGap && lastNonNull !== null) {
-        segments.push([
-          { x: parseDate(lastNonNull.d), y: lastNonNull.v },
-          { x: parseDate(p.d), y: p.v },
-        ]);
-      }
-      lastNonNull = p;
-      inGap = false;
-    } else {
-      inGap = true;
-    }
-  }
-  return segments;
-}
-
 function computeYMax(datasets) {
   let max = 0;
   for (const ds of datasets) {
     if (ds._isGhost) continue;
     for (const p of ds.data) {
-      if (p.y !== null && p.y > max) max = p.y;
+      if (p.y !== null && !isNaN(p.y) && p.y > max) max = p.y;
     }
   }
-  // Round up to next multiple of 5, with a floor of Y_MIN_MAX
   return Math.max(Y_MIN_MAX, Math.ceil(max / 5) * 5);
 }
 
-function renderCheckboxes() {
-  const el = document.getElementById('candidats');
-  el.innerHTML = '';
-  const sorted = sortedCandidats();
-  for (const cid of sorted) {
-    const col = couleur(cid);
-    const last = lastValue(cid);
-    const label = document.createElement('label');
-    label.className = 'candidat-cb';
-    label.style.setProperty('--col', col);
-
-    const cb = document.createElement('input');
-    cb.type = 'checkbox';
-    cb.checked = checkedCandidats.has(cid);
-    cb.addEventListener('change', () => {
-      if (cb.checked) checkedCandidats.add(cid);
-      else checkedCandidats.delete(cid);
-      render();
-    });
-
-    const pastille = document.createElement('span');
-    pastille.className = 'pastille';
-    pastille.style.background = col;
-
-    const txt = document.createTextNode(
-      `${nomCourt(cid)}` + (last !== null ? ` (${last.toFixed(1)})` : '')
-    );
-
-    label.appendChild(cb);
-    label.appendChild(pastille);
-    label.appendChild(txt);
-    el.appendChild(label);
+// =========================================================================
+// Generic bloc controller
+// =========================================================================
+class BlocChart {
+  constructor({ canvasId, cbContainerId, periodeSelector, dateFin, dateDebut, nbDefault = NB_DEFAULT }) {
+    this.canvas = document.getElementById(canvasId);
+    this.cbContainer = document.getElementById(cbContainerId);
+    this.periodeEl = document.querySelector(periodeSelector);
+    this.dateFin = dateFin;
+    this.dateDebut = dateDebut;
+    this.nbDefault = nbDefault;
+    this.chart = null;
+    this.checked = new Set();
+    this.candidats = {};  // cid → array of {d, v}
+    this.setupPeriode();
   }
-}
 
-function render() {
-  const dateDebut = getDateDebut();
-  const sorted = sortedCandidats();
-  const datasets = [];
+  setCandidats(candidats, sortFn) {
+    this.candidats = candidats;
+    this.sortedCids = Object.keys(candidats).sort(sortFn);
+    this.checked.clear();
+    for (let i = 0; i < Math.min(this.nbDefault, this.sortedCids.length); i++) {
+      this.checked.add(this.sortedCids[i]);
+    }
+    this.renderCheckboxes();
+    this.render();
+  }
 
-  for (const cid of sorted) {
-    if (!checkedCandidats.has(cid)) continue;
-    const col = couleur(cid);
+  lastVal(cid) {
+    const pts = this.candidats[cid];
+    if (!pts || pts.length === 0) return null;
+    for (let i = pts.length - 1; i >= 0; i--) {
+      if (pts[i].v !== null) return pts[i].v;
+    }
+    return null;
+  }
 
-    const data = DATA.series[cid]
-      .filter(p => p.d >= dateDebut)
-      .map(p => ({ x: parseDate(p.d), y: p.v }));
+  getDateDebut() {
+    const active = this.periodeEl.querySelector('button.active');
+    if (active) {
+      if (active.dataset.all) return this.dateDebut;
+      if (active.dataset.since) return active.dataset.since;
+      if (active.dataset.months) {
+        const fin = new Date(this.dateFin);
+        fin.setMonth(fin.getMonth() - parseInt(active.dataset.months));
+        return fin.toISOString().slice(0, 10);
+      }
+    }
+    const input = this.periodeEl.querySelector('.date-libre');
+    if (input && input.value) return input.value;
+    return this.dateDebut;
+  }
 
-    datasets.push({
-      label: nomCourt(cid),
-      data: data,
-      borderColor: col,
-      borderWidth: 2,
-      pointRadius: 0,
-      tension: 0,
-      fill: false,
-      spanGaps: false,
-      _cid: cid,
+  setupPeriode() {
+    this.periodeEl.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this.periodeEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const input = this.periodeEl.querySelector('.date-libre');
+        if (input) input.value = '';
+        this.render();
+      });
     });
-
-    const ghosts = buildGhostSegments(cid, dateDebut);
-    for (const seg of ghosts) {
-      datasets.push({
-        label: '',
-        data: seg,
-        borderColor: '#ccc',
-        borderWidth: 1,
-        borderDash: [4, 4],
-        pointRadius: 0,
-        tension: 0,
-        fill: false,
-        _cid: cid,
-        _isGhost: true,
+    const input = this.periodeEl.querySelector('.date-libre');
+    if (input) {
+      input.addEventListener('change', () => {
+        this.periodeEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        this.render();
       });
     }
   }
 
-  const yMax = computeYMax(datasets);
+  renderCheckboxes() {
+    this.cbContainer.innerHTML = '';
+    for (const cid of this.sortedCids) {
+      const col = couleur(cid);
+      const last = this.lastVal(cid);
+      const label = document.createElement('label');
+      label.className = 'candidat-cb';
+      label.style.setProperty('--col', col);
 
-  if (chartInstance) chartInstance.destroy();
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = this.checked.has(cid);
+      cb.addEventListener('change', () => {
+        if (cb.checked) this.checked.add(cid);
+        else this.checked.delete(cid);
+        this.render();
+      });
 
-  chartInstance = new Chart(document.getElementById('chart'), {
-    type: 'line',
-    data: { datasets },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      interaction: { mode: 'nearest', axis: 'x', intersect: false },
-      scales: {
-        x: {
-          type: 'time',
-          time: { unit: 'week', tooltipFormat: 'd MMM yyyy' },
-          grid: { color: '#f0f0f0' },
+      const pastille = document.createElement('span');
+      pastille.className = 'pastille';
+      pastille.style.background = col;
+
+      const txt = document.createTextNode(
+        `${nomCourt(cid)}` + (last !== null ? ` (${last.toFixed(1)})` : '')
+      );
+
+      label.appendChild(cb);
+      label.appendChild(pastille);
+      label.appendChild(txt);
+      this.cbContainer.appendChild(label);
+    }
+  }
+
+  buildGhostSegments(cid, dateDebut) {
+    const raw = this.candidats[cid].filter(p => p.d >= dateDebut);
+    const segments = [];
+    let lastNonNull = null;
+    let inGap = false;
+    for (const p of raw) {
+      if (p.v !== null) {
+        if (inGap && lastNonNull !== null) {
+          segments.push([
+            { x: parseDate(lastNonNull.d), y: lastNonNull.v },
+            { x: parseDate(p.d), y: p.v },
+          ]);
+        }
+        lastNonNull = p;
+        inGap = false;
+      } else {
+        inGap = true;
+      }
+    }
+    return segments;
+  }
+
+  render() {
+    const dateDebut = this.getDateDebut();
+    const datasets = [];
+
+    for (const cid of this.sortedCids) {
+      if (!this.checked.has(cid)) continue;
+      const col = couleur(cid);
+
+      const data = this.candidats[cid]
+        .filter(p => p.d >= dateDebut)
+        .map(p => ({ x: parseDate(p.d), y: p.v }));
+
+      datasets.push({
+        label: nomCourt(cid),
+        data: data,
+        borderColor: col,
+        borderWidth: 2,
+        pointRadius: 0,
+        tension: 0,
+        fill: false,
+        spanGaps: false,
+        _cid: cid,
+      });
+
+      const ghosts = this.buildGhostSegments(cid, dateDebut);
+      for (const seg of ghosts) {
+        datasets.push({
+          label: '',
+          data: seg,
+          borderColor: '#ccc',
+          borderWidth: 1,
+          borderDash: [4, 4],
+          pointRadius: 0,
+          tension: 0,
+          fill: false,
+          _cid: cid,
+          _isGhost: true,
+        });
+      }
+    }
+
+    const yMax = computeYMax(datasets);
+
+    if (this.chart) this.chart.destroy();
+
+    this.chart = new Chart(this.canvas, {
+      type: 'line',
+      data: { datasets },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'nearest', axis: 'x', intersect: false },
+        scales: {
+          x: {
+            type: 'time',
+            time: { unit: 'week', tooltipFormat: 'd MMM yyyy' },
+            grid: { color: '#f0f0f0' },
+          },
+          y: {
+            min: 0,
+            max: yMax,
+            title: { display: true, text: '%' },
+            grid: { color: '#f0f0f0' },
+          },
         },
-        y: {
-          min: 0,
-          max: yMax,
-          title: { display: true, text: '%' },
-          grid: { color: '#f0f0f0' },
-        },
-      },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          filter: (item) => !item.dataset._isGhost,
-          callbacks: {
-            label: (ctx) => {
-              if (ctx.parsed.y === null || isNaN(ctx.parsed.y)) return '';
-              return `${nomCourt(ctx.dataset._cid)} : ${ctx.parsed.y.toFixed(1)} %`;
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            filter: (item) => !item.dataset._isGhost,
+            callbacks: {
+              label: (ctx) => {
+                if (ctx.parsed.y === null || isNaN(ctx.parsed.y)) return '';
+                return `${nomCourt(ctx.dataset._cid)} : ${ctx.parsed.y.toFixed(1)} %`;
+              }
             }
           }
-        }
-      },
+        },
+      }
+    });
+  }
+}
+
+// =========================================================================
+// Initialization
+// =========================================================================
+async function init() {
+  const [seriesResp, polyResp, candsResp] = await Promise.all([
+    fetch('../data/derived/series-t1.json'),
+    fetch('../data/polymarket.json'),
+    fetch('../data/candidats.json'),
+  ]);
+  const seriesData = await seriesResp.json();
+  const polyData = await polyResp.json();
+  CANDIDATS = await candsResp.json();
+
+  // --- Bloc sondages ---
+  const sondagesBloc = new BlocChart({
+    canvasId: 'chart-sondages',
+    cbContainerId: 'cb-sondages',
+    periodeSelector: '.periode[data-bloc="sondages"]',
+    dateFin: seriesData.date_fin,
+    dateDebut: seriesData.date_debut,
+  });
+
+  // series-t1.json → {cid: [{d, v}, ...]}
+  const sondagesCandidats = {};
+  for (const [cid, pts] of Object.entries(seriesData.series)) {
+    sondagesCandidats[cid] = pts.map(p => ({ d: p.d, v: p.v }));
+  }
+  sondagesBloc.setCandidats(sondagesCandidats, (a, b) => {
+    const la = sondagesBloc.lastVal(a) || 0;
+    const lb = sondagesBloc.lastVal(b) || 0;
+    return lb - la;
+  });
+
+  // --- Bloc Polymarket ---
+  // Compute date range from historique
+  let polyDateDebut = '9999-99-99', polyDateFin = '0000-00-00';
+  const polyCandidats = {};
+  for (const [cid, info] of Object.entries(polyData.candidats)) {
+    polyCandidats[cid] = info.historique.map(p => ({
+      d: p.d,
+      v: Math.round(p.p * 1000) / 10,  // 0.355 → 35.5%
+    }));
+    if (info.historique.length > 0) {
+      const first = info.historique[0].d;
+      const last = info.historique[info.historique.length - 1].d;
+      if (first < polyDateDebut) polyDateDebut = first;
+      if (last > polyDateFin) polyDateFin = last;
     }
+  }
+
+  const polyBloc = new BlocChart({
+    canvasId: 'chart-polymarket',
+    cbContainerId: 'cb-polymarket',
+    periodeSelector: '.periode[data-bloc="polymarket"]',
+    dateFin: polyDateFin,
+    dateDebut: polyDateDebut,
+    nbDefault: 3,
+  });
+  polyBloc.setCandidats(polyCandidats, (a, b) => {
+    const la = polyBloc.lastVal(a) || 0;
+    const lb = polyBloc.lastVal(b) || 0;
+    return lb - la;
   });
 }
 

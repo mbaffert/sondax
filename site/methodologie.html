@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Méthodologie — Sondax</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo-sondax.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu-vif: #0C6CF2;
+    --bleu-nuit: #0B2E6F;
+    --fond: #F7F8F5;
+    --texte: #202632;
+    --gris: #66707D;
+    --titre: 'Space Grotesk', system-ui, sans-serif;
+    --corps: 'IBM Plex Sans', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--corps); background: var(--fond); color: var(--texte); font-size: 15px; line-height: 1.65; }
+
+  header { background: var(--bleu-nuit); color: #fff; padding: 1.5em 2em; }
+  header .header-inner { display: flex; align-items: center; gap: 1em; }
+  header img { height: 2em; }
+  header h1 { font-family: var(--titre); font-size: 1.6em; font-weight: 700; letter-spacing: -0.02em; }
+  header h1 a { color: #fff; text-decoration: none; }
+  header p { font-size: 0.9em; color: rgba(255,255,255,0.75); margin-top: 0.15em; }
+
+  main { max-width: 760px; margin: 0 auto; padding: 2em 1.5em; }
+  main h2 { font-family: var(--titre); font-size: 1.3em; font-weight: 700; margin: 2em 0 0.5em; color: var(--texte); }
+  main h2:first-child { margin-top: 0; }
+  main h3 { font-family: var(--titre); font-size: 1.05em; font-weight: 600; margin: 1.8em 0 0.4em; color: var(--texte); }
+  main p { margin-bottom: 0.8em; }
+  main strong { font-weight: 600; }
+
+  footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.7); padding: 1.5em 2em; font-size: 0.8em; line-height: 1.7; }
+  footer a { color: rgba(255,255,255,0.85); }
+  footer .disclaimer { color: rgba(255,255,255,0.5); font-style: italic; margin-top: 0.8em; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <img src="assets/logo-sondax-blanc.svg" alt="Sondax">
+    <div>
+      <h1><a href="index.html">Sondax</a></h1>
+      <p>Voir les rapports de force bouger.</p>
+    </div>
+  </div>
+</header>
+
+<main>
+<h2>Méthodologie</h2>
+
+<h3>D'où viennent les chiffres</h3>
+
+<p><strong>Les sondages</strong> proviennent de la page Wikipédia consacrée aux sondages de l'élection
+présidentielle de 2027, mise à jour par ses contributeurs à partir des notices déposées
+auprès de la Commission des sondages. Nous la relisons trois fois par jour. Aucun chiffre
+n'est saisi à la main&nbsp;: tout ce qui s'affiche ici vient de cette page, et chaque sondage
+renvoie vers sa source.</p>
+
+<p><strong>Les cotes</strong> proviennent de Polymarket, un marché de prédiction où des intervenants
+achètent et vendent des contrats liés à l'élection. Le prix d'un contrat s'interprète
+comme la probabilité que le marché attribue à l'élection du candidat. Nous affichons ces
+prix bruts, sans retraitement.</p>
+
+<h3>Une précision sur les cotes Polymarket</h3>
+
+<p>Ces chiffres sont des probabilités d'être élu, pas des intentions de vote. Un candidat
+peut réunir 35&nbsp;% des intentions au premier tour et une probabilité de victoire bien
+différente. Les deux graphiques ne mesurent pas la même chose et ne se comparent pas.</p>
+
+<h3>Comment la courbe de tendance est calculée</h3>
+
+<p>Un sondage n'est pas un point de la courbe&nbsp;: c'est une mesure isolée, assortie d'une
+marge d'erreur de deux à trois points. Relier les sondages entre eux donnerait une ligne
+brisée qui refléterait autant le hasard de l'échantillonnage que l'opinion.</p>
+
+<p>Chaque jour de la courbe est donc une <strong>moyenne des sondages des trente derniers jours</strong>,
+pondérée par leur ancienneté&nbsp;: un sondage de quinze jours pèse environ moitié moins qu'un
+sondage du jour.</p>
+
+<p>Le rythme de cette décroissance s'ajuste automatiquement au nombre de sondages
+disponibles. Quand ils sont rares, la moyenne s'étale sur une période plus longue pour
+rester stable&nbsp;; quand ils se multiplient, elle se resserre et devient plus réactive.</p>
+
+<p><strong>Nous n'inventons aucune valeur.</strong> Les points bruts restent affichés derrière la courbe.
+Un segment reposant sur un seul sondage est tracé en pointillé. En l'absence totale de
+sondage, la courbe s'interrompt&nbsp;: elle ne comble jamais un trou.</p>
+
+<h3>Pourquoi les courbes ne s'additionnent pas à 100&nbsp;%</h3>
+
+<p>Un institut ne pose pas une question, il en pose plusieurs. Une même enquête teste
+souvent six ou dix configurations différentes&nbsp;: avec tel candidat, sans tel autre, avec
+les deux.</p>
+
+<p>Or <strong>le score d'un candidat dépend fortement de qui lui est opposé</strong>. Dans une enquête
+Ifop de février 2026, Bruno Retailleau obtient 10&nbsp;% dans une configuration comprenant
+Édouard Philippe, et 17&nbsp;% dans une configuration où ni Philippe ni Gabriel Attal ne
+figurent. Même sondage, même jour, sept points d'écart.</p>
+
+<p>Pour tracer une courbe, il faut donc choisir. Nous retenons, pour chaque candidat et
+chaque sondage, <strong>la configuration comportant le plus de candidats testés</strong> — celle où la
+concurrence est la plus large. Quand plusieurs configurations sont à égalité, nous
+retenons leur moyenne.</p>
+
+<p>Conséquence&nbsp;: deux candidats peuvent être mesurés dans des configurations différentes du
+même sondage, et le total des courbes ne fait pas 100&nbsp;%. C'est le prix d'une courbe
+lisible par candidat. Le bloc «&nbsp;Explorer les sondages&nbsp;» permet de retrouver chaque
+configuration telle qu'elle a été publiée.</p>
+
+<h3>Ce que nous ne faisons pas</h3>
+
+<p><strong>Nous ne corrigeons pas les biais d'institut.</strong> Certains agrégateurs ajustent les
+résultats selon les écarts historiques observés entre instituts. Nous ne le faisons pas&nbsp;:
+cela reviendrait à publier nos propres chiffres plutôt que ceux des instituts.</p>
+
+<p><strong>Nous ne pondérons pas par la taille de l'échantillon.</strong> Les instituts français
+interrogent tous entre 1&nbsp;000 et 1&nbsp;800 personnes&nbsp;; l'effet serait négligeable.</p>
+
+<p><strong>Nous ne mélangeons pas sondages et cotes.</strong> Ce sont deux mesures de nature différente,
+présentées dans deux graphiques distincts.</p>
+
+<p><strong>Nous ne faisons pas de prévision.</strong> Ce site montre ce qui a été mesuré. Il ne dit pas
+qui sera élu.</p>
+
+<h3>Marges d'erreur</h3>
+
+<p>Un sondage sur mille personnes donne un résultat à environ trois points près pour un
+candidat autour de 30&nbsp;%, moins d'un point pour un candidat à 2&nbsp;%. Deux candidats séparés
+de deux points ne sont pas départageables.</p>
+
+<p>Les instituts ne publient pas la taille de l'échantillon interrogé sur chaque
+configuration. Nos marges d'erreur sont donc calculées sur l'échantillon total de
+l'enquête et signalées comme approximatives.</p>
+
+<h3>Précision sur les sondages d'intention de vote</h3>
+
+<p>Les enquêtes réalisées un an avant un scrutin se sont historiquement révélées éloignées
+des résultats finaux&nbsp;: les candidatures ne sont pas toutes déclarées, les alliances pas
+formées, et une partie des électeurs n'a pas arrêté son choix. Ces chiffres décrivent un
+rapport de force à un instant donné. Ils ne prédisent pas une élection.</p>
+
+<h3>Corrections</h3>
+
+<p>Les données sont relues automatiquement à chaque mise à jour&nbsp;: les scores d'une
+configuration doivent totaliser environ 100&nbsp;%, les candidats doivent être connus, et le
+nombre de sondages ne doit jamais diminuer. En cas d'anomalie, la mise à jour est
+interrompue plutôt que publiée.</p>
+
+<p>Si vous constatez une erreur, elle provient presque toujours de la page Wikipédia source.
+La corriger là-bas profite à tout le monde et se répercute ici en quelques heures.</p>
+</main>
+
+<footer>
+  <div>
+    Données sondages : <a href="https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027" target="_blank">Wikipédia</a>,
+    licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank">CC BY-SA 4.0</a> ·
+    Cotes : <a href="https://polymarket.com" target="_blank">Polymarket</a> ·
+    <a href="methodologie.html">Méthodologie</a>
+  </div>
+  <div>Éditeur : [réservé] · Hébergeur : <a href="https://pages.github.com" target="_blank">GitHub Pages</a></div>
+  <div class="disclaimer">Marque indépendante — le bleu et le rouge ne représentent aucun camp politique.</div>
+</footer>
+
+</body>
+</html>

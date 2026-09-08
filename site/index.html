@@ -136,6 +136,10 @@
     </div>
     <div class="chart-wrap"><canvas id="chart-polymarket"></canvas></div>
     <div class="candidats" id="cb-polymarket"></div>
+    <p style="font-size:0.82em;color:var(--gris);margin-top:1em;line-height:1.5;">Ces chiffres sont des probabilités d'être élu, pas des intentions de vote. Un candidat
+    peut réunir 35&nbsp;% des intentions au premier tour et une probabilité de victoire bien
+    différente. Les deux graphiques ne mesurent pas la même chose et ne se comparent pas.
+    <a href="methodologie.html" style="color:var(--bleu-vif);">En savoir plus.</a></p>
   </div>
 
   <!-- Bloc 3 : Explorer les sondages -->
@@ -156,10 +160,13 @@
 
 <footer>
   <div>
-    Données sondages : <a href="https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027" target="_blank">Wikipédia</a> (CC BY-SA) ·
-    Cotes : <a href="https://polymarket.com" target="_blank">Polymarket</a>
+    Données sondages : <a href="https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027" target="_blank">Wikipédia</a>,
+    licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank">CC BY-SA 4.0</a> ·
+    Cotes : <a href="https://polymarket.com" target="_blank">Polymarket</a> ·
+    <a href="methodologie.html">Méthodologie</a>
   </div>
-  <div>Mentions légales : site indépendant, sans affiliation politique ni commerciale.</div>
+  <div>Éditeur : [réservé] · Hébergeur : <a href="https://pages.github.com" target="_blank">GitHub Pages</a></div>
+  <div id="footer-run"></div>
   <div class="disclaimer">Marque indépendante — le bleu et le rouge ne représentent aucun camp politique.</div>
 </footer>
 
@@ -313,7 +320,7 @@ class BlocChart {
       pastille.style.background = col;
 
       const txt = document.createTextNode(
-        `${nomCourt(cid)}` + (last !== null ? ` (${fmtPct(last)})` : '')
+        nomCourt(cid)
       );
 
       label.appendChild(cb);
@@ -955,6 +962,15 @@ async function init() {
 
   // --- Bloc explorer les sondages ---
   new ExplorerSondages(sondagesData);
+
+  // Pied de page : date du dernier run et revid
+  const revid = sondagesData.length > 0 ? sondagesData[0].revid : null;
+  const maj = polyData.maj || null;
+  const parts = [];
+  if (maj) parts.push(`Dernière collecte\u00a0: ${fmtDate(maj.slice(0, 10))}`);
+  if (revid) parts.push(`revid\u00a0: <a href="https://fr.wikipedia.org/w/index.php?oldid=${revid}" target="_blank">${revid}</a>`);
+  const footerRun = document.getElementById('footer-run');
+  if (footerRun && parts.length) footerRun.innerHTML = parts.join(' · ');
 }
 
 init();

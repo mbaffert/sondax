@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sondax — Présidentielle 2027</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: system-ui, -apple-system, sans-serif; background: #fafafa; color: #222; }
+  header { background: #fff; border-bottom: 1px solid #e0e0e0; padding: 1.2em 2em; }
+  header h1 { font-size: 1.4em; font-weight: 700; }
+  header p { font-size: 0.85em; color: #666; margin-top: 0.2em; }
+  main { max-width: 1100px; margin: 0 auto; padding: 1.5em; }
+  .bloc { background: #fff; border: 1px solid #e0e0e0; border-radius: 6px; padding: 1.5em; margin-bottom: 1.5em; }
+  .bloc h2 { font-size: 1.1em; margin-bottom: 1em; }
+  .periode { display: flex; gap: 0.5em; align-items: center; flex-wrap: wrap; margin-bottom: 1em; }
+  .periode button { padding: 0.3em 0.8em; border: 1px solid #ccc; border-radius: 4px;
+    background: #fff; cursor: pointer; font-size: 0.85em; }
+  .periode button.active { background: #333; color: #fff; border-color: #333; }
+  .periode input[type="date"] { padding: 0.25em 0.5em; border: 1px solid #ccc; border-radius: 4px; font-size: 0.85em; }
+  .chart-wrap { position: relative; width: 100%; height: 500px; }
+  .candidats { display: flex; flex-wrap: wrap; gap: 0.3em 1em; margin-top: 1em; font-size: 0.82em; }
+  .candidat-cb { display: flex; align-items: center; gap: 0.3em; cursor: pointer; user-select: none; }
+  .candidat-cb input { accent-color: var(--col); }
+  .candidat-cb .pastille { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Sondax</h1>
+  <p>Tendances de l'élection présidentielle française 2027</p>
+</header>
+
+<main>
+  <div class="bloc">
+    <h2>Intentions de vote — Premier tour</h2>
+    <div class="periode">
+      <span style="font-size:0.85em;color:#666;">Période :</span>
+      <button data-months="3">3 mois</button>
+      <button data-months="6" class="active">6 mois</button>
+      <button data-since="2026-01-01">Depuis jan. 2026</button>
+      <button data-all="1">Tout</button>
+      <input type="date" id="date-libre" title="Date de début libre">
+    </div>
+    <div class="chart-wrap"><canvas id="chart"></canvas></div>
+    <div class="candidats" id="candidats"></div>
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+<script>
+const NB_DEFAULT = 4;
+const Y_MIN_MAX = 10;
+
+let chartInstance = null;
+let DATA = null;
+let CANDIDATS = null;
+let checkedCandidats = new Set();
+
+function parseDate(s) {
+  const [y, m, d] = s.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+async function init() {
+  const [seriesResp, candsResp] = await Promise.all([
+    fetch('../data/derived/series-t1.json'),
+    fetch('../data/candidats.json'),
+  ]);
+  DATA = await seriesResp.json();
+  CANDIDATS = await candsResp.json();
+
+  // Top 4 checked by default
+  const sorted = sortedCandidats();
+  for (let i = 0; i < Math.min(NB_DEFAULT, sorted.length); i++) {
+    checkedCandidats.add(sorted[i]);
+  }
+
+  setupPeriode();
+  renderCheckboxes();
+  render();
+}
+
+function couleur(cid) {
+  const c = CANDIDATS[cid];
+  return (c && c.couleur) ? c.couleur : '#888';
+}
+
+function nomCourt(cid) {
+  const c = CANDIDATS[cid];
+  return c ? c.nom : cid;
+}
+
+function lastValue(cid) {
+  const pts = DATA.series[cid];
+  for (let i = pts.length - 1; i >= 0; i--) {
+    if (pts[i].v !== null) return pts[i].v;
+  }
+  return null;
+}
+
+function getDateDebut() {
+  const active = document.querySelector('.periode button.active');
+  if (active) {
+    if (active.dataset.all) return DATA.date_debut;
+    if (active.dataset.since) return active.dataset.since;
+    if (active.dataset.months) {
+      const fin = new Date(DATA.date_fin);
+      fin.setMonth(fin.getMonth() - parseInt(active.dataset.months));
+      return fin.toISOString().slice(0, 10);
+    }
+  }
+  const input = document.getElementById('date-libre');
+  if (input.value) return input.value;
+  return DATA.date_debut;
+}
+
+function setupPeriode() {
+  document.querySelectorAll('.periode button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.periode button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('date-libre').value = '';
+      render();
+    });
+  });
+  document.getElementById('date-libre').addEventListener('change', () => {
+    document.querySelectorAll('.periode button').forEach(b => b.classList.remove('active'));
+    render();
+  });
+}
+
+function sortedCandidats() {
+  const cids = Object.keys(DATA.series);
+  return cids.sort((a, b) => (lastValue(b) || 0) - (lastValue(a) || 0));
+}
+
+function buildGhostSegments(cid, dateDebut) {
+  const raw = DATA.series[cid].filter(p => p.d >= dateDebut);
+  const segments = [];
+  let lastNonNull = null;
+  let inGap = false;
+  for (const p of raw) {
+    if (p.v !== null) {
+      if (inGap && lastNonNull !== null) {
+        segments.push([
+          { x: parseDate(lastNonNull.d), y: lastNonNull.v },
+          { x: parseDate(p.d), y: p.v },
+        ]);
+      }
+      lastNonNull = p;
+      inGap = false;
+    } else {
+      inGap = true;
+    }
+  }
+  return segments;
+}
+
+function computeYMax(datasets) {
+  let max = 0;
+  for (const ds of datasets) {
+    if (ds._isGhost) continue;
+    for (const p of ds.data) {
+      if (p.y !== null && p.y > max) max = p.y;
+    }
+  }
+  // Round up to next multiple of 5, with a floor of Y_MIN_MAX
+  return Math.max(Y_MIN_MAX, Math.ceil(max / 5) * 5);
+}
+
+function renderCheckboxes() {
+  const el = document.getElementById('candidats');
+  el.innerHTML = '';
+  const sorted = sortedCandidats();
+  for (const cid of sorted) {
+    const col = couleur(cid);
+    const last = lastValue(cid);
+    const label = document.createElement('label');
+    label.className = 'candidat-cb';
+    label.style.setProperty('--col', col);
+
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.checked = checkedCandidats.has(cid);
+    cb.addEventListener('change', () => {
+      if (cb.checked) checkedCandidats.add(cid);
+      else checkedCandidats.delete(cid);
+      render();
+    });
+
+    const pastille = document.createElement('span');
+    pastille.className = 'pastille';
+    pastille.style.background = col;
+
+    const txt = document.createTextNode(
+      `${nomCourt(cid)}` + (last !== null ? ` (${last.toFixed(1)})` : '')
+    );
+
+    label.appendChild(cb);
+    label.appendChild(pastille);
+    label.appendChild(txt);
+    el.appendChild(label);
+  }
+}
+
+function render() {
+  const dateDebut = getDateDebut();
+  const sorted = sortedCandidats();
+  const datasets = [];
+
+  for (const cid of sorted) {
+    if (!checkedCandidats.has(cid)) continue;
+    const col = couleur(cid);
+
+    const data = DATA.series[cid]
+      .filter(p => p.d >= dateDebut)
+      .map(p => ({ x: parseDate(p.d), y: p.v }));
+
+    datasets.push({
+      label: nomCourt(cid),
+      data: data,
+      borderColor: col,
+      borderWidth: 2,
+      pointRadius: 0,
+      tension: 0,
+      fill: false,
+      spanGaps: false,
+      _cid: cid,
+    });
+
+    const ghosts = buildGhostSegments(cid, dateDebut);
+    for (const seg of ghosts) {
+      datasets.push({
+        label: '',
+        data: seg,
+        borderColor: '#ccc',
+        borderWidth: 1,
+        borderDash: [4, 4],
+        pointRadius: 0,
+        tension: 0,
+        fill: false,
+        _cid: cid,
+        _isGhost: true,
+      });
+    }
+  }
+
+  const yMax = computeYMax(datasets);
+
+  if (chartInstance) chartInstance.destroy();
+
+  chartInstance = new Chart(document.getElementById('chart'), {
+    type: 'line',
+    data: { datasets },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: { mode: 'nearest', axis: 'x', intersect: false },
+      scales: {
+        x: {
+          type: 'time',
+          time: { unit: 'week', tooltipFormat: 'd MMM yyyy' },
+          grid: { color: '#f0f0f0' },
+        },
+        y: {
+          min: 0,
+          max: yMax,
+          title: { display: true, text: '%' },
+          grid: { color: '#f0f0f0' },
+        },
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          filter: (item) => !item.dataset._isGhost,
+          callbacks: {
+            label: (ctx) => {
+              if (ctx.parsed.y === null || isNaN(ctx.parsed.y)) return '';
+              return `${nomCourt(ctx.dataset._cid)} : ${ctx.parsed.y.toFixed(1)} %`;
+            }
+          }
+        }
+      },
+    }
+  });
+}
+
+init();
+</script>
+
+</body>
+</html>

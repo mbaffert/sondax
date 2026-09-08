@@ -188,12 +188,28 @@ Règles :
 
 ## 4. Traitement des sondages
 
-**Hypothèse principale (tour 1 uniquement).** Pour chaque sondage, l'hypothèse retenue
-est celle qui compte le **plus de candidats testés**. En cas d'égalité, la première dans
-l'ordre du tableau. Le critère initialement envisagé — le plus de candidats
-officiellement déclarés — a été écarté : Wikipédia ne publie pas cet état, et
-l'entretenir à la main serait une charge permanente pour un gain douteux. La règle
-retenue est calculable, stable, et énonçable en une phrase sur le site. Les courbes de tendance n'utilisent que les
+**Sélection de l'hypothèse (tour 1) — par candidat, pas par sondage.** Pour chaque
+candidat et chaque sondage, on retient l'hypothèse qui contient ce candidat et compte le
+plus de candidats testés. **En cas d'égalité, on moyenne les hypothèses concernées.**
+
+Exemple constaté : Elabe du 27/03/2026 teste Le Pen à 31,5 dans une hypothèse à
+11 candidats et à 34,0 dans une autre à 11 candidats également. La valeur retenue pour
+ce sondage est 32,75.
+
+Deux règles antérieures ont été écartées en développant le front, chacune pour une
+raison précise :
+
+- *Le plus de candidats officiellement déclarés* : Wikipédia ne publie pas cet état et
+  l'entretenir à la main serait une charge permanente.
+- *Une seule hypothèse principale par sondage* : elle faisait alterner Le Pen et
+  Bardella au gré des sondages et hachait les deux courbes. Un sondage de mars 2026 peut
+  tester six hypothèses, quatre avec Bardella et deux avec Le Pen — retenir la seule
+  hypothèse « principale » jetait les mesures de l'autre candidat, pourtant réelles.
+
+Conséquence à assumer et à afficher sur le site : **les courbes ne s'additionnent pas à
+100 %**, chaque candidat étant mesuré dans l'hypothèse qui lui est la plus favorable en
+nombre de candidats testés. Le graphe montre des trajectoires individuelles, pas une
+répartition. Les courbes de tendance n'utilisent que les
 hypothèses principales ; les autres restent accessibles dans le bloc fiche technique.
 
 La règle ne s'applique pas au tour 2 : tous les duels sont également valides.
@@ -230,11 +246,20 @@ donnée nouvelle n'est arrivée. Avec la demi-vie, il ne pèse presque plus rien
 où il sort de la fenêtre, et sa sortie ne se voit pas.
 - Un sondage compte pour **une seule valeur**, quel que soit son nombre d'hypothèses.
 - Les **points bruts sont toujours affichés** derrière la courbe.
-- **Aucune interpolation.** En dessous de 2 sondages dans la fenêtre, la courbe
-  s'interrompt ou passe en pointillé.
+- **Aucune interpolation.** Un segment reposant sur un seul sondage est tracé en
+  pointillé ; sans aucun sondage dans la fenêtre, la courbe s'interrompt.
+
+  Le seuil était initialement fixé à deux sondages. Avec la fréquence réelle de 2026 —
+  23 semaines sans aucun sondage sur 36 — il produisait une courbe absente les deux tiers
+  du temps. Une valeur fragile signalée comme telle informe davantage qu'un trou.
 
 **Période affichée.** L'utilisateur choisit la date de début de la courbe, par raccourcis
-(3 mois, 6 mois, depuis le 1er janvier, tout) ou par date libre.
+(3 mois, 6 mois, depuis le 1er janvier, tout) ou par date libre. **Le site ouvre sur
+6 mois par défaut** : c'est la période la mieux fournie en sondages, et le réglage reste
+pertinent à mesure que leur fréquence augmente, contrairement à une date fixe.
+
+La collecte, elle, n'est jamais limitée dans le temps : le parser conserve tous les
+sondages de la page, y compris antérieurs à la période affichée par défaut.
 
 La date de début est un **filtre d'affichage, jamais un filtre de calcul** : la fenêtre
 glissante continue d'utiliser les sondages antérieurs à la date choisie. Sans cela, les

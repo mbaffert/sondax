@@ -1,0 +1,212 @@
+{
+ "arthaud": {
+  "nom": "Nathalie Arthaud",
+  "parti": "LO",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "arthaud"
+  ],
+  "slug_polymarket": null
+ },
+ "attal": {
+  "nom": "Gabriel Attal",
+  "parti": "RE",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "attal"
+  ],
+  "slug_polymarket": "will-gabriel-attal-win-the-2027-french-presidential-election"
+ },
+ "bardella": {
+  "nom": "Jordan Bardella",
+  "parti": "RN",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "bardella"
+  ],
+  "slug_polymarket": "will-jordan-bardella-win-the-2027-french-presidential-election"
+ },
+ "darmanin": {
+  "nom": "Darmanin",
+  "parti": null,
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "darmanin"
+  ],
+  "slug_polymarket": "will-grald-darmanin-win-the-2027-french-presidential-election"
+ },
+ "dupont-aignan": {
+  "nom": "Nicolas Dupont-Aignan",
+  "parti": "DLF",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "dupont-aignan"
+  ],
+  "slug_polymarket": "will-nicolas-dupont-aignan-win-the-2027-french-presidential-election"
+ },
+ "faure": {
+  "nom": "Olivier Faure (homme politique)",
+  "parti": "PS",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "faure"
+  ],
+  "slug_polymarket": "will-olivier-faure-win-the-2027-french-presidential-election"
+ },
+ "glucksmann": {
+  "nom": "Raphaël Glucksmann",
+  "parti": "PP",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "glucksmann"
+  ],
+  "slug_polymarket": "will-raphal-glucksmann-win-the-2027-french-presidential-election"
+ },
+ "hollande": {
+  "nom": "François Hollande",
+  "parti": "PS",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "hollande"
+  ],
+  "slug_polymarket": "will-franois-hollande-win-the-2027-french-presidential-election"
+ },
+ "knafo": {
+  "nom": "Knafo",
+  "parti": null,
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "knafo"
+  ],
+  "slug_polymarket": "will-sarah-knafo-win-the-2027-french-presidential-election"
+ },
+ "le-maire": {
+  "nom": "Le-Maire",
+  "parti": null,
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "le-maire"
+  ],
+  "slug_polymarket": null
+ },
+ "le-pen": {
+  "nom": "Marine Le Pen",
+  "parti": "RN",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "le-pen"
+  ],
+  "slug_polymarket": "will-marine-le-pen-win-the-2027-french-presidential-election"
+ },
+ "lecornu": {
+  "nom": "Lecornu",
+  "parti": null,
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "lecornu"
+  ],
+  "slug_polymarket": "will-sbastien-lecornu-win-the-2027-french-presidential-election"
+ },
+ "lisnard": {
+  "nom": "Lisnard",
+  "parti": null,
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "lisnard"
+  ],
+  "slug_polymarket": "will-david-lisnard-win-the-2027-french-presidential-election"
+ },
+ "melenchon": {
+  "nom": "Jean-Luc Mélenchon",
+  "parti": "LFI",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "melenchon"
+  ],
+  "slug_polymarket": "will-jean-luc-mlenchon-win-the-2027-french-presidential-election"
+ },
+ "philippe": {
+  "nom": "Édouard Philippe",
+  "parti": "HOR",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "philippe"
+  ],
+  "slug_polymarket": "will-douard-philippe-win-the-2027-french-presidential-election"
+ },
+ "retailleau": {
+  "nom": "Bruno Retailleau",
+  "parti": "LR",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "retailleau"
+  ],
+  "slug_polymarket": "will-bruno-retailleau-win-the-2027-french-presidential-election"
+ },
+ "roussel": {
+  "nom": "Fabien Roussel",
+  "parti": "PCF",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "roussel"
+  ],
+  "slug_polymarket": "will-fabien-roussel-win-the-2027-french-presidential-election"
+ },
+ "ruffin": {
+  "nom": "François Ruffin",
+  "parti": null,
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "ruffin"
+  ],
+  "slug_polymarket": "will-franois-ruffin-win-the-2027-french-presidential-election"
+ },
+ "tondelier": {
+  "nom": "Marine Tondelier",
+  "parti": "LE",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "tondelier"
+  ],
+  "slug_polymarket": "will-marine-tondelier-win-the-2027-french-presidential-election"
+ },
+ "villepin": {
+  "nom": "Dominique de Villepin",
+  "parti": "LFH",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "villepin"
+  ],
+  "slug_polymarket": "will-dominique-de-villepin-win-the-2027-french-presidential-election"
+ },
+ "zemmour": {
+  "nom": "Éric Zemmour",
+  "parti": "REC",
+  "type": "personne",
+  "couleur": null,
+  "alias_wikipedia": [
+   "zemmour"
+  ],
+  "slug_polymarket": "will-ric-zemmour-win-the-2027-french-presidential-election"
+ }
+}

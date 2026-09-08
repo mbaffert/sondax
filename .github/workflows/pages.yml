@@ -31,11 +31,10 @@ jobs:
 
       - name: Préparer l'artefact
         run: |
-          mkdir -p _site/site _site/data/derived
-          cp -r site/* _site/site/
+          mkdir -p _site/data/derived
+          cp -r site/* _site/
           cp -r data/*.json _site/data/
           cp -r data/derived/*.json _site/data/derived/
-          echo '<meta http-equiv="refresh" content="0;url=site/">' > _site/index.html
 
       - uses: actions/upload-pages-artifact@v3
         with:

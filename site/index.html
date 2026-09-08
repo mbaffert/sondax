@@ -1135,10 +1135,10 @@ function renderSondagesTable(table, sondages) {
 // =========================================================================
 async function init() {
   const [seriesResp, polyResp, candsResp, sondagesResp] = await Promise.all([
-    fetch('../data/derived/series-t1.json'),
-    fetch('../data/polymarket.json'),
-    fetch('../data/candidats.json'),
-    fetch('../data/sondages.json'),
+    fetch('data/derived/series-t1.json'),
+    fetch('data/polymarket.json'),
+    fetch('data/candidats.json'),
+    fetch('data/sondages.json'),
   ]);
   const seriesData = await seriesResp.json();
   const polyData = await polyResp.json();

@@ -101,7 +101,7 @@ function fmtDate(iso) {
 let ALL_SONDAGES = [];
 
 async function init() {
-  const resp = await fetch('../data/sondages.json');
+  const resp = await fetch('data/sondages.json');
   ALL_SONDAGES = await resp.json();
   ALL_SONDAGES.sort((a, b) => b.terrain_fin.localeCompare(a.terrain_fin));
 

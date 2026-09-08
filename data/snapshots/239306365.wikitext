@@ -1,0 +1,4275 @@
+{{Semi-protection longue}}
+Cette page dresse la '''liste des [[Sondage d'opinion|sondages d'opinions]] relatifs à l'[[élection présidentielle française de 2027]]'''.
+
+Tous les sondages de cette liste, sauf mention contraire, se conforment aux règles de la [[Commission des sondages]] et appliquent la méthode dite des quotas.
+
+Une couleur arbitraire est associée à chaque institut de sondage ; ces couleurs sont une aide visuelle et ne correspondent pas à une tendance politique.
+
+== Difficultés d'anticipation ==
+Les résultats de ces sondages sont à interpréter avec prudence. Depuis [[Élection présidentielle française de 1995|1995]]<ref group=alpha name="Anticipation">Aucun sondage n'ayant été réalisé avec une telle anticipation pour les élections précédentes.</ref>, les sondages conduits un an avant le scrutin se sont révélés peu conformes aux résultats finaux<ref name=":0">{{Lien web |langue=fr |auteur=Manon Romain |auteur2=Maxime Vaudano |titre=Présidentielle : un an avant, les sondages sont souvent loin du compte |url=https://www.lemonde.fr/les-decodeurs/article/2026/04/18/presidentielle-un-an-avant-les-sondages-sont-souvent-loin-du-compte_6681104_4355770.html |accès url=payant |site=[[Le Monde]] |date=18 avril 2026 |consulté le=25 avril 2026}}</ref>{{,}}<ref>{{Lien web |langue=fr |auteur=Soizic Bonvarlet |titre=Présidentielle: que disaient les sondages à un an du premier tour lors des précédentes élections? |url=https://lcp.fr/actualites/presidentielle-que-disaient-les-sondages-a-un-an-du-premier-tour-lors-des-precedentes |accès url=libre |site=[[La Chaîne parlementaire]] |date=2026-04-06 |consulté le=2026-04-25}}</ref>. Ces écarts résultent notamment des difficultés pour les sondeurs d'anticiper les changements ayant lieu dans l'année précédant l'élection, comme par exemple l'apparition de nouveaux candidats, les nominations à l'issue de [[Élection primaire|primaires]], ou encore les alliances entre partis, entrainant ainsi des concentrations ou des dispersions de voix au sein d'un électorat<ref name=":0" />. De ce fait, les sondages ont tendance à gagner en précision au long de la campagne<ref>Will Jennings et Christopher Wlezien, [https://rdcu.be/flyor « Election polling errors across time and space »], ''[[Nature (revue)|Nature Human Behaviour]]'', volume 2, pages 276–283 (2018), p. 278 : {{Citation|poll errors decline over the election timeline}}.</ref>.
+
+== Intervalle de confiance ==
+{{Article connexe|Intervalle de confiance}}
+
+[[Fichier:Intervalle_de_confiance_à_95%25_2-2.png|alt=Intervalle de confiance à 95 % de chance|vignette|Intervalle de confiance à 95 % de chance.]]
+
+La plupart des sondages sont publiés accompagnés d'une présentation des intervalles de confiance à 95 %. Le tableau résume les intervalles de confiance selon la taille de l’échantillon (ou du sous-échantillon).
+
+Si pour un échantillon (sous-échantillon) de {{unité|1000|personnes}} le candidat reçoit 10 % (ou 90 %) pour d'intentions de vote, l'incertitude est de {{nobr|3 points}} pour un niveau de confiance de 95 %. Il y a donc 95 % de chance que son score soit compris entre {{unité/2|7|et=13|%}} (respectivement 87 % - 93 %). La table à 95 % fournie est la plus usitée (compromis entre erreur et fiabilité de l'information). Il existe des tables présentant des intervalles de confiance à 90 ou 99 % moins souvent publiées. Elles mettent en évidence le fait que plus on veut une confiance élevée, plus on augmente la plage d'incertitude.
+
+En fait, l'incertitude est inférieure pour des effectifs stratifiés comme avec la méthode des quotas. À noter que la base de comparaison doit être cohérente : il faut soit donner le pourcentage par rapport à l'effectif total y compris abstention, blanc et NSPP (Ne Se Prononçant Pas), soit N doit être limité aux intentions de vote pour un candidat quand l'on veut que la somme des scores fasse 100 % comme ci-dessous. Par exemple à 25 % d'abstention, {{unité|1000 sondés}} ne correspondent qu'à 750 exprimés pour un candidat, ce qui monte l'incertitude à +- 3,6 %.
+
+Remarque : la méthode des quotas empêche en réalité le calcul de l'intervalle de confiance et prive donc la publication de cet intervalle de toute justification mathématique<ref>{{Lien web |auteur=Ipsos |titre=NOTICE TECHNIQUE |url=https://www.ipsos.com/sites/default/files/ct/news/documents/2022-05/NOTICE%20TECHNIQUE%20Ipsos%20Le%20Monde%20FJJ%20Cevipof%20-%20Panel%20e%CC%81lectoral%20Vague%2011.pdf |format=pdf |site=www.ipsos.com |date=23/05/2022}}</ref>.
+
+Voir la référence, on trouve sur toutes les notices techniques de l'[[Ipsos|institut Ipsos]], en haut de la page 3 : « Le calcul n’est justifié que pour les sondages aléatoires. Il ne peut pas être déterminé dans le cas de sondages par quotas (...) ».
+
+== Sondages concernant le premier tour ==
+{{Bandeau sondage}}
+{{Encart|style=important|contenu=Ces sondages sont listés par ordre antéchronologique : '''les plus récents sont présentés en tête''' afin que les données les plus proches de l'élection soient toujours présentées en premier.}}
+
+[[Fichier:Sondages Présidentielle 2027 France.svg|centré|vignette|upright=2|Régression locale des intentions de vote par bloc publiés entre [[Élection présidentielle française de 2022|l'élection présidentielle de 2022]] et l'[[Élection présidentielle française de 2027|élection présidentielle de 2027]].]]
+
+[[Fichier:Opinion polls France 2027 by candidate.svg|centré|vignette|upright=2|[[Régression locale]] des intentions de vote réalisées depuis 2026{{note|groupe=alpha|Ce graphique compile différentes configurations de candidats au premier tour, tant que la configuration exacte n'est pas connue il faut interpréter ces courbes avec précaution.}}.]]
+
+=== Année 2026 ===
+==== Second semestre 2026 ====
+{| class="wikitable" style="font-size:80%; text-align:center;" width="100%"
+! rowspan=3 width=120px scope=col | Sondeur
+! rowspan=3 width=70px scope=col | Date
+! rowspan=3 width=70px scope=col | Échantillon
+! width=70px scope=col | [[Fichier:Nathalie Arthaud (LO) 19-05-2024.jpg|alt=Nathalie Arthaud|50x50px]]
+! width=70px scope=col | [[Fichier:Mélenchon 2027 - 55261894422 (cropped).jpg|50x50px]]
+! width=70px scope=col | [[Fichier:Roussel_Fabien_1.jpg|alt=Fabien Roussel|50x50px]]
+! width=70px scope=col | [[Fichier:20210819 tondelier.m-cr3.jpg|alt=Marine Tondelier|50x50px]]
+! width=70px scope=col | [[Fichier: 1720448398743 20240708 GLUCKSMANN Raphael FR 006.jpg|alt=Raphaël Glucksmann|50x50px]]
+! width=70px scope=col | [[Fichier:Gabriel Attal 2025 (close crop).jpg|alt=Gabriel Attal|50x50px]]
+! width=70px scope=col | [[Fichier:Edouard Philippe 3x4 crop.jpg|alt=Edouard Philippe|50x50px]]
+! width="70px" scope="col" | [[Fichier:Dominique de Villepin 20100330 Salon du livre de Paris 2 cropped.jpg|alt=Bruno Retailleau|50x50px]]
+! width="70px" scope="col" | [[Fichier:Bruno Retailleau - Ministre de l'Intérieur français (cropped).jpg|alt=Bruno Retailleau|50x50px]]
+! width=70px scope=col | [[Fichier:Nicolas Dupont-Aignan, homme politique français (cropped).jpg|alt=Nicolas Dupont-Aignan|50x50px]]
+! width=70px scope=col | [[Fichier:Marine Le Pen 2025 (cropped).jpg|alt=Marine Le pen|50x50px]]
+! width=70px scope=col | [[Fichier:Portrait Éric Zemmour, avril 2022 cropped.jpg|alt=Éric Zemmour|50x50px]]
+! rowspan="2" width="70px" scope="col" |Autre
+|-
+! scope=col | [[Nathalie Arthaud|Arthaud]]<br><small>([[Lutte ouvrière|LO]])</small>
+! scope=col | [[Jean-Luc Mélenchon|Mélenchon]]<br><small>([[La France insoumise|LFI]])</small>
+! scope=col | [[Fabien Roussel|Roussel]]<br><small>([[Parti communiste français|PCF]])</small>
+! scope=col | [[Marine Tondelier|Tondelier]]<br><small>([[Les Écologistes|LE]])</small>
+! scope=col | [[Raphaël Glucksmann|Glucksmann]]<ref group="alpha" name="SaufPrécision">Sauf précision contraire.</ref><br><small>([[Place publique (parti politique)|PP]])<ref group=alpha name="SaufPrécision"/></small>
+! scope=col | [[Gabriel Attal|Attal]]<br><small>([[Renaissance (parti)|RE]])</small>
+! scope=col | [[Édouard Philippe|Philippe]]<br><small>([[Horizons|HOR]])</small>
+! scope=col | [[Dominique de Villepin|Villepin]]<br><small>([[La France Humaniste|LFH]])</small>
+! scope="col" | [[Bruno Retailleau|Retailleau]]<br><small>([[Les Républicains|LR]])</small>
+! scope=col | [[Nicolas Dupont-Aignan|Dupont-Aignan]]<br><small>([[Debout la France|DLF]])</small>
+! scope=col | [[Marine Le Pen|Le Pen]]<br><small>([[Rassemblement national|RN]])</small>
+! scope=col | [[Éric Zemmour|Zemmour]]<br><small>([[Reconquête (parti politique)|REC]])</small>
+|- style="line-height:5px;"
+| {{Infobox Parti politique français/couleurs|LO}} |
+| {{Infobox Parti politique français/couleurs|LFI}} |
+| {{Infobox Parti politique français/couleurs|PCF}} |
+| {{Infobox Parti politique français/couleurs|LE}} |
+| {{Infobox Parti politique français/couleurs|PP}} |
+| {{Infobox Parti politique français/couleurs|RE}} |
+| {{Infobox Parti politique français/couleurs|HOR}} |
+| {{Infobox Parti politique français/couleurs|DVD}} |
+| {{Infobox Parti politique français/couleurs|LR}} |
+| {{Infobox Parti politique français/couleurs|DLF}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+| {{Infobox Parti politique français/couleurs|REC}} |
+| {{Infobox Parti politique français/couleurs|DIV}} |
+|-
+| colspan="16" bgcolor="#cecece" | <small>'''[[Fabien Roussel]], secrétaire général du [[Parti communiste français]] (PCF), officialise sa candidature ({{date|06|09|2026}}).'''</small>
+|-
+| rowspan="3" style="{{Sondeur|OpinionWay}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10252-pres-iv-opinionway-jdd-7-septembre.pdf OpinionWay]
+| rowspan="3" | 2-3 septembre
+| rowspan="3" | {{formatnum:1003}}
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|17}}'''
+|3
+|4
+|13
+|13
+|—
+|—
+|11
+|—
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''
+|3
+|—
+|-
+|1
+|16
+|3
+|4
+|12
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|20}}'''
+|—
+|8
+|—
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|33}}'''
+|3
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|17}}'''
+|2
+|3
+|11
+|7
+|15
+|—
+|7
+|—
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''
+|3
+|—
+|-
+| rowspan="6" style="{{Sondeur|Ipsos}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10250-pres-iv-ipsos-bva-le-parisien-5-septembre.pdf Ipsos]
+| rowspan="6" |31 août - 2 septembre
+| rowspan="6" |1 500
+|0,5
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|15}}'''
+|2,5
+|3,5
+|11,5
+|7,5
+|14,5
+|—
+|6
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''
+|3
+|—
+|-
+|0,5
+|15
+|2,5
+|4
+|12
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+|—
+|7,5
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34,5}}'''
+|3
+|—
+|-
+|0,5
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|15}}'''
+|2,5
+|4
+|14
+|14
+|—
+|—
+|9,5
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''
+|3
+|—
+|-
+|1
+|16
+|3
+|5
+|4,5<br><small>'''[[Olivier Faure|Faure]] ([[Parti socialiste (France)|PS]])'''</small>
+|8,5
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|16,5}}'''
+|—
+|6
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34,5}}'''
+|3
+|—
+|-
+|1
+|16,5
+|3,5
+|5
+|4,5<br><small>'''[[Olivier Faure|Faure]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|22,5}}'''
+|—
+|7,5
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34,5}}'''
+|3
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|17}}'''
+|3,5
+|5,5
+|5,5<br><small>'''[[Olivier Faure|Faure]] ([[Parti socialiste (France)|PS]])'''</small>
+|15,5
+|—
+|—
+|10
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|36}}'''
+|3,5
+|—
+|-
+| rowspan="3" style="{{Sondeur|Cluster17}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10251-pres-iv-cluster-17-le-point-5-septembre.pdf Cluster17]
+| rowspan="3" | 31 août - {{1er}} septembre
+| rowspan="3" | {{formatnum:1711}}
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|18}}'''
+|2
+|2
+|11,5
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|18}}'''
+|3,5
+|7,5
+|3
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|30}}'''
+|3,5
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|18}}'''
+|2
+|2,5
+|11,5
+|13,5
+|—
+|4
+|9
+|3
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|31,5}}'''
+|4
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|17}}'''
+|2
+|—
+|11
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|17}}'''
+|3,5
+|6,5
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|29}}'''
+|3
+|4<br><small>'''[[François Ruffin|Ruffin]]'''</small><hr>4<br><small>'''[[David Lisnard|Lisnard]]'''</small>
+|-
+| colspan="16" bgcolor="#cecece" | <small>'''[[Olivier Faure]], [[premier secrétaire du Parti socialiste]] (PS), officialise sa candidature et annonce sa participation à la [[Primaire présidentielle socialiste française de 2026|primaire socialiste]] organisée en octobre ({{date|30|08|2026}}).'''</small><ref>{{Lien web |langue=fr |auteur=France Info avec AFP |titre=Le chef du Parti socialiste, Olivier Faure, confirme sa candidature à la primaire de son camp en vue de l'élection présidentielle |url=https://www.franceinfo.fr/elections/presidentielle/le-chef-du-parti-socialiste-olivier-faure-confirme-sa-candidature-a-la-primaire-de-son-camp-en-vue-de-l-election-presidentielle_8169896.html |site=[[France Info]] |date=30 août 2026 |consulté le={{1er}} septembre 2026}}</ref>
+|-
+| rowspan="6" style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10245-pres-iv-elabe-29-aout.pdf Elabe]
+| rowspan="6" | 26-28 août
+| rowspan="6" | {{formatnum:1501}}
+|1,5
+|14
+|3
+|3,5
+|11,5
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|17}}'''
+|2
+|6,5
+|3
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''
+|4
+|—
+|-
+|1,5
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|14}}'''
+|3
+|3
+| {{Infobox Parti politique français/couleurs|PP}} | '''14'''
+|12
+|—
+|2,5
+|9,5
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34,5}}'''
+|4
+|—
+|-
+|2
+|14
+|3,5
+|4
+|7,5<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19,5}}'''
+|—
+|6
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''
+|4
+|3<br><small>'''[[David Lisnard|Lisnard]]'''</small>
+|-
+|1,5
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|14}}'''
+|4
+|—
+|8<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|12,5
+|—
+|—
+|9
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34,5}}'''
+|4,5
+|6<br><small>'''[[François Ruffin|Ruffin]]'''</small><hr>3,5<br><small>'''[[David Lisnard|Lisnard]]'''</small>
+|-
+|1,5
+|14,5
+|4,5
+|4
+|3,5<br><small>'''[[Olivier Faure|Faure]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|20,5}}'''
+|2,5
+|7
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35,5}}'''
+|4
+|—
+|-
+|1,5
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|14,5}}'''
+|3
+|—
+|12,5
+|6,5
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|14,5}}'''
+|—
+|7
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''
+|4
+|—
+|-
+| colspan="16" bgcolor="#cecece" | <small>'''Premier débat présidentiel rassemblant 7 candidats : [[Gabriel Attal|Attal]], [[Raphaël Glucksmann|Glucksmann]], [[Marine Le Pen|Le Pen]], [[Jean-Luc Mélenchon|Mélenchon]], [[Édouard Philippe|Philippe]], [[Bruno Retailleau|Retailleau]] et [[Marine Tondelier|Tondelier]] ({{date|27|08|2026}}).'''</small>
+|-
+| rowspan="7" style="{{Sondeur|Ifop}}"| [https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10242-pres-barometre-election-pres-iv-v5-ifop-26-aout.pdf Ifop]
+| rowspan="7" | 24-25 août 
+| rowspan="7" | {{formatnum:1598}}
+|0,5
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|16}}'''
+|3
+|3
+|11
+|8
+|14,5
+|—
+|6
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|33}}'''
+|3,5
+|—
+|-
+|1
+|17
+|3
+|3
+|12
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|18}}'''
+|—
+|8
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|33}}'''
+|3,5
+|—
+|-
+|0,5
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|17}}'''
+|3
+|3
+|15
+|14
+|—
+|—
+|9
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''
+|3
+|—
+|-
+|1
+|18
+|—
+|—
+|15
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+|—
+|8
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|33}}'''
+|3,5
+|—
+|-
+|1,5
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|18,5}}'''
+|—
+|—
+|17
+|15
+|—
+|—
+|9
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''
+|3
+|—
+|-
+|1,5
+|19
+|—
+|—
+|12<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|21}}'''
+|—
+|8
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''
+|2,5
+|—
+|-
+|1
+|17
+|3
+|3
+|{{Infobox Parti politique français/couleurs|PP}} | '''18'''
+|—
+|—
+|—
+|12
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''
+|3
+|6<br><small>'''[[Bruno Le Maire|Le Maire]]'''</small>
+|-
+| colspan="16" bgcolor="#cecece" | <small>'''[[Raphaël Glucksmann]], président de [[Place publique (parti politique)|Place publique]] (PP), officialise sa candidature et annonce sa participation à la [[Primaire présidentielle socialiste française de 2026|primaire socialiste]] organisée en octobre ({{date|23|08|2026}}).'''</small><ref>{{Lien web |langue=fr |auteur=Anne-Charlotte Dusseaulx |titre=Présidentielle 2027 : Raphaël Glucksmann officialise sa candidature et participera à la primaire sociale-démocrate |url=https://lcp.fr/actualites/presidentielle-2027-raphael-glucksmann-officialise-sa-candidature-et-participera-a-la |site=[[La Chaîne parlementaire]] |date=23 août 2026 |consulté le=23 août 2026}}</ref>
+|-
+| rowspan="5" style="{{Sondeur|Harris}}"|[https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10239-pres-toluna-harris-interactive-rtl-24-aout.pdf Harris]
+| rowspan="5" | 18-19 août 
+| rowspan="5" | 1 764
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|17}}'''
+|3
+|4
+|8<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|14
+|—
+|—
+|9
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|38}}'''
+|4
+|—
+|-
+|1
+|17
+|3
+|4
+|8<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+|—
+|7
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''
+|4
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|17}}'''
+|2
+|3
+|11
+|15
+|—
+|—
+|9
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|37}}'''
+|3
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|17}}'''
+|3
+|3
+|10
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|17}}'''
+|—
+|7
+|3
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''
+|4
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|16}}'''
+|2
+|3
+|10
+|8
+|14
+|—
+|6
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''
+|3
+|—
+|-
+| rowspan="2" style="{{Sondeur|Cluster17}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10246-pres-cluster17-le-grand-continent-31-aout.pdf Cluster17]
+| rowspan="2" | 22-24 juillet
+| rowspan="2" | {{formatnum:1506}}
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|18}}'''
+|2
+|3
+|10
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|18}}'''
+|3
+|8
+|3
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|30}}'''
+|4
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|18}}'''
+|2
+|3
+|10
+|14
+|—
+|4
+|10
+|4
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|30}}'''
+|4
+|—
+|-
+| rowspan="6" style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10226-pres-elabe-11-juillet.pdf Elabe]
+| rowspan="6" | 9-10 juillet
+| rowspan="6" | {{formatnum:1503}}
+|1
+|16
+|2,5
+|3,5
+|10,5
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|16,5}}'''
+|2,5
+|8
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''
+|3
+|—
+|-
+|1,5
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|14,5}}'''
+|2,5
+|3,5
+|11
+|13,5
+|—
+|3,5
+|11
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''
+|3,5
+|—
+|-
+|1,5
+|14,5
+|2
+|—
+|9<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+|—
+|9
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''
+|2,5
+|6<br><small>'''[[François Ruffin|Ruffin]]'''</small>
+|-
+|1,5
+|15
+|2,5
+|—
+|8<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+| {{Infobox Parti politique français/couleurs|RE}} | '''15,5'''
+|—
+|—
+|11
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35,5}}'''
+|3,5
+|6<br><small>'''[[François Ruffin|Ruffin]]'''</small>
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|14,5}}'''
+|2,5
+|4
+|8,5
+|7,5
+|14
+|—
+|8,5
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''
+|3
+|—
+|-
+|2
+|15
+|3
+|4
+|8<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|18}}'''
+|3
+|8
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34,5}}'''
+|3
+|—
+|-
+| style="{{Sondeur|Verian}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10225-pres-iv-1er-tour-verian-lhemicycle-10-juillet.pdf Verian]
+|8-10 juillet
+|1 047
+|—
+|15
+|2
+|—
+|11
+|8
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|17}}'''
+|—
+|7
+|—
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|37}}'''
+|3
+|—
+|-
+| rowspan="3" style="{{Sondeur|OpinionWay}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10224-pres-presitrack-opinionway-les-echos-9-juillet.pdf OpinionWay]
+| rowspan="3" | 8-9 juillet
+| rowspan="3" | 963
+|<1
+|13
+|2
+|5
+|9
+|7
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|18}}'''
+|—
+|8
+|—
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''
+|3
+|—
+|-
+|1
+|15
+|2
+|5
+|10
+| {{Infobox Parti politique français/couleurs|RE}} | '''16'''
+|—
+|—
+|12
+|—
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|36}}'''
+|3
+|—
+|-
+|1
+|15
+|2
+|4
+|9
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|22}}'''
+|—
+|9
+|—
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''
+|4
+|—
+|-
+| rowspan="2" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10222-pres-ifop-le-figaro-8-juillet.pdf Ifop]
+| rowspan="2" |7-8 juillet
+| rowspan="2" |{{Formatnum|984}}
+|0,5
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|15}}'''
+|2
+|4
+|12
+| {{Infobox Parti politique français/couleurs|RE}} | '''15'''
+|—
+|—
+|10
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|36}}'''
+|3,5
+|—
+|-
+|0,5
+|15
+|3
+|3,5
+|9
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+|—
+|8
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|36}}'''
+|4
+|—
+|-
+| rowspan="5" style="{{Sondeur|Harris}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10223-pres-iv-toluna-harris-interactive-rtl-8-juillet.pdf Harris]
+| rowspan="5" | 7-8 juillet
+| rowspan="5" | {{formatnum:1592}}
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|16}}'''
+|3
+|5
+|8<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+| {{Infobox Parti politique français/couleurs|RE}} | '''16'''
+|—
+|—
+|8
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|36}}'''
+|5
+|—
+|-
+|1
+|16
+|3
+|4
+|8<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|20}}'''
+|—
+|8
+|1
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''
+|4
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|16}}'''
+|3
+|3
+|11
+| {{Infobox Parti politique français/couleurs|RE}} | '''16'''
+|—
+|—
+|9
+|1
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|36}}'''
+|4
+|—
+|-
+|1
+|16
+|2
+|3
+|11
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|20}}'''
+|—
+|8
+|1
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''
+|4
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|16}}'''
+|2
+|2
+|10
+|8
+|14
+|—
+|7
+|1
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''
+|4
+|—
+|-
+| colspan="16" bgcolor="#cecece" | <small>'''[[Marine Le Pen]], cheffe de file du [[Rassemblement national]] (RN), officialise sa candidature à la suite de la réduction de sa période d'inéligibilité en appel dans l'[[affaire des assistants parlementaires du Front national au Parlement européen|affaire des assistants parlementaires]] ({{date|07|07|2026}}).'''</small>
+|}
+
+==== Premier semestre 2026 ====
+{{Boîte déroulante/début|titre=Sondages réalisés durant le premier semestre 2026}}
+{| class="wikitable" style="font-size:80%; text-align:center;" width="100%"
+! rowspan=3 width=120px scope=col | Sondeur
+! rowspan=3 width=70px scope=col | Date
+! rowspan=3 width=70px scope=col | Échantillon
+! width=70px scope=col | [[Fichier:Nathalie Arthaud (LO) 19-05-2024.jpg|alt=Nathalie Arthaud|50x50px]]
+! width=70px scope=col | [[Fichier:Mélenchon 2027 - 55261894422 (cropped).jpg|50x50px]]
+! width=70px scope=col | [[Fichier:Roussel_Fabien_1.jpg|alt=Fabien Roussel|50x50px]]
+! width=70px scope=col | [[Fichier:20210819 tondelier.m-cr3.jpg|alt=Marine Tondelier|50x50px]]
+! width=70px scope=col | [[Fichier: 1720448398743 20240708 GLUCKSMANN Raphael FR 006.jpg|alt=Raphaël Glucksmann|50x50px]]
+! width=70px scope=col | [[Fichier:Gabriel Attal 2025 (close crop).jpg|alt=Gabriel Attal|50x50px]]
+! width=70px scope=col | [[Fichier:Edouard Philippe 3x4 crop.jpg|alt=Edouard Philippe|50x50px]]
+! width="70px" scope="col" | [[Fichier:Dominique de Villepin 20100330 Salon du livre de Paris 2 cropped.jpg|alt=Dominique de Villepin|50x50px]]
+! width=70px scope=col | [[Fichier:Bruno Retailleau - Ministre de l'Intérieur français (cropped).jpg|alt=Bruno Retailleau|50x50px]]
+! width=70px scope=col | [[Fichier:Nicolas Dupont-Aignan, homme politique français (cropped).jpg|alt=Nicolas Dupont-Aignan|50x50px]]
+! width=70px scope=col | [[Fichier:Logo Rassemblement National - Cropped.svg|alt=Logo du Rassemblement National|50x50px]]
+! width=70px scope=col | [[Fichier:Portrait Éric Zemmour, avril 2022 cropped.jpg|alt=Éric Zemmour|50x50px]]
+! rowspan="2" width=70px scope=col |Autre
+|-
+! scope=col | [[Nathalie Arthaud|Arthaud]]<br><small>([[Lutte ouvrière|LO]])</small>
+! scope=col | [[Jean-Luc Mélenchon|Mélenchon]]<br><small>([[La France insoumise|LFI]])</small>
+! scope=col | [[Fabien Roussel|Roussel]]<br><small>([[Parti communiste français|PCF]])</small>
+! scope=col | [[Marine Tondelier|Tondelier]]<ref group=alpha name="SaufPrécision"/><br><small>([[Les Écologistes|LE]])</small>
+! scope=col | [[Raphaël Glucksmann|Glucksmann]]<ref group=alpha name="SaufPrécision"/><br><small>([[Place publique (parti politique)|PP]])<ref group=alpha name="SaufPrécision"/></small>
+! scope=col | [[Gabriel Attal|Attal]]<ref group=alpha name="SaufPrécision"/><br><small>([[Renaissance (parti)|RE]])</small>
+! scope=col | [[Édouard Philippe|Philippe]]<br><small>([[Horizons|HOR]])</small>
+! scope=col | [[Dominique de Villepin|Villepin]]<br><small>([[Dominique de Villepin#Retour médiatique depuis 2024 et lancement du mouvement La France humaniste|LFH]])</small>
+! scope=col | [[Bruno Retailleau|Retailleau]]<br><small>([[Les Républicains|LR]])</small>
+! scope=col | [[Nicolas Dupont-Aignan|Dupont-Aignan]]<br><small>([[Debout la France|DLF]])</small>
+! scope=col | Candidat<br>[[Rassemblement national|RN]]
+! scope=col | [[Éric Zemmour|Zemmour]]<ref group=alpha name="SaufPrécision"/><br><small>([[Reconquête (parti politique)|REC]])</small>
+|- style="line-height:5px;"
+| {{Infobox Parti politique français/couleurs|LO}} |
+| {{Infobox Parti politique français/couleurs|LFI}} |
+| {{Infobox Parti politique français/couleurs|PCF}} |
+| {{Infobox Parti politique français/couleurs|LE}} |
+| {{Infobox Parti politique français/couleurs|PP}} |
+| {{Infobox Parti politique français/couleurs|RE}} |
+| {{Infobox Parti politique français/couleurs|HOR}} |
+| {{Infobox Parti politique français/couleurs|DVD}} |
+| {{Infobox Parti politique français/couleurs|LR}} |
+| {{Infobox Parti politique français/couleurs|DLF}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+| {{Infobox Parti politique français/couleurs|REC}} |
+| {{Infobox Parti politique français/couleurs|DIV}} |
+|-
+| rowspan="8" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/juin/10211-pres-iv-ifop-le-figaro-25-juin.pdf Ifop]
+| rowspan="8" |22-24 juin
+| rowspan="8" |{{formatnum:1415}}
+|0,5
+|13
+|3
+|2,5
+|9
+|8
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|14}}'''
+|—
+|8
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|36}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|0,5
+|13
+|3
+|3,5
+|10
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+|—
+|9
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|36}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|0,5
+|13
+|2,5
+|3,5
+|11
+| {{Infobox Parti politique français/couleurs|RE}} | '''15'''
+|—
+|—
+|11
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|37}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4,5
+|—
+|-
+|1
+|12
+|3
+|4
+|9
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|20}}'''
+|—
+|11
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|32}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|6
+|—
+|-
+|1
+|13
+|3
+|3
+|11
+| {{Infobox Parti politique français/couleurs|RE}} | '''15'''
+|—
+|—
+|14
+|3
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|32}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|5
+|—
+|-
+|1,5
+|15
+| colspan="3" |9<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|21}}'''
+|—
+|10
+|3
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|37}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|3,5
+|—
+|-
+|1,5
+|14
+| colspan="3" |11<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|20}}'''
+|—
+|11
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|36}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|1
+|13
+|2,5
+|3,5
+|8
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+|—
+|9
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4,5
+|2<br><small>'''[[David Lisnard|Lisnard]]'''</small>
+|-
+| rowspan="3" style="{{Sondeur|OpinionWay}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/juin/10205-pres-iv-opinionway-jdd-13-juin.pdf OpinionWay]
+| rowspan="3" | 10-11 juin
+| rowspan="3" | {{formatnum:1001}}
+|1
+|16
+|—
+|—
+|16
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+|—
+|9
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]] {{blanc|/}} [[Marine Le Pen|{{blanc|Le Pen}}]]</small>'''
+|3
+|—
+|-
+|1
+|13
+|3
+|5
+|13
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+|—
+|8
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|33}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]] {{blanc|/}} [[Marine Le Pen|{{blanc|Le Pen}}]]</small>'''
+|3
+|—
+|-
+|1
+|13
+|4
+|4
+| {{Infobox Parti politique français/couleurs|PP}} | '''14'''
+| {{Infobox Parti politique français/couleurs|RE}} | '''14'''
+|—
+|—
+|9
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]] {{blanc|/}} [[Marine Le Pen|{{blanc|Le Pen}}]]</small>'''
+|4
+|—
+|-
+| rowspan="8" style="{{Sondeur|Ipsos}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/juin/10195-pres-ipsos-bva-le-parisien-1er-juin.pdf Ipsos]
+| rowspan="8" |27-28 mai
+| rowspan="8" |1 500
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|13}}'''
+|3
+|4
+|11
+|8,5
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|13}}'''
+|—
+|7,5
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|33,5}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|1
+|13
+|3
+|4
+|11
+|8,5
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|14}}'''
+|—
+|8,5
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|31}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|4,5
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|13,5}}'''
+|4
+|4
+|7<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|9,5
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|13,5}}'''
+|—
+|8
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|1
+|13,5
+|4
+|4
+|7<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|9,5
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|14,5}}'''
+|—
+|8.5
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|32}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|4,5
+|—
+|-
+|1
+|13
+|3
+|4
+|14
+| {{Infobox Parti politique français/couleurs|RE}} | '''14,5'''
+|—
+|—
+|10
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|1
+|13
+|3
+|4
+|13
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|17,5}}'''
+|—
+|9
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|1
+|13,5
+|3,5
+|5
+|8<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+| {{Infobox Parti politique français/couleurs|RE}} | '''17,5'''
+|—
+|—
+|10
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|36}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|1
+|13,5
+|4
+|5
+|7,5<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+|—
+|9
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35,5}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+| rowspan="11" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/mai/10193-pres-ifop-le-figaro-29-mai.pdf Ifop]
+| rowspan="11" |26-28 mai
+| rowspan="11" |1 501
+|0,5
+|13
+|2,5
+|4
+|9
+|9
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|14}}'''
+| —
+|8
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|0,5
+|13
+|3,5
+|4
+|10
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|18}}'''
+|2,5
+|9
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|3,5
+|—
+|-
+|0,5
+|13
+|3
+|4
+|11
+| {{Infobox Parti politique français/couleurs|RE}} | '''16'''
+| —
+| 3
+|10
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|3
+|—
+|-
+|0,5
+|13
+|3
+|4
+|11
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+|2
+|9
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|33}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|4
+|—
+|-
+|0,5
+|13
+|3
+|3,5
+|11,5
+| {{Infobox Parti politique français/couleurs|RE}} | '''16'''
+|—
+|3
+|11,5
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|32}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|4
+|—
+|-
+|0,5
+|14
+|4
+|5
+|8<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|20}}'''
+|—
+|9
+|1,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|1
+|13,5
+|3,5
+|5
+|8<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+| {{Infobox Parti politique français/couleurs|RE}} | '''18,5'''
+|—
+|—
+|10
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|3,5
+|—
+|-
+|0,5
+|12,5
+|3
+|4
+|9
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|20}}'''
+|—
+|9
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|3
+|3<br><small>'''[[François Ruffin|Ruffin]]'''</small>
+|-
+|0,5
+|13,5
+|6
+|4
+|4<br><small>'''[[Olivier Faure (homme politique)|Faure]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|21}}'''
+|—
+|10
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|3,5
+|—
+|-
+|1,5
+|15
+| colspan="3"|11<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|22}}'''
+|—
+|10
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|1
+|15
+| colspan="3"|12<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|22}}'''
+|—
+|10
+|3
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|33}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+| rowspan="5" style="{{Sondeur|Harris}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/mai/10192-pres-toluna-harris-interactive-29-mai.pdf Harris]
+| rowspan="5" |25-27 mai
+| rowspan="5" |1 744
+|1
+|15
+|3
+|3
+|10
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|17}}'''
+| —
+|9
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|6
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|15}}'''
+|4
+|3
+|11
+|14
+| —
+|—
+|10
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|6
+|—
+|-
+|1
+|14
+|3
+|3
+|11
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+|—
+|10
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|31}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|6
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|15}}'''
+|4
+|3
+|11
+| {{Infobox Parti politique français/couleurs|RE}} | '''15'''
+| —
+|—
+|11
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|32}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|6
+|—
+|-
+|1
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|14}}'''
+|3
+|3
+|10
+| style="width:35px;" | 9
+| 13
+|—
+|8
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|32}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|5
+|—
+|-
+| colspan="16" bgcolor="#cecece" | <small>'''[[Gabriel Attal]], secrétaire général de [[Renaissance (parti)|Renaissance]] (RE), se déclare candidat ({{date|22|05|2026}}).'''</small>
+|-
+| style="{{Sondeur|Odoxa}}" | [https://www.odoxa.fr/sondage/philippe-seffondre-melenchon-decolle-bardella-simpose/ Odoxa]
+| 20-21 mai
+| {{formatnum:1005}}
+| 0,5
+| 16
+| 2,5
+| 4
+| 11
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|17}}'''
+| —
+| 9
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|32}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 6
+|—
+|-
+| colspan="16" bgcolor="#cecece" | <small>'''[[Jean-Luc Mélenchon]] est désigné candidat de [[la France insoumise]] (LFI) par les élus du mouvement ({{date|03|05|2026}}).'''</small>
+|-
+| rowspan="4" style="{{Sondeur|Harris}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/mai/10180-pres-toluna-harris-interactive-rtl-4-mai.pdf Harris]
+| rowspan="4" | 28-30 avril
+| rowspan="4" | {{formatnum:1725}}
+| 1
+| 12
+| 4
+| 4
+| 11
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+| —
+| 9
+| 1
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 5
+|—
+|-
+| 1
+| 13
+| 3
+| 4
+| 12
+| {{Infobox Parti politique français/couleurs|RE}} | '''14'''
+| —
+| —
+| 12
+| 1
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 5
+|—
+|-
+| 1
+| 12
+| 4
+| 4
+| 11
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+| —
+| 10
+| 1
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|32}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+| 6
+|—
+|-
+| 1
+| 12
+| 4
+| 4
+| 12
+| {{Infobox Parti politique français/couleurs|RE}} | '''14'''
+| —
+| —
+| 13
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|33}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+| 5
+|—
+|-
+| colspan="16" bgcolor="#cecece" | <small>'''[[Bruno Retailleau]] est désigné candidat des [[Les Républicains|Républicains]] (LR) par les adhérents du parti ({{date|19|04|2026}}).'''</small>
+|-
+| rowspan="6" style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10166-pres-elabe-28-mars.pdf Elabe]
+| rowspan="6" | 25-27 mars
+| rowspan="6" | {{formatnum:1504}}
+| 0,5
+| 10,5
+| 3
+| 4,5
+| 10,5
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|20,5}}'''
+| 3
+| 7
+| 2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 3
+|—
+|-
+| 0,5
+| 11,5
+| 3,5
+| 5
+| 8,5
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|22}}'''
+| 2,5
+| 8,5
+| 3
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|31,5}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+| 3,5
+|—
+|-
+| 1
+| 12
+| 4
+| 4,5
+| 4,5<br><small>'''[[Olivier Faure (homme politique)|Faure]] ([[Parti socialiste (France)|PS]])'''</small>
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|25,5}}'''
+| 3
+| —
+| 2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|38}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 5<br><small>'''[[Sarah Knafo|Knafo]]'''</small>
+|—
+|-
+| 1
+| 12
+| 2,5
+| 4
+| {{Infobox Parti politique français/couleurs|PP}} | '''12,5'''
+| 11,5
+| —
+| 6
+| 10
+| 2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+| 4<br><small>'''[[Sarah Knafo|Knafo]]'''</small>
+|—
+|-
+| 0,5
+| {{Infobox Parti politique français/couleurs|LFI}} | '''{{blanc|13}}'''
+| 3
+| 5
+|12,5
+| 8<br><small>'''[[Gérald Darmanin|Darmanin]]'''</small>
+| —
+| 5
+| 8,5
+| 2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|38,5}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 3,5<br><small>'''[[Sarah Knafo|Knafo]]'''</small>
+|—
+|-
+| 1
+| 11
+| 3
+| 8<br><small>'''[[François Ruffin|Ruffin]]'''</small>{{note|groupe=alpha|Compté comme allié des [[Les Écologistes|écologistes]]}}
+| {{Infobox Parti politique français/couleurs|PP}} | '''12'''
+| 6,5<br><small>'''[[Sébastien Lecornu|Lecornu]]'''</small>
+| —
+| 5,5
+| 9,5
+| 2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|37,5}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 3,5
+|—
+|-
+| rowspan="2" style="{{Sondeur|Odoxa}}" | [https://www.odoxa.fr/sondage/spectaculaire-come-back-dedouard-philippe-il-remporterait-aujourdhui-la-presidentielle/ Odoxa]
+| rowspan="2" | 25-26 mars
+| rowspan="2" | 1 299
+| 1
+| 12
+| 2
+| 5
+| 10
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|21}}'''
+| —
+| 8
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 5<br><small>'''[[Sarah Knafo|Knafo]]'''</small>
+|—
+|-
+| 1
+| 13
+| 2
+| 4
+| 10
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|25}}'''
+| —
+| —
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|38}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 5<br><small>'''[[Sarah Knafo|Knafo]]'''</small>
+|—
+|-
+| rowspan="2" style="{{Sondeur|Harris}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10165-pres-toluna-harris-interactive-22-mars.pdf Harris]
+| rowspan="2" | 22 mars
+| rowspan="2" | {{formatnum:1062}}
+| 1
+| 11
+| 3
+| 4
+| 14
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|18}}'''
+| —
+| 7
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | {{blanc|'''35'''}}<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 5
+|—
+|-
+| 1
+| 11
+| 3
+| 5
+| {{Infobox Parti politique français/couleurs|PP}} | '''14'''
+| 13
+| —
+| —
+| 10
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | {{blanc|'''36'''}}<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 5
+|—
+|-
+| rowspan="10" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10118-pres-ifop-le-figaro-4-mars.pdf Ifop]
+| rowspan="10" | 26-27 février
+| rowspan="10" | {{formatnum:1393}}
+| 1
+| 11
+| 2
+| 4
+| 10
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|16}}'''
+| 3,5
+| 10
+| 2,5
+| {{Infobox Parti politique français/couleurs|RN}} | {{blanc|'''36'''}}<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 4
+|—
+|-
+| 1
+| 10
+| 2
+| 4
+| 11
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|16}}'''
+| 5
+| 11
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | {{blanc|'''34'''}}<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+| 4
+|—
+|-
+| 2
+| 10
+| 3
+| 4
+| {{Infobox Parti politique français/couleurs|PP}} | '''12'''
+| 11
+| —
+|4
+| {{Infobox Parti politique français/couleurs|LR}} | {{blanc|'''12'''}}
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | {{blanc|'''36'''}}<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 4
+|—
+|-
+| 2
+| 11
+| 2
+| 4,5
+| {{Infobox Parti politique français/couleurs|PP}} | '''12'''
+| 10
+| —
+|4,5
+| {{Infobox Parti politique français/couleurs|LR}} | {{blanc|'''12'''}}
+| 3
+| {{Infobox Parti politique français/couleurs|RN}} | {{blanc|'''35'''}}<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+| 4
+|—
+|-
+| 1,5
+| 10
+| 3
+| 4
+| {{Infobox Parti politique français/couleurs|PP}} | '''13'''
+| 8<br><small>'''[[Gérald Darmanin|Darmanin]]'''</small>
+| —
+|5
+| {{Infobox Parti politique français/couleurs|LR}} | {{blanc|'''13'''}}
+| 2,5
+| {{Infobox Parti politique français/couleurs|RN}} | {{blanc|'''37'''}}<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 3
+|—
+|-
+| 2
+| 10
+| 3
+| 4,5
+| {{Infobox Parti politique français/couleurs|PP}} | '''13'''
+| 6<br><small>'''[[Sébastien Lecornu|Lecornu]]'''</small>
+| —
+|5
+| {{Infobox Parti politique français/couleurs|LR}} | {{blanc|'''13'''}}
+| 3
+| {{Infobox Parti politique français/couleurs|RN}} | {{blanc|'''37'''}}<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 3,5
+|—
+|-
+| 2
+| 12
+| 2,5
+| 4,5
+| 11
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|23}}'''
+| —
+| —
+| 3
+| {{Infobox Parti politique français/couleurs|RN}} | {{blanc|'''37'''}}<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 5
+|—
+|-
+| 2
+| 12
+| 3
+| 5
+| 16
+| —
+|—
+|—
+| {{Infobox Parti politique français/couleurs|LR}} | {{blanc|'''17'''}}
+| 3
+| {{Infobox Parti politique français/couleurs|RN}} | {{blanc|'''38'''}}<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 4
+|—
+|-
+| 2
+| 11
+| 3
+| 5
+| 8<br><small>'''[[François Hollande|Hollande]] ([[Parti socialiste (France)|PS]])'''</small>
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|18}}'''
+| —
+| 11
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | {{blanc|'''36'''}}<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 4
+|—
+|-
+| 2
+| 11
+| 3
+| 5
+| 5<br><small>'''[[Olivier Faure (homme politique)|Faure]] ([[Parti socialiste (France)|PS]])'''</small>
+| —
+| {{Infobox Parti politique français/couleurs|HOR}} | '''{{blanc|19}}'''
+| —
+| 11
+| 3,5
+| {{Infobox Parti politique français/couleurs|RN}} | {{blanc|'''36'''}}<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 4,5
+|—
+|}
+{{Boîte déroulante/fin}}
+
+=== Année 2025 ===
+{{Boîte déroulante/début|titre=Sondages réalisés en 2025}}
+{| class="wikitable" style="font-size:80%; text-align:center;" width="100%"
+|+
+! rowspan="3" style="width:120px;" |Sondeur
+! rowspan="3" scope="col" style="width:70px;" |Date
+! rowspan="3" scope="col" style="width:70px;" |Échantillon
+! scope="col" style="width:70px;" |[[Fichier:Nathalie Arthaud (LO) 19-05-2024.jpg|alt=Nathalie Arthaud|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Philippe Poutou - Gilets jaunes (2019).jpg|alt=Philippe Poutou|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Mélenchon 2027 - 55261894422 (cropped).jpg|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Roussel_Fabien_1.jpg|alt=Fabien Roussel|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:20210819 tondelier.m-cr3.jpg|alt=Marine Tondelier|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Logo Parti Socialiste - 2024.svg|alt=Logo du PS|50x50px]]
+! colspan="2" scope="col" style="width:70px;" |[[Fichier:Ensemble 2024 B.png|alt=Logo d'Ensemble|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Dominique de Villepin 20100330 Salon du livre de Paris 2 cropped.jpg|alt=Dominique de Villepin|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Les Républicains - logo (France, 2023) (cropped).svg|alt=Logo des Républicains|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Nicolas Dupont-Aignan, homme politique français (cropped).jpg|alt=Nicolas Dupont-Aignan|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Logo Rassemblement National - Cropped.svg|alt=Logo du Rassemblement National|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Portrait Éric Zemmour, avril 2022 cropped.jpg|alt=Éric Zemmour|50x50px]]
+! scope="col" style="width:70px;" rowspan="2" |Autres
+|-
+! scope="col" |[[Nathalie Arthaud|Arthaud]]<br><small>([[Lutte ouvrière|LO]])</small>
+! scope="col" |[[Philippe Poutou|Poutou]]<ref group=alpha name="PoutouPrésidentielle">Philippe Poutou rejette l'idée d'une quatrième candidature à l'élection présidentielle en {{date|janvier 2023}}{{Lien web |langue=fr |titre=Les voeux de Philippe Poutou pour la gauche en 2027 |url=https://www.huffingtonpost.fr/politique/article/en-2027-philippe-poutou-aimerait-bien-une-candidature-large-a-gauche_212437.html |site=[[Le HuffPost]] |date=2023-01-07 |consulté le=2025-02-17}}</ref><br><small>([[Nouveau Parti anticapitaliste|NPA-A]])</small>
+! scope="col" |[[Jean-Luc Mélenchon|Mélenchon]]<br><small>([[La France insoumise|LFI]])</small>
+! scope="col" |[[Fabien Roussel|Roussel]]<br><small>([[Parti communiste français|PCF]])</small>
+! scope="col" |[[Marine Tondelier|Tondelier]]<br><small>([[Les Écologistes|LE]])</small>
+! scope="col" |Candidat<br>[[Parti socialiste (France)|PS]] / [[Place publique (parti politique)|PP]]
+! colspan="2" scope="col" |Candidat<br>[[Ensemble pour la République (France)|EPR]]
+![[Dominique de Villepin|Villepin]]<br><small>([[Dominique de Villepin#Retour médiatique depuis 2024 et lancement du mouvement La France humaniste|LFH]])</small>
+! scope="col" |Candidat<br>[[Les Républicains|LR]]
+! scope="col" |[[Nicolas Dupont-Aignan|Dupont-Aignan]]<br><small>([[Debout la France|DLF]])</small>
+! scope="col" |Candidat<br>[[Rassemblement national|RN]]
+! scope="col" |[[Éric Zemmour|Zemmour]]<ref group=alpha name="SaufPrécision"/><br><small>([[Reconquête (parti politique)|REC]])</small>
+|- style="line-height:5px;"
+| {{Infobox Parti politique français/couleurs|LO}} |
+| {{Infobox Parti politique français/couleurs|NPA}} |
+| {{Infobox Parti politique français/couleurs|FI}} |
+| {{Infobox Parti politique français/couleurs|PCF}} |
+| {{Infobox Parti politique français/couleurs|LE}} |
+| {{Infobox Parti politique français/couleurs|PS}} |
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |
+| {{Infobox Parti politique français/couleurs|DVD}} |
+| {{Infobox Parti politique français/couleurs|LR}} |
+| {{Infobox Parti politique français/couleurs|DLF}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+| {{Infobox Parti politique français/couleurs|EXD}} |
+| {{Infobox Parti politique français/couleurs|DIV}} |
+|-
+| rowspan="2" style="{{Sondeur|Odoxa}}" |[https://www.odoxa.fr/sondage/jordan-bardella-est-la-personnalite-politique-preferee-des-francais-et-remporterait-la-presidentielle-si-elle-avait-lieu-dimanche-prochain/ Odoxa]
+| rowspan="2" |19-20 novembre
+| rowspan="2" |1 300
+|1
+|—
+|12
+|3
+|6,5
+| {{Infobox Parti politique français/couleurs|PS}} |'''14,5 '''<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" |11<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+| —
+|10<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|36}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|3
+|—
+|-
+|1
+|—
+|11
+|3
+|6
+|13,5<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''17 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|8<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|3,5
+|—
+|-
+| style="{{Sondeur|Kantar}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2025/novembre/10024-pres-verian-lhemicycle-27-novembre.pdf Verian]
+| 18-20 novembre
+| 938
+|—
+|—
+|12
+|3
+|5
+|13<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} |'''17 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|7,5<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|36,5}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+| colspan="18" style="background-color:#CECECE;font-size:80 %" |<small>'''Le Front Populaire 2027 annonce l'organisation d'[[Primaire de la gauche unitaire de 2026|une primaire]] prévue le {{date|11|10|2026}} ({{date|15|11|2025}}).'''</small>
+|-
+| rowspan="5" style="{{Sondeur|Elabe}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2025/novembre/10007-pres-elabe-bfmtv-la-tribune-1er-novembre.pdf Elabe]
+| rowspan="5" |30-31 octobre
+| rowspan="5" |{{Formatnum:1396}}
+|1
+|—
+|12
+|3
+|5,5
+|6,5<br><small>'''[[François Hollande|Hollande]]'''</small>
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} | '''19<br><small>[[Édouard Philippe|Philippe]]</small>'''
+|4
+|5,5<br><small>'''[[Xavier Bertrand|Bertrand]]'''</small>
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+|6
+|—
+|-
+|1
+|—
+|12,5
+|4,5
+|5,5
+|5,5<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} | '''19,5<br><small>[[Édouard Philippe|Philippe]]</small>'''
+|4
+|3<br><small>'''[[Laurent Wauquiez|Wauquiez]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|36,5}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+|6<br><small>'''[[Sarah Knafo|Knafo]]'''</small>
+|—
+|-
+|1,5
+|—
+|{{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|13}}'''
+|3
+|5
+|{{Infobox Parti politique français/couleurs|PS}} | '''13<br><small>[[Raphaël Glucksmann|Glucksmann]]</small>'''
+| colspan="2" |7<br><small>'''[[Gérald Darmanin|Darmanin]]'''</small>
+|5
+|8,5<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|37,5}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+|4,5<br>[[Philippe de Villiers|<small>'''Villiers'''</small>]]
+|—
+|-
+|1,5
+|—
+|11,5
+|3
+|4,5
+|12<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} | '''12,5<br><small>[[Gabriel Attal|Attal]]</small>'''
+|4
+|8<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}<br><small>[[Marine Le Pen|{{blanc|Le Pen}}]]</small>'''
+|6,5<br><small>'''[[Sarah Knafo|Knafo]]'''</small>
+|—
+|-
+|1
+|—
+|12,5
+|3
+|4,5
+|11<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} | '''15,5<br><small>[[Édouard Philippe|Philippe]]</small>'''
+|3
+|8<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+|4,5
+|—
+|-
+| colspan="18" style="background-color:#CECECE;font-size:80 %" | <small>'''[[Marine Tondelier]] annonce sa candidature à l'élection présidentielle de 2027 dans le cadre d'une primaire à gauche (22 octobre 2025).'''</small>
+|-
+| colspan="18" style="background-color:#CECECE;font-size:80 %" | <small>'''[[Sébastien Lecornu]] est à nouveau nommé Premier ministre (10 octobre 2025).'''</small>
+|-
+| rowspan="4" style="{{Sondeur|Harris}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2025/octobre/9995-pres-toluna-harris-interactive-rtl-8-octobre.pdf Harris]
+| rowspan="4" |7 octobre
+| rowspan="4" |{{Formatnum:1289}}
+|1
+|—
+|14
+|3
+|3
+|12<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} | '''15<br><small>[[Édouard Philippe|Philippe]]</small>'''
+|—
+|10<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|1
+|{{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+|6
+|—
+|-
+|1
+|—
+|{{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|14}}'''
+|3
+|3
+|{{Infobox Parti politique français/couleurs|PS}} | '''14<br><small>[[Raphaël Glucksmann|Glucksmann]]</small>'''
+| colspan="2" |12<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|—
+|11<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|1
+|{{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+|6
+|—
+|-
+|1
+|—
+|14
+|3
+|3
+|12<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} | '''16<br><small>[[Édouard Philippe|Philippe]]</small>'''
+|—
+|10<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|1
+|{{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}<br><small>[[Marine Le Pen|{{blanc|Le Pen}}]]</small>'''
+|6
+|—
+|-
+|1
+|—
+|{{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|14}}'''
+|3
+|3
+|{{Infobox Parti politique français/couleurs|PS}} | '''14<br><small>[[Raphaël Glucksmann|Glucksmann]]</small>'''
+| colspan="2" |12<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|—
+|11<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2
+|{{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}<br><small>[[Marine Le Pen|{{blanc|Le Pen}}]]</small>'''
+|6
+|—
+|-
+| colspan="18" style="background-color:#CECECE;font-size:80 %" | <small>'''[[Sébastien Lecornu]] remet sa démission à [[Emmanuel Macron]] qui l'accepte ({{date|6|10|2025}}).'''</small>
+|-
+| class="notheme" style="{{Sondeur|Cluster17}}" rowspan="4" | [https://www.commission-des-sondages.fr/notices/files/notices/2025/octobre/9990-pres-cluster-17-le-point-3-octobre.pdf Cluster17]
+| rowspan="4" |30 septembre - {{1er}} octobre
+| rowspan="4" |{{Formatnum:1531}}
+|1,5
+|—
+|14
+|4
+|—
+|8<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} | '''19,5<br><small>[[Édouard Philippe|Philippe]]</small>'''
+|—
+|13<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|4,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|30}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+|5,5
+|—
+|-
+|1
+|—
+|15
+|4
+|7,5
+|—
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} | '''19,5<br><small>[[Édouard Philippe|Philippe]]</small>'''
+|—
+|12,5<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|4
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|31}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+|5,5
+|—
+|-
+|1,5
+|—
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|15}}'''
+|3
+|—
+| {{Infobox Parti politique français/couleurs|PS}} | '''15<br><small>[[Raphaël Glucksmann|Glucksmann]]</small>'''
+| colspan="2" |12<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|—
+|14<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|3,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|30,5}}<br><small>[[Marine Le Pen|{{blanc|Le Pen}}]]</small>'''
+|5,5
+|—
+|-
+|1
+|—
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|15}}'''
+|3
+|—
+| {{Infobox Parti politique français/couleurs|PS}} | '''15<br><small>[[Raphaël Glucksmann|Glucksmann]]</small>'''
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} | '''15<br><small>[[Édouard Philippe|Philippe]]</small>'''
+|—
+|12<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|3,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|30}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+|5,5
+|—
+|-
+| style="{{Sondeur|Ifop}}" rowspan=6 |[https://www.commission-des-sondages.fr/notices/files/notices/2025/septembre/9987-pres-ifop-lopinion-sud-radio-29-septembre.pdf Ifop]
+| rowspan="6" |24-25 septembre
+| rowspan="6" |{{Formatnum:1127}}
+| 2
+| —
+| 13
+| 4
+| —
+| {{Infobox Parti politique français/couleurs|PS}} | '''16<br><small>[[Raphaël Glucksmann|Glucksmann]]</small>'''
+| colspan=2 | 3<br><small>'''[[François Bayrou|Bayrou]]'''</small>
+|6
+| 13<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+| 3
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+| 5
+| —
+|-
+| 1
+| —
+| 13
+| 4
+| —
+| {{Infobox Parti politique français/couleurs|PS}} | '''16<br><small>[[Raphaël Glucksmann|Glucksmann]]</small>'''
+| colspan=2 | 7<br><small>'''[[Gérald Darmanin|Darmanin]]'''</small>
+|5
+| 13<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|35}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+| 4
+| —
+|-
+| 1,5
+| —
+| 13
+| 4
+| —
+| {{Infobox Parti politique français/couleurs|PS}} | '''14<br><small>[[Raphaël Glucksmann|Glucksmann]]</small>'''
+| colspan=2 | 10<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|4
+| 12<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+| 2,5
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+| 5
+| —
+|-
+| 1
+| —
+| 13
+| 5
+| —
+| 7<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} | '''19<br><small>[[Édouard Philippe|Philippe]]</small>'''
+|4,5
+| 10<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|34}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+| 4,5
+| —
+|-
+| 1
+| —
+| 12
+| 3,5
+| —
+| 15<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} | '''16<br><small>[[Édouard Philippe|Philippe]]</small>'''
+|4
+| 9<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|33}}<br><small>[[Jordan Bardella|{{blanc|Bardella}}]]</small>'''
+| 4,5
+| —
+|-
+| 1
+| —
+| 12
+| 3
+| —
+| 15<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan=2 {{Infobox Parti politique français/couleurs|ENS}} | '''16<br><small>[[Édouard Philippe|Philippe]]</small>'''
+|5
+| 9<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|33}}<br><small>[[Marine Le Pen|{{blanc|Le Pen}}]]</small>'''
+| 4
+| —
+|-
+| colspan="18" style="background-color:#CECECE;font-size:80 %" | <small>'''[[Sébastien Lecornu]] est nommé Premier ministre ({{date|9|9|2025}}).'''</small>
+|-
+| colspan="18" style="background-color:#CECECE;font-size:80 %" | <small>'''Le [[gouvernement Bayrou]] tombe après la [[vote de confiance|non-confiance]] de l'[[Assemblée nationale (France)|Assemblée Nationale]] ({{date|8|9|2025}}).'''</small>
+|-
+| colspan="18" style="background-color:#CECECE;font-size:80 %" | <small>''' [[L'Après]], [[Debout !]], [[Les Écologistes]], [[Génération.s]] et le [[Parti socialiste (France)|Parti socialiste]] lancent le Front populaire 2027 ({{date|02|07|2025}}).'''</small>
+|-
+| colspan="18" style="background-color:#CECECE;font-size:80 %" | <small>'''[[Olivier Faure (homme politique)|Olivier Faure]] est [[Congrès de Nancy|réélu]] premier secrétaire du [[Parti socialiste (France)|Parti socialiste]] ({{date|6|juin|2025}}).'''</small>
+|-
+| rowspan="2" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2025/mai/9944-pres-ifop-le-figaro-sud-radio-21-mai.pdf Ifop]
+| rowspan="2" |19-20 mai
+| rowspan="2" |{{Formatnum:1114}}
+| 1
+| —
+| 13
+| 3,5
+| 4,5
+| 4,5<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} | '''21'''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+| 16<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|31}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+| 3,5
+| —
+|-
+| 1
+| —
+| 13,5
+| 3
+| 5
+| 4,5<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} | '''21'''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+| 16<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+| 2
+| {{Infobox Parti politique français/couleurs|RN}} | '''{{blanc|31}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+| 3
+| —
+|-
+| rowspan="4" style="{{Sondeur|Harris}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2025/mai/9942-p-toluna-hi-lci-20-mai.pdf Harris]
+| rowspan="4" |19 mai
+| rowspan="4" |{{Formatnum:1217}}
+|1
+|—
+|15
+|3
+|3
+|11
+<small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" |15<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|LR}} |'''{{blanc|16}}'''<br><small>'''[[Bruno Retailleau|{{blanc|Retailleau}}]]'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|5
+|—
+|-
+|1
+|—
+|14
+|3
+|3
+|11<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" |15<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|LR}} |'''{{blanc|17}}'''<br><small>'''[[Bruno Retailleau|{{blanc|Retailleau}}]]'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|5
+|—
+|-
+|1
+|—
+|14
+|3
+|3
+|10<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''21 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|12<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|5
+|—
+|-
+|1
+|—
+|14
+|3
+|3
+|10<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''21 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|13<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|30}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|5
+|—
+|-
+| colspan="18" style="background-color:#CECECE;font-size:80 %" | <small>'''[[Bruno Retailleau]] est [[Congrès des Républicains de 2025|élu]] président des [[Les Républicains|Républicains]] ({{date|18|mai|2025}}).'''</small>
+|-
+| rowspan="8" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2025/mai/9930-pres-ifop-hexagone-5-mai.pdf Ifop]<ref group=alpha name="IfopHexagone">Ce tableau est fondé sur la {{Citation|Notice technique détaillée}} remise à la [[Commission des sondages]]. Le [https://www.ifop.com/publication/phillipe-attal-glucksmann-ruffin-retailleau-qui-est-en-mesure-de-faire-barrage-a-bardella-la-grande-enquete-de-la-presidentielle-ifop-hexagone-aupres-de-10000-francais/ rapport publié sur le site d'Ifop] diffère sur deux points : (1) il reprend deux fois l'une des hypothèses pour l'échantillon de {{formatnum:9128}} ; et (2) il omet l'hypothèse Wauquiez-Le Pen pour l'échantillon de {{formatnum:1838}}.</ref>
+| rowspan="2" |29-30 avril
+| rowspan="2" |{{formatnum|1838}}
+|0,5
+|—
+|10
+|2
+|4
+|10<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''21 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|9<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|4
+|5,5<br><small>'''[[François Ruffin|Ruffin]]'''</small>
+|-
+|1
+|—
+|10
+|2
+|4
+|10<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''23 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|4<br><small>'''[[Laurent Wauquiez|Wauquiez]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|34}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|5
+|5<br><small>'''[[François Ruffin|Ruffin]]'''</small>
+|-
+| rowspan="6" |11-18 avril
+| rowspan="6" |{{formatnum|9128}}
+|1
+|—
+|10
+|2,5
+|2
+|9<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| style="width:35px;" |8<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|{{Infobox Parti politique français/couleurs|ENS}} style="width:35px;" |'''15 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|2
+|7,5<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2,5
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|4,5<br><small>'''[[François Ruffin|Ruffin]]'''</small>
+|-
+|1
+|—
+|10
+|2,5
+|2,5
+|10<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''22 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|8<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|5<br><small>'''[[François Ruffin|Ruffin]]'''</small>
+|-
+|1
+|—
+|10
+|2,5
+|3
+|10<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''24 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|3<br><small>'''[[Laurent Wauquiez|Wauquiez]]'''</small>
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|5<br><small>'''[[François Ruffin|Ruffin]]'''</small>
+|-
+|1
+|—
+|10
+|2,5
+|3
+|11,5<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''14 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|—
+| {{Infobox Parti politique français/couleurs|LR}} |'''{{blanc|14}}'''<br><small>'''[[Bruno Retailleau|{{blanc|Retailleau}}]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|5<br><small>'''[[François Ruffin|Ruffin]]'''</small>
+|-
+|1,5
+|—
+|13
+|—
+|—
+|15<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''22 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|9<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|2
+|—
+|12
+|—
+|—
+|—
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''26 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|10<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|10<br><small>'''[[François Ruffin|Ruffin]]'''</small>
+|-
+| rowspan="3" style="{{Sondeur|Harris}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2025/avril/9927-pres-toluna-hi-regards-30-avril.pdf Harris]<ref group="alpha" name="sansNomCandidat">Aucun nom de candidat n'est mentionné dans ce sondage</ref>
+| rowspan="3" |24-25 avril
+| rowspan="3" |{{formatnum:1189}}
+|3
+|—
+| colspan="4" {{Infobox Parti politique français/couleurs|NFP}} |{{blanc|'''26'''}}<ref group="alpha" name="autresG">avec [[Place publique (parti politique)|Place publique]], [[Génération.s|Génération·s]], [[l'Après]], [[Picardie debout !|Picardie Debout]]</ref>
+|colspan="2"|19
+|—
+|10
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|34}}'''
+|3
+|3<ref group="alpha" name="UDR2pourcents">Dont 2 [[Union des droites pour la République|UDR]]</ref>
+|-
+|2
+|—
+|8
+| colspan="3" {{Infobox Parti politique français/couleurs|UGE}} |{{blanc|'''20'''}}<ref group="alpha" name="autresG"/>
+|colspan="2"|18
+|—
+|10
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|34}}'''
+|3
+|3<ref group="alpha" name="UDR2pourcents"/>
+|-
+|3
+|—
+| colspan="3" |16<ref group="alpha">avec [[Génération.s|Génération·s]], [[l'Après]], [[Picardie debout !|Picardie Debout]]</ref>
+|13<ref group="alpha" name="avecPP">avec [[Place publique (parti politique)|Place publique]]</ref>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''17 '''
+|—
+|10
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|34}}'''
+|3
+|2<ref group="alpha" name="UDR1pourcent">Dont 1 [[Union des droites pour la République|UDR]]</ref>
+|-
+| rowspan="2" style="{{Sondeur|Odoxa}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2025/avril/9925-pres-odoxa-public-senat-29-avril.pdf Odoxa]
+| rowspan="2" |23-24 avril
+| rowspan="2" |{{formatnum:1005}}
+|1
+|2
+|12
+|3
+|4
+|12<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''20 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|9,5<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31,5}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|3
+|—
+|-
+|1
+|2
+|12
+|3
+|3
+|11,5<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''20,5 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|10<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|3
+|—
+|-
+| colspan="18" style="background-color:#CECECE;font-size:80 %" | <small>''' [[Philippe Poutou]] renonce à briguer une quatrième candidature à l'élection présidentielle française (10 avril 2025).'''</small>
+|-
+| rowspan="6" style="{{Sondeur|Elabe}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2025/avril/9916-pres-elabe-bfmtv-tribune-dimanche-5-avril.pdf Elabe]
+| rowspan="6" |2-4 avril
+| rowspan="6" |{{formatnum:1413}}
+|1,5
+|2
+|10,5
+|5,5
+|4,5
+|4<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''18 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|5
+|4,5<br><small>'''[[Laurent Wauquiez|Wauquiez]]'''</small>
+|4
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35,5}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|5
+|—
+|-
+|1
+|1,5
+|9,5
+|4,5
+|3,5
+|10,5<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''20,5 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|2,5
+|8,5<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|1
+|1,5
+|10
+|5,5
+|6
+|6<br><small>'''[[François Hollande|Hollande]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''23 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|9<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31,5}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|—
+|-
+|1
+|2
+|11
+|5,5
+|6
+|4<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''18 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|—
+|10<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|36}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|3,5
+|—
+|-
+|0,5
+|2
+|9,5
+|5
+|4
+|10,5<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''24'''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|4,5<br><small>'''[[Laurent Wauquiez|Wauquiez]]'''</small>
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33,5}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|3,5
+|—
+|-
+|1
+|2
+|10
+|6
+|5,5
+|5,5<br><small>'''[[François Hollande|Hollande]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''23,5 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|8<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|3,5
+|—
+|-
+| rowspan="2" style="{{Sondeur|Harris}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2025/avril/9913-pres-toluna-harris-interactive-rtl-1er-avril.pdf Harris]
+| rowspan="2" |31 mars
+| rowspan="2" |{{formatnum:1162}}
+|1
+|1
+|13
+|4
+|4
+|5<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''25 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|4<br><small>'''[[Laurent Wauquiez|Wauquiez]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|36}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|5
+|—
+|-
+|1
+|1
+|13
+|4
+|4
+|5<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''23 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|7<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|5
+|—
+|-
+| colspan="18" style="background-color:#CECECE;font-size:80 %" | <small>'''[[Marine Le Pen]] est condamnée à une peine d'inéligibilité de {{nobr|5 ans}} avec exécution provisoire ({{date|31|mars|2025}}).'''</small>
+|-
+| rowspan="4" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2025/mars/9912-pres-ifop-jdd-30-mars-notice-pour-publication.pdf Ifop]
+| rowspan="4" |21-26 mars
+| rowspan="4" |{{formatnum:1119}}
+|1
+|1
+|13
+|3
+|3
+|5<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''21 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|11<br><small>'''[[Bruno Retailleau|Retailleau]]'''</small>
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|34}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|5
+|—
+|-
+|1
+|1
+|13
+|2
+|3
+|11<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''20 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|5<br><small>'''[[Laurent Wauquiez|Wauquiez]]'''</small>
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|6
+|—
+|-
+|1
+|1
+|12
+|4
+|3
+|4<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''25 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|—
+|5<br><small>'''[[Laurent Wauquiez|Wauquiez]]'''</small>
+|4
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|36}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|5
+|—
+|-
+|1
+|1
+|13
+|4
+|3
+|5<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''20 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|—
+|8<br><small>'''[[Laurent Wauquiez|Wauquiez]]'''</small>
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|37}}'''<br><small>'''[[Marine Le Pen|{{blanc|Le Pen}}]]'''</small>
+|5
+|—
+|}
+{{Boîte déroulante/fin}}
+
+=== Année 2024 ===
+{{Boîte déroulante/début|titre=Sondages réalisés en 2024}}
+{| class="wikitable" style="font-size:80%; text-align:center;" width="100%"
+|+
+! rowspan="3" style="width:120px;" |Sondeur
+! rowspan="3" scope="col" style="width:70px;" |Date
+! rowspan="3" scope="col" style="width:70px;" |'''Échantillon'''
+! scope="col" style="width:70px;" |[[Fichier:Nathalie Arthaud (LO) 19-05-2024.jpg|alt=Nathalie Arthaud|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Philippe Poutou - Gilets jaunes (2019).jpg|alt=Philippe Poutou|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Roussel_Fabien_1.jpg|alt=Fabien Roussel|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Mélenchon 2027 - 55261894422 (cropped).jpg|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:OF MATIGNON - MAXIME CLAM (cropped).png|alt=Olivier Faure|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:20210819 tondelier.m-cr3.jpg|alt=Marine Tondelier|50x50px]]
+! scope="col" colspan="2" |[[Fichier:Ensemble 2024 B.png|alt=Logo d'Ensemble|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Laurent_Wauquiez_2021.jpg|alt=Laurent Wauquiez|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Jean Lassalle 04 (cropped).jpg|alt=Jean Lassalle|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Nicolas Dupont-Aignan, homme politique français (cropped).jpg|alt=Nicolas Dupont-Aignan|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Marine Le Pen 2025 (cropped).jpg|50x50px|alt=Marine Le Pen]]
+! scope="col" style="width:70px;" |[[Fichier:Portrait Éric Zemmour, avril 2022 cropped.jpg|alt=Éric Zemmour|50x50px]]
+|-
+! scope="col" |[[Nathalie Arthaud|Arthaud]]<br><small>([[Lutte ouvrière|LO]])</small>
+! scope="col" |[[Philippe Poutou|Poutou]]<ref group=alpha name="PoutouPrésidentielle"/><br><small>([[Nouveau Parti anticapitaliste|NPA-A]])</small>
+! scope="col" |[[Fabien Roussel|Roussel]]<br><small>([[Parti communiste français|PCF]])</small>
+! scope="col" |[[Jean-Luc Mélenchon|Mélenchon]]<ref group="alpha" name="SaufPrécision" /><br><small>([[La France insoumise|LFI]])</small>
+! scope="col" |[[Olivier Faure (homme politique)|Faure]]<ref group=alpha name="SaufPrécision" /><br><small>([[Parti socialiste (France)|PS]])</small>
+! scope="col" |[[Marine Tondelier|Tondelier]]<ref group=alpha name="SaufPrécision" /><br><small>([[Les Écologistes|LE]])</small>
+! scope="col"colspan="2" |Candidat<br>[[Ensemble pour la République (France)|ENS]]
+! scope="col" |[[Laurent Wauquiez|Wauquiez]]<ref group=alpha name="SaufPrécision" /><br><small>([[Les Républicains|LR]])</small>
+! scope="col" |[[Jean Lassalle|Lassalle]]<br><small>([[Résistons|RES]])</small>
+! scope="col" |[[Nicolas Dupont-Aignan|Dupont-Aignan]]<br><small>([[Debout la France|DLF]])</small>
+! scope="col" |[[Marine Le Pen|Le Pen]]<ref group=alpha name="SaufPrécision" /><br><small>([[Rassemblement national|RN]])</small>
+! scope="col" |[[Éric Zemmour|Zemmour]]<br><small>([[Reconquête (parti politique)|REC]])</small>
+|- style="line-height:5px;"
+| {{Infobox Parti politique français/couleurs|LO}} |
+| {{Infobox Parti politique français/couleurs|NPA}} |
+| {{Infobox Parti politique français/couleurs|PCF}} |
+| {{Infobox Parti politique français/couleurs|FI}} |
+| {{Infobox Parti politique français/couleurs|PS}} |
+| {{Infobox Parti politique français/couleurs|EELV}} |
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |
+| {{Infobox Parti politique français/couleurs|LR}} |
+| {{Infobox Parti politique français/couleurs|RES}} |
+| {{Infobox Parti politique français/couleurs|DLF}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+| {{Infobox Parti politique français/couleurs|EXD}} |
+|-
+| rowspan="4" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/decembre/9894-pdt-ifop-le-figaro-le-11-dec.pdf Ifop]
+| rowspan="4" |6-9 décembre
+| rowspan="4" | {{formatnum:1101}}
+|1
+|0,5
+|3
+|12
+|5
+|4,5
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''20 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|8
+|1
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|38}}'''
+|4
+|-
+|0,5
+|0,5
+|3
+|12
+|4
+|4,5
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''25 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|6
+|1
+|3,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|36}}'''
+|4
+|-
+|1
+|0,5
+|3
+|11
+|7<br><small>'''[[François Hollande|Hollande]]'''</small>
+|4
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''24 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|6
+|1,5
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''
+|4
+|-
+|1
+|0,5
+|3
+|12
+|4
+|5
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''26 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|6,5
+|1,5
+|3,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|34}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|3
+|-
+| rowspan="6" style="{{Sondeur|OpinionWay}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/septembre/9889a-pres-iv-opinionway-challenges-18-septembre.pdf OpinionWay]
+| rowspan="6" |11-12 septembre
+| rowspan="6" | {{formatnum:1009}}
+|<1
+|<1
+|4
+|10
+|14<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+|1<br><small>'''[[Sandrine Rousseau|Rousseau]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''26 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+|—
+|—
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''
+|5
+|-
+|1
+|2
+|—
+|15
+|—
+|—
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''31 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|7<br><small>'''[[Xavier Bertrand|Bertrand]]'''</small>
+|—
+|—
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|40}}'''
+|4
+|-
+|<1
+|<1
+|3
+|10
+|12<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+|1<br><small>'''[[Sandrine Rousseau|Rousseau]]'''</small>
+| style="width:35px;"|8<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+| {{Infobox Parti politique français/couleurs|ENS}} style="width:35px;" |'''23 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+|—
+|—
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|34}}'''
+|4
+|-
+|1
+|2
+|—
+|14
+|—
+|—
+| style="width:35px;"|10<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+| {{Infobox Parti politique français/couleurs|ENS}} style="width:35px;" |'''25 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|6
+|—
+|—
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|38}}'''
+|4
+|-
+|<1
+|<1
+|4
+|10
+|14<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+|1<br><small>'''[[Sandrine Rousseau|Rousseau]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''28 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|4
+|—
+|—
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|4
+|-
+|<1
+|<1
+|4
+|10
+|14<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+|1<br><small>'''[[Sandrine Rousseau|Rousseau]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''27 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|4<br><small>'''[[Michel Barnier|Barnier]]'''</small>
+|—
+|—
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|36}}'''
+|4
+|-
+| rowspan="4" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/septembre/9889-pdt-ifop-le-figaro-magazine-du-13-09-24.pdf Ifop]
+| rowspan="4" |6-9 septembre
+| rowspan="4" | {{formatnum:1204}}
+|1
+|1
+|6
+|10
+|7<br><small>'''[[François Hollande|Hollande]]'''</small>
+|5
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''22 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|5
+|3
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''
+|3
+|-
+|1
+|1
+|6
+|10
+|4
+|6
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''24 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|5
+|3
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''
+|3
+|-
+|0,5
+|1
+|5
+|9,5
+|8<br><small>'''[[François Hollande|Hollande]]'''</small>
+|5
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''26 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|4
+|2
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|34}}'''
+|3
+|-
+|1
+|1,5
+|6
+|9
+|4
+|5
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''27 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|4
+|3
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|34}}'''
+|3,5
+|-
+| rowspan="4" style="{{Sondeur|Harris-Interactive}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/juillet/9888-pres-harris-interactive-challenges-m6-rtl-le-8-juillet.pdf Harris-Interactive]
+| rowspan="4" |7-8 juillet
+| rowspan="4" | {{formatnum:2496}}
+|1
+|2
+|3
+|15
+|14<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+|3
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''20 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|5
+|—
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31}}'''
+|4
+|-
+|1
+|1
+|3
+|15
+|14<br><small>'''[[Raphaël Glucksmann|Glucksmann]]'''</small>
+|3
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''22 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+|—
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31}}'''
+|3
+|-
+|1
+|2
+|5
+|16
+|6
+|4
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''23 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|5
+|—
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+|4
+|-
+|1
+|2
+|4
+|17
+|5
+|4
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''24 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+|—
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+|4
+|-
+| rowspan="9" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/avril/9766-pdt-ifop-le-figaro-magazine-26-04.pdf Ifop]
+| rowspan="9" |16-18 avril
+| rowspan="9" | {{formatnum:1090}}
+|1
+|2
+|4
+|14
+|4
+|3
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''20 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|7
+|2
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''
+|6
+|-
+|1,5
+|1,5
+|4,5
+|13
+|4,5
+|2
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''24 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+|2
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|34}}'''
+|5
+|-
+|1,5
+|1,5
+|5
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|16}}'''
+|4,5
+|2,5
+|colspan="2" | 14<br><small>'''[[Bruno Le Maire|Le Maire]]'''</small>
+|8
+|2
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''
+|7
+|-
+|2
+|1,5
+|6
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|15}}'''
+|5,5
+|3
+|colspan="2" | 12<br><small>'''[[Gérald Darmanin|Darmanin]]'''</small>
+|8,5
+|2
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|36}}'''
+|6,5
+|-
+|1,5
+|2
+|5
+|7<br><small>'''[[François Ruffin|Ruffin]]'''</small>
+|3,5
+|3
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''25 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+|3
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''
+|6,5
+|-
+|1
+|2
+|5,5
+|12
+|8<br><small>'''[[François Hollande|Hollande]]'''</small>
+|—
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''24 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+|2
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+|6,5
+|-
+|1,5
+|1
+|5
+|13
+|4
+|2,5
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''24 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|6<br><small>'''[[Xavier Bertrand|Bertrand]]'''</small>
+|2
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''
+|6
+|-
+|1
+|2
+|5
+|13
+|3
+|2
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''22 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|8
+|2,5
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|30}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|9
+|-
+|1,5
+|0,5
+|4,5
+|14
+|3
+|2
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''26 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+|1,5
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|7
+|-
+| rowspan="2" style="{{Sondeur|Cluster17}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/avril/9753-pdt-ruffin-cluster-17-picardie-debout-21-avril-2024.pdf Cluster17]{{Note|groupe=alpha|nom=Sondage Picardie Debout|texte=Sondage commandé par [[Picardie Debout]]}}
+| rowspan="2" |2 - <br>{{date|05/04/2024-}}
+| rowspan="2" |{{formatnum:1713}}
+| —
+| 2
+| colspan="4" {{Infobox Parti politique français/couleurs|NFP}} |{{blanc|'''29'''}}<br><small>'''[[François Ruffin|{{blanc|Ruffin}}]]'''</small>
+| colspan="2" |25<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+| 4,5
+| —
+| 3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|30}}'''
+| 6,5
+|-
+| —
+| 3
+| colspan="4" |18<br><small>'''[[Jean-Luc Mélenchon|Mélenchon]]'''</small>
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}}|'''31'''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+| 5
+| —
+| 4
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+| 7
+|-
+| rowspan="2" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/fevrier/9715-pdtielle-ifop-valeurs-actuelles-7-fevrier.pdf Ifop]
+| rowspan="2" |31 janvier - <br>{{1er}} février
+| rowspan="2" |{{formatnum:1081}}
+|1,5
+|1,5
+|4
+|14
+|2
+|2
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''22 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|5,5
+|3
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|36}}'''
+|6
+|-
+|1,5
+|1,5
+|4,5
+|14
+|2
+|2,5
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''22 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|4,5
+|3
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|36}}'''
+|6
+|-
+| rowspan="4" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/janvier/9710-pdt-ifop-jdd-15-01.pdf Ifop]
+| rowspan="4" |9-10 janvier
+| rowspan="4" |{{formatnum:1144}}
+|1
+|2
+|5
+|14,5
+|4
+|1
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''24 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|6
+|2,5
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|28}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|9
+|-
+|0,5
+|1,5
+|6
+|15
+|3,5
+|1,5
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''26 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|6
+|2,5
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|27}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|8
+|-
+|0,5
+|2
+|6,5
+|14
+|3,5
+|1,5
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''23 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|6
+|2,5
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+|6,5
+|-
+|0,5
+|1,5
+|6
+|13
+|3
+|2
+| colspan="2" {{Infobox Parti politique français/couleurs|ENS}} |'''25 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+|2,5
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''
+|6,5
+|}
+{{Boîte déroulante/fin}}
+
+=== Année 2023 ===
+{{Boîte déroulante/début|titre=Sondages réalisés en 2023}}
+{| class="wikitable" style="font-size:80%; text-align:center;" width="100%"
+|+
+! rowspan="3" style="width:120px;" |Sondeur
+! rowspan="3" scope="col" style="width:70px;" |Date
+! rowspan="3" scope="col" style="width:70px;" |Échantillon
+! scope="col" style="width:70px;" |[[Fichier:Nathalie Arthaud (LO) 19-05-2024.jpg|alt=Nathalie Arthaud|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Philippe Poutou - Gilets jaunes (2019).jpg|alt=Philippe Poutou|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Roussel_Fabien_1.jpg|alt=Fabien Roussel|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Mélenchon 2027 - 55261894422 (cropped).jpg|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Logo Parti Socialiste - 2024.svg|alt=Logo du PS|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Logo Les Écologistes.svg|alt=Logo des Écologistes|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Ensemble 2024 B.png|alt=Logo d'Ensemble|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Laurent_Wauquiez_2021.jpg|alt=Laurent Wauquiez|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Jean Lassalle 04 (cropped).jpg|alt=Jean Lassalle|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Nicolas Dupont-Aignan, homme politique français (cropped).jpg|alt=Nicolas Dupont-Aignan|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Marine Le Pen 2025 (cropped).jpg|50x50px|alt=Marine Le Pen]]
+! scope="col" style="width:70px;" |[[Fichier:Portrait Éric Zemmour, avril 2022 cropped.jpg|alt=Éric Zemmour|50x50px]]
+|-
+! scope="col" |[[Nathalie Arthaud|Arthaud]]<br><small>([[Lutte ouvrière|LO]])</small>
+! scope="col" |[[Philippe Poutou|Poutou]]<ref group=alpha name="PoutouPrésidentielle"/><br><small>([[Nouveau Parti anticapitaliste|NPA-A]])</small>
+! scope="col" |[[Fabien Roussel|Roussel]]<br><small>([[Parti communiste français|PCF]])</small>
+! scope="col" |[[Jean-Luc Mélenchon|Mélenchon]]<ref group=alpha name="SaufPrécision" /><br><small>([[La France insoumise|LFI]])</small>
+! scope="col" |Candidat<br>[[Parti socialiste (France)|PS]]/[[Divers gauche|DVG]]
+! scope="col" |Candidat<br>[[Europe Écologie Les Verts|EELV]]
+! scope="col" |Candidat<br>[[Ensemble (coalition française)|ENS]]
+! scope="col" |[[Laurent Wauquiez|Wauquiez]]<br><small>([[Les Républicains|LR]])</small>
+! scope="col" |[[Jean Lassalle|Lassalle]]<br><small>([[Résistons|RES]])</small>
+! scope="col" |[[Nicolas Dupont-Aignan|Dupont-Aignan]]<br><small>([[Debout la France|DLF]])</small>
+! scope="col" |[[Marine Le Pen|Le Pen]]<ref group=alpha name="SaufPrécision" /><br><small>([[Rassemblement national|RN]])</small>
+! scope="col" |[[Éric Zemmour|Zemmour]]<br><small>([[Reconquête (parti politique)|REC]])</small>
+|- style="line-height:5px;"
+| {{Infobox Parti politique français/couleurs|LO}} |
+| {{Infobox Parti politique français/couleurs|NPA}} |
+| {{Infobox Parti politique français/couleurs|PCF}} |
+| {{Infobox Parti politique français/couleurs|FI}} |
+| {{Infobox Parti politique français/couleurs|PS}} |
+| {{Infobox Parti politique français/couleurs|EELV}} |
+| {{Infobox Parti politique français/couleurs|ENS}} |
+| {{Infobox Parti politique français/couleurs|LR}} |
+| {{Infobox Parti politique français/couleurs|RES}} |
+| {{Infobox Parti politique français/couleurs|DLF}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+| {{Infobox Parti politique français/couleurs|EXD}} |
+|-
+| rowspan="5" style="{{Sondeur|Ifop}}" |[https://www.lefigaro.fr/politique/presidentielle-2027-marine-le-pen-s-echappe-jean-luc-melenchon-recule-20231030 Ifop]
+| rowspan="5" |24-25 octobre
+| rowspan="5" |{{formatnum:1084}}
+|1
+|2
+|6
+|14
+|4<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+|1<br><small>'''[[Marine Tondelier|Tondelier]]'''</small>
+| {{Infobox Parti politique français/couleurs|ENS}} |'''25 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+|2,5
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31}}'''
+|6,5
+|-
+|1
+|1
+|6
+|14
+|5<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+|2<br><small>'''[[Marine Tondelier|Tondelier]]'''</small>
+| {{Infobox Parti politique français/couleurs|ENS}} |'''19 '''<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|6
+|4
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''
+|6
+|-
+|1,5
+|1
+|7
+|15
+|5,5<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+|2<br><small>'''[[Marine Tondelier|Tondelier]]'''</small>
+| {{Infobox Parti politique français/couleurs|ENS}} |'''18 '''<br><small>'''[[Bruno Le Maire|Le Maire]]'''</small>
+|6
+|3
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+|6,5
+|-
+|1,5
+|1,5
+|6
+|15
+|6<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+|2<br><small>'''[[Marine Tondelier|Tondelier]]'''</small>
+| {{Infobox Parti politique français/couleurs|ENS}} |'''16 '''<br><small>'''[[Gérald Darmanin|Darmanin]]'''</small>
+|6
+|3,5
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''
+|7
+|-
+|1,5
+|2
+|7,5
+|7<br><small>'''[[François Ruffin|Ruffin]]'''</small>
+|4<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+|2<br><small>'''[[Marine Tondelier|Tondelier]]'''</small>
+| {{Infobox Parti politique français/couleurs|ENS}} |'''26 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|6
+|2,5
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+|6,5
+|-
+| rowspan="8" style="{{Sondeur|Harris}}" |[https://harris-interactive.fr/wp-content/uploads/sites/6/2023/09/Rapport-Toluna-Harris-IV-Presidentielle-2027-Challenges-septembre-2023.pdf Harris Interactive]
+| rowspan="8" |1-4 septembre
+| rowspan="8" |{{formatnum:2525}}
+|1
+|2
+|6
+|16
+|5<br><small>'''[[Bernard Cazeneuve|Cazeneuve]]'''</small>
+|5<br><small>'''[[Yannick Jadot|Jadot]]'''</small>
+| {{Infobox Parti politique français/couleurs|ENS}} |'''22 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+|—
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|30}}'''
+|6
+|-
+|1
+|2
+|6
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|16}}'''
+|7<br><small>'''[[Bernard Cazeneuve|Cazeneuve]]'''</small>
+|5<br><small>'''[[Yannick Jadot|Jadot]]'''</small>
+| {{Infobox Parti politique français/couleurs|ENS}} |'''16 '''<br><small>'''[[Bruno Le Maire|Le Maire]]'''</small>
+|7
+|—
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+|6
+|-
+|1
+|2
+|6
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|16}}'''
+|8<br><small>'''[[Bernard Cazeneuve|Cazeneuve]]'''</small>
+|6<br><small>'''[[Yannick Jadot|Jadot]]'''</small>
+|14<br><small>'''[[Gérald Darmanin|Darmanin]]'''</small>
+|7
+|—
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+|6
+|-
+|1
+|2
+|5
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|16}}'''
+|8<br><small>'''[[Bernard Cazeneuve|Cazeneuve]]'''</small>
+|7<br><small>'''[[Yannick Jadot|Jadot]]'''</small>
+|12<br><small>'''[[Gabriel Attal|Attal]]'''</small>
+|8
+|—
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+|7
+|-
+|1
+|2
+|6
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|16}}'''
+|9<br><small>'''[[Bernard Cazeneuve|Cazeneuve]]'''</small>
+|5<br><small>'''[[Yannick Jadot|Jadot]]'''</small>
+|11<br><small>'''[[Élisabeth Borne|Borne]]'''</small>
+|9
+|—
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''
+|6
+|-
+|1
+|2
+|6
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|17}}'''
+|9<br><small>'''[[Bernard Cazeneuve|Cazeneuve]]'''</small>
+|6<br><small>'''[[Yannick Jadot|Jadot]]'''</small>
+|9<br><small>'''[[Jean Castex|Castex]]'''</small>
+|9
+|—
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''
+|6
+|-
+|1
+|2
+|6
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|16}}'''
+|10<br><small>'''[[Bernard Cazeneuve|Cazeneuve]]'''</small>
+|6<br><small>'''[[Yannick Jadot|Jadot]]'''</small>
+|8<br><small>'''[[François Bayrou|Bayrou]]'''</small>
+|9
+|—
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''
+|6
+|-
+|1
+|2
+|6
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|17}}'''
+|10<br><small>'''[[Bernard Cazeneuve|Cazeneuve]]'''</small>
+|7<br><small>'''[[Yannick Jadot|Jadot]]'''</small>
+|5<br><small>'''[[Yaël Braun-Pivet|Braun-Pivet]]'''</small>
+|10
+|—
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''
+|6
+|-
+| style="{{Sondeur|OpinionWay}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2023/avril/9689-pres-ow-le-figaro-magazine.pdf OpinionWay]
+|12-13 avril
+|965
+|1
+|3
+|—
+|17
+|6<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+|2<br><small>'''[[Sandrine Rousseau|Rousseau]]'''</small>
+| {{Infobox Parti politique français/couleurs|ENS}} |'''32 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|7
+|—
+|—
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|23}}'''<br><small>'''[[Jordan Bardella|{{blanc|Bardella}}]]'''</small>
+|9
+|-
+| rowspan="4" style="{{Sondeur|Harris}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2023/avril/9688-pres-hi-challenges.pdf Harris Interactive]
+| rowspan="4" |6-7 avril
+| rowspan="4" |{{formatnum:1320}}
+|1
+|2
+|4
+|16
+|5 <br><small>'''[[Bernard Cazeneuve|Cazeneuve]]'''</small>
+|4<br>'''<small>[[Yannick Jadot|Jadot]]</small>'''
+| {{Infobox Parti politique français/couleurs|ENS}} |'''24 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+| —
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|30}}'''
+|7
+|-
+|1
+|2
+|5
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|18}}'''
+|7 <br><small>'''[[Bernard Cazeneuve|Cazeneuve]]'''</small>
+|5 <br><small>'''[[Yannick Jadot|Jadot]]'''</small>
+|16 <br><small>'''[[Bruno Le Maire|Le Maire]]'''</small>
+|5
+| —
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+|7
+|-
+|1
+|2
+|5
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|19}}'''
+|8 <br><small>'''[[Bernard Cazeneuve|Cazeneuve]]'''</small>
+|5<br><small>'''[[Yannick Jadot|Jadot]]'''</small>
+|10<br><small>'''[[Gérald Darmanin|Darmanin]]'''</small>
+|7
+| —
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|33}}'''
+|8
+|-
+|1
+|2
+|4
+|17
+|3<br><small>'''[[Carole Delga|Delga]]'''</small>
+|4<br><small>'''[[Yannick Jadot|Jadot]]'''</small>
+| {{Infobox Parti politique français/couleurs|ENS}} |'''24 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+| —
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31}}'''
+|7
+|-
+| rowspan="5" style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2023/avril/9686-pres-ifop-7-04-fig-mag-sud-radio.pdf Ifop]
+| rowspan="5" |30-31 mars
+| rowspan="5" |{{formatnum:1105}}
+|1
+|2,5
+|5
+|17
+|3<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+|1<br><small>'''[[Marine Tondelier|Tondelier]]'''</small>
+| {{Infobox Parti politique français/couleurs|ENS}} |'''26 '''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|5
+|2
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|29}}'''
+|6
+|-
+|1
+|2,5
+| —
+| 22
+| —
+| —
+| {{Infobox Parti politique français/couleurs|ENS}} | '''28'''<br><small>'''[[Édouard Philippe|Philippe]]'''</small>
+|4
+|2,5
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31}}'''
+|6
+|-
+|1
+|2,5
+|6
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|20}}'''
+|2<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+|1<br><small>'''[[Marine Tondelier|Tondelier]]'''</small>
+|18<br><small>'''[[Bruno Le Maire|Le Maire]]'''</small>
+|6
+|2,5
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+|6
+|-
+|0,5
+|2,5
+|5
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|20}}'''
+|3<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+|2<br><small>'''[[Marine Tondelier|Tondelier]]'''</small>
+|11<br><small>'''[[Gérald Darmanin|Darmanin]]'''</small>
+|8
+|2
+|4
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|35}}'''
+|7
+|-
+|1
+|1,5
+|6,5
+| {{Infobox Parti politique français/couleurs|LFI}} |'''{{blanc|20}}'''
+|2<br><small>'''[[Olivier Faure (homme politique)|Faure]]'''</small>
+|1<br><small>'''[[Marine Tondelier|Tondelier]]'''</small>
+|9<br><small>'''[[François Bayrou|Bayrou]]'''</small>
+|10
+|3
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|36}}'''
+|7
+|}
+{{Boîte déroulante/fin}}
+
+=== Autres ===
+{{Boîte déroulante/début|titre=Sondages impliquant Emmanuel Macron, qui ne peut plus se présenter}}
+{| class="wikitable" style="font-size:80%; text-align:center;" width="100%"
+|+
+|- style="font-size:100;"
+! rowspan="3" scope="col" style="width:120px;" |Sondeur
+! rowspan="3" scope="col" style="width:120px;" |Dates
+! rowspan="3" scope="col" style="width:70px;" |Échantillon
+! scope="col" style="width:70px;" |[[Fichier:Nathalie Arthaud (LO) 19-05-2024.jpg|alt=Nathalie Arthaud|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Philippe Poutou - Gilets jaunes (2019).jpg|alt=Philippe Poutou|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Roussel_Fabien_1.jpg|alt=Fabien Roussel|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Mélenchon 2027 - 55261894422 (cropped).jpg|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Anne Hidalgo, février 2014 (cropped).jpg|alt=Anne Hidalgo|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Yannick Jadot, 2014 (cropped).jpg|alt=Yannick Jadot|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier: Emmanuel Macron 2025 (cropped).jpg |alt=Emmanuel Macron|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Valérie Pécresse (2022) (cropped 2).jpg|alt=Valérie Pécresse|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Jean Lassalle 04 (cropped).jpg|alt=Jean Lassalle|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Nicolas Dupont-Aignan, homme politique français (cropped).jpg|alt=Nicolas Dupont-Aignan|50x50px]]
+! scope="col" style="width:70px;" |[[Fichier:Marine Le Pen 2025 (cropped).jpg|50x50px|alt=Marine Le Pen]]
+! scope="col" style="width:70px;" |[[Fichier:Portrait Éric Zemmour, avril 2022 cropped.jpg|alt=Éric Zemmour|50x50px]]
+|-
+! scope="col" | [[Nathalie Arthaud|Arthaud]]<br><small>([[Lutte ouvrière|LO]])</small>
+! scope="col" | [[Philippe Poutou|Poutou]]<br><small>([[Nouveau Parti anticapitaliste|NPA-A]])</small>
+! scope="col" | [[Fabien Roussel|Roussel]]<br><small>([[Parti communiste français|PCF]])</small>
+! scope="col" | [[Jean-Luc Mélenchon|Mélenchon]]<br><small>([[La France insoumise|LFI]])</small>
+! scope="col" | [[Anne Hidalgo|Hidalgo]]<br><small>([[Parti socialiste (France)|PS]])</small>
+! scope="col" | [[Yannick Jadot|Jadot]]<br><small>([[Europe Écologie Les Verts|EELV]])</small>
+! scope="col" | [[Emmanuel Macron|Macron]]<br><small>([[Renaissance (parti)|REN]])</small>
+! scope="col" | [[Valérie Pécresse|Pécresse]]<br><small>([[Les Républicains|LR]])</small>
+! scope="col" | [[Jean Lassalle|Lassalle]]<br><small>([[Résistons|RES]])</small>
+! scope="col" | [[Nicolas Dupont-Aignan|Dupont-Aignan]]<br><small>([[Debout la France|DLF]])</small>
+! scope="col" | [[Marine Le Pen|Le Pen]]<br><small>([[Rassemblement national|RN]])</small>
+! scope="col" | [[Éric Zemmour|Zemmour]]<br><small>([[Reconquête (parti politique)|REC]])</small>
+|- style="line-height:5px;"
+| {{Infobox Parti politique français/couleurs|LO}} |
+| {{Infobox Parti politique français/couleurs|NPA}} |
+| {{Infobox Parti politique français/couleurs|PCF}} |
+| {{Infobox Parti politique français/couleurs|FI}} |
+| {{Infobox Parti politique français/couleurs|PS}} |
+| {{Infobox Parti politique français/couleurs|EELV}} |
+| {{Infobox Parti politique français/couleurs|RE}} |
+| {{Infobox Parti politique français/couleurs|LR}} |
+| {{Infobox Parti politique français/couleurs|RES}} |
+| {{Infobox Parti politique français/couleurs|DLF}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+| {{Infobox Parti politique français/couleurs|EXD}} |
+|-
+|style="{{Sondeur|Cluster17}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2023/octobre/9701-cluster-17-nupes-le-point-25-octobre.pdf Cluster17]
+|18-20 octobre 2023
+|{{formatnum:1580}}
+|0,5
+|0,5
+|5
+|17,5
+|2
+|5
+| {{Infobox Parti politique français/couleurs|RE}} |'''24,5'''
+|3,5
+|3
+|3
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|29,5}}'''
+|6,5
+|-
+| style="{{Sondeur|Odoxa}}" |[https://www.odoxa.fr/sondage/si-on-refaisait-voter-aujourdhui-les-francais-ils-eliraient-nettement-marine-le-pen/ Odoxa]
+|5-6 avril 2023
+|{{formatnum:1005}}
+|1
+|1
+|5
+|19
+|2
+|4
+| {{Infobox Parti politique français/couleurs|RE}} |'''23'''
+|3
+|3
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|32}}'''
+|5
+|-
+|style="{{Sondeur|Elabe}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2023/avril/9685-pres-leg-5-avril-elabe-bfm.pdf Elabe]
+|3-5 avril 2023
+|{{formatnum:1808}}
+|0,5
+|1
+|4
+|18,5
+|1,5
+|5
+| {{Infobox Parti politique français/couleurs|RE}} |'''23'''
+|3,5
+|2,5
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31}}'''
+|7
+|-
+|style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2023/avril/9686-pres-ifop-7-04-fig-mag-sud-radio.pdf Ifop]
+|30-31 mars 2023
+|{{formatnum:1105}}
+|0,5
+|1
+|5
+|17
+|2
+|5
+| {{Infobox Parti politique français/couleurs|RE}} |'''25'''
+|4
+|1,5
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|31}}'''
+|6
+|-
+|style="{{Sondeur|Cluster17}}" |[https://cluster17.com/wp-content/uploads/2022/11/sondage_presidentielle_081122_C17_Notice_technique_Commission_des.pdf Cluster17]
+|4-6 novembre 2022
+|{{formatnum:2096}}
+|0,5
+|1
+|3
+|20
+|1
+|5
+| {{Infobox Parti politique français/couleurs|RE}} |'''30'''
+|3
+|2,5
+|2,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|25,5}}'''
+|6
+|-
+|style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2022/octobre/9681-pdt-ifop-jdd.pdf Ifop]
+|25-26 octobre 2022
+|{{formatnum:1126}}
+|0,5
+|1
+|3
+|17
+|2
+|6
+| {{Infobox Parti politique français/couleurs|RE}} |'''29'''
+|3
+|1,5
+|2
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|30}}'''
+|5
+|-
+|- style="background-color:#CECECE"
+| [https://www.resultats-elections.interieur.gouv.fr/presidentielle-2022/FE.html '''Résultats''']
+| '''{{date|10|Avril|2022}}'''
+| {{nombre|35132947}}<ref group=alpha>Nombre de suffrages exprimés au premier tour.</ref>
+| 0,56
+| 0,77
+| 2,28
+| 21,95
+| 1,75
+| 4,63
+| '''27,85'''
+| 4,78
+| 3,13
+| 2,06
+| '''23,15'''
+| 7,07
+|-
+|}
+{{Boîte déroulante/fin}}
+
+== Sondages concernant le second tour ==
+{{Encart|style=important|contenu=Ces sondages sont listés par ordre antéchronologique : '''les plus récents sont présentés en tête''' afin que les données les plus proches de l'élection soient toujours présentées en premier.}}
+
+'''Note :''' Tous les scénarios envisagés jusqu'à présent impliquent un candidat du Rassemblement national, soit Marine Le Pen, soit Jordan Bardella.
+
+=== Impliquant Marine Le Pen ===
+==== Hypothèse Attal – Le Pen ====
+{| class="wikitable" style="text-align:center;font-size:80%;line-height:14px;"
+|- bgcolor=lightgray
+! scope=col rowspan="3" style="width:140px;" | Sondeur
+! scope=col rowspan="3" style="width:120px;" | Dates
+! scope=col rowspan="3" style="width:40px;" | Échantillon
+! scope=col style="width:110px;" | [[Fichier:Gabriel Attal 2025 (close crop).jpg|alt=Gabriel Attal|95x95px]]
+! scope=col style="width:110px;" | [[Fichier:Marine Le Pen 2025 (cropped).jpg|95x95px]]
+|-
+! scope=col | [[Gabriel Attal|Attal]]<br><small>([[Renaissance (parti)|RE]])</small>
+! scope=col | [[Marine Le Pen|Le Pen]]<br><small>([[Rassemblement national|RN]])</small>
+|-
+| {{Infobox Parti politique français/couleurs|RE}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+|-
+| style="{{Sondeur|OpinionWay}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10252-pres-iv-opinionway-jdd-7-septembre.pdf OpinionWay]
+| 2-3 septembre 2026
+| {{formatnum:1003}}
+| 45
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|55}}'''
+|-
+| style="{{Sondeur|Elabe}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10245-pres-iv-elabe-29-aout.pdf Elabe]
+| 26 - 28 août 2026
+| {{formatnum:1503}}
+| 43
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|57}}'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.sudradio.fr//wp-content//uploads//2026//08//122732-Resultats-ENSEMBLE-fin-aout-2026.pdf Ifop]
+|24 - 25 août 2026
+|{{formatnum:1598}}
+|46
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|54}}'''
+|-
+| style="{{Sondeur|Harris}}" |[https://tolunacorporate.com/wp-content/uploads/2026/08/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-4-M6-RTL-Aout-2026.pdf Harris]
+|18 - 19 août 2026
+|{{formatnum:1764}}
+|43
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|57}}'''
+|-
+| style="{{Sondeur|Cluster17}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10246-pres-cluster17-le-grand-continent-31-aout.pdf Cluster17]
+| 22-24 juillet 2026
+| {{formatnum:1506}}
+| 44
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|56}}'''
+|-
+| style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10226-pres-elabe-11-juillet.pdf Elabe]
+| 9 - 10 juillet 2026
+| {{formatnum:1503}}
+| 46
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|54}}'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10222-pres-ifop-le-figaro-8-juillet.pdf Ifop]
+|7 - 8 juillet 2026
+|{{formatnum:984}}
+|45
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|55}}'''
+|-
+| style="{{Sondeur|Harris}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10223-pres-iv-toluna-harris-interactive-rtl-8-juillet.pdf Harris]
+|7 - 8 juillet 2026
+|{{formatnum:1592}}
+|45
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|55}}'''
+|-
+| colspan="5" style="background-color:#CECECE;font-size:80%" | '''[[Marine Le Pen]] officialise sa candidature à la suite de la réduction de sa période d'inéligibilité en appel ({{date|07|07|2026}}).'''
+|-
+| style="{{Sondeur|Harris}}" |[https://tolunacorporate.com/wp-content/uploads/2026/05/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-2-M6-RTL-Mai-2026.pdf Harris]
+|25 - 27 mai 2026
+|{{formatnum:1744}}
+|46
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|54}}'''
+|-
+| style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10166-pres-elabe-28-mars.pdf Elabe]
+| 25 - 27 mars 2026
+| {{formatnum:1504}}
+| 49
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|51}}'''
+|-
+| colspan="5" style="background-color:#CECECE;font-size:80%" | '''[[Marine Le Pen]] est condamnée à cinq ans d'inéligibilité dans l'[[affaire des assistants parlementaires du Front national au Parlement européen|affaire des assistants parlementaires]] ({{date|31|mars|2025}}).'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/avril/9766-pdt-ifop-le-figaro-magazine-26-04.pdf Ifop]
+| 16 - 18 avril 2024
+| {{formatnum:1093}}
+|47
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|53}}'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/fevrier/9715-pdtielle-ifop-valeurs-actuelles-7-fevrier.pdf Ifop]
+| 31 janvier - {{1er}} février 2024
+| {{formatnum:1081}}
+|49
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|51}}'''
+|-
+|}
+
+==== Hypothèse Glucksmann – Le Pen ====
+{| class="wikitable" style="text-align:center;font-size:80%;line-height:14px;"
+|- bgcolor=lightgray
+! scope=col rowspan="3" style="width:140px;" | Sondeur
+! scope=col rowspan="3" style="width:120px;" | Dates
+! scope=col rowspan="3" style="width:40px;" | Échantillon
+! scope=col style="width:110px;" | [[Fichier: 1720448398743 20240708 GLUCKSMANN Raphael FR 006.jpg|alt=Raphaël Glucksmann|95x95px]]
+! scope="col" style="width:110px;" | [[Fichier:Marine Le Pen 2025 (cropped).jpg|95x95px]]
+|-
+! scope=col |[[Raphaël Glucksmann|Glucksmann]]<br><small>([[Place publique (parti politique)|PP]])</small>
+! scope="col" | [[Marine Le Pen|Le Pen]]<br><small>([[Rassemblement national|RN]])</small>
+|-
+| {{Infobox Parti politique français/couleurs|PP}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+|-
+| style="{{Sondeur|Elabe}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10245-pres-iv-elabe-29-aout.pdf Elabe]
+| 26 - 28 août 2026
+| {{formatnum:1503}}
+| 43
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|57}}'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.sudradio.fr//wp-content//uploads//2026//08//122732-Resultats-ENSEMBLE-fin-aout-2026.pdf Ifop]
+|24 - 25 août 2026
+|{{formatnum:1598}}
+|45
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|55}}'''
+|-
+| style="{{Sondeur|Cluster17}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10246-pres-cluster17-le-grand-continent-31-aout.pdf Cluster17]
+| 22-24 juillet 2026
+| {{formatnum:1506}}
+| 44
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|56}}'''
+|-
+| style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10226-pres-elabe-11-juillet.pdf Elabe]
+| 9 - 10 juillet 2026
+| {{formatnum:1503}}
+| 41,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|58,5}}'''
+|-
+|}
+
+==== Hypothèse Hollande – Le Pen ====
+{| class="wikitable" style="text-align:center;font-size:80%;line-height:14px;"
+|- bgcolor="lightgray"
+! rowspan="3" scope="col" style="width:140px;" | Sondeur
+! rowspan="3" scope="col" style="width:120px;" | Dates
+! rowspan="3" scope="col" style="width:40px;" | Échantillon
+! scope="col" style="width:110px;" | [[Fichier:François Hollande - Ceremony of Honour for Jacques Delors - 2024.jpg|sans_cadre|95x95px]]
+! scope="col" style="width:110px;" | [[Fichier:Marine Le Pen 2025 (cropped).jpg|95x95px]]
+|-
+! scope="col" | [[François Hollande|Hollande]]<br><small>([[Parti socialiste (France)|PS]])</small>
+! scope="col" | [[Marine Le Pen|Le Pen]]<br><small>([[Rassemblement national|RN]])</small>
+|-
+| {{Infobox Parti politique français/couleurs|PS}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.sudradio.fr//wp-content//uploads//2026//08//122732-Resultats-ENSEMBLE-fin-aout-2026.pdf Ifop]
+|24 - 25 août 2026
+|{{formatnum:1598}}
+|46
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|54}}'''
+|-
+|}
+
+==== Hypothèse Mélenchon – Le Pen ====
+{| class="wikitable" style="text-align:center;font-size:80%;line-height:14px;"
+|- bgcolor=lightgray
+! scope=col rowspan="3" style="width:140px;" | Sondeur
+! scope=col rowspan="3" style="width:120px;" | Dates
+! scope=col rowspan="3" style="width:40px;" | Échantillon
+! scope=col style="width:110px;" | [[File:Mélenchon 2027 - 55261894422 (cropped).jpg|95x95px]]
+! scope=col style="width:110px;" | [[Fichier:Marine Le Pen 2025 (cropped).jpg|95x95px]]
+|-
+! scope=col |[[Jean-Luc Mélenchon|Mélenchon]]<br><small>([[La France insoumise|LFI]])</small>
+! scope=col | [[Marine Le Pen|Le Pen]]<br><small>([[Rassemblement national|RN]])</small>
+|-
+| {{Infobox Parti politique français/couleurs|LFI}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+|-
+| style="{{Sondeur|OpinionWay}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10252-pres-iv-opinionway-jdd-7-septembre.pdf OpinionWay]
+| 2-3 septembre 2026
+| {{formatnum:1003}}
+| 34
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|66}}'''
+|-
+| style="{{Sondeur|Elabe}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10245-pres-iv-elabe-29-aout.pdf Elabe]
+| 26 - 28 août 2026
+| {{formatnum:1503}}
+| 30,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|69,5}}'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.sudradio.fr//wp-content//uploads//2026//08//122732-Resultats-ENSEMBLE-fin-aout-2026.pdf Ifop]
+|24 - 25 août 2026
+|{{formatnum:1598}}
+|33
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|67}}'''
+|-
+| style="{{Sondeur|Harris}}" |[https://tolunacorporate.com/wp-content/uploads/2026/08/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-4-M6-RTL-Aout-2026.pdf Harris]
+|18 - 19 août 2026
+|{{formatnum:1764}}
+|32
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|68}}'''
+|-
+| style="{{Sondeur|Cluster17}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10246-pres-cluster17-le-grand-continent-31-aout.pdf Cluster17]
+| 22-24 juillet 2026
+| {{formatnum:1506}}
+| 39
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|61}}'''
+|-
+| style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10226-pres-elabe-11-juillet.pdf Elabe]
+| 9 - 10 juillet 2026
+| {{formatnum:1503}}
+| 32,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|67,5}}'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10222-pres-ifop-le-figaro-8-juillet.pdf Ifop]
+|7 - 8 juillet 2026
+|{{formatnum:984}}
+|30
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|70}}'''
+|-
+| style="{{Sondeur|Harris}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10223-pres-iv-toluna-harris-interactive-rtl-8-juillet.pdf Harris]
+|7 - 8 juillet 2026
+|{{formatnum:1592}}
+|33
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|67}}'''
+|-
+| colspan="5" style="background-color:#CECECE;font-size:80%" | '''[[Marine Le Pen]] officialise sa candidature à la suite de la réduction de sa période d'inéligibilité en appel ({{date|07|07|2026}}).'''
+|-
+| style="{{Sondeur|Harris}}" |[https://tolunacorporate.com/wp-content/uploads/2026/05/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-2-M6-RTL-Mai-2026.pdf Harris]
+|25 - 27 mai 2026
+|{{formatnum:1744}}
+|33
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|67}}'''
+|-
+| colspan="5" style="background-color:#CECECE;font-size:80%" | '''[[Marine Le Pen]] est condamnée à cinq ans d'inéligibilité dans l'[[affaire des assistants parlementaires du Front national au Parlement européen|affaire des assistants parlementaires]] ({{date|31|mars|2025}}).'''
+|-
+|style="{{Sondeur|Cluster17}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/avril/9753-pdt-ruffin-cluster-17-picardie-debout-21-avril-2024.pdf Cluster 17]{{note|groupe=alpha|nom=Sondage Picardie Debout}}
+|2 - 5 avril 2024
+|{{formatnum:1713}}
+| 35
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|65}}'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/fevrier/9715-pdtielle-ifop-valeurs-actuelles-7-fevrier.pdf Ifop]
+| 31 janvier - {{1er}} février 2024
+| {{formatnum:1081}}
+|36
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|64}}'''
+|-
+|}
+
+==== Hypothèse Philippe – Le Pen ====
+{| class="wikitable" style="text-align:center;font-size:80%;line-height:14px;"
+|- bgcolor=lightgray
+! scope=col rowspan="3" style="width:140px;" | Sondeur
+! scope=col rowspan="3" style="width:120px;" | Dates
+! scope=col rowspan="3" style="width:40px;" | Échantillon
+! scope=col style="width:110px;" | [[Fichier:Edouard Philippe 3x4 crop.jpg|Édouard Philippe|95x95px]]
+! scope=col style="width:110px;" | [[Fichier:Marine Le Pen 2025 (cropped).jpg|95x95px]]
+|-
+! scope=col |[[Édouard Philippe|Philippe]]<br><small>([[Horizons|HOR]])</small>
+! scope=col | [[Marine Le Pen|Le Pen]]<br><small>([[Rassemblement national|RN]])</small>
+|-
+| {{Infobox Parti politique français/couleurs|HOR}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+|-
+| style="{{Sondeur|OpinionWay}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10252-pres-iv-opinionway-jdd-7-septembre.pdf OpinionWay]
+| 2-3 septembre 2026
+| {{formatnum:1003}}
+| 48
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|52}}'''
+|-
+| style="{{Sondeur|Elabe}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10245-pres-iv-elabe-29-aout.pdf Elabe]
+| 26 - 28 août 2026
+| {{formatnum:1503}}
+| 47,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|52,5}}'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.sudradio.fr//wp-content//uploads//2026//08//122732-Resultats-ENSEMBLE-fin-aout-2026.pdf Ifop]
+|24 - 25 août 2026
+|{{formatnum:1598}}
+|48
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|52}}'''
+|-
+| style="{{Sondeur|Harris}}" |[https://tolunacorporate.com/wp-content/uploads/2026/08/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-4-M6-RTL-Aout-2026.pdf Harris]
+|18 - 19 août 2026
+|{{formatnum:1764}}
+|45
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|55}}'''
+|-
+| style="{{Sondeur|Cluster17}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10246-pres-cluster17-le-grand-continent-31-aout.pdf Cluster17]
+| 22-24 juillet 2026
+| {{formatnum:1506}}
+| 48
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|52}}'''
+|-
+| style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10226-pres-elabe-11-juillet.pdf Elabe]
+| 9 - 10 juillet 2026
+| {{formatnum:1503}}
+| 48
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|52}}'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10222-pres-ifop-le-figaro-8-juillet.pdf Ifop]
+|7 - 8 juillet 2026
+|{{formatnum:984}}
+|46
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|54}}'''
+|-
+| style="{{Sondeur|Harris}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10223-pres-iv-toluna-harris-interactive-rtl-8-juillet.pdf Harris]
+|7 - 8 juillet 2026
+|{{formatnum:1592}}
+|49
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|51}}'''
+|-
+| colspan="5" style="background-color:#CECECE;font-size:80%" | '''[[Marine Le Pen]] officialise sa candidature à la suite de la réduction de sa période d'inéligibilité en appel ({{date|07|07|2026}}).'''
+|-
+| style="{{Sondeur|Harris}}" |[https://tolunacorporate.com/wp-content/uploads/2026/05/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-2-M6-RTL-Mai-2026.pdf Harris]
+|25 - 27 mai 2026
+|{{formatnum:1744}}
+|48
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|52}}'''
+|-
+| style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10166-pres-elabe-28-mars.pdf Elabe]
+| 25 - 27 mars 2026
+| {{formatnum:1504}}
+| {{Infobox Parti politique français/couleurs|HOR}} |'''{{blanc|53}}'''
+| 47
+|-
+|style="{{Sondeur|Ifop}}" |[https://www.lopinion.fr/politique/bardella-le-pen-philippe-melenchon-glucksmann-a-moins-de-deux-ans-de-la-presidentielle-le-sondage-qui-relance-les-ambitions/ Ifop]
+|11 - 30 avril 2025
+|{{formatnum:1838}}
+| {{Infobox Parti politique français/couleurs|HOR}} |'''{{blanc|52}}'''
+|48
+|-
+| style="{{Sondeur|Odoxa}}" |[https://www.odoxa.fr/sondage/presidentielle-le-pen-ou-bardella-seraient-en-tete-au-premier-tour-mais-battus-par-philippe-au-second/ Odoxa]
+|23 - 24 avril 2025
+|{{formatnum:1005}}
+| {{Infobox Parti politique français/couleurs|HOR}} |'''{{blanc|54}}'''
+|46
+|-
+| colspan="5" style="background-color:#CECECE;font-size:80%" | '''[[Marine Le Pen]] est condamnée à cinq ans d'inéligibilité dans l'[[affaire des assistants parlementaires du Front national au Parlement européen|affaire des assistants parlementaires]] ({{date|31|mars|2025}}).'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/avril/9766-pdt-ifop-le-figaro-magazine-26-04.pdf Ifop]
+| 16 - 18 avril 2024
+| {{formatnum:1090}}
+|49
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|51}}'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/fevrier/9715-pdtielle-ifop-valeurs-actuelles-7-fevrier.pdf Ifop]
+| 31 janvier - {{1er}} février 2024
+| {{formatnum:1081}}
+| '''50'''
+| '''50'''
+|-
+|}
+
+==== Hypothèse Retailleau – Le Pen ====
+{| class="wikitable" style="text-align:center;font-size:80%;line-height:14px;"
+|- bgcolor=lightgray
+! scope=col rowspan="3" style="width:140px;" | Sondeur
+! scope=col rowspan="3" style="width:120px;" | Dates
+! scope=col rowspan="3" style="width:40px;" | Échantillon
+! scope=col style="width:110px;" | [[Fichier: Bruno Retailleau - Ministre de l'Intérieur français (cropped).jpg|alt=Bruno Retailleau|95x95px]]
+! scope="col" style="width:110px;" | [[Fichier:Marine Le Pen 2025 (cropped).jpg|95x95px]]
+|-
+! scope=col |[[Bruno Retailleau|Retailleau]]<br><small>([[Les Républicains|LR]])</small>
+! scope="col" | [[Marine Le Pen|Le Pen]]<br><small>([[Rassemblement national|RN]])</small>
+|-
+| {{Infobox Parti politique français/couleurs|LR}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.sudradio.fr//wp-content//uploads//2026//08//122732-Resultats-ENSEMBLE-fin-aout-2026.pdf Ifop]
+|24 - 25 août 2026
+|{{formatnum:1598}}
+|42
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|58}}'''
+|-
+| style="{{Sondeur|Cluster17}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10246-pres-cluster17-le-grand-continent-31-aout.pdf Cluster17]
+| 22-24 juillet 2026
+| {{formatnum:1506}}
+| 43
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|57}}'''
+|-
+| style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10226-pres-elabe-11-juillet.pdf Elabe]
+| 9 - 10 juillet 2026
+| {{formatnum:1503}}
+| 44
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|56}}'''
+|-
+|}
+
+==== Hypothèse Ruffin – Le Pen ====
+{| class="wikitable" style="text-align:center;font-size:80%;line-height:14px;"
+|- bgcolor="lightgray"
+! rowspan="3" scope="col" style="width:140px;" | Sondeur
+! rowspan="3" scope="col" style="width:120px;" | Dates
+! rowspan="3" scope="col" style="width:40px;" | Échantillon
+! scope="col" style="width:110px;" | [[Fichier:François Ruffin (cropped).jpg|sans_cadre|95x95px]]
+! scope="col" style="width:110px;" | [[Fichier:Marine Le Pen 2025 (cropped).jpg|95x95px]]
+|-
+! scope="col" | [[François Ruffin|Ruffin]]<br><small>([[Debout (parti politique)|D!]])</small>
+! scope="col" | [[Marine Le Pen|Le Pen]]<br><small>([[Rassemblement national|RN]])</small>
+|-
+| {{Infobox Parti politique français/couleurs|DVG}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+|-
+| colspan="5" style="background-color:#CECECE;font-size:80%" | '''[[Marine Le Pen]] officialise sa candidature à la suite de la réduction de sa période d'inéligibilité en appel ({{date|07|07|2026}}).'''
+|-
+| colspan="5" style="background-color:#CECECE;font-size:80%" | '''[[Marine Le Pen]] est condamnée à cinq ans d'inéligibilité dans l'[[affaire des assistants parlementaires du Front national au Parlement européen|affaire des assistants parlementaires]] ({{date|31|mars|2025}}).'''
+|-
+|style="{{Sondeur|Cluster17}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/avril/9753-pdt-ruffin-cluster-17-picardie-debout-21-avril-2024.pdf Cluster 17]{{note|groupe=alpha|nom=Sondage Picardie Debout}}
+|2 - 5 avril 2024
+|{{formatnum:1713}}
+| '''50'''
+| '''50'''
+|}
+
+=== Impliquant Jordan Bardella ===
+==== Hypothèse Attal – Bardella ====
+{| class="wikitable" style="text-align:center;font-size:80%;line-height:14px;"
+|- bgcolor=lightgray
+! scope=col rowspan="3" style="width:140px;" | Sondeur
+! scope=col rowspan="3" style="width:120px;" | Dates
+! scope=col rowspan="3" style="width:40px;" | Échantillon
+! scope=col style="width:110px;" | [[Fichier:Gabriel Attal 2025 (close crop).jpg|alt=Gabriel Attal|95x95px]]
+! scope=col style="width:110px;" | [[Fichier:MEP Jordan Bardella.jpg|95x95px]]
+|-
+! scope=col | [[Gabriel Attal|Attal]]<br><small>([[Renaissance (parti)|RE]])</small>
+! scope=col | [[Jordan Bardella|Bardella]]<br><small>([[Rassemblement national|RN]])</small>
+|-
+| {{Infobox Parti politique français/couleurs|RE}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+|-
+| style="{{Sondeur|Harris}}" |[https://tolunacorporate.com/wp-content/uploads/2026/05/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-2-M6-RTL-Mai-2026.pdf Harris]
+|25 - 27 mai 2026
+|{{formatnum:1744}}
+|43
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|57}}'''
+|-
+| style="{{Sondeur|Odoxa}}" |[https://www.odoxa.fr/sondage/jordan-bardella-est-la-personnalite-politique-preferee-des-francais-et-remporterait-la-presidentielle-si-elle-avait-lieu-dimanche-prochain/ Odoxa]
+|19 - 20 novembre 2025
+|{{formatnum:1004}}
+|44
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|56}}'''
+|-
+|style="{{Sondeur|Ifop}}" |[https://www.lopinion.fr/politique/bardella-le-pen-philippe-melenchon-glucksmann-a-moins-de-deux-ans-de-la-presidentielle-le-sondage-qui-relance-les-ambitions/ Ifop]
+|11 - 30 avril 2025
+|{{formatnum:9128}}
+|48
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|52}}'''
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/avril/9766-pdt-ifop-le-figaro-magazine-26-04.pdf Ifop]
+| 16 - 18 avril 2024
+| {{formatnum:1093}}
+|49
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|51}}'''
+|-
+|}
+
+==== Hypothèse Glucksmann – Bardella ====
+{| class="wikitable" style="text-align:center;font-size:80%;line-height:14px;"
+|- bgcolor=lightgray
+! scope=col rowspan="3" style="width:140px;" | Sondeur
+! scope=col rowspan="3" style="width:120px;" | Dates
+! scope=col rowspan="3" style="width:40px;" | Échantillon
+! scope=col style="width:110px;" | [[Fichier: 1720448398743 20240708 GLUCKSMANN Raphael FR 006.jpg|alt=Raphaël Glucksmann|95x95px]]
+! scope=col style="width:110px;" | [[Fichier:MEP Jordan Bardella.jpg|95x95px]]
+|-
+! scope=col |[[Raphaël Glucksmann|Glucksmann]]<br><small>([[Place publique (parti politique)|PP]])</small>
+! scope=col | [[Jordan Bardella|Bardella]]<br><small>([[Rassemblement national|RN]])</small>
+|-
+| {{Infobox Parti politique français/couleurs|PP}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+|-
+| style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10166-pres-elabe-28-mars.pdf Elabe]
+| 25 - 27 mars 2026
+| {{formatnum:1504}}
+| 41,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|58,5}}'''
+|-
+| style="{{Sondeur|Odoxa}}" |[https://www.odoxa.fr/sondage/jordan-bardella-est-la-personnalite-politique-preferee-des-francais-et-remporterait-la-presidentielle-si-elle-avait-lieu-dimanche-prochain/ Odoxa]
+|19 - 20 novembre 2025
+|{{formatnum:1004}}
+|42
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|58}}'''
+|-
+|}
+
+==== Hypothèse Mélenchon – Bardella ====
+{| class="wikitable" style="text-align:center;font-size:80%;line-height:14px;"
+|- bgcolor=lightgray
+! scope=col rowspan="3" style="width:140px;" | Sondeur
+! scope=col rowspan="3" style="width:120px;" | Dates
+! scope=col rowspan="3" style="width:40px;" | Échantillon
+! scope=col style="width:110px;" | [[File:Mélenchon 2027 - 55261894422 (cropped).jpg|95x95px]]
+! scope=col style="width:110px;" | [[Fichier:MEP Jordan Bardella.jpg|95x95px]]
+|-
+! scope=col |[[Jean-Luc Mélenchon|Mélenchon]]<br><small>([[La France insoumise|LFI]])</small>
+! scope=col | [[Jordan Bardella|Bardella]]<br><small>([[Rassemblement national|RN]])</small>
+|-
+| {{Infobox Parti politique français/couleurs|LFI}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+|-
+| style="{{Sondeur|Harris}}" |[https://tolunacorporate.com/wp-content/uploads/2026/05/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-2-M6-RTL-Mai-2026.pdf Harris]
+|25 - 27 mai 2026
+|{{formatnum:1744}}
+| 32
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|68}}'''
+|-
+| style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10166-pres-elabe-28-mars.pdf Elabe]
+| 25 - 27 mars 2026
+| {{formatnum:1504}}
+| 28,5
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|71,5}}'''
+|-
+| style="{{Sondeur|Odoxa}}" |[https://www.odoxa.fr/sondage/jordan-bardella-est-la-personnalite-politique-preferee-des-francais-et-remporterait-la-presidentielle-si-elle-avait-lieu-dimanche-prochain/ Odoxa]
+|19 - 20 novembre 2025
+|689
+|26
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|74}}'''
+|-
+|style="{{Sondeur|Ifop}}" |[https://www.lopinion.fr/politique/bardella-le-pen-philippe-melenchon-glucksmann-a-moins-de-deux-ans-de-la-presidentielle-le-sondage-qui-relance-les-ambitions/ Ifop]
+|11 - 30 avril 2025
+|{{formatnum:9128}}
+|33
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|67}}'''
+|-
+|}
+
+==== Hypothèse Philippe – Bardella ====
+{| class="wikitable" style="text-align:center;font-size:80%;line-height:14px;"
+|- bgcolor=lightgray
+! scope=col rowspan="3" style="width:140px;" | Sondeur
+! scope=col rowspan="3" style="width:120px;" | Dates
+! scope=col rowspan="3" style="width:40px;" | Échantillon
+! scope=col style="width:110px;" | [[Fichier:Edouard Philippe 3x4 crop.jpg|Édouard Philippe|95x95px]]
+! scope=col style="width:110px;" | [[Fichier:MEP Jordan Bardella.jpg|95x95px]]
+|-
+! scope=col |[[Édouard Philippe|Philippe]]<br><small>([[Horizons|HOR]])</small>
+! scope=col | [[Jordan Bardella|Bardella]]<br><small>([[Rassemblement national|RN]])</small>
+|-
+| {{Infobox Parti politique français/couleurs|HOR}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+|-
+| style="{{Sondeur|Harris}}" |[https://tolunacorporate.com/wp-content/uploads/2026/05/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-2-M6-RTL-Mai-2026.pdf Harris]
+|25 - 27 mai 2026
+|{{formatnum:1744}}
+|46
+|{{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|54}}'''
+|-
+| style="{{Sondeur|Odoxa}}" |[https://www.odoxa.fr/sondage/philippe-seffondre-melenchon-decolle-bardella-simpose/ Odoxa]
+| 20 - 21 mai 2026
+| {{formatnum:1005}}
+| 48
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|52}}'''
+|-
+| style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10166-pres-elabe-28-mars.pdf Elabe]
+| 25 - 27 mars 2026
+| {{formatnum:1504}}
+| {{Infobox Parti politique français/couleurs|HOR}} |'''{{blanc|51,5}}'''
+| 48,5
+|-
+| style="{{Sondeur|Odoxa}}" |[https://www.odoxa.fr/sondage/spectaculaire-come-back-dedouard-philippe-il-remporterait-aujourdhui-la-presidentielle/ Odoxa]
+| 25 - 26 mars 2026
+| {{formatnum:1005}}
+| {{Infobox Parti politique français/couleurs|HOR}} |'''{{blanc|52}}'''
+| 48
+|-
+| style="{{Sondeur|Odoxa}}" |[https://www.odoxa.fr/sondage/jordan-bardella-est-la-personnalite-politique-preferee-des-francais-et-remporterait-la-presidentielle-si-elle-avait-lieu-dimanche-prochain/ Odoxa]
+|19 - 20 novembre 2025
+|{{formatnum:1004}}
+|47
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|53}}'''
+|-
+|style="{{Sondeur|Ifop}}" |[https://www.lopinion.fr/politique/bardella-le-pen-philippe-melenchon-glucksmann-a-moins-de-deux-ans-de-la-presidentielle-le-sondage-qui-relance-les-ambitions/ Ifop]
+|11 - 30 avril 2025
+|{{formatnum:9128}}
+|'''50'''
+|'''50'''
+|-
+|style="{{Sondeur|Odoxa}}" |[https://www.odoxa.fr/sondage/presidentielle-le-pen-ou-bardella-seraient-en-tete-au-premier-tour-mais-battus-par-philippe-au-second/ Odoxa]
+|23 - 24 avril 2025
+|{{formatnum:1005}}
+| {{Infobox Parti politique français/couleurs|HOR}} |'''{{blanc|54}}'''
+|46
+|-
+| style="{{Sondeur|Ifop}}" |[https://www.commission-des-sondages.fr/notices/files/notices/2024/avril/9766-pdt-ifop-le-figaro-magazine-26-04.pdf Ifop]
+| 16 - 18 avril 2024
+| {{formatnum:1090}}
+| '''50'''
+| '''50'''
+|-
+|}
+
+==== Hypothèse Retailleau – Bardella ====
+{| class="wikitable" style="text-align:center;font-size:80%;line-height:14px;"
+|- bgcolor=lightgray
+! scope=col rowspan="3" style="width:140px;" | Sondeur
+! scope=col rowspan="3" style="width:120px;" | Dates
+! scope=col rowspan="3" style="width:40px;" | Échantillon
+! scope=col style="width:110px;" | [[Fichier: Bruno Retailleau - Ministre de l'Intérieur français (cropped).jpg|alt=Bruno Retailleau|95x95px]]
+! scope=col style="width:110px;" | [[Fichier:MEP Jordan Bardella.jpg|95x95px]]
+|-
+! scope=col |[[Bruno Retailleau|Retailleau]]<br><small>([[Les Républicains|LR]])</small>
+! scope=col | [[Jordan Bardella|Bardella]]<br><small>([[Rassemblement national|RN]])</small>
+|-
+| {{Infobox Parti politique français/couleurs|LR}} |
+| {{Infobox Parti politique français/couleurs|RN}} |
+|-
+| style="{{Sondeur|Elabe}}" | [https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10166-pres-elabe-28-mars.pdf Elabe]
+| 25 - 27 mars 2026
+| {{formatnum:1504}}
+| 42
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|58}}'''
+|-
+|style="{{Sondeur|Ifop}}" |[https://www.lopinion.fr/politique/bardella-le-pen-philippe-melenchon-glucksmann-a-moins-de-deux-ans-de-la-presidentielle-le-sondage-qui-relance-les-ambitions/ Ifop]
+|11 - 30 avril 2025
+|{{formatnum:9128}}
+|47
+| {{Infobox Parti politique français/couleurs|RN}} |'''{{blanc|53}}'''
+|-
+|}
+
+== Notes et références ==
+=== Notes ===
+{{Références|groupe=alpha}}
+
+=== Références ===
+{{Références}}
+
+== Voir aussi ==
+=== Articles connexes ===
+* [[Élection présidentielle française de 2027]]
+
+{{Palette
+ |Élection présidentielle française de 2027
+ |Sondages préélectoraux en France
+}}
+{{Portail|politique française|probabilités et statistiques|années 2020|Cinquième République}}
+
+[[Catégorie:Élection présidentielle française de 2027]]
+[[Catégorie:Sondages préélectoraux concernant une élection en France|Présidentielle 2027]]

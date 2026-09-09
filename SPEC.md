@@ -392,6 +392,11 @@ Le script de collecte **ne commite rien** si un contrôle échoue. Il s'arrête 
    contrôle mais reste exclu des courbes et des fiches candidat.
 2. Tous les candidats rencontrés existent dans `candidats.json`.
 3. Le nombre total de sondages n'a pas diminué par rapport au run précédent.
+4. Toute ligne de données rencontrée dans un tableau produit un sondage.
+   Une ligne illisible arrête le run et nomme l'institut et la date brute.
+   Contrôle ajouté en septembre 2026 : un sondage perdu au parsing ne fait
+   pas diminuer le total, il l'empêche seulement d'augmenter — donc aucun
+   des trois contrôles précédents ne pouvait le voir.
 
 Ne pas ajouter de contrôle supplémentaire par anticipation. On en ajoutera au vu de cas
 réels.
@@ -489,6 +494,19 @@ données fausses avant correction. À traiter comme une liste de tests de non-r�
 7. **Dates sans année** au premier tour (« 2-3 septembre ») : l'année vient du titre de
    section. Certaines chevauchent deux mois (« 31 août - 2 septembre »). Les tableaux de
    second tour, eux, portent l'année.
+8. **Modèles dans la cellule de date.** « 31 août - {{1er}} septembre »
+   (Cluster17/Le Point, septembre 2026). Un nettoyage qui supprime les
+   modèles avant la lecture de la date efface le jour et fait disparaître
+   le sondage entier, silencieusement. Résoudre `{{1er}}` en `1` avant tout
+   retrait de modèles. Variante attestée ligne 3025 de la page : un `<br>`
+   intercalé entre le tiret et le jour.
+9. **Plusieurs mesures dans une même cellule, séparées par `<hr>`.**
+   `4<br><small>Ruffin</small><hr>4<br><small>Lisnard</small>` : deux
+   candidats testés, deux scores distincts, une seule cellule. Découper sur
+   `<hr>` avant le `<br>`. Un découpage naïf ne garde que la première mesure
+   et fausse la somme sans la faire sortir des bornes du §6 : l'hypothèse 4
+   du sondage Elabe du 26-28 août 2026 a vécu ainsi à 96,5 au lieu de 100.
+   Les scores d'une même cellule ne s'additionnent jamais.
 
 Autres irrégularités à prévoir : décimales à la virgule, `{{formatnum:}}`, espaces
 insécables, notes en exposant, `—` pour non testé.

@@ -20,6 +20,10 @@ WIKI_API = ("https://fr.wikipedia.org/w/api.php"
 MOIS = {'janvier':1,'février':2,'fevrier':2,'mars':3,'avril':4,'mai':5,'juin':6,
         'juillet':7,'août':8,'aout':8,'septembre':9,'octobre':10,'novembre':11,'décembre':12,'decembre':12}
 
+# Lignes de données rencontrées mais non converties en sondage. Toute entrée ici
+# arrête le run (spec §6) : un sondage qui disparaît en silence ne se voit pas.
+ANOMALIES = []
+
 def slug(s):
     s = unicodedata.normalize('NFKD', s).encode('ascii','ignore').decode()
     return re.sub(r'[^a-z0-9]+','-', s.lower()).strip('-')
@@ -37,8 +41,16 @@ def split_cell(line):
     return '', s
 
 def cell_value(txt):
-    """Retourne (valeur, candidat_substitué). Une cellule peut remplacer le candidat
-    de la colonne : '7,5<br><small>[[François Hollande|Hollande]] (PS)</small>'."""
+    """Retourne la liste des (valeur, candidat_substitué) d'une cellule.
+
+    Une cellule peut remplacer le candidat de sa colonne :
+    '7,5<br><small>[[François Hollande|Hollande]] (PS)</small>'.
+    Elle peut aussi en contenir plusieurs, séparés par <hr> :
+    '4<br><small>Ruffin</small><hr>4<br><small>Lisnard</small>'.
+    Chaque fragment est une mesure à part entière ; leurs scores ne s'additionnent pas."""
+    return [_une_valeur(f) for f in re.split(r'<hr\s*/?>', txt)]
+
+def _une_valeur(txt):
     parts = re.split(r'<br\s*/?>', txt, maxsplit=1)
     val = clean_num(parts[0])
     sub = None
@@ -64,6 +76,7 @@ def clean_num(txt):
 def parse_dates(txt, annee):
     """'2-3 septembre' | '31 août - 2 septembre' | '24 - 25 août 2026' -> (debut, fin)"""
     t = re.sub(r'<[^>]+>|\[\[|\]\]', ' ', txt).replace('–','-').replace('—','-')
+    t = re.sub(r'\{\{1er[^}]*\}\}', '1', t)   # '{{1er}} septembre' -> '1 septembre'
     t = re.sub(r'\{\{[^}]*\}\}', ' ', t)
     an = re.search(r'\b(20\d\d)\b', t)
     if an: annee = int(an.group(1)); t = t.replace(an.group(1), '')
@@ -152,7 +165,7 @@ def parse_table(txt, annee, tour):
                     if n >= len(colonnes):   # ligne d'événement, pas une donnée
                         i += 1; continue
                     vals.append(cell_value(c))
-                    vals += [(None, None)] * (n - 1)   # colonnes fusionnées
+                    vals += [[(None, None)]] * (n - 1)   # colonnes fusionnées
                 i += 1
             if vals: cur['hypotheses'].append(vals)
             continue
@@ -161,16 +174,21 @@ def parse_table(txt, annee, tour):
     out = []
     for s in sondages:
         deb, fin = parse_dates(s['_dates'], annee)
-        if not fin: continue
+        if not fin:
+            ANOMALIES.append(f"date illisible : {s['institut']} — {s['_dates']!r}")
+            continue
         hyps = []
         for v in s['hypotheses']:
             scores = {}
-            for nom, (val, sub) in zip(colonnes, v):
-                nom = sub or nom
-                if nom != 'Autre' and val is not None: scores[slug(nom)] = val
+            for nom_col, mesures in zip(colonnes, v):
+                for val, sub in mesures:
+                    nom = sub or nom_col
+                    if nom != 'Autre' and val is not None: scores[slug(nom)] = val
             if scores: hyps.append({'tour': tour, 'echantillon': None,
                                     'candidats': sorted(scores), 'scores': scores})
-        if not hyps: continue
+        if not hyps:
+            ANOMALIES.append(f"aucune hypothèse exploitable : {s['institut']} — {s['_dates']!r}")
+            continue
         out.append({'id': f"{slug(s['institut'])}-{fin.isoformat()}",
                     'institut': s['institut'], 'terrain_debut': deb.isoformat(),
                     'terrain_fin': fin.isoformat(), 'echantillon': s['echantillon'],
@@ -263,6 +281,12 @@ def main():
 
     # Parsing
     res = extract_sondages(raw)
+
+    if ANOMALIES:
+        print("ERREUR : lignes de données non exploitées, aucune écriture :", file=sys.stderr)
+        for a in ANOMALIES:
+            print(f"  - {a}", file=sys.stderr)
+        sys.exit(1)
 
     # Fusion des sondages présents dans plusieurs sections (T1 + T2)
     fusion = {}

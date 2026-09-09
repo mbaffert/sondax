@@ -310,6 +310,109 @@
   "revid": 239339753
  },
  {
+  "id": "cluster17-2026-09-01",
+  "institut": "Cluster17",
+  "terrain_debut": "2026-08-31",
+  "terrain_fin": "2026-09-01",
+  "echantillon": 1711.0,
+  "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10251-pres-iv-cluster-17-le-point-5-septembre.pdf",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "villepin",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 18.0,
+     "roussel": 2.0,
+     "tondelier": 2.0,
+     "glucksmann": 11.5,
+     "philippe": 18.0,
+     "villepin": 3.5,
+     "retailleau": 7.5,
+     "dupont-aignan": 3.0,
+     "le-pen": 30.0,
+     "zemmour": 3.5
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "villepin",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 18.0,
+     "roussel": 2.0,
+     "tondelier": 2.5,
+     "glucksmann": 11.5,
+     "attal": 13.5,
+     "villepin": 4.0,
+     "retailleau": 9.0,
+     "dupont-aignan": 3.0,
+     "le-pen": 31.5,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "ruffin",
+     "villepin",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 17.0,
+     "roussel": 2.0,
+     "glucksmann": 11.0,
+     "philippe": 17.0,
+     "villepin": 3.5,
+     "retailleau": 6.5,
+     "dupont-aignan": 2.0,
+     "le-pen": 29.0,
+     "zemmour": 3.0,
+     "ruffin": 4.0,
+     "lisnard": 4.0
+    }
+   }
+  ],
+  "revid": 239339753
+ },
+ {
   "id": "elabe-2026-08-28",
   "institut": "Elabe",
   "terrain_debut": "2026-08-26",
@@ -416,6 +519,7 @@
      "dupont-aignan",
      "hollande",
      "le-pen",
+     "lisnard",
      "melenchon",
      "retailleau",
      "roussel",
@@ -432,7 +536,8 @@
      "dupont-aignan": 2.5,
      "le-pen": 34.5,
      "zemmour": 4.5,
-     "ruffin": 6.0
+     "ruffin": 6.0,
+     "lisnard": 3.5
     }
    },
    {

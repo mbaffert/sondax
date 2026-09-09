@@ -76,6 +76,7 @@ jobs:
           echo "url=${PR_URL}" >> "$GITHUB_OUTPUT"
 
       - name: Préparer le corps du mail
+        id: mail
         if: always()
         run: |
           ADDED="${{ steps.validation.outputs.added }}"
@@ -103,6 +104,13 @@ jobs:
             echo "Ajoutés : ${ADDED:-0} · Modifiés : ${MODIFIED:-0}"
           } > /tmp/mail_body.txt
 
+          # Pass body via GITHUB_OUTPUT (multiline)
+          {
+            echo "body<<MAILEOF"
+            cat /tmp/mail_body.txt
+            echo "MAILEOF"
+          } >> "$GITHUB_OUTPUT"
+
       - name: Notification par mail
         if: always()
         uses: dawidd6/action-send-mail@v3
@@ -116,4 +124,4 @@ jobs:
           from: Sondax <${{ secrets.MAIL_USERNAME }}>
           subject: >-
             Sondax — ${{ steps.validation.outputs.added || '0' }} nouveau(x)${{ job.status == 'failure' && ' — ÉCHEC' || '' }}
-          body: file:///tmp/mail_body.txt
+          body: ${{ steps.mail.outputs.body }}

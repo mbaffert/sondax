@@ -406,7 +406,11 @@ La PR est relue et fusionnée à la main.
 **Page de revue.** Chaque run produit `/data/derived/revue.html`, page statique jointe à
 la PR, listant les sondages ajoutés ou modifiés : institut, dates, échantillon, une ligne
 par hypothèse avec sa somme, lien vers la notice de la commission des sondages. Toute
-valeur en anomalie est surlignée. Aucune notification si le run n'apporte rien de neuf.
+valeur en anomalie est surlignée.
+
+**Notification.** Un mail est envoyé à chaque run, quel que soit le résultat :
+nombre de sondages ajoutés en objet, détail (institut, dates de terrain) et lien
+vers la PR dans le corps. En cas d'échec, l'objet le signale.
 
 **Corriger une valeur.** Priorité à la correction sur Wikipédia elle-même, qui bénéficie
 à tous et disparaît du problème au run suivant. En dernier recours, un fichier

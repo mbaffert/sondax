@@ -27,6 +27,7 @@ jobs:
         run: python scripts/collecte_polymarket.py
 
       - name: Validation
+        id: validation
         run: python scripts/validation.py
 
       - name: Calcul des séries
@@ -42,6 +43,7 @@ jobs:
           fi
 
       - name: Ouvrir une pull request
+        id: pr
         if: steps.changes.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -57,8 +59,53 @@ jobs:
           git commit -m "Collecte du ${DATE}"
           git push -u origin "$BRANCH"
 
-          gh pr create \
+          PR_URL=$(gh pr create \
             --title "Collecte du ${DATE}" \
             --body-file data/derived/revue.md \
             --base main \
-            --head "$BRANCH"
+            --head "$BRANCH")
+
+          echo "url=${PR_URL}" >> "$GITHUB_OUTPUT"
+
+      - name: Préparer le corps du mail
+        if: always()
+        run: |
+          ADDED="${{ steps.validation.outputs.added }}"
+          MODIFIED="${{ steps.validation.outputs.modified }}"
+          PR_URL="${{ steps.pr.outputs.url }}"
+          STATUS="${{ job.status }}"
+
+          {
+            if [ "$STATUS" = "failure" ]; then
+              echo "⚠ Le run de collecte a échoué."
+              echo ""
+            fi
+
+            if [ -f data/derived/mail_body.txt ]; then
+              cat data/derived/mail_body.txt
+            else
+              echo "Aucune donnée de collecte disponible (le run a échoué avant la validation)."
+            fi
+
+            echo ""
+            if [ -n "$PR_URL" ]; then
+              echo "PR : ${PR_URL}"
+            fi
+            echo ""
+            echo "Ajoutés : ${ADDED:-0} · Modifiés : ${MODIFIED:-0}"
+          } > /tmp/mail_body.txt
+
+      - name: Notification par mail
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+          to: contact@sondax.fr
+          from: Sondax <${{ secrets.MAIL_USERNAME }}>
+          subject: >-
+            Sondax — ${{ steps.validation.outputs.added || '0' }} nouveau(x)${{ job.status == 'failure' && ' — ÉCHEC' || '' }}
+          body: file:///tmp/mail_body.txt

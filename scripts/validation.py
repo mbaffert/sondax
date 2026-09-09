@@ -235,6 +235,25 @@ def main():
 
     generate_revue(sondages, candidats, added, modified)
 
+    # Résumé pour le workflow (GITHUB_OUTPUT + fichier mail)
+    import os
+    gh_output = os.environ.get("GITHUB_OUTPUT")
+    if gh_output:
+        with open(gh_output, "a") as f:
+            f.write(f"added={len(added)}\n")
+            f.write(f"modified={len(modified)}\n")
+
+    # Détail des ajouts pour le corps du mail
+    mail_lines = []
+    if added:
+        for s in added:
+            mail_lines.append(f"- {s['institut']} — {fmt_date(s['terrain_debut'])} → {fmt_date(s['terrain_fin'])}")
+    else:
+        mail_lines.append("Aucun nouveau sondage.")
+    REVUE_MAIL_PATH = ROOT / "data" / "derived" / "mail_body.txt"
+    REVUE_MAIL_PATH.parent.mkdir(parents=True, exist_ok=True)
+    REVUE_MAIL_PATH.write_text("\n".join(mail_lines), encoding="utf-8")
+
 
 if __name__ == "__main__":
     main()

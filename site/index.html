@@ -4,6 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sondax — Présidentielle 2027</title>
+<!-- TODO: créer le compte GoatCounter et confirmer le sous-domaine -->
+<script data-goatcounter="https://sondax.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 <link rel="icon" type="image/svg+xml" href="assets/logo-sondax.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -319,6 +322,10 @@ function parseDate(s) {
   return new Date(y, m - 1, d);
 }
 
+function trackEvent(path) {
+  window.goatcounter?.count({ path, event: true });
+}
+
 function couleur(cid) {
   const c = CANDIDATS[cid];
   return (c && c.couleur) ? c.couleur : '#888';
@@ -414,13 +421,14 @@ Chart.register(touchDismissPlugin);
 // Generic bloc controller
 // =========================================================================
 class BlocChart {
-  constructor({ canvasId, cbContainerId, periodeSelector, dateFin, dateDebut, nbDefault = NB_DEFAULT }) {
+  constructor({ canvasId, cbContainerId, periodeSelector, dateFin, dateDebut, nbDefault = NB_DEFAULT, periodeEventPrefix = null }) {
     this.canvas = document.getElementById(canvasId);
     this.cbContainer = document.getElementById(cbContainerId);
     this.periodeEl = document.querySelector(periodeSelector);
     this.dateFin = dateFin;
     this.dateDebut = dateDebut;
     this.nbDefault = nbDefault;
+    this.periodeEventPrefix = periodeEventPrefix;
     this.chart = null;
     this.checked = new Set();
     this.candidats = {};
@@ -472,6 +480,12 @@ class BlocChart {
         btn.classList.add('active');
         const input = this.periodeEl.querySelector('.date-libre');
         if (input) input.value = '';
+        if (this.periodeEventPrefix) {
+          const label = btn.dataset.months ? btn.dataset.months + 'm'
+            : btn.dataset.since ? 'annee'
+            : btn.dataset.all ? 'tout' : 'autre';
+          trackEvent(this.periodeEventPrefix + '/' + label);
+        }
         this.render();
       });
     });
@@ -479,6 +493,7 @@ class BlocChart {
     if (input) {
       input.addEventListener('change', () => {
         this.periodeEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+        if (this.periodeEventPrefix) trackEvent(this.periodeEventPrefix + '/libre');
         this.render();
       });
     }
@@ -717,7 +732,11 @@ class ExplorerSondages {
 
     this.populateSondages();
     this.selSondage.addEventListener('change', () => this.onSondageChange());
-    this.selHyp.addEventListener('change', () => this.renderResult());
+    this.selHyp.addEventListener('change', () => {
+      const s = this.currentSondage();
+      if (s) trackEvent('hypothese/1/' + s.id);
+      this.renderResult();
+    });
     this.onSondageChange();
   }
 
@@ -920,8 +939,8 @@ class SecondTour {
     this.allCands = Object.keys(candCount).sort((a, b) => candCount[b] - candCount[a]);
 
     this.populateCand1();
-    this.sel1.addEventListener('change', () => { this.populateCand2(); this.render(); });
-    this.sel2.addEventListener('change', () => this.render());
+    this.sel1.addEventListener('change', () => { this.populateCand2(); this.trackDuel(); this.render(); });
+    this.sel2.addEventListener('change', () => { this.trackDuel(); this.render(); });
     this.populateCand2();
     this.render();
   }
@@ -959,6 +978,11 @@ class SecondTour {
       if (cid === prev) opt.selected = true;
       this.sel2.appendChild(opt);
     }
+  }
+
+  trackDuel() {
+    const a = this.sel1.value, b = this.sel2.value;
+    if (a && b) trackEvent('duel/' + [a, b].sort().join('-'));
   }
 
   duelKey() {
@@ -1153,6 +1177,7 @@ async function init() {
     periodeSelector: '.periode[data-bloc="sondages"]',
     dateFin: seriesData.date_fin,
     dateDebut: seriesData.date_debut,
+    periodeEventPrefix: 'periode-sondages',
   });
 
   const sondagesCandidats = {};
@@ -1210,6 +1235,7 @@ async function init() {
     dateFin: polyDateFin,
     dateDebut: polyDateDebut,
     nbDefault: 3,
+    periodeEventPrefix: 'periode-cotes',
   });
   polyBloc.setCandidats(polyCandidats, (a, b) => {
     const la = polyBloc.lastVal(a) || 0;

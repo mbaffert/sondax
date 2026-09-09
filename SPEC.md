@@ -417,6 +417,21 @@ vers la PR dans le corps. En cas d'échec, l'objet le signale.
 `corrections.json` appliqué après le parsing, avec motif obligatoire pour chaque entrée.
 Une erreur récurrente se répare dans le parser, jamais dans les corrections.
 
+**Mesure d'audience.** GoatCounter, hébergé chez GoatCounter (hors du site), sans cookie
+ni stockage local, sans donnée personnelle collectée. Le script `count.js` est chargé en
+asynchrone et ignoré s'il est bloqué par un adblock (optional chaining, pas de fallback).
+
+Événements envoyés (liste fermée, seuls des identifiants du référentiel ou des données) :
+
+- `duel/<id-a>-<id-b>` : sélection d'un duel de second tour (identifiants triés
+  alphabétiquement).
+- `periode-sondages/<3m|6m|annee|tout|libre>` : raccourci de période, courbe sondages.
+- `periode-cotes/<3m|6m|annee|tout|libre>` : raccourci de période, bloc Polymarket.
+- `hypothese/<tour>/<id-sondage>` : ouverture d'une hypothèse dans la fiche technique.
+
+Aucune date libre saisie par l'utilisateur, aucune valeur de champ texte, aucun paramètre
+de requête n'est transmis.
+
 ---
 
 ## 9. Architecture

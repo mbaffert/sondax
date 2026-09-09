@@ -59,11 +59,19 @@ jobs:
           git commit -m "Collecte du ${DATE}"
           git push -u origin "$BRANCH"
 
-          PR_URL=$(gh pr create \
-            --title "Collecte du ${DATE}" \
-            --body-file data/derived/revue.md \
-            --base main \
-            --head "$BRANCH")
+          if [ -f data/derived/revue.md ]; then
+            PR_URL=$(gh pr create \
+              --title "Collecte du ${DATE}" \
+              --body-file data/derived/revue.md \
+              --base main \
+              --head "$BRANCH")
+          else
+            PR_URL=$(gh pr create \
+              --title "Collecte du ${DATE}" \
+              --body "Collecte automatique du ${DATE}. Aucun sondage ajouté ou modifié (mise à jour Polymarket uniquement)." \
+              --base main \
+              --head "$BRANCH")
+          fi
 
           echo "url=${PR_URL}" >> "$GITHUB_OUTPUT"
 

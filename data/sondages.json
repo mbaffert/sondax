@@ -124,7 +124,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "ipsos-2026-09-02",
@@ -307,7 +307,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "elabe-2026-08-28",
@@ -542,7 +542,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "ifop-2026-08-25",
@@ -811,7 +811,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "harris-2026-08-19",
@@ -1000,7 +1000,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "cluster17-2026-07-24",
@@ -1131,7 +1131,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "elabe-2026-07-10",
@@ -1378,7 +1378,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "verian-2026-07-10",
@@ -1413,7 +1413,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "opinionway-2026-07-09",
@@ -1504,7 +1504,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "ifop-2026-07-08",
@@ -1607,7 +1607,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "harris-2026-07-08",
@@ -1796,7 +1796,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "ifop-2026-06-24",
@@ -2027,7 +2027,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "opinionway-2026-06-11",
@@ -2118,7 +2118,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "ipsos-2026-05-28",
@@ -2361,7 +2361,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "ifop-2026-05-28",
@@ -2684,7 +2684,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "harris-2026-05-27",
@@ -2909,7 +2909,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "odoxa-2026-05-21",
@@ -2960,7 +2960,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "harris-2026-04-30",
@@ -3083,7 +3083,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "elabe-2026-03-27",
@@ -3344,7 +3344,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "odoxa-2026-03-26",
@@ -3421,7 +3421,82 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
+ },
+ {
+  "id": "opinionway-2026-03-26",
+  "institut": "OpinionWay",
+  "commanditaire": "Pollitics / L'Opinion",
+  "terrain_debut": "2026-03-25",
+  "terrain_fin": "2026-03-26",
+  "echantillon": 988,
+  "population": "certains_daller_voter",
+  "url_source": "https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2257",
+  "source": "manuel",
+  "saisi_le": "2026-09-09",
+  "revid": null,
+  "hypotheses": [
+   {
+    "tour": 1,
+    "libelle": "Glucksmann / Philippe",
+    "echantillon": 788,
+    "principale": true,
+    "scores": {
+     "arthaud": 1,
+     "melenchon": 13,
+     "glucksmann": 15,
+     "philippe": 18,
+     "retailleau": 11,
+     "knafo": 5,
+     "bardella": 37
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Glucksmann / Attal",
+    "echantillon": 788,
+    "principale": false,
+    "scores": {
+     "arthaud": 1,
+     "melenchon": 14,
+     "glucksmann": 15,
+     "attal": 15,
+     "retailleau": 12,
+     "knafo": 5,
+     "bardella": 38
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Hollande / Philippe",
+    "echantillon": 788,
+    "principale": false,
+    "scores": {
+     "arthaud": 1,
+     "melenchon": 14,
+     "hollande": 11,
+     "philippe": 20,
+     "retailleau": 13,
+     "knafo": 4,
+     "bardella": 37
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Hollande / Attal",
+    "echantillon": 788,
+    "principale": false,
+    "scores": {
+     "arthaud": 1,
+     "melenchon": 14,
+     "hollande": 13,
+     "attal": 16,
+     "retailleau": 13,
+     "knafo": 5,
+     "bardella": 38
+    }
+   }
+  ]
  },
  {
   "id": "harris-2026-03-22",
@@ -3488,7 +3563,7 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  },
  {
   "id": "ifop-2026-02-27",
@@ -3787,6 +3862,6 @@
     }
    }
   ],
-  "revid": 239306365
+  "revid": 239339753
  }
 ]

@@ -35,7 +35,7 @@ jobs:
       - name: Vérifier les changements
         id: changes
         run: |
-          if git diff --quiet data/sondages.json data/polymarket.json; then
+          if git diff --quiet data/sondages.json data/polymarket.json data/sondages_manuels.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"

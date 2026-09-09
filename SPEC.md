@@ -168,7 +168,29 @@ Règles :
   total en le signalant à l'affichage.
 - Les scores restent **par hypothèse**, jamais aplatis en une valeur par candidat.
 
-### 3.3 `polymarket.json`
+### 3.3 `sondages_manuels.json` — saisie manuelle, édité à la main
+
+Tout sondage d'intentions de vote ayant fait l'objet d'un dépôt de notice auprès
+de la commission des sondages et absent du wikitexte peut être saisi manuellement
+dans ce fichier.
+
+Le schéma est identique à celui de `sondages.json`, avec trois champs
+supplémentaires :
+
+- `source`: `"manuel"` (obligatoire).
+- `url_notice`: URL de la notice de la commission des sondages (obligatoire).
+- `saisi_le`: date de saisie au format ISO (obligatoire).
+- `revid`: toujours `null`.
+
+Le pipeline concatène ce fichier à la liste issue du wikitexte **avant** la
+validation. Tous les contrôles du §8 s'appliquent à l'identique.
+
+En cas de collision d'identifiant avec une entrée issue du wikitexte, le run
+échoue avec un message indiquant que le sondage est désormais présent sur
+Wikipédia et que l'entrée manuelle doit être supprimée. Jamais d'écrasement
+silencieux (§3.2).
+
+### 3.4 `polymarket.json`
 
 ```json
 {

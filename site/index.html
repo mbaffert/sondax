@@ -773,7 +773,8 @@ class ExplorerSondages {
     const echStr = ech ? ech.toLocaleString('fr-FR') : '—';
     const scores = Object.entries(hyp.scores).sort((a, b) => b[1] - a[1]);
 
-    let html = `<p class="fiche-meta">${s.institut} — ${fmtDate(s.terrain_debut)} \u2192 ${fmtDate(s.terrain_fin)} — Échantillon\u00a0: ${echStr}</p>`;
+    const manuelTag = s.source === 'manuel' ? ' · <span style="color:var(--bleu-vif);">saisie manuelle</span>' : '';
+    let html = `<p class="fiche-meta">${s.institut} — ${fmtDate(s.terrain_debut)} \u2192 ${fmtDate(s.terrain_fin)} — Échantillon\u00a0: ${echStr}${manuelTag}</p>`;
     html += '<div class="fiche-chart-wrap"><canvas id="fiche-bar-chart"></canvas></div>';
     if (ech) {
       html += '<p class="approx">Marges d\u2019erreur approximatives, calculées sur l\u2019échantillon total du sondage.</p>';

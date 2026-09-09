@@ -1,0 +1,77 @@
+[
+ {
+  "id": "opinionway-2026-03-26",
+  "institut": "OpinionWay",
+  "commanditaire": "Pollitics / L'Opinion",
+  "terrain_debut": "2026-03-25",
+  "terrain_fin": "2026-03-26",
+  "echantillon": 988,
+  "population": "certains_daller_voter",
+  "url_source": "https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2257",
+  "source": "manuel",
+  "saisi_le": "2026-09-09",
+  "revid": null,
+  "hypotheses": [
+   {
+    "tour": 1,
+    "libelle": "Glucksmann / Philippe",
+    "echantillon": 788,
+    "principale": true,
+    "scores": {
+     "arthaud": 1,
+     "melenchon": 13,
+     "glucksmann": 15,
+     "philippe": 18,
+     "retailleau": 11,
+     "knafo": 5,
+     "bardella": 37
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Glucksmann / Attal",
+    "echantillon": 788,
+    "principale": false,
+    "scores": {
+     "arthaud": 1,
+     "melenchon": 14,
+     "glucksmann": 15,
+     "attal": 15,
+     "retailleau": 12,
+     "knafo": 5,
+     "bardella": 38
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Hollande / Philippe",
+    "echantillon": 788,
+    "principale": false,
+    "scores": {
+     "arthaud": 1,
+     "melenchon": 14,
+     "hollande": 11,
+     "philippe": 20,
+     "retailleau": 13,
+     "knafo": 4,
+     "bardella": 37
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Hollande / Attal",
+    "echantillon": 788,
+    "principale": false,
+    "scores": {
+     "arthaud": 1,
+     "melenchon": 14,
+     "hollande": 13,
+     "attal": 16,
+     "retailleau": 13,
+     "knafo": 5,
+     "bardella": 38
+    }
+   }
+  ]
+ }
+]

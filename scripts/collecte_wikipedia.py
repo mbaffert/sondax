@@ -8,6 +8,7 @@ import re, json, unicodedata, datetime, pathlib, sys, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
+MANUELS_PATH = ROOT / "data" / "sondages_manuels.json"
 OUTPUT_PATH = ROOT / "data" / "sondages.json"
 SNAPSHOTS_DIR = ROOT / "data" / "snapshots"
 
@@ -281,6 +282,28 @@ def main():
     if unknown:
         print(f"ERREUR : candidats inconnus dans le référentiel : {sorted(unknown)}", file=sys.stderr)
         sys.exit(1)
+
+    # Sondages manuels
+    wiki_ids = {s['id'] for s in res}
+    if MANUELS_PATH.exists():
+        manuels = json.loads(MANUELS_PATH.read_text())
+        candidat_ids = set(candidats.keys())
+        for s in manuels:
+            if s['id'] in wiki_ids:
+                print(f"ERREUR : collision d'id '{s['id']}' — ce sondage est désormais "
+                      f"présent sur Wikipédia, supprimer l'entrée manuelle de "
+                      f"sondages_manuels.json", file=sys.stderr)
+                sys.exit(1)
+            # Valider les candidats
+            for h in s['hypotheses']:
+                for cid in h['scores']:
+                    if cid not in candidat_ids:
+                        print(f"ERREUR : candidat inconnu '{cid}' dans le sondage "
+                              f"manuel '{s['id']}'", file=sys.stderr)
+                        sys.exit(1)
+            res.append(s)
+        print(f"{len(manuels)} sondage(s) manuel(s) ajouté(s)")
+    res = sorted(res, key=lambda s: s['terrain_fin'], reverse=True)
 
     # Écriture
     OUTPUT_PATH.write_text(json.dumps(res, ensure_ascii=False, indent=1) + "\n")

@@ -27,7 +27,9 @@ jobs:
           python-version: '3.12'
 
       - name: Générer les données dérivées
-        run: python scripts/series.py
+        run: |
+          python scripts/series.py
+          python scripts/series_historique.py
 
       - name: Préparer l'artefact
         run: |
@@ -35,6 +37,7 @@ jobs:
           cp -r site/* _site/
           cp -r data/*.json _site/data/
           cp -r data/derived/*.json _site/data/derived/
+          rm -f _site/data/historique.json
 
       - uses: actions/upload-pages-artifact@v3
         with:

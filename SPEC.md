@@ -78,7 +78,8 @@ jamais sur la question en anglais.
 
 ## 3. Modèle de données
 
-Trois fichiers dans `/data`. Les snapshots de wikitexte vont dans `/data/snapshots`
+Trois fichiers dans `/data` pour 2027, plus `historique.json` pour les élections
+2002-2022 (§12). Les snapshots de wikitexte vont dans `/data/snapshots`
 et ne sont jamais modifiés.
 
 ### 3.1 `candidats.json` — référentiel, édité à la main
@@ -450,13 +451,26 @@ de requête n'est transmis.
   candidats.json
   sondages.json
   polymarket.json
-  /snapshots        wikitexte brut, immuable
-  /derived          séries précalculées, jetable
+  historique.json                 2002-2022, produit une fois (§12)
+  /snapshots                     wikitexte brut, immuable
+  /snapshots/historique           wikitexte anglais, immuable
+  /derived                       séries précalculées, jetable
 /scripts
-  collecte_wikipedia.py   dérivé du prototype parse_wikipedia.py
+  collecte_wikipedia.py          dérivé du prototype parse_wikipedia.py
   collecte_polymarket.py
   validation.py
+  series.py
+  series_historique.py           séries 2002-2022 pour le front
+  import_historique.py           import unique depuis les snapshots anglais
+  wikitable.py                   parseur de wikitables (pages anglaises)
 /site
+  index.html
+  sondages.html
+  methodologie.html
+  precedentes-elections.html     rubrique « Précédentes élections »
+  presidentielle-{2002..2022}.html  une page par élection
+  /assets
+    historique.js                script partagé des pages d'élection
 ```
 
 **Mise en ligne.** Le déploiement public n'intervient qu'après accord explicite.
@@ -517,3 +531,37 @@ corrompu (`will-jean-luc-mlenchon-...`, accent perdu à la création). Le champ
   ou volume minimum).
 - Sondages et cotes ne mesurent pas la même chose : parts de voix au premier tour d'un
   côté, probabilité de victoire de l'autre. Ne jamais les superposer sur un même graphe.
+
+---
+
+## 12. Précédentes élections (2002-2022)
+
+**Objet.** Comparer 2027 aux présidentielles précédentes, au même nombre de jours avant
+le premier tour. Une page d'accueil de rubrique, puis une page par élection avec
+premier et second tours.
+
+**Source.** Pages « Opinion polling for the {année} French presidential election »
+(en.wikipedia.org, CC BY-SA), figées par revid : 1329460026 (2002), 1341388824 (2007),
+1279812574 (2012), 1213598918 (2017), 1363121499 (2022). Les pages françaises sont
+écartées : pas d'échantillon pour 2002-2012, couverture plus faible.
+
+**Données.** `data/historique.json`, produit une fois par `scripts/import_historique.py`
+depuis `data/snapshots/historique/`. Données figées : ni collecte quotidienne, ni
+contrôles du §8. Les sommes hors bornes présentes sur la page sont conservées et
+marquées (`somme_hors_bornes`). Rollings, sous-échantillons et sondages hors commission
+sont marqués, jamais filtrés à l'import.
+
+**Périmètre affiché.** Sondages commencés à partir du 1er janvier de l'année précédant
+l'élection, jusqu'au second tour. Pour la courbe du premier tour, filtre d'affichage et
+non de calcul (§4).
+
+**Méthode.** Premier tour : identique à la courbe 2027, même code ; toute évolution de
+méthode s'applique aux deux et l'historique est recalculé. Second tour : même règle
+qu'au §7. Rollings compris tant qu'aucune règle n'est décidée.
+
+**Affichage.** Axe en dates ; alignement interne en jours avant le premier tour,
+repère du jour équivalent pour 2027 et nombre de jours dans l'info-bulle.
+Résultats officiels ; points bruts au premier tour.
+
+**Hors périmètre.** Traitement des rollings, regroupement par famille politique ou par
+rang, superposition de plusieurs élections sur un même graphe, élections de 1965 à 1995.

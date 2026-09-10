@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Présidentielle 2002 — Sondax</title>
+<!-- TODO: créer le compte GoatCounter et confirmer le sous-domaine -->
+<script data-goatcounter="https://sondax.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<link rel="icon" type="image/svg+xml" href="assets/logo-sondax.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu-vif: #0C6CF2;
+    --bleu-nuit: #0B2E6F;
+    --fond: #F7F8F5;
+    --texte: #202632;
+    --gris: #66707D;
+    --titre: 'Space Grotesk', system-ui, sans-serif;
+    --corps: 'IBM Plex Sans', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--corps); background: var(--fond); color: var(--texte); font-size: 15px; line-height: 1.5; }
+  a { color: var(--bleu-vif); text-decoration: none; }
+  a:hover { color: var(--bleu-nuit); text-decoration: underline; }
+
+  header { background: var(--bleu-nuit); color: #fff; padding: 32px 28px 24px; }
+  header .header-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  .countdown { text-align: right; color: #fff; flex-shrink: 0; }
+  .cd-big { font-family: var(--titre); font-size: 28px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+  .cd-small { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+  header img { width: 180px; display: block; }
+  header .header-title { font-family: var(--titre); font-weight: 500; font-size: 24px;
+    letter-spacing: -0.01em; color: #fff; margin-top: 12px; }
+
+  nav.section-nav { position: sticky; top: 0; z-index: 20; background: var(--bleu-nuit);
+    border-bottom: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center;
+    padding: 0 28px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  nav.section-nav::-webkit-scrollbar { display: none; }
+  nav.section-nav .nav-inner { max-width: 1180px; margin: 0 auto; display: flex; width: 100%; align-items: center; }
+  nav.section-nav .nav-sep { width: 1px; height: 16px; background: rgba(255,255,255,0.2); margin: 0 4px; flex-shrink: 0; }
+  nav.section-nav a { font-family: var(--corps); font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.6); padding: 10px 14px; white-space: nowrap;
+    border-bottom: 2px solid transparent; transition: all 0.15s; text-decoration: none; }
+  nav.section-nav a:hover { color: #fff; text-decoration: none; }
+  nav.section-nav a.active { color: #fff; border-bottom-color: #fff; }
+
+  main { max-width: 1180px; margin: 0 auto; padding: 26px 28px 0; }
+
+  .retour { font-size: 13px; margin-bottom: 12px; }
+  .retour a { color: var(--bleu-vif); }
+
+  .bloc { background: #fff; border: 1px solid #E3E5E0; border-radius: 16px;
+    padding: 26px 28px 22px; margin-bottom: 18px;
+    box-shadow: 0 1px 2px rgba(32,38,50,0.04); }
+  .bloc h2 { font-family: var(--titre); font-size: 25px; font-weight: 600;
+    letter-spacing: -0.02em; margin: 0 0 5px; color: var(--texte); }
+  .bloc .subtitle { font-size: 13.5px; color: var(--gris); margin-bottom: 18px; }
+
+  .tabs { display: flex; background: #F2F3F0; border-radius: 9px; padding: 3px;
+    margin-bottom: 18px; width: fit-content; }
+  .tab { font-family: var(--corps); font-size: 13.5px; font-weight: 500; padding: 7px 15px;
+    cursor: pointer; border: none; background: transparent; color: var(--gris);
+    border-radius: 7px; transition: all 0.15s; }
+  .tab:hover { color: var(--texte); }
+  .tab.active { background: #fff; color: var(--texte); box-shadow: 0 1px 2px rgba(32,38,50,0.08); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .controles { display: flex; gap: 14px 18px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+  .groupe { display: flex; background: #F2F3F0; border-radius: 9px; padding: 3px; }
+  .groupe button { border: 0; cursor: pointer; font-family: var(--corps); font-size: 13px; font-weight: 500;
+    padding: 6px 13px; border-radius: 7px; white-space: nowrap; background: transparent;
+    color: var(--gris); transition: all 0.15s; }
+  .groupe button:hover { color: var(--texte); }
+  .groupe button.active { background: #fff; color: var(--texte);
+    box-shadow: 0 1px 2px rgba(32,38,50,0.08); }
+  .opt { font-size: 13px; color: var(--gris); display: flex; align-items: center; gap: 6px; cursor: pointer; }
+
+  .chart-wrap { position: relative; width: 100%; height: 500px; }
+  .resume { font-size: 13px; color: var(--gris); margin: 10px 0 4px; }
+
+  .candidats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px 18px; margin-top: 14px; font-size: 13px; }
+  .cand { display: grid; grid-template-columns: auto 10px 1fr auto; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+  .cand .pastille { width: 10px; height: 10px; border-radius: 50%; }
+  .cand .nom { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .cand .res { color: var(--gris); font-variant-numeric: tabular-nums; }
+  .cand.masque .nom { color: var(--gris); }
+  .extra { display: contents; }
+  .extra.collapsed { display: none; }
+  .plus { grid-column: 1 / -1; background: none; border: 0; color: var(--bleu-vif); font: inherit; font-size: 13px;
+    text-align: left; padding: 6px 0 0; cursor: pointer; }
+
+  .duel-select { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 1em; font-size: 13px; }
+  .duel-select select { font-family: var(--corps); padding: 7px 10px; border: 1px solid #DDDFDA;
+    border-radius: 8px; font-size: 13.5px; font-weight: 500; color: var(--texte); background: #fff; }
+  .t2-table { border-collapse: collapse; width: 100%; font-size: 0.85em; margin-top: 0.5em; }
+  .t2-table th, .t2-table td { border: 1px solid #e2e4e0; padding: 0.4em 0.6em; text-align: left; }
+  .t2-table th { background: #f5f5f3; }
+
+  footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
+  footer .footer-inner { max-width: 1180px; margin: 0 auto; }
+  footer a { color: rgba(255,255,255,0.72); }
+  footer a:hover { color: #fff; text-decoration: none; }
+  footer .disclaimer { font-size: 12.5px; line-height: 1.6; margin-top: 8px; }
+
+  @media (max-width: 600px) {
+    header { padding: 22px 16px 16px; }
+    header .header-inner { flex-wrap: wrap; }
+    header img { width: 130px; }
+    header .header-title { font-size: 18px; }
+    .countdown { text-align: left; width: 100%; margin-top: 10px; }
+    .cd-big { font-size: 22px; }
+    nav.section-nav { padding: 0 12px; }
+    nav.section-nav a { font-size: 12px; padding: 9px 10px; }
+    main { padding: 14px 12px 0; }
+    .bloc { padding: 18px 16px 16px; border-radius: 12px; }
+    .chart-wrap { height: 320px; }
+    .candidats { grid-template-columns: repeat(2, 1fr); }
+    .duel-select { flex-direction: column; align-items: flex-start; gap: 6px; }
+    .duel-select select { width: 100%; }
+    footer { padding: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <a href="index.html"><img src="assets/logo-sondax-blanc.svg" alt="Sondax"></a>
+      <p class="header-title">Présidentielle 2002</p>
+    </div>
+    <div id="countdown" class="countdown"></div>
+  </div>
+</header>
+<script>
+(function(){var el=document.getElementById('countdown');if(!el)return;
+var T1=new Date(2027,3,18),T2=new Date(2027,4,2);
+var p=new Date().toLocaleDateString('en-CA',{timeZone:'Europe/Paris'});
+var today=new Date(p+'T00:00:00');
+var d1=Math.round((T1-today)/864e5),d2=Math.round((T2-today)/864e5);
+window._joursAvantT1_2027=d1;
+if(d2<0){el.style.display='none';return}
+var b,s;
+if(d1>0){b='J\u2011'+d1;s='Premier tour le dimanche 18 avril 2027'}
+else if(d1===0){b='J0';s='Premier tour aujourd\u2019hui'}
+else if(d2>0){b='J\u2011'+d2;s='Second tour le dimanche 2 mai 2027'}
+else{b='J0';s='Second tour aujourd\u2019hui'}
+el.innerHTML='<div class="cd-big">'+b+'</div><div class="cd-small">'+s+'</div>';
+})();
+</script>
+
+<nav class="section-nav">
+  <div class="nav-inner">
+    <a href="index.html">Présidentielle 2027</a>
+    <span class="nav-sep"></span>
+    <a href="sondages.html">Tous les sondages</a>
+    <a href="methodologie.html">Méthodologie</a>
+    <a href="precedentes-elections.html" class="active">Précédentes élections</a>
+  </div>
+</nav>
+
+<main>
+  <p class="retour"><a href="precedentes-elections.html">← Précédentes élections</a></p>
+  <div class="bloc">
+    <h2>Présidentielle 2002</h2>
+    <p class="subtitle">Intentions de vote au premier et au second tour.</p>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="t1">Premier tour</button>
+      <button class="tab" data-tab="t2">Second tour</button>
+    </div>
+
+    <div class="controles">
+      <div class="groupe" id="periode-group">
+        <button data-months="0" class="active">Depuis janvier 2001</button>
+        <button data-months="12">1 an</button>
+        <button data-months="6">6 mois</button>
+        <button data-months="3">3 mois</button>
+      </div>
+    </div>
+
+    <div class="tab-panel active" id="panel-t1">
+      <div class="chart-wrap"><canvas id="chart-t1"></canvas></div>
+      <p class="resume" id="resume"></p>
+      <div class="candidats" id="candidats-t1"></div>
+    </div>
+
+    <div class="tab-panel" id="panel-t2">
+      <div class="duel-select">
+        <span style="color:var(--gris);">Candidat :</span>
+        <select id="duel-cand1"></select>
+        <span style="color:var(--gris);">contre :</span>
+        <select id="duel-cand2"></select>
+      </div>
+      <div id="t2-content"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p id="attribution"></p>
+    <p><a href="mailto:contact@sondax.fr">Contact</a> · Hébergeur : <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+    <p class="disclaimer">Marque indépendante. Le bleu et le rouge ne représentent aucun camp politique.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+<script src="assets/historique.js"></script>
+<script>initHistorique('2002');</script>
+
+</body>
+</html>

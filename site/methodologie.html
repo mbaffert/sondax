@@ -23,10 +23,14 @@
 
   header { background: var(--bleu-nuit); color: #fff; padding: 1.5em 2em; }
   header .header-inner { display: flex; align-items: center; gap: 1em; }
+  header .header-left { display: flex; align-items: center; gap: 1em; flex: 1; }
   header img { height: 2em; }
   header h1 { font-family: var(--titre); font-size: 1.6em; font-weight: 700; letter-spacing: -0.02em; }
   header h1 a { color: #fff; text-decoration: none; }
   header p { font-size: 0.9em; color: rgba(255,255,255,0.75); margin-top: 0.15em; }
+  .countdown { text-align: right; color: #fff; flex-shrink: 0; }
+  .cd-big { font-family: var(--titre); font-size: 28px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+  .cd-small { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
 
   main { max-width: 760px; margin: 0 auto; padding: 2em 1.5em; }
   main h2 { font-family: var(--titre); font-size: 1.3em; font-weight: 700; margin: 2em 0 0.5em; color: var(--texte); }
@@ -44,13 +48,38 @@
 
 <header>
   <div class="header-inner">
-    <img src="assets/logo-sondax-blanc.svg" alt="Sondax">
-    <div>
-      <h1><a href="index.html">Sondax</a></h1>
-      <p>Voir les rapports de force bouger.</p>
+    <div class="header-left">
+      <img src="assets/logo-sondax-blanc.svg" alt="Sondax">
+      <div>
+        <h1><a href="index.html">Sondax</a></h1>
+        <p>Voir les rapports de force bouger.</p>
+      </div>
     </div>
+    <div id="countdown" class="countdown"></div>
   </div>
 </header>
+<script>
+(function(){var el=document.getElementById('countdown');if(!el)return;
+var T1=new Date(2027,3,18),T2=new Date(2027,4,2);
+var p=new Date().toLocaleDateString('en-CA',{timeZone:'Europe/Paris'});
+var today=new Date(p+'T00:00:00');
+var d1=Math.round((T1-today)/864e5),d2=Math.round((T2-today)/864e5);
+window._joursAvantT1_2027=d1;
+if(d2<0){el.style.display='none';return}
+var b,s;
+if(d1>0){b='J\u2011'+d1;s='Premier tour le dimanche 18 avril 2027'}
+else if(d1===0){b='J0';s='Premier tour aujourd\u2019hui'}
+else if(d2>0){b='J\u2011'+d2;s='Second tour le dimanche 2 mai 2027'}
+else{b='J0';s='Second tour aujourd\u2019hui'}
+el.innerHTML='<div class="cd-big">'+b+'</div><div class="cd-small">'+s+'</div>';
+})();
+</script>
+
+<nav style="background:var(--bleu-nuit);border-bottom:1px solid rgba(255,255,255,0.12);padding:0 2em;font-size:13px;">
+  <a href="index.html" style="color:rgba(255,255,255,0.6);padding:10px 14px;display:inline-block;text-decoration:none;">Présidentielle 2027</a>
+  <a href="sondages.html" style="color:rgba(255,255,255,0.6);padding:10px 14px;display:inline-block;text-decoration:none;">Tous les sondages</a>
+  <a href="precedentes-elections.html" style="color:rgba(255,255,255,0.6);padding:10px 14px;display:inline-block;text-decoration:none;">Précédentes élections</a>
+</nav>
 
 <main>
 <h2>Méthodologie</h2>

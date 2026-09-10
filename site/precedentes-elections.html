@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Précédentes élections — Sondax</title>
+<!-- TODO: créer le compte GoatCounter et confirmer le sous-domaine -->
+<script data-goatcounter="https://sondax.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<link rel="icon" type="image/svg+xml" href="assets/logo-sondax.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bleu-vif: #0C6CF2;
+    --bleu-nuit: #0B2E6F;
+    --fond: #F7F8F5;
+    --texte: #202632;
+    --gris: #66707D;
+    --titre: 'Space Grotesk', system-ui, sans-serif;
+    --corps: 'IBM Plex Sans', system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--corps); background: var(--fond); color: var(--texte); font-size: 15px; line-height: 1.5; }
+  a { color: var(--bleu-vif); text-decoration: none; }
+  a:hover { color: var(--bleu-nuit); text-decoration: underline; }
+
+  header { background: var(--bleu-nuit); color: #fff; padding: 32px 28px 24px; }
+  header .header-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  header img { width: 180px; display: block; }
+  .countdown { text-align: right; color: #fff; flex-shrink: 0; }
+  .cd-big { font-family: var(--titre); font-size: 28px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
+  .cd-small { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+  header .header-title { font-family: var(--titre); font-weight: 500; font-size: 24px;
+    letter-spacing: -0.01em; color: #fff; margin-top: 12px; }
+
+  nav.section-nav { position: sticky; top: 0; z-index: 20; background: var(--bleu-nuit);
+    border-bottom: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center;
+    padding: 0 28px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  nav.section-nav::-webkit-scrollbar { display: none; }
+  nav.section-nav .nav-inner { max-width: 1180px; margin: 0 auto; display: flex; width: 100%; align-items: center; }
+  nav.section-nav .nav-sep { width: 1px; height: 16px; background: rgba(255,255,255,0.2); margin: 0 4px; flex-shrink: 0; }
+  nav.section-nav a { font-family: var(--corps); font-size: 13px; font-weight: 500;
+    color: rgba(255,255,255,0.6); padding: 10px 14px; white-space: nowrap;
+    border-bottom: 2px solid transparent; transition: all 0.15s; text-decoration: none; }
+  nav.section-nav a:hover { color: #fff; text-decoration: none; }
+  nav.section-nav a.active { color: #fff; border-bottom-color: #fff; }
+
+  main { max-width: 1180px; margin: 0 auto; padding: 26px 28px 40px; }
+  h2 { font-family: var(--titre); font-size: 25px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 6px; }
+  .subtitle { font-size: 13.5px; color: var(--gris); margin-bottom: 22px; }
+
+  .carte { display: block; background: #fff; border: 1px solid #E3E5E0; border-radius: 16px;
+    padding: 22px 28px; margin-bottom: 14px; box-shadow: 0 1px 2px rgba(32,38,50,0.04);
+    text-decoration: none; color: var(--texte); transition: box-shadow 0.15s, border-color 0.15s; }
+  .carte:hover { border-color: var(--bleu-vif); box-shadow: 0 2px 8px rgba(12,108,242,0.10);
+    text-decoration: none; }
+  .carte .annee { font-family: var(--titre); font-size: 20px; font-weight: 700;
+    letter-spacing: -0.02em; }
+  .carte .dates { font-size: 13.5px; color: var(--gris); margin-top: 2px; }
+  .carte .duel { font-size: 14px; margin-top: 6px; }
+  .carte .stats { font-size: 13px; color: var(--gris); margin-top: 4px; }
+  .carte .fleche { float: right; font-size: 20px; color: var(--gris); margin-top: -24px; }
+
+  footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
+  footer .footer-inner { max-width: 1180px; margin: 0 auto; }
+  footer a { color: rgba(255,255,255,0.72); }
+  footer a:hover { color: #fff; text-decoration: none; }
+  footer .disclaimer { font-size: 12.5px; line-height: 1.6; margin-top: 8px; }
+
+  @media (max-width: 600px) {
+    header { padding: 22px 16px 16px; }
+    header .header-inner { flex-wrap: wrap; }
+    header img { width: 130px; }
+    header .header-title { font-size: 18px; }
+    .countdown { text-align: left; width: 100%; margin-top: 10px; }
+    .cd-big { font-size: 22px; }
+    nav.section-nav { padding: 0 12px; }
+    main { padding: 14px 12px 30px; }
+    .carte { padding: 16px 18px; border-radius: 12px; }
+    footer { padding: 24px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div>
+      <a href="index.html"><img src="assets/logo-sondax-blanc.svg" alt="Sondax"></a>
+      <p class="header-title">Précédentes élections</p>
+    </div>
+    <div id="countdown" class="countdown"></div>
+  </div>
+</header>
+<script>
+(function(){var el=document.getElementById('countdown');if(!el)return;
+var T1=new Date(2027,3,18),T2=new Date(2027,4,2);
+var p=new Date().toLocaleDateString('en-CA',{timeZone:'Europe/Paris'});
+var today=new Date(p+'T00:00:00');
+var d1=Math.round((T1-today)/864e5),d2=Math.round((T2-today)/864e5);
+window._joursAvantT1_2027=d1;
+if(d2<0){el.style.display='none';return}
+var b,s;
+if(d1>0){b='J\u2011'+d1;s='Premier tour le dimanche 18 avril 2027'}
+else if(d1===0){b='J0';s='Premier tour aujourd\u2019hui'}
+else if(d2>0){b='J\u2011'+d2;s='Second tour le dimanche 2 mai 2027'}
+else{b='J0';s='Second tour aujourd\u2019hui'}
+el.innerHTML='<div class="cd-big">'+b+'</div><div class="cd-small">'+s+'</div>';
+})();
+</script>
+
+<nav class="section-nav">
+  <div class="nav-inner">
+    <a href="index.html">Présidentielle 2027</a>
+    <span class="nav-sep"></span>
+    <a href="sondages.html">Tous les sondages</a>
+    <a href="methodologie.html">Méthodologie</a>
+    <a href="precedentes-elections.html" class="active">Précédentes élections</a>
+  </div>
+</nav>
+
+<main>
+  <h2>Précédentes élections</h2>
+  <p class="subtitle">Comparer 2027 aux présidentielles de 2002 à 2022, au même nombre de jours avant le scrutin.</p>
+  <div id="cartes"></div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <p>Source : pages « Opinion polling for the … French presidential election » de <a href="https://en.wikipedia.org" target="_blank">en.wikipedia.org</a>, versions figées (CC BY-SA 4.0).</p>
+    <p><a href="mailto:contact@sondax.fr">Contact</a> · Hébergeur : <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
+    <p class="disclaimer">Marque indépendante. Le bleu et le rouge ne représentent aucun camp politique.</p>
+  </div>
+</footer>
+
+<script>
+function fmtDateFr(iso) {
+  const mois = ['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'];
+  const [y,m,d] = iso.split('-').map(Number);
+  return `${d} ${mois[m-1]} ${y}`;
+}
+
+async function init() {
+  const resp = await fetch('data/derived/historique.json');
+  const data = await resp.json();
+  const container = document.getElementById('cartes');
+  const annees = Object.keys(data).sort().reverse();
+
+  for (const an of annees) {
+    const e = data[an];
+    const resT2 = e.resultats_t2 || {};
+    const pair = e.duel_final ? e.duel_final.split('|') : [];
+    let duelText = '';
+    if (pair.length === 2) {
+      const noms = pair.map(c => e.candidats[c] ? e.candidats[c].nom : c);
+      const scores = pair.map(c => resT2[c] != null ? resT2[c].toFixed(1).replace('.',',') : '?');
+      duelText = `${noms[0]} – ${noms[1]} · ${scores[0]} / ${scores[1]}`;
+    }
+
+    const borneAn = e.borne.slice(0, 4);
+    const nbPerimetre = e.nb_sondages_perimetre || e.nb_sondages_t1;
+
+    const carte = document.createElement('a');
+    carte.className = 'carte';
+    carte.href = `presidentielle-${an}.html`;
+    carte.innerHTML = `
+      <div class="annee">Présidentielle ${an}</div>
+      <div class="dates">${fmtDateFr(e.tour1)} – ${fmtDateFr(e.tour2)}</div>
+      ${duelText ? `<div class="duel">${duelText}</div>` : ''}
+      <div class="stats">${nbPerimetre} sondages depuis janvier ${borneAn}</div>
+      <span class="fleche">→</span>
+    `;
+    container.appendChild(carte);
+  }
+}
+init();
+</script>
+
+</body>
+</html>

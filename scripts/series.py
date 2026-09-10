@@ -52,9 +52,11 @@ def choisir_demi_vie(ages):
     return DEMI_VIES[-1]
 
 
-def main():
-    sondages_raw = json.loads(SONDAGES_PATH.read_text())
+def calculer_series(sondages_raw):
+    """Calcule les séries de tendance T1 à partir d'une liste de sondages.
 
+    Retourne un dict avec date_debut, date_fin, fenetre_jours, demi_vies,
+    points_bruts et series. Réutilisable pour 2027 et l'historique."""
     # Pré-traitement : liste de (date, sondage) pour les sondages ayant au moins une hyp T1
     sondages = []
     for s in sondages_raw:
@@ -64,8 +66,7 @@ def main():
     sondages.sort(key=lambda s: s["date"])
 
     if not sondages:
-        print("Aucun sondage T1 trouvé.")
-        return
+        return None
 
     # Tous les candidats rencontrés dans au moins une hypothèse T1
     all_candidats = set()
@@ -98,7 +99,7 @@ def main():
     # Points bruts pour le JSON de sortie (un par sondage-jour, tous candidats)
     for s in sondages:
         scores = {}
-        for c in all_candidats:
+        for c in sorted(all_candidats):
             sc = score_candidat(s["raw"], c)
             if sc is not None:
                 scores[c] = sc
@@ -156,7 +157,7 @@ def main():
                 "n": len(pts_fenetre),
             })
 
-    output = {
+    return {
         "date_debut": date_debut.isoformat(),
         "date_fin": date_fin.isoformat(),
         "fenetre_jours": FENETRE_JOURS,
@@ -165,14 +166,30 @@ def main():
         "series": serie_par_candidat,
     }
 
+
+def main():
+    sondages_raw = json.loads(SONDAGES_PATH.read_text())
+
+    output = calculer_series(sondages_raw)
+    if output is None:
+        print("Aucun sondage T1 trouvé.")
+        return
+
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=1) + "\n")
 
     # Rapport
+    sondages = [s for s in sondages_raw if any(h["tour"] == 1 for h in s["hypotheses"])]
+    all_candidats = set()
+    for s in sondages:
+        for h in s["hypotheses"]:
+            if h["tour"] == 1:
+                all_candidats.update(h["scores"].keys())
+
     print(f"{len(sondages)} sondages T1, {len(all_candidats)} candidats")
-    print(f"Période : {date_debut} → {date_fin} ({nb_jours} jours)")
+    print(f"Période : {output['date_debut']} → {output['date_fin']} ({len(output['demi_vies'])} jours)")
     from collections import Counter
-    t_values = [d["T"] for d in demi_vies_par_date if d["n"] > 0]
+    t_values = [d["T"] for d in output["demi_vies"] if d["n"] > 0]
     if t_values:
         print(f"Demi-vies utilisées : {dict(sorted(Counter(t_values).items()))}")
     print(f"Écrit dans {OUTPUT_PATH}")

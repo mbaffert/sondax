@@ -18,7 +18,8 @@ Un site d'une seule page, trois blocs :
 3. **Fiche technique.** Sélection d'une configuration puis d'un sondage, et affichage
    de ses caractéristiques et de ses marges d'erreur (voir §5).
 
-S'y ajoute un sélecteur de duel de second tour (voir §7).
+S'y ajoute un sélecteur de duel de second tour (voir §7) et des **pages dédiées
+par duel de second tour**, indexables par les moteurs de recherche (voir §7).
 
 **Hors périmètre v1**, à ne pas implémenter sans décision explicite : correction des
 *house effects*, base de données, comptes utilisateurs, back-office d'édition,
@@ -382,6 +383,38 @@ noms dans l'interface.
 **En dessous de 5 mesures pour un duel donné, afficher un tableau des sondages, pas une
 courbe.** Trois points sur dix mois ne constituent pas une tendance.
 
+### 7.1 Pages dédiées par duel
+
+Les duels ne vivent pas uniquement dans le sélecteur JS de la page principale : chaque
+duel ayant au moins 5 mesures dispose d'une **page statique dédiée**, indexable par les
+moteurs de recherche. La recherche se formule par duel (« sondages second tour Le Pen
+Philippe ») et doit trouver une page.
+
+**Slug canonique** : les deux clés candidat triées par ordre alphabétique, jointes par
+un tiret (ex. `le-pen-philippe`). L'URL canonique est `/second-tour/le-pen-philippe`.
+
+**Redirection** : l'ordre inverse du slug (`philippe-le-pen`) sert une redirection
+HTML (`<meta http-equiv="refresh">`) vers l'URL canonique, jamais un duplicat indexable.
+
+**Page d'entrée** : `site/second-tour/index.html` liste **tous** les duels testés.
+Ceux au-dessus du seuil de 5 mesures sont des liens vers leur page dédiée ; ceux en
+dessous apparaissent sous forme de tableau des sondages directement dans la page d'entrée.
+
+**Contenu d'une page de duel** :
+- `<title>` et `<meta name="description">` propres et distincts par duel.
+- `<link rel="canonical">` vers l'URL canonique.
+- `<h1>` : « Sondages second tour 2027 : Le Pen – Philippe ».
+- Courbe (même rendu que le sélecteur actuel) + tableau des sondages (institut, dates
+  de terrain, échantillon, scores, lien vers la notice).
+- Même header, footer et mentions de licence que les pages existantes.
+
+**Génération** : `scripts/pages_second_tour.py` lit `data/sondages.json` et
+`data/candidats.json`, écrit dans `site/second-tour/` (répertoire entièrement
+reconstructible, ajouté au `.gitignore`). Le script génère aussi `site/sitemap.xml`.
+
+**Navigation** : le sélecteur de duel de `site/index.html` pointe vers les pages
+dédiées, et le header gagne un lien « Second tour ».
+
 ---
 
 ## 8. Validation
@@ -458,6 +491,7 @@ de requête n'est transmis.
 /scripts
   collecte_wikipedia.py          dérivé du prototype parse_wikipedia.py
   collecte_polymarket.py
+  pages_second_tour.py          pages de duel + sitemap, reconstructible
   validation.py
   series.py
   series_historique.py           séries 2002-2022 pour le front
@@ -469,6 +503,8 @@ de requête n'est transmis.
   methodologie.html
   precedentes-elections.html     rubrique « Précédentes élections »
   presidentielle-{2002..2022}.html  une page par élection
+  sitemap.xml                    généré par pages_second_tour.py
+  /second-tour                   pages de duel, reconstructible (.gitignore)
   /assets
     historique.js                script partagé des pages d'élection
 ```

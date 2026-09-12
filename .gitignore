@@ -3,5 +3,7 @@ __pycache__/
 .DS_Store
 data/derived/
 site/data
+site/second-tour/
+site/sitemap.xml
 ref/
 _site/

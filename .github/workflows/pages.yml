@@ -30,6 +30,7 @@ jobs:
         run: |
           python scripts/series.py
           python scripts/series_historique.py
+          python scripts/pages_second_tour.py
 
       - name: Préparer l'artefact
         run: |

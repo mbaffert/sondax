@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sondax — Présidentielle 2027</title>
+<link rel="canonical" href="https://sondax.fr/">
 <!-- TODO: créer le compte GoatCounter et confirmer le sous-domaine -->
 <script data-goatcounter="https://sondax.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -202,6 +203,7 @@ el.innerHTML='<div class="cd-big">'+b+'</div><div class="cd-small">'+s+'</div>';
   <div class="nav-inner">
     <a href="#bloc-sondages">Intentions de vote</a>
     <a href="#bloc-polymarket">Marchés de prédiction</a>
+    <a href="second-tour/">Second tour</a>
     <span class="nav-sep"></span>
     <a href="sondages.html">Tous les sondages</a>
     <a href="methodologie.html">Méthodologie</a>
@@ -1056,10 +1058,12 @@ class SecondTour {
       return;
     }
 
-    if (entries.length < 5) {
+    if (entries.length >= 5) {
+      const slug = [cidA, cidB].sort().join('-');
+      this.content.innerHTML = `<p style="margin-bottom:1em;"><a href="second-tour/${slug}.html" style="font-weight:500;">Voir la page dédiée de ce duel →</a></p>`;
+      this.renderChart(entries, cidA, cidB, true);
+    } else if (entries.length > 0) {
       this.renderTable(entries, cidA, cidB);
-    } else {
-      this.renderChart(entries, cidA, cidB);
     }
   }
 
@@ -1074,7 +1078,7 @@ class SecondTour {
     this.content.innerHTML = html;
   }
 
-  renderChart(entries, cidA, cidB) {
+  renderChart(entries, cidA, cidB, append) {
     const sorted = entries.slice().sort((a, b) => a.sondage.terrain_fin.localeCompare(b.sondage.terrain_fin));
     const dataA = sorted.map(d => ({ x: parseDate(d.sondage.terrain_fin), y: d.hyp.scores[cidA] }));
     const dataB = sorted.map(d => ({ x: parseDate(d.sondage.terrain_fin), y: d.hyp.scores[cidB] }));
@@ -1086,7 +1090,11 @@ class SecondTour {
     const yMin = Math.min(Math.floor(lo / 5) * 5, 45);
     const yMax = Math.max(Math.ceil(hi / 5) * 5, 55);
 
-    this.content.innerHTML = '<div class="chart-wrap"><canvas id="chart-t2"></canvas></div>';
+    if (append) {
+      this.content.insertAdjacentHTML('beforeend', '<div class="chart-wrap"><canvas id="chart-t2"></canvas></div>');
+    } else {
+      this.content.innerHTML = '<div class="chart-wrap"><canvas id="chart-t2"></canvas></div>';
+    }
 
     // Plugin : ligne horizontale à 50 %
     const ligne50 = {

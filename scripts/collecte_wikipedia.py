@@ -57,7 +57,8 @@ def _une_valeur(txt):
     if len(parts) > 1:
         m = re.search(r'\[\[[^|\]]+\|([^\]]+)\]\]', parts[1])
         if m:
-            sub = re.sub(r'\{\{blanc\|([^}]*)\}\}', r'\1', m.group(1)).strip(" '")
+            sub = re.sub(r'\{\{blanc\|([^}]*)\}\}', r'\1', m.group(1))
+            sub = re.sub(r'</?[^>]+>', '', sub).strip(" '")
     return val, sub
 
 def clean_num(txt):

@@ -519,6 +519,13 @@ données fausses avant correction. À traiter comme une liste de tests de non-r�
    section. Certaines chevauchent deux mois (« 31 août - 2 septembre »). Les tableaux de
    second tour, eux, portent l'année.
 
+8. **Balises HTML dans le libellé d'un lien de substitution.** OpinionWay du
+   10/09/2026 : `[[Karim Bouamrane|'''<small>Bouamrane</small>''']]`. Le gras
+   est à l'intérieur du libellé et enveloppe une balise `<small>`. Si `_une_valeur()`
+   ne nettoie que `{{blanc}}` et les apostrophes, le slug devient
+   `small-bouamrane-small` au lieu de `bouamrane`. Retirer les balises HTML
+   du libellé après extraction du groupe capturé.
+
 Autres irrégularités à prévoir : décimales à la virgule, `{{formatnum:}}`, espaces
 insécables, notes en exposant, `—` pour non testé.
 

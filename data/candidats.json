@@ -1,4 +1,14 @@
 {
+ "bouamrane": {
+  "nom": "Bouamrane",
+  "parti": "PS",
+  "type": "personne",
+  "couleur": "#C2185B",
+  "alias_wikipedia": [
+   "bouamrane"
+  ],
+  "slug_polymarket": null
+ },
  "arthaud": {
   "nom": "Arthaud",
   "parti": "LO",
@@ -158,6 +168,16 @@
    "retailleau"
   ],
   "slug_polymarket": "will-bruno-retailleau-win-the-2027-french-presidential-election"
+ },
+ "royal": {
+  "nom": "Royal",
+  "parti": "PS",
+  "type": "personne",
+  "couleur": "#F48FB1",
+  "alias_wikipedia": [
+   "royal"
+  ],
+  "slug_polymarket": null
  },
  "roussel": {
   "nom": "Roussel",

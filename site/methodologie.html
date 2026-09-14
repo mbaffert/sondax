@@ -111,9 +111,11 @@ différente. Les deux graphiques ne mesurent pas la même chose et ne se compare
 marge d'erreur de deux à trois points. Relier les sondages entre eux donnerait une ligne
 brisée qui refléterait autant le hasard de l'échantillonnage que l'opinion.</p>
 
-<p>Chaque jour de la courbe est donc une <strong>moyenne des sondages des trente derniers jours</strong>,
-pondérée par leur ancienneté&nbsp;: un sondage de quinze jours pèse environ moitié moins qu'un
-sondage du jour.</p>
+<p>Chaque jour de la courbe est une <strong>moyenne pondérée des sondages récents</strong>.
+La fenêtre de base couvre les trente derniers jours. Si un candidat y est testé
+dans moins de trois sondages, elle s'étend vers le passé jusqu'à en trouver trois,
+avec une limite de quatre-vingt-dix jours. Au-delà, la courbe s'interrompt. Un sondage
+de quinze jours pèse environ moitié moins qu'un sondage du jour.</p>
 
 <p>Le rythme de cette décroissance s'ajuste automatiquement au nombre de sondages
 disponibles. Quand ils sont rares, la moyenne s'étale sur une période plus longue pour
@@ -141,14 +143,21 @@ Ifop de février 2026, Bruno Retailleau obtient 10&nbsp;% dans une configuration
 figurent. Même sondage, même jour, sept points d'écart.</p>
 
 <p>Pour tracer une courbe, il faut donc choisir. Nous retenons, pour chaque candidat et
-chaque sondage, <strong>la configuration comportant le plus de candidats testés</strong> — celle où la
-concurrence est la plus large. Quand plusieurs configurations sont à égalité, nous
-retenons leur moyenne.</p>
+chaque sondage, <strong>la configuration contenant à la fois Attal et Philippe</strong> —
+le bloc central au complet. Quand cette configuration n'existe pas (sondages antérieurs
+à mai 2026, ou instituts qui ne testent pas les deux), nous retenons celle comportant
+le plus de candidats testés. En cas d'égalité, nous moyennons.</p>
 
 <p>Conséquence&nbsp;: deux candidats peuvent être mesurés dans des configurations différentes du
 même sondage, et le total des courbes ne fait pas 100&nbsp;%. C'est le prix d'une courbe
 lisible par candidat. Le bloc «&nbsp;Explorer les sondages&nbsp;» permet de retrouver chaque
 configuration telle qu'elle a été publiée.</p>
+
+<p id="zone-fallback"><strong>Avant fin mai 2026</strong> (zone grisée sur le graphe), aucun sondage
+ne testait Attal et Philippe dans la même hypothèse. La courbe y repose sur des
+configurations hétérogènes&nbsp;: le score d'un candidat du centre peut varier de plusieurs
+points selon que l'autre y figure ou non. Les niveaux de cette période ne sont pas
+strictement comparables à ceux de la période suivante.</p>
 
 <h3>Ce que nous ne faisons pas</h3>
 

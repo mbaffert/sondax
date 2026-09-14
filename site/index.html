@@ -216,7 +216,7 @@ el.innerHTML='<div class="cd-big">'+b+'</div><div class="cd-small">'+s+'</div>';
   <div class="bloc" id="bloc-sondages">
     <div class="section-label">Agrégation</div>
     <h2>Intentions de vote</h2>
-    <p class="subtitle">Moyenne des sondages du dernier mois · <a href="methodologie.html" style="font-weight:500;">méthode</a></p>
+    <p class="subtitle">Moyenne pondérée des sondages récents · <a href="methodologie.html" style="font-weight:500;">méthode</a></p>
     <div class="tabs">
       <button class="tab active" data-tab="t1">Premier tour</button>
       <button class="tab" data-tab="t2">Second tour</button>
@@ -459,7 +459,7 @@ Chart.register(touchDismissPlugin);
 // Generic bloc controller
 // =========================================================================
 class BlocChart {
-  constructor({ canvasId, cbContainerId, periodeSelector, dateFin, dateDebut, nbDefault = NB_DEFAULT, periodeEventPrefix = null }) {
+  constructor({ canvasId, cbContainerId, periodeSelector, dateFin, dateDebut, nbDefault = NB_DEFAULT, periodeEventPrefix = null, fallbackEndDate = null }) {
     this.canvas = document.getElementById(canvasId);
     this.cbContainer = document.getElementById(cbContainerId);
     this.periodeEl = document.querySelector(periodeSelector);
@@ -467,6 +467,7 @@ class BlocChart {
     this.dateDebut = dateDebut;
     this.nbDefault = nbDefault;
     this.periodeEventPrefix = periodeEventPrefix;
+    this.fallbackEndDate = fallbackEndDate;
     this.chart = null;
     this.checked = new Set();
     this.candidats = {};
@@ -672,7 +673,12 @@ class BlocChart {
 
       const data = this.candidats[cid]
         .filter(p => p.d >= dateDebut)
-        .map(p => ({ x: parseDate(p.d), y: p.v }));
+        .map(p => ({ x: parseDate(p.d), y: p.v, n: p.n, ref: p.ref }));
+
+      const fallbackEnd = this.fallbackEndDate ? parseDate(this.fallbackEndDate) : null;
+      const colFaded = col.startsWith('#')
+        ? col + '55'  // hex + alpha
+        : col.replace('rgb(', 'rgba(').replace(')', ', 0.33)');
 
       datasets.push({
         label: nomCourt(cid),
@@ -684,6 +690,21 @@ class BlocChart {
         fill: false,
         spanGaps: false,
         _cid: cid,
+        segment: {
+          borderDash: ctx => {
+            const n0 = ctx.p0?.raw?.n;
+            const n1 = ctx.p1?.raw?.n;
+            if ((n0 !== undefined && n0 <= 1) || (n1 !== undefined && n1 <= 1)) return [6, 4];
+            return undefined;
+          },
+          borderColor: ctx => {
+            if (!fallbackEnd) return undefined;
+            const x0 = ctx.p0?.parsed?.x;
+            const x1 = ctx.p1?.parsed?.x;
+            if (x0 < fallbackEnd || x1 < fallbackEnd) return colFaded;
+            return undefined;
+          },
+        },
       });
 
       const ghosts = this.buildGhostSegments(cid, dateDebut);
@@ -701,15 +722,74 @@ class BlocChart {
           _isGhost: true,
         });
       }
+
+      // Points bruts (§4 SPEC) : petits cercles derrière la courbe
+      if (this.pointsBruts && this.pointsBruts[cid]) {
+        const bruts = this.pointsBruts[cid]
+          .filter(p => p.d >= dateDebut)
+          .map(p => ({
+            x: parseDate(p.d), y: p.v,
+            institut: p.institut, terrain_debut: p.terrain_debut,
+            terrain_fin: p.terrain_fin, echantillon: p.echantillon,
+          }));
+        if (bruts.length > 0) {
+          datasets.push({
+            label: '',
+            data: bruts,
+            borderColor: col,
+            backgroundColor: col,
+            borderWidth: 0,
+            pointRadius: 2.5,
+            pointHoverRadius: 5,
+            showLine: false,
+            _cid: cid,
+            _isBrut: true,
+          });
+        }
+      }
     }
 
     const yMax = computeYMax(datasets);
 
     if (this.chart) this.chart.destroy();
 
+    // Plugin inline : bande de fond pour la zone fallback + tooltip natif
+    const fallbackEndDate = this.fallbackEndDate;
+    const getDateDebut = () => this.getDateDebut();
+    const fallbackBandPlugin = fallbackEndDate ? {
+      id: 'fallbackBand',
+      beforeDraw: (chart) => {
+        const xScale = chart.scales.x;
+        const yScale = chart.scales.y;
+        const endPx = xScale.getPixelForValue(parseDate(fallbackEndDate));
+        if (endPx <= xScale.left) return;
+        const ctx = chart.ctx;
+        ctx.save();
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.03)';
+        const left = Math.max(xScale.left, xScale.getPixelForValue(parseDate(getDateDebut())));
+        ctx.fillRect(left, yScale.top, Math.min(endPx, xScale.right) - left, yScale.bottom - yScale.top);
+        ctx.restore();
+      },
+      afterInit: (chart) => {
+        const canvas = chart.canvas;
+        canvas.addEventListener('mousemove', (e) => {
+          const xScale = chart.scales.x;
+          const rect = canvas.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const endPx = xScale.getPixelForValue(parseDate(fallbackEndDate));
+          if (x >= xScale.left && x <= endPx) {
+            canvas.title = 'Avant fin mai 2026 : configurations hétérogènes, niveaux non strictement comparables — voir Méthodologie';
+          } else if (canvas.title) {
+            canvas.title = '';
+          }
+        });
+      }
+    } : null;
+
     this.chart = new Chart(this.canvas, {
       type: 'line',
       data: { datasets },
+      plugins: fallbackBandPlugin ? [fallbackBandPlugin] : [],
       options: {
         responsive: true,
         maintainAspectRatio: false,
@@ -726,8 +806,29 @@ class BlocChart {
         plugins: {
           legend: { display: false },
           tooltip: {
-            filter: (item) => !item.dataset._isGhost,
+            filter: (item, _idx, arr) => {
+              if (item.dataset._isGhost) return false;
+              // Si un point brut est dans la sélection, ne garder que les bruts
+              const hasBrut = arr.some(a => a.dataset._isBrut);
+              if (hasBrut) return item.dataset._isBrut;
+              return true;
+            },
             callbacks: {
+              title: (items) => {
+                if (!items.length) return '';
+                const first = items[0];
+                if (first.dataset._isBrut) {
+                  const raw = first.raw;
+                  const terrain = raw.terrain_debut === raw.terrain_fin
+                    ? raw.terrain_fin
+                    : `${raw.terrain_debut} → ${raw.terrain_fin}`;
+                  const ech = raw.echantillon ? ` · n\u00a0=\u00a0${raw.echantillon}` : '';
+                  return `${raw.institut} — ${terrain}${ech}`;
+                }
+                const d = new Date(first.parsed.x);
+                const opts = { day: 'numeric', month: 'long', year: 'numeric' };
+                return 'Moyenne au ' + d.toLocaleDateString('fr-FR', opts);
+              },
               label: (ctx) => {
                 if (ctx.parsed.y === null || isNaN(ctx.parsed.y)) return '';
                 return `${nomCourt(ctx.dataset._cid)} : ${fmtPct(ctx.parsed.y)}`;
@@ -1222,11 +1323,12 @@ async function init() {
     dateFin: seriesData.date_fin,
     dateDebut: seriesData.date_debut,
     periodeEventPrefix: 'periode-sondages',
+    fallbackEndDate: seriesData.first_ref_date || null,
   });
 
   const sondagesCandidats = {};
   for (const [cid, pts] of Object.entries(seriesData.series)) {
-    sondagesCandidats[cid] = pts.map(p => ({ d: p.d, v: p.v }));
+    sondagesCandidats[cid] = pts.map(p => ({ d: p.d, v: p.v, n: p.n, ref: p.ref }));
   }
 
   // Ordre des candidats : tiré du dernier sondage (hyp T1 la plus large)
@@ -1249,6 +1351,27 @@ async function init() {
       visibleOrder = [...fromLatest, ...rest];
     }
   }
+
+  // Points bruts par candidat (pour affichage derrière la courbe)
+  // Enrichis avec les métadonnées du sondage pour le tooltip
+  const sondagesById = {};
+  for (const s of sondagesData) sondagesById[s.id] = s;
+
+  const pointsBruts = {};
+  for (const pb of seriesData.points_bruts) {
+    const s = sondagesById[pb.id];
+    for (const [cid, score] of Object.entries(pb.scores)) {
+      if (!pointsBruts[cid]) pointsBruts[cid] = [];
+      pointsBruts[cid].push({
+        d: pb.d, v: score, sid: pb.id,
+        institut: s ? s.institut : '',
+        terrain_debut: s ? s.terrain_debut : '',
+        terrain_fin: s ? s.terrain_fin : '',
+        echantillon: s ? s.echantillon : null,
+      });
+    }
+  }
+  sondagesBloc.pointsBruts = pointsBruts;
 
   sondagesBloc.setCandidats(sondagesCandidats, (a, b) => {
     const la = sondagesBloc.lastVal(a) || 0;

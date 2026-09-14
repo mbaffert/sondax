@@ -247,36 +247,41 @@ silencieux (§3.2).
 ## 4. Traitement des sondages
 
 **Sélection de l'hypothèse (tour 1) — par candidat, pas par sondage.** Pour chaque
-candidat et chaque sondage, on retient l'hypothèse qui contient ce candidat et compte le
-plus de candidats testés. **En cas d'égalité, on moyenne les hypothèses concernées.**
+candidat et chaque sondage, la sélection suit deux niveaux :
 
-Exemple constaté : Elabe du 27/03/2026 teste Le Pen à 31,5 dans une hypothèse à
-11 candidats et à 34,0 dans une autre à 11 candidats également. La valeur retenue pour
-ce sondage est 32,75.
+1. **Configuration de référence.** Parmi les hypothèses T1 contenant le candidat, on
+   privilégie celles qui contiennent à la fois Attal **et** Philippe — c'est-à-dire le
+   bloc central au complet. Quand elles existent, elles seules sont considérées.
+2. **Fallback.** Si aucune hypothèse de référence n'existe pour ce sondage (cas des
+   sondages antérieurs à mai 2026, ou des instituts qui ne testent pas les deux), on
+   retient les hypothèses comptant **le plus de candidats testés**.
 
-Deux règles antérieures ont été écartées en développant le front, chacune pour une
-raison précise :
+En cas d'égalité dans l'un ou l'autre niveau, on **moyenne les hypothèses ex æquo**.
 
-- *Le plus de candidats officiellement déclarés* : Wikipédia ne publie pas cet état et
-  l'entretenir à la main serait une charge permanente.
-- *Une seule hypothèse principale par sondage* : elle faisait alterner Le Pen et
-  Bardella au gré des sondages et hachait les deux courbes. Un sondage de mars 2026 peut
-  tester six hypothèses, quatre avec Bardella et deux avec Le Pen — retenir la seule
-  hypothèse « principale » jetait les mesures de l'autre candidat, pourtant réelles.
+**Motivation.** Le score d'un candidat du centre (Attal, Philippe, Glucksmann) dépend
+fortement de la présence de l'autre dans l'hypothèse. Sur les données de 2026, Attal
+passe de 8 % avec Philippe à 14 % sans lui — même sondage, même jour. La règle « max
+de candidats » alternait entre les deux valeurs au gré des configurations disponibles,
+produisant un bimodal artificiel. La configuration de référence stabilise les courbes
+en mesurant toujours la même chose : le bloc central au complet.
 
 Conséquence à assumer et à afficher sur le site : **les courbes ne s'additionnent pas à
-100 %**, chaque candidat étant mesuré dans l'hypothèse qui lui est la plus favorable en
-nombre de candidats testés. Le graphe montre des trajectoires individuelles, pas une
-répartition. Les courbes de tendance n'utilisent que les
-hypothèses principales ; les autres restent accessibles dans le bloc fiche technique.
+100 %**, chaque candidat étant mesuré dans la configuration qui reflète le mieux la
+concurrence réelle. Le graphe montre des trajectoires individuelles, pas une
+répartition. Les courbes de tendance n'utilisent que les hypothèses sélectionnées ;
+les autres restent accessibles dans le bloc fiche technique.
 
 La règle ne s'applique pas au tour 2 : tous les duels sont également valides.
 
 **Courbe de tendance.**
 
-- Fenêtre glissante de **30 jours**, pas de fenêtre en nombre de sondages. Cette fenêtre
-  n'est pas le paramètre de lissage : elle ne sert qu'à écarter les sondages de poids
-  négligeable. C'est la demi-vie ci-dessous qui règle la réactivité de la courbe.
+- **Fenêtre glissante extensible.** La fenêtre de base est de **30 jours**. Si un
+  candidat y est testé dans moins de **3 sondages**, la fenêtre s'étend vers le passé
+  jusqu'à en trouver 3, avec une **borne à 90 jours**. Au-delà de 90 jours sans
+  3 sondages, la courbe s'interrompt (`v = null`). L'extension se calcule **par
+  candidat** : un candidat testé partout garde 30 jours, un candidat rarement testé
+  voit sa fenêtre s'étendre. La demi-vie (ci-dessous) reste calculée globalement sur
+  la fenêtre fixe de 30 jours — seule la sélection des sondages est étendue.
 - Pondération de chaque sondage par sa seule récence : `poids = 2^(-age_jours / T)`,
   où `age_jours` est l'écart entre `terrain_fin` et la date du point calculé et `T` la
   demi-vie retenue pour ce point.

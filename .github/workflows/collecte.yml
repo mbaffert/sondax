@@ -2,8 +2,10 @@ name: Collecte quotidienne
 
 on:
   schedule:
-    # 9h00 UTC → ~11h CEST / ~10h CET
-    - cron: '0 9 * * *'
+    # 7h17 CET (heure d'hiver fixe, UTC+1)
+    - cron: '17 6 * * *'
+    # 14h17 CET
+    - cron: '17 13 * * *'
   workflow_dispatch: {}
 
 permissions:
@@ -42,7 +44,7 @@ jobs:
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Ouvrir une pull request
+      - name: Ouvrir ou mettre à jour la pull request
         id: pr
         if: steps.changes.outputs.changed == 'true'
         env:
@@ -54,23 +56,42 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          git checkout -b "$BRANCH"
+          # Réutiliser la branche si elle existe déjà (run précédent du jour)
+          if git ls-remote --exit-code origin "refs/heads/${BRANCH}" >/dev/null 2>&1; then
+            git fetch origin "$BRANCH"
+            git checkout "$BRANCH"
+            git merge origin/main --no-edit
+          else
+            git checkout -b "$BRANCH"
+          fi
+
           git add data/sondages.json data/polymarket.json data/snapshots/
+          git diff --cached --quiet && echo "Rien de nouveau à commiter" && exit 0
           git commit -m "Collecte du ${DATE}"
           git push -u origin "$BRANCH"
 
-          if [ -f data/derived/revue.md ]; then
-            PR_URL=$(gh pr create \
-              --title "Collecte du ${DATE}" \
-              --body-file data/derived/revue.md \
-              --base main \
-              --head "$BRANCH")
+          # Créer la PR seulement si elle n'existe pas déjà
+          EXISTING_PR=$(gh pr list --head "$BRANCH" --state open --json url --jq '.[0].url // empty')
+          if [ -n "$EXISTING_PR" ]; then
+            # Mettre à jour le corps de la PR existante
+            if [ -f data/derived/revue.md ]; then
+              gh pr edit "$EXISTING_PR" --body-file data/derived/revue.md
+            fi
+            PR_URL="$EXISTING_PR"
           else
-            PR_URL=$(gh pr create \
-              --title "Collecte du ${DATE}" \
-              --body "Collecte automatique du ${DATE}. Aucun sondage ajouté ou modifié (mise à jour Polymarket uniquement)." \
-              --base main \
-              --head "$BRANCH")
+            if [ -f data/derived/revue.md ]; then
+              PR_URL=$(gh pr create \
+                --title "Collecte du ${DATE}" \
+                --body-file data/derived/revue.md \
+                --base main \
+                --head "$BRANCH")
+            else
+              PR_URL=$(gh pr create \
+                --title "Collecte du ${DATE}" \
+                --body "Collecte automatique du ${DATE}. Aucun sondage ajouté ou modifié (mise à jour Polymarket uniquement)." \
+                --base main \
+                --head "$BRANCH")
+            fi
           fi
 
           echo "url=${PR_URL}" >> "$GITHUB_OUTPUT"

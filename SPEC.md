@@ -14,7 +14,8 @@ décide explicitement et se répercute ici.
 Un site d'une seule page, trois blocs :
 
 1. **Tendance des sondages, premier tour.** Une courbe par candidat, semaine après semaine.
-2. **Cotes Polymarket.** Évolution des probabilités implicites par candidat.
+2. **Cotes Polymarket.** Évolution des probabilités implicites par candidat, deux onglets :
+   accession au second tour et victoire.
 3. **Fiche technique.** Sélection d'une configuration puis d'un sondage, et affichage
    de ses caractéristiques et de ses marges d'erreur (voir §5).
 
@@ -52,16 +53,21 @@ pied de page un lien vers la page source et la mention de licence.
 
 ### 2.2 Cotes — Polymarket
 
-Deux API publiques, sans authentification.
+Deux API publiques, sans authentification. Deux événements suivis :
+
+| Clé | Slug | Event id | Objet |
+|-----|------|----------|-------|
+| `victoire` | `next-french-presidential-election` | 79987 | Probabilité de remporter l'élection |
+| `second_tour` | `next-french-presidential-election-who-will-advance-to-the-2nd-round` | 531333 | Probabilité d'accéder au second tour (deux places, somme ~200 %) |
 
 Découverte des marchés :
 
 ```
-GET https://gamma-api.polymarket.com/events?slug=next-french-presidential-election
+GET https://gamma-api.polymarket.com/events?slug={event_slug}
 ```
 
-L'événement (id `79987`) contient un marché binaire par candidat. Pour chaque marché :
-`slug`, `question`, `outcomePrices`, et `clobTokenIds` dont le **premier élément est le
+Chaque événement contient un marché binaire par candidat. Pour chaque marché :
+`conditionId`, `outcomePrices`, et `clobTokenIds` dont le **premier élément est le
 token « Yes »**.
 
 Historique quotidien :
@@ -70,10 +76,13 @@ Historique quotidien :
 GET https://clob.polymarket.com/prices-history?market={token_yes}&interval=max&fidelity=1440
 ```
 
-Retourne `{"history": [{"t": unix_ts, "p": prix}, ...]}`. La série remonte à novembre 2025.
+Retourne `{"history": [{"t": unix_ts, "p": prix}, ...]}`. La série victoire remonte
+à novembre 2025, celle du second tour à juin 2026.
 
-Le mapping vers le référentiel candidats se fait sur le **`slug` du marché**, stable,
-jamais sur la question en anglais.
+Le mapping vers le référentiel candidats se fait sur le **`conditionId` du marché**,
+stable et unique par construction. Le `conditionId` est renseigné à la main dans
+`candidats.json`, jamais déduit automatiquement (les slugs Polymarket contiennent des
+accents corrompus, cf. §11).
 
 ---
 
@@ -93,7 +102,10 @@ et ne sont jamais modifiés.
     "type": "personne",
     "couleur": "#0D378A",
     "alias_wikipedia": ["Le Pen", "Marine Le Pen"],
-    "slug_polymarket": "will-marine-le-pen-win-the-2027-french-presidential-election"
+    "condition_polymarket": {
+      "victoire": "0x8126317d621047fb13d508a2651eecc8d38305904671822a62309c5aabd353aa",
+      "second_tour": "0x4de07f3b6b1220c2406e5807d30588fc6cbd5b938310835524106d05d20a9b4a"
+    }
   },
   "candidat-ps": {
     "nom": "Candidat PS",
@@ -101,10 +113,16 @@ et ne sont jamais modifiés.
     "type": "parti",
     "couleur": "#FF8080",
     "alias_wikipedia": ["Candidat PS"],
-    "slug_polymarket": null
+    "condition_polymarket": {
+      "victoire": null,
+      "second_tour": null
+    }
   }
 }
 ```
+
+`condition_polymarket` : renseigné à la main, jamais déduit automatiquement. Un candidat
+sans marché sur un événement a `null` pour cette clé — ce n'est pas une erreur bloquante.
 
 Aucune création automatique d'entrée : un candidat inconnu fait échouer le run (§8).
 
@@ -197,12 +215,28 @@ silencieux (§3.2).
 ```json
 {
   "maj": "2026-09-07T18:00:00Z",
-  "candidats": {
-    "le-pen-marine": {
-      "market_id": "679018",
-      "token_yes": "55764212211467781322980371912612507865974994976253196346176314491480419639168",
-      "prix_actuel": 0.355,
-      "historique": [{ "d": "2026-09-06", "p": 0.352 }]
+  "marches": {
+    "second_tour": {
+      "event_slug": "next-french-presidential-election-who-will-advance-to-the-2nd-round",
+      "candidats": {
+        "le-pen": {
+          "market_id": "2371045",
+          "token_yes": "68877280424127404550238129876288207007515294835359870585560693961915529618517",
+          "prix_actuel": 0.885,
+          "historique": [{ "d": "2026-06-01", "p": 0.82 }]
+        }
+      }
+    },
+    "victoire": {
+      "event_slug": "next-french-presidential-election",
+      "candidats": {
+        "le-pen": {
+          "market_id": "679018",
+          "token_yes": "55764212211467781322980371912612507865974994976253196346176314491480419639168",
+          "prix_actuel": 0.355,
+          "historique": [{ "d": "2026-09-06", "p": 0.352 }]
+        }
+      }
     }
   }
 }
@@ -293,9 +327,21 @@ soubresaut artificiel qui se résorbe au bout de 30 jours.
 Un candidat dont la première mesure est postérieure à la date choisie voit sa courbe
 commencer à cette première mesure, et non à la borne gauche du graphe.
 
-Le bloc Polymarket dispose de **son propre sélecteur, indépendant** de celui des
-sondages. Les deux historiques n'ont pas la même profondeur (les cotes remontent à
-novembre 2025) et les deux graphes ne mesurent pas la même chose (§11).
+Le bloc Polymarket dispose de **son propre sélecteur de période, indépendant** de celui
+des sondages. Il conserve sa valeur quand on change d'onglet.
+
+**Affichage du bloc Polymarket :**
+
+- Surtitre : MARCHÉS DE PRÉDICTION.
+- Titre variable selon l'onglet actif :
+  - Second tour : « Qui va accéder au second tour d'après les parieurs de Polymarket ? »
+  - Victoire : « Qui va gagner la présidentielle d'après les parieurs de Polymarket ? »
+- Onglets : Second tour · Victoire (même composant que les onglets sondages).
+- Sous-titre sur l'onglet second tour uniquement : « Deux places, le total avoisine
+  200 %. » Rien sur l'onglet victoire.
+- Un seul graphe affiché à la fois. Chaque série démarre à sa première mesure :
+  l'historique du second tour ne remonte qu'à juin 2026, celui de la victoire à
+  novembre 2025. Filtre d'affichage inchangé (probabilité > 1 % ou volume minimum).
 
 **Candidats non désignés.** Une entrée de `type: parti` s'affiche en pointillé, avec son
 libellé explicite (« Candidat PS »). Sa série n'est **jamais recollée automatiquement**
@@ -426,9 +472,11 @@ Le script de collecte **ne commite rien** si un contrôle échoue. Il s'arrête 
    contrôle mais reste exclu des courbes et des fiches candidat.
 2. Tous les candidats rencontrés existent dans `candidats.json`.
 3. Le nombre total de sondages n'a pas diminué par rapport au run précédent.
-
-Ne pas ajouter de contrôle supplémentaire par anticipation. On en ajoutera au vu de cas
-réels.
+4. Aucun `conditionId` de `candidats.json` n'apparaît deux fois, et chaque
+   `conditionId` renseigné existe dans l'événement correspondant côté API Polymarket.
+5. **Non bloquant**, signalé sur la page de revue uniquement : pour un même candidat,
+   P(victoire) ≤ P(second tour). Violation fréquente sur les marchés à faible volume
+   (inefficience de marché, pas erreur de collecte).
 
 **Corrections.** Une valeur modifiée sur Wikipédia écrase la valeur existante. Les
 snapshots de wikitexte permettent de retrouver l'origine si nécessaire.
@@ -483,14 +531,14 @@ de requête n'est transmis.
 /data
   candidats.json
   sondages.json
-  polymarket.json
+  polymarket.json                 deux marchés : victoire + second tour
   historique.json                 2002-2022, produit une fois (§12)
   /snapshots                     wikitexte brut, immuable
   /snapshots/historique           wikitexte anglais, immuable
   /derived                       séries précalculées, jetable
 /scripts
   collecte_wikipedia.py          dérivé du prototype parse_wikipedia.py
-  collecte_polymarket.py
+  collecte_polymarket.py         deux événements (victoire + second tour)
   pages_second_tour.py          pages de duel + sitemap, reconstructible
   validation.py
   series.py
@@ -566,14 +614,17 @@ Autres irrégularités à prévoir : décimales à la virgule, `{{formatnum:}}`,
 insécables, notes en exposant, `—` pour non testé.
 
 **Le mapping Polymarket ne peut pas être automatique** : le marché Mélenchon a un slug
-corrompu (`will-jean-luc-mlenchon-...`, accent perdu à la création). Le champ
-`slug_polymarket` reste éditable à la main dans `candidats.json`.
+corrompu (`will-jean-luc-mlenchon-...`, accent perdu à la création). Le mapping se fait
+sur le `conditionId` (champ `condition_polymarket` de `candidats.json`), renseigné à la
+main.
+- Deux événements suivis : victoire (128 marchés) et accession au second tour (37 marchés).
+  Sur le second tour, la somme des probabilités avoisine 200 % (deux places) — ne pas
+  corriger.
 - Les marchés Polymarket sont en `negRisk` : les prix d'un même événement sont couplés
   et se normalisent d'eux-mêmes. **Ne pas renormaliser.** Afficher les prix bruts.
-- L'événement compte 128 marchés. Filtrer à l'affichage (probabilité actuelle > 1 %
-  ou volume minimum).
+- Filtrer à l'affichage (probabilité actuelle > 1 % ou volume minimum).
 - Sondages et cotes ne mesurent pas la même chose : parts de voix au premier tour d'un
-  côté, probabilité de victoire de l'autre. Ne jamais les superposer sur un même graphe.
+  côté, probabilités de l'autre. Ne jamais les superposer sur un même graphe.
 
 ---
 

@@ -249,8 +249,13 @@ el.innerHTML='<div class="cd-big">'+b+'</div><div class="cd-small">'+s+'</div>';
   <!-- Bloc 2 : Polymarket -->
   <div class="bloc" id="bloc-polymarket">
     <div class="section-label">Marchés de prédiction</div>
-    <h2>Probabilité d'être élu, d'après Polymarket</h2>
-    <p class="subtitle">Les chances de victoire vues par les parieurs de Polymarket</p>
+    <h2 id="titre-poly-st">Qui va accéder au second tour d'après les parieurs de Polymarket&nbsp;?</h2>
+    <h2 id="titre-poly-v" style="display:none;">Qui va gagner la présidentielle d'après les parieurs de Polymarket&nbsp;?</h2>
+    <div class="tabs" id="tabs-polymarket">
+      <button class="tab active" data-tab="poly-st">Second tour</button>
+      <button class="tab" data-tab="poly-v">Victoire</button>
+    </div>
+    <p class="subtitle" id="subtitle-poly-st">Deux places, le total avoisine 200&nbsp;%.</p>
     <div class="periode" data-bloc="polymarket">
       <span>Période</span>
       <div class="periode-group">
@@ -261,11 +266,16 @@ el.innerHTML='<div class="cd-big">'+b+'</div><div class="cd-small">'+s+'</div>';
       </div>
       <input type="date" class="date-libre" title="Date de début libre">
     </div>
-    <div class="chart-wrap"><canvas id="chart-polymarket"></canvas></div>
-    <div class="candidats" id="cb-polymarket"></div>
-    <p style="font-size:0.82em;color:var(--gris);margin-top:1em;line-height:1.5;">Ces chiffres sont des probabilités d'être élu, pas des intentions de vote. Un candidat
-    peut réunir 35&nbsp;% des intentions au premier tour et une probabilité de victoire bien
-    différente. Les deux graphiques ne mesurent pas la même chose et ne se comparent pas.
+    <div class="tab-panel active" id="panel-poly-st">
+      <div class="chart-wrap"><canvas id="chart-polymarket-st"></canvas></div>
+      <div class="candidats" id="cb-polymarket-st"></div>
+    </div>
+    <div class="tab-panel" id="panel-poly-v">
+      <div class="chart-wrap"><canvas id="chart-polymarket-v"></canvas></div>
+      <div class="candidats" id="cb-polymarket-v"></div>
+    </div>
+    <p style="font-size:0.82em;color:var(--gris);margin-top:1em;line-height:1.5;">Ces chiffres sont des probabilités issues des marchés de prédiction, pas des intentions de vote.
+    Les deux graphiques ne mesurent pas la même chose et ne se comparent pas.
     <a href="methodologie.html" style="color:var(--bleu-vif);">En savoir plus.</a></p>
   </div>
 
@@ -1246,35 +1256,70 @@ async function init() {
     return lb - la;
   }, visibleOrder, { showDelta: true });
 
-  // --- Bloc Polymarket ---
-  let polyDateDebut = '9999-99-99', polyDateFin = '0000-00-00';
-  const polyCandidats = {};
-  for (const [cid, info] of Object.entries(polyData.candidats)) {
-    polyCandidats[cid] = info.historique.map(p => ({
-      d: p.d,
-      v: Math.round(p.p * 1000) / 10,
-    }));
-    if (info.historique.length > 0) {
-      const first = info.historique[0].d;
-      const last = info.historique[info.historique.length - 1].d;
-      if (first < polyDateDebut) polyDateDebut = first;
-      if (last > polyDateFin) polyDateFin = last;
+  // --- Bloc Polymarket (deux onglets) ---
+  function extractPolySeries(marcheData) {
+    let dateDebut = '9999-99-99', dateFin = '0000-00-00';
+    const cands = {};
+    for (const [cid, info] of Object.entries(marcheData.candidats)) {
+      cands[cid] = info.historique.map(p => ({
+        d: p.d,
+        v: Math.round(p.p * 1000) / 10,
+      }));
+      if (info.historique.length > 0) {
+        const first = info.historique[0].d;
+        const last = info.historique[info.historique.length - 1].d;
+        if (first < dateDebut) dateDebut = first;
+        if (last > dateFin) dateFin = last;
+      }
     }
+    return { cands, dateDebut, dateFin };
   }
 
-  const polyBloc = new BlocChart({
-    canvasId: 'chart-polymarket',
-    cbContainerId: 'cb-polymarket',
+  const stData = extractPolySeries(polyData.marches.second_tour);
+  const vData = extractPolySeries(polyData.marches.victoire);
+
+  const polyBlocST = new BlocChart({
+    canvasId: 'chart-polymarket-st',
+    cbContainerId: 'cb-polymarket-st',
     periodeSelector: '.periode[data-bloc="polymarket"]',
-    dateFin: polyDateFin,
-    dateDebut: polyDateDebut,
+    dateFin: stData.dateFin,
+    dateDebut: stData.dateDebut,
     nbDefault: 3,
     periodeEventPrefix: 'periode-cotes',
   });
-  polyBloc.setCandidats(polyCandidats, (a, b) => {
-    const la = polyBloc.lastVal(a) || 0;
-    const lb = polyBloc.lastVal(b) || 0;
-    return lb - la;
+  polyBlocST.setCandidats(stData.cands, (a, b) => {
+    return (polyBlocST.lastVal(b) || 0) - (polyBlocST.lastVal(a) || 0);
+  });
+
+  const polyBlocV = new BlocChart({
+    canvasId: 'chart-polymarket-v',
+    cbContainerId: 'cb-polymarket-v',
+    periodeSelector: '.periode[data-bloc="polymarket"]',
+    dateFin: vData.dateFin,
+    dateDebut: vData.dateDebut,
+    nbDefault: 3,
+    periodeEventPrefix: 'periode-cotes',
+  });
+  polyBlocV.setCandidats(vData.cands, (a, b) => {
+    return (polyBlocV.lastVal(b) || 0) - (polyBlocV.lastVal(a) || 0);
+  });
+
+  // Onglets Polymarket
+  const polyTabs = document.querySelectorAll('#tabs-polymarket .tab');
+  polyTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      polyTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const isST = tab.dataset.tab === 'poly-st';
+      document.getElementById('panel-poly-st').classList.toggle('active', isST);
+      document.getElementById('panel-poly-v').classList.toggle('active', !isST);
+      document.getElementById('titre-poly-st').style.display = isST ? '' : 'none';
+      document.getElementById('titre-poly-v').style.display = isST ? 'none' : '';
+      document.getElementById('subtitle-poly-st').style.display = isST ? '' : 'none';
+      // Redessiner le graphe actif (le canvas peut avoir été invisible)
+      if (isST) polyBlocST.render();
+      else polyBlocV.render();
+    });
   });
 
   // --- Bloc second tour ---

@@ -1,7 +1,8 @@
 """Collecte des cotes Polymarket pour l'élection présidentielle 2027.
 
-Lit candidats.json pour le mapping slug_polymarket → identifiant candidat,
-interroge l'API Polymarket, et écrit data/polymarket.json.
+Lit candidats.json pour le mapping condition_polymarket → identifiant candidat,
+interroge l'API Polymarket pour les deux événements (victoire et second tour),
+et écrit data/polymarket.json.
 """
 
 import json, sys, time, datetime, pathlib, urllib.request, urllib.error
@@ -10,9 +11,13 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 OUTPUT_PATH = ROOT / "data" / "polymarket.json"
 
-EVENT_SLUG = "next-french-presidential-election"
+EVENTS = {
+    "victoire": "next-french-presidential-election",
+    "second_tour": "next-french-presidential-election-who-will-advance-to-the-2nd-round",
+}
+
 SEUIL_PROBA = 0.01  # Probabilité minimale pour conserver un marché (spec §11)
-GAMMA_URL = f"https://gamma-api.polymarket.com/events?slug={EVENT_SLUG}"
+GAMMA_URL = "https://gamma-api.polymarket.com/events?slug={slug}"
 CLOB_URL = "https://clob.polymarket.com/prices-history?market={token}&interval=max&fidelity=1440"
 
 
@@ -22,36 +27,27 @@ def fetch_json(url):
         return json.loads(resp.read())
 
 
-def main():
-    candidats = json.loads(CANDIDATS_PATH.read_text())
-
-    # Mapping inverse : slug_polymarket → clé candidat
-    slug_to_id = {}
-    for cid, info in candidats.items():
-        slug = info.get("slug_polymarket")
-        if slug:
-            slug_to_id[slug] = cid
-
-    # Récupération de l'événement
-    events = fetch_json(GAMMA_URL)
+def collect_event(event_key, event_slug, cond_to_id):
+    """Collecte un événement. Retourne dict {candidat_id: {...}}."""
+    events = fetch_json(GAMMA_URL.format(slug=event_slug))
     if not events:
-        print("Erreur : aucun événement trouvé pour le slug", EVENT_SLUG, file=sys.stderr)
+        print(f"Erreur : aucun événement trouvé pour {event_slug}", file=sys.stderr)
         sys.exit(1)
 
     event = events[0]
     markets = event.get("markets", [])
-    print(f"{len(markets)} marchés trouvés sur Polymarket")
+    print(f"[{event_key}] {len(markets)} marchés trouvés")
 
     result = {}
     matched, skipped = 0, 0
 
     for market in markets:
-        slug = market.get("slug", "")
-        if slug not in slug_to_id:
+        condition_id = market.get("conditionId", "")
+        if condition_id not in cond_to_id:
             skipped += 1
             continue
 
-        cid = slug_to_id[slug]
+        cid = cond_to_id[condition_id]
         token_ids = json.loads(market.get("clobTokenIds", "[]"))
         if not token_ids:
             print(f"  {cid}: pas de clobTokenIds, ignoré", file=sys.stderr)
@@ -80,7 +76,6 @@ def main():
 
         result[cid] = {
             "market_id": market.get("id", ""),
-            "slug": slug,
             "token_yes": token_yes,
             "prix_actuel": prix_actuel,
             "historique": historique,
@@ -88,15 +83,40 @@ def main():
         matched += 1
         print(f"  {cid}: {len(historique)} points, prix actuel {prix_actuel}")
 
+    print(f"  {matched} candidats collectés, {skipped} marchés sans correspondance ou sous seuil")
+    return result
+
+
+def main():
+    candidats = json.loads(CANDIDATS_PATH.read_text())
+
+    # Mapping inverse par événement : conditionId → clé candidat
+    cond_maps = {}
+    for event_key in EVENTS:
+        mapping = {}
+        for cid, info in candidats.items():
+            cp = info.get("condition_polymarket")
+            if cp and cp.get(event_key):
+                mapping[cp[event_key]] = cid
+        cond_maps[event_key] = mapping
+
     output = {
         "maj": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "source": "polymarket",
-        "event_slug": EVENT_SLUG,
-        "candidats": result,
+        "marches": {},
     }
 
+    for event_key, event_slug in EVENTS.items():
+        cond_to_id = cond_maps[event_key]
+        print(f"\n--- {event_key} ({len(cond_to_id)} candidats attendus) ---")
+        candidats_result = collect_event(event_key, event_slug, cond_to_id)
+        output["marches"][event_key] = {
+            "event_slug": event_slug,
+            "candidats": candidats_result,
+        }
+
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=1) + "\n")
-    print(f"\n{matched} candidats collectés, {skipped} marchés sans correspondance dans candidats.json")
+    total = sum(len(m["candidats"]) for m in output["marches"].values())
+    print(f"\nTotal : {total} séries collectées")
     print(f"Écrit dans {OUTPUT_PATH}")
 
 

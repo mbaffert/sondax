@@ -8,7 +8,7 @@ Trois contrôles, tous bloquants :
 Produit data/derived/revue.html listant les sondages ajoutés ou modifiés.
 """
 
-import json, sys, pathlib, subprocess, datetime
+import json, sys, pathlib, subprocess, datetime, urllib.request
 
 
 def fmt_date(iso):
@@ -94,7 +94,7 @@ def _somme_class(total, tour):
     return ""
 
 
-def generate_revue(sondages, candidats, added, modified):
+def generate_revue(sondages, candidats, added, modified, poly_warnings=None):
     """Génère data/derived/revue.html."""
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
@@ -128,7 +128,17 @@ def generate_revue(sondages, candidats, added, modified):
                     f"</tr>"
                 )
 
-    if not blocks:
+    # Bloc avertissements Polymarket
+    poly_block = ""
+    if poly_warnings:
+        rows = "".join(f"<tr><td>{w}</td></tr>" for w in poly_warnings)
+        poly_block = (
+            '<h2>Polymarket — P(victoire) &gt; P(second tour)</h2>'
+            '<p class="meta">Non bloquant — inefficience de marché probable</p>'
+            f'<table><tr><th>Avertissement</th></tr>{rows}</table>'
+        )
+
+    if not blocks and not poly_block:
         print("Rien de neuf, pas de page de revue.")
         return
 
@@ -159,6 +169,7 @@ def generate_revue(sondages, candidats, added, modified):
 </tr>
 {"".join(blocks)}
 </table>
+{poly_block}
 </body>
 </html>
 """
@@ -214,11 +225,99 @@ def generate_revue_markdown(added, modified):
     return "\n".join(lines)
 
 
+POLYMARKET_PATH = ROOT / "data" / "polymarket.json"
+
+POLYMARKET_EVENTS = {
+    "victoire": "next-french-presidential-election",
+    "second_tour": "next-french-presidential-election-who-will-advance-to-the-2nd-round",
+}
+
+
+def validate_polymarket_conditions(candidats):
+    """Contrôle 4 : conditionId Polymarket uniques et existants côté API."""
+    errors = []
+
+    # Collecter tous les conditionId par type de marché
+    seen = {}  # conditionId → (candidat, marché)
+    for cid, info in candidats.items():
+        cp = info.get("condition_polymarket")
+        if not cp:
+            continue
+        for marche in ("victoire", "second_tour"):
+            cond = cp.get(marche)
+            if cond is None:
+                continue
+            key = (marche, cond)
+            if key in seen:
+                errors.append(
+                    f"[polymarket] conditionId doublon {marche} {cond} : "
+                    f"{seen[key]} et {cid}"
+                )
+            else:
+                seen[key] = cid
+
+    # Vérifier l'existence côté API
+    for marche, event_slug in POLYMARKET_EVENTS.items():
+        expected = {cond for (m, cond), _ in seen.items() if m == marche}
+        if not expected:
+            continue
+        url = f"https://gamma-api.polymarket.com/events?slug={event_slug}"
+        req = urllib.request.Request(url, headers={"User-Agent": "sondax/1.0"})
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = json.loads(resp.read())
+        except Exception as e:
+            errors.append(f"[polymarket] impossible de vérifier {marche} : {e}")
+            continue
+
+        api_conditions = set()
+        for market in data[0].get("markets", []):
+            api_conditions.add(market.get("conditionId", ""))
+
+        for cond in expected:
+            if cond not in api_conditions:
+                cand = seen[(marche, cond)]
+                errors.append(
+                    f"[polymarket] {cand}.{marche} conditionId {cond} "
+                    f"absent de l'événement {event_slug}"
+                )
+
+    return errors
+
+
+def check_polymarket_coherence():
+    """Contrôle non bloquant : P(victoire) ≤ P(second_tour) par candidat."""
+    warnings = []
+    if not POLYMARKET_PATH.exists():
+        return warnings
+    poly = json.loads(POLYMARKET_PATH.read_text())
+    marches = poly.get("marches", {})
+    victoire = marches.get("victoire", {}).get("candidats", {})
+    second_tour = marches.get("second_tour", {}).get("candidats", {})
+
+    for cid in victoire:
+        if cid not in second_tour:
+            continue
+        pv = victoire[cid].get("prix_actuel")
+        ps = second_tour[cid].get("prix_actuel")
+        if pv is not None and ps is not None and pv > ps:
+            warnings.append(
+                f"{cid}: P(victoire)={pv:.4f} > P(second_tour)={ps:.4f}"
+            )
+    return warnings
+
+
 def main():
     candidats = json.loads(CANDIDATS_PATH.read_text())
     sondages = json.loads(SONDAGES_PATH.read_text())
 
     ok, errors = validate(sondages, candidats)
+
+    # Contrôle 4 : conditionId Polymarket
+    poly_errors = validate_polymarket_conditions(candidats)
+    if poly_errors:
+        errors.extend(poly_errors)
+        ok = False
 
     if not ok:
         print("VALIDATION ÉCHOUÉE :", file=sys.stderr)
@@ -233,7 +332,14 @@ def main():
     added, modified = diff_sondages(sondages, previous)
     print(f"  {len(added)} ajouté(s), {len(modified)} modifié(s)")
 
-    generate_revue(sondages, candidats, added, modified)
+    # Contrôle 5 (non bloquant) : P(victoire) ≤ P(second_tour)
+    poly_warnings = check_polymarket_coherence()
+    if poly_warnings:
+        print(f"  {len(poly_warnings)} avertissement(s) Polymarket :")
+        for w in poly_warnings:
+            print(f"    {w}")
+
+    generate_revue(sondages, candidats, added, modified, poly_warnings)
 
     # Résumé pour le workflow (GITHUB_OUTPUT + fichier mail)
     import os

@@ -5,8 +5,10 @@
   var D = window.HEADER_DATA;
   if (!D) return;
 
-  // --- Compte à rebours (réutilise la logique existante) ---
-  var T1 = new Date(2027, 3, 18), T2 = new Date(2027, 4, 2);
+  // --- Compte à rebours (dates depuis config.json via HEADER_DATA) ---
+  var ed = D.electionDates || {};
+  var T1 = ed.premierTour ? new Date(ed.premierTour + 'T00:00:00') : new Date(2027, 3, 18);
+  var T2 = ed.secondTour ? new Date(ed.secondTour + 'T00:00:00') : new Date(2027, 4, 2);
   var p = new Date().toLocaleDateString('en-CA', { timeZone: 'Europe/Paris' });
   var today = new Date(p + 'T00:00:00');
   var d1 = Math.round((T1 - today) / 864e5);

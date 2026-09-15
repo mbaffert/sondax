@@ -162,6 +162,11 @@ def main():
     all_t1 = [h for h in latest["hypotheses"] if h.get("tour") == 1]
     hyp_distinctive = build_hyp_distinctive_label(hyp, all_t1, candidats)
 
+    # Dates de l'élection depuis config.json
+    config_path = DATA / "config.json"
+    config = load_json(config_path) if config_path.exists() else {}
+    election = config.get("election", {})
+
     # Données pour le bandeau
     header_data = {
         "institut": latest["institut"],
@@ -173,6 +178,10 @@ def main():
         "candidates": candidates_data,
         "pollCount": poll_count,
         "instituteCount": institute_count,
+        "electionDates": {
+            "premierTour": election.get("premier_tour", "2027-04-18"),
+            "secondTour": election.get("second_tour", "2027-05-02"),
+        },
     }
 
     # Écrire le fichier JS

@@ -11,16 +11,21 @@ décide explicitement et se répercute ici.
 
 ## 1. Périmètre v1
 
-Un site d'une seule page, trois blocs :
+Une page d'accueil à sections nommées et ancrées :
 
-1. **Tendance des sondages, premier tour.** Une courbe par candidat, semaine après semaine.
-2. **Cotes Polymarket.** Évolution des probabilités implicites par candidat, deux onglets :
-   accession au second tour et victoire.
-3. **Fiche technique.** Sélection d'une configuration puis d'un sondage, et affichage
+1. **Bandeau d'en-tête.** Dernier sondage, compte à rebours, navigation (voir
+   `scripts/build_header.py`).
+2. **Tendance des sondages, premier tour.** Une courbe par candidat, semaine après
+   semaine.
+3. **Second tour** (`#second-tour`). Repères factuels, chapeau généré au build,
+   tableau de tous les duels mesurés, sélecteur de détail par duel (voir §7).
+4. **Cotes Polymarket.** Évolution des probabilités implicites par candidat, deux
+   onglets : accession au second tour et victoire.
+5. **Fiche technique.** Sélection d'une configuration puis d'un sondage, et affichage
    de ses caractéristiques et de ses marges d'erreur (voir §5).
 
-S'y ajoute un sélecteur de duel de second tour (voir §7) et des **pages dédiées
-par duel de second tour**, indexables par les moteurs de recherche (voir §7).
+S'y ajoutent des **pages dédiées par duel de second tour**, indexables par les moteurs
+de recherche (voir §7).
 
 **Hors périmètre v1**, à ne pas implémenter sans décision explicite : correction des
 *house effects*, base de données, comptes utilisateurs, back-office d'édition,
@@ -456,11 +461,40 @@ particulier : sa courbe commence à sa première mesure (§4).
 
 ## 7. Second tour
 
-Un duel est une hypothèse avec `tour: 2` et exactement deux candidats. Sélecteur à deux
-noms dans l'interface.
+Un duel est une hypothèse avec `tour: 2` et exactement deux candidats.
 
 **En dessous de 5 mesures pour un duel donné, afficher un tableau des sondages, pas une
 courbe.** Trois points sur dix mois ne constituent pas une tendance.
+
+### 7.0 Section second tour sur la page d'accueil
+
+Section ancrée `id="second-tour"`, placée entre le bloc de tendance du premier tour et
+le bloc Polymarket. Composant autonome, réutilisable tel quel sur une page `/second-tour/`
+le jour venu.
+
+**Contenu, dans l'ordre :**
+
+1. **Repères factuels.** Deux phrases en dur : dates attendues des deux tours et règle
+   de qualification. Les dates viennent de `data/config.json` ; un booléen `officielles`
+   contrôle la formulation (conditionnel ou affirmatif). Balisage `schema.org` de type
+   `Event` en JSON-LD.
+
+2. **Chapeau généré au build.** Deux ou trois phrases composées à partir des données :
+   nombre de duels et de mesures, candidat arrivant en tête dans le plus de duels, duel
+   le plus serré, éventuelle inversion de sens. Texte grammatical quel que soit l'état
+   (0, 1 ou N duels). Généré par `scripts/build_index_second_tour.py`.
+
+3. **Tableau général des duels.** Un `<table>` HTML, une ligne par duel : noms, nombre
+   de mesures, dernière mesure (date et institut), score. Tri par nombre de mesures
+   décroissant puis date décroissante. Lien vers la page dédiée si ≥ 5 mesures.
+
+4. **Sélecteur de détail par duel.** Deux menus déroulants, hydratés par JavaScript.
+   Affiche le détail du duel choisi : tableau des sondages (< 5 mesures) ou courbe
+   (≥ 5 mesures). Sans JavaScript, le tableau général reste entièrement lisible.
+
+**Sortie ultérieure en page dédiée** : lorsqu'un duel atteint le seuil de la courbe ou
+que les volumes de recherche le justifient, le composant pourra être extrait en page
+`/second-tour/`. Hors périmètre actuel.
 
 ### 7.1 Pages dédiées par duel
 

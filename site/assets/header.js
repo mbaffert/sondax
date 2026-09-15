@@ -92,12 +92,7 @@
     '</div>';
   }
 
-  // --- Link label with optional hypothesis ---
-  var detailText = 'Voir le d\u00e9tail';
-  if (D.hypDistinctive) {
-    detailText += ' (hyp.\u00a0' + D.hypDistinctive + ')';
-  }
-  detailText += ' \u2192';
+  var detailText = 'Voir le d\u00e9tail \u2192';
 
   // --- Link target ---
   var scoreHref = baseHref + 'index.html#bloc-fiche';

@@ -1,0 +1,535 @@
+/* ===================================================================
+   Bandeau d'en-tête Sondax — option 1b
+   Fichier partagé, inclus dans toutes les pages.
+   =================================================================== */
+
+/* --- Desktop (>= 901 px) ----------------------------------------- */
+
+.sh {
+  background: #F7F8F5;
+  border-bottom: 1px solid #DDDFDA;
+}
+
+
+.sh-inner {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Colonne gauche */
+.sh-left {
+  padding: 12px 30px 14px;
+}
+
+@media (min-width: 901px) {
+  .sh-left {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+/* Rangée 1 : navigation */
+.sh-nav-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 14px;
+}
+
+.sh-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-decoration: none;
+}
+
+.sh-logo svg {
+  width: 30px;
+  height: 18px;
+  display: block;
+}
+
+.sh-logo .sh-wordmark {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #0B2E6F;
+  letter-spacing: -0.02em;
+}
+
+.sh-nav {
+  display: flex;
+  gap: 20px;
+}
+
+.sh-nav a {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #66707D;
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.sh-nav a:hover {
+  color: #0B2E6F;
+  text-decoration: none;
+}
+
+.sh-nav a.is-active {
+  color: #0B2E6F;
+  border-bottom-color: #0C6CF2;
+}
+
+.sh-stats {
+  margin-left: auto;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #66707D;
+  white-space: nowrap;
+}
+
+/* Rangée 2 : zone du dernier sondage */
+.sh-scores {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+@media (min-width: 901px) {
+  .sh-scores {
+    padding: 7px 10px;
+    margin: -7px -10px;
+    border-radius: 8px;
+  }
+}
+
+.sh-scores:hover {
+  background: #EDEEEA;
+  text-decoration: none;
+}
+
+.sh-scores:focus-visible {
+  outline: 2px solid #0C6CF2;
+  outline-offset: 2px;
+}
+
+.sh-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 9px;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.01em;
+  color: #202632;
+}
+
+.sh-surtitle {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #0C6CF2;
+}
+
+.sh-detail {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 12.5px;
+  color: #0C6CF2;
+  font-weight: 500;
+}
+
+/* Grille des 4 scores */
+.sh-grid {
+  border-top: 1px solid #DDDFDA;
+}
+
+@media (min-width: 901px) {
+  .sh-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 214px);
+    justify-content: start;
+  }
+}
+
+.sh-col {
+  padding: 9px 16px 0;
+}
+
+@media (min-width: 901px) {
+  .sh-col {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.sh-col:first-child {
+  padding-left: 0;
+}
+
+.sh-col:last-child {
+  padding-right: 0;
+  padding-left: 16px;
+}
+
+.sh-col:not(:last-child) {
+  border-right: 1px solid #DDDFDA;
+}
+
+.sh-score {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.sh-score-num {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  font-variant-numeric: tabular-nums;
+  color: #202632;
+}
+
+.sh-score-pct {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #202632;
+}
+
+.sh-col:first-child .sh-score-num,
+.sh-col:first-child .sh-score-pct {
+  color: #0B2E6F;
+}
+
+.sh-name {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: #202632;
+  margin-top: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Panneau droit — compte à rebours */
+.sh-countdown {
+  width: 286px;
+  flex-shrink: 0;
+  background: #0B2E6F;
+  color: #fff;
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sh-cd-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 6px;
+}
+
+.sh-cd-big {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 58px;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+}
+
+.sh-cd-date {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.78);
+  margin-top: 8px;
+}
+
+/* Desktop : seul le libellé long est visible */
+.sh-cd-date-mobile {
+  display: none;
+}
+
+/* Desktop : seul le titre long est visible */
+.sh-title-text-mobile {
+  display: none;
+}
+
+/* Bouton menu mobile (masqué en desktop) */
+.sh-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 12px;
+  margin: -12px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sh-menu-bar {
+  display: block;
+  width: 19px;
+  height: 2px;
+  background: #0B2E6F;
+}
+
+/* Menu mobile fermé */
+.sh-mobile-nav {
+  display: none;
+}
+
+/* Desktop: hide mobile-only elements */
+.sh-stats-mobile {
+  display: none;
+}
+
+/* --- Mobile (< 901 px) ------------------------------------------- */
+
+@media (max-width: 900px) {
+  .sh-inner {
+    flex-direction: column;
+  }
+
+  /* Barre de marque — pas de padding ici, chaque rangée gère le sien */
+  .sh-left {
+    padding: 0;
+  }
+
+  .sh-nav-row {
+    height: 50px;
+    margin-bottom: 0;
+    padding: 0 16px;
+    border-bottom: 1px solid #DDDFDA;
+  }
+
+  .sh-logo svg {
+    width: 27px;
+    height: 16px;
+  }
+
+  .sh-logo .sh-wordmark {
+    font-size: 17px;
+  }
+
+  .sh-nav,
+  .sh-stats-desktop {
+    display: none;
+  }
+
+  .sh-menu-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-left: auto;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Bande compte à rebours — première visuellement */
+  .sh-countdown {
+    width: 100%;
+    padding: 12px 16px;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 10px;
+    order: -1;
+  }
+
+  .sh-cd-label {
+    display: none;
+  }
+
+  .sh-cd-big {
+    font-size: 28px;
+    letter-spacing: -0.03em;
+  }
+
+  .sh-cd-date {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.72);
+    margin-top: 0;
+  }
+
+  /* Mobile : libellé court visible, long masqué */
+  .sh-cd-date-desktop {
+    display: none;
+  }
+
+  .sh-cd-date-mobile {
+    display: inline;
+  }
+
+  /* Titre : court visible, long masqué */
+  .sh-title-text {
+    display: none;
+  }
+
+  .sh-title-text-mobile {
+    display: inline;
+  }
+
+  /* Zone du dernier sondage */
+  .sh-scores {
+    padding: 13px 16px 15px;
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .sh-title {
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0C6CF2;
+  }
+
+  .sh-title .sh-surtitle {
+    display: none;
+  }
+
+  .sh-title .sh-title-text-mobile {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #0C6CF2;
+  }
+
+  .sh-detail {
+    font-size: 11.5px;
+    white-space: nowrap;
+  }
+
+  .sh-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    border-top: none;
+    width: 100%;
+  }
+
+  .sh-left {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .sh-scores {
+    min-width: 0;
+  }
+
+  .sh-grid {
+    min-width: 0;
+  }
+
+  .sh-col {
+    min-width: 0;
+  }
+
+  .sh-col {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0;
+    border-right: none !important;
+  }
+
+  .sh-col .sh-name {
+    margin-top: 0;
+    font-size: 15.5px;
+    min-width: 0;
+  }
+
+  .sh-col .sh-score {
+    flex-shrink: 0;
+    white-space: nowrap;
+    gap: 3px;
+  }
+
+  /* Premier candidat : score plus gros, couleur bleu nuit */
+  .sh-col:first-child .sh-score-num {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  .sh-col:first-child .sh-score-pct {
+    font-size: 17px;
+    font-weight: 700;
+    color: #0B2E6F;
+  }
+
+  .sh-col:not(:first-child) .sh-score-num {
+    font-size: 15px;
+    font-weight: 600;
+    color: #202632;
+  }
+
+  .sh-col:not(:first-child) .sh-score-pct {
+    font-size: 15px;
+    font-weight: 600;
+    color: #202632;
+  }
+
+  .sh-stats-mobile {
+    display: block;
+    margin-top: 10px;
+    padding-top: 9px;
+    border-top: 1px solid #DDDFDA;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #66707D;
+  }
+
+  /* Menu mobile */
+  .sh-mobile-nav.is-open {
+    display: flex;
+    flex-direction: column;
+    background: #F7F8F5;
+    border-bottom: 1px solid #DDDFDA;
+    padding: 8px 0;
+  }
+
+  .sh-mobile-nav a {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #66707D;
+    text-decoration: none;
+    padding: 10px 16px;
+  }
+
+  .sh-mobile-nav a:hover,
+  .sh-mobile-nav a.is-active {
+    color: #0B2E6F;
+  }
+
+  .sh-mobile-nav a.is-active {
+    border-left: 3px solid #0C6CF2;
+    padding-left: 13px;
+  }
+}
+

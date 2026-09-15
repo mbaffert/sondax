@@ -73,49 +73,12 @@ def fmt_pct(v):
 # Templates HTML
 # ---------------------------------------------------------------------------
 
-COUNTDOWN_JS = """\
-<script>
-(function(){var el=document.getElementById('countdown');if(!el)return;
-var T1=new Date(2027,3,18),T2=new Date(2027,4,2);
-var p=new Date().toLocaleDateString('en-CA',{timeZone:'Europe/Paris'});
-var today=new Date(p+'T00:00:00');
-var d1=Math.round((T1-today)/864e5),d2=Math.round((T2-today)/864e5);
-window._joursAvantT1_2027=d1;
-if(d2<0){el.style.display='none';return}
-var b,s;
-if(d1>0){b='J\\u2011'+d1;s='Premier tour le dimanche 18 avril 2027'}
-else if(d1===0){b='J0';s='Premier tour aujourd\\u2019hui'}
-else if(d2>0){b='J\\u2011'+d2;s='Second tour le dimanche 2 mai 2027'}
-else{b='J0';s='Second tour aujourd\\u2019hui'}
-el.innerHTML='<div class="cd-big">'+b+'</div><div class="cd-small">'+s+'</div>';
-})();
-</script>"""
-
-
 def header(title_text, depth=1):
     prefix = "../" * depth
     return f"""\
-<header>
-  <div class="header-inner">
-    <div>
-      <a href="{prefix}index.html"><img src="{prefix}assets/logo-sondax-blanc.svg" alt="Sondax"></a>
-      <p class="header-title">{html_mod.escape(title_text)}</p>
-    </div>
-    <div id="countdown" class="countdown"></div>
-  </div>
-</header>
-{COUNTDOWN_JS}
-
-<nav class="section-nav">
-  <div class="nav-inner">
-    <a href="{prefix}index.html">Présidentielle 2027</a>
-    <a href="{prefix}second-tour/" class="active">Second tour</a>
-    <span class="nav-sep"></span>
-    <a href="{prefix}sondages.html">Tous les sondages</a>
-    <a href="{prefix}methodologie.html">Méthodologie</a>
-    <a href="{prefix}precedentes-elections.html">Précédentes élections</a>
-  </div>
-</nav>"""
+<div id="site-header" class="sh"></div>
+<script src="{prefix}assets/header-data.js"></script>
+<script src="{prefix}assets/header.js"></script>"""
 
 
 def footer(depth=1):
@@ -148,27 +111,6 @@ CSS = """\
   a { color: var(--bleu-vif); text-decoration: none; }
   a:hover { color: var(--bleu-nuit); text-decoration: underline; }
 
-  header { background: var(--bleu-nuit); color: #fff; padding: 32px 28px 24px; }
-  header .header-inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-  header img { width: 180px; display: block; }
-  header .header-title { font-family: var(--titre); font-weight: 500; font-size: 24px;
-    letter-spacing: -0.01em; color: #fff; margin-top: 12px; }
-  .countdown { text-align: right; color: #fff; flex-shrink: 0; }
-  .cd-big { font-family: var(--titre); font-size: 28px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; }
-  .cd-small { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 2px; }
-
-  nav.section-nav { position: sticky; top: 0; z-index: 20; background: var(--bleu-nuit);
-    border-bottom: 1px solid rgba(255,255,255,0.12); display: flex; align-items: center;
-    padding: 0 28px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-  nav.section-nav::-webkit-scrollbar { display: none; }
-  nav.section-nav .nav-inner { max-width: 1180px; margin: 0 auto; display: flex; width: 100%; align-items: center; }
-  nav.section-nav .nav-sep { width: 1px; height: 16px; background: rgba(255,255,255,0.2); margin: 0 4px; flex-shrink: 0; }
-  nav.section-nav a { font-family: var(--corps); font-size: 13px; font-weight: 500;
-    color: rgba(255,255,255,0.6); padding: 10px 14px; white-space: nowrap;
-    border-bottom: 2px solid transparent; transition: all 0.15s; text-decoration: none; }
-  nav.section-nav a:hover { color: #fff; text-decoration: none; }
-  nav.section-nav a.active { color: #fff; border-bottom-color: #fff; }
-
   main { max-width: 1180px; margin: 0 auto; padding: 26px 28px 40px; }
 
   footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
@@ -196,13 +138,6 @@ CSS = """\
   .duel-card .duel-count { font-size: 13px; color: var(--gris); margin-top: 2px; }
 
   @media (max-width: 600px) {
-    header { padding: 22px 16px 16px; }
-    header .header-inner { flex-wrap: wrap; }
-    header img { width: 130px; }
-    header .header-title { font-size: 18px; }
-    .countdown { text-align: left; width: 100%; margin-top: 10px; }
-    .cd-big { font-size: 22px; }
-    nav.section-nav { padding: 0 12px; }
     main { padding: 14px 12px 30px; }
     .chart-wrap { height: 300px; }
     footer { padding: 24px 16px; }
@@ -215,7 +150,8 @@ HEAD_COMMON = """\
 <link rel="icon" type="image/svg+xml" href="{prefix}assets/logo-sondax.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{prefix}assets/header.css">
 <script data-goatcounter="https://sondax.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>"""
 

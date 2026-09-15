@@ -124,6 +124,12 @@ et ne sont jamais modifiés.
 `condition_polymarket` : renseigné à la main, jamais déduit automatiquement. Un candidat
 sans marché sur un événement a `null` pour cette clé — ce n'est pas une erreur bloquante.
 
+`declare_le` : date ISO (`"2026-06-12"`) à laquelle le candidat s'est officiellement
+déclaré, ou `null` s'il ne l'est pas (encore). Renseigné à la main. Un candidat compte
+comme déclaré **pour un sondage donné** si `declare_le` est non nul et antérieur ou égal
+au `terrain_fin` du sondage. Ce champ sert au bandeau d'en-tête (§4) et non aux courbes
+de tendance.
+
 Aucune création automatique d'entrée : un candidat inconnu fait échouer le run (§8).
 
 Les identifiants sont des **slugs simples** (`le-pen`, `attal`). En cas d'homonymie
@@ -134,6 +140,10 @@ dans `alias_wikipedia`.
 jamais tel quel : il le résout via `alias_wikipedia` vers un identifiant du référentiel.
 Un nom sans correspondance est une erreur bloquante (§8, règle 2), jamais une entrée
 créée à la volée.
+
+`prenom` : prénom usuel du candidat, utilisé pour construire le nom complet
+(`prenom` + ` ` + `nom`) dans le bandeau d'en-tête. Vide pour les entrées
+`type: parti`.
 
 **`type`** est obligatoire sur chaque entrée et vaut `personne` par défaut, ou `parti` lorsque le sondage teste un candidat non
 désigné (« Candidat PS », « Candidat LR »). Ces entrées sont des candidats comme les
@@ -272,6 +282,24 @@ répartition. Les courbes de tendance n'utilisent que les hypothèses sélection
 les autres restent accessibles dans le bloc fiche technique.
 
 La règle ne s'applique pas au tour 2 : tous les duels sont également valides.
+
+**Sélection de l'hypothèse pour le bandeau d'en-tête.** Le bandeau affiche un seul
+sondage (le plus récent par `terrain_fin`) et une seule hypothèse de tour 1 de ce
+sondage. La règle de sélection est différente de celle des courbes :
+
+1. Parmi les hypothèses T1 du sondage, retenir celle qui contient le plus de
+   **candidats officiellement déclarés** — c'est-à-dire ceux dont `declare_le` est
+   non nul et ≤ `terrain_fin` du sondage.
+2. En cas d'égalité, retenir l'hypothèse dont `echantillon` (au niveau hypothèse) est
+   le plus grand ; si nul, considérer l'échantillon du sondage.
+3. En cas d'égalité persistante, retenir la première dans l'ordre du fichier.
+
+Tant que tous les `declare_le` sont `null`, la règle dégénère en « hypothèse avec le
+plus de candidats testés, puis échantillon le plus grand » — équivalent au fallback des
+courbes, et le résultat est cohérent.
+
+Le libellé de l'hypothèse choisie apparaît dans le `<h2>` du bandeau sous la forme :
+« Ifop · terrain 3 septembre 2026 · hyp. Attal / Le Pen / Glucksmann ».
 
 **Courbe de tendance.**
 

@@ -38,7 +38,7 @@ jobs:
       - name: Vérifier les changements
         id: changes
         run: |
-          if git diff --quiet data/sondages.json data/polymarket.json data/sondages_manuels.json; then
+          if git diff --quiet data/sondages.json data/polymarket.json data/snapshots/; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -56,19 +56,16 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Réutiliser la branche si elle existe déjà (run précédent du jour)
-          if git ls-remote --exit-code origin "refs/heads/${BRANCH}" >/dev/null 2>&1; then
-            git fetch origin "$BRANCH"
-            git checkout "$BRANCH"
-            git merge origin/main --no-edit
-          else
-            git checkout -b "$BRANCH"
-          fi
+          # Créer ou réinitialiser la branche depuis HEAD (main + sorties scripts)
+          git checkout -B "$BRANCH"
 
           git add data/sondages.json data/polymarket.json data/snapshots/
           git diff --cached --quiet && echo "Rien de nouveau à commiter" && exit 0
           git commit -m "Collecte du ${DATE}"
-          git push -u origin "$BRANCH"
+
+          # Récupérer la ref distante pour que --force-with-lease ait un point de comparaison
+          git fetch origin "$BRANCH" || true
+          git push --force-with-lease -u origin "$BRANCH"
 
           # Créer la PR seulement si elle n'existe pas déjà
           EXISTING_PR=$(gh pr list --head "$BRANCH" --state open --json url --jq '.[0].url // empty')

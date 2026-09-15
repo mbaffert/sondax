@@ -121,9 +121,9 @@
       '</div>' +
       '<a class="sh-scores" href="' + scoreHref + '">' +
         '<h2 class="sh-title">' +
-          '<span class="sh-surtitle">Dernier sondage</span>' +
-          '<span class="sh-title-text">' + desktopTitleText + '</span>' +
-          '<span class="sh-title-text-mobile">' + mobileTitleText + '</span>' +
+          '<span>Dernier sondage</span>' +
+          '<span class="sh-title-meta sh-title-text"> \u2014 ' + desktopTitleText + ' \u00b7 </span>' +
+          '<span class="sh-title-meta sh-title-text-mobile">' + mobileTitleText + '</span>' +
           '<span class="sh-detail">' + detailText + '</span>' +
         '</h2>' +
         '<div class="sh-grid">' + gridHTML + '</div>' +

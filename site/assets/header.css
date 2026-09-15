@@ -87,7 +87,7 @@
 .sh-stats {
   margin-left: auto;
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #66707D;
@@ -121,28 +121,27 @@
 
 .sh-title {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 0 0 9px;
+  align-items: baseline;
+  gap: 8px;
+  margin: 0 0 7px;
   font-family: 'Space Grotesk', system-ui, sans-serif;
   font-weight: 600;
-  font-size: 18px;
+  font-size: 20px;
   letter-spacing: -0.01em;
-  color: #202632;
+  color: #0B2E6F;
 }
 
-.sh-surtitle {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
+.sh-title-meta {
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 16px;
   font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: #0C6CF2;
+  color: #66707D;
+  letter-spacing: 0;
 }
 
 .sh-detail {
   font-family: 'IBM Plex Sans', system-ui, sans-serif;
-  font-size: 12.5px;
+  font-size: 16px;
   color: #0C6CF2;
   font-weight: 500;
 }
@@ -398,14 +397,11 @@
     justify-content: space-between;
     margin-bottom: 8px;
     font-size: 10px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 500;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
     color: #0C6CF2;
   }
 
-  .sh-title .sh-surtitle {
+  /* Mobile : masquer "Dernier sondage" et le tiret cadratin */
+  .sh-title > span:first-child {
     display: none;
   }
 
@@ -416,6 +412,11 @@
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: #0C6CF2;
+  }
+
+  /* Retirer le "·" devant le lien sur mobile (le tiret cadratin est masqué) */
+  .sh-title .sh-title-text-mobile .sh-meta-sep {
+    display: none;
   }
 
   .sh-detail {

@@ -32,13 +32,13 @@
 
   nav.sub-nav { position: sticky; top: 0; z-index: 20; background: var(--fond);
     border-bottom: 1px solid #EDEEEA; display: flex; align-items: center;
-    padding: 0 28px; overflow-x: auto; -webkit-overflow-scrolling: touch;
+    padding: 0 30px; overflow-x: auto; -webkit-overflow-scrolling: touch;
     scrollbar-width: none; }
   nav.sub-nav::-webkit-scrollbar { display: none; }
-  nav.sub-nav .nav-inner { max-width: 1180px; margin: 0 auto; display: flex; width: 100%; align-items: center; }
   nav.sub-nav a { font-family: var(--corps); font-size: 13px; font-weight: 500;
     color: var(--gris); padding: 10px 14px; white-space: nowrap;
     border-bottom: 2px solid transparent; transition: all 0.15s; text-decoration: none; }
+  nav.sub-nav a:first-child { padding-left: 0; }
   nav.sub-nav a:hover { color: var(--texte); text-decoration: none; }
   nav.sub-nav a.active { color: var(--texte); border-bottom-color: var(--bleu-vif); }
 
@@ -161,12 +161,10 @@
 <script src="assets/header.js"></script>
 
 <nav class="sub-nav" id="sub-nav">
-  <div class="nav-inner">
-    <a href="#bloc-sondages">Intentions de vote</a>
-    <a href="#bloc-polymarket">Marchés de prédiction</a>
-    <a href="second-tour/">Second tour</a>
-    <a href="#bloc-fiche">Explorer</a>
-  </div>
+  <a href="#bloc-sondages">Intentions de vote</a>
+  <a href="#bloc-polymarket">Marchés de prédiction</a>
+  <a href="second-tour/">Second tour</a>
+  <a href="#bloc-fiche">Tous les sondages</a>
 </nav>
 
 <main>
@@ -1453,7 +1451,7 @@ async function init() {
   }
 
   // Scroll spy pour la navigation par ancres
-  const navLinks = document.querySelectorAll('#sub-nav a[href^="#"]');
+  const navLinks = document.querySelectorAll('#sub-nav > a[href^="#"]');
   const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
   const navBar = document.getElementById('section-nav');
   const offset = 50; // nav height

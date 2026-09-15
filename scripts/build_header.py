@@ -55,13 +55,13 @@ def select_hypothesis(sondage, candidats):
 
 
 def format_date_fr(iso_date):
-    """'2026-09-03' → 'terrain 3 septembre 2026'"""
+    """'2026-09-03' → '3 septembre 2026'"""
     mois = [
         "janvier", "février", "mars", "avril", "mai", "juin",
         "juillet", "août", "septembre", "octobre", "novembre", "décembre",
     ]
     y, m, d = iso_date.split("-")
-    return f"terrain {int(d)} {mois[int(m) - 1]} {y}"
+    return f"{int(d)} {mois[int(m) - 1]} {y}"
 
 
 def format_date_mobile(iso_date):
@@ -84,17 +84,32 @@ def candidate_full_name(cid, candidats):
     return nom
 
 
-def build_hyp_label(hyp, candidats):
-    """Construit le libellé 'hyp. Attal / Le Pen / Glucksmann' pour le h2.
+def build_hyp_distinctive_label(hyp, all_t1, candidats):
+    """Construit le libellé distinctif pour le lien 'Voir le détail'.
 
-    Utilise les noms courts (nom seul) pour la lisibilité du titre.
+    Identifie les candidats qui distinguent cette hypothèse des autres T1
+    du même sondage. S'il n'y a qu'une hypothèse, retourne None.
     """
+    if len(all_t1) <= 1:
+        return None
+
+    # Candidats communs à toutes les hypothèses T1
+    sets = [set(h.get("scores", {}).keys()) - {"autre"} for h in all_t1]
+    common = set(sets[0])
+    for s in sets[1:]:
+        common &= s
+
+    # Candidats distinctifs de cette hypothèse (présents ici, pas partout)
+    mine = set(hyp.get("scores", {}).keys()) - {"autre"}
+    distinctive = mine - common
+
+    if not distinctive:
+        return None
+
+    # Trier par score décroissant, noms courts
     scores = hyp.get("scores", {})
-    sorted_cands = sorted(
-        ((cid, s) for cid, s in scores.items() if cid != "autre"),
-        key=lambda x: -x[1],
-    )
-    names = [candidats.get(cid, {}).get("nom", cid) for cid, _ in sorted_cands[:3]]
+    sorted_dist = sorted(distinctive, key=lambda c: -scores.get(c, 0))
+    names = [candidats.get(cid, {}).get("nom", cid) for cid in sorted_dist]
     return " / ".join(names)
 
 
@@ -143,8 +158,9 @@ def main():
     institutes = set(s["institut"] for s in sondages)
     institute_count = len(institutes)
 
-    # Libellé de l'hypothèse
-    hyp_label = build_hyp_label(hyp, candidats)
+    # Libellé distinctif de l'hypothèse (pour le lien "Voir le détail")
+    all_t1 = [h for h in latest["hypotheses"] if h.get("tour") == 1]
+    hyp_distinctive = build_hyp_distinctive_label(hyp, all_t1, candidats)
 
     # Données pour le bandeau
     header_data = {
@@ -152,7 +168,7 @@ def main():
         "terrainFin": latest["terrain_fin"],
         "terrainLabel": format_date_fr(latest["terrain_fin"]),
         "terrainLabelMobile": format_date_mobile(latest["terrain_fin"]),
-        "hypLabel": hyp_label,
+        "hypDistinctive": hyp_distinctive,
         "sondageId": latest["id"],
         "candidates": candidates_data,
         "pollCount": poll_count,

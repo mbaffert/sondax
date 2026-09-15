@@ -55,7 +55,6 @@
     { label: 'Pr\u00e9c\u00e9dentes \u00e9lections', href: 'precedentes-elections.html', match: ['precedentes-elections.html'] }
   ];
 
-  // Determine base href for subpages (second-tour/)
   var baseHref = '';
   if (pathname.indexOf('/second-tour/') !== -1) {
     baseHref = '../';
@@ -93,15 +92,24 @@
     '</div>';
   }
 
-  // --- Link target: explorer on accueil, positioned on this sondage ---
+  // --- Link label with optional hypothesis ---
+  var detailText = 'Voir le d\u00e9tail';
+  if (D.hypDistinctive) {
+    detailText += ' (hyp.\u00a0' + D.hypDistinctive + ')';
+  }
+  detailText += ' \u2192';
+
+  // --- Link target ---
   var scoreHref = baseHref + 'index.html#bloc-fiche';
 
   // --- Mobile title (short): "Institut · date" ---
   var mobileTitleText = D.institut + ' \u00b7 ' + D.terrainLabelMobile;
 
+  // --- Desktop title: "Institut · date" ---
+  var desktopTitleText = D.institut + ' \u00b7 ' + D.terrainLabel;
+
   // --- Assemble header: left column THEN countdown (right) ---
   var html = '<div class="sh-inner">' +
-    // Left column (first in DOM = left in flex)
     '<div class="sh-left">' +
       '<div class="sh-nav-row">' +
         '<a class="sh-logo" href="' + baseHref + 'index.html" aria-label="Sondax \u2014 accueil">' +
@@ -116,19 +124,17 @@
           '<span class="sh-menu-bar"></span>' +
         '</button>' +
       '</div>' +
-      // Scores zone
       '<a class="sh-scores" href="' + scoreHref + '">' +
         '<h2 class="sh-title">' +
           '<span class="sh-surtitle">Dernier sondage</span>' +
-          '<span class="sh-title-text">' + D.institut + ' \u00b7 ' + D.terrainLabel + ' \u00b7 hyp.\u00a0' + D.hypLabel + '</span>' +
+          '<span class="sh-title-text">' + desktopTitleText + '</span>' +
           '<span class="sh-title-text-mobile">' + mobileTitleText + '</span>' +
-          '<span class="sh-detail">Voir le d\u00e9tail \u2192</span>' +
+          '<span class="sh-detail">' + detailText + '</span>' +
         '</h2>' +
         '<div class="sh-grid">' + gridHTML + '</div>' +
         '<div class="sh-stats-mobile">' + statsText + '</div>' +
       '</a>' +
     '</div>' +
-    // Countdown panel (second in DOM = right in flex)
     (hideCountdown ? '' :
     '<div class="sh-countdown">' +
       '<div class="sh-cd-label">' + cdLabel + '</div>' +
@@ -140,7 +146,6 @@
     '</div>') +
   '</div>';
 
-  // Mobile nav (hidden by default)
   html += '<nav class="sh-mobile-nav">';
   for (var j = 0; j < navItems.length; j++) {
     var cls2 = isActive(navItems[j]) ? ' class="is-active"' : '';
@@ -148,13 +153,11 @@
   }
   html += '</nav>';
 
-  // Render
   var el = document.getElementById('site-header');
   if (el) {
     el.innerHTML = html;
   }
 
-  // --- Mobile menu toggle ---
   var btn = el && el.querySelector('.sh-menu-btn');
   var mobileNav = el && el.querySelector('.sh-mobile-nav');
   if (btn && mobileNav) {

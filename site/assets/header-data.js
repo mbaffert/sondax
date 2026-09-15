@@ -2,9 +2,9 @@
 window.HEADER_DATA = {
   "institut": "OpinionWay",
   "terrainFin": "2026-09-10",
-  "terrainLabel": "terrain 10 septembre 2026",
+  "terrainLabel": "10 septembre 2026",
   "terrainLabelMobile": "10 septembre",
-  "hypLabel": "Le Pen / Mélenchon / Philippe",
+  "hypDistinctive": "Hollande",
   "sondageId": "opinionway-2026-09-10",
   "candidates": [
     {

@@ -18,7 +18,7 @@
 
 /* Colonne gauche */
 .sh-left {
-  padding: 12px 30px 14px;
+  padding: 10px 30px 14px;
 }
 
 @media (min-width: 901px) {
@@ -33,7 +33,9 @@
   display: flex;
   align-items: center;
   gap: 24px;
+  padding-bottom: 8px;
   margin-bottom: 14px;
+  border-bottom: 1px solid #DDDFDA;
 }
 
 .sh-logo {
@@ -52,7 +54,7 @@
 .sh-logo .sh-wordmark {
   font-family: 'Space Grotesk', system-ui, sans-serif;
   font-weight: 700;
-  font-size: 26px;
+  font-size: 28px;
   color: #0B2E6F;
   letter-spacing: -0.02em;
 }
@@ -64,7 +66,7 @@
 
 .sh-nav a {
   font-family: 'IBM Plex Sans', system-ui, sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 500;
   color: #66707D;
   text-decoration: none;

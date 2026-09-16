@@ -426,12 +426,10 @@ STATIC_PAGES = [
 ]
 
 
-def generate_sitemap(duel_slugs):
+def generate_sitemap():
     urls = []
     for page in STATIC_PAGES:
         urls.append(f"  <url><loc>{BASE_URL}/{page}</loc></url>")
-    for slug in sorted(duel_slugs):
-        urls.append(f"  <url><loc>{BASE_URL}/second-tour/{slug}</loc></url>")
 
     sitemap = (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -459,24 +457,15 @@ def main():
 
     print(f"{len(duels)} duels trouvés")
 
-    pages_generated = []
-    for slug, entries in sorted(duels.items(), key=lambda x: -len(x[1])):
-        n = len(entries)
-        cid_a, cid_b = find_pair_from_slug(slug, candidats)
-        label = f"{nom_court(cid_a, candidats)} – {nom_court(cid_b, candidats)}"
-        if n >= SEUIL:
-            generate_duel_page(slug, entries, candidats, out_dir)
-            pages_generated.append(slug)
-            print(f"  ✓ {label} ({n} sondages) → {slug}.html")
-        else:
-            print(f"  · {label} ({n} sondages) → tableau dans index")
-
+    # Les pages de duel individuelles sont hors périmètre (§7).
+    # Seule la page d'entrée est générée ; le contenu vit dans la
+    # section #second-tour de la page d'accueil.
     generate_index_page(duels, candidats, out_dir)
     print(f"Page d'entrée : {out_dir / 'index.html'}")
 
-    generate_sitemap(pages_generated)
+    generate_sitemap()
 
-    print(f"\n{len(pages_generated)} pages de duel, {len(duels) - len(pages_generated)} en tableau")
+    print(f"{len(duels)} duels")
 
 
 if __name__ == "__main__":

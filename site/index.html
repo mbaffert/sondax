@@ -119,6 +119,17 @@
   .sondages-table td { font-variant-numeric: tabular-nums; }
   .voir-tous { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 500; }
 
+  .t2-duels { table-layout: auto; }
+  .t2-score-col { width: 5.5em; }
+  .t2-score-cell { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  .duels-repli { margin-top: 12px; }
+  .duels-repli summary { cursor: pointer; font-size: 13.5px; font-weight: 500;
+    color: var(--bleu-vif); padding: 8px 0; list-style: none; }
+  .duels-repli summary::-webkit-details-marker { display: none; }
+  .duels-repli summary::before { content: '▸ '; }
+  .duels-repli[open] summary::before { content: '▾ '; }
+
   footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
   footer .footer-inner { max-width: 1180px; margin: 0 auto; display: grid;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 26px; }
@@ -148,6 +159,8 @@
     .duel-select select { width: 100%; }
     .t2-table { font-size: 12px; }
     .t2-table th, .t2-table td { padding: 6px 8px; }
+    .t2-duels { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .t2-score-col { width: 4.5em; }
     footer { padding: 24px 16px; }
     footer .footer-inner { grid-template-columns: 1fr; gap: 20px; }
     .candidats { grid-template-columns: repeat(2, 1fr); }
@@ -162,8 +175,8 @@
 
 <nav class="sub-nav" id="sub-nav">
   <a href="#bloc-sondages">Intentions de vote</a>
+  <a href="#second-tour">Second tour</a>
   <a href="#bloc-polymarket">Marchés de prédiction</a>
-  <a href="second-tour/">Second tour</a>
   <a href="#bloc-fiche">Tous les sondages</a>
 </nav>
 
@@ -173,10 +186,6 @@
     <div class="section-label">Agrégation</div>
     <h2>Intentions de vote</h2>
     <p class="subtitle">Moyenne pondérée des sondages récents · <a href="methodologie.html" style="font-weight:500;">méthode</a></p>
-    <div class="tabs">
-      <button class="tab active" data-tab="t1">Premier tour</button>
-      <button class="tab" data-tab="t2">Second tour</button>
-    </div>
     <div class="periode" data-bloc="sondages">
       <span>Période</span>
       <div class="periode-group">
@@ -187,20 +196,49 @@
       </div>
       <input type="date" class="date-libre" title="Date de début libre">
     </div>
-    <div class="tab-panel active" id="panel-t1">
-      <div class="chart-wrap"><canvas id="chart-sondages"></canvas></div>
-      <div class="candidats" id="cb-sondages"></div>
-    </div>
-    <div class="tab-panel" id="panel-t2">
+    <div class="chart-wrap"><canvas id="chart-sondages"></canvas></div>
+    <div class="candidats" id="cb-sondages"></div>
+  </div>
+
+  <!-- BEGIN:second-tour -->
+  <div class="bloc" id="second-tour">
+    <div class="section-label">Second tour</div>
+    <h2>Second tour de l’élection présidentielle 2027</h2>
+    <p class="subtitle">Le premier tour devrait avoir lieu le <time datetime="2027-04-18">18 avril 2027</time>, le second tour le <time datetime="2027-05-02">2 mai 2027</time>. Les deux candidats arrivés en tête au premier tour s’affrontent au second, sauf si l’un obtient la majorité absolue dès le premier tour.</p>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Élection présidentielle française 2027 — premier tour", "startDate": "2027-04-18", "location": {"@type": "Country", "name": "France"}}, {"@type": "Event", "name": "Élection présidentielle française 2027 — second tour", "startDate": "2027-05-02", "location": {"@type": "Country", "name": "France"}}]}</script>
+    <p class="subtitle">11 duels de second tour testés par les instituts, pour un total de 51 sondages. Le Pen l’emporte dans les six duels où elle est testée. Le duel Le Pen – Philippe a changé de sens depuis le premier sondage.</p>
+    <table class="t2-table t2-duels">
+      <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Sondages</th><th scope="col">Dernière mesure</th></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">55,0 %</td><td>Philippe</td><td class="t2-score-cell">45,0 %</td><td>12</td><td>10/09/2026 (OpinionWay)</td></tr>
+    </table>
+    <details class="duels-repli">
+      <summary>Les dix autres duels testés</summary>
+      <table class="t2-table t2-duels">
+        <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Sondages</th><th scope="col">Dernière mesure</th></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">56,0 %</td><td>Attal</td><td class="t2-score-cell">44,0 %</td><td>11</td><td>10/09/2026 (Harris)</td></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">67,0 %</td><td>Mélenchon</td><td class="t2-score-cell">33,0 %</td><td>11</td><td>10/09/2026 (OpinionWay)</td></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">57,0 %</td><td>Glucksmann</td><td class="t2-score-cell">43,0 %</td><td>4</td><td>28/08/2026 (Elabe)</td></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">58,0 %</td><td>Retailleau</td><td class="t2-score-cell">42,0 %</td><td>3</td><td>25/08/2026 (Ifop)</td></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">54,0 %</td><td>Hollande</td><td class="t2-score-cell">46,0 %</td><td>1</td><td>25/08/2026 (Ifop)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">54,0 %</td><td>Philippe</td><td class="t2-score-cell">46,0 %</td><td>4</td><td>27/05/2026 (Harris)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">68,0 %</td><td>Mélenchon</td><td class="t2-score-cell">32,0 %</td><td>2</td><td>27/05/2026 (Harris)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">57,0 %</td><td>Attal</td><td class="t2-score-cell">43,0 %</td><td>1</td><td>27/05/2026 (Harris)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">58,5 %</td><td>Glucksmann</td><td class="t2-score-cell">41,5 %</td><td>1</td><td>27/03/2026 (Elabe)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">58,0 %</td><td>Retailleau</td><td class="t2-score-cell">42,0 %</td><td>1</td><td>27/03/2026 (Elabe)</td></tr>
+      </table>
+    </details>
+    <div class="t2-selector" style="margin-top:18px;">
+      <h3 style="font-family:var(--titre);font-size:18px;font-weight:600;margin-bottom:12px;">Explorer un duel</h3>
       <div class="duel-select">
-        <span style="color:var(--gris);">Candidat :</span>
+        <span style="color:var(--gris);">Candidat :</span>
         <select id="duel-cand1"></select>
-        <span style="color:var(--gris);">contre :</span>
+        <span style="color:var(--gris);">contre :</span>
         <select id="duel-cand2"></select>
       </div>
       <div id="t2-content"></div>
     </div>
   </div>
+<!-- END:second-tour -->
 
   <!-- Bloc 2 : Polymarket -->
   <div class="bloc" id="bloc-polymarket">
@@ -1005,8 +1043,7 @@ class ExplorerSondages {
 // Bloc 1 bis : Second tour
 // =========================================================================
 class SecondTour {
-  constructor(sondages, periodeEl) {
-    this.periodeEl = periodeEl;
+  constructor(sondages) {
     this.sel1 = document.getElementById('duel-cand1');
     this.sel2 = document.getElementById('duel-cand2');
     this.content = document.getElementById('t2-content');
@@ -1087,21 +1124,7 @@ class SecondTour {
   }
 
   getDateDebut() {
-    const active = this.periodeEl.querySelector('button.active');
-    if (active) {
-      if (active.dataset.all) return '0000-00-00';
-      if (active.dataset.since) return active.dataset.since;
-      if (active.dataset.months) {
-        const allDates = Object.values(this.duels).flat().map(d => d.sondage.terrain_fin);
-        const latest = allDates.sort().pop() || '2026-09-03';
-        const fin = new Date(latest);
-        fin.setMonth(fin.getMonth() - parseInt(active.dataset.months));
-        return fin.toISOString().slice(0, 10);
-      }
-    }
-    const input = this.periodeEl.querySelector('.date-libre');
-    if (input && input.value) return input.value;
-    return '0000-00-00';
+    return '0000-00-00';  // Pas de filtre de période : toutes les données
   }
 
   render() {
@@ -1126,8 +1149,7 @@ class SecondTour {
     }
 
     if (entries.length >= 5) {
-      const slug = [cidA, cidB].sort().join('-');
-      this.content.innerHTML = `<p style="margin-bottom:1em;"><a href="second-tour/${slug}.html" style="font-weight:500;">Voir la page dédiée de ce duel →</a></p>`;
+      this.content.innerHTML = '';
       this.renderChart(entries, cidA, cidB, true);
     } else if (entries.length > 0) {
       this.renderTable(entries, cidA, cidB);
@@ -1401,34 +1423,8 @@ async function init() {
     });
   });
 
-  // --- Bloc second tour ---
-  const periodeEl = document.querySelector('.periode[data-bloc="sondages"]');
-  const t2 = new SecondTour(sondagesData, periodeEl);
-
-  // --- Tabs ---
-  const tabs = document.querySelectorAll('#bloc-sondages .tab');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById('panel-t1').classList.toggle('active', tab.dataset.tab === 't1');
-      document.getElementById('panel-t2').classList.toggle('active', tab.dataset.tab === 't2');
-      if (tab.dataset.tab === 't2') t2.render();
-    });
-  });
-
-  // Re-render T2 when period changes
-  periodeEl.querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (document.querySelector('#panel-t2.active')) t2.render();
-    });
-  });
-  const dateInput = periodeEl.querySelector('.date-libre');
-  if (dateInput) {
-    dateInput.addEventListener('change', () => {
-      if (document.querySelector('#panel-t2.active')) t2.render();
-    });
-  }
+  // --- Bloc second tour (sélecteur de duel dans #second-tour) ---
+  const t2 = new SecondTour(sondagesData);
 
   // --- Bloc explorer les sondages ---
   new ExplorerSondages(sondagesData);

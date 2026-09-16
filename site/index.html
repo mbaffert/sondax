@@ -291,12 +291,24 @@
   <!-- Bloc 3 : Explorer les sondages -->
   <div class="bloc" id="bloc-fiche">
     <div class="section-label">Sondage par sondage</div>
-    <h2>Explorer les sondages</h2>
+    <h2 id="dernier-sondage">Explorer les sondages</h2>
+    <p class="subtitle">Choisissez un sondage puis une configuration pour voir le détail</p>
     <!-- BEGIN:dernier-sondage -->
-    <div class="dernier-sondage" id="dernier-sondage">
-      <h3 style="font-family:var(--titre);font-size:18px;font-weight:600;margin:14px 0 6px;">Dernier sondage publié</h3>
-      <p class="subtitle" style="margin-bottom:8px;">Harris, du 8 septembre 2026 au 10 septembre 2026 · 2 052 personnes. <a href="sondages.html" style="font-weight:500;">Voir la fiche</a></p>
-      <table class="t2-table" style="max-width:420px;">
+    <p class="fiche-meta" id="fiche-meta">Harris, du 8 septembre 2026 au 10 septembre 2026 · 2 052 personnes · <a href="sondages.html" style="font-weight:500;">Voir la fiche</a></p>
+<!-- END:dernier-sondage -->
+    <div class="fiche-row">
+      <label>Sondage :</label>
+      <select id="fiche-sondage"></select>
+    </div>
+    <div class="fiche-row">
+      <label>Configuration :</label>
+      <select id="fiche-hyp"></select>
+    </div>
+    <div id="fiche-result"></div>
+    <details id="fiche-scores-details">
+      <summary style="cursor:pointer;font-size:13.5px;font-weight:500;color:var(--bleu-vif);padding:8px 0;list-style:none;">Voir les chiffres</summary>
+      <!-- BEGIN:fiche-scores -->
+      <table class="t2-table" id="fiche-scores-table" style="max-width:420px;">
         <tr><td>Marine Le Pen</td><td style="text-align:right;font-variant-numeric:tabular-nums;">36,0 %</td></tr>
         <tr><td>Jean-Luc Mélenchon</td><td style="text-align:right;font-variant-numeric:tabular-nums;">17,0 %</td></tr>
         <tr><td>Gabriel Attal</td><td style="text-align:right;font-variant-numeric:tabular-nums;">15,0 %</td></tr>
@@ -308,18 +320,8 @@
         <tr><td>Nicolas Dupont-Aignan</td><td style="text-align:right;font-variant-numeric:tabular-nums;">2,0 %</td></tr>
         <tr><td>Nathalie Arthaud</td><td style="text-align:right;font-variant-numeric:tabular-nums;">1,0 %</td></tr>
       </table>
-    </div>
-<!-- END:dernier-sondage -->
-    <p class="subtitle">Choisissez un sondage puis une configuration pour voir le détail</p>
-    <div class="fiche-row">
-      <label>Sondage :</label>
-      <select id="fiche-sondage"><option value="">— Choisir un sondage —</option></select>
-    </div>
-    <div class="fiche-row">
-      <label>Configuration :</label>
-      <select id="fiche-hyp"></select>
-    </div>
-    <div id="fiche-result"></div>
+<!-- END:fiche-scores -->
+    </details>
   </div>
 
   <!-- BEGIN:derniers-sondages -->
@@ -916,11 +918,6 @@ class ExplorerSondages {
 
   populateSondages() {
     this.selSondage.innerHTML = '';
-    // Option vide par défaut
-    const blank = document.createElement('option');
-    blank.value = '';
-    blank.textContent = '\u2014 Choisir un sondage \u2014';
-    this.selSondage.appendChild(blank);
     for (const s of this.sondages) {
       const ech = s.echantillon ? Math.round(s.echantillon).toLocaleString('fr-FR') : '?';
       const opt = document.createElement('option');
@@ -960,6 +957,8 @@ class ExplorerSondages {
 
   renderResult() {
     const s = this.currentSondage();
+    const metaEl = document.getElementById('fiche-meta');
+    const scoresTable = document.getElementById('fiche-scores-table');
     if (!s) { this.result.innerHTML = ''; return; }
 
     const t1 = s.hypotheses.filter(h => h.tour === 1);
@@ -971,14 +970,26 @@ class ExplorerSondages {
     const echStr = ech ? ech.toLocaleString('fr-FR') : '—';
     const scores = Object.entries(hyp.scores).sort((a, b) => b[1] - a[1]);
 
+    // Mettre à jour la ligne de métadonnées
     const manuelTag = s.source === 'manuel' ? ' · <span style="color:var(--bleu-vif);">saisie manuelle</span>' : '';
-    let html = `<p class="fiche-meta">${s.institut} — ${fmtDate(s.terrain_debut)} \u2192 ${fmtDate(s.terrain_fin)} — Échantillon\u00a0: ${echStr}${manuelTag}</p>`;
-    html += '<div class="fiche-chart-wrap"><canvas id="fiche-bar-chart"></canvas></div>';
+    if (metaEl) {
+      metaEl.innerHTML = `${s.institut} — ${fmtDate(s.terrain_debut)} \u2192 ${fmtDate(s.terrain_fin)} — Échantillon\u00a0: ${echStr}${manuelTag}` +
+        (s.url_source ? ` · <a href="${s.url_source}" target="_blank" style="font-weight:500;">Voir la fiche</a>` : '');
+    }
+
+    // Mettre à jour le tableau de scores dans le <details>
+    if (scoresTable) {
+      let rows = '';
+      for (const [cid, v] of scores) {
+        rows += `<tr><td>${nomCourt(cid)}</td><td style="text-align:right;font-variant-numeric:tabular-nums;">${fmtPct(v)}</td></tr>`;
+      }
+      scoresTable.innerHTML = rows;
+    }
+
+    // Graphique à barres
+    let html = '<div class="fiche-chart-wrap"><canvas id="fiche-bar-chart"></canvas></div>';
     if (ech) {
       html += '<p class="approx">Marges d\u2019erreur approximatives, calculées sur l\u2019échantillon total du sondage.</p>';
-    }
-    if (s.url_source) {
-      html += `<p class="fiche-source"><a href="${s.url_source}" target="_blank">Source\u00a0: notice de la commission des sondages</a></p>`;
     }
     this.result.innerHTML = html;
 

@@ -28,8 +28,10 @@ MOIS = [
 
 PT_BEGIN = "<!-- BEGIN:premier-tour -->"
 PT_END = "<!-- END:premier-tour -->"
-FICHE_BEGIN = "<!-- BEGIN:dernier-sondage -->"
-FICHE_END = "<!-- END:dernier-sondage -->"
+META_BEGIN = "<!-- BEGIN:dernier-sondage -->"
+META_END = "<!-- END:dernier-sondage -->"
+SCORES_BEGIN = "<!-- BEGIN:fiche-scores -->"
+SCORES_END = "<!-- END:fiche-scores -->"
 DS_BEGIN = "<!-- BEGIN:derniers-sondages -->"
 DS_END = "<!-- END:derniers-sondages -->"
 
@@ -199,14 +201,17 @@ def generate_chapeau(series_data, sondages, candidats):
 # ---------------------------------------------------------------------------
 
 def generate_dernier_sondage(sondages, candidats):
-    """Génère le bloc du dernier sondage publié."""
+    """Génère la ligne de métadonnées et le tableau de scores du dernier sondage.
+
+    Retourne (meta_html, scores_html).
+    """
     latest = select_latest_sondage(sondages)
     if not latest:
-        return ""
+        return "", ""
 
     hyp = select_hypothesis(latest, candidats)
     if not hyp:
-        return ""
+        return "", ""
 
     # Institut + commanditaire
     institut = html_mod.escape(latest["institut"])
@@ -230,6 +235,16 @@ def generate_dernier_sondage(sondages, candidats):
     if pop and ech_str:
         ech_str += f" ({html_mod.escape(pop)})"
 
+    meta_parts = [f"{source_label}, {dates_str}"]
+    if ech_str:
+        meta_parts.append(ech_str)
+
+    meta_html = (
+        f'    <p class="fiche-meta" id="fiche-meta">'
+        f'{" · ".join(meta_parts)}'
+        f' · <a href="sondages.html" style="font-weight:500;">Voir la fiche</a></p>'
+    )
+
     # Scores de l'hypothèse, tri décroissant, "autre" exclu
     scores = hyp.get("scores", {})
     sorted_scores = sorted(
@@ -246,22 +261,13 @@ def generate_dernier_sondage(sondages, candidats):
             f'{fmt_pct(score)}</td></tr>'
         )
 
-    meta_parts = [f"{source_label}, {dates_str}"]
-    if ech_str:
-        meta_parts.append(ech_str)
-
-    return (
-        '    <div class="dernier-sondage" id="dernier-sondage">\n'
-        '      <h3 style="font-family:var(--titre);font-size:18px;font-weight:600;'
-        'margin:14px 0 6px;">Dernier sondage publié</h3>\n'
-        f'      <p class="subtitle" style="margin-bottom:8px;">'
-        f'{" · ".join(meta_parts)}. '
-        f'<a href="sondages.html" style="font-weight:500;">Voir la fiche</a></p>\n'
-        f'      <table class="t2-table" style="max-width:420px;">\n'
+    scores_html = (
+        '      <table class="t2-table" id="fiche-scores-table" style="max-width:420px;">\n'
         + "\n".join(score_lines) + "\n"
-        f'      </table>\n'
-        '    </div>'
+        '      </table>'
     )
+
+    return meta_html, scores_html
 
 
 # ---------------------------------------------------------------------------
@@ -320,9 +326,10 @@ def main():
     chapeau = generate_chapeau(series_data, sondages, candidats)
     content = inject(content, PT_BEGIN, PT_END, f"    {chapeau}")
 
-    # 2. Fiche du dernier sondage dans la section Explorer
-    dernier = generate_dernier_sondage(sondages, candidats)
-    content = inject(content, FICHE_BEGIN, FICHE_END, dernier)
+    # 2. Fiche du dernier sondage : meta + scores
+    meta_html, scores_html = generate_dernier_sondage(sondages, candidats)
+    content = inject(content, META_BEGIN, META_END, meta_html)
+    content = inject(content, SCORES_BEGIN, SCORES_END, scores_html)
 
     # 3. Derniers sondages agrégés
     ds_html = generate_derniers_sondages(sondages)

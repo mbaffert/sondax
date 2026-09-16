@@ -492,10 +492,14 @@ dans le HTML servi. Le JavaScript ne sert qu'à l'interaction (sélecteur de due
    aperçu ; les autres sont repliés dans un `<details>` / `<summary>` natif (pas de
    JavaScript), avec un libellé portant le nombre de duels restants.
 
-   Colonnes : duel (vainqueur en premier, avec les deux scores), écart en points,
-   nombre de mesures, dernière mesure (date et institut). L'ordre des noms suit le
-   résultat de la dernière mesure, pas la clé interne de regroupement. En cas d'égalité
-   parfaite, l'ordre de la clé est conservé.
+   Six colonnes : En tête | Score | Face à | Score | Mesures | Dernière mesure.
+   Noms alignés à gauche, scores alignés à droite en chiffres tabulaires
+   (`font-variant-numeric: tabular-nums`), colonnes de score étroites et de largeur
+   fixe identique. Les deux en-têtes « Score » portent un `aria-label` distinct pour
+   les lecteurs d'écran. L'ordre des noms suit le résultat de la dernière mesure
+   (vainqueur en premier), pas la clé interne de regroupement. En cas d'égalité
+   parfaite, l'ordre de la clé est conservé. En mobile, défilement horizontal du
+   tableau.
 
    Tri : date de dernière mesure décroissante, puis nombre de mesures décroissant, puis
    clé interne (tri stable).

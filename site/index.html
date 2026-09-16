@@ -119,6 +119,10 @@
   .sondages-table td { font-variant-numeric: tabular-nums; }
   .voir-tous { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 500; }
 
+  .t2-duels { table-layout: auto; }
+  .t2-score-col { width: 5.5em; }
+  .t2-score-cell { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
   .duels-repli { margin-top: 12px; }
   .duels-repli summary { cursor: pointer; font-size: 13.5px; font-weight: 500;
     color: var(--bleu-vif); padding: 8px 0; list-style: none; }
@@ -155,6 +159,8 @@
     .duel-select select { width: 100%; }
     .t2-table { font-size: 12px; }
     .t2-table th, .t2-table td { padding: 6px 8px; }
+    .t2-duels { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .t2-score-col { width: 4.5em; }
     footer { padding: 24px 16px; }
     footer .footer-inner { grid-template-columns: 1fr; gap: 20px; }
     .candidats { grid-template-columns: repeat(2, 1fr); }
@@ -201,24 +207,24 @@
     <p class="subtitle">Le premier tour devrait avoir lieu le <time datetime="2027-04-18">18 avril 2027</time>, le second tour le <time datetime="2027-05-02">2 mai 2027</time>. Les deux candidats arrivés en tête au premier tour s’affrontent au second, sauf si l’un obtient la majorité absolue dès le premier tour.</p>
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Élection présidentielle française 2027 — premier tour", "startDate": "2027-04-18", "location": {"@type": "Country", "name": "France"}}, {"@type": "Event", "name": "Élection présidentielle française 2027 — second tour", "startDate": "2027-05-02", "location": {"@type": "Country", "name": "France"}}]}</script>
     <p class="subtitle">11 duels de second tour testés par les instituts, pour un total de 51 mesures. Le Pen l’emporte dans les six duels où elle est testée. Le duel Le Pen – Philippe a changé de sens depuis sa première mesure.</p>
-    <table class="t2-table">
-      <tr><th>Duel</th><th>Écart</th><th>Mesures</th><th>Dernière mesure</th></tr>
-      <tr><td>Le Pen 55,0 % – Philippe 45,0 %</td><td>10,0</td><td>12</td><td>10/09/2026 (OpinionWay)</td></tr>
+    <table class="t2-table t2-duels">
+      <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Mesures</th><th scope="col">Dernière mesure</th></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">55,0 %</td><td>Philippe</td><td class="t2-score-cell">45,0 %</td><td>12</td><td>10/09/2026 (OpinionWay)</td></tr>
     </table>
     <details class="duels-repli">
       <summary>Les dix autres duels testés</summary>
-      <table class="t2-table">
-        <tr><th>Duel</th><th>Écart</th><th>Mesures</th><th>Dernière mesure</th></tr>
-      <tr><td>Le Pen 56,0 % – Attal 44,0 %</td><td>12,0</td><td>11</td><td>10/09/2026 (Harris)</td></tr>
-      <tr><td>Le Pen 67,0 % – Mélenchon 33,0 %</td><td>34,0</td><td>11</td><td>10/09/2026 (OpinionWay)</td></tr>
-      <tr><td>Le Pen 57,0 % – Glucksmann 43,0 %</td><td>14,0</td><td>4</td><td>28/08/2026 (Elabe)</td></tr>
-      <tr><td>Le Pen 58,0 % – Retailleau 42,0 %</td><td>16,0</td><td>3</td><td>25/08/2026 (Ifop)</td></tr>
-      <tr><td>Le Pen 54,0 % – Hollande 46,0 %</td><td>8,0</td><td>1</td><td>25/08/2026 (Ifop)</td></tr>
-      <tr><td>Bardella 54,0 % – Philippe 46,0 %</td><td>8,0</td><td>4</td><td>27/05/2026 (Harris)</td></tr>
-      <tr><td>Bardella 68,0 % – Mélenchon 32,0 %</td><td>36,0</td><td>2</td><td>27/05/2026 (Harris)</td></tr>
-      <tr><td>Bardella 57,0 % – Attal 43,0 %</td><td>14,0</td><td>1</td><td>27/05/2026 (Harris)</td></tr>
-      <tr><td>Bardella 58,5 % – Glucksmann 41,5 %</td><td>17,0</td><td>1</td><td>27/03/2026 (Elabe)</td></tr>
-      <tr><td>Bardella 58,0 % – Retailleau 42,0 %</td><td>16,0</td><td>1</td><td>27/03/2026 (Elabe)</td></tr>
+      <table class="t2-table t2-duels">
+        <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Mesures</th><th scope="col">Dernière mesure</th></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">56,0 %</td><td>Attal</td><td class="t2-score-cell">44,0 %</td><td>11</td><td>10/09/2026 (Harris)</td></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">67,0 %</td><td>Mélenchon</td><td class="t2-score-cell">33,0 %</td><td>11</td><td>10/09/2026 (OpinionWay)</td></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">57,0 %</td><td>Glucksmann</td><td class="t2-score-cell">43,0 %</td><td>4</td><td>28/08/2026 (Elabe)</td></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">58,0 %</td><td>Retailleau</td><td class="t2-score-cell">42,0 %</td><td>3</td><td>25/08/2026 (Ifop)</td></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">54,0 %</td><td>Hollande</td><td class="t2-score-cell">46,0 %</td><td>1</td><td>25/08/2026 (Ifop)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">54,0 %</td><td>Philippe</td><td class="t2-score-cell">46,0 %</td><td>4</td><td>27/05/2026 (Harris)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">68,0 %</td><td>Mélenchon</td><td class="t2-score-cell">32,0 %</td><td>2</td><td>27/05/2026 (Harris)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">57,0 %</td><td>Attal</td><td class="t2-score-cell">43,0 %</td><td>1</td><td>27/05/2026 (Harris)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">58,5 %</td><td>Glucksmann</td><td class="t2-score-cell">41,5 %</td><td>1</td><td>27/03/2026 (Elabe)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">58,0 %</td><td>Retailleau</td><td class="t2-score-cell">42,0 %</td><td>1</td><td>27/03/2026 (Elabe)</td></tr>
       </table>
     </details>
     <div class="t2-selector" style="margin-top:18px;">

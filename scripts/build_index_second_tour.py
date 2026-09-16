@@ -232,10 +232,22 @@ def generate_chapeau(duels, candidats):
 # Tableau des duels
 # ---------------------------------------------------------------------------
 
+HEADER_ROW = (
+    '      <tr>'
+    '<th scope="col">En t\u00eate</th>'
+    '<th scope="col" class="t2-score-col" aria-label="Score du candidat en t\u00eate">Score</th>'
+    '<th scope="col">Face \u00e0</th>'
+    '<th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th>'
+    '<th scope="col">Mesures</th>'
+    '<th scope="col">Derni\u00e8re mesure</th>'
+    '</tr>'
+)
+
+
 def format_duel_row(slug, entries, candidats):
     """Génère une ligne <tr> pour un duel.
 
-    Colonnes : Duel (vainqueur en premier, avec scores) | Écart | Mesures | Dernière mesure.
+    Colonnes : En tête | Score | Face à | Score | Mesures | Dernière mesure.
     """
     cid_a, cid_b = pair(slug, candidats)
     latest = entries[0]
@@ -250,13 +262,6 @@ def format_duel_row(slug, entries, candidats):
 
     nom_1 = html_mod.escape(nom_court(cid_1, candidats))
     nom_2 = html_mod.escape(nom_court(cid_2, candidats))
-    duel_label = (
-        f'{nom_1}\u00a0{fmt_pct(s1)} \u2013 '
-        f'{nom_2}\u00a0{fmt_pct(s2)}'
-    )
-
-    ecart = abs(s1 - s2)
-    ecart_fmt = f"{ecart:.1f}".replace(".", ",")
 
     n = len(entries)
     date_str = fmt_date(latest["terrain_fin"])
@@ -264,8 +269,10 @@ def format_duel_row(slug, entries, candidats):
 
     return (
         f'      <tr>'
-        f'<td>{duel_label}</td>'
-        f'<td>{ecart_fmt}</td>'
+        f'<td>{nom_1}</td>'
+        f'<td class="t2-score-cell">{fmt_pct(s1)}</td>'
+        f'<td>{nom_2}</td>'
+        f'<td class="t2-score-cell">{fmt_pct(s2)}</td>'
         f'<td>{n}</td>'
         f'<td>{date_str} ({institut})</td>'
         f'</tr>'
@@ -295,14 +302,10 @@ def generate_table_section(duels, candidats):
     # Aperçu : le duel le plus récemment mesuré
     first_slug = slugs[0]
     preview_row = format_duel_row(first_slug, duels[first_slug], candidats)
-    header_row = (
-        '      <tr><th>Duel</th><th>Écart</th>'
-        '<th>Mesures</th><th>Dernière mesure</th></tr>'
-    )
 
     preview_table = (
-        '    <table class="t2-table">\n'
-        f'{header_row}\n'
+        '    <table class="t2-table t2-duels">\n'
+        f'{HEADER_ROW}\n'
         f'{preview_row}\n'
         '    </table>'
     )
@@ -322,8 +325,8 @@ def generate_table_section(duels, candidats):
         summary_text = f"Les {nombre_lettres(n_rest)} autres duels testés"
 
     fold_table = (
-        '      <table class="t2-table">\n'
-        f'  {header_row}\n'
+        '      <table class="t2-table t2-duels">\n'
+        f'  {HEADER_ROW}\n'
         + "\n".join(rest_rows) + "\n"
         '      </table>'
     )

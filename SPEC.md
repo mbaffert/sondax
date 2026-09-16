@@ -472,6 +472,9 @@ Section ancrée `id="second-tour"`, placée entre le bloc de tendance du premier
 le bloc Polymarket. Composant autonome, réutilisable tel quel sur une page `/second-tour/`
 le jour venu.
 
+**Contrainte impérative** : tout le contenu de la section est rendu au build et présent
+dans le HTML servi. Le JavaScript ne sert qu'à l'interaction (sélecteur de duel).
+
 **Contenu, dans l'ordre :**
 
 1. **Repères factuels.** Deux phrases en dur : dates attendues des deux tours et règle
@@ -480,13 +483,22 @@ le jour venu.
    `Event` en JSON-LD.
 
 2. **Chapeau généré au build.** Deux ou trois phrases composées à partir des données :
-   nombre de duels et de mesures, candidat arrivant en tête dans le plus de duels, duel
-   le plus serré, éventuelle inversion de sens. Texte grammatical quel que soit l'état
-   (0, 1 ou N duels). Généré par `scripts/build_index_second_tour.py`.
+   nombre de duels et de mesures, leader avec dénominateur explicite (nombre de duels
+   où le candidat est testé, pas le total), duel le plus serré, éventuelle inversion
+   de sens. Texte grammatical quel que soit l'état (0, 1 ou N duels), avec accord en
+   genre (`genre` dans `candidats.json`). Généré par `scripts/build_index_second_tour.py`.
 
-3. **Tableau général des duels.** Un `<table>` HTML, une ligne par duel : noms, nombre
-   de mesures, dernière mesure (date et institut), score. Tri par nombre de mesures
-   décroissant puis date décroissante. Lien vers la page dédiée si ≥ 5 mesures.
+3. **Tableau général des duels.** Le duel le plus récemment mesuré est affiché en
+   aperçu ; les autres sont repliés dans un `<details>` / `<summary>` natif (pas de
+   JavaScript), avec un libellé portant le nombre de duels restants.
+
+   Colonnes : duel (vainqueur en premier, avec les deux scores), écart en points,
+   nombre de mesures, dernière mesure (date et institut). L'ordre des noms suit le
+   résultat de la dernière mesure, pas la clé interne de regroupement. En cas d'égalité
+   parfaite, l'ordre de la clé est conservé.
+
+   Tri : date de dernière mesure décroissante, puis nombre de mesures décroissant, puis
+   clé interne (tri stable).
 
 4. **Sélecteur de détail par duel.** Deux menus déroulants, hydratés par JavaScript.
    Affiche le détail du duel choisi : tableau des sondages (< 5 mesures) ou courbe

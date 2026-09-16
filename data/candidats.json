@@ -12,7 +12,8 @@
    "second_tour": null
   },
   "declare_le": null,
-  "prenom": "Karim"
+  "prenom": "Karim",
+  "genre": "m"
  },
  "arthaud": {
   "nom": "Arthaud",
@@ -27,7 +28,8 @@
    "second_tour": null
   },
   "declare_le": null,
-  "prenom": "Nathalie"
+  "prenom": "Nathalie",
+  "genre": "f"
  },
  "attal": {
   "nom": "Attal",
@@ -42,7 +44,8 @@
    "second_tour": "0x7643bde8d198fc0c74037c694679ef521ea5b5b2a2ad80a8af98e185f0e57b58"
   },
   "declare_le": null,
-  "prenom": "Gabriel"
+  "prenom": "Gabriel",
+  "genre": "m"
  },
  "bardella": {
   "nom": "Bardella",
@@ -57,7 +60,8 @@
    "second_tour": "0xce359525c2bb818d884de048e4d451da004d38eb16cb4d2263cb6b9e8ecf781c"
   },
   "declare_le": null,
-  "prenom": "Jordan"
+  "prenom": "Jordan",
+  "genre": "m"
  },
  "darmanin": {
   "nom": "Darmanin",
@@ -72,7 +76,8 @@
    "second_tour": "0xf299f84f3d666bd2068f6630d93cd1edbcc70dfeddfe54f2288397f222067473"
   },
   "declare_le": null,
-  "prenom": "Gérald"
+  "prenom": "Gérald",
+  "genre": "m"
  },
  "dupont-aignan": {
   "nom": "Dupont-Aignan",
@@ -87,7 +92,8 @@
    "second_tour": "0xc858adeed06c3233e962f1946f9890be4683dbe951555415ad945ca65d0283b9"
   },
   "declare_le": null,
-  "prenom": "Nicolas"
+  "prenom": "Nicolas",
+  "genre": "m"
  },
  "faure": {
   "nom": "Faure",
@@ -102,7 +108,8 @@
    "second_tour": "0x7ad94044984dc24b373898d09b826a3c7ac1987dbed375671c010fd947443350"
   },
   "declare_le": null,
-  "prenom": "Olivier"
+  "prenom": "Olivier",
+  "genre": "m"
  },
  "glucksmann": {
   "nom": "Glucksmann",
@@ -117,7 +124,8 @@
    "second_tour": "0x3864d6f71c4eb72bf2510af694bfcdef8aef4ddb3001f59d2b4f1fefa0499ab8"
   },
   "declare_le": null,
-  "prenom": "Raphaël"
+  "prenom": "Raphaël",
+  "genre": "m"
  },
  "hollande": {
   "nom": "Hollande",
@@ -132,7 +140,8 @@
    "second_tour": "0x331b7ac2692ea005a79d3aad927899038d4adb4608301d5f8f84dc60a8de2418"
   },
   "declare_le": null,
-  "prenom": "François"
+  "prenom": "François",
+  "genre": "m"
  },
  "knafo": {
   "nom": "Knafo",
@@ -147,7 +156,8 @@
    "second_tour": "0xfe6f3749a67eaf3265ad9d21d21cda6f3e292735aa6a0f62f41f6523cfcea20b"
   },
   "declare_le": null,
-  "prenom": "Sarah"
+  "prenom": "Sarah",
+  "genre": "f"
  },
  "le-maire": {
   "nom": "Le Maire",
@@ -162,7 +172,8 @@
    "second_tour": null
   },
   "declare_le": null,
-  "prenom": "Bruno"
+  "prenom": "Bruno",
+  "genre": "m"
  },
  "le-pen": {
   "nom": "Le Pen",
@@ -177,7 +188,8 @@
    "second_tour": "0x4de07f3b6b1220c2406e5807d30588fc6cbd5b938310835524106d05d20a9b4a"
   },
   "declare_le": null,
-  "prenom": "Marine"
+  "prenom": "Marine",
+  "genre": "f"
  },
  "lecornu": {
   "nom": "Lecornu",
@@ -192,7 +204,8 @@
    "second_tour": "0x82b92892a18139a7a0bd50c6ad54958284f2299fd4704351e527c4d44e671d3a"
   },
   "declare_le": null,
-  "prenom": "Sébastien"
+  "prenom": "Sébastien",
+  "genre": "m"
  },
  "lisnard": {
   "nom": "Lisnard",
@@ -207,7 +220,8 @@
    "second_tour": "0xcc100766ebc6f6f29b53aed3867d6b4457f28681878b3c09ca93da28dca7a6df"
   },
   "declare_le": null,
-  "prenom": "David"
+  "prenom": "David",
+  "genre": "m"
  },
  "melenchon": {
   "nom": "Mélenchon",
@@ -222,7 +236,8 @@
    "second_tour": "0x7c9c13d0adc82f9e5aaa774e75ac1d08d181367c4cda17fa641293cec7d13bc2"
   },
   "declare_le": null,
-  "prenom": "Jean-Luc"
+  "prenom": "Jean-Luc",
+  "genre": "m"
  },
  "philippe": {
   "nom": "Philippe",
@@ -237,7 +252,8 @@
    "second_tour": "0xb566fa0e3c584130a8c023988536dc6fb8460b113acec09bf27da51b7a1ac158"
   },
   "declare_le": null,
-  "prenom": "Édouard"
+  "prenom": "Édouard",
+  "genre": "m"
  },
  "retailleau": {
   "nom": "Retailleau",
@@ -252,7 +268,8 @@
    "second_tour": "0x2908ac428598a782fe6aa75f816558c34c5dbfe58548b2ed65870087d6780bde"
   },
   "declare_le": null,
-  "prenom": "Bruno"
+  "prenom": "Bruno",
+  "genre": "m"
  },
  "royal": {
   "nom": "Royal",
@@ -267,7 +284,8 @@
    "second_tour": "0xb019e846ccbe696c00b2ad51f3a558b430dc45dbb80547b6e66d21bade1e9df4"
   },
   "declare_le": null,
-  "prenom": "Ségolène"
+  "prenom": "Ségolène",
+  "genre": "f"
  },
  "roussel": {
   "nom": "Roussel",
@@ -282,7 +300,8 @@
    "second_tour": "0xcd35d929f89fa8be97ca1d485a968a0eba0ba91b402869581f666d302ae2d983"
   },
   "declare_le": null,
-  "prenom": "Fabien"
+  "prenom": "Fabien",
+  "genre": "m"
  },
  "ruffin": {
   "nom": "Ruffin",
@@ -297,7 +316,8 @@
    "second_tour": "0x688510fa5349e5503fab2abb3173164849e7c81ec1ad409c0b1106718c832bdd"
   },
   "declare_le": null,
-  "prenom": "François"
+  "prenom": "François",
+  "genre": "m"
  },
  "tondelier": {
   "nom": "Tondelier",
@@ -312,7 +332,8 @@
    "second_tour": "0xc27f87aff86fbc6e2b6f972e61592c4eb571532ac75675f966f2117199876527"
   },
   "declare_le": null,
-  "prenom": "Marine"
+  "prenom": "Marine",
+  "genre": "f"
  },
  "villepin": {
   "nom": "de Villepin",
@@ -327,7 +348,8 @@
    "second_tour": "0x24d7100acac39659c870b2976c6d7cf9cb33c346a37b1c177a53ee5a14c8f15f"
   },
   "declare_le": null,
-  "prenom": "Dominique"
+  "prenom": "Dominique",
+  "genre": "m"
  },
  "zemmour": {
   "nom": "Zemmour",
@@ -342,6 +364,7 @@
    "second_tour": "0x2036e2b575612231fb0087c5fdb72a66e92855cdc97729e12d8bf1625ca7873e"
   },
   "declare_le": null,
-  "prenom": "Éric"
+  "prenom": "Éric",
+  "genre": "m"
  }
 }

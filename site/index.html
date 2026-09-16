@@ -119,6 +119,13 @@
   .sondages-table td { font-variant-numeric: tabular-nums; }
   .voir-tous { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 500; }
 
+  .duels-repli { margin-top: 12px; }
+  .duels-repli summary { cursor: pointer; font-size: 13.5px; font-weight: 500;
+    color: var(--bleu-vif); padding: 8px 0; list-style: none; }
+  .duels-repli summary::-webkit-details-marker { display: none; }
+  .duels-repli summary::before { content: '▸ '; }
+  .duels-repli[open] summary::before { content: '▾ '; }
+
   footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
   footer .footer-inner { max-width: 1180px; margin: 0 auto; display: grid;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 26px; }
@@ -193,21 +200,27 @@
     <h2>Second tour de l’élection présidentielle 2027</h2>
     <p class="subtitle">Le premier tour devrait avoir lieu le <time datetime="2027-04-18">18 avril 2027</time>, le second tour le <time datetime="2027-05-02">2 mai 2027</time>. Les deux candidats arrivés en tête au premier tour s’affrontent au second, sauf si l’un obtient la majorité absolue dès le premier tour.</p>
     <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Event", "name": "Élection présidentielle française 2027 — premier tour", "startDate": "2027-04-18", "location": {"@type": "Country", "name": "France"}}, {"@type": "Event", "name": "Élection présidentielle française 2027 — second tour", "startDate": "2027-05-02", "location": {"@type": "Country", "name": "France"}}]}</script>
-    <p class="subtitle">11 duels de second tour testés par les instituts, pour un total de 51 mesures. Le Pen arrive en tête dans 6 d’entre eux. Le duel Le Pen – Philippe a changé de sens depuis sa première mesure.</p>
+    <p class="subtitle">11 duels de second tour testés par les instituts, pour un total de 51 mesures. Le Pen l’emporte dans les six duels où elle est testée. Le duel Le Pen – Philippe a changé de sens depuis sa première mesure.</p>
     <table class="t2-table">
-      <tr><th>Duel</th><th>Mesures</th><th>Dernière mesure</th><th>Score</th></tr>
-      <tr><td><a href="second-tour/le-pen-philippe.html">Le Pen – Philippe</a></td><td>12</td><td>10/09/2026 (OpinionWay)</td><td style="font-variant-numeric:tabular-nums;">55,0 % – 45,0 %</td></tr>
-      <tr><td><a href="second-tour/le-pen-melenchon.html">Le Pen – Mélenchon</a></td><td>11</td><td>10/09/2026 (OpinionWay)</td><td style="font-variant-numeric:tabular-nums;">67,0 % – 33,0 %</td></tr>
-      <tr><td><a href="second-tour/attal-le-pen.html">Attal – Le Pen</a></td><td>11</td><td>10/09/2026 (Harris)</td><td style="font-variant-numeric:tabular-nums;">44,0 % – 56,0 %</td></tr>
-      <tr><td>Glucksmann – Le Pen</td><td>4</td><td>28/08/2026 (Elabe)</td><td style="font-variant-numeric:tabular-nums;">43,0 % – 57,0 %</td></tr>
-      <tr><td>Bardella – Philippe</td><td>4</td><td>27/05/2026 (Harris)</td><td style="font-variant-numeric:tabular-nums;">54,0 % – 46,0 %</td></tr>
-      <tr><td>Le Pen – Retailleau</td><td>3</td><td>25/08/2026 (Ifop)</td><td style="font-variant-numeric:tabular-nums;">58,0 % – 42,0 %</td></tr>
-      <tr><td>Bardella – Mélenchon</td><td>2</td><td>27/05/2026 (Harris)</td><td style="font-variant-numeric:tabular-nums;">68,0 % – 32,0 %</td></tr>
-      <tr><td>Hollande – Le Pen</td><td>1</td><td>25/08/2026 (Ifop)</td><td style="font-variant-numeric:tabular-nums;">46,0 % – 54,0 %</td></tr>
-      <tr><td>Attal – Bardella</td><td>1</td><td>27/05/2026 (Harris)</td><td style="font-variant-numeric:tabular-nums;">43,0 % – 57,0 %</td></tr>
-      <tr><td>Bardella – Glucksmann</td><td>1</td><td>27/03/2026 (Elabe)</td><td style="font-variant-numeric:tabular-nums;">58,5 % – 41,5 %</td></tr>
-      <tr><td>Bardella – Retailleau</td><td>1</td><td>27/03/2026 (Elabe)</td><td style="font-variant-numeric:tabular-nums;">58,0 % – 42,0 %</td></tr>
+      <tr><th>Duel</th><th>Écart</th><th>Mesures</th><th>Dernière mesure</th></tr>
+      <tr><td>Le Pen 55,0 % – Philippe 45,0 %</td><td>10,0</td><td>12</td><td>10/09/2026 (OpinionWay)</td></tr>
     </table>
+    <details class="duels-repli">
+      <summary>Les dix autres duels testés</summary>
+      <table class="t2-table">
+        <tr><th>Duel</th><th>Écart</th><th>Mesures</th><th>Dernière mesure</th></tr>
+      <tr><td>Le Pen 56,0 % – Attal 44,0 %</td><td>12,0</td><td>11</td><td>10/09/2026 (Harris)</td></tr>
+      <tr><td>Le Pen 67,0 % – Mélenchon 33,0 %</td><td>34,0</td><td>11</td><td>10/09/2026 (OpinionWay)</td></tr>
+      <tr><td>Le Pen 57,0 % – Glucksmann 43,0 %</td><td>14,0</td><td>4</td><td>28/08/2026 (Elabe)</td></tr>
+      <tr><td>Le Pen 58,0 % – Retailleau 42,0 %</td><td>16,0</td><td>3</td><td>25/08/2026 (Ifop)</td></tr>
+      <tr><td>Le Pen 54,0 % – Hollande 46,0 %</td><td>8,0</td><td>1</td><td>25/08/2026 (Ifop)</td></tr>
+      <tr><td>Bardella 54,0 % – Philippe 46,0 %</td><td>8,0</td><td>4</td><td>27/05/2026 (Harris)</td></tr>
+      <tr><td>Bardella 68,0 % – Mélenchon 32,0 %</td><td>36,0</td><td>2</td><td>27/05/2026 (Harris)</td></tr>
+      <tr><td>Bardella 57,0 % – Attal 43,0 %</td><td>14,0</td><td>1</td><td>27/05/2026 (Harris)</td></tr>
+      <tr><td>Bardella 58,5 % – Glucksmann 41,5 %</td><td>17,0</td><td>1</td><td>27/03/2026 (Elabe)</td></tr>
+      <tr><td>Bardella 58,0 % – Retailleau 42,0 %</td><td>16,0</td><td>1</td><td>27/03/2026 (Elabe)</td></tr>
+      </table>
+    </details>
     <div class="t2-selector" style="margin-top:18px;">
       <h3 style="font-family:var(--titre);font-size:18px;font-weight:600;margin-bottom:12px;">Explorer un duel</h3>
       <div class="duel-select">
@@ -1130,8 +1143,7 @@ class SecondTour {
     }
 
     if (entries.length >= 5) {
-      const slug = [cidA, cidB].sort().join('-');
-      this.content.innerHTML = `<p style="margin-bottom:1em;"><a href="second-tour/${slug}.html" style="font-weight:500;">Voir la page dédiée de ce duel →</a></p>`;
+      this.content.innerHTML = '';
       this.renderChart(entries, cidA, cidB, true);
     } else if (entries.length > 0) {
       this.renderTable(entries, cidA, cidB);

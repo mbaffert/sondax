@@ -3,6 +3,9 @@
 Lit data/sondages.json, data/candidats.json et data/config.json,
 génère le HTML du bloc et le remplace entre les marqueurs
 <!-- BEGIN:second-tour --> et <!-- END:second-tour -->.
+
+Tout le contenu est rendu au build et présent dans le HTML servi.
+Le JavaScript ne sert qu'à l'interaction (sélecteur de duel).
 """
 
 import json, pathlib, sys, html as html_mod
@@ -24,9 +27,14 @@ MOIS = [
     "juillet", "août", "septembre", "octobre", "novembre", "décembre",
 ]
 
+NOMBRES_LETTRES = {
+    1: "un", 2: "deux", 3: "trois", 4: "quatre", 5: "cinq",
+    6: "six", 7: "sept", 8: "huit", 9: "neuf", 10: "dix",
+    11: "onze", 12: "douze",
+}
+
 
 def date_longue(iso):
-    """'2027-04-18' → '18 avril 2027'"""
     y, m, d = iso.split("-")
     return f"{int(d)} {MOIS[int(m) - 1]} {y}"
 
@@ -38,12 +46,21 @@ def load_config():
 
 
 def pair(slug, candidats):
-    """Découpe un slug en (cid_a, cid_b) via find_pair_from_slug."""
     return find_pair_from_slug(slug, candidats)
 
 
+def nombre_lettres(n):
+    return NOMBRES_LETTRES.get(n, str(n))
+
+
+def genre(cid, candidats):
+    """Retourne 'm' ou 'f' pour l'accord grammatical."""
+    c = candidats.get(cid, {})
+    return c.get("genre", "m")
+
+
 # ---------------------------------------------------------------------------
-# Texte factuel (dates + règle de qualification)
+# Texte factuel
 # ---------------------------------------------------------------------------
 
 def generate_factual_text(config):
@@ -52,17 +69,14 @@ def generate_factual_text(config):
     t2 = election.get("second_tour", "2027-05-02")
     officielles = election.get("officielles", False)
 
-    t1_long = date_longue(t1)
-    t2_long = date_longue(t2)
-
     verbe = "aura lieu" if officielles else "devrait avoir lieu"
 
     text = (
         f'<p class="subtitle">'
         f'Le premier tour {verbe} le '
-        f'<time datetime="{t1}">{t1_long}</time>, '
+        f'<time datetime="{t1}">{date_longue(t1)}</time>, '
         f'le second tour le '
-        f'<time datetime="{t2}">{t2_long}</time>. '
+        f'<time datetime="{t2}">{date_longue(t2)}</time>. '
         f'Les deux candidats arrivés en tête au premier tour s\u2019affrontent '
         f'au second, sauf si l\u2019un obtient la majorité absolue dès le '
         f'premier tour.'
@@ -74,13 +88,13 @@ def generate_factual_text(config):
         "@graph": [
             {
                 "@type": "Event",
-                "name": "Élection présidentielle française 2027 \u2014 premier tour",
+                "name": f"Élection présidentielle française 2027 \u2014 premier tour",
                 "startDate": t1,
                 "location": {"@type": "Country", "name": "France"},
             },
             {
                 "@type": "Event",
-                "name": "Élection présidentielle française 2027 \u2014 second tour",
+                "name": f"Élection présidentielle française 2027 \u2014 second tour",
                 "startDate": t2,
                 "location": {"@type": "Country", "name": "France"},
             },
@@ -88,12 +102,11 @@ def generate_factual_text(config):
     }
     ld = json.dumps(schema, ensure_ascii=False)
     text += f'\n    <script type="application/ld+json">{ld}</script>'
-
     return text
 
 
 # ---------------------------------------------------------------------------
-# Chapeau généré au build
+# Chapeau
 # ---------------------------------------------------------------------------
 
 def generate_chapeau(duels, candidats):
@@ -107,13 +120,19 @@ def generate_chapeau(duels, candidats):
     n_duels = len(duels)
     n_mesures = sum(len(e) for e in duels.values())
 
-    # Qui arrive en tête dans la dernière mesure de chaque duel ?
-    wins = {}
+    # Compter, par candidat : dans combien de duels il apparaît, et combien il gagne
+    appearances = {}  # cid → nombre de duels
+    wins = {}  # cid → nombre de duels gagnés (dernière mesure)
     for slug, entries in duels.items():
         cid_a, cid_b = pair(slug, candidats)
+        appearances[cid_a] = appearances.get(cid_a, 0) + 1
+        appearances[cid_b] = appearances.get(cid_b, 0) + 1
         latest = entries[0]["scores"]
-        leader = cid_a if latest.get(cid_a, 0) >= latest.get(cid_b, 0) else cid_b
-        wins[leader] = wins.get(leader, 0) + 1
+        sa, sb = latest.get(cid_a, 0), latest.get(cid_b, 0)
+        if sa > sb:
+            wins[cid_a] = wins.get(cid_a, 0) + 1
+        elif sb > sa:
+            wins[cid_b] = wins.get(cid_b, 0) + 1
 
     # Duel le plus serré
     tightest_slug = None
@@ -158,15 +177,33 @@ def generate_chapeau(duels, candidats):
             f"pour un total de {n_mesures}\u00a0mesures."
         )
 
-    # Phrase 2 : leader
+    # Phrase 2 : leader avec dénominateur explicite
     if wins and n_duels > 1:
         leader_cid = max(wins, key=lambda c: wins[c])
         nom = nom_court(leader_cid, candidats)
         nw = wins[leader_cid]
-        if nw == n_duels:
-            phrases.append(f"{nom} arrive en tête dans tous les duels mesurés.")
-        elif nw > 1:
-            phrases.append(f"{nom} arrive en tête dans {nw}\u00a0d\u2019entre eux.")
+        na = appearances[leader_cid]
+        g = genre(leader_cid, candidats)
+        e_accord = "e" if g == "f" else ""
+        na_lettres = nombre_lettres(na)
+
+        if nw == na:
+            if na == 1:
+                phrases.append(
+                    f"{nom} l\u2019emporte dans le seul duel "
+                    f"où {('elle' if g == 'f' else 'il')} est testé{e_accord}."
+                )
+            else:
+                phrases.append(
+                    f"{nom} l\u2019emporte dans les {na_lettres}\u00a0duels "
+                    f"où {('elle' if g == 'f' else 'il')} est testé{e_accord}."
+                )
+        else:
+            phrases.append(
+                f"{nom} l\u2019emporte dans "
+                f"{nombre_lettres(nw)} des {na_lettres}\u00a0duels "
+                f"où {('elle' if g == 'f' else 'il')} est testé{e_accord}."
+            )
 
     # Phrase 3 : inversion ou duel le plus serré
     if reversals and n_duels > 1:
@@ -195,60 +232,110 @@ def generate_chapeau(duels, candidats):
 # Tableau des duels
 # ---------------------------------------------------------------------------
 
-def generate_table(duels, candidats):
+def format_duel_row(slug, entries, candidats):
+    """Génère une ligne <tr> pour un duel.
+
+    Colonnes : Duel (vainqueur en premier, avec scores) | Écart | Mesures | Dernière mesure.
+    """
+    cid_a, cid_b = pair(slug, candidats)
+    latest = entries[0]
+    sa = latest["scores"].get(cid_a, 0)
+    sb = latest["scores"].get(cid_b, 0)
+
+    # Vainqueur en premier (en cas d'égalité, conserver l'ordre de la clé)
+    if sb > sa:
+        cid_1, s1, cid_2, s2 = cid_b, sb, cid_a, sa
+    else:
+        cid_1, s1, cid_2, s2 = cid_a, sa, cid_b, sb
+
+    nom_1 = html_mod.escape(nom_court(cid_1, candidats))
+    nom_2 = html_mod.escape(nom_court(cid_2, candidats))
+    duel_label = (
+        f'{nom_1}\u00a0{fmt_pct(s1)} \u2013 '
+        f'{nom_2}\u00a0{fmt_pct(s2)}'
+    )
+
+    ecart = abs(s1 - s2)
+    ecart_fmt = f"{ecart:.1f}".replace(".", ",")
+
+    n = len(entries)
+    date_str = fmt_date(latest["terrain_fin"])
+    institut = html_mod.escape(latest["institut"])
+
+    return (
+        f'      <tr>'
+        f'<td>{duel_label}</td>'
+        f'<td>{ecart_fmt}</td>'
+        f'<td>{n}</td>'
+        f'<td>{date_str} ({institut})</td>'
+        f'</tr>'
+    )
+
+
+def sorted_duel_slugs(duels):
+    """Tri : date DESC, mesures DESC, clé interne ASC (stable)."""
+    return sorted(
+        duels.keys(),
+        key=lambda s: (
+            "".join(chr(255 - ord(c)) for c in duels[s][0]["terrain_fin"]),
+            -len(duels[s]),
+            s,
+        ),
+    )
+
+
+def generate_table_section(duels, candidats):
+    """Génère le duel le plus récent en aperçu + le reste dans un <details>."""
     if not duels:
         return ""
 
-    # Tri : mesures DESC, date DESC
-    sorted_slugs = sorted(
-        duels.keys(),
-        key=lambda s: (-len(duels[s]), duels[s][0]["terrain_fin"]),
-        reverse=False,
+    slugs = sorted_duel_slugs(duels)
+    n_total = len(slugs)
+
+    # Aperçu : le duel le plus récemment mesuré
+    first_slug = slugs[0]
+    preview_row = format_duel_row(first_slug, duels[first_slug], candidats)
+    header_row = (
+        '      <tr><th>Duel</th><th>Écart</th>'
+        '<th>Mesures</th><th>Dernière mesure</th></tr>'
     )
-    # La date est en ISO, on veut DESC → inverser le tri secondaire.
-    # Comme le tri primaire est -len (déjà négatif), on peut trier en deux passes.
-    sorted_slugs = sorted(duels.keys(), key=lambda s: duels[s][0]["terrain_fin"], reverse=True)
-    sorted_slugs = sorted(sorted_slugs, key=lambda s: -len(duels[s]))
 
-    rows = []
-    for slug in sorted_slugs:
-        entries = duels[slug]
-        cid_a, cid_b = pair(slug, candidats)
-        nom_a = html_mod.escape(nom_court(cid_a, candidats))
-        nom_b = html_mod.escape(nom_court(cid_b, candidats))
-        n = len(entries)
-        latest = entries[0]
-        date_str = fmt_date(latest["terrain_fin"])
-        institut = html_mod.escape(latest["institut"])
-
-        score_a = latest["scores"].get(cid_a, 0)
-        score_b = latest["scores"].get(cid_b, 0)
-        score_str = f'{fmt_pct(score_a)} \u2013 {fmt_pct(score_b)}'
-
-        if n >= SEUIL:
-            duel_label = (
-                f'<a href="second-tour/{slug}.html">'
-                f'{nom_a}\u00a0\u2013\u00a0{nom_b}</a>'
-            )
-        else:
-            duel_label = f'{nom_a}\u00a0\u2013\u00a0{nom_b}'
-
-        rows.append(
-            f'      <tr>'
-            f'<td>{duel_label}</td>'
-            f'<td>{n}</td>'
-            f'<td>{date_str} ({institut})</td>'
-            f'<td style="font-variant-numeric:tabular-nums;">{score_str}</td>'
-            f'</tr>'
-        )
-
-    return (
+    preview_table = (
         '    <table class="t2-table">\n'
-        '      <tr><th>Duel</th><th>Mesures</th>'
-        '<th>Dernière mesure</th><th>Score</th></tr>\n'
-        + "\n".join(rows) + "\n"
+        f'{header_row}\n'
+        f'{preview_row}\n'
         '    </table>'
     )
+
+    # Pli : les autres duels
+    if n_total <= 1:
+        return preview_table
+
+    rest_rows = []
+    for slug in slugs[1:]:
+        rest_rows.append(format_duel_row(slug, duels[slug], candidats))
+
+    n_rest = n_total - 1
+    if n_rest == 1:
+        summary_text = "L\u2019autre duel testé"
+    else:
+        summary_text = f"Les {nombre_lettres(n_rest)} autres duels testés"
+
+    fold_table = (
+        '      <table class="t2-table">\n'
+        f'  {header_row}\n'
+        + "\n".join(rest_rows) + "\n"
+        '      </table>'
+    )
+
+    details = (
+        f'    <details class="duels-repli">\n'
+        f'      <summary>{summary_text}</summary>\n'
+        f'{fold_table}\n'
+        f'    </details>'
+    )
+
+    return f'{preview_table}\n{details}'
 
 
 # ---------------------------------------------------------------------------
@@ -278,7 +365,7 @@ def generate_selector_html():
 def generate_bloc(config, duels, candidats):
     factual = generate_factual_text(config)
     chapeau = generate_chapeau(duels, candidats)
-    table = generate_table(duels, candidats)
+    table_section = generate_table_section(duels, candidats)
     selector = generate_selector_html()
 
     return (
@@ -287,7 +374,7 @@ def generate_bloc(config, duels, candidats):
         '    <h2>Second tour de l\u2019élection présidentielle 2027</h2>\n'
         f'    {factual}\n'
         f'    {chapeau}\n'
-        f'{table}\n'
+        f'{table_section}\n'
         f'{selector}\n'
         '  </div>'
     )

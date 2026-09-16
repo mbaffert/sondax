@@ -19,6 +19,7 @@ CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 sys.path.insert(0, str(ROOT / "scripts"))
 from build_header import (
     select_hypothesis, select_latest_sondage, candidate_full_name, load_all_sondages,
+    REPERES_T1, JSONLD_T1,
 )
 
 MOIS = [
@@ -322,9 +323,15 @@ def main():
 
     content = INDEX_PATH.read_text(encoding="utf-8")
 
-    # 1. Chapeau seul dans la section premier tour
+    # 1. Chapeau + repères factuels T1
     chapeau = generate_chapeau(series_data, sondages, candidats)
-    content = inject(content, PT_BEGIN, PT_END, f"    {chapeau}")
+    ld_t1 = json.dumps(JSONLD_T1, ensure_ascii=False)
+    reperes_t1 = (
+        f'    {chapeau}\n'
+        f'    <p class="subtitle">{REPERES_T1}</p>\n'
+        f'    <script type="application/ld+json">{ld_t1}</script>'
+    )
+    content = inject(content, PT_BEGIN, PT_END, reperes_t1)
 
     # 2. Fiche du dernier sondage : meta + scores
     meta_html, scores_html = generate_dernier_sondage(sondages, candidats)

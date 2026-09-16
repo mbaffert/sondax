@@ -35,6 +35,15 @@ Une page d'accueil à sections nommées et ancrées :
 build et présent dans le HTML servi par le serveur. Le JavaScript ne sert qu'à
 l'interaction (sélecteurs, graphiques, onglets).
 
+**Repères factuels.** Chaque section porte les repères de son propre tour : le texte
+du premier tour dans la section premier tour, celui du second tour dans la section
+second tour. Ces textes sont écrits en dur dans `build_header.py` (`REPERES_T1`,
+`REPERES_T2`) et sont datés : ils devront être révisés à la publication du décret de
+convocation, à la clôture des parrainages (12 mars 2027) et le jour du scrutin. Le
+JSON-LD `Event` est scindé de la même façon (un événement par section). Le booléen
+`officielles` de `config.json` est conservé pour basculer la formulation si les dates
+devaient changer.
+
 **Hors périmètre v1**, à ne pas implémenter sans décision explicite : correction des
 *house effects*, base de données, comptes utilisateurs, back-office d'édition,
 intentions de vote par catégorie sociologique, sondages autres que présidentiels.

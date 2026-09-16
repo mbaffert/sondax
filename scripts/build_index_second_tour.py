@@ -18,6 +18,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from pages_second_tour import (
     load_duels, nom_court, fmt_date, fmt_pct, find_pair_from_slug, SEUIL,
 )
+from build_header import REPERES_T2, JSONLD_T2
 
 BEGIN_MARKER = "<!-- BEGIN:second-tour -->"
 END_MARKER = "<!-- END:second-tour -->"
@@ -63,46 +64,12 @@ def genre(cid, candidats):
 # Texte factuel
 # ---------------------------------------------------------------------------
 
-def generate_factual_text(config):
-    election = config.get("election", {})
-    t1 = election.get("premier_tour", "2027-04-18")
-    t2 = election.get("second_tour", "2027-05-02")
-    officielles = election.get("officielles", False)
-
-    verbe = "aura lieu" if officielles else "devrait avoir lieu"
-
-    text = (
-        f'<p class="subtitle">'
-        f'Le premier tour {verbe} le '
-        f'<time datetime="{t1}">{date_longue(t1)}</time>, '
-        f'le second tour le '
-        f'<time datetime="{t2}">{date_longue(t2)}</time>. '
-        f'Les deux candidats arrivés en tête au premier tour s\u2019affrontent '
-        f'au second, sauf si l\u2019un obtient la majorité absolue dès le '
-        f'premier tour.'
-        f'</p>'
+def generate_factual_text():
+    ld = json.dumps(JSONLD_T2, ensure_ascii=False)
+    return (
+        f'<p class="subtitle">{REPERES_T2}</p>\n'
+        f'    <script type="application/ld+json">{ld}</script>'
     )
-
-    schema = {
-        "@context": "https://schema.org",
-        "@graph": [
-            {
-                "@type": "Event",
-                "name": f"Élection présidentielle française 2027 \u2014 premier tour",
-                "startDate": t1,
-                "location": {"@type": "Country", "name": "France"},
-            },
-            {
-                "@type": "Event",
-                "name": f"Élection présidentielle française 2027 \u2014 second tour",
-                "startDate": t2,
-                "location": {"@type": "Country", "name": "France"},
-            },
-        ],
-    }
-    ld = json.dumps(schema, ensure_ascii=False)
-    text += f'\n    <script type="application/ld+json">{ld}</script>'
-    return text
 
 
 # ---------------------------------------------------------------------------
@@ -372,8 +339,8 @@ def generate_selector_html():
 # Assemblage et injection
 # ---------------------------------------------------------------------------
 
-def generate_bloc(config, duels, candidats):
-    factual = generate_factual_text(config)
+def generate_bloc(duels, candidats):
+    factual = generate_factual_text()
     chapeau = generate_chapeau(duels, candidats)
     table_section = generate_table_section(duels, candidats)
     selector = generate_selector_html()
@@ -413,7 +380,7 @@ def inject_into_index(html_bloc):
 def main():
     config = load_config()
     duels, candidats = load_duels()
-    html_bloc = generate_bloc(config, duels, candidats)
+    html_bloc = generate_bloc(duels, candidats)
     inject_into_index(html_bloc)
 
     n = len(duels)

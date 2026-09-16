@@ -18,6 +18,51 @@ def load_json(path):
         return json.load(f)
 
 
+# ---------------------------------------------------------------------------
+# Repères factuels — textes en dur, regroupés ici (un seul endroit).
+# Ces textes sont datés et devront être révisés :
+# - à la publication du décret de convocation des électeurs ;
+# - à la clôture des parrainages (12 mars 2027) ;
+# - le jour du premier tour (18 avril 2027).
+# Le booléen `officielles` de config.json ne sert plus à distinguer
+# l'hypothèse du fait (les dates sont confirmées) mais à basculer la
+# formulation si elles devaient changer.
+# ---------------------------------------------------------------------------
+
+REPERES_T1 = (
+    'Le premier tour de l\u2019élection présidentielle se tient le dimanche '
+    '18\u00a0avril\u00a02027. Les deux candidats arrivés en tête s\u2019affrontent '
+    'au second tour, sauf si l\u2019un obtient la majorité absolue des suffrages '
+    'exprimés dès le premier tour \u2014 ce qui n\u2019est jamais arrivé sous la '
+    'V\u1d49\u00a0République. La liste officielle des candidats ne sera connue '
+    'qu\u2019après la clôture des parrainages, le 12\u00a0mars\u00a02027\u00a0: '
+    'les instituts testent d\u2019ici là des hypothèses de candidatures, qui '
+    'varient d\u2019un sondage à l\u2019autre.'
+)
+
+REPERES_T2 = (
+    'Le second tour se tient le dimanche 2\u00a0mai\u00a02027. Est élu le '
+    'candidat qui obtient le plus de voix parmi les suffrages exprimés, les '
+    'votes blancs et nuls étant décomptés à part et sans effet sur le résultat.'
+)
+
+JSONLD_T1 = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Élection présidentielle française 2027 \u2014 premier tour",
+    "startDate": "2027-04-18",
+    "location": {"@type": "Country", "name": "France"},
+}
+
+JSONLD_T2 = {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "Élection présidentielle française 2027 \u2014 second tour",
+    "startDate": "2027-05-02",
+    "location": {"@type": "Country", "name": "France"},
+}
+
+
 def select_hypothesis(sondage, candidats):
     """Sélectionne la meilleure hypothèse T1 selon la règle du bandeau (SPEC §4).
 

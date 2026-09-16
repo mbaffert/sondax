@@ -66,14 +66,38 @@ def enumeration_fr(items):
 # Chapeau du premier tour
 # ---------------------------------------------------------------------------
 
+def candidates_in_window(series_data, fenetre_jours=30):
+    """Retourne le set des candidats ayant au moins un point brut dans la fenêtre."""
+    date_fin = series_data.get("date_fin", "")
+    if not date_fin:
+        return set()
+    fin = date.fromisoformat(date_fin)
+    debut = (fin - timedelta(days=fenetre_jours)).isoformat()
+    cands = set()
+    for pb in series_data.get("points_bruts", []):
+        if pb["d"] >= debut:
+            for cid in pb["scores"]:
+                cands.add(cid)
+    return cands
+
+
 def generate_chapeau(series_data, sondages, candidats):
-    """Trois phrases : leader, volume, delta 3 mois."""
+    """Trois phrases : leader, volume, delta 3 mois.
+
+    Seuls les candidats ayant au moins une mesure dans la fenêtre glissante
+    de 30 jours (§4 SPEC) sont retenus.
+    """
     series = series_data.get("series", {})
     date_fin = series_data.get("date_fin", "")
+    fenetre = series_data.get("fenetre_jours", 30)
 
-    # Dernière valeur non-null par candidat
+    # Candidats testés dans la fenêtre de 30 jours
+    cands_actifs = candidates_in_window(series_data, fenetre)
+
+    # Dernière valeur de tendance pour chaque candidat actif
     latest = {}
-    for cid, pts in series.items():
+    for cid in cands_actifs:
+        pts = series.get(cid, [])
         for p in reversed(pts):
             if p["v"] is not None:
                 latest[cid] = p["v"]
@@ -89,7 +113,6 @@ def generate_chapeau(series_data, sondages, candidats):
     leader_cid, leader_v = top[0]
     leader_nom = candidate_full_name(leader_cid, candidats)
     c = candidats.get(leader_cid, {})
-    # type: parti → pas de "arrive en tête"
     is_parti = c.get("type") == "parti"
 
     others = []
@@ -110,15 +133,14 @@ def generate_chapeau(series_data, sondages, candidats):
         phrase1 += f", devant {enumeration_fr(others)}"
     phrase1 += "."
 
-    # Phrase 2 : volume et instituts
-    # Fenêtre de 6 mois (période par défaut)
+    # Phrase 2 : volume et instituts dans la fenêtre de 30 jours
     fin = date.fromisoformat(date_fin)
-    debut_6m = (fin - timedelta(days=180)).isoformat()
-    sondages_fenetre = [s for s in sondages if s["terrain_fin"] >= debut_6m]
+    debut_fenetre = (fin - timedelta(days=fenetre)).isoformat()
+    sondages_fenetre = [s for s in sondages if s["terrain_fin"] >= debut_fenetre]
     n_sondages = len(sondages_fenetre)
     instituts = sorted(set(s["institut"] for s in sondages_fenetre))
 
-    debut_date_lettres = date_lettres(debut_6m)
+    debut_date_lettres = date_lettres(debut_fenetre)
     if n_sondages == 1:
         phrase2 = (
             f"Cette moyenne repose sur un seul sondage publié "
@@ -131,26 +153,40 @@ def generate_chapeau(series_data, sondages, candidats):
             f"{enumeration_fr(instituts)}."
         )
 
-    # Phrase 3 : delta 3 mois du leader (optionnel)
+    # Phrase 3 : delta 3 mois du leader
+    # Comparer la valeur actuelle à celle d'il y a 90 jours, mais seulement
+    # si le leader avait des mesures à cette date (était dans la fenêtre).
     phrase3 = ""
     debut_3m = (fin - timedelta(days=90)).isoformat()
     leader_pts = series.get(leader_cid, [])
-    v_3m_ago = None
-    for p in leader_pts:
-        if p["d"] <= debut_3m and p["v"] is not None:
-            v_3m_ago = p["v"]
-    if v_3m_ago is not None:
-        delta = leader_v - v_3m_ago
-        nom_court = candidats.get(leader_cid, {}).get("nom", leader_cid)
-        if abs(delta) >= 0.1:
-            delta_fmt = f"{abs(delta):.1f}".replace(".", ",")
-            pts = "point" if abs(delta) < 1.5 else "points"
-            if delta > 0:
-                phrase3 = f"{nom_court} gagne {delta_fmt}\u00a0{pts} en trois mois."
+
+    # Vérifier que le leader était testé il y a 3 mois
+    cands_3m = set()
+    for pb in series_data.get("points_bruts", []):
+        d = pb["d"]
+        if d >= debut_3m and d <= (fin - timedelta(days=60)).isoformat():
+            # Points dans la zone [J-90, J-60] : le leader avait des données
+            if leader_cid in pb["scores"]:
+                cands_3m.add(leader_cid)
+
+    if leader_cid in cands_3m:
+        # Trouver la valeur la plus proche de J-90
+        v_3m_ago = None
+        for p in leader_pts:
+            if p["d"] <= debut_3m and p["v"] is not None:
+                v_3m_ago = p["v"]
+        if v_3m_ago is not None:
+            delta = leader_v - v_3m_ago
+            nom_court = candidats.get(leader_cid, {}).get("nom", leader_cid)
+            if abs(delta) >= 0.1:
+                delta_fmt = f"{abs(delta):.1f}".replace(".", ",")
+                pts = "point" if abs(delta) < 1.5 else "points"
+                if delta > 0:
+                    phrase3 = f"{nom_court} gagne {delta_fmt}\u00a0{pts} en trois mois."
+                else:
+                    phrase3 = f"{nom_court} perd {delta_fmt}\u00a0{pts} en trois mois."
             else:
-                phrase3 = f"{nom_court} perd {delta_fmt}\u00a0{pts} en trois mois."
-        else:
-            phrase3 = f"{nom_court} est stable sur trois mois."
+                phrase3 = f"{nom_court} est stable sur trois mois."
 
     parts = [phrase1, phrase2]
     if phrase3:

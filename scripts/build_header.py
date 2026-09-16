@@ -113,22 +113,41 @@ def build_hyp_distinctive_label(hyp, all_t1, candidats):
     return " / ".join(names)
 
 
-def main():
-    candidats = load_json(DATA / "candidats.json")
-    sondages = load_json(DATA / "sondages.json")
+def select_latest_sondage(sondages):
+    """Sélectionne le dernier sondage publié.
 
-    # Charger les sondages manuels s'ils existent
+    Règle de départage (SPEC §4) :
+    1. terrain_fin la plus récente
+    2. en cas d'égalité, le plus grand echantillon total
+    3. en cas d'égalité encore, l'ordre d'apparition dans sondages.json
+    """
+    if not sondages:
+        return None
+    # enumerate pour conserver l'ordre du fichier comme critère final
+    return max(
+        enumerate(sondages),
+        key=lambda t: (t[1]["terrain_fin"], t[1].get("echantillon") or 0, -t[0]),
+    )[1]
+
+
+def load_all_sondages():
+    """Charge sondages.json + sondages_manuels.json."""
+    sondages = load_json(DATA / "sondages.json")
     manuels_path = DATA / "sondages_manuels.json"
     if manuels_path.exists():
-        sondages_manuels = load_json(manuels_path)
-        sondages = sondages + sondages_manuels
+        sondages = sondages + load_json(manuels_path)
+    return sondages
+
+
+def main():
+    candidats = load_json(DATA / "candidats.json")
+    sondages = load_all_sondages()
 
     if not sondages:
         print("Aucun sondage trouvé.")
         return
 
-    # Sondage le plus récent par terrain_fin
-    latest = max(sondages, key=lambda s: s["terrain_fin"])
+    latest = select_latest_sondage(sondages)
 
     # Sélection de l'hypothèse
     hyp = select_hypothesis(latest, candidats)

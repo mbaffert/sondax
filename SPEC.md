@@ -296,13 +296,24 @@ les autres restent accessibles dans le bloc fiche technique.
 
 La règle ne s'applique pas au tour 2 : tous les duels sont également valides.
 
-**Sélection de l'hypothèse pour le bandeau d'en-tête.** Le bandeau affiche un seul
-sondage (le plus récent par `terrain_fin`) et une seule hypothèse de tour 1 de ce
-sondage. La règle de sélection est différente de celle des courbes :
+**Sélection du dernier sondage publié.** Une fonction unique
+(`select_latest_sondage` dans `build_header.py`) sert au bandeau et à la fiche du
+dernier sondage. Règle de départage :
 
-1. Parmi les hypothèses T1 du sondage, retenir celle qui contient le plus de
-   **candidats officiellement déclarés** — c'est-à-dire ceux dont `declare_le` est
-   non nul et ≤ `terrain_fin` du sondage.
+1. `terrain_fin` la plus récente ;
+2. en cas d'égalité, le plus grand `echantillon` total ;
+3. en cas d'égalité encore, l'ordre d'apparition dans `sondages.json`.
+
+Le bandeau affiche les quatre premiers scores. La fiche du dernier sondage, en tête
+de la section « Explorer les sondages » (`#dernier-sondage`), affiche l'intégralité
+des scores de l'hypothèse retenue. Le lien « Voir le détail » du bandeau pointe vers
+cette fiche.
+
+**Sélection de l'hypothèse.** Parmi les hypothèses T1 du sondage retenu, la sélection
+suit trois niveaux :
+
+1. Retenir celle qui contient le plus de **candidats officiellement déclarés** —
+   c'est-à-dire ceux dont `declare_le` est non nul et ≤ `terrain_fin` du sondage.
 2. En cas d'égalité, retenir l'hypothèse dont `echantillon` (au niveau hypothèse) est
    le plus grand ; si nul, considérer l'échantillon du sondage.
 3. En cas d'égalité persistante, retenir la première dans l'ordre du fichier.
@@ -311,8 +322,9 @@ Tant que tous les `declare_le` sont `null`, la règle dégénère en « hypothè
 plus de candidats testés, puis échantillon le plus grand » — équivalent au fallback des
 courbes, et le résultat est cohérent.
 
-Le libellé de l'hypothèse choisie apparaît dans le `<h2>` du bandeau sous la forme :
-« Ifop · terrain 3 septembre 2026 · hyp. Attal / Le Pen / Glucksmann ».
+**Chapeau de la moyenne** : placé dans la section premier tour, il décrit la moyenne
+pondérée (leader, top 3, volume, instituts nommés, delta 3 mois). C'est un contenu
+distinct du dernier sondage — les deux peuvent diverger et c'est normal.
 
 **Courbe de tendance.**
 

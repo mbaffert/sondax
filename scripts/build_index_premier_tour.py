@@ -17,7 +17,9 @@ SONDAGES_PATH = ROOT / "data" / "sondages.json"
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 
 sys.path.insert(0, str(ROOT / "scripts"))
-from build_header import select_hypothesis, candidate_full_name
+from build_header import (
+    select_hypothesis, select_latest_sondage, candidate_full_name, load_all_sondages,
+)
 
 MOIS = [
     "janvier", "février", "mars", "avril", "mai", "juin",
@@ -26,6 +28,8 @@ MOIS = [
 
 PT_BEGIN = "<!-- BEGIN:premier-tour -->"
 PT_END = "<!-- END:premier-tour -->"
+FICHE_BEGIN = "<!-- BEGIN:dernier-sondage -->"
+FICHE_END = "<!-- END:dernier-sondage -->"
 DS_BEGIN = "<!-- BEGIN:derniers-sondages -->"
 DS_END = "<!-- END:derniers-sondages -->"
 
@@ -160,18 +164,10 @@ def generate_chapeau(series_data, sondages, candidats):
 
 def generate_dernier_sondage(sondages, candidats):
     """Génère le bloc du dernier sondage publié."""
-    if not sondages:
+    latest = select_latest_sondage(sondages)
+    if not latest:
         return ""
 
-    # Sondage le plus récent (en cas d'égalité : plus grand échantillon)
-    sorted_s = sorted(
-        sondages,
-        key=lambda s: (s["terrain_fin"], s.get("echantillon") or 0),
-        reverse=True,
-    )
-    latest = sorted_s[0]
-
-    # Sélection de l'hypothèse
     hyp = select_hypothesis(latest, candidats)
     if not hyp:
         return ""
@@ -279,23 +275,20 @@ def inject(content, begin, end, html_bloc):
 
 def main():
     series_data = load_json(SERIES_PATH)
-    sondages = load_json(SONDAGES_PATH)
     candidats = load_json(CANDIDATS_PATH)
-
-    # Charger les sondages manuels
-    manuels_path = ROOT / "data" / "sondages_manuels.json"
-    if manuels_path.exists():
-        sondages += load_json(manuels_path)
+    sondages = load_all_sondages()
 
     content = INDEX_PATH.read_text(encoding="utf-8")
 
-    # 1. Chapeau + dernier sondage
+    # 1. Chapeau seul dans la section premier tour
     chapeau = generate_chapeau(series_data, sondages, candidats)
-    dernier = generate_dernier_sondage(sondages, candidats)
-    pt_html = f"    {chapeau}\n{dernier}"
-    content = inject(content, PT_BEGIN, PT_END, pt_html)
+    content = inject(content, PT_BEGIN, PT_END, f"    {chapeau}")
 
-    # 2. Derniers sondages agrégés
+    # 2. Fiche du dernier sondage dans la section Explorer
+    dernier = generate_dernier_sondage(sondages, candidats)
+    content = inject(content, FICHE_BEGIN, FICHE_END, dernier)
+
+    # 3. Derniers sondages agrégés
     ds_html = generate_derniers_sondages(sondages)
     content = inject(content, DS_BEGIN, DS_END, ds_html)
 

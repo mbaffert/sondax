@@ -97,7 +97,7 @@
   var detailText = 'Voir le d\u00e9tail \u2192';
 
   // --- Link target ---
-  var scoreHref = baseHref + 'index.html#bloc-fiche';
+  var scoreHref = baseHref + 'index.html#dernier-sondage';
 
   // --- Mobile title (short): "Institut · date" ---
   var mobileTitleText = D.institut + ' \u00b7 ' + D.terrainLabelMobile;

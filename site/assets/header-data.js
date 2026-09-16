@@ -1,27 +1,27 @@
 // Généré par scripts/build_header.py — ne pas modifier à la main
 window.HEADER_DATA = {
-  "institut": "OpinionWay",
+  "institut": "Harris",
   "terrainFin": "2026-09-10",
   "terrainLabel": "10 septembre 2026",
   "terrainLabelMobile": "10 septembre",
-  "hypDistinctive": "Hollande",
-  "sondageId": "opinionway-2026-09-10",
+  "hypDistinctive": "Attal / Hollande",
+  "sondageId": "harris-2026-09-10",
   "candidates": [
     {
       "name": "Marine Le Pen",
-      "score": "32,0"
+      "score": "36,0"
     },
     {
       "name": "Jean-Luc Mélenchon",
-      "score": "16,0"
-    },
-    {
-      "name": "Édouard Philippe",
-      "score": "16,0"
+      "score": "17,0"
     },
     {
       "name": "Gabriel Attal",
-      "score": "8,0"
+      "score": "15,0"
+    },
+    {
+      "name": "Bruno Retailleau",
+      "score": "10,0"
     }
   ],
   "pollCount": 29,

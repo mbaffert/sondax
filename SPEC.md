@@ -35,6 +35,15 @@ Une page d'accueil à sections nommées et ancrées :
 build et présent dans le HTML servi par le serveur. Le JavaScript ne sert qu'à
 l'interaction (sélecteurs, graphiques, onglets).
 
+**Repères factuels.** Chaque section porte les repères de son propre tour : le texte
+du premier tour dans la section premier tour, celui du second tour dans la section
+second tour. Ces textes sont écrits en dur dans `build_header.py` (`REPERES_T1`,
+`REPERES_T2`) et sont datés : ils devront être révisés à la publication du décret de
+convocation, à la clôture des parrainages (12 mars 2027) et le jour du scrutin. Le
+JSON-LD `Event` est scindé de la même façon (un événement par section). Le booléen
+`officielles` de `config.json` est conservé pour basculer la formulation si les dates
+devaient changer.
+
 **Hors périmètre v1**, à ne pas implémenter sans décision explicite : correction des
 *house effects*, base de données, comptes utilisateurs, back-office d'édition,
 intentions de vote par catégorie sociologique, sondages autres que présidentiels.
@@ -296,13 +305,24 @@ les autres restent accessibles dans le bloc fiche technique.
 
 La règle ne s'applique pas au tour 2 : tous les duels sont également valides.
 
-**Sélection de l'hypothèse pour le bandeau d'en-tête.** Le bandeau affiche un seul
-sondage (le plus récent par `terrain_fin`) et une seule hypothèse de tour 1 de ce
-sondage. La règle de sélection est différente de celle des courbes :
+**Sélection du dernier sondage publié.** Une fonction unique
+(`select_latest_sondage` dans `build_header.py`) sert au bandeau et à la fiche du
+dernier sondage. Règle de départage :
 
-1. Parmi les hypothèses T1 du sondage, retenir celle qui contient le plus de
-   **candidats officiellement déclarés** — c'est-à-dire ceux dont `declare_le` est
-   non nul et ≤ `terrain_fin` du sondage.
+1. `terrain_fin` la plus récente ;
+2. en cas d'égalité, le plus grand `echantillon` total ;
+3. en cas d'égalité encore, l'ordre d'apparition dans `sondages.json`.
+
+Le bandeau affiche les quatre premiers scores. La fiche du dernier sondage, en tête
+de la section « Explorer les sondages » (`#dernier-sondage`), affiche l'intégralité
+des scores de l'hypothèse retenue. Le lien « Voir le détail » du bandeau pointe vers
+cette fiche.
+
+**Sélection de l'hypothèse.** Parmi les hypothèses T1 du sondage retenu, la sélection
+suit trois niveaux :
+
+1. Retenir celle qui contient le plus de **candidats officiellement déclarés** —
+   c'est-à-dire ceux dont `declare_le` est non nul et ≤ `terrain_fin` du sondage.
 2. En cas d'égalité, retenir l'hypothèse dont `echantillon` (au niveau hypothèse) est
    le plus grand ; si nul, considérer l'échantillon du sondage.
 3. En cas d'égalité persistante, retenir la première dans l'ordre du fichier.
@@ -311,8 +331,9 @@ Tant que tous les `declare_le` sont `null`, la règle dégénère en « hypothè
 plus de candidats testés, puis échantillon le plus grand » — équivalent au fallback des
 courbes, et le résultat est cohérent.
 
-Le libellé de l'hypothèse choisie apparaît dans le `<h2>` du bandeau sous la forme :
-« Ifop · terrain 3 septembre 2026 · hyp. Attal / Le Pen / Glucksmann ».
+**Chapeau de la moyenne** : placé dans la section premier tour, il décrit la moyenne
+pondérée (leader, top 3, volume, instituts nommés, delta 3 mois). C'est un contenu
+distinct du dernier sondage — les deux peuvent diverger et c'est normal.
 
 **Courbe de tendance.**
 
@@ -551,6 +572,25 @@ reconstructible, ajouté au `.gitignore`). Le script génère aussi `site/sitema
 
 **Navigation** : le sélecteur de duel de `site/index.html` pointe vers les pages
 dédiées, et le header gagne un lien « Second tour ».
+
+---
+
+## 7.2 Contraintes SEO et techniques
+
+Toute page publiée porte :
+
+- un `<h1>` unique, un `<title>` et une meta description propres ;
+- les balises Open Graph (`og:title`, `og:description`, `og:image`, `og:url`) et
+  `twitter:card` pour l'aperçu lors du partage ;
+- un contenu statique (HTML servi, pas construit en JavaScript) suffisant pour
+  l'indexation.
+
+`robots.txt` et `sitemap.xml` font partie de la sortie du build. Le `sitemap.xml`
+est généré par `scripts/pages_second_tour.py`.
+
+Les pages des élections passées (2002-2022) portent un chapeau rendu au build
+(`scripts/build_elections_chapeaux.py`) et la page `sondages.html` contient le
+tableau complet des sondages en HTML statique (`scripts/build_sondages_page.py`).
 
 ---
 

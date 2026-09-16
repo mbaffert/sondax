@@ -3,8 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tous les sondages — Sondax</title>
+<title>Tous les sondages de la présidentielle 2027, institut par institut — Sondax</title>
 <meta name="description" content="Tous les sondages d'intention de vote pour la présidentielle 2027, par institut et par date.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sondax">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://sondax.fr/sondages.html">
+<meta property="og:title" content="Tous les sondages de la présidentielle 2027, institut par institut">
+<meta property="og:description" content="Tous les sondages d'intention de vote pour la présidentielle 2027, par institut et par date.">
+<meta property="og:image" content="https://sondax.fr/assets/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://sondax.fr/sondages.html">
 <link rel="icon" type="image/svg+xml" href="assets/logo-sondax.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,14 +71,47 @@
 <script src="assets/header.js"></script>
 
 <main>
-  <h2>Tous les sondages</h2>
+  <h1>Tous les sondages de la présidentielle 2027</h1>
   <div class="filters">
     <label>Institut :</label>
     <select id="filtre-institut"><option value="">Tous</option></select>
     <input type="search" id="recherche" placeholder="Rechercher...">
   </div>
   <p class="count" id="count"></p>
-  <table class="sondages-table" id="table-sondages"></table>
+  <!-- BEGIN:table-sondages -->
+  <table class="sondages-table" id="table-sondages">
+<tr><th>Institut</th><th>Date</th><th>Échantillon</th><th>Hypothèses</th><th>Source</th></tr>
+<tr><td>OpinionWay</td><td>10/09/2026</td><td>1 001</td><td>5</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10260-pres-iv-opinionway-cnews-11-septembre.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Harris</td><td>10/09/2026</td><td>2 052</td><td>8</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10263-pres-iv-toluna-harris-interactive-rtl-14-septembre.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>OpinionWay</td><td>09/09/2026</td><td>1 001</td><td>3</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10259-pres-presitrack-v2-opinionway-les-echos-10-septembre.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Ipsos</td><td>09/09/2026</td><td>13 060</td><td>6</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10262-pres-enquete-electorale-ipsos-bva-le-monde-13-septembre.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>OpinionWay</td><td>03/09/2026</td><td>1 003</td><td>6</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10252-pres-iv-opinionway-jdd-7-septembre.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Ipsos</td><td>02/09/2026</td><td>1 500</td><td>6</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10250-pres-iv-ipsos-bva-le-parisien-5-septembre.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Cluster17</td><td>01/09/2026</td><td>1 711</td><td>3</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10251-pres-iv-cluster-17-le-point-5-septembre.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Elabe</td><td>28/08/2026</td><td>1 501</td><td>10</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10245-pres-iv-elabe-29-aout.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Ifop</td><td>25/08/2026</td><td>1 598</td><td>13</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10242-pres-barometre-election-pres-iv-v5-ifop-26-aout.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Harris</td><td>19/08/2026</td><td>1 764</td><td>8</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10239-pres-toluna-harris-interactive-rtl-24-aout.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Cluster17</td><td>24/07/2026</td><td>1 506</td><td>7</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10246-pres-cluster17-le-grand-continent-31-aout.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Elabe</td><td>10/07/2026</td><td>1 503</td><td>11</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10226-pres-elabe-11-juillet.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Verian</td><td>10/07/2026</td><td>1 047</td><td>1</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10225-pres-iv-1er-tour-verian-lhemicycle-10-juillet.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>OpinionWay</td><td>09/07/2026</td><td>963</td><td>3</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10224-pres-presitrack-opinionway-les-echos-9-juillet.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Ifop</td><td>08/07/2026</td><td>—</td><td>5</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10222-pres-ifop-le-figaro-8-juillet.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Harris</td><td>08/07/2026</td><td>1 592</td><td>8</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10223-pres-iv-toluna-harris-interactive-rtl-8-juillet.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Ifop</td><td>24/06/2026</td><td>1 415</td><td>8</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/juin/10211-pres-iv-ifop-le-figaro-25-juin.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>OpinionWay</td><td>11/06/2026</td><td>1 001</td><td>3</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/juin/10205-pres-iv-opinionway-jdd-13-juin.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Ipsos</td><td>28/05/2026</td><td>1 500</td><td>8</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/juin/10195-pres-ipsos-bva-le-parisien-1er-juin.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Ifop</td><td>28/05/2026</td><td>1 501</td><td>11</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/mai/10193-pres-ifop-le-figaro-29-mai.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Harris</td><td>27/05/2026</td><td>1 744</td><td>11</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/mai/10192-pres-toluna-harris-interactive-29-mai.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Odoxa</td><td>21/05/2026</td><td>1 005</td><td>2</td><td><a href="https://www.odoxa.fr/sondage/philippe-seffondre-melenchon-decolle-bardella-simpose/" target="_blank">Notice</a></td></tr>
+<tr><td>Harris</td><td>30/04/2026</td><td>1 725</td><td>4</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/mai/10180-pres-toluna-harris-interactive-rtl-4-mai.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Elabe</td><td>27/03/2026</td><td>1 504</td><td>12</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10166-pres-elabe-28-mars.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Odoxa</td><td>26/03/2026</td><td>1 299</td><td>3</td><td><a href="https://www.odoxa.fr/sondage/spectaculaire-come-back-dedouard-philippe-il-remporterait-aujourdhui-la-presidentielle/" target="_blank">Notice</a></td></tr>
+<tr><td>OpinionWay</td><td>26/03/2026</td><td>988</td><td>4</td><td><a href="https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2257" target="_blank">Notice</a></td></tr>
+<tr><td>OpinionWay</td><td>26/03/2026</td><td>988</td><td>4</td><td><a href="https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2257" target="_blank">Notice</a></td></tr>
+<tr><td>Harris</td><td>22/03/2026</td><td>1 062</td><td>2</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10165-pres-toluna-harris-interactive-22-mars.pdf" target="_blank">Notice</a></td></tr>
+<tr><td>Ifop</td><td>27/02/2026</td><td>1 393</td><td>10</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10118-pres-ifop-le-figaro-4-mars.pdf" target="_blank">Notice</a></td></tr>
+  </table>
+<!-- END:table-sondages -->
 </main>
 
 <footer>

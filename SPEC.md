@@ -15,17 +15,25 @@ Une page d'accueil à sections nommées et ancrées :
 
 1. **Bandeau d'en-tête.** Dernier sondage, compte à rebours, navigation (voir
    `scripts/build_header.py`).
-2. **Tendance des sondages, premier tour.** Une courbe par candidat, semaine après
-   semaine.
+2. **Sondages du premier tour** (`#bloc-sondages`). Titre : « Sondages du premier
+   tour de la présidentielle 2027 ». Chapeau généré au build (leader, volume,
+   delta 3 mois), bloc « Dernier sondage publié » (`#dernier-sondage`) avec
+   l'hypothèse sélectionnée, courbe de tendance par candidat, tableau des derniers
+   sondages agrégés. Généré par `scripts/build_index_premier_tour.py`.
+   En cas d'égalité de `terrain_fin`, le sondage avec le plus grand échantillon
+   est retenu.
 3. **Second tour** (`#second-tour`). Repères factuels, chapeau généré au build,
    tableau de tous les duels mesurés, sélecteur de détail par duel (voir §7).
-4. **Cotes Polymarket.** Évolution des probabilités implicites par candidat, deux
-   onglets : accession au second tour et victoire.
+4. **Cotes des marchés de prédiction** (`#bloc-polymarket`). Évolution des
+   probabilités implicites par candidat, deux onglets : accession au second tour
+   et victoire. Les titres ne nomment pas Polymarket, la source est citée dans
+   le corps du bloc et en pied de page.
 5. **Fiche technique.** Sélection d'une configuration puis d'un sondage, et affichage
    de ses caractéristiques et de ses marges d'erreur (voir §5).
 
-S'y ajoutent des **pages dédiées par duel de second tour**, indexables par les moteurs
-de recherche (voir §7).
+**Contrainte générale de rendu** : tout le contenu textuel des sections est rendu au
+build et présent dans le HTML servi par le serveur. Le JavaScript ne sert qu'à
+l'interaction (sélecteurs, graphiques, onglets).
 
 **Hors périmètre v1**, à ne pas implémenter sans décision explicite : correction des
 *house effects*, base de données, comptes utilisateurs, back-office d'édition,

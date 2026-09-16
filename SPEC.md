@@ -554,6 +554,25 @@ dédiées, et le header gagne un lien « Second tour ».
 
 ---
 
+## 7.2 Contraintes SEO et techniques
+
+Toute page publiée porte :
+
+- un `<h1>` unique, un `<title>` et une meta description propres ;
+- les balises Open Graph (`og:title`, `og:description`, `og:image`, `og:url`) et
+  `twitter:card` pour l'aperçu lors du partage ;
+- un contenu statique (HTML servi, pas construit en JavaScript) suffisant pour
+  l'indexation.
+
+`robots.txt` et `sitemap.xml` font partie de la sortie du build. Le `sitemap.xml`
+est généré par `scripts/pages_second_tour.py`.
+
+Les pages des élections passées (2002-2022) portent un chapeau rendu au build
+(`scripts/build_elections_chapeaux.py`) et la page `sondages.html` contient le
+tableau complet des sondages en HTML statique (`scripts/build_sondages_page.py`).
+
+---
+
 ## 8. Validation
 
 Le script de collecte **ne commite rien** si un contrôle échoue. Il s'arrête et signale.

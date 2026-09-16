@@ -483,7 +483,7 @@ dans le HTML servi. Le JavaScript ne sert qu'à l'interaction (sélecteur de due
    `Event` en JSON-LD.
 
 2. **Chapeau généré au build.** Deux ou trois phrases composées à partir des données :
-   nombre de duels et de mesures, leader avec dénominateur explicite (nombre de duels
+   nombre de duels et de sondages, leader avec dénominateur explicite (nombre de duels
    où le candidat est testé, pas le total), duel le plus serré, éventuelle inversion
    de sens. Texte grammatical quel que soit l'état (0, 1 ou N duels), avec accord en
    genre (`genre` dans `candidats.json`). Généré par `scripts/build_index_second_tour.py`.
@@ -492,7 +492,7 @@ dans le HTML servi. Le JavaScript ne sert qu'à l'interaction (sélecteur de due
    aperçu ; les autres sont repliés dans un `<details>` / `<summary>` natif (pas de
    JavaScript), avec un libellé portant le nombre de duels restants.
 
-   Six colonnes : En tête | Score | Face à | Score | Mesures | Dernière mesure.
+   Six colonnes : En tête | Score | Face à | Score | Sondages | Dernière mesure.
    Noms alignés à gauche, scores alignés à droite en chiffres tabulaires
    (`font-variant-numeric: tabular-nums`), colonnes de score étroites et de largeur
    fixe identique. Les deux en-têtes « Score » portent un `aria-label` distinct pour
@@ -501,12 +501,12 @@ dans le HTML servi. Le JavaScript ne sert qu'à l'interaction (sélecteur de due
    parfaite, l'ordre de la clé est conservé. En mobile, défilement horizontal du
    tableau.
 
-   Tri : date de dernière mesure décroissante, puis nombre de mesures décroissant, puis
+   Tri : date de dernière mesure décroissante, puis nombre de sondages décroissant, puis
    clé interne (tri stable).
 
 4. **Sélecteur de détail par duel.** Deux menus déroulants, hydratés par JavaScript.
-   Affiche le détail du duel choisi : tableau des sondages (< 5 mesures) ou courbe
-   (≥ 5 mesures). Sans JavaScript, le tableau général reste entièrement lisible.
+   Affiche le détail du duel choisi : tableau des sondages (< 5 sondages) ou courbe
+   (≥ 5 sondages). Sans JavaScript, le tableau général reste entièrement lisible.
 
 **Sortie ultérieure en page dédiée** : lorsqu'un duel atteint le seuil de la courbe ou
 que les volumes de recherche le justifient, le composant pourra être extrait en page

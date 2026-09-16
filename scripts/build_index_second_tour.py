@@ -118,7 +118,7 @@ def generate_chapeau(duels, candidats):
         )
 
     n_duels = len(duels)
-    n_mesures = sum(len(e) for e in duels.values())
+    n_sondages = sum(len(e) for e in duels.values())
 
     # Compter, par candidat : dans combien de duels il apparaît, et combien il gagne
     appearances = {}  # cid → nombre de duels
@@ -166,15 +166,15 @@ def generate_chapeau(duels, candidats):
         cid_a, cid_b = pair(slug, candidats)
         nom_a = nom_court(cid_a, candidats)
         nom_b = nom_court(cid_b, candidats)
-        mes = "mesure" if n_mesures == 1 else "mesures"
+        snd = "sondage" if n_sondages == 1 else "sondages"
         phrases.append(
             f"Un seul duel a été testé\u00a0: {nom_a} contre {nom_b}, "
-            f"avec {n_mesures}\u00a0{mes}."
+            f"avec {n_sondages}\u00a0{snd}."
         )
     else:
         phrases.append(
             f"{n_duels}\u00a0duels de second tour testés par les instituts, "
-            f"pour un total de {n_mesures}\u00a0mesures."
+            f"pour un total de {n_sondages}\u00a0sondages."
         )
 
     # Phrase 2 : leader avec dénominateur explicite
@@ -212,7 +212,7 @@ def generate_chapeau(duels, candidats):
         nom_b = nom_court(cid_b, candidats)
         phrases.append(
             f"Le duel {nom_a}\u00a0\u2013\u00a0{nom_b} a changé de sens "
-            f"depuis sa première mesure."
+            f"depuis le premier sondage."
         )
     elif tightest_slug and n_duels > 1:
         cid_a, cid_b = pair(tightest_slug, candidats)
@@ -238,7 +238,7 @@ HEADER_ROW = (
     '<th scope="col" class="t2-score-col" aria-label="Score du candidat en t\u00eate">Score</th>'
     '<th scope="col">Face \u00e0</th>'
     '<th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th>'
-    '<th scope="col">Mesures</th>'
+    '<th scope="col">Sondages</th>'
     '<th scope="col">Derni\u00e8re mesure</th>'
     '</tr>'
 )
@@ -280,7 +280,7 @@ def format_duel_row(slug, entries, candidats):
 
 
 def sorted_duel_slugs(duels):
-    """Tri : date DESC, mesures DESC, clé interne ASC (stable)."""
+    """Tri : date DESC, sondages DESC, clé interne ASC (stable)."""
     return sorted(
         duels.keys(),
         key=lambda s: (
@@ -411,7 +411,7 @@ def main():
 
     n = len(duels)
     m = sum(len(e) for e in duels.values())
-    print(f"Bloc second-tour injecté : {n} duels, {m} mesures")
+    print(f"Bloc second-tour injecté : {n} duels, {m} sondages")
 
 
 if __name__ == "__main__":

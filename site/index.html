@@ -208,7 +208,6 @@
       <div class="periode-group">
         <button data-months="3">3 mois</button>
         <button data-months="6" class="active">6 mois</button>
-        <button data-since="2026-01-01">Depuis jan. 2026</button>
         <button data-all="1">Tout</button>
       </div>
       <input type="date" class="date-libre" title="Date de début libre">
@@ -272,7 +271,6 @@
       <div class="periode-group">
         <button data-months="3">3 mois</button>
         <button data-months="6" class="active">6 mois</button>
-        <button data-since="2026-01-01">Depuis jan. 2026</button>
         <button data-all="1">Tout</button>
       </div>
       <input type="date" class="date-libre" title="Date de début libre">
@@ -539,7 +537,6 @@ class BlocChart {
     const active = this.periodeEl.querySelector('button.active');
     if (active) {
       if (active.dataset.all) return this.dateDebut;
-      if (active.dataset.since) return active.dataset.since;
       if (active.dataset.months) {
         const fin = new Date(this.dateFin);
         fin.setMonth(fin.getMonth() - parseInt(active.dataset.months));
@@ -560,7 +557,6 @@ class BlocChart {
         if (input) input.value = '';
         if (this.periodeEventPrefix) {
           const label = btn.dataset.months ? btn.dataset.months + 'm'
-            : btn.dataset.since ? 'annee'
             : btn.dataset.all ? 'tout' : 'autre';
           trackEvent(this.periodeEventPrefix + '/' + label);
         }
@@ -569,6 +565,10 @@ class BlocChart {
     });
     const input = this.periodeEl.querySelector('.date-libre');
     if (input) {
+      // Bornes calculées depuis les données (min = plus ancien, max = aujourd'hui)
+      if (this.dateDebut) input.min = this.dateDebut;
+      input.max = new Date().toISOString().slice(0, 10);
+      if (this.dateDebut) input.placeholder = this.dateDebut;
       input.addEventListener('change', () => {
         this.periodeEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
         if (this.periodeEventPrefix) trackEvent(this.periodeEventPrefix + '/libre');

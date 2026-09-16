@@ -118,7 +118,13 @@ def generate_chapeau(duels, candidats):
         )
 
     n_duels = len(duels)
-    n_sondages = sum(len(e) for e in duels.values())
+    n_mesures = sum(len(e) for e in duels.values())
+    # Nombre de sondages distincts portant au moins un duel
+    sondage_ids = set()
+    for entries in duels.values():
+        for e in entries:
+            sondage_ids.add(e["terrain_fin"] + "|" + e["institut"])
+    n_sondages_distincts = len(sondage_ids)
 
     # Compter, par candidat : dans combien de duels il apparaît, et combien il gagne
     appearances = {}  # cid → nombre de duels
@@ -166,15 +172,16 @@ def generate_chapeau(duels, candidats):
         cid_a, cid_b = pair(slug, candidats)
         nom_a = nom_court(cid_a, candidats)
         nom_b = nom_court(cid_b, candidats)
-        snd = "sondage" if n_sondages == 1 else "sondages"
+        mes = "mesure" if n_mesures == 1 else "mesures"
         phrases.append(
             f"Un seul duel a été testé\u00a0: {nom_a} contre {nom_b}, "
-            f"avec {n_sondages}\u00a0{snd}."
+            f"avec {n_mesures}\u00a0{mes}."
         )
     else:
         phrases.append(
-            f"{n_duels}\u00a0duels de second tour testés par les instituts, "
-            f"pour un total de {n_sondages}\u00a0sondages."
+            f"{n_duels}\u00a0duels de second tour testés dans "
+            f"{n_sondages_distincts}\u00a0sondages, "
+            f"pour un total de {n_mesures}\u00a0mesures."
         )
 
     # Phrase 2 : leader avec dénominateur explicite

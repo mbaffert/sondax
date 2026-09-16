@@ -33,6 +33,7 @@ jobs:
           python scripts/build_header.py
           python scripts/pages_second_tour.py
           python scripts/build_index_second_tour.py
+          python scripts/build_index_premier_tour.py
 
       - name: Préparer l'artefact
         run: |

@@ -1,0 +1,483 @@
+{
+ "le-pen|melenchon": [
+  {
+   "d": "2026-05-27",
+   "inst": "Harris",
+   "n": 1744.0,
+   "s": {
+    "melenchon": 33.0,
+    "le-pen": 67.0
+   }
+  },
+  {
+   "d": "2026-07-08",
+   "inst": "Ifop",
+   "n": null,
+   "s": {
+    "melenchon": 30.0,
+    "le-pen": 70.0
+   }
+  },
+  {
+   "d": "2026-07-08",
+   "inst": "Harris",
+   "n": 1592.0,
+   "s": {
+    "melenchon": 33.0,
+    "le-pen": 67.0
+   }
+  },
+  {
+   "d": "2026-07-10",
+   "inst": "Elabe",
+   "n": 1503.0,
+   "s": {
+    "melenchon": 32.5,
+    "le-pen": 67.5
+   }
+  },
+  {
+   "d": "2026-07-24",
+   "inst": "Cluster17",
+   "n": 1506.0,
+   "s": {
+    "melenchon": 39.0,
+    "le-pen": 61.0
+   }
+  },
+  {
+   "d": "2026-08-19",
+   "inst": "Harris",
+   "n": 1764.0,
+   "s": {
+    "melenchon": 32.0,
+    "le-pen": 68.0
+   }
+  },
+  {
+   "d": "2026-08-25",
+   "inst": "Ifop",
+   "n": 1598.0,
+   "s": {
+    "melenchon": 33.0,
+    "le-pen": 67.0
+   }
+  },
+  {
+   "d": "2026-08-28",
+   "inst": "Elabe",
+   "n": 1501.0,
+   "s": {
+    "melenchon": 30.5,
+    "le-pen": 69.5
+   }
+  },
+  {
+   "d": "2026-09-03",
+   "inst": "OpinionWay",
+   "n": 1003.0,
+   "s": {
+    "melenchon": 34.0,
+    "le-pen": 66.0
+   }
+  },
+  {
+   "d": "2026-09-10",
+   "inst": "OpinionWay",
+   "n": 1001.0,
+   "s": {
+    "melenchon": 33.0,
+    "le-pen": 67.0
+   }
+  },
+  {
+   "d": "2026-09-10",
+   "inst": "Harris",
+   "n": 2052.0,
+   "s": {
+    "melenchon": 33.0,
+    "le-pen": 67.0
+   }
+  }
+ ],
+ "le-pen|philippe": [
+  {
+   "d": "2026-03-27",
+   "inst": "Elabe",
+   "n": 1504.0,
+   "s": {
+    "philippe": 53.0,
+    "le-pen": 47.0
+   }
+  },
+  {
+   "d": "2026-05-27",
+   "inst": "Harris",
+   "n": 1744.0,
+   "s": {
+    "philippe": 48.0,
+    "le-pen": 52.0
+   }
+  },
+  {
+   "d": "2026-07-08",
+   "inst": "Ifop",
+   "n": null,
+   "s": {
+    "philippe": 46.0,
+    "le-pen": 54.0
+   }
+  },
+  {
+   "d": "2026-07-08",
+   "inst": "Harris",
+   "n": 1592.0,
+   "s": {
+    "philippe": 49.0,
+    "le-pen": 51.0
+   }
+  },
+  {
+   "d": "2026-07-10",
+   "inst": "Elabe",
+   "n": 1503.0,
+   "s": {
+    "philippe": 48.0,
+    "le-pen": 52.0
+   }
+  },
+  {
+   "d": "2026-07-24",
+   "inst": "Cluster17",
+   "n": 1506.0,
+   "s": {
+    "philippe": 48.0,
+    "le-pen": 52.0
+   }
+  },
+  {
+   "d": "2026-08-19",
+   "inst": "Harris",
+   "n": 1764.0,
+   "s": {
+    "philippe": 45.0,
+    "le-pen": 55.0
+   }
+  },
+  {
+   "d": "2026-08-25",
+   "inst": "Ifop",
+   "n": 1598.0,
+   "s": {
+    "philippe": 48.0,
+    "le-pen": 52.0
+   }
+  },
+  {
+   "d": "2026-08-28",
+   "inst": "Elabe",
+   "n": 1501.0,
+   "s": {
+    "philippe": 47.5,
+    "le-pen": 52.5
+   }
+  },
+  {
+   "d": "2026-09-03",
+   "inst": "OpinionWay",
+   "n": 1003.0,
+   "s": {
+    "philippe": 48.0,
+    "le-pen": 52.0
+   }
+  },
+  {
+   "d": "2026-09-10",
+   "inst": "OpinionWay",
+   "n": 1001.0,
+   "s": {
+    "philippe": 45.0,
+    "le-pen": 55.0
+   }
+  },
+  {
+   "d": "2026-09-10",
+   "inst": "Harris",
+   "n": 2052.0,
+   "s": {
+    "philippe": 45.0,
+    "le-pen": 55.0
+   }
+  }
+ ],
+ "attal|le-pen": [
+  {
+   "d": "2026-03-27",
+   "inst": "Elabe",
+   "n": 1504.0,
+   "s": {
+    "attal": 49.0,
+    "le-pen": 51.0
+   }
+  },
+  {
+   "d": "2026-05-27",
+   "inst": "Harris",
+   "n": 1744.0,
+   "s": {
+    "attal": 46.0,
+    "le-pen": 54.0
+   }
+  },
+  {
+   "d": "2026-07-08",
+   "inst": "Ifop",
+   "n": null,
+   "s": {
+    "attal": 45.0,
+    "le-pen": 55.0
+   }
+  },
+  {
+   "d": "2026-07-08",
+   "inst": "Harris",
+   "n": 1592.0,
+   "s": {
+    "attal": 45.0,
+    "le-pen": 55.0
+   }
+  },
+  {
+   "d": "2026-07-10",
+   "inst": "Elabe",
+   "n": 1503.0,
+   "s": {
+    "attal": 46.0,
+    "le-pen": 54.0
+   }
+  },
+  {
+   "d": "2026-07-24",
+   "inst": "Cluster17",
+   "n": 1506.0,
+   "s": {
+    "attal": 44.0,
+    "le-pen": 56.0
+   }
+  },
+  {
+   "d": "2026-08-19",
+   "inst": "Harris",
+   "n": 1764.0,
+   "s": {
+    "attal": 43.0,
+    "le-pen": 57.0
+   }
+  },
+  {
+   "d": "2026-08-25",
+   "inst": "Ifop",
+   "n": 1598.0,
+   "s": {
+    "attal": 46.0,
+    "le-pen": 54.0
+   }
+  },
+  {
+   "d": "2026-08-28",
+   "inst": "Elabe",
+   "n": 1501.0,
+   "s": {
+    "attal": 43.0,
+    "le-pen": 57.0
+   }
+  },
+  {
+   "d": "2026-09-03",
+   "inst": "OpinionWay",
+   "n": 1003.0,
+   "s": {
+    "attal": 45.0,
+    "le-pen": 55.0
+   }
+  },
+  {
+   "d": "2026-09-10",
+   "inst": "Harris",
+   "n": 2052.0,
+   "s": {
+    "attal": 44.0,
+    "le-pen": 56.0
+   }
+  }
+ ],
+ "glucksmann|le-pen": [
+  {
+   "d": "2026-07-10",
+   "inst": "Elabe",
+   "n": 1503.0,
+   "s": {
+    "glucksmann": 41.5,
+    "le-pen": 58.5
+   }
+  },
+  {
+   "d": "2026-07-24",
+   "inst": "Cluster17",
+   "n": 1506.0,
+   "s": {
+    "glucksmann": 44.0,
+    "le-pen": 56.0
+   }
+  },
+  {
+   "d": "2026-08-25",
+   "inst": "Ifop",
+   "n": 1598.0,
+   "s": {
+    "glucksmann": 45.0,
+    "le-pen": 55.0
+   }
+  },
+  {
+   "d": "2026-08-28",
+   "inst": "Elabe",
+   "n": 1501.0,
+   "s": {
+    "glucksmann": 43.0,
+    "le-pen": 57.0
+   }
+  }
+ ],
+ "hollande|le-pen": [
+  {
+   "d": "2026-08-25",
+   "inst": "Ifop",
+   "n": 1598.0,
+   "s": {
+    "hollande": 46.0,
+    "le-pen": 54.0
+   }
+  }
+ ],
+ "le-pen|retailleau": [
+  {
+   "d": "2026-07-10",
+   "inst": "Elabe",
+   "n": 1503.0,
+   "s": {
+    "retailleau": 44.0,
+    "le-pen": 56.0
+   }
+  },
+  {
+   "d": "2026-07-24",
+   "inst": "Cluster17",
+   "n": 1506.0,
+   "s": {
+    "retailleau": 43.0,
+    "le-pen": 57.0
+   }
+  },
+  {
+   "d": "2026-08-25",
+   "inst": "Ifop",
+   "n": 1598.0,
+   "s": {
+    "retailleau": 42.0,
+    "le-pen": 58.0
+   }
+  }
+ ],
+ "attal|bardella": [
+  {
+   "d": "2026-05-27",
+   "inst": "Harris",
+   "n": 1744.0,
+   "s": {
+    "attal": 43.0,
+    "bardella": 57.0
+   }
+  }
+ ],
+ "bardella|melenchon": [
+  {
+   "d": "2026-03-27",
+   "inst": "Elabe",
+   "n": 1504.0,
+   "s": {
+    "melenchon": 28.5,
+    "bardella": 71.5
+   }
+  },
+  {
+   "d": "2026-05-27",
+   "inst": "Harris",
+   "n": 1744.0,
+   "s": {
+    "melenchon": 32.0,
+    "bardella": 68.0
+   }
+  }
+ ],
+ "bardella|philippe": [
+  {
+   "d": "2026-03-26",
+   "inst": "Odoxa",
+   "n": 1299.0,
+   "s": {
+    "philippe": 52.0,
+    "bardella": 48.0
+   }
+  },
+  {
+   "d": "2026-03-27",
+   "inst": "Elabe",
+   "n": 1504.0,
+   "s": {
+    "philippe": 51.5,
+    "bardella": 48.5
+   }
+  },
+  {
+   "d": "2026-05-21",
+   "inst": "Odoxa",
+   "n": 1005.0,
+   "s": {
+    "philippe": 48.0,
+    "bardella": 52.0
+   }
+  },
+  {
+   "d": "2026-05-27",
+   "inst": "Harris",
+   "n": 1744.0,
+   "s": {
+    "philippe": 46.0,
+    "bardella": 54.0
+   }
+  }
+ ],
+ "bardella|glucksmann": [
+  {
+   "d": "2026-03-27",
+   "inst": "Elabe",
+   "n": 1504.0,
+   "s": {
+    "glucksmann": 41.5,
+    "bardella": 58.5
+   }
+  }
+ ],
+ "bardella|retailleau": [
+  {
+   "d": "2026-03-27",
+   "inst": "Elabe",
+   "n": 1504.0,
+   "s": {
+    "retailleau": 42.0,
+    "bardella": 58.0
+   }
+  }
+ ]
+}

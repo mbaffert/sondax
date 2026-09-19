@@ -1,0 +1,1826 @@
+{
+ "R. Glucksmann, G. Attal, E. Philippe": {
+  "sexe": {
+   "Hommes": {
+    "arthaud": 0.5,
+    "melenchon": 16.0,
+    "roussel": 3.0,
+    "tondelier": 3.0,
+    "glucksmann": 11.0,
+    "attal": 5.0,
+    "philippe": 14.0,
+    "retailleau": 7.0,
+    "le-pen": 34.0,
+    "zemmour": 5.0
+   },
+   "Femmes": {
+    "arthaud": 1.0,
+    "melenchon": 15.0,
+    "roussel": 2.0,
+    "tondelier": 5.0,
+    "glucksmann": 12.0,
+    "attal": 7.0,
+    "philippe": 14.0,
+    "retailleau": 7.0,
+    "le-pen": 32.0,
+    "zemmour": 3.0
+   }
+  },
+  "age": {
+   "18-24 ans": {
+    "arthaud": 0.5,
+    "melenchon": 42.0,
+    "roussel": 1.0,
+    "tondelier": 7.0,
+    "glucksmann": 4.0,
+    "attal": 7.0,
+    "philippe": 9.0,
+    "retailleau": 6.0,
+    "le-pen": 21.0,
+    "zemmour": 2.0
+   },
+   "25-34 ans": {
+    "arthaud": 0.5,
+    "melenchon": 32.0,
+    "roussel": 2.0,
+    "tondelier": 6.0,
+    "glucksmann": 7.0,
+    "attal": 5.0,
+    "philippe": 10.0,
+    "retailleau": 4.0,
+    "le-pen": 30.0,
+    "zemmour": 3.0
+   },
+   "35-49 ans": {
+    "arthaud": 1.0,
+    "melenchon": 16.0,
+    "roussel": 2.0,
+    "tondelier": 6.0,
+    "glucksmann": 11.0,
+    "attal": 6.0,
+    "philippe": 12.0,
+    "retailleau": 4.0,
+    "le-pen": 37.0,
+    "zemmour": 3.0
+   },
+   "50-59 ans": {
+    "arthaud": 0.5,
+    "melenchon": 8.0,
+    "roussel": 2.0,
+    "tondelier": 4.0,
+    "glucksmann": 13.0,
+    "attal": 5.0,
+    "philippe": 13.0,
+    "retailleau": 5.0,
+    "le-pen": 43.0,
+    "zemmour": 4.0
+   },
+   "60-69 ans": {
+    "arthaud": 1.0,
+    "melenchon": 7.0,
+    "roussel": 5.0,
+    "tondelier": 2.0,
+    "glucksmann": 13.0,
+    "attal": 6.0,
+    "philippe": 15.0,
+    "retailleau": 7.0,
+    "le-pen": 37.0,
+    "zemmour": 5.0
+   },
+   "70 ans et plus": {
+    "arthaud": 0.5,
+    "melenchon": 4.0,
+    "roussel": 3.0,
+    "tondelier": 1.0,
+    "glucksmann": 16.0,
+    "attal": 7.0,
+    "philippe": 20.0,
+    "retailleau": 13.0,
+    "le-pen": 28.0,
+    "zemmour": 6.0
+   }
+  },
+  "_base": 9445,
+  "pcs": {
+   "Agriculteurs et prof. indépendantes": {
+    "arthaud": 0.5,
+    "melenchon": 17.0,
+    "roussel": 2.0,
+    "tondelier": 5.0,
+    "glucksmann": 8.0,
+    "attal": 7.0,
+    "philippe": 13.0,
+    "retailleau": 6.0,
+    "le-pen": 34.0,
+    "zemmour": 6.0
+   },
+   "Cadres": {
+    "arthaud": 0.5,
+    "melenchon": 20.0,
+    "roussel": 3.0,
+    "tondelier": 6.0,
+    "glucksmann": 15.0,
+    "attal": 7.0,
+    "philippe": 19.0,
+    "retailleau": 6.0,
+    "le-pen": 19.0,
+    "zemmour": 4.0
+   },
+   "Prof. intermédiaires": {
+    "arthaud": 0.5,
+    "melenchon": 18.0,
+    "roussel": 3.0,
+    "tondelier": 6.0,
+    "glucksmann": 11.0,
+    "attal": 6.0,
+    "philippe": 14.0,
+    "retailleau": 6.0,
+    "le-pen": 31.0,
+    "zemmour": 3.0
+   },
+   "Employés": {
+    "arthaud": 1.0,
+    "melenchon": 21.0,
+    "roussel": 1.0,
+    "tondelier": 5.0,
+    "glucksmann": 7.0,
+    "attal": 6.0,
+    "philippe": 8.0,
+    "retailleau": 4.0,
+    "le-pen": 43.0,
+    "zemmour": 2.0
+   },
+   "Ouvriers": {
+    "arthaud": 0.5,
+    "melenchon": 13.0,
+    "roussel": 2.0,
+    "tondelier": 3.0,
+    "glucksmann": 6.0,
+    "attal": 3.0,
+    "philippe": 5.0,
+    "retailleau": 3.0,
+    "le-pen": 58.0,
+    "zemmour": 4.0
+   },
+   "Sous-total Retraités": {
+    "arthaud": 0.5,
+    "melenchon": 5.0,
+    "roussel": 4.0,
+    "tondelier": 2.0,
+    "glucksmann": 15.0,
+    "attal": 6.0,
+    "philippe": 19.0,
+    "retailleau": 11.0,
+    "le-pen": 30.0,
+    "zemmour": 6.0
+   },
+   "Retraités CSP+": {
+    "arthaud": 0.5,
+    "melenchon": 5.0,
+    "roussel": 3.0,
+    "tondelier": 2.0,
+    "glucksmann": 18.0,
+    "attal": 6.0,
+    "philippe": 22.0,
+    "retailleau": 13.0,
+    "le-pen": 21.0,
+    "zemmour": 7.0
+   },
+   "Retraités CSP-": {
+    "arthaud": 0.5,
+    "melenchon": 5.0,
+    "roussel": 4.0,
+    "tondelier": 1.0,
+    "glucksmann": 14.0,
+    "attal": 6.0,
+    "philippe": 17.0,
+    "retailleau": 9.0,
+    "le-pen": 38.0,
+    "zemmour": 4.0
+   }
+  },
+  "vote-2022": {
+   "Jean-Luc Mélenchon": {
+    "arthaud": 1.0,
+    "melenchon": 53.0,
+    "roussel": 5.0,
+    "tondelier": 7.0,
+    "glucksmann": 18.0,
+    "attal": 2.0,
+    "philippe": 3.0,
+    "retailleau": 1.0,
+    "le-pen": 9.0,
+    "zemmour": 0.5
+   },
+   "Fabien Roussel": {
+    "arthaud": 0.5,
+    "melenchon": 9.0,
+    "roussel": 42.0,
+    "tondelier": 5.0,
+    "glucksmann": 24.0,
+    "attal": 4.0,
+    "philippe": 5.0,
+    "retailleau": 2.0,
+    "le-pen": 7.0,
+    "zemmour": 0.5
+   },
+   "Yannick Jadot": {
+    "arthaud": 0.5,
+    "melenchon": 11.0,
+    "roussel": 1.0,
+    "tondelier": 33.0,
+    "glucksmann": 35.0,
+    "attal": 5.0,
+    "philippe": 9.0,
+    "retailleau": 2.0,
+    "le-pen": 3.0,
+    "zemmour": 0.5
+   },
+   "Anne Hidalgo": {
+    "arthaud": 1.0,
+    "melenchon": 9.0,
+    "roussel": 1.0,
+    "tondelier": 10.0,
+    "glucksmann": 69.0,
+    "attal": 4.0,
+    "philippe": 2.0,
+    "retailleau": 0.5,
+    "le-pen": 4.0,
+    "zemmour": 0.5
+   },
+   "Emmanuel Macron": {
+    "arthaud": 0.5,
+    "melenchon": 3.0,
+    "roussel": 1.0,
+    "tondelier": 2.0,
+    "glucksmann": 15.0,
+    "attal": 17.0,
+    "philippe": 40.0,
+    "retailleau": 10.0,
+    "le-pen": 11.0,
+    "zemmour": 1.0
+   },
+   "Valérie Pécresse": {
+    "arthaud": 0.5,
+    "melenchon": 1.0,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "glucksmann": 3.0,
+    "attal": 3.0,
+    "philippe": 25.0,
+    "retailleau": 45.0,
+    "le-pen": 20.0,
+    "zemmour": 1.0
+   },
+   "Jean Lassalle": {
+    "arthaud": 1.0,
+    "melenchon": 5.0,
+    "roussel": 3.0,
+    "tondelier": 1.0,
+    "glucksmann": 9.0,
+    "attal": 3.0,
+    "philippe": 18.0,
+    "retailleau": 10.0,
+    "le-pen": 40.0,
+    "zemmour": 4.0
+   },
+   "Nicolas Dupont-Aignan": {
+    "arthaud": 0.5,
+    "melenchon": 0.5,
+    "roussel": 0.5,
+    "tondelier": 1.0,
+    "glucksmann": 3.0,
+    "attal": 1.0,
+    "philippe": 4.0,
+    "retailleau": 10.0,
+    "le-pen": 26.0,
+    "zemmour": 3.0
+   },
+   "Marine Le Pen": {
+    "arthaud": 0.5,
+    "melenchon": 0.5,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "glucksmann": 1.0,
+    "attal": 0.5,
+    "philippe": 2.0,
+    "retailleau": 2.0,
+    "le-pen": 92.0,
+    "zemmour": 2.0
+   },
+   "Eric Zemmour": {
+    "arthaud": 0.5,
+    "melenchon": 1.0,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "glucksmann": 0.5,
+    "attal": 1.0,
+    "philippe": 1.0,
+    "retailleau": 10.0,
+    "le-pen": 41.0,
+    "zemmour": 42.0
+   }
+  }
+ },
+ "R. Glucksmann, E. Philippe": {
+  "sexe": {
+   "Hommes": {
+    "arthaud": 0.5,
+    "melenchon": 16.0,
+    "roussel": 3.0,
+    "tondelier": 3.0,
+    "glucksmann": 12.0,
+    "philippe": 17.0,
+    "retailleau": 8.0,
+    "le-pen": 34.0,
+    "zemmour": 5.0
+   },
+   "Femmes": {
+    "arthaud": 0.5,
+    "melenchon": 15.0,
+    "roussel": 3.0,
+    "tondelier": 5.0,
+    "glucksmann": 13.0,
+    "philippe": 18.0,
+    "retailleau": 8.0,
+    "le-pen": 33.0,
+    "zemmour": 3.0
+   }
+  },
+  "age": {
+   "18-24 ans": {
+    "arthaud": 0.5,
+    "melenchon": 41.0,
+    "roussel": 1.0,
+    "tondelier": 7.0,
+    "glucksmann": 6.0,
+    "philippe": 14.0,
+    "retailleau": 8.0,
+    "le-pen": 20.0,
+    "zemmour": 2.0
+   },
+   "25-34 ans": {
+    "arthaud": 1.0,
+    "melenchon": 32.0,
+    "roussel": 1.0,
+    "tondelier": 7.0,
+    "glucksmann": 8.0,
+    "philippe": 12.0,
+    "retailleau": 4.0,
+    "le-pen": 30.0,
+    "zemmour": 3.0
+   },
+   "35-49 ans": {
+    "arthaud": 1.0,
+    "melenchon": 16.0,
+    "roussel": 3.0,
+    "tondelier": 6.0,
+    "glucksmann": 11.0,
+    "philippe": 15.0,
+    "retailleau": 5.0,
+    "le-pen": 38.0,
+    "zemmour": 3.0
+   },
+   "50-59 ans": {
+    "arthaud": 1.0,
+    "melenchon": 8.0,
+    "roussel": 2.0,
+    "tondelier": 4.0,
+    "glucksmann": 13.0,
+    "philippe": 17.0,
+    "retailleau": 6.0,
+    "le-pen": 42.0,
+    "zemmour": 4.0
+   },
+   "60-69 ans": {
+    "arthaud": 1.0,
+    "melenchon": 8.0,
+    "roussel": 5.0,
+    "tondelier": 2.0,
+    "glucksmann": 14.0,
+    "philippe": 17.0,
+    "retailleau": 8.0,
+    "le-pen": 38.0,
+    "zemmour": 5.0
+   },
+   "70 ans et plus": {
+    "arthaud": 0.5,
+    "melenchon": 4.0,
+    "roussel": 3.0,
+    "tondelier": 1.0,
+    "glucksmann": 17.0,
+    "philippe": 25.0,
+    "retailleau": 14.0,
+    "le-pen": 28.0,
+    "zemmour": 6.0
+   }
+  },
+  "_base": 9327,
+  "pcs": {
+   "Agriculteurs et prof. indépendantes": {
+    "arthaud": 1.0,
+    "melenchon": 17.0,
+    "roussel": 1.0,
+    "tondelier": 4.0,
+    "glucksmann": 10.0,
+    "philippe": 16.0,
+    "retailleau": 6.0,
+    "le-pen": 35.0,
+    "zemmour": 7.0
+   },
+   "Cadres": {
+    "arthaud": 0.5,
+    "melenchon": 19.0,
+    "roussel": 3.0,
+    "tondelier": 7.0,
+    "glucksmann": 16.0,
+    "philippe": 22.0,
+    "retailleau": 7.0,
+    "le-pen": 20.0,
+    "zemmour": 4.0
+   },
+   "Prof. intermédiaires": {
+    "arthaud": 1.0,
+    "melenchon": 17.0,
+    "roussel": 3.0,
+    "tondelier": 6.0,
+    "glucksmann": 13.0,
+    "philippe": 16.0,
+    "retailleau": 7.0,
+    "le-pen": 31.0,
+    "zemmour": 3.0
+   },
+   "Employés": {
+    "arthaud": 1.0,
+    "melenchon": 21.0,
+    "roussel": 1.0,
+    "tondelier": 4.0,
+    "glucksmann": 9.0,
+    "philippe": 11.0,
+    "retailleau": 5.0,
+    "le-pen": 43.0,
+    "zemmour": 3.0
+   },
+   "Ouvriers": {
+    "arthaud": 1.0,
+    "melenchon": 12.0,
+    "roussel": 2.0,
+    "tondelier": 3.0,
+    "glucksmann": 6.0,
+    "philippe": 8.0,
+    "retailleau": 3.0,
+    "le-pen": 58.0,
+    "zemmour": 5.0
+   },
+   "Sous-total Retraités": {
+    "arthaud": 0.5,
+    "melenchon": 5.0,
+    "roussel": 4.0,
+    "tondelier": 2.0,
+    "glucksmann": 17.0,
+    "philippe": 23.0,
+    "retailleau": 12.0,
+    "le-pen": 30.0,
+    "zemmour": 5.0
+   },
+   "Retraités CSP+": {
+    "arthaud": 0.5,
+    "melenchon": 6.0,
+    "roussel": 3.0,
+    "tondelier": 2.0,
+    "glucksmann": 19.0,
+    "philippe": 26.0,
+    "retailleau": 14.0,
+    "le-pen": 22.0,
+    "zemmour": 6.0
+   },
+   "Retraités CSP-": {
+    "arthaud": 0.5,
+    "melenchon": 5.0,
+    "roussel": 4.0,
+    "tondelier": 2.0,
+    "glucksmann": 14.0,
+    "philippe": 21.0,
+    "retailleau": 10.0,
+    "le-pen": 38.0,
+    "zemmour": 4.0
+   }
+  },
+  "vote-2022": {
+   "Jean-Luc Mélenchon": {
+    "arthaud": 1.0,
+    "melenchon": 53.0,
+    "roussel": 6.0,
+    "tondelier": 7.0,
+    "glucksmann": 18.0,
+    "philippe": 3.0,
+    "retailleau": 2.0,
+    "le-pen": 8.0,
+    "zemmour": 1.0
+   },
+   "Fabien Roussel": {
+    "arthaud": 0.5,
+    "melenchon": 11.0,
+    "roussel": 42.0,
+    "tondelier": 5.0,
+    "glucksmann": 23.0,
+    "philippe": 6.0,
+    "retailleau": 3.0,
+    "le-pen": 8.0,
+    "zemmour": 0.5
+   },
+   "Yannick Jadot": {
+    "arthaud": 1.0,
+    "melenchon": 11.0,
+    "roussel": 2.0,
+    "tondelier": 31.0,
+    "glucksmann": 37.0,
+    "philippe": 11.0,
+    "retailleau": 3.0,
+    "le-pen": 3.0,
+    "zemmour": 0.5
+   },
+   "Anne Hidalgo": {
+    "arthaud": 1.0,
+    "melenchon": 11.0,
+    "roussel": 2.0,
+    "tondelier": 9.0,
+    "glucksmann": 68.0,
+    "philippe": 4.0,
+    "retailleau": 0.5,
+    "le-pen": 4.0,
+    "zemmour": 0.5
+   },
+   "Emmanuel Macron": {
+    "arthaud": 0.5,
+    "melenchon": 3.0,
+    "roussel": 1.0,
+    "tondelier": 2.0,
+    "glucksmann": 18.0,
+    "philippe": 51.0,
+    "retailleau": 12.0,
+    "le-pen": 12.0,
+    "zemmour": 1.0
+   },
+   "Valérie Pécresse": {
+    "arthaud": 0.5,
+    "melenchon": 1.0,
+    "roussel": 0.5,
+    "tondelier": 1.0,
+    "glucksmann": 3.0,
+    "philippe": 26.0,
+    "retailleau": 45.0,
+    "le-pen": 20.0,
+    "zemmour": 2.0
+   },
+   "Jean Lassalle": {
+    "arthaud": 0.5,
+    "melenchon": 5.0,
+    "roussel": 4.0,
+    "tondelier": 1.0,
+    "glucksmann": 11.0,
+    "philippe": 21.0,
+    "retailleau": 10.0,
+    "le-pen": 39.0,
+    "zemmour": 2.0
+   },
+   "Nicolas Dupont-Aignan": {
+    "arthaud": 0.5,
+    "melenchon": 0.5,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "glucksmann": 4.0,
+    "philippe": 3.0,
+    "retailleau": 11.0,
+    "le-pen": 29.0,
+    "zemmour": 2.0
+   },
+   "Marine Le Pen": {
+    "arthaud": 0.5,
+    "melenchon": 0.5,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "glucksmann": 1.0,
+    "philippe": 2.0,
+    "retailleau": 3.0,
+    "le-pen": 91.0,
+    "zemmour": 2.0
+   },
+   "Eric Zemmour": {
+    "arthaud": 0.5,
+    "melenchon": 1.0,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "glucksmann": 1.0,
+    "philippe": 1.0,
+    "retailleau": 10.0,
+    "le-pen": 43.0,
+    "zemmour": 41.0
+   }
+  }
+ },
+ "R. Glucksmann, G.Attal": {
+  "sexe": {
+   "Hommes": {
+    "arthaud": 1.0,
+    "melenchon": 16.0,
+    "roussel": 3.0,
+    "tondelier": 4.0,
+    "glucksmann": 12.0,
+    "attal": 11.0,
+    "retailleau": 10.0,
+    "le-pen": 35.0,
+    "zemmour": 6.0
+   },
+   "Femmes": {
+    "arthaud": 1.0,
+    "melenchon": 15.0,
+    "roussel": 3.0,
+    "tondelier": 5.0,
+    "glucksmann": 14.0,
+    "attal": 14.0,
+    "retailleau": 10.0,
+    "le-pen": 33.0,
+    "zemmour": 3.0
+   }
+  },
+  "age": {
+   "18-24 ans": {
+    "arthaud": 0.5,
+    "melenchon": 43.0,
+    "roussel": 1.0,
+    "tondelier": 7.0,
+    "glucksmann": 5.0,
+    "attal": 11.0,
+    "retailleau": 8.0,
+    "le-pen": 22.0,
+    "zemmour": 2.0
+   },
+   "25-34 ans": {
+    "arthaud": 1.0,
+    "melenchon": 31.0,
+    "roussel": 2.0,
+    "tondelier": 7.0,
+    "glucksmann": 7.0,
+    "attal": 10.0,
+    "retailleau": 6.0,
+    "le-pen": 31.0,
+    "zemmour": 4.0
+   },
+   "35-49 ans": {
+    "arthaud": 1.0,
+    "melenchon": 16.0,
+    "roussel": 3.0,
+    "tondelier": 6.0,
+    "glucksmann": 13.0,
+    "attal": 12.0,
+    "retailleau": 6.0,
+    "le-pen": 38.0,
+    "zemmour": 3.0
+   },
+   "50-59 ans": {
+    "arthaud": 1.0,
+    "melenchon": 7.0,
+    "roussel": 2.0,
+    "tondelier": 4.0,
+    "glucksmann": 14.0,
+    "attal": 12.0,
+    "retailleau": 9.0,
+    "le-pen": 44.0,
+    "zemmour": 4.0
+   },
+   "60-69 ans": {
+    "arthaud": 1.0,
+    "melenchon": 7.0,
+    "roussel": 4.0,
+    "tondelier": 2.0,
+    "glucksmann": 15.0,
+    "attal": 13.0,
+    "retailleau": 11.0,
+    "le-pen": 38.0,
+    "zemmour": 6.0
+   },
+   "70 ans et plus": {
+    "arthaud": 0.5,
+    "melenchon": 4.0,
+    "roussel": 3.0,
+    "tondelier": 2.0,
+    "glucksmann": 19.0,
+    "attal": 17.0,
+    "retailleau": 17.0,
+    "le-pen": 29.0,
+    "zemmour": 7.0
+   }
+  },
+  "_base": 9233,
+  "pcs": {
+   "Agriculteurs et prof. indépendantes": {
+    "arthaud": 0.5,
+    "melenchon": 16.0,
+    "roussel": 2.0,
+    "tondelier": 7.0,
+    "glucksmann": 9.0,
+    "attal": 14.0,
+    "retailleau": 8.0,
+    "le-pen": 35.0,
+    "zemmour": 6.0
+   },
+   "Cadres": {
+    "arthaud": 1.0,
+    "melenchon": 19.0,
+    "roussel": 3.0,
+    "tondelier": 7.0,
+    "glucksmann": 18.0,
+    "attal": 17.0,
+    "retailleau": 9.0,
+    "le-pen": 20.0,
+    "zemmour": 4.0
+   },
+   "Prof. intermédiaires": {
+    "arthaud": 1.0,
+    "melenchon": 18.0,
+    "roussel": 3.0,
+    "tondelier": 7.0,
+    "glucksmann": 14.0,
+    "attal": 11.0,
+    "retailleau": 8.0,
+    "le-pen": 32.0,
+    "zemmour": 4.0
+   },
+   "Employés": {
+    "arthaud": 1.0,
+    "melenchon": 20.0,
+    "roussel": 2.0,
+    "tondelier": 5.0,
+    "glucksmann": 7.0,
+    "attal": 10.0,
+    "retailleau": 6.0,
+    "le-pen": 43.0,
+    "zemmour": 3.0
+   },
+   "Ouvriers": {
+    "arthaud": 1.0,
+    "melenchon": 13.0,
+    "roussel": 2.0,
+    "tondelier": 3.0,
+    "glucksmann": 6.0,
+    "attal": 6.0,
+    "retailleau": 5.0,
+    "le-pen": 57.0,
+    "zemmour": 5.0
+   },
+   "Sous-total Retraités": {
+    "arthaud": 0.5,
+    "melenchon": 5.0,
+    "roussel": 4.0,
+    "tondelier": 2.0,
+    "glucksmann": 18.0,
+    "attal": 16.0,
+    "retailleau": 16.0,
+    "le-pen": 31.0,
+    "zemmour": 6.0
+   },
+   "Retraités CSP+": {
+    "arthaud": 0.5,
+    "melenchon": 6.0,
+    "roussel": 3.0,
+    "tondelier": 2.0,
+    "glucksmann": 22.0,
+    "attal": 17.0,
+    "retailleau": 18.0,
+    "le-pen": 22.0,
+    "zemmour": 8.0
+   },
+   "Retraités CSP-": {
+    "arthaud": 0.5,
+    "melenchon": 5.0,
+    "roussel": 4.0,
+    "tondelier": 2.0,
+    "glucksmann": 16.0,
+    "attal": 14.0,
+    "retailleau": 13.0,
+    "le-pen": 39.0,
+    "zemmour": 5.0
+   }
+  },
+  "vote-2022": {
+   "Jean-Luc Mélenchon": {
+    "arthaud": 1.0,
+    "melenchon": 52.0,
+    "roussel": 6.0,
+    "tondelier": 8.0,
+    "glucksmann": 19.0,
+    "attal": 2.0,
+    "retailleau": 1.0,
+    "le-pen": 9.0,
+    "zemmour": 1.0
+   },
+   "Fabien Roussel": {
+    "arthaud": 0.5,
+    "melenchon": 9.0,
+    "roussel": 42.0,
+    "tondelier": 7.0,
+    "glucksmann": 24.0,
+    "attal": 6.0,
+    "retailleau": 3.0,
+    "le-pen": 7.0,
+    "zemmour": 0.5
+   },
+   "Yannick Jadot": {
+    "arthaud": 1.0,
+    "melenchon": 11.0,
+    "roussel": 2.0,
+    "tondelier": 32.0,
+    "glucksmann": 38.0,
+    "attal": 8.0,
+    "retailleau": 3.0,
+    "le-pen": 5.0,
+    "zemmour": 0.5
+   },
+   "Anne Hidalgo": {
+    "arthaud": 0.5,
+    "melenchon": 9.0,
+    "roussel": 1.0,
+    "tondelier": 10.0,
+    "glucksmann": 70.0,
+    "attal": 5.0,
+    "retailleau": 0.5,
+    "le-pen": 5.0,
+    "zemmour": 0.5
+   },
+   "Emmanuel Macron": {
+    "arthaud": 0.5,
+    "melenchon": 3.0,
+    "roussel": 1.0,
+    "tondelier": 2.0,
+    "glucksmann": 21.0,
+    "attal": 40.0,
+    "retailleau": 18.0,
+    "le-pen": 13.0,
+    "zemmour": 1.0
+   },
+   "Valérie Pécresse": {
+    "arthaud": 0.5,
+    "melenchon": 1.0,
+    "roussel": 0.5,
+    "tondelier": 1.0,
+    "glucksmann": 4.0,
+    "attal": 10.0,
+    "retailleau": 59.0,
+    "le-pen": 22.0,
+    "zemmour": 1.0
+   },
+   "Jean Lassalle": {
+    "arthaud": 1.0,
+    "melenchon": 4.0,
+    "roussel": 4.0,
+    "tondelier": 2.0,
+    "glucksmann": 11.0,
+    "attal": 8.0,
+    "retailleau": 14.0,
+    "le-pen": 45.0,
+    "zemmour": 5.0
+   },
+   "Nicolas Dupont-Aignan": {
+    "arthaud": 0.5,
+    "melenchon": 0.5,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "glucksmann": 4.0,
+    "attal": 2.0,
+    "retailleau": 9.0,
+    "le-pen": 31.0,
+    "zemmour": 4.0
+   },
+   "Marine Le Pen": {
+    "arthaud": 0.5,
+    "melenchon": 0.5,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "glucksmann": 1.0,
+    "attal": 1.0,
+    "retailleau": 3.0,
+    "le-pen": 91.0,
+    "zemmour": 3.0
+   },
+   "Eric Zemmour": {
+    "arthaud": 0.5,
+    "melenchon": 1.0,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "glucksmann": 1.0,
+    "attal": 1.0,
+    "retailleau": 10.0,
+    "le-pen": 39.0,
+    "zemmour": 45.0
+   }
+  }
+ },
+ "O. Faure, G. Attal, E. Philippe": {
+  "sexe": {
+   "Hommes": {
+    "arthaud": 0.5,
+    "melenchon": 17.0,
+    "roussel": 3.0,
+    "tondelier": 4.0,
+    "faure": 4.0,
+    "attal": 6.0,
+    "philippe": 16.0,
+    "retailleau": 7.0,
+    "le-pen": 35.0,
+    "zemmour": 6.0
+   },
+   "Femmes": {
+    "arthaud": 0.5,
+    "melenchon": 16.0,
+    "roussel": 3.0,
+    "tondelier": 6.0,
+    "faure": 5.0,
+    "attal": 9.0,
+    "philippe": 16.0,
+    "retailleau": 7.0,
+    "le-pen": 33.0,
+    "zemmour": 3.0
+   }
+  },
+  "age": {
+   "18-24 ans": {
+    "arthaud": 0.5,
+    "melenchon": 43.0,
+    "roussel": 1.0,
+    "tondelier": 7.0,
+    "faure": 2.0,
+    "attal": 7.0,
+    "philippe": 10.0,
+    "retailleau": 6.0,
+    "le-pen": 21.0,
+    "zemmour": 2.0
+   },
+   "25-34 ans": {
+    "arthaud": 0.5,
+    "melenchon": 31.0,
+    "roussel": 2.0,
+    "tondelier": 7.0,
+    "faure": 4.0,
+    "attal": 6.0,
+    "philippe": 11.0,
+    "retailleau": 4.0,
+    "le-pen": 31.0,
+    "zemmour": 3.0
+   },
+   "35-49 ans": {
+    "arthaud": 0.5,
+    "melenchon": 17.0,
+    "roussel": 3.0,
+    "tondelier": 7.0,
+    "faure": 4.0,
+    "attal": 8.0,
+    "philippe": 13.0,
+    "retailleau": 5.0,
+    "le-pen": 38.0,
+    "zemmour": 3.0
+   },
+   "50-59 ans": {
+    "arthaud": 1.0,
+    "melenchon": 9.0,
+    "roussel": 3.0,
+    "tondelier": 4.0,
+    "faure": 5.0,
+    "attal": 6.0,
+    "philippe": 16.0,
+    "retailleau": 5.0,
+    "le-pen": 44.0,
+    "zemmour": 4.0
+   },
+   "60-69 ans": {
+    "arthaud": 1.0,
+    "melenchon": 8.0,
+    "roussel": 5.0,
+    "tondelier": 4.0,
+    "faure": 5.0,
+    "attal": 8.0,
+    "philippe": 17.0,
+    "retailleau": 7.0,
+    "le-pen": 38.0,
+    "zemmour": 5.0
+   },
+   "70 ans et plus": {
+    "arthaud": 0.5,
+    "melenchon": 5.0,
+    "roussel": 4.0,
+    "tondelier": 2.0,
+    "faure": 5.0,
+    "attal": 9.0,
+    "philippe": 24.0,
+    "retailleau": 14.0,
+    "le-pen": 29.0,
+    "zemmour": 6.0
+   }
+  },
+  "_base": 9290,
+  "pcs": {
+   "Agriculteurs et prof. indépendantes": {
+    "arthaud": 1.0,
+    "melenchon": 17.0,
+    "roussel": 3.0,
+    "tondelier": 6.0,
+    "faure": 2.0,
+    "attal": 8.0,
+    "philippe": 15.0,
+    "retailleau": 6.0,
+    "le-pen": 35.0,
+    "zemmour": 5.0
+   },
+   "Cadres": {
+    "arthaud": 0.5,
+    "melenchon": 20.0,
+    "roussel": 3.0,
+    "tondelier": 8.0,
+    "faure": 6.0,
+    "attal": 10.0,
+    "philippe": 21.0,
+    "retailleau": 6.0,
+    "le-pen": 20.0,
+    "zemmour": 4.0
+   },
+   "Prof. intermédiaires": {
+    "arthaud": 1.0,
+    "melenchon": 19.0,
+    "roussel": 3.0,
+    "tondelier": 7.0,
+    "faure": 5.0,
+    "attal": 7.0,
+    "philippe": 16.0,
+    "retailleau": 5.0,
+    "le-pen": 32.0,
+    "zemmour": 3.0
+   },
+   "Employés": {
+    "arthaud": 0.5,
+    "melenchon": 22.0,
+    "roussel": 2.0,
+    "tondelier": 4.0,
+    "faure": 4.0,
+    "attal": 6.0,
+    "philippe": 9.0,
+    "retailleau": 4.0,
+    "le-pen": 44.0,
+    "zemmour": 3.0
+   },
+   "Ouvriers": {
+    "arthaud": 1.0,
+    "melenchon": 14.0,
+    "roussel": 1.0,
+    "tondelier": 4.0,
+    "faure": 2.0,
+    "attal": 4.0,
+    "philippe": 6.0,
+    "retailleau": 3.0,
+    "le-pen": 58.0,
+    "zemmour": 5.0
+   },
+   "Sous-total Retraités": {
+    "arthaud": 0.5,
+    "melenchon": 6.0,
+    "roussel": 5.0,
+    "tondelier": 3.0,
+    "faure": 5.0,
+    "attal": 9.0,
+    "philippe": 22.0,
+    "retailleau": 11.0,
+    "le-pen": 31.0,
+    "zemmour": 6.0
+   },
+   "Retraités CSP+": {
+    "arthaud": 0.5,
+    "melenchon": 6.0,
+    "roussel": 5.0,
+    "tondelier": 3.0,
+    "faure": 6.0,
+    "attal": 9.0,
+    "philippe": 26.0,
+    "retailleau": 14.0,
+    "le-pen": 22.0,
+    "zemmour": 7.0
+   },
+   "Retraités CSP-": {
+    "arthaud": 0.5,
+    "melenchon": 6.0,
+    "roussel": 4.0,
+    "tondelier": 2.0,
+    "faure": 5.0,
+    "attal": 9.0,
+    "philippe": 19.0,
+    "retailleau": 9.0,
+    "le-pen": 39.0,
+    "zemmour": 5.0
+   }
+  },
+  "vote-2022": {
+   "Jean-Luc Mélenchon": {
+    "arthaud": 1.0,
+    "melenchon": 56.0,
+    "roussel": 6.0,
+    "tondelier": 9.0,
+    "faure": 8.0,
+    "attal": 3.0,
+    "philippe": 4.0,
+    "retailleau": 1.0,
+    "le-pen": 10.0,
+    "zemmour": 1.0
+   },
+   "Fabien Roussel": {
+    "arthaud": 0.5,
+    "melenchon": 10.0,
+    "roussel": 50.0,
+    "tondelier": 7.0,
+    "faure": 9.0,
+    "attal": 5.0,
+    "philippe": 7.0,
+    "retailleau": 2.0,
+    "le-pen": 8.0,
+    "zemmour": 0.5
+   },
+   "Yannick Jadot": {
+    "arthaud": 0.5,
+    "melenchon": 11.0,
+    "roussel": 5.0,
+    "tondelier": 41.0,
+    "faure": 13.0,
+    "attal": 8.0,
+    "philippe": 14.0,
+    "retailleau": 2.0,
+    "le-pen": 5.0,
+    "zemmour": 0.5
+   },
+   "Anne Hidalgo": {
+    "arthaud": 1.0,
+    "melenchon": 13.0,
+    "roussel": 7.0,
+    "tondelier": 15.0,
+    "faure": 45.0,
+    "attal": 8.0,
+    "philippe": 5.0,
+    "retailleau": 1.0,
+    "le-pen": 5.0,
+    "zemmour": 0.5
+   },
+   "Emmanuel Macron": {
+    "arthaud": 0.5,
+    "melenchon": 3.0,
+    "roussel": 1.0,
+    "tondelier": 2.0,
+    "faure": 5.0,
+    "attal": 21.0,
+    "philippe": 45.0,
+    "retailleau": 10.0,
+    "le-pen": 12.0,
+    "zemmour": 1.0
+   },
+   "Valérie Pécresse": {
+    "arthaud": 0.5,
+    "melenchon": 1.0,
+    "roussel": 0.5,
+    "tondelier": 1.0,
+    "faure": 1.0,
+    "attal": 4.0,
+    "philippe": 26.0,
+    "retailleau": 44.0,
+    "le-pen": 20.0,
+    "zemmour": 1.0
+   },
+   "Jean Lassalle": {
+    "arthaud": 1.0,
+    "melenchon": 4.0,
+    "roussel": 3.0,
+    "tondelier": 1.0,
+    "faure": 1.0,
+    "attal": 5.0,
+    "philippe": 24.0,
+    "retailleau": 11.0,
+    "le-pen": 41.0,
+    "zemmour": 4.0
+   },
+   "Nicolas Dupont-Aignan": {
+    "arthaud": 0.5,
+    "melenchon": 0.5,
+    "roussel": 0.5,
+    "tondelier": 1.0,
+    "faure": 0.5,
+    "attal": 1.0,
+    "philippe": 6.0,
+    "retailleau": 11.0,
+    "le-pen": 25.0,
+    "zemmour": 4.0
+   },
+   "Marine Le Pen": {
+    "arthaud": 0.5,
+    "melenchon": 0.5,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "faure": 0.5,
+    "attal": 1.0,
+    "philippe": 2.0,
+    "retailleau": 2.0,
+    "le-pen": 92.0,
+    "zemmour": 2.0
+   },
+   "Eric Zemmour": {
+    "arthaud": 0.5,
+    "melenchon": 2.0,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "faure": 0.5,
+    "attal": 0.5,
+    "philippe": 1.0,
+    "retailleau": 11.0,
+    "le-pen": 39.0,
+    "zemmour": 44.0
+   }
+  }
+ },
+ "O. Faure, E. Philippe": {
+  "sexe": {
+   "Hommes": {
+    "arthaud": 1.0,
+    "melenchon": 17.0,
+    "roussel": 4.0,
+    "tondelier": 5.0,
+    "faure": 4.0,
+    "philippe": 20.0,
+    "retailleau": 7.0,
+    "le-pen": 35.0,
+    "zemmour": 5.0
+   },
+   "Femmes": {
+    "arthaud": 0.5,
+    "melenchon": 16.0,
+    "roussel": 4.0,
+    "tondelier": 6.0,
+    "faure": 5.0,
+    "philippe": 22.0,
+    "retailleau": 8.0,
+    "le-pen": 34.0,
+    "zemmour": 3.0
+   }
+  },
+  "age": {
+   "18-24 ans": {
+    "arthaud": 1.0,
+    "melenchon": 42.0,
+    "roussel": 2.0,
+    "tondelier": 7.0,
+    "faure": 3.0,
+    "philippe": 15.0,
+    "retailleau": 6.0,
+    "le-pen": 21.0,
+    "zemmour": 2.0
+   },
+   "25-34 ans": {
+    "arthaud": 1.0,
+    "melenchon": 32.0,
+    "roussel": 2.0,
+    "tondelier": 8.0,
+    "faure": 4.0,
+    "philippe": 14.0,
+    "retailleau": 4.0,
+    "le-pen": 31.0,
+    "zemmour": 3.0
+   },
+   "35-49 ans": {
+    "arthaud": 1.0,
+    "melenchon": 17.0,
+    "roussel": 3.0,
+    "tondelier": 8.0,
+    "faure": 4.0,
+    "philippe": 17.0,
+    "retailleau": 5.0,
+    "le-pen": 39.0,
+    "zemmour": 4.0
+   },
+   "50-59 ans": {
+    "arthaud": 1.0,
+    "melenchon": 8.0,
+    "roussel": 3.0,
+    "tondelier": 5.0,
+    "faure": 6.0,
+    "philippe": 20.0,
+    "retailleau": 6.0,
+    "le-pen": 44.0,
+    "zemmour": 4.0
+   },
+   "60-69 ans": {
+    "arthaud": 1.0,
+    "melenchon": 8.0,
+    "roussel": 6.0,
+    "tondelier": 4.0,
+    "faure": 5.0,
+    "philippe": 22.0,
+    "retailleau": 8.0,
+    "le-pen": 39.0,
+    "zemmour": 5.0
+   },
+   "70 ans et plus": {
+    "arthaud": 0.5,
+    "melenchon": 5.0,
+    "roussel": 5.0,
+    "tondelier": 2.0,
+    "faure": 6.0,
+    "philippe": 31.0,
+    "retailleau": 14.0,
+    "le-pen": 30.0,
+    "zemmour": 5.0
+   }
+  },
+  "_base": 9142,
+  "pcs": {
+   "Agriculteurs et prof. indépendantes": {
+    "arthaud": 1.0,
+    "melenchon": 17.0,
+    "roussel": 3.0,
+    "tondelier": 7.0,
+    "faure": 2.0,
+    "philippe": 17.0,
+    "retailleau": 7.0,
+    "le-pen": 36.0,
+    "zemmour": 7.0
+   },
+   "Cadres": {
+    "arthaud": 0.5,
+    "melenchon": 20.0,
+    "roussel": 4.0,
+    "tondelier": 10.0,
+    "faure": 6.0,
+    "philippe": 27.0,
+    "retailleau": 6.0,
+    "le-pen": 21.0,
+    "zemmour": 4.0
+   },
+   "Prof. intermédiaires": {
+    "arthaud": 1.0,
+    "melenchon": 19.0,
+    "roussel": 4.0,
+    "tondelier": 7.0,
+    "faure": 6.0,
+    "philippe": 20.0,
+    "retailleau": 6.0,
+    "le-pen": 32.0,
+    "zemmour": 3.0
+   },
+   "Employés": {
+    "arthaud": 1.0,
+    "melenchon": 22.0,
+    "roussel": 2.0,
+    "tondelier": 5.0,
+    "faure": 4.0,
+    "philippe": 12.0,
+    "retailleau": 5.0,
+    "le-pen": 44.0,
+    "zemmour": 3.0
+   },
+   "Ouvriers": {
+    "arthaud": 1.0,
+    "melenchon": 13.0,
+    "roussel": 2.0,
+    "tondelier": 4.0,
+    "faure": 2.0,
+    "philippe": 9.0,
+    "retailleau": 3.0,
+    "le-pen": 59.0,
+    "zemmour": 5.0
+   },
+   "Sous-total Retraités": {
+    "arthaud": 0.5,
+    "melenchon": 6.0,
+    "roussel": 5.0,
+    "tondelier": 3.0,
+    "faure": 6.0,
+    "philippe": 29.0,
+    "retailleau": 12.0,
+    "le-pen": 32.0,
+    "zemmour": 5.0
+   },
+   "Retraités CSP+": {
+    "arthaud": 0.5,
+    "melenchon": 7.0,
+    "roussel": 5.0,
+    "tondelier": 4.0,
+    "faure": 6.0,
+    "philippe": 32.0,
+    "retailleau": 15.0,
+    "le-pen": 22.0,
+    "zemmour": 7.0
+   },
+   "Retraités CSP-": {
+    "arthaud": 0.5,
+    "melenchon": 5.0,
+    "roussel": 6.0,
+    "tondelier": 2.0,
+    "faure": 6.0,
+    "philippe": 26.0,
+    "retailleau": 10.0,
+    "le-pen": 40.0,
+    "zemmour": 3.0
+   }
+  },
+  "vote-2022": {
+   "Jean-Luc Mélenchon": {
+    "arthaud": 1.0,
+    "melenchon": 56.0,
+    "tondelier": 9.0,
+    "faure": 8.0,
+    "philippe": 5.0,
+    "retailleau": 2.0,
+    "le-pen": 9.0,
+    "zemmour": 1.0
+   },
+   "Fabien Roussel": {
+    "arthaud": 0.5,
+    "melenchon": 10.0,
+    "tondelier": 7.0,
+    "faure": 10.0,
+    "philippe": 7.0,
+    "retailleau": 2.0,
+    "le-pen": 9.0,
+    "zemmour": 0.5
+   },
+   "Yannick Jadot": {
+    "arthaud": 2.0,
+    "melenchon": 11.0,
+    "tondelier": 43.0,
+    "faure": 14.0,
+    "philippe": 17.0,
+    "retailleau": 2.0,
+    "le-pen": 5.0,
+    "zemmour": 0.5
+   },
+   "Anne Hidalgo": {
+    "arthaud": 2.0,
+    "melenchon": 14.0,
+    "tondelier": 17.0,
+    "faure": 44.0,
+    "philippe": 8.0,
+    "retailleau": 1.0,
+    "le-pen": 5.0,
+    "zemmour": 0.5
+   },
+   "Emmanuel Macron": {
+    "arthaud": 0.5,
+    "melenchon": 3.0,
+    "tondelier": 3.0,
+    "faure": 5.0,
+    "philippe": 61.0,
+    "retailleau": 12.0,
+    "le-pen": 13.0,
+    "zemmour": 1.0
+   },
+   "Valérie Pécresse": {
+    "arthaud": 0.5,
+    "melenchon": 1.0,
+    "tondelier": 1.0,
+    "faure": 1.0,
+    "philippe": 29.0,
+    "retailleau": 44.0,
+    "le-pen": 21.0,
+    "zemmour": 1.0
+   },
+   "Jean Lassalle": {
+    "arthaud": 1.0,
+    "melenchon": 2.0,
+    "tondelier": 1.0,
+    "faure": 1.0,
+    "philippe": 25.0,
+    "retailleau": 11.0,
+    "le-pen": 43.0,
+    "zemmour": 2.0
+   },
+   "Nicolas Dupont-Aignan": {
+    "arthaud": 1.0,
+    "melenchon": 0.5,
+    "tondelier": 1.0,
+    "faure": 0.5,
+    "philippe": 6.0,
+    "retailleau": 10.0,
+    "le-pen": 30.0,
+    "zemmour": 4.0
+   },
+   "Marine Le Pen": {
+    "arthaud": 0.5,
+    "melenchon": 1.0,
+    "tondelier": 0.5,
+    "faure": 0.5,
+    "philippe": 2.0,
+    "retailleau": 3.0,
+    "le-pen": 91.0,
+    "zemmour": 2.0
+   },
+   "Eric Zemmour": {
+    "arthaud": 0.5,
+    "melenchon": 1.0,
+    "tondelier": 0.5,
+    "faure": 0.5,
+    "philippe": 1.0,
+    "retailleau": 10.0,
+    "le-pen": 43.0,
+    "zemmour": 41.0
+   }
+  }
+ },
+ "O. Faure, G. Attal": {
+  "sexe": {
+   "Hommes": {
+    "arthaud": 0.5,
+    "melenchon": 18.0,
+    "roussel": 3.0,
+    "tondelier": 5.0,
+    "faure": 5.0,
+    "attal": 14.0,
+    "retailleau": 11.0,
+    "le-pen": 36.0,
+    "zemmour": 6.0
+   },
+   "Femmes": {
+    "arthaud": 0.5,
+    "melenchon": 17.0,
+    "roussel": 4.0,
+    "tondelier": 6.0,
+    "faure": 6.0,
+    "attal": 17.0,
+    "retailleau": 10.0,
+    "le-pen": 34.0,
+    "zemmour": 3.0
+   }
+  },
+  "age": {
+   "18-24 ans": {
+    "arthaud": 0.5,
+    "melenchon": 44.0,
+    "roussel": 2.0,
+    "tondelier": 7.0,
+    "faure": 2.0,
+    "attal": 12.0,
+    "retailleau": 8.0,
+    "le-pen": 20.0,
+    "zemmour": 3.0
+   },
+   "25-34 ans": {
+    "arthaud": 0.5,
+    "melenchon": 32.0,
+    "roussel": 2.0,
+    "tondelier": 8.0,
+    "faure": 5.0,
+    "attal": 11.0,
+    "retailleau": 6.0,
+    "le-pen": 31.0,
+    "zemmour": 3.0
+   },
+   "35-49 ans": {
+    "arthaud": 1.0,
+    "melenchon": 17.0,
+    "roussel": 3.0,
+    "tondelier": 8.0,
+    "faure": 6.0,
+    "attal": 14.0,
+    "retailleau": 6.0,
+    "le-pen": 39.0,
+    "zemmour": 3.0
+   },
+   "50-59 ans": {
+    "arthaud": 1.0,
+    "melenchon": 9.0,
+    "roussel": 4.0,
+    "tondelier": 5.0,
+    "faure": 6.0,
+    "attal": 14.0,
+    "retailleau": 9.0,
+    "le-pen": 45.0,
+    "zemmour": 4.0
+   },
+   "60-69 ans": {
+    "arthaud": 1.0,
+    "melenchon": 9.0,
+    "roussel": 6.0,
+    "tondelier": 4.0,
+    "faure": 5.0,
+    "attal": 16.0,
+    "retailleau": 11.0,
+    "le-pen": 40.0,
+    "zemmour": 5.0
+   },
+   "70 ans et plus": {
+    "arthaud": 0.5,
+    "melenchon": 6.0,
+    "roussel": 5.0,
+    "tondelier": 2.0,
+    "faure": 7.0,
+    "attal": 22.0,
+    "retailleau": 19.0,
+    "le-pen": 31.0,
+    "zemmour": 6.0
+   }
+  },
+  "_base": 8984,
+  "pcs": {
+   "Agriculteurs et prof. indépendantes": {
+    "arthaud": 1.0,
+    "melenchon": 17.0,
+    "roussel": 3.0,
+    "tondelier": 5.0,
+    "faure": 5.0,
+    "attal": 16.0,
+    "retailleau": 8.0,
+    "le-pen": 35.0,
+    "zemmour": 7.0
+   },
+   "Cadres": {
+    "arthaud": 1.0,
+    "melenchon": 21.0,
+    "roussel": 4.0,
+    "tondelier": 10.0,
+    "faure": 7.0,
+    "attal": 21.0,
+    "retailleau": 9.0,
+    "le-pen": 21.0,
+    "zemmour": 5.0
+   },
+   "Prof. intermédiaires": {
+    "arthaud": 1.0,
+    "melenchon": 20.0,
+    "roussel": 4.0,
+    "tondelier": 8.0,
+    "faure": 7.0,
+    "attal": 13.0,
+    "retailleau": 9.0,
+    "le-pen": 33.0,
+    "zemmour": 3.0
+   },
+   "Employés": {
+    "arthaud": 1.0,
+    "melenchon": 22.0,
+    "roussel": 2.0,
+    "tondelier": 5.0,
+    "faure": 4.0,
+    "attal": 10.0,
+    "retailleau": 6.0,
+    "le-pen": 44.0,
+    "zemmour": 3.0
+   },
+   "Ouvriers": {
+    "arthaud": 1.0,
+    "melenchon": 14.0,
+    "roussel": 2.0,
+    "tondelier": 4.0,
+    "faure": 2.0,
+    "attal": 7.0,
+    "retailleau": 4.0,
+    "le-pen": 57.0,
+    "zemmour": 6.0
+   },
+   "Sous-total Retraités": {
+    "arthaud": 0.5,
+    "melenchon": 7.0,
+    "roussel": 5.0,
+    "tondelier": 3.0,
+    "faure": 7.0,
+    "attal": 20.0,
+    "retailleau": 17.0,
+    "le-pen": 33.0,
+    "zemmour": 6.0
+   },
+   "Retraités CSP+": {
+    "arthaud": 0.5,
+    "melenchon": 7.0,
+    "roussel": 5.0,
+    "tondelier": 4.0,
+    "faure": 8.0,
+    "attal": 23.0,
+    "retailleau": 20.0,
+    "le-pen": 23.0,
+    "zemmour": 7.0
+   },
+   "Retraités CSP-": {
+    "arthaud": 1.0,
+    "melenchon": 7.0,
+    "roussel": 5.0,
+    "tondelier": 2.0,
+    "faure": 6.0,
+    "attal": 18.0,
+    "retailleau": 13.0,
+    "le-pen": 42.0,
+    "zemmour": 4.0
+   }
+  },
+  "vote-2022": {
+   "Jean-Luc Mélenchon": {
+    "arthaud": 1.0,
+    "melenchon": 58.0,
+    "roussel": 7.0,
+    "tondelier": 10.0,
+    "faure": 9.0,
+    "attal": 3.0,
+    "retailleau": 1.0,
+    "le-pen": 10.0,
+    "zemmour": 0.5
+   },
+   "Fabien Roussel": {
+    "arthaud": 0.5,
+    "melenchon": 11.0,
+    "roussel": 51.0,
+    "tondelier": 8.0,
+    "faure": 10.0,
+    "attal": 7.0,
+    "retailleau": 3.0,
+    "le-pen": 8.0,
+    "zemmour": 0.5
+   },
+   "Yannick Jadot": {
+    "arthaud": 1.0,
+    "melenchon": 11.0,
+    "roussel": 6.0,
+    "tondelier": 44.0,
+    "faure": 14.0,
+    "attal": 13.0,
+    "retailleau": 4.0,
+    "le-pen": 6.0,
+    "zemmour": 0.5
+   },
+   "Anne Hidalgo": {
+    "arthaud": 1.0,
+    "melenchon": 15.0,
+    "roussel": 6.0,
+    "tondelier": 16.0,
+    "faure": 45.0,
+    "attal": 9.0,
+    "retailleau": 3.0,
+    "le-pen": 5.0,
+    "zemmour": 0.5
+   },
+   "Emmanuel Macron": {
+    "arthaud": 0.5,
+    "melenchon": 3.0,
+    "roussel": 2.0,
+    "tondelier": 3.0,
+    "faure": 7.0,
+    "attal": 50.0,
+    "retailleau": 19.0,
+    "le-pen": 14.0,
+    "zemmour": 1.0
+   },
+   "Valérie Pécresse": {
+    "arthaud": 0.5,
+    "melenchon": 1.0,
+    "roussel": 0.5,
+    "tondelier": 1.0,
+    "faure": 1.0,
+    "attal": 10.0,
+    "retailleau": 60.0,
+    "le-pen": 23.0,
+    "zemmour": 2.0
+   },
+   "Jean Lassalle": {
+    "arthaud": 0.5,
+    "melenchon": 6.0,
+    "roussel": 5.0,
+    "tondelier": 2.0,
+    "faure": 3.0,
+    "attal": 12.0,
+    "retailleau": 16.0,
+    "le-pen": 45.0,
+    "zemmour": 5.0
+   },
+   "Nicolas Dupont-Aignan": {
+    "arthaud": 0.5,
+    "melenchon": 0.5,
+    "roussel": 0.5,
+    "tondelier": 1.0,
+    "faure": 0.5,
+    "attal": 3.0,
+    "retailleau": 9.0,
+    "le-pen": 31.0,
+    "zemmour": 3.0
+   },
+   "Marine Le Pen": {
+    "arthaud": 0.5,
+    "melenchon": 1.0,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "faure": 0.5,
+    "attal": 1.0,
+    "retailleau": 3.0,
+    "le-pen": 91.0,
+    "zemmour": 3.0
+   },
+   "Eric Zemmour": {
+    "arthaud": 0.5,
+    "melenchon": 2.0,
+    "roussel": 0.5,
+    "tondelier": 0.5,
+    "faure": 0.5,
+    "attal": 1.0,
+    "retailleau": 10.0,
+    "le-pen": 40.0,
+    "zemmour": 43.0
+   }
+  }
+ }
+}

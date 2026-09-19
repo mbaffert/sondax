@@ -50,8 +50,21 @@
   var pathname = window.location.pathname;
   var page = pathname.split('/').pop() || 'index.html';
 
+  var candidatsPages = [
+    { slug: 'le-pen', nom: 'Marine Le Pen' },
+    { slug: 'philippe', nom: '\u00c9douard Philippe' },
+    { slug: 'melenchon', nom: 'Jean-Luc M\u00e9lenchon' },
+    { slug: 'glucksmann', nom: 'Rapha\u00ebl Glucksmann' },
+    { slug: 'attal', nom: 'Gabriel Attal' },
+    { slug: 'retailleau', nom: 'Bruno Retailleau' },
+    { slug: 'tondelier', nom: 'Marine Tondelier' },
+    { slug: 'zemmour', nom: '\u00c9ric Zemmour' },
+    { slug: 'roussel', nom: 'Fabien Roussel' }
+  ];
+
   var navItems = [
     { label: 'Accueil', href: 'index.html', match: ['index.html', ''] },
+    { label: 'Candidats', href: '#', match: candidatsPages.map(function(c) { return c.slug + '.html'; }), dropdown: true },
     { label: 'Sondages', href: 'sondages.html', match: ['sondages.html'] },
     { label: 'M\u00e9thodologie', href: 'methodologie.html', match: ['methodologie.html'] },
     { label: 'Pr\u00e9c\u00e9dentes \u00e9lections', href: 'precedentes-elections.html', match: ['precedentes-elections.html'] }
@@ -72,10 +85,24 @@
     return false;
   }
 
+  // Build candidats hover menu
+  var candidatsMenuHTML = '<div class="menu-candidats">' +
+    '<span class="menu-candidats-label">Candidats</span>' +
+    '<div class="menu-panneau">';
+  for (var k = 0; k < candidatsPages.length; k++) {
+    var cp = candidatsPages[k];
+    candidatsMenuHTML += '<a href="' + baseHref + cp.slug + '.html">' + cp.nom + '</a>';
+  }
+  candidatsMenuHTML += '</div></div>';
+
   var navHTML = '';
   for (var i = 0; i < navItems.length; i++) {
-    var cls = isActive(navItems[i]) ? ' class="is-active"' : '';
-    navHTML += '<a href="' + baseHref + navItems[i].href + '"' + cls + '>' + navItems[i].label + '</a>';
+    if (navItems[i].dropdown) {
+      navHTML += candidatsMenuHTML;
+    } else {
+      var cls = isActive(navItems[i]) ? ' class="is-active"' : '';
+      navHTML += '<a href="' + baseHref + navItems[i].href + '"' + cls + '>' + navItems[i].label + '</a>';
+    }
   }
 
   // --- Stats ---
@@ -145,8 +172,12 @@
 
   html += '<nav class="sh-mobile-nav">';
   for (var j = 0; j < navItems.length; j++) {
-    var cls2 = isActive(navItems[j]) ? ' class="is-active"' : '';
-    html += '<a href="' + baseHref + navItems[j].href + '"' + cls2 + '>' + navItems[j].label + '</a>';
+    if (navItems[j].dropdown) {
+      html += candidatsMenuHTML;
+    } else {
+      var cls2 = isActive(navItems[j]) ? ' class="is-active"' : '';
+      html += '<a href="' + baseHref + navItems[j].href + '"' + cls2 + '>' + navItems[j].label + '</a>';
+    }
   }
   html += '</nav>';
 
@@ -161,6 +192,20 @@
     btn.addEventListener('click', function () {
       var open = mobileNav.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  // Toggle menu on click, close on outside click
+  var menuLabel = el && el.querySelector('.sh-nav .menu-candidats-label');
+  var menuWrap = menuLabel && menuLabel.parentElement;
+  if (menuLabel) {
+    menuLabel.addEventListener('click', function () {
+      menuWrap.classList.toggle('is-open');
+    });
+    document.addEventListener('click', function (e) {
+      if (menuWrap && !menuWrap.contains(e.target)) {
+        menuWrap.classList.remove('is-open');
+      }
     });
   }
 })();

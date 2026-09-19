@@ -28,17 +28,22 @@ CONFIG_REF = {"attal", "philippe"}
 def score_candidat(sondage, candidat):
     """Score d'un candidat dans un sondage.
 
-    Priorité aux hypothèses T1 de la configuration de référence (contenant
-    CONFIG_REF). Fallback sur les hypothèses avec le plus de candidats testés.
-    En cas d'égalité, moyenne des hypothèses ex æquo.
+    Utilise l'hypothèse T1 marquée "principale": true (posée par principale.py).
+    Fallback : priorité CONFIG_REF, puis hypothèse avec le plus de candidats.
 
     Retourne (score, is_ref) ou (None, None) si absent.
-    is_ref vaut True si le score vient d'une hypothèse de référence."""
+    is_ref vaut True si le score vient de l'hypothèse principale ou de référence."""
     t1 = [h for h in sondage["hypotheses"]
           if h["tour"] == 1 and candidat in h["scores"]]
     if not t1:
         return None, None
-    # Priorité : hypothèses contenant la config de référence
+
+    # Priorité : hypothèse principale
+    principale = [h for h in t1 if h.get("principale")]
+    if principale:
+        return principale[0]["scores"][candidat], True
+
+    # Fallback : hypothèses contenant la config de référence
     ref = [h for h in t1 if CONFIG_REF.issubset(h["scores"].keys())]
     is_ref = bool(ref)
     pool = ref if ref else t1

@@ -4,24 +4,24 @@ window.HEADER_DATA = {
   "terrainFin": "2026-09-10",
   "terrainLabel": "10 septembre 2026",
   "terrainLabelMobile": "10 septembre",
-  "hypDistinctive": "Attal / Hollande",
+  "hypDistinctive": "Philippe / Glucksmann / Attal",
   "sondageId": "harris-2026-09-10",
   "candidates": [
     {
       "name": "Marine Le Pen",
-      "score": "36,0"
+      "score": "33,0"
     },
     {
       "name": "Jean-Luc Mélenchon",
-      "score": "17,0"
+      "score": "16,0"
     },
     {
-      "name": "Gabriel Attal",
-      "score": "15,0"
+      "name": "Édouard Philippe",
+      "score": "14,0"
     },
     {
-      "name": "Bruno Retailleau",
-      "score": "10,0"
+      "name": "Raphaël Glucksmann",
+      "score": "9,0"
     }
   ],
   "pollCount": 29,

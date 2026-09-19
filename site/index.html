@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/header.css">
+<link rel="stylesheet" href="assets/header.css?v=3">
 <style>
   :root {
     --bleu-vif: #0C6CF2;
@@ -86,6 +86,8 @@
   .candidat-cb .cb-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; gap: 0.3em; }
   .candidat-cb .cb-name .pastille { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
   .candidat-cb .cb-delta { font-size: 0.85em; text-align: right; color: var(--gris); }
+  .cb-page-link { text-decoration: none; color: var(--gris); font-weight: 600; font-size: 1.1em; line-height: 1; padding: 0 2px; }
+  .cb-page-link:hover { color: var(--bleu-vif, #2563eb); }
   .candidat-cb.no-delta { grid-template-columns: auto 1fr; }
   .cb-col-header { display: grid; grid-template-columns: auto 1fr 3.5em; align-items: end; gap: 0 0.3em; }
   .cb-col-header .cb-delta-header { font-size: 0.75em; color: var(--gris);
@@ -181,8 +183,8 @@
 <body>
 
 <div id="site-header" class="sh"></div>
-<script src="assets/header-data.js"></script>
-<script src="assets/header.js"></script>
+<script src="assets/header-data.js?v=3"></script>
+<script src="assets/header.js?v=3"></script>
 
 <nav class="sub-nav" id="sub-nav">
   <a href="#bloc-sondages">Intentions de vote</a>
@@ -198,7 +200,7 @@
     <div class="section-label">Agrégation</div>
     <h2>Sondages du premier tour de la présidentielle 2027</h2>
     <!-- BEGIN:premier-tour -->
-    <p class="subtitle">Marine Le Pen arrive en tête des sondages du premier tour de la présidentielle 2027 avec 33,3 % des intentions de vote, devant Jean-Luc Mélenchon (16,0 %) et Édouard Philippe (15,4 %). Cette moyenne pondère les 10 sondages publiés depuis le 11 août 2026 par 6 instituts : Cluster17, Elabe, Harris, Ifop, Ipsos et OpinionWay. Le Pen gagne 1,4 point en trois mois.</p>
+    <p class="subtitle">Marine Le Pen arrive en tête des sondages du premier tour de la présidentielle 2027 avec 32,9 % des intentions de vote, devant Jean-Luc Mélenchon (15,7 %) et Édouard Philippe (15,0 %). Cette moyenne pondère les 10 sondages publiés depuis le 11 août 2026 par 6 instituts : Cluster17, Elabe, Harris, Ifop, Ipsos et OpinionWay. Le Pen gagne 1,1 point en trois mois.</p>
     <p class="subtitle">Le premier tour de l’élection présidentielle se tient le dimanche 18 avril 2027. Les deux candidats arrivés en tête s’affrontent au second tour, sauf si l’un obtient la majorité absolue des suffrages exprimés dès le premier tour — ce qui n’est jamais arrivé sous la Vᵉ République. La liste officielle des candidats ne sera connue qu’après la clôture des parrainages, le 12 mars 2027 : les instituts testent d’ici là des hypothèses de candidatures, qui varient d’un sondage à l’autre.</p>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Élection présidentielle française 2027 — premier tour", "startDate": "2027-04-18", "location": {"@type": "Country", "name": "France"}}</script>
 <!-- END:premier-tour -->
@@ -208,7 +210,6 @@
       <div class="periode-group">
         <button data-months="3">3 mois</button>
         <button data-months="6" class="active">6 mois</button>
-        <button data-since="2026-01-01">Depuis jan. 2026</button>
         <button data-all="1">Tout</button>
       </div>
       <input type="date" class="date-libre" title="Date de début libre">
@@ -272,7 +273,6 @@
       <div class="periode-group">
         <button data-months="3">3 mois</button>
         <button data-months="6" class="active">6 mois</button>
-        <button data-since="2026-01-01">Depuis jan. 2026</button>
         <button data-all="1">Tout</button>
       </div>
       <input type="date" class="date-libre" title="Date de début libre">
@@ -311,14 +311,15 @@
       <summary style="cursor:pointer;font-size:13.5px;font-weight:500;color:var(--bleu-vif);padding:8px 0;list-style:none;">Voir les chiffres</summary>
       <!-- BEGIN:fiche-scores -->
       <table class="t2-table" id="fiche-scores-table" style="max-width:420px;">
-        <tr><td>Marine Le Pen</td><td style="text-align:right;font-variant-numeric:tabular-nums;">36,0 %</td></tr>
-        <tr><td>Jean-Luc Mélenchon</td><td style="text-align:right;font-variant-numeric:tabular-nums;">17,0 %</td></tr>
-        <tr><td>Gabriel Attal</td><td style="text-align:right;font-variant-numeric:tabular-nums;">15,0 %</td></tr>
-        <tr><td>Bruno Retailleau</td><td style="text-align:right;font-variant-numeric:tabular-nums;">10,0 %</td></tr>
-        <tr><td>François Hollande</td><td style="text-align:right;font-variant-numeric:tabular-nums;">7,0 %</td></tr>
+        <tr><td>Marine Le Pen</td><td style="text-align:right;font-variant-numeric:tabular-nums;">33,0 %</td></tr>
+        <tr><td>Jean-Luc Mélenchon</td><td style="text-align:right;font-variant-numeric:tabular-nums;">16,0 %</td></tr>
+        <tr><td>Édouard Philippe</td><td style="text-align:right;font-variant-numeric:tabular-nums;">14,0 %</td></tr>
+        <tr><td>Raphaël Glucksmann</td><td style="text-align:right;font-variant-numeric:tabular-nums;">9,0 %</td></tr>
+        <tr><td>Gabriel Attal</td><td style="text-align:right;font-variant-numeric:tabular-nums;">8,0 %</td></tr>
+        <tr><td>Bruno Retailleau</td><td style="text-align:right;font-variant-numeric:tabular-nums;">7,0 %</td></tr>
         <tr><td>Éric Zemmour</td><td style="text-align:right;font-variant-numeric:tabular-nums;">5,0 %</td></tr>
-        <tr><td>Marine Tondelier</td><td style="text-align:right;font-variant-numeric:tabular-nums;">4,0 %</td></tr>
-        <tr><td>Fabien Roussel</td><td style="text-align:right;font-variant-numeric:tabular-nums;">3,0 %</td></tr>
+        <tr><td>Marine Tondelier</td><td style="text-align:right;font-variant-numeric:tabular-nums;">3,0 %</td></tr>
+        <tr><td>Fabien Roussel</td><td style="text-align:right;font-variant-numeric:tabular-nums;">2,0 %</td></tr>
         <tr><td>Nicolas Dupont-Aignan</td><td style="text-align:right;font-variant-numeric:tabular-nums;">2,0 %</td></tr>
         <tr><td>Nathalie Arthaud</td><td style="text-align:right;font-variant-numeric:tabular-nums;">1,0 %</td></tr>
       </table>
@@ -380,6 +381,7 @@
 <script>
 const NB_DEFAULT = 4;
 const Y_MIN_MAX = 10;
+const PAGES_CANDIDATS = new Set(["attal","glucksmann","le-pen","melenchon","philippe","retailleau","roussel","tondelier","zemmour"]);
 
 let CANDIDATS = null;
 
@@ -539,7 +541,6 @@ class BlocChart {
     const active = this.periodeEl.querySelector('button.active');
     if (active) {
       if (active.dataset.all) return this.dateDebut;
-      if (active.dataset.since) return active.dataset.since;
       if (active.dataset.months) {
         const fin = new Date(this.dateFin);
         fin.setMonth(fin.getMonth() - parseInt(active.dataset.months));
@@ -560,7 +561,6 @@ class BlocChart {
         if (input) input.value = '';
         if (this.periodeEventPrefix) {
           const label = btn.dataset.months ? btn.dataset.months + 'm'
-            : btn.dataset.since ? 'annee'
             : btn.dataset.all ? 'tout' : 'autre';
           trackEvent(this.periodeEventPrefix + '/' + label);
         }
@@ -569,6 +569,10 @@ class BlocChart {
     });
     const input = this.periodeEl.querySelector('.date-libre');
     if (input) {
+      // Bornes calculées depuis les données (min = plus ancien, max = aujourd'hui)
+      if (this.dateDebut) input.min = this.dateDebut;
+      input.max = new Date().toISOString().slice(0, 10);
+      if (this.dateDebut) input.placeholder = this.dateDebut;
       input.addEventListener('change', () => {
         this.periodeEl.querySelectorAll('button').forEach(b => b.classList.remove('active'));
         if (this.periodeEventPrefix) trackEvent(this.periodeEventPrefix + '/libre');
@@ -640,7 +644,10 @@ class BlocChart {
 
       const nameSpan = document.createElement('span');
       nameSpan.className = 'cb-name';
-      nameSpan.innerHTML = `<span class="pastille" style="background:${col}"></span> ${nomCourt(cid)}`;
+      const pageLink = PAGES_CANDIDATS.has(cid)
+        ? ` <a href="${cid}.html" class="cb-page-link" title="Fiche ${nomCourt(cid)}" onclick="event.stopPropagation()">›</a>`
+        : '';
+      nameSpan.innerHTML = `<span class="pastille" style="background:${col}"></span> ${nomCourt(cid)}${pageLink}`;
 
       label.appendChild(cb);
       label.appendChild(nameSpan);

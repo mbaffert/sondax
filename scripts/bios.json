@@ -1,0 +1,110 @@
+{
+ "le-pen": {
+  "nom": "Marine Le Pen",
+  "parti": "Rassemblement national",
+  "couleur": "#0D378A",
+  "naissance": "1968-08-05",
+  "bio": [
+   "<b>Députée du Pas-de-Calais</b> depuis 2017, présidente du Rassemblement national de 2011 à 2021.",
+   "<b>Trois candidatures précédentes</b> : 2012 (17,9&nbsp;%), 2017 (21,3&nbsp;%, puis 33,9&nbsp;% au second tour), 2022 (23,2&nbsp;%, puis 41,5&nbsp;%).",
+   "<b>Candidate déclarée</b> depuis le 7 juillet 2026."
+  ],
+  "genre": "f"
+ },
+ "melenchon": {
+  "nom": "Jean-Luc Mélenchon",
+  "parti": "La France insoumise",
+  "couleur": "#CC2443",
+  "naissance": "1951-08-19",
+  "bio": [
+   "<b>Fondateur de La France insoumise</b> en 2016, ancien sénateur de l'Essonne et ancien député des Bouches-du-Rhône.",
+   "<b>Trois candidatures précédentes</b> : 2012 (11,1&nbsp;%), 2017 (19,6&nbsp;%), 2022 (22,0&nbsp;%, à 1,2 point du second tour).",
+   "<b>Candidat déclaré</b> depuis le 3 mai 2026, désigné par les élus de La France insoumise."
+  ],
+  "genre": "m"
+ },
+ "philippe": {
+  "nom": "Édouard Philippe",
+  "parti": "Horizons",
+  "couleur": "#00B0F0",
+  "naissance": "1970-11-28",
+  "bio": [
+   "<b>Maire du Havre</b>, Premier ministre de 2017 à 2020, fondateur d'Horizons en 2021.",
+   "<b>Première participation</b> à une élection présidentielle.",
+   "<b>Candidat déclaré</b> depuis le 3 septembre 2024, le premier à s'être lancé."
+  ],
+  "genre": "m"
+ },
+ "glucksmann": {
+  "nom": "Raphaël Glucksmann",
+  "parti": "Place publique",
+  "couleur": "#FF8080",
+  "naissance": "1979-04-21",
+  "bio": [
+   "<b>Député européen</b> depuis 2019, cofondateur de Place publique, essayiste.",
+   "<b>Tête de liste</b> de l'alliance Place publique – Parti socialiste aux européennes de 2024 (13,8&nbsp;%).",
+   "<b>Candidat déclaré</b> depuis le 23 août 2026, en passant par la primaire organisée avec le Parti socialiste."
+  ],
+  "genre": "m"
+ },
+ "attal": {
+  "nom": "Gabriel Attal",
+  "parti": "Renaissance",
+  "couleur": "#7E57C2",
+  "naissance": "1989-03-16",
+  "bio": [
+   "<b>Premier ministre</b> de janvier à septembre 2024, le plus jeune de la V<sup>e</sup> République.",
+   "<b>Secrétaire général de Renaissance</b> depuis décembre 2024, après avoir été porte-parole du gouvernement puis ministre de l'Éducation nationale.",
+   "<b>Candidat déclaré</b> depuis le 22 mai 2026. Première participation."
+  ],
+  "genre": "m"
+ },
+ "retailleau": {
+  "nom": "Bruno Retailleau",
+  "parti": "Les Républicains",
+  "couleur": "#0066CC",
+  "naissance": "1960-11-20",
+  "bio": [
+   "<b>Sénateur de la Vendée</b>, président des Républicains depuis 2025.",
+   "<b>Ministre de l'Intérieur</b> de 2024 à 2025.",
+   "<b>Candidat déclaré</b> depuis le 19 avril 2026. Première participation."
+  ],
+  "genre": "m"
+ },
+ "zemmour": {
+  "nom": "Éric Zemmour",
+  "parti": "Reconquête",
+  "couleur": "#8A2BE2",
+  "naissance": "1958-08-31",
+  "bio": [
+   "<b>Journaliste et essayiste</b>, fondateur de Reconquête en 2021.",
+   "<b>Une candidature précédente</b> : 2022 (7,1&nbsp;%, quatrième au premier tour).",
+   "<b>Candidature non déclarée</b> à ce jour."
+  ],
+  "genre": "m"
+ },
+ "tondelier": {
+  "nom": "Marine Tondelier",
+  "parti": "Les Écologistes",
+  "couleur": "#00A94F",
+  "naissance": "1986-09-26",
+  "bio": [
+   "<b>Secrétaire nationale des Écologistes</b> depuis décembre 2022, conseillère municipale de Hénin-Beaumont.",
+   "<b>Première participation</b> à une élection présidentielle.",
+   "<b>Candidate déclarée</b> depuis le 22 octobre 2025, désignée par son parti en décembre 2025. Première participation."
+  ],
+  "genre": "f"
+ },
+ "roussel": {
+  "nom": "Fabien Roussel",
+  "parti": "Parti communiste français",
+  "couleur": "#DD0000",
+  "naissance": "1969-04-16",
+  "bio": [
+   "<b>Secrétaire national du PCF</b> depuis 2018, ancien député du Nord.",
+   "<b>Une candidature précédente</b> : 2022 (2,3&nbsp;%).",
+   "<b>Candidat déclaré</b> depuis le 6 septembre 2026."
+  ],
+  "genre": "m"
+ }
+}

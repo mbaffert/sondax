@@ -379,9 +379,13 @@ où il sort de la fenêtre, et sa sortie ne se voit pas.
   du temps. Une valeur fragile signalée comme telle informe davantage qu'un trou.
 
 **Période affichée.** L'utilisateur choisit la date de début de la courbe, par raccourcis
-(3 mois, 6 mois, depuis le 1er janvier, tout) ou par date libre. **Le site ouvre sur
-6 mois par défaut** : c'est la période la mieux fournie en sondages, et le réglage reste
-pertinent à mesure que leur fréquence augmente, contrairement à une date fixe.
+(3 mois, 6 mois, tout) ou par date libre. **Le site ouvre sur 6 mois par défaut** :
+c'est la période la mieux fournie en sondages, et le réglage reste pertinent à mesure
+que leur fréquence augmente, contrairement à une date fixe. Le champ de date libre est
+borné : `min` = `terrain_fin` du sondage le plus ancien, `max` = date du jour. Ces
+bornes sont calculées depuis les données, jamais écrites en dur. Le bloc Polymarket
+a son propre sélecteur de période, avec ses propres bornes calculées sur
+`polymarket.json`.
 
 La collecte, elle, n'est jamais limitée dans le temps : le parser conserve tous les
 sondages de la page, y compris antérieurs à la période affichée par défaut.

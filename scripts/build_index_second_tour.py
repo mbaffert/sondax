@@ -184,9 +184,29 @@ def generate_chapeau(duels, candidats):
         cid_a, cid_b = pair(reversals[0], candidats)
         nom_a = nom_court(cid_a, candidats)
         nom_b = nom_court(cid_b, candidats)
+        # Qui menait d'abord, et qui mène maintenant
+        first = duels[reversals[0]][-1]["scores"]
+        last = duels[reversals[0]][0]["scores"]
+        first_leader = nom_a if first.get(cid_a, 0) >= first.get(cid_b, 0) else nom_b
+        last_leader = nom_a if last.get(cid_a, 0) >= last.get(cid_b, 0) else nom_b
+        # Mois de la première et de la dernière mesure
+        first_date = duels[reversals[0]][-1]["terrain_fin"]
+        first_mois = MOIS[int(first_date.split("-")[1]) - 1]
+        # Depuis quand le leader actuel mène-t-il sans interruption ?
+        entries = duels[reversals[0]]
+        streak_start = entries[0]["terrain_fin"]
+        for e in entries[1:]:
+            e_leader = cid_a if e["scores"].get(cid_a, 0) >= e["scores"].get(cid_b, 0) else cid_b
+            current_leader_cid = cid_a if last.get(cid_a, 0) >= last.get(cid_b, 0) else cid_b
+            if e_leader == current_leader_cid:
+                streak_start = e["terrain_fin"]
+            else:
+                break
+        streak_mois = MOIS[int(streak_start.split("-")[1]) - 1]
         phrases.append(
-            f"Le duel {nom_a}\u00a0\u2013\u00a0{nom_b} a changé de sens "
-            f"depuis le premier sondage."
+            f"{first_leader} menait le duel {nom_a}\u00a0\u2013\u00a0{nom_b} "
+            f"en {first_mois}\u00a0; {last_leader} l\u2019emporte dans toutes "
+            f"les mesures depuis {streak_mois}."
         )
     elif tightest_slug and n_duels > 1:
         cid_a, cid_b = pair(tightest_slug, candidats)
@@ -339,10 +359,71 @@ def generate_selector_html():
 # Assemblage et injection
 # ---------------------------------------------------------------------------
 
+def split_bardella_duels(duels, candidats):
+    """Sépare les duels impliquant Bardella (prédécesseur RN) des duels actuels."""
+    # Trouver les candidats qui ont un successeur (ex. bardella → le-pen)
+    predecessors = set()
+    for slug, c in candidats.items():
+        pred = c.get("succede_a")
+        if pred:
+            predecessors.add(pred)
+
+    current = {}
+    bardella = {}
+    for slug, entries in duels.items():
+        cids = slug.split("-") if "-" in slug else []
+        if any(c in predecessors for c in cids):
+            bardella[slug] = entries
+        else:
+            current[slug] = entries
+    return current, bardella
+
+
+def generate_bardella_section(bardella_duels, candidats):
+    """Génère un bloc repliable pour les duels Bardella."""
+    if not bardella_duels:
+        return ""
+
+    # Période couverte
+    all_dates = []
+    for entries in bardella_duels.values():
+        for e in entries:
+            all_dates.append(e["terrain_fin"])
+    all_dates.sort()
+    first_mois = MOIS[int(all_dates[0].split("-")[1]) - 1]
+    last_mois = MOIS[int(all_dates[-1].split("-")[1]) - 1]
+    first_annee = all_dates[0].split("-")[0]
+
+    slugs = sorted_duel_slugs(bardella_duels)
+    rows = []
+    for slug in slugs:
+        rows.append(format_duel_row(slug, bardella_duels[slug], candidats))
+
+    table = (
+        '      <table class="t2-table t2-duels">\n'
+        f'  {HEADER_ROW}\n'
+        + "\n".join(rows) + "\n"
+        '      </table>'
+    )
+
+    return (
+        f'    <details class="duels-repli">\n'
+        f'      <summary>Duels testés avec Jordan Bardella ({first_mois}\u00a0\u2013\u00a0{last_mois} {first_annee})</summary>\n'
+        f'      <p class="subtitle" style="font-size:13px;margin:8px 0 6px;">Les instituts testaient alors Bardella comme candidat du RN. '
+        f'Marine Le Pen l\u2019a remplacé à partir de juillet 2026.</p>\n'
+        f'{table}\n'
+        f'    </details>'
+    )
+
+
 def generate_bloc(duels, candidats):
+    # Séparer les duels Bardella des duels actuels
+    current_duels, bardella_duels = split_bardella_duels(duels, candidats)
+
     factual = generate_factual_text()
-    chapeau = generate_chapeau(duels, candidats)
-    table_section = generate_table_section(duels, candidats)
+    chapeau = generate_chapeau(current_duels, candidats)
+    table_section = generate_table_section(current_duels, candidats)
+    bardella_section = generate_bardella_section(bardella_duels, candidats)
     selector = generate_selector_html()
 
     return (
@@ -352,6 +433,7 @@ def generate_bloc(duels, candidats):
         f'    {factual}\n'
         f'    {chapeau}\n'
         f'{table_section}\n'
+        f'{bardella_section}\n'
         f'{selector}\n'
         '  </div>'
     )

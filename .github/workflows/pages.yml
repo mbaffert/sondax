@@ -28,6 +28,7 @@ jobs:
 
       - name: Générer les données dérivées
         run: |
+          python scripts/principale.py
           python scripts/series.py
           python scripts/series_historique.py
           python scripts/build_header.py
@@ -36,6 +37,7 @@ jobs:
           python scripts/build_index_premier_tour.py
           python scripts/build_sondages_page.py
           python scripts/build_elections_chapeaux.py
+          python scripts/build_pages_candidats.py
 
       - name: Préparer l'artefact
         run: |

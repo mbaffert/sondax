@@ -183,7 +183,7 @@ def generate_chapeau(series_data, sondages, candidats):
             nom_court = candidats.get(leader_cid, {}).get("nom", leader_cid)
             if abs(delta) >= 0.1:
                 delta_fmt = f"{abs(delta):.1f}".replace(".", ",")
-                pts = "point" if abs(delta) < 1.5 else "points"
+                pts = "point" if abs(delta) < 2 else "points"
                 if delta > 0:
                     phrase3 = f"{nom_court} gagne {delta_fmt}\u00a0{pts} en trois mois."
                 else:

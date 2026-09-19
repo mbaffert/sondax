@@ -143,6 +143,16 @@
   .duels-repli summary::before { content: '▸ '; }
   .duels-repli[open] summary::before { content: '▾ '; }
 
+  /* Galerie candidats */
+  .galerie-candidats { display: grid; grid-template-columns: repeat(9, 1fr); gap: 10px; text-align: center; }
+  .galerie-item { display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; transition: transform 0.15s; }
+  .galerie-item:hover { transform: translateY(-2px); text-decoration: none; }
+  .galerie-item img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--cand-col); }
+  .galerie-item span { font-size: 12px; color: var(--gris); line-height: 1.3; }
+  .galerie-item:hover span { color: var(--texte); }
+  @media (max-width: 700px) { .galerie-candidats { grid-template-columns: repeat(5, 1fr); } }
+  @media (max-width: 420px) { .galerie-candidats { grid-template-columns: repeat(3, 1fr); gap: 10px 8px; } }
+
   footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
   footer .footer-inner { max-width: 1180px; margin: 0 auto; display: grid;
     grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 26px; }
@@ -200,11 +210,10 @@
     <div class="section-label">Agrégation</div>
     <h2>Sondages du premier tour de la présidentielle 2027</h2>
     <!-- BEGIN:premier-tour -->
-    <p class="subtitle">Marine Le Pen arrive en tête des sondages du premier tour de la présidentielle 2027 avec 33,4 % des intentions de vote, devant Jean-Luc Mélenchon (16,0 %) et Édouard Philippe (14,8 %). Cette moyenne pondère les 10 sondages publiés depuis le 11 août 2026 par 6 instituts : Cluster17, Elabe, Harris, Ifop, Ipsos et OpinionWay. Le Pen gagne 1,6 points en trois mois.</p>
+    <p class="subtitle">Marine Le Pen arrive en tête des sondages du premier tour de la présidentielle 2027 avec 33,4 % des intentions de vote, devant Jean-Luc Mélenchon (16,0 %) et Édouard Philippe (14,8 %). Cette moyenne pondère les 10 sondages publiés depuis le 11 août 2026 par 6 instituts : Cluster17, Elabe, Harris, Ifop, Ipsos et OpinionWay. Le Pen gagne 1,6 point en trois mois.</p>
     <p class="subtitle">Le premier tour de l’élection présidentielle se tient le dimanche 18 avril 2027. Les deux candidats arrivés en tête s’affrontent au second tour, sauf si l’un obtient la majorité absolue des suffrages exprimés dès le premier tour — ce qui n’est jamais arrivé sous la Vᵉ République. La liste officielle des candidats ne sera connue qu’après la clôture des parrainages, le 12 mars 2027 : les instituts testent d’ici là des hypothèses de candidatures, qui varient d’un sondage à l’autre.</p>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Élection présidentielle française 2027 — premier tour", "startDate": "2027-04-18", "location": {"@type": "Country", "name": "France"}}</script>
 <!-- END:premier-tour -->
-    <p class="subtitle" style="margin-top:-10px;">Moyenne pondérée des sondages récents · <a href="methodologie.html" style="font-weight:500;">méthode</a></p>
     <div class="periode" data-bloc="sondages">
       <span>Période</span>
       <div class="periode-group">
@@ -215,7 +224,25 @@
       <input type="date" class="date-libre" title="Date de début libre">
     </div>
     <div class="chart-wrap"><canvas id="chart-sondages"></canvas></div>
+    <p class="subtitle" style="margin-top:4px;">Moyenne pondérée des sondages récents · <a href="methodologie.html" style="font-weight:500;">méthode</a></p>
     <div class="candidats" id="cb-sondages"></div>
+  </div>
+
+  <!-- Galerie candidats -->
+  <div class="bloc" id="bloc-candidats">
+    <div class="section-label">Candidats</div>
+    <h2>Sondages par candidat</h2>
+    <div class="galerie-candidats">
+      <a href="le-pen.html" class="galerie-item" style="--cand-col:#0D378A"><img src="photos/le-pen.jpg" alt="Le Pen" width="120" height="120" loading="lazy"><span>Le Pen</span></a>
+      <a href="melenchon.html" class="galerie-item" style="--cand-col:#CC2443"><img src="photos/melenchon.jpg" alt="Mélenchon" width="120" height="120" loading="lazy"><span>Mélenchon</span></a>
+      <a href="philippe.html" class="galerie-item" style="--cand-col:#00B7FF"><img src="photos/philippe.jpg" alt="Philippe" width="120" height="120" loading="lazy"><span>Philippe</span></a>
+      <a href="glucksmann.html" class="galerie-item" style="--cand-col:#E4003C"><img src="photos/glucksmann.jpg" alt="Glucksmann" width="120" height="120" loading="lazy"><span>Glucksmann</span></a>
+      <a href="attal.html" class="galerie-item" style="--cand-col:#7E57C2"><img src="photos/attal.jpg" alt="Attal" width="120" height="120" loading="lazy"><span>Attal</span></a>
+      <a href="retailleau.html" class="galerie-item" style="--cand-col:#0066CC"><img src="photos/retailleau.jpg" alt="Retailleau" width="120" height="120" loading="lazy"><span>Retailleau</span></a>
+      <a href="zemmour.html" class="galerie-item" style="--cand-col:#1A1A2E"><img src="photos/zemmour.jpg" alt="Zemmour" width="120" height="120" loading="lazy"><span>Zemmour</span></a>
+      <a href="tondelier.html" class="galerie-item" style="--cand-col:#00C853"><img src="photos/tondelier.jpg" alt="Tondelier" width="120" height="120" loading="lazy"><span>Tondelier</span></a>
+      <a href="roussel.html" class="galerie-item" style="--cand-col:#DD1111"><img src="photos/roussel.jpg" alt="Roussel" width="120" height="120" loading="lazy"><span>Roussel</span></a>
+    </div>
   </div>
 
   <!-- BEGIN:second-tour -->
@@ -224,13 +251,13 @@
     <h2>Second tour de l’élection présidentielle 2027</h2>
     <p class="subtitle">Le second tour se tient le dimanche 2 mai 2027. Est élu le candidat qui obtient le plus de voix parmi les suffrages exprimés, les votes blancs et nuls étant décomptés à part et sans effet sur le résultat.</p>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Élection présidentielle française 2027 — second tour", "startDate": "2027-05-02", "location": {"@type": "Country", "name": "France"}}</script>
-    <p class="subtitle">11 duels de second tour testés dans 14 sondages, pour un total de 51 mesures. Le Pen l’emporte dans les six duels où elle est testée. Le duel Le Pen – Philippe a changé de sens depuis le premier sondage.</p>
+    <p class="subtitle">6 duels de second tour testés dans 12 sondages, pour un total de 42 mesures. Le Pen l’emporte dans les six duels où elle est testée. Philippe menait le duel Le Pen – Philippe en mars ; Le Pen l’emporte dans toutes les mesures depuis mai.</p>
     <table class="t2-table t2-duels">
       <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Sondages</th><th scope="col">Dernière mesure</th></tr>
       <tr><td>Le Pen</td><td class="t2-score-cell">55,0 %</td><td>Philippe</td><td class="t2-score-cell">45,0 %</td><td>12</td><td>10/09/2026 (OpinionWay)</td></tr>
     </table>
     <details class="duels-repli">
-      <summary>Les dix autres duels testés</summary>
+      <summary>Les cinq autres duels testés</summary>
       <table class="t2-table t2-duels">
         <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Sondages</th><th scope="col">Dernière mesure</th></tr>
       <tr><td>Le Pen</td><td class="t2-score-cell">56,0 %</td><td>Attal</td><td class="t2-score-cell">44,0 %</td><td>11</td><td>10/09/2026 (Harris)</td></tr>
@@ -238,6 +265,13 @@
       <tr><td>Le Pen</td><td class="t2-score-cell">57,0 %</td><td>Glucksmann</td><td class="t2-score-cell">43,0 %</td><td>4</td><td>28/08/2026 (Elabe)</td></tr>
       <tr><td>Le Pen</td><td class="t2-score-cell">58,0 %</td><td>Retailleau</td><td class="t2-score-cell">42,0 %</td><td>3</td><td>25/08/2026 (Ifop)</td></tr>
       <tr><td>Le Pen</td><td class="t2-score-cell">54,0 %</td><td>Hollande</td><td class="t2-score-cell">46,0 %</td><td>1</td><td>25/08/2026 (Ifop)</td></tr>
+      </table>
+    </details>
+    <details class="duels-repli">
+      <summary>Duels testés avec Jordan Bardella (mars – mai 2026)</summary>
+      <p class="subtitle" style="font-size:13px;margin:8px 0 6px;">Les instituts testaient alors Bardella comme candidat du RN. Marine Le Pen l’a remplacé à partir de juillet 2026.</p>
+      <table class="t2-table t2-duels">
+        <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Sondages</th><th scope="col">Dernière mesure</th></tr>
       <tr><td>Bardella</td><td class="t2-score-cell">54,0 %</td><td>Philippe</td><td class="t2-score-cell">46,0 %</td><td>4</td><td>27/05/2026 (Harris)</td></tr>
       <tr><td>Bardella</td><td class="t2-score-cell">68,0 %</td><td>Mélenchon</td><td class="t2-score-cell">32,0 %</td><td>2</td><td>27/05/2026 (Harris)</td></tr>
       <tr><td>Bardella</td><td class="t2-score-cell">57,0 %</td><td>Attal</td><td class="t2-score-cell">43,0 %</td><td>1</td><td>27/05/2026 (Harris)</td></tr>

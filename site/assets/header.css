@@ -64,7 +64,7 @@
   gap: 20px;
 }
 
-.sh-nav a {
+.sh-nav > a {
   font-family: 'IBM Plex Sans', system-ui, sans-serif;
   font-size: 17px;
   font-weight: 500;
@@ -74,14 +74,57 @@
   border-bottom: 2px solid transparent;
 }
 
-.sh-nav a:hover {
+.sh-nav > a:hover {
   color: #0B2E6F;
   text-decoration: none;
 }
 
-.sh-nav a.is-active {
+.sh-nav > a.is-active {
   color: #0B2E6F;
   border-bottom-color: #0C6CF2;
+}
+
+/* Menu déroulant Candidats — hover + click */
+.menu-candidats { position: relative !important; display: inline-block !important; }
+
+.menu-candidats > .menu-candidats-label {
+  cursor: pointer;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 17px;
+  color: #66707D; font-weight: 500;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+.menu-candidats:hover > .menu-candidats-label,
+.menu-candidats.is-open > .menu-candidats-label { color: #0B2E6F; }
+
+.menu-candidats > .menu-panneau {
+  display: none;
+  position: absolute !important; top: calc(100% + 8px) !important; left: 0 !important;
+  z-index: 100; width: 230px;
+  flex-direction: column !important;
+  background: #fff; border: 1px solid #E3E5E0;
+  border-radius: 12px; padding: 6px;
+  box-shadow: 0 8px 24px rgba(32,38,50,.12);
+}
+/* Pont invisible pour combler le gap de 8px entre le label et le panneau */
+.menu-candidats > .menu-panneau::before {
+  content: "";
+  position: absolute; left: 0; right: 0; top: -10px; height: 10px;
+}
+.menu-candidats:hover > .menu-panneau,
+.menu-candidats.is-open > .menu-panneau {
+  display: flex !important;
+}
+.menu-candidats > .menu-panneau > a {
+  display: block !important; padding: 8px 12px; border-radius: 8px;
+  color: #202632; text-decoration: none !important; font-size: 14px;
+  white-space: nowrap; border-bottom: none !important;
+}
+.menu-candidats > .menu-panneau > a:hover { background: #F7F8F5; }
+
+@media (max-width: 620px) {
+  .menu-candidats > .menu-panneau { left: auto !important; right: 0 !important; }
 }
 
 .sh-stats {
@@ -533,6 +576,28 @@
   .sh-mobile-nav a.is-active {
     border-left: 3px solid #0C6CF2;
     padding-left: 13px;
+  }
+
+  /* Menu candidats dans le menu mobile */
+  .sh-mobile-nav .menu-candidats > .menu-candidats-label {
+    font-size: 14px;
+    padding: 10px 16px;
+    display: block;
+  }
+
+  .sh-mobile-nav .menu-candidats > .menu-panneau {
+    position: static !important;
+    width: auto !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 0 0 16px !important;
+  }
+
+  .sh-mobile-nav .menu-candidats > .menu-panneau > a {
+    font-size: 13px;
+    padding: 7px 16px;
+    border-radius: 0;
   }
 }
 

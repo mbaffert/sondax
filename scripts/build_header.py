@@ -64,38 +64,21 @@ JSONLD_T2 = {
 
 
 def select_hypothesis(sondage, candidats):
-    """Sélectionne la meilleure hypothèse T1 selon la règle du bandeau (SPEC §4).
+    """Sélectionne l'hypothèse T1 principale (SPEC §4).
 
-    1. Plus de candidats déclarés (declare_le <= terrain_fin)
-    2. Échantillon le plus grand
-    3. Première dans l'ordre du fichier
+    Utilise le champ "principale": true posé par principale.py.
+    Fallback sur la première hypothèse T1 si aucune n'est marquée.
     """
-    terrain_fin = sondage["terrain_fin"]
     t1 = [h for h in sondage["hypotheses"] if h.get("tour") == 1]
     if not t1:
         return None
 
-    def count_declared(hyp):
-        count = 0
-        for cid in hyp.get("candidats", list(hyp.get("scores", {}).keys())):
-            c = candidats.get(cid)
-            if not c:
-                continue
-            dl = c.get("declare_le")
-            if dl and dl <= terrain_fin:
-                count += 1
-        return count
+    # Chercher l'hypothèse marquée principale
+    for h in t1:
+        if h.get("principale"):
+            return h
 
-    def echantillon(hyp):
-        e = hyp.get("echantillon")
-        if e is not None:
-            return e
-        return sondage.get("echantillon") or 0
-
-    def sort_key(hyp):
-        return (-count_declared(hyp), -echantillon(hyp))
-
-    t1.sort(key=sort_key)
+    # Fallback : première hypothèse T1
     return t1[0]
 
 

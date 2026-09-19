@@ -1,0 +1,56 @@
+{
+  "attal": {
+    "fichier": "photos/attal.jpg",
+    "auteur": "Ismail Aissoub",
+    "licence": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Gabriel_Attal_2025_(close_crop).jpg"
+  },
+  "le-pen": {
+    "fichier": "photos/le-pen.jpg",
+    "auteur": "Vox España",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Marine_Le_Pen_2025_(cropped).jpg"
+  },
+  "philippe": {
+    "fichier": "photos/philippe.jpg",
+    "auteur": "Wasasaq8",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Edouard_Philippe_3x4_crop.jpg"
+  },
+  "retailleau": {
+    "fichier": "photos/retailleau.jpg",
+    "auteur": "Anthonymontardyfr",
+    "licence": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Bruno_Retailleau_-_Ministre_de_l%27Int%C3%A9rieur_fran%C3%A7ais_(cropped).jpg"
+  },
+  "melenchon": {
+    "fichier": "photos/melenchon.jpg",
+    "auteur": "jlm2017.fr",
+    "licence": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:M%C3%A9lenchon_2027_-_55261894422_(cropped).jpg"
+  },
+  "glucksmann": {
+    "fichier": "photos/glucksmann.jpg",
+    "auteur": "European Union 2024 - Source : EP",
+    "licence": "European Parliament",
+    "source": "https://commons.wikimedia.org/wiki/File:1720448398743_20240708_GLUCKSMANN_Raphael_FR_006.jpg"
+  },
+  "zemmour": {
+    "fichier": "photos/zemmour.jpg",
+    "auteur": "Anh De France",
+    "licence": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Portrait_d%27%C3%89ric_Zemmour,_avril_2022.jpg"
+  },
+  "tondelier": {
+    "fichier": "photos/tondelier.jpg",
+    "auteur": "Greenbox",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:20210819_tondelier.m-cr3.jpg"
+  },
+  "roussel": {
+    "fichier": "photos/roussel.jpg",
+    "auteur": "Zouhair NAKARA",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Roussel_Fabien_1.jpg"
+  }
+}

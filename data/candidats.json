@@ -123,7 +123,7 @@
       "victoire": "0xcfc6e088b78e695e831e094f7aa1197c16b2436e5984b12fb9286361804b8e1b",
       "second_tour": "0x3864d6f71c4eb72bf2510af694bfcdef8aef4ddb3001f59d2b4f1fefa0499ab8"
     },
-    "declare_le": null,
+    "declare_le": "2026-08-23",
     "prenom": "Raphaël",
     "genre": "m"
   },
@@ -235,7 +235,7 @@
       "victoire": "0x174ea87d011bfd0b230efc45e0b4d0756d38af91f0ffbab70013a582603c2be8",
       "second_tour": "0x7c9c13d0adc82f9e5aaa774e75ac1d08d181367c4cda17fa641293cec7d13bc2"
     },
-    "declare_le": null,
+    "declare_le": "2026-05-03",
     "prenom": "Jean-Luc",
     "genre": "m"
   },
@@ -299,7 +299,7 @@
       "victoire": "0x6ad63235931f80951a48f2338956dea7bb70c97f99a7bd03f5f501d6e4673842",
       "second_tour": "0xcd35d929f89fa8be97ca1d485a968a0eba0ba91b402869581f666d302ae2d983"
     },
-    "declare_le": null,
+    "declare_le": "2026-09-06",
     "prenom": "Fabien",
     "genre": "m"
   },
@@ -331,7 +331,7 @@
       "victoire": "0xf887472a2ac013ef61840034321aa5b46de87ac093ee77ecafca477fdbaadd45",
       "second_tour": "0xc27f87aff86fbc6e2b6f972e61592c4eb571532ac75675f966f2117199876527"
     },
-    "declare_le": null,
+    "declare_le": "2025-10-22",
     "prenom": "Marine",
     "genre": "f"
   },

@@ -6,10 +6,11 @@ moyenne pondérée glissante avec demi-vie adaptative, et écrit
 data/derived/series-t1.json.
 """
 
-import json, pathlib, datetime
+import json, pathlib, datetime, copy
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
+CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 OUTPUT_PATH = ROOT / "data" / "derived" / "series-t1.json"
 
 FENETRE_JOURS = 30
@@ -75,7 +76,34 @@ def choisir_demi_vie(ages):
     return DEMI_VIES[-1]
 
 
-def calculer_series(sondages_raw):
+def build_successions(candidats):
+    """Construit la table de fusion {prédécesseur: successeur} depuis candidats.json."""
+    merges = {}
+    for slug, c in candidats.items():
+        pred = c.get("succede_a")
+        if pred:
+            merges[pred] = slug
+    return merges
+
+
+def apply_successions(sondages_raw, merges):
+    """Remplace les clés prédécesseur par successeur dans tous les scores."""
+    if not merges:
+        return sondages_raw
+    result = copy.deepcopy(sondages_raw)
+    for s in result:
+        for h in s["hypotheses"]:
+            scores = h.get("scores", {})
+            for old, new in merges.items():
+                if old in scores and new not in scores:
+                    scores[new] = scores.pop(old)
+                elif old in scores:
+                    # Les deux existent (ne devrait pas arriver), garder le successeur
+                    del scores[old]
+    return result
+
+
+def calculer_series(sondages_raw, candidats=None):
     """Calcule les séries de tendance T1 à partir d'une liste de sondages.
 
     Retourne un dict avec date_debut, date_fin, fenetre_jours, demi_vies,
@@ -221,8 +249,9 @@ def calculer_series(sondages_raw):
 
 def main():
     sondages_raw = json.loads(SONDAGES_PATH.read_text())
+    candidats = json.loads(CANDIDATS_PATH.read_text())
 
-    output = calculer_series(sondages_raw)
+    output = calculer_series(sondages_raw, candidats)
     if output is None:
         print("Aucun sondage T1 trouvé.")
         return

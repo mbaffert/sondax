@@ -189,7 +189,9 @@
     },
     "declare_le": "2026-07-07",
     "prenom": "Marine",
-    "genre": "f"
+    "genre": "f",
+    "succede_a": "bardella",
+    "succession_le": "2026-07-07"
   },
   "lecornu": {
     "nom": "Lecornu",

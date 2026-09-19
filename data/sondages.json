@@ -40,7 +40,7 @@
           "bouamrane": 1.0,
           "lisnard": 2.0
         },
-        "principale": true
+        "principale": false
       },
       {
         "tour": 1,
@@ -110,7 +110,7 @@
           "bouamrane": 1.0,
           "lisnard": 2.0
         },
-        "principale": false
+        "principale": true
       },
       {
         "tour": 2,
@@ -986,7 +986,7 @@
           "le-pen": 30.0,
           "zemmour": 3.5
         },
-        "principale": false
+        "principale": true
       },
       {
         "tour": 1,
@@ -1050,7 +1050,7 @@
           "ruffin": 4.0,
           "lisnard": 4.0
         },
-        "principale": true
+        "principale": false
       }
     ],
     "revid": 239484326
@@ -1092,7 +1092,7 @@
           "le-pen": 34.0,
           "zemmour": 4.0
         },
-        "principale": false
+        "principale": true
       },
       {
         "tour": 1,
@@ -1154,7 +1154,7 @@
           "zemmour": 4.0,
           "lisnard": 3.0
         },
-        "principale": true
+        "principale": false
       },
       {
         "tour": 1,
@@ -2882,7 +2882,7 @@
           "bardella": 34.0,
           "zemmour": 3.0
         },
-        "principale": true
+        "principale": false
       },
       {
         "tour": 1,
@@ -2911,7 +2911,7 @@
           "bardella": 33.0,
           "zemmour": 3.0
         },
-        "principale": false
+        "principale": true
       },
       {
         "tour": 1,

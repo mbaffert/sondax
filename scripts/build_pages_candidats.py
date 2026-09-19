@@ -35,7 +35,7 @@ duels = json.loads((ROOT / "data" / "duels.json").read_text())
 
 # ---------- noms et pages ----------
 noms = {slug: c.get("nom", slug) for slug, c in candidats.items()}
-pages = {slug: fiche for slug, fiche in bios.items()}
+pages = {slug: fiche["nom"] for slug, fiche in bios.items()}
 
 # ---------- photos & crédits ----------
 
@@ -85,44 +85,72 @@ def serie_et_bruts(cid):
 
 
 def rangs_et_ecart(cid):
-    """Calcule les rangs quotidiens et l'écart avec le candidat devant."""
+    """Calcule les rangs quotidiens et l'écart avec le candidat devant.
+
+    Les rangs quotidiens viennent des séries lissées (position dans la tendance).
+    L'écart avec le candidat devant vient du dernier sondage réel où le candidat
+    figure dans l'hypothèse principale — pas des moyennes lissées, pour éviter
+    de comparer des candidats qui ne sont jamais testés ensemble.
+    """
     all_series = series_data["series"]
-    # Pour chaque jour, calculer le rang du candidat
+
+    # Exclure prédécesseurs/successeurs du classement (même créneau, jamais testés ensemble)
+    exclude = set()
+    c_data = candidats.get(cid, {})
+    if c_data.get("succede_a"):
+        exclude.add(c_data["succede_a"])
+    # Aussi exclure les successeurs de ce candidat
+    for s, sc in candidats.items():
+        if sc.get("succede_a") == cid:
+            exclude.add(s)
+
+    # Rangs quotidiens depuis les séries lissées
     pts = all_series.get(cid, [])
     rangs = []
     for i, p in enumerate(pts):
         if p["v"] is None:
             continue
         d = p["d"]
-        # Score de tous les candidats ce jour-là
         scores_jour = {}
         for c2, pts2 in all_series.items():
+            if c2 in exclude:
+                continue
             if i < len(pts2) and pts2[i]["v"] is not None:
                 scores_jour[c2] = pts2[i]["v"]
         if cid not in scores_jour:
             continue
-        # Rang (1 = premier)
         sorted_cids = sorted(scores_jour, key=lambda c: -scores_jour[c])
         rang = sorted_cids.index(cid) + 1
         rangs.append((d, rang))
 
-    # Écart avec le candidat juste devant (dernier jour)
+    # Écart : depuis le dernier sondage réel (hypothèse principale)
     ecart_devant = None
-    if rangs:
-        last_d = rangs[-1][0]
-        last_rang = rangs[-1][1]
-        if last_rang > 1:
-            # Trouver qui est devant
-            i_last = next(i for i, p in enumerate(pts) if p["d"] == last_d)
-            scores_jour = {}
-            for c2, pts2 in all_series.items():
-                if i_last < len(pts2) and pts2[i_last]["v"] is not None:
-                    scores_jour[c2] = pts2[i_last]["v"]
-            sorted_cids = sorted(scores_jour, key=lambda c: -scores_jour[c])
-            devant_cid = sorted_cids[last_rang - 2]
-            devant_nom = bios.get(devant_cid, {}).get("nom") or candidats.get(devant_cid, {}).get("nom", devant_cid)
-            ecart = scores_jour[devant_cid] - scores_jour[cid]
-            ecart_devant = (devant_nom, round(ecart, 1))
+    sondages_raw = json.loads((ROOT / "data" / "sondages.json").read_text())
+    # Parcourir les sondages du plus récent au plus ancien
+    sondages_raw.sort(key=lambda s: s["terrain_fin"], reverse=True)
+    for s in sondages_raw:
+        # Trouver l'hypothèse principale T1 contenant ce candidat
+        for h in s["hypotheses"]:
+            if h.get("tour") != 1 or not h.get("principale"):
+                continue
+            if cid not in h.get("scores", {}):
+                continue
+            # Classer les scores de cette hypothèse
+            scores = {k: v for k, v in h["scores"].items() if k != "autre"}
+            sorted_cids = sorted(scores, key=lambda c: -scores[c])
+            rang_ici = sorted_cids.index(cid) + 1
+            if rang_ici > 1:
+                devant_cid = sorted_cids[rang_ici - 2]
+                devant_nom = (bios.get(devant_cid, {}).get("nom")
+                              or candidats.get(devant_cid, {}).get("nom", devant_cid))
+                ecart = scores[devant_cid] - scores[cid]
+                ecart_devant = (devant_nom, round(ecart, 1))
+            break
+        if ecart_devant is not None or any(
+            h.get("tour") == 1 and h.get("principale") and cid in h.get("scores", {})
+            for h in s["hypotheses"]
+        ):
+            break  # On a trouvé le dernier sondage avec ce candidat
 
     return rangs, ecart_devant
 
@@ -296,6 +324,16 @@ for slug, fiche in bios.items():
 
     rangs, ecart_devant = rangs_et_ecart(slug)
 
+    # Succession (ex. Bardella → Le Pen)
+    c_data = candidats.get(slug, {})
+    pred = c_data.get("succede_a")
+    succession = None
+    if pred:
+        succ_date = c_data.get("succession_le")
+        pred_nom = candidats.get(pred, {}).get("prenom", "") + " " + candidats.get(pred, {}).get("nom", pred)
+        succ_nom = fiche["nom"]
+        succession = (succ_date, pred_nom.strip(), succ_nom)
+
     raw_html = generer.page(
         slug=slug,
         fiche=fiche,
@@ -309,6 +347,7 @@ for slug, fiche in bios.items():
         duels=duels,
         noms=noms,
         pages=pages,
+        succession=succession,
     )
 
     final_html = wrap_in_site_template(slug, fiche, raw_html)

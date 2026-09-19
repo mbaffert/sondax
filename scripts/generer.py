@@ -28,7 +28,7 @@ def age(naissance):
     return AUJ.year - n.year - ((AUJ.month, AUJ.day) < (n.month, n.day))
 
 # ---------- graphique ----------
-def svg(serie, bruts, couleur):
+def svg(serie, bruts, couleur, succession=None):
     W, H, MB, MT = 1000, 400, 30, 22
     xs = [dt.date.fromisoformat(d).toordinal() for d, _ in serie] + \
          [dt.date.fromisoformat(d).toordinal() for d, _ in bruts]
@@ -56,13 +56,25 @@ def svg(serie, bruts, couleur):
         cur = (cur.replace(day=28) + dt.timedelta(days=8)).replace(day=1)
     pts = "".join(f'<circle cx="{px(dt.date.fromisoformat(d).toordinal()):.1f}" cy="{py(v):.1f}" '
                   f'r="3" fill="{couleur}" opacity=".25"/>' for d, v in bruts)
+    repere = ""
+    if succession:
+        dsucc, avant, apres = succession
+        xo = dt.date.fromisoformat(dsucc).toordinal()
+        if x0 <= xo <= x1:
+            X = px(xo)
+            cote = "end" if X > W * 0.62 else "start"
+            dx = -8 if cote == "end" else 8
+            repere = (f'<line x1="{X:.1f}" y1="{MT}" x2="{X:.1f}" y2="{H-MB}" '
+                      f'stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" opacity=".45"/>'
+                      f'<text x="{X+dx:.1f}" y="{MT+13}" text-anchor="{cote}" font-size="11.5" '
+                      f'fill="currentColor" opacity=".7">{apres} remplace {avant}</text>')
     gid = "g" + slugify(couleur)
     return (f'<svg viewBox="0 0 {W} {H}" width="100%" preserveAspectRatio="none" '
             f'style="display:block;color:var(--texte)" role="img">'
             f'<defs><linearGradient id="{gid}" x1="0" y1="0" x2="0" y2="1">'
             f'<stop offset="0%" stop-color="{couleur}" stop-opacity=".28"/>'
             f'<stop offset="100%" stop-color="{couleur}" stop-opacity="0"/></linearGradient></defs>'
-            f'{grille}{mois}<path d="{aire}" fill="url(#{gid})"/>{pts}'
+            f'{grille}{mois}<path d="{aire}" fill="url(#{gid})"/>{pts}{repere}'
             f'<path d="{ligne}" fill="none" stroke="{couleur}" stroke-width="3.2" stroke-linecap="round"/>'
             f'<circle cx="{P[-1][0]:.1f}" cy="{P[-1][1]:.1f}" r="6" fill="{couleur}" '
             f'stroke="var(--carte)" stroke-width="2.5"/></svg>')
@@ -77,7 +89,7 @@ def rang_mot(n, f=False):
          11:"onzième",12:"douzième"}.get(n, f"{n}e")
     return m + "e" if (f and n == 1) else m
 
-def texte_evolution(nom, serie, n_sondages, rangs, ecart_devant, genre="m"):
+def texte_evolution(nom, serie, n_sondages, rangs, ecart_devant, genre="m", succession=None):
     F = (genre == "f")
     IL = "Elle" if F else "Il"
     cur = serie[-1][1]
@@ -117,6 +129,12 @@ def texte_evolution(nom, serie, n_sondages, rangs, ecart_devant, genre="m"):
     if mx[1] - mn[1] >= 1.5:
         p.append(f"Sur l'ensemble de la période mesurée, {'elle' if F else 'il'} oscille entre "
                  f"{fr(mn[1])} et {fr(mx[1])}&nbsp;%.")
+    if succession:
+        dsucc, avant, apres = succession
+        d = dt.date.fromisoformat(dsucc)
+        p.append(f"La courbe couvre la candidature de son parti : jusqu'au "
+                 f"{d.day} {MOIS_LONG[d.month-1]} {d.year}, les instituts testaient {avant}, "
+                 f"que {apres} a remplacé. Les deux n'ont jamais été proposés ensemble.")
     return " ".join(p)
 
 def nat_txt(v):
@@ -245,7 +263,7 @@ def liens_autres(slug, noms):
                       for s, n in noms.items() if s != slug)
 
 def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant,
-         duels=None, noms=None, pages=None):
+         duels=None, noms=None, pages=None, succession=None):
     nom = fiche["nom"]; coul = fiche["couleur"]
     pcs = {k: v[slug] for k, v in crois.get("pcs", {}).items()
            if slug in v and k in ORDRE_PCS}
@@ -303,8 +321,8 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
   <div class="pad" style="padding-bottom:12px"><div class="label">Tendance</div>
   <h2>Sondages {nom} : évolution des intentions de vote</h2>
   <div class="sous">Moyenne pondérée sur 30 jours · premier tour · hypothèse principale de chaque sondage</div></div>
-  <div class="chart">{svg(serie, bruts, coul)}</div>
-  <div class="txt" style="padding-bottom:26px"><p>{texte_evolution(nom, serie, n_sondages, rangs, ecart_devant, fiche.get("genre","m"))}</p></div>
+  <div class="chart">{svg(serie, bruts, coul, succession)}</div>
+  <div class="txt" style="padding-bottom:26px"><p>{texte_evolution(nom, serie, n_sondages, rangs, ecart_devant, fiche.get("genre","m"), succession)}</p></div>
 </section>
 {''.join(blocs)}
 <nav class="autres"><span>Autres candidats :</span> {liens_autres(slug, pages or {})}</nav>

@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #F7F8F5; }
+  * { box-sizing: border-box; }
+  a { color: #0C6CF2; text-decoration: none; }
+  a:hover { color: #0B2E6F; text-decoration: underline; }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: #F7F8F5; font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #202632; padding-bottom: 0;">
+
+  <header style="position: sticky; top: 0; z-index: 20; background: #0B2E6F; color: #fff; height: 62px; display: flex; align-items: center; gap: 28px; padding: 0 28px; box-shadow: 0 1px 0 rgba(255,255,255,0.12);">
+    <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+      <svg viewBox="0 0 40 24" style="width: 34px; height: 21px; display: block;">
+        <path d="M3 4 C 14 4, 26 20, 37 20" style="fill: none; stroke: #F23D5B; stroke-width: 5.5; stroke-linecap: round;"></path>
+        <path d="M3 20 C 14 20, 26 4, 37 4" style="fill: none; stroke: #4E96FF; stroke-width: 5.5; stroke-linecap: round;"></path>
+      </svg>
+      <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 23px; letter-spacing: -0.02em;">sondax</span>
+    </div>
+    <nav style="display: flex; align-items: center; gap: 4px; font-size: 14px; font-weight: 500;">
+      <a href="#intentions" style="color: #fff; padding: 7px 12px; border-radius: 7px; background: rgba(255,255,255,0.14);" style-hover="background: rgba(255,255,255,0.22)">Intentions</a>
+      <a href="#duels" style="color: rgba(255,255,255,0.72); padding: 7px 12px; border-radius: 7px;" style-hover="color: #fff; background: rgba(255,255,255,0.12)">Second tour</a>
+      <a href="#marches" style="color: rgba(255,255,255,0.72); padding: 7px 12px; border-radius: 7px;" style-hover="color: #fff; background: rgba(255,255,255,0.12)">Marchés</a>
+      <a href="#sondages" style="color: rgba(255,255,255,0.72); padding: 7px 12px; border-radius: 7px;" style-hover="color: #fff; background: rgba(255,255,255,0.12)">Sondages</a>
+    </nav>
+    <div style="margin-left: auto; display: flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: 0.04em; color: rgba(255,255,255,0.8); border: 1px solid rgba(255,255,255,0.28); border-radius: 999px; padding: 5px 12px 5px 10px; white-space: nowrap;">
+      <span style="width: 7px; height: 7px; border-radius: 50%; background: #4E96FF; display: block;"></span>
+      MAJ 08/09/2026
+    </div>
+  </header>
+
+  <section style="background: #0B2E6F; color: #fff; padding: 34px 28px 30px;">
+    <div style="max-width: 1180px; margin: 0 auto;">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap;">
+        <div style="max-width: 620px;">
+          <h1 style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 42px; line-height: 1.06; letter-spacing: -0.025em; margin: 0 0 12px;">La présidentielle 2027 en chiffres</h1>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <main style="max-width: 1180px; margin: 0 auto; padding: 26px 28px 0;">
+
+    <section id="intentions" style="background: #fff; border: 1px solid #E3E5E0; border-radius: 16px; padding: 26px 28px 22px; box-shadow: 0 1px 2px rgba(32,38,50,0.04);">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding-bottom: 18px; border-bottom: 1px solid #EDEEEA;">
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #0C6CF2; margin-bottom: 8px;">Agrégation</div>
+          <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 25px; letter-spacing: -0.02em; margin: 0 0 5px;">Intentions de vote</h2>
+          <p style="margin: 0; font-size: 13.5px; color: #66707D;">Moyenne pondérée par récence et taille d'échantillon</p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div style="display: flex; background: #F2F3F0; border-radius: 9px; padding: 3px;">
+            <sc-for list="{{ rounds }}" as="r" hint-placeholder-count="2">
+              <button onClick="{{ r.onClick }}" style="border: 0; cursor: pointer; font-family: inherit; font-size: 13.5px; font-weight: 500; padding: 7px 15px; border-radius: 7px; background: {{ r.bg }}; color: {{ r.fg }};">{{ r.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 14px; padding: 16px 0 6px; flex-wrap: wrap;">
+        <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #66707D;">Période</span>
+        <div style="display: flex; background: #F2F3F0; border-radius: 9px; padding: 3px;">
+          <sc-for list="{{ periods }}" as="p" hint-placeholder-count="4">
+            <button onClick="{{ p.onClick }}" style="border: 0; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 500; padding: 6px 13px; border-radius: 7px; white-space: nowrap; background: {{ p.bg }}; color: {{ p.fg }};">{{ p.label }}</button>
+          </sc-for>
+        </div>
+        <button onClick="{{ toggleCustom }}" style="border: 1px solid #DDDFDA; background: #fff; cursor: pointer; font-family: inherit; font-size: 13px; font-weight: 500; padding: 7px 13px; border-radius: 8px; color: #66707D;" style-hover="border-color: #0C6CF2; color: #0B2E6F">Personnalisé…</button>
+        <sc-if value="{{ customOpen }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 13px; color: #66707D;">
+            <input type="date" style="font-family: inherit; font-size: 13px; padding: 6px 9px; border: 1px solid #DDDFDA; border-radius: 8px; color: #202632;" />
+            <span>→</span>
+            <input type="date" style="font-family: inherit; font-size: 13px; padding: 6px 9px; border: 1px solid #DDDFDA; border-radius: 8px; color: #202632;" />
+          </div>
+        </sc-if>
+      </div>
+
+      <sc-if value="{{ isFirst }}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: flex-start; margin-top: 10px;" ref="{{ boxRef }}">
+
+        <div style="flex: 1 1 520px; min-width: 0; position: relative;">
+          <svg viewBox="{{ viewBox }}" style="width: 100%; height: auto; display: block; overflow: visible; touch-action: pan-y;" onMouseMove="{{ onMove }}" onMouseLeave="{{ onLeave }}" onTouchStart="{{ onTouch }}" onTouchMove="{{ onTouch }}" ref="{{ svgRef }}">
+            <sc-for list="{{ yTicks }}" as="t" hint-placeholder-count="5">
+              <g>
+                <line x1="{{ labelX }}" y1="{{ t.y }}" x2="{{ gridX2 }}" y2="{{ t.y }}" style="stroke: #E8EAE5; stroke-width: 1;"></line>
+              </g>
+            </sc-for>
+            <sc-if value="{{ hoverX }}" hint-placeholder-val="{{ false }}">
+              <line x1="{{ hoverX }}" y1="{{ hoverTop }}" x2="{{ hoverX }}" y2="{{ hoverBottom }}" style="stroke: #202632; stroke-width: 1; stroke-dasharray: 3 3; opacity: 0.35;"></line>
+            </sc-if>
+            <sc-for list="{{ dots }}" as="p" hint-placeholder-count="30">
+              <circle cx="{{ p.cx }}" cy="{{ p.cy }}" r="2.4" style="fill: {{ p.chip }}; opacity: 0.24;"></circle>
+            </sc-for>
+            <sc-for list="{{ paths }}" as="s" hint-placeholder-count="12">
+              <path d="{{ s.d }}" style="fill: none; stroke: {{ s.stroke }}; stroke-width: {{ s.w }}; stroke-dasharray: {{ s.dash }}; opacity: {{ s.op }}; stroke-linecap: round; stroke-linejoin: round;"></path>
+            </sc-for>
+            <sc-for list="{{ ends }}" as="e" hint-placeholder-count="4">
+              <circle cx="{{ e.cx }}" cy="{{ e.cy }}" r="4" style="fill: {{ e.chip }};"></circle>
+            </sc-for>
+            <sc-for list="{{ hoverDots }}" as="h" hint-placeholder-count="4">
+              <circle cx="{{ h.cx }}" cy="{{ h.cy }}" r="4.5" style="fill: #fff; stroke: {{ h.chip }}; stroke-width: 2.5;"></circle>
+            </sc-for>
+          </svg>
+
+          <div style="position: absolute; inset: 0; pointer-events: none;">
+            <sc-for list="{{ yTicks }}" as="t" hint-placeholder-count="5">
+              <div style="position: absolute; left: {{ t.lp }}; top: {{ t.tp }}; transform: translate(-100%, -50%); font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8B939D; white-space: nowrap;">{{ t.label }}</div>
+            </sc-for>
+            <sc-for list="{{ xTicks }}" as="t" hint-placeholder-count="7">
+              <div style="position: absolute; left: {{ t.lp }}; top: {{ xAxisTop }}; transform: translate(-50%, -50%); font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8B939D; white-space: nowrap;">{{ t.label }}</div>
+            </sc-for>
+            <sc-for list="{{ ends }}" as="e" hint-placeholder-count="4">
+              <sc-if value="{{ e.labelShown }}" hint-placeholder-val="{{ true }}">
+                <div style="position: absolute; left: {{ e.lp }}; top: {{ e.tp }}; transform: translateY(-50%); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; color: {{ e.chip }};">{{ e.label }}</div>
+              </sc-if>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ tip }}" hint-placeholder-val="{{ false }}">
+            <div style="position: absolute; pointer-events: none; background: #202632; color: #fff; border-radius: 10px; padding: 11px 13px; font-size: 12.5px; line-height: 1.5; box-shadow: 0 8px 24px rgba(32,38,50,0.24); min-width: 148px; top: {{ tip.top }}; left: {{ tip.left }};">
+              <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 7px;">{{ tip.date }}</div>
+              <sc-for list="{{ tip.rows }}" as="r" hint-placeholder-count="4">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 3px;">
+                  <span style="width: 7px; height: 7px; border-radius: 50%; display: block; background: {{ r.chip }}; flex-shrink: 0;"></span>
+                  <span style="flex: 1; white-space: nowrap;">{{ r.name }}</span>
+                  <span style="font-variant-numeric: tabular-nums; font-weight: 600;">{{ r.val }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </sc-if>
+
+        </div>
+
+        <div style="flex: 0 1 250px; min-width: 228px; border: 1px solid #EDEEEA; border-radius: 12px; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between; padding: 12px 14px 10px; background: #FAFBF9; border-bottom: 1px solid #EDEEEA;">
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: #66707D;">Classement</span>
+            <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.06em; color: #9AA2AC;">30 j</span>
+          </div>
+          <div style="overflow-y: auto; max-height: {{ listMax }}; display: grid; grid-template-columns: {{ gridCols }}; gap: 0;" data-om-list="">
+          <sc-for list="{{ ranking }}" as="c" hint-placeholder-count="8">
+            <div onClick="{{ c.onClick }}" style="display: flex; flex-direction: column; gap: 2px; padding: 7px 10px 8px; cursor: pointer; border-bottom: 1px solid #F4F5F2; background: {{ c.rowBg }};" style-hover="background: #F7F8F5">
+              <div style="display: flex; align-items: center; gap: 7px; min-width: 0;">
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; color: #9AA2AC; width: 12px; flex-shrink: 0; font-variant-numeric: tabular-nums;">{{ c.rank }}</span>
+                <span style="width: 9px; height: 9px; border-radius: 50%; display: block; flex-shrink: 0; background: {{ c.dotBg }}; box-shadow: inset 0 0 0 1.5px {{ c.chip }};"></span>
+                <span style="flex: 1; min-width: 0; font-size: 12.5px; font-weight: 500; color: {{ c.nameColor }}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ c.name }}</span>
+              </div>
+              <div style="display: flex; align-items: baseline; gap: 6px; padding-left: 19px;">
+                <span style="font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; color: {{ c.nameColor }};">{{ c.cur }}</span>
+                <span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-variant-numeric: tabular-nums; color: {{ c.deltaColor }};">{{ c.delta }}</span>
+              </div>
+            </div>
+          </sc-for>
+          </div>
+          <div style="display: flex; border-top: 1px solid #EDEEEA;">
+            <sc-if value="{{ true }}" hint-placeholder-val="{{ true }}">
+              <button onClick="{{ toggleAll }}" style="flex: 1.4; border: 0; border-right: 1px solid #EDEEEA; background: #FAFBF9; cursor: pointer; font-family: inherit; font-size: 12.5px; font-weight: 500; color: #0C6CF2; padding: 11px;" style-hover="background: #F2F3F0">{{ expandLabel }}</button>
+            </sc-if>
+            <button onClick="{{ resetTop }}" style="flex: 1; border: 0; background: #FAFBF9; cursor: pointer; font-family: inherit; font-size: 12.5px; font-weight: 500; color: #66707D; padding: 11px;" style-hover="background: #F2F3F0; color: #0B2E6F">Réinitialiser</button>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ isSecond }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top: 18px; max-width: 660px;">
+          <sc-for list="{{ duels }}" as="d" hint-placeholder-count="3">
+            <div style="margin-bottom: 20px;">
+              <div style="display: flex; justify-content: space-between; gap: 16px; font-size: 14px; font-weight: 500; margin-bottom: 7px;">
+                <span style="white-space: nowrap; display: flex; gap: 7px;">{{ d.a }}<span style="font-variant-numeric: tabular-nums; font-weight: 600; color: #0B2E6F;">{{ d.av }}</span></span>
+                <span style="white-space: nowrap; display: flex; gap: 7px;"><span style="font-variant-numeric: tabular-nums; font-weight: 600; color: #8A241F;">{{ d.bv }}</span>{{ d.b }}</span>
+              </div>
+              <div style="display: flex; height: 12px; border-radius: 999px; overflow: hidden; background: #EDEEEA;">
+                <div style="background: #0B2E6F; width: {{ d.aw }};"></div>
+                <div style="background: #8A241F; flex: 1;"></div>
+              </div>
+            </div>
+          </sc-for>
+          <p style="margin: 0; font-size: 12.5px; color: #9AA2AC;">Hors blancs et abstention · dernier sondage disponible pour chaque duel.</p>
+        </div>
+      </sc-if>
+
+      <p style="margin: 18px 0 0; padding-top: 14px; border-top: 1px solid #EDEEEA; font-size: 12px; color: #9AA2AC; line-height: 1.6; text-wrap: pretty;">Points : sondages bruts. Courbe : moyenne pondérée sur 30 jours. Trait pointillé = mesure fragile (peu de sondages) · interruption = absence de données. <a href="#methodo" style="font-weight: 500;">Méthodologie complète →</a></p>
+    </section>
+
+    <section id="duels" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 18px; margin-top: 18px;">
+      <div id="marches" style="background: #fff; border: 1px solid #E3E5E0; border-radius: 16px; padding: 24px 26px 22px; box-shadow: 0 1px 2px rgba(32,38,50,0.04);">
+        <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #0C6CF2; margin-bottom: 8px;">Marchés de prédiction</div>
+        <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px; letter-spacing: -0.02em; margin: 0 0 6px;">Probabilité d'être élu</h2>
+        <p style="margin: 0 0 18px; font-size: 13px; color: #66707D; text-wrap: pretty;">Ce n'est pas un score électoral : les deux graphiques ne mesurent pas la même chose et ne se comparent pas.</p>
+        <sc-for list="{{ markets }}" as="m" hint-placeholder-count="4">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 11px;">
+            <span style="width: 92px; font-size: 13.5px; font-weight: 500; flex-shrink: 0;">{{ m.name }}</span>
+            <div style="flex: 1; height: 8px; background: #EDEEEA; border-radius: 999px; overflow: hidden;">
+              <div style="height: 100%; border-radius: 999px; background: {{ m.chip }}; width: {{ m.w }};"></div>
+            </div>
+            <span style="font-size: 13.5px; font-weight: 600; font-variant-numeric: tabular-nums; width: 46px; text-align: right;">{{ m.val }}</span>
+          </div>
+        </sc-for>
+        <a href="#methodo" style="display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 500;">Comment lire ces probabilités →</a>
+      </div>
+    </section>
+
+    <section id="explorer" style="background: #fff; border: 1px solid #E3E5E0; border-radius: 16px; padding: 26px 28px 22px; margin-top: 18px; box-shadow: 0 1px 2px rgba(32,38,50,0.04);">
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #0C6CF2; margin-bottom: 8px;">Sondage par sondage</div>
+      <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 25px; letter-spacing: -0.02em; margin: 0 0 5px;">Explorer les sondages</h2>
+      <p style="margin: 0 0 18px; font-size: 13.5px; color: #66707D;">Choisissez un sondage puis une configuration pour voir le détail</p>
+
+      <div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap; padding-bottom: 16px; border-bottom: 1px solid #EDEEEA;">
+        <label style="display: flex; align-items: center; gap: 9px; font-size: 13px; color: #66707D; white-space: nowrap;">
+          Sondage :
+          <select onChange="{{ onPollChange }}" style="font-family: inherit; font-size: 13.5px; font-weight: 500; color: #202632; padding: 7px 10px; border: 1px solid #DDDFDA; border-radius: 8px; background: #fff;">
+            <sc-for list="{{ pollOptions }}" as="o" hint-placeholder-count="5">
+              <option value="{{ o.value }}">{{ o.label }}</option>
+            </sc-for>
+          </select>
+        </label>
+        <label style="display: flex; align-items: center; gap: 9px; font-size: 13px; color: #66707D; white-space: nowrap;">
+          Configuration :
+          <select onChange="{{ onConfigChange }}" style="font-family: inherit; font-size: 13.5px; font-weight: 500; color: #202632; padding: 7px 10px; border: 1px solid #DDDFDA; border-radius: 8px; background: #fff;">
+            <sc-for list="{{ configOptions }}" as="o" hint-placeholder-count="2">
+              <option value="{{ o.value }}">{{ o.label }}</option>
+            </sc-for>
+          </select>
+        </label>
+      </div>
+
+      <div style="display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; padding: 16px 0 4px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #66707D;">
+        <span style="color: #202632; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; font-size: 14px;">{{ pollMeta.name }}</span>
+        <span>terrain {{ pollMeta.field }}</span>
+        <span>n = {{ pollMeta.n }}</span>
+        <span>marge ± {{ pollMeta.margin }} pts</span>
+      </div>
+
+      <div style="position: relative;">
+      <svg viewBox="0 0 800 330" style="width: 100%; height: auto; display: block; overflow: visible;">
+        <sc-for list="{{ barTicks }}" as="t" hint-placeholder-count="5">
+          <g>
+            <line x1="48" y1="{{ t.y }}" x2="784" y2="{{ t.y }}" style="stroke: #E8EAE5; stroke-width: 1;"></line>
+          </g>
+        </sc-for>
+        <sc-for list="{{ bars }}" as="b" hint-placeholder-count="9">
+          <g>
+            <rect x="{{ b.x }}" y="{{ b.y }}" width="{{ b.w }}" height="{{ b.h }}" rx="3" style="fill: {{ b.color }};"></rect>
+            <line x1="{{ b.cx }}" y1="{{ b.eTop }}" x2="{{ b.cx }}" y2="{{ b.eBot }}" style="stroke: #202632; stroke-width: 1.4; opacity: 0.45;"></line>
+            <line x1="{{ b.eL }}" y1="{{ b.eTop }}" x2="{{ b.eR }}" y2="{{ b.eTop }}" style="stroke: #202632; stroke-width: 1.4; opacity: 0.45;"></line>
+            <line x1="{{ b.eL }}" y1="{{ b.eBot }}" x2="{{ b.eR }}" y2="{{ b.eBot }}" style="stroke: #202632; stroke-width: 1.4; opacity: 0.45;"></line>
+          </g>
+        </sc-for>
+      </svg>
+      <div style="position: absolute; inset: 0; pointer-events: none;">
+        <sc-for list="{{ barTicks }}" as="t" hint-placeholder-count="5">
+          <div style="position: absolute; left: {{ t.lp }}; top: {{ t.tp }}; transform: translate(-100%, -50%); font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8B939D; white-space: nowrap;">{{ t.label }}</div>
+        </sc-for>
+        <sc-for list="{{ bars }}" as="b" hint-placeholder-count="9">
+          <div>
+            <div style="position: absolute; left: {{ b.lp }}; top: {{ b.vp }}; transform: translate(-50%, -50%); font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; color: #202632; white-space: nowrap;">{{ b.val }}</div>
+            <div style="position: absolute; left: {{ b.lp }}; top: {{ b.np }}; transform: translate(-50%, -50%); font-size: 12.5px; color: #66707D; white-space: nowrap;">{{ b.name }}</div>
+          </div>
+        </sc-for>
+      </div>
+      </div>
+
+      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-top: 12px;">
+        <p style="margin: 0; font-size: 12px; color: #9AA2AC;">Marges d'erreur approximatives, calculées sur l'échantillon total du sondage.</p>
+        <a href="#methodo" style="font-size: 12.5px; font-weight: 500;">Source : notice de la commission des sondages →</a>
+      </div>
+    </section>
+
+    <section id="sondages" style="background: #fff; border: 1px solid #E3E5E0; border-radius: 16px; padding: 24px 0 6px; margin-top: 18px; box-shadow: 0 1px 2px rgba(32,38,50,0.04);">
+      <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; padding: 0 28px 16px; flex-wrap: wrap;">
+        <div>
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #0C6CF2; margin-bottom: 8px;">Traçabilité</div>
+          <h2 style="font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 21px; letter-spacing: -0.02em; margin: 0;">Derniers sondages agrégés</h2>
+        </div>
+        <a href="#sondages" style="font-size: 13px; font-weight: 500;">Voir les {{ pollCount }} sondages →</a>
+      </div>
+      <div style="display: grid; grid-template-columns: 1.2fr 0.7fr 1.1fr 1fr; gap: 0; font-size: 13px;">
+        <sc-for list="{{ tableHead }}" as="h" hint-placeholder-count="4">
+          <div style="font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #66707D; padding: 10px 14px; background: #FAFBF9; border-top: 1px solid #EDEEEA; border-bottom: 1px solid #EDEEEA; text-align: {{ h.align }};">{{ h.label }}</div>
+        </sc-for>
+        <sc-for list="{{ tableCells }}" as="c" hint-placeholder-count="25">
+          <div style="padding: 11px 14px; border-bottom: 1px solid #F4F5F2; color: {{ c.color }}; font-weight: {{ c.weight }}; font-variant-numeric: tabular-nums; text-align: {{ c.align }}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ c.v }}</div>
+        </sc-for>
+      </div>
+    </section>
+
+  </main>
+
+  <footer style="margin-top: 26px; background: #0B2E6F; color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px;">
+    <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 26px;">
+      <div>
+        <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 10px;">
+          <svg viewBox="0 0 40 24" style="width: 28px; height: 17px; display: block;">
+            <path d="M3 4 C 14 4, 26 20, 37 20" style="fill: none; stroke: #F23D5B; stroke-width: 5.5; stroke-linecap: round;"></path>
+            <path d="M3 20 C 14 20, 26 4, 37 4" style="fill: none; stroke: #4E96FF; stroke-width: 5.5; stroke-linecap: round;"></path>
+          </svg>
+          <span style="font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: #fff;">sondax</span>
+        </div>
+        <p style="margin: 0; line-height: 1.6; font-size: 12.5px;">Marque indépendante. Le bleu et le rouge ne représentent aucun camp politique.</p>
+      </div>
+      <div>
+        <div style="color: #fff; font-weight: 600; margin-bottom: 9px; font-size: 12.5px;">Données</div>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <a href="#sondages" style="color: rgba(255,255,255,0.72);" style-hover="color: #fff">Sondages · Wikipédia (CC BY-SA 4.0)</a>
+          <a href="#marches" style="color: rgba(255,255,255,0.72);" style-hover="color: #fff">Cotes · Polymarket</a>
+          <a href="#sondages" style="color: rgba(255,255,255,0.72);" style-hover="color: #fff">Notices · Commission des sondages</a>
+        </div>
+      </div>
+      <div>
+        <div style="color: #fff; font-weight: 600; margin-bottom: 9px; font-size: 12.5px;">Le site</div>
+        <div style="display: flex; flex-direction: column; gap: 5px;">
+          <a href="#methodo" style="color: rgba(255,255,255,0.72);" style-hover="color: #fff">Méthodologie</a>
+          <a href="#methodo" style="color: rgba(255,255,255,0.72);" style-hover="color: #fff">Mentions légales</a>
+          <a href="#methodo" style="color: rgba(255,255,255,0.72);" style-hover="color: #fff">Contact</a>
+        </div>
+      </div>
+      <div style="font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; line-height: 1.8;">
+        <div style="color: #fff; font-family: 'IBM Plex Sans', sans-serif; font-weight: 600; margin-bottom: 9px; font-size: 12.5px;">État de la collecte</div>
+        <div>collecte · 08/09/2026 04:12</div>
+        <div>revid · 239306365</div>
+        <div>hébergeur · GitHub Pages</div>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900}}">
+const DATES = ['8 mars','22 mars','5 avr.','19 avr.','3 mai','17 mai','31 mai','14 juin','28 juin','12 juil.','26 juil.','9 août','23 août','6 sept.'];
+
+const RAW = [
+  ['Le Pen', 265, 30.2, 33.5], ['Mélenchon', 25, 15.1, 16.2], ['Glucksmann', 350, 9.8, 12.9],
+  ['Attal', 305, 10.5, 11.4], ['Retailleau', 240, 8.2, 10.6], ['Bardella', 282, 9.4, 8.1],
+  ['Philippe', 212, 11.2, 9.6], ['Tondelier', 150, 5.1, 4.3], ['Roussel', 60, 3.6, 3.1],
+  ['Zemmour', 195, 4.2, 2.9], ['Faure', 15, 2.4, 2.0], ['Ruffin', 335, 3.1, 2.6],
+  ['Darmanin', 292, 2.8, 2.2], ['Le Maire', 255, 2.2, 1.8], ['Lecornu', 275, 1.9, 2.4],
+  ['Hollande', 8, 3.4, 2.7], ['Lisnard', 225, 1.6, 1.4], ['de Villepin', 45, 2.9, 3.4],
+  ['Dupont-Aignan', 180, 1.5, 1.2], ['Knafo', 120, 1.1, 0.9], ['Arthaud', 330, 1.1, 1.0]
+];
+
+const GAPS = { 'Philippe': [4, 5], 'Knafo': [2, 4] };
+const FRAGILE = { 'Lecornu': [7, 10], 'de Villepin': [3, 6], 'Attal': [9, 11] };
+
+const CANDS = RAW.map((r, k) => {
+  const v = [];
+  for (let i = 0; i < 14; i++) {
+    const val = Math.round((r[2] + (r[3] - r[2]) * (i / 13) + 0.32 * Math.sin(i * 1.7 + k * 2.1)) * 10) / 10;
+    const gp = GAPS[r[0]];
+    v.push(gp && i >= gp[0] && i <= gp[1] ? null : Math.max(0.2, val));
+  }
+  return { name: r[0], short: r[0], hue: r[1], v: v, fragile: FRAGILE[r[0]] || null };
+});
+
+const POLLS = [
+  ['OpinionWay','Les Échos · Radio Classique','1 003','02→03/09/2026','avec Attal'],
+  ['Ifop','LCI · Le Figaro','1 512','28→30/08/2026','avec Attal'],
+  ['Elabe','BFMTV','1 200','25→26/08/2026','sans Attal'],
+  ['Odoxa','Le Parisien','1 005','19→21/08/2026','avec Bardella'],
+  ['Cluster17','Le Point','1 428','14→16/08/2026','avec Attal']
+];
+
+const YMAX = 40;
+
+class Component extends DCLogic {
+  state = { on: null, period: '6m', round: 1, hover: null, customOpen: false, poll: 0, config: 0 };
+
+  explorer() {
+    const p = POLLS[this.state.poll] || POLLS[0];
+    const withAttal = this.state.config === 0;
+    const base = [
+      ['Le Pen', 265, 35.0], ['Mélenchon', 25, 17.0], ['Glucksmann', 350, 13.0],
+      ['Attal', 305, 13.0], ['Retailleau', 240, 11.0], ['Tondelier', 150, 4.0],
+      ['Roussel', 60, 3.0], ['Zemmour', 195, 3.0], ['Arthaud', 330, 1.0]
+    ];
+    let set = base;
+    if (!withAttal) {
+      set = base.filter((b) => b[0] !== 'Attal').map((b) => [b[0], b[1], b[0] === 'Retailleau' ? 18.0 : b[0] === 'Le Pen' ? 36.0 : b[2]]);
+    }
+    return { poll: p, rows: set.slice().sort((a, b) => b[2] - a[2]) };
+  }
+
+  color(hue, on) {
+    return on ? 'oklch(0.55 0.145 ' + hue + ')' : '#DCDFD9';
+  }
+
+  read = () => {
+    const el = this._box;
+    if (!el) return;
+    const w = el.clientWidth;
+    if (w && w !== this.state.bw) this.setState({ bw: w });
+  };
+
+  measure = (el) => {
+    if (!el) return;
+    this._box = el;
+    this.read();
+    requestAnimationFrame(this.read);
+    if (!this._bound) {
+      this._bound = true;
+      window.addEventListener('resize', this.read);
+      window.addEventListener('orientationchange', this.read);
+      if (typeof ResizeObserver !== 'undefined') {
+        this._ro = new ResizeObserver(this.read);
+        this._ro.observe(el);
+      }
+    }
+  };
+
+  componentWillUnmount() {
+    if (this._ro) this._ro.disconnect();
+    window.removeEventListener('resize', this.read);
+    window.removeEventListener('orientationchange', this.read);
+  }
+
+  isNarrow() { return this.state.bw ? this.state.bw < 700 : false; }
+
+  geo() {
+    return this.isNarrow()
+      ? { W: 430, H: 330, PL: 36, PR: 14, PT: 14, PB: 44 }
+      : { W: 800, H: 420, PL: 48, PR: 134, PT: 18, PB: 44 };
+  }
+
+  activeSet() { return this.state.on || [0, 1, 2, 3]; }
+
+  slice() {
+    const p = this.state.period;
+    if (p === '3m') return 7;
+    if (p === 'janv') return 12;
+    return 14;
+  }
+
+  x(i, n) { const g = this.geo(); return g.PL + (i * (g.W - g.PL - g.PR)) / Math.max(1, n - 1); }
+  y(v) { const g = this.geo(); return g.PT + (1 - v / YMAX) * (g.H - g.PT - g.PB); }
+
+  segments(vals, fragile) {
+    const out = [];
+    let cur = null;
+    vals.forEach((v, i) => {
+      if (v === null || v === undefined) { cur = null; return; }
+      const fr = fragile ? i >= fragile[0] && i <= fragile[1] : false;
+      if (!cur || cur.fragile !== fr) {
+        cur = { fragile: fr, pts: [] };
+        out.push(cur);
+        if (i > 0 && vals[i - 1] !== null && vals[i - 1] !== undefined) cur.pts.push([i - 1, vals[i - 1]]);
+      }
+      cur.pts.push([i, v]);
+    });
+    return out.filter((s) => s.pts.length > 1);
+  }
+
+  pathOf(pts, n) {
+    const p = pts.map((q) => [this.x(q[0], n), this.y(q[1])]);
+    let d = 'M ' + p[0][0].toFixed(1) + ' ' + p[0][1].toFixed(1);
+    for (let i = 0; i < p.length - 1; i++) {
+      const p0 = p[i - 1] || p[i], p1 = p[i], p2 = p[i + 1], p3 = p[i + 2] || p[i + 1];
+      const c1x = p1[0] + (p2[0] - p0[0]) / 6, c1y = p1[1] + (p2[1] - p0[1]) / 6;
+      const c2x = p2[0] - (p3[0] - p1[0]) / 6, c2y = p2[1] - (p3[1] - p1[1]) / 6;
+      d += ' C ' + c1x.toFixed(1) + ' ' + c1y.toFixed(1) + ', ' + c2x.toFixed(1) + ' ' + c2y.toFixed(1) + ', ' + p2[0].toFixed(1) + ' ' + p2[1].toFixed(1);
+    }
+    return d;
+  }
+
+  fmt(v) { return v.toFixed(1).replace('.', ',') + ' %'; }
+  fmtD(d) { return (d >= 0 ? '+' : '−') + Math.abs(d).toFixed(1).replace('.', ','); }
+
+  at = (clientX) => {
+    const svg = this.svgEl;
+    if (!svg) return;
+    const g = this.geo();
+    const r = svg.getBoundingClientRect();
+    const rel = ((clientX - r.left) / r.width) * g.W;
+    const n = this.slice();
+    const i = Math.round(((rel - g.PL) / (g.W - g.PL - g.PR)) * (n - 1));
+    const clamped = Math.max(0, Math.min(n - 1, i));
+    if (this.state.hover !== clamped) this.setState({ hover: clamped });
+  };
+
+  onMove = (e) => this.at(e.clientX);
+
+  onTouch = (e) => {
+    if (e.touches && e.touches[0]) this.at(e.touches[0].clientX);
+  };
+
+  onLeave = () => this.setState({ hover: null });
+
+  renderVals() {
+    const n = this.slice();
+    const active = this.activeSet();
+    const g = this.geo();
+    const narrow = this.isNarrow();
+    const twoCols = (this.state.bw || 900) >= 560;
+    const hv = this.state.hover;
+    const upC = '#0C6CF2', downC = '#F23D5B';
+
+    const rows = CANDS.map((c, i) => {
+      const vals = c.v.slice(14 - n);
+      const known = vals.filter((v) => v !== null);
+      const cur = known[known.length - 1];
+      const prev = known[Math.max(0, known.length - 3)];
+      const fr = c.fragile ? [c.fragile[0] - (14 - n), c.fragile[1] - (14 - n)] : null;
+      return { i, c, vals, fr, cur, delta: cur - prev, on: active.indexOf(i) >= 0 };
+    }).sort((a, b) => b.cur - a.cur);
+
+    const paths = [], dots = [], ends = [], hoverDots = [];
+    rows.slice().reverse().forEach((r) => {
+      const chip = this.color(r.c.hue, true);
+      this.segments(r.vals, r.fr).forEach((s) => {
+        paths.push({
+          d: this.pathOf(s.pts, n),
+          stroke: this.color(r.c.hue, r.on),
+          w: r.on ? 2.8 : 1,
+          dash: s.fragile ? '7 5' : 'none',
+          op: r.on ? 1 : 0.45
+        });
+      });
+      if (!r.on) return;
+      r.vals.forEach((v, i) => {
+        if (v === null) return;
+        [-0.62, 0.15, 0.74].forEach((k, j) => {
+          dots.push({
+            cx: this.x(i, n) + (j - 1) * (narrow ? 3 : 6),
+            cy: this.y(Math.max(0.2, v + k + 0.2 * Math.sin(i * 3.1 + j))),
+            chip: chip
+          });
+        });
+      });
+      let last = r.vals.length - 1;
+      while (last > 0 && r.vals[last] === null) last--;
+      const lx = this.x(last, n), ly = this.y(r.vals[last]);
+      ends.push({
+        cx: lx, cy: ly, chip: chip,
+        labelShown: !narrow,
+        lp: ((lx + 11) / g.W) * 100 + '%',
+        tp: (ly / g.H) * 100 + '%',
+        label: r.c.short + '  ' + this.fmt(r.cur)
+      });
+      if (hv !== null && hv !== undefined && r.vals[hv] !== null && r.vals[hv] !== undefined) {
+        hoverDots.push({ cx: this.x(hv, n), cy: this.y(r.vals[hv]), chip: chip });
+      }
+    });
+
+    const chartPx = this.state.bw ? (narrow ? this.state.bw : this.state.bw - 272) : 540;
+    const scale = Math.max(0.25, chartPx / g.W);
+    const minGap = 16 / scale;
+    ends.sort((a, b) => a.cy - b.cy);
+    let prevY = -1e9;
+    ends.forEach((e) => {
+      const ly = Math.max(e.cy, prevY + minGap);
+      prevY = ly;
+      e.tp = (ly / g.H) * 100 + '%';
+    });
+
+    let tip = null, hoverX = null;
+    if (hv !== null && hv !== undefined) {
+      hoverX = this.x(hv, n);
+      const shown = rows.filter((r) => r.on);
+      const flip = hoverX > g.W * 0.58;
+      tip = {
+        date: DATES[hv + (14 - n)],
+        rows: shown.map((r) => ({
+          chip: this.color(r.c.hue, true),
+          name: r.c.name,
+          val: r.vals[hv] === null || r.vals[hv] === undefined ? 'n. d.' : this.fmt(r.vals[hv])
+        })),
+        left: flip ? 'auto' : ((hoverX + 14) / g.W) * 100 + '%',
+        right: flip ? (100 - ((hoverX - 14) / g.W) * 100) + '%' : 'auto',
+        top: '10px'
+      };
+    }
+
+    const toggle = (i) => () => {
+      const cur = this.activeSet().slice();
+      const at = cur.indexOf(i);
+      if (at >= 0) { if (cur.length > 1) cur.splice(at, 1); } else cur.push(i);
+      this.setState({ on: cur });
+    };
+
+    const seg = (val, key, label) => ({
+      label,
+      bg: this.state[key] === val ? '#0B2E6F' : 'transparent',
+      fg: this.state[key] === val ? '#fff' : '#66707D',
+      onClick: () => this.setState({ [key]: val })
+    });
+
+    const tableCells = [];
+    POLLS.forEach((p) => {
+      tableCells.push({ v: p[0], color: '#202632', weight: '600', align: 'left' });
+      tableCells.push({ v: p[2], color: '#202632', weight: '500', align: 'right' });
+      tableCells.push({ v: p[3], color: '#66707D', weight: '400', align: 'left' });
+      tableCells.push({ v: p[4], color: '#66707D', weight: '400', align: 'right' });
+    });
+
+    const ex = this.explorer();
+    const BW = 800, BPL = 48, BPR = 16, BPT = 16, BPB = 60, BMAX = 40;
+    const band = (BW - BPL - BPR) / ex.rows.length;
+    const by = (v) => BPT + (1 - v / BMAX) * (330 - BPT - BPB);
+    const err = 3.1;
+    const bars = ex.rows.map((r, i) => {
+      const cx = BPL + band * i + band / 2;
+      const w = Math.min(52, band * 0.56);
+      const top = by(r[2]);
+      return {
+        x: cx - w / 2, w: w, y: top, h: by(0) - top, cx: cx,
+        color: this.color(r[1], true),
+        val: this.fmt(r[2]),
+        name: r[0],
+        lp: (cx / BW) * 100 + '%',
+        vp: (Math.max(20, by(Math.min(BMAX, r[2] + err)) - 14) / 330) * 100 + '%',
+        np: (306 / 330) * 100 + '%',
+        eTop: by(Math.min(BMAX, r[2] + err)), eBot: by(Math.max(0, r[2] - err)),
+        eL: cx - 6, eR: cx + 6
+      };
+    });
+
+    return {
+      onPollChange: (e) => this.setState({ poll: Number(e.target.value) }),
+      onConfigChange: (e) => this.setState({ config: Number(e.target.value) }),
+      pollOptions: POLLS.map((p, i) => ({ value: i, label: p[0] + ' — ' + p[3].split('→')[1] + ' (n = ' + p[2] + ')' })),
+      configOptions: [{ value: 0, label: 'avec Attal' }, { value: 1, label: 'sans Attal' }],
+      pollMeta: { name: ex.poll[0] + ' pour ' + ex.poll[1], field: ex.poll[3], n: ex.poll[2], margin: '3,1' },
+      barTicks: [0, 10, 20, 30, 40].map((v) => ({ y: by(v), lp: ((BPL - 9) / BW) * 100 + '%', tp: (by(v) / 330) * 100 + '%', label: v + ' %' })),
+      bars: bars,
+
+      pollCount: 148,
+      instituteCount: 9,
+      customOpen: this.state.customOpen,
+      toggleCustom: () => this.setState({ customOpen: !this.state.customOpen }),
+      resetTop: () => this.setState({ on: null }),
+      svgRef: (el) => {
+        this.svgEl = el;
+        if (el && el.parentElement) this.measure(el.parentElement.parentElement || el.parentElement);
+      },
+      onMove: this.onMove,
+      onLeave: this.onLeave,
+      hoverX: hoverX,
+      tip: tip,
+      paths: paths,
+      dots: dots,
+      ends: ends,
+      hoverDots: hoverDots,
+      narrow: narrow,
+      onTouch: this.onTouch,
+      viewBox: '0 0 ' + g.W + ' ' + g.H,
+      gridX2: g.W - g.PR + (narrow ? 0 : 8),
+      labelX: g.PL - 8,
+      xLabelY: g.H - 14,
+      hoverTop: g.PT,
+      hoverBottom: g.H - g.PB + 8,
+      isFirst: this.state.round === 1,
+      isSecond: this.state.round === 2,
+      listMax: narrow ? 'none' : g.H - 96 + 'px',
+
+      topFive: rows.slice(0, 5).map((r) => ({
+        name: r.c.name,
+        chip: this.color(r.c.hue, true),
+        cur: this.fmt(r.cur),
+        delta: this.fmtD(r.delta),
+        deltaColor: r.delta >= 0 ? '#7FB2FF' : '#FF8FA6'
+      })),
+
+      expandLabel: this.state.expanded
+        ? 'Masquer les petits candidats'
+        : 'Voir les candidats sous 5 %',
+      toggleAll: () => this.setState({ expanded: !this.state.expanded }),
+      boxRef: this.measure,
+      gridCols: twoCols ? 'minmax(0, 1fr) minmax(0, 1fr)' : 'minmax(0, 1fr)',
+      ranking: rows.filter((r) => this.state.expanded || r.cur >= 5 || r.on).map((r) => ({
+        rank: rows.indexOf(r) + 1,
+        name: r.c.name,
+        cur: this.fmt(r.cur),
+        delta: this.fmtD(r.delta),
+        deltaColor: r.delta >= 0 ? upC : downC,
+        chip: this.color(r.c.hue, true),
+        dotBg: r.on ? this.color(r.c.hue, true) : '#fff',
+        nameColor: r.on ? '#202632' : '#9AA2AC',
+        rowBg: r.on ? '#fff' : '#FCFCFB',
+        onClick: toggle(r.i)
+      })),
+
+      yTicks: [0, 10, 20, 30, 40].map((v) => ({
+        y: this.y(v),
+        lp: ((g.PL - 9) / g.W) * 100 + '%',
+        tp: (this.y(v) / g.H) * 100 + '%',
+        label: v + ' %'
+      })),
+      xTicks: DATES.slice(14 - n)
+        .map((d, i) => ({ x: this.x(i, n), lp: (this.x(i, n) / g.W) * 100 + '%', label: d }))
+        .filter((_, i) => i % Math.max(1, Math.ceil(n / Math.max(2, Math.floor(chartPx / 74)))) === 0),
+      xAxisTop: ((g.H - 20) / g.H) * 100 + '%',
+
+      rounds: [seg(1, 'round', 'Premier tour'), seg(2, 'round', 'Second tour')],
+      periods: [seg('3m', 'period', '3 mois'), seg('6m', 'period', '6 mois'), seg('janv', 'period', 'Depuis janvier'), seg('all', 'period', 'Tout')],
+
+      duels: [
+        { a: 'Le Pen', b: 'Glucksmann', av: '52,0 %', bv: '48,0 %', aw: '52%' },
+        { a: 'Le Pen', b: 'Attal', av: '54,5 %', bv: '45,5 %', aw: '54.5%' },
+        { a: 'Le Pen', b: 'Mélenchon', av: '61,0 %', bv: '39,0 %', aw: '61%' }
+      ],
+
+      markets: [
+        { name: 'Le Pen', val: '35,8 %', w: '72%', chip: 'oklch(0.55 0.145 265)' },
+        { name: 'Philippe', val: '29,4 %', w: '59%', chip: 'oklch(0.55 0.145 225)' },
+        { name: 'Mélenchon', val: '12,5 %', w: '25%', chip: 'oklch(0.55 0.145 25)' },
+        { name: 'Attal', val: '8,1 %', w: '16%', chip: 'oklch(0.55 0.145 305)' }
+      ],
+
+      tableHead: [
+        { label: 'Institut', align: 'left' },
+        { label: 'n', align: 'right' },
+        { label: 'Terrain', align: 'left' },
+        { label: 'Configuration', align: 'right' }
+      ],
+      tableCells: tableCells,
+
+      methodo: [
+        { t: 'Pondération', d: 'Chaque sondage pèse selon sa récence et la taille de son échantillon, sur une fenêtre glissante de 30 jours.' },
+        { t: 'Aucun redressement', d: 'Nous ne corrigeons pas les instituts. Les écarts entre maisons restent visibles dans le tableau des sondages.' },
+        { t: 'Marges d\'erreur', d: 'Les intervalles affichés sont approximatifs, calculés sur l\'échantillon total, hors effet de sous-échantillonnage.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

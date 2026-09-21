@@ -63,16 +63,25 @@ def candidate_parti(slug, cand):
 
 sondages_sorted = sorted(sondages, key=lambda s: s["terrain_fin"], reverse=True)
 
-rows = []
+# Candidats de l'hypothèse principale du dernier sondage
+latest_principale_cids = set()
+for s in sondages_sorted:
+    for h in s["hypotheses"]:
+        if h.get("tour") == 1 and h.get("principale"):
+            latest_principale_cids = set(h.get("scores", {}).keys()) - {"autre"}
+            break
+    if latest_principale_cids:
+        break
+
+# Collecter les données par candidat
+all_rows = {}
 for slug, cand in candidats.items():
     last_score = None
     last_date = None
 
     for s in sondages_sorted:
         for h in s["hypotheses"]:
-            if h.get("tour") != 1:
-                continue
-            if not h.get("principale"):
+            if h.get("tour") != 1 or not h.get("principale"):
                 continue
             scores = h.get("scores", {})
             if slug not in scores:
@@ -83,65 +92,51 @@ for slug, cand in candidats.items():
         if last_score is not None:
             break
 
+    # Exclure les candidats jamais mesurés
     if last_score is None:
-        # Candidat sans mesure dans une hypothèse principale : on l'inclut quand même
-        # avec score None (sera affiché en bas)
-        pass
+        continue
 
-    display_name = candidate_display_name(slug, cand)
-    parti = candidate_parti(slug, cand)
-    has_page = slug in bios
-
-    rows.append({
+    all_rows[slug] = {
         "slug": slug,
-        "display_name": display_name,
-        "parti": parti,
+        "display_name": candidate_display_name(slug, cand),
+        "parti": candidate_parti(slug, cand),
         "score": last_score,
         "date": last_date,
-        "has_page": has_page,
-    })
+        "has_page": slug in bios,
+    }
 
-# Tri : score décroissant (None en bas)
-rows.sort(key=lambda r: (r["score"] is None, -(r["score"] or 0)))
+# Groupe 1 : candidats de l'hypothèse principale du dernier sondage, par score desc
+group1 = [all_rows[s] for s in latest_principale_cids if s in all_rows]
+group1.sort(key=lambda r: -r["score"])
+
+# Groupe 2 : les autres, par date de dernière mesure décroissante
+group2 = [r for s, r in all_rows.items() if s not in latest_principale_cids]
+group2.sort(key=lambda r: r["date"], reverse=True)
 
 # ---------- construction du HTML ----------
 
-table_rows = []
-for r in rows:
+def make_row(r):
     slug = r["slug"]
-    display_name = r["display_name"]
-    parti = r["parti"]
-    score = r["score"]
-    date_iso = r["date"]
-    has_page = r["has_page"]
-
-    if has_page:
-        name_cell = f'<a href="../{slug}.html">{display_name}</a>'
-    else:
-        name_cell = display_name
-
-    score_cell = fmt_pct(score) if score is not None else "\u2014"
-    date_cell = date_lettres(date_iso) if date_iso else "\u2014"
-
-    table_rows.append(
-        f"      <tr>"
-        f"<td>{name_cell}</td>"
-        f"<td>{parti}</td>"
-        f"<td style=\"text-align:right;font-variant-numeric:tabular-nums;\">{score_cell}</td>"
-        f"<td>{date_cell}</td>"
-        f"</tr>"
+    name_cell = f'<a href="../{slug}.html">{r["display_name"]}</a>' if r["has_page"] else r["display_name"]
+    score_cell = fmt_pct(r["score"])
+    date_cell = date_lettres(r["date"])
+    return (
+        f'      <tr><td>{name_cell}</td><td>{r["parti"]}</td>'
+        f'<td style="text-align:right;font-variant-numeric:tabular-nums;">{score_cell}</td>'
+        f'<td>{date_cell}</td></tr>'
     )
 
+table_rows = [make_row(r) for r in group1]
+if group2:
+    table_rows.append('      <tr><td colspan="4" style="padding:0;"><hr style="border:none;border-top:1px solid var(--bord);"></td></tr>')
+    table_rows.extend(make_row(r) for r in group2)
+
 table_html = (
-    "    <table>\n"
-    "      <tr>"
-    "<th>Candidat</th>"
-    "<th>Parti</th>"
-    "<th style=\"text-align:right;\">Score</th>"
-    "<th>Dernière mesure</th>"
-    "</tr>\n"
+    '    <table>\n'
+    '      <tr><th>Candidat</th><th>Parti</th>'
+    '<th style="text-align:right;">Score</th><th>Dernière mesure</th></tr>\n'
     + "\n".join(table_rows) + "\n"
-    "    </table>"
+    '    </table>'
 )
 
 body_content = f"""<main>

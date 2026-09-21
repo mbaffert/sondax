@@ -261,8 +261,19 @@ def generate_duel_page(slug, entries, candidats, out_dir):
     nom_b = nom_court(cid_b, candidats)
     title = f"Sondages second tour 2027 : {nom_a} – {nom_b}"
     description = f"Tous les sondages du duel {nom_a} – {nom_b} pour le second tour de la présidentielle 2027. Courbe et tableau."
-    canonical = f"{BASE_URL}/second-tour/{slug}"
+    canonical = f"{BASE_URL}/second-tour/{slug}.html"
     prefix = "../"
+
+    # Graphique seulement si >= SEUIL mesures (SPEC §5)
+    if len(entries) >= SEUIL:
+        chart_section = (
+            f'  <div class="chart-wrap"><canvas id="chart-duel"></canvas></div>\n'
+            f'  <h2>Tous les sondages</h2>\n'
+        )
+        chart_script = chart_js(entries, cid_a, cid_b, candidats)
+    else:
+        chart_section = ""
+        chart_script = ""
 
     page = f"""\
 <!DOCTYPE html>
@@ -281,18 +292,19 @@ def generate_duel_page(slug, entries, candidats, out_dir):
 {header("Second tour 2027", depth=1)}
 
 <main>
+  <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);padding:0 0 18px;">
+    <a href="../" style="color:inherit">Sondax</a> › <a href="./" style="color:inherit">Second tour</a> › {html_mod.escape(nom_a)} – {html_mod.escape(nom_b)}
+  </div>
   <h1>{html_mod.escape(title)}</h1>
   <p class="subtitle">{len(entries)} sondage{"s" if len(entries) > 1 else ""} · Dernier : {fmt_date(entries[0]["terrain_fin"])}</p>
 
-  <div class="chart-wrap"><canvas id="chart-duel"></canvas></div>
-
-  <h2>Tous les sondages</h2>
+{chart_section}
   {render_table_html(entries, cid_a, cid_b, candidats)}
 </main>
 
 {footer(depth=1)}
 
-{chart_js(entries, cid_a, cid_b, candidats)}
+{chart_script}
 
 </body>
 </html>
@@ -457,15 +469,16 @@ def main():
 
     print(f"{len(duels)} duels trouvés")
 
-    # Les pages de duel individuelles sont hors périmètre (§7).
-    # Seule la page d'entrée est générée ; le contenu vit dans la
-    # section #second-tour de la page d'accueil.
     generate_index_page(duels, candidats, out_dir)
     print(f"Page d'entrée : {out_dir / 'index.html'}")
 
-    generate_sitemap()
+    # Pages de duel individuelles
+    n_pages = 0
+    for slug, entries in duels.items():
+        generate_duel_page(slug, entries, candidats, out_dir)
+        n_pages += 1
 
-    print(f"{len(duels)} duels")
+    print(f"{len(duels)} duels, {n_pages} pages générées")
 
 
 if __name__ == "__main__":

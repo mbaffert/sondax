@@ -87,7 +87,7 @@
 
   // Build candidats hover menu
   var candidatsMenuHTML = '<div class="menu-candidats">' +
-    '<span class="menu-candidats-label">Candidats</span>' +
+    '<a href="' + baseHref + 'candidats/" class="menu-candidats-label">Candidats</a>' +
     '<div class="menu-panneau">';
   for (var k = 0; k < candidatsPages.length; k++) {
     var cp = candidatsPages[k];
@@ -195,15 +195,11 @@
     });
   }
 
-  // Toggle menu on click, close on outside click
-  var menuLabel = el && el.querySelector('.sh-nav .menu-candidats-label');
-  var menuWrap = menuLabel && menuLabel.parentElement;
-  if (menuLabel) {
-    menuLabel.addEventListener('click', function () {
-      menuWrap.classList.toggle('is-open');
-    });
+  // Close dropdown on outside click (hover opens it on desktop)
+  var menuWrap = el && el.querySelector('.sh-nav .menu-candidats');
+  if (menuWrap) {
     document.addEventListener('click', function (e) {
-      if (menuWrap && !menuWrap.contains(e.target)) {
+      if (!menuWrap.contains(e.target)) {
         menuWrap.classList.remove('is-open');
       }
     });

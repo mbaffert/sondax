@@ -94,6 +94,7 @@
   color: #66707D; font-weight: 500;
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
+  text-decoration: none !important;
 }
 .menu-candidats:hover > .menu-candidats-label,
 .menu-candidats.is-open > .menu-candidats-label { color: #0B2E6F; }

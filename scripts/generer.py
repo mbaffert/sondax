@@ -170,7 +170,7 @@ def texte_electorat(nom, national, pcs, sexe, ages, genre="m"):
 # ---------- second tour ----------
 def lien_adv(slug, noms, pages):
     n = noms.get(slug, slug)
-    return f'<a href="/candidats/{slug}">{n}</a>' if pages and slug in pages else f'<b>{n}</b>'
+    return f'<a href="/{slug}.html">{n}</a>' if pages and slug in pages else f'<b>{n}</b>'
 
 def bloc_second_tour(slug, nom, duels, noms, genre="m", pages=None):
     mes = []
@@ -259,7 +259,7 @@ def credit_html(slug):
     return f'<div class="credit">Portrait : {c["auteur"]} — {a}, via Wikimedia Commons</div>'
 
 def liens_autres(slug, noms):
-    return " · ".join(f'<a href="/candidats/{s}">{n}</a>'
+    return " · ".join(f'<a href="/{s}.html">{n}</a>'
                       for s, n in noms.items() if s != slug)
 
 def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant,

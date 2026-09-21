@@ -40,6 +40,7 @@ jobs:
           python scripts/build_pages_candidats.py
           python scripts/build_candidats_index.py
           python scripts/build_sondage_pages.py
+          python scripts/build_donnees.py
           python scripts/build_jsonld_dataset.py
           python scripts/build_dates.py
           python scripts/build_sitemap.py

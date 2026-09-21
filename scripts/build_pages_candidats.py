@@ -300,6 +300,7 @@ def wrap_in_site_template(slug, fiche, raw_html):
       <div style="display:flex;flex-direction:column;gap:5px;">
         <a href="methodologie.html">Méthodologie</a>
         <a href="sondages.html">Tous les sondages</a>
+        <a href="donnees.html">Données</a>
       </div>
     </div>
     <div>

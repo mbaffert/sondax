@@ -129,6 +129,7 @@ def render_page(*, title, meta_description, canonical, body_content,
       <div style="display:flex;flex-direction:column;gap:5px;">
         <a href="{p}methodologie.html">Méthodologie</a>
         <a href="{p}sondages.html">Tous les sondages</a>
+        <a href="{p}donnees.html">Données</a>
       </div>
     </div>
     <div>

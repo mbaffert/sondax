@@ -843,10 +843,10 @@ son URL réelle (`https://sondax.fr/<chemin>`). Vérifié au build par
 publiques. Les pages de redirection en sont exclues. Vérifié au build.
 
 **JSON-LD Dataset.** Balisage `schema.org/Dataset` injecté par
-`scripts/build_jsonld_dataset.py` dans `index.html` et `sondages.html` :
+`scripts/build_jsonld_dataset.py` dans la seule page `donnees.html` (§13.6) :
 name, description, license (CC BY-SA 4.0), isBasedOn (page Wikipédia source),
-creator, temporalCoverage, dateModified, distributions (sondages.json,
-polymarket.json).
+creator, temporalCoverage, dateModified, distribution (le CSV public). Les cotes
+Polymarket n'y figurent pas.
 
 **Dates de build.** Injectées en HTML statique par `scripts/build_dates.py` :
 dernier sondage intégré, date de vérification, revid Wikipédia. Affichées en
@@ -857,3 +857,21 @@ chaque URL du sitemap correspond à un fichier généré. Le build échoue (exit
 en cas d'écart.
 
 **Hors périmètre.** Pages par institut, BreadcrumbList.
+
+### 13.6 Jeu de données public
+
+URL : `/donnees.html` ; fichier : `/donnees/sondages-presidentielle-2027.csv`.
+Script : `scripts/build_donnees.py`, exécuté au déploiement ; sorties ignorées par git.
+
+Le CSV est le **contrat public** : ses colonnes ne changent pas sans décision explicite,
+contrairement aux JSON de `data/`, formats internes. Format long, une ligne par
+sondage × configuration × candidat ; un candidat absent d'une configuration n'a pas de
+ligne. UTF-8, séparateur virgule, point décimal. Colonnes documentées sur la page.
+
+Contient les mesures publiées, pas la moyenne Sondax, et aucune donnée Polymarket.
+
+Licence CC BY-SA 4.0 imposée par la source. Mention demandée : « Sondax, d'après
+Wikipédia », avec lien vers sondax.fr.
+
+Le même fichier est référencé sur data.gouv.fr comme ressource distante (URL ci-dessus),
+jamais comme copie figée.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Injecte le balisage JSON-LD schema.org/Dataset dans index.html et sondages.html."""
+"""Injecte le balisage JSON-LD schema.org/Dataset dans donnees.html."""
 
-import json, pathlib, datetime
+import json, pathlib, datetime, re
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
@@ -22,7 +22,7 @@ def compute_dataset():
         "name": "Sondages de l\u2019\u00e9lection pr\u00e9sidentielle fran\u00e7aise 2027",
         "description": "Agr\u00e9gation des sondages d\u2019intention de vote pour la pr\u00e9sidentielle 2027, "
                         "premier et second tour, collect\u00e9s automatiquement depuis Wikip\u00e9dia.",
-        "url": "https://sondax.fr/",
+        "url": "https://sondax.fr/donnees.html",
         "license": "https://creativecommons.org/licenses/by-sa/4.0/",
         "isBasedOn": {
             "@type": "CreativeWork",
@@ -39,47 +39,43 @@ def compute_dataset():
         "distribution": [
             {
                 "@type": "DataDownload",
-                "contentUrl": "https://sondax.fr/data/sondages.json",
-                "encodingFormat": "application/json",
-                "name": "Sondages (JSON)",
-            },
-            {
-                "@type": "DataDownload",
-                "contentUrl": "https://sondax.fr/data/polymarket.json",
-                "encodingFormat": "application/json",
-                "name": "Cotes Polymarket (JSON)",
+                "contentUrl": "https://sondax.fr/donnees/sondages-presidentielle-2027.csv",
+                "encodingFormat": "text/csv",
+                "name": "Sondages présidentielle 2027 (CSV)",
             },
         ],
     }
 
 
 def main():
+    """Le balisage Dataset vit sur la seule page Données.
+
+    Les anciennes versions l'injectaient aussi dans index.html et sondages.html,
+    où il restait figé (la regex de remplacement ne correspondait pas). On l'y retire.
+    """
     dataset = compute_dataset()
     script_tag = f'<script type="application/ld+json">{json.dumps(dataset, ensure_ascii=False)}</script>'
+    pattern = re.compile(
+        r'<script type="application/ld\+json">\{"@context":\s*"https://schema\.org",'
+        r'\s*"@type":\s*"Dataset".*?</script>\n?', re.S)
 
-    import re
-    count = 0
     for name in ["index.html", "sondages.html"]:
         path = SITE / name
-        if not path.exists():
-            continue
-        content = path.read_text(encoding="utf-8")
-        modified = False
-        if MARKER in content:
-            content = content.replace(MARKER, script_tag)
-            modified = True
-        else:
-            # Remplacer un tag existant (re-build)
-            pattern = r'<script type="application/ld\+json">\{"@context":"https://schema\.org","@type":"Dataset".*?</script>'
-            if re.search(pattern, content):
-                content = re.sub(pattern, script_tag, content)
-                modified = True
-        if modified:
-            path.write_text(content, encoding="utf-8")
-            count += 1
-            print(f"  OK  {name}")
+        if path.exists():
+            content = path.read_text(encoding="utf-8")
+            nouveau = pattern.sub("", content).replace(MARKER + "\n", "").replace(MARKER, "")
+            if nouveau != content:
+                path.write_text(nouveau, encoding="utf-8")
+                print(f"  retiré  {name}")
 
-    print(f"JSON-LD Dataset injecté dans {count} pages")
+    path = SITE / "donnees.html"
+    content = path.read_text(encoding="utf-8")
+    if MARKER in content:
+        content = content.replace(MARKER, script_tag)
+    else:
+        content = pattern.sub(script_tag + "\n", content)
+    path.write_text(content, encoding="utf-8")
+    print("JSON-LD Dataset injecté dans donnees.html")
 
 
 if __name__ == "__main__":

@@ -24,7 +24,7 @@ window.HEADER_DATA = {
       "score": "9,0"
     }
   ],
-  "pollCount": 29,
+  "pollCount": 30,
   "instituteCount": 8,
   "electionDates": {
     "premierTour": "2027-04-18",

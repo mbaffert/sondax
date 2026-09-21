@@ -79,17 +79,20 @@
     border: 1px solid #DDDFDA; border-radius: 8px; font-size: 13px; color: var(--texte); }
 
   .chart-wrap { position: relative; width: 100%; height: 500px; }
+  .chart-wrap.with-labels { /* réserve de place pour les labels de fin de courbe */ }
 
   .candidats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.3em 0.5em; margin-top: 1em; font-size: 0.82em; }
-  .candidat-cb { display: grid; grid-template-columns: auto 1fr 3.5em; align-items: center; gap: 0 0.3em; cursor: pointer; user-select: none; }
+  .candidat-cb { display: grid; grid-template-columns: auto 1fr auto 4.5em; align-items: center; gap: 0 0.3em; cursor: pointer; user-select: none; }
   .candidat-cb input { accent-color: var(--col); }
   .candidat-cb .cb-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: flex; align-items: center; gap: 0.3em; }
   .candidat-cb .cb-name .pastille { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-  .candidat-cb .cb-delta { font-size: 0.85em; text-align: right; color: var(--gris); }
+  .candidat-cb .cb-avg { font-size: 0.85em; text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .candidat-cb .cb-delta { font-size: 0.8em; text-align: right; color: var(--gris); white-space: nowrap; }
   .cb-page-link { text-decoration: none; color: var(--gris); font-weight: 600; font-size: 1.1em; line-height: 1; padding: 0 2px; }
   .cb-page-link:hover { color: var(--bleu-vif, #2563eb); }
   .candidat-cb.no-delta { grid-template-columns: auto 1fr; }
-  .cb-col-header { display: grid; grid-template-columns: auto 1fr 3.5em; align-items: end; gap: 0 0.3em; }
+  .cb-col-header { display: grid; grid-template-columns: auto 1fr auto 4.5em; align-items: end; gap: 0 0.3em; }
+  .cb-col-header .cb-avg-header { font-size: 0.75em; color: var(--gris); text-align: right; }
   .cb-col-header .cb-delta-header { font-size: 0.75em; color: var(--gris);
     text-align: right; cursor: help; border-bottom: 1px dotted var(--gris); }
   .candidats .cb-extra { display: contents; }
@@ -168,14 +171,14 @@
 
   /* Mobile */
   @media (max-width: 600px) {
-    main { padding: 14px 12px 0; }
-    .bloc { padding: 18px 16px 16px; border-radius: 12px; }
-    .chart-wrap { height: 320px; }
+    main { padding: 14px 8px 0; }
+    .bloc { padding: 18px 12px 16px; border-radius: 12px; }
+    .chart-wrap { height: 265px; }
     .fiche-chart-wrap { height: 300px; }
     .periode { gap: 6px; }
     .periode span { display: none; }
-    .periode .periode-group button { padding: 5px 9px; font-size: 12px; }
-    .periode input[type="date"] { font-size: 12px; padding: 5px 7px; }
+    .periode .periode-group button { padding: 8px 12px; font-size: 13px; min-height: 44px; min-width: 44px; }
+    .periode input[type="date"] { display: none; }
     .fiche-row { flex-direction: column; gap: 6px; }
     .fiche-row select { width: 100%; }
     .duel-select { flex-direction: column; align-items: flex-start; gap: 6px; }
@@ -212,15 +215,15 @@
     <div class="section-label">Agrégation</div>
     <h2>Sondages du premier tour de la présidentielle 2027</h2>
     <!-- BEGIN:premier-tour -->
-    <p class="subtitle">Marine Le Pen arrive en tête des sondages du premier tour de la présidentielle 2027 avec 33,4 % des intentions de vote, devant Jean-Luc Mélenchon (16,0 %) et Édouard Philippe (14,8 %). Cette moyenne pondère les 10 sondages publiés depuis le 11 août 2026 par 6 instituts : Cluster17, Elabe, Harris, Ifop, Ipsos et OpinionWay. Le Pen gagne 1,6 point en trois mois.</p>
+    <p class="subtitle">Marine Le Pen arrive en tête des sondages du premier tour de la présidentielle 2027 avec 33,5 % des intentions de vote, devant Jean-Luc Mélenchon (16,0 %) et Édouard Philippe (14,8 %). Cette moyenne pondère les 11 sondages publiés depuis le 11 août 2026 par 6 instituts : Cluster17, Elabe, Harris, Ifop, Ipsos et OpinionWay. Le Pen gagne 1,6 point en trois mois.</p>
     <p class="subtitle">Le premier tour de l’élection présidentielle se tient le dimanche 18 avril 2027. Les deux candidats arrivés en tête s’affrontent au second tour, sauf si l’un obtient la majorité absolue des suffrages exprimés dès le premier tour — ce qui n’est jamais arrivé sous la Vᵉ République. La liste officielle des candidats ne sera connue qu’après la clôture des parrainages, le 12 mars 2027 : les instituts testent d’ici là des hypothèses de candidatures, qui varient d’un sondage à l’autre.</p>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Élection présidentielle française 2027 — premier tour", "startDate": "2027-04-18", "location": {"@type": "Country", "name": "France"}}</script>
 <!-- END:premier-tour -->
     <div class="periode" data-bloc="sondages">
       <span>Période</span>
       <div class="periode-group">
-        <button data-months="3">3 mois</button>
-        <button data-months="6" class="active">6 mois</button>
+        <button data-months="3" class="active">3 mois</button>
+        <button data-months="6">6 mois</button>
         <button data-all="1">Tout</button>
       </div>
       <input type="date" class="date-libre" title="Date de début libre">
@@ -238,7 +241,7 @@
       <a href="le-pen.html" class="galerie-item" style="--cand-col:#0D378A"><img src="photos/le-pen.jpg" alt="Le Pen" width="120" height="120" loading="lazy"><span>Le Pen</span></a>
       <a href="melenchon.html" class="galerie-item" style="--cand-col:#CC2443"><img src="photos/melenchon.jpg" alt="Mélenchon" width="120" height="120" loading="lazy"><span>Mélenchon</span></a>
       <a href="philippe.html" class="galerie-item" style="--cand-col:#00B7FF"><img src="photos/philippe.jpg" alt="Philippe" width="120" height="120" loading="lazy"><span>Philippe</span></a>
-      <a href="glucksmann.html" class="galerie-item" style="--cand-col:#E4003C"><img src="photos/glucksmann.jpg" alt="Glucksmann" width="120" height="120" loading="lazy"><span>Glucksmann</span></a>
+      <a href="glucksmann.html" class="galerie-item" style="--cand-col:#FF7043"><img src="photos/glucksmann.jpg" alt="Glucksmann" width="120" height="120" loading="lazy"><span>Glucksmann</span></a>
       <a href="attal.html" class="galerie-item" style="--cand-col:#7E57C2"><img src="photos/attal.jpg" alt="Attal" width="120" height="120" loading="lazy"><span>Attal</span></a>
       <a href="retailleau.html" class="galerie-item" style="--cand-col:#0066CC"><img src="photos/retailleau.jpg" alt="Retailleau" width="120" height="120" loading="lazy"><span>Retailleau</span></a>
       <a href="zemmour.html" class="galerie-item" style="--cand-col:#1A1A2E"><img src="photos/zemmour.jpg" alt="Zemmour" width="120" height="120" loading="lazy"><span>Zemmour</span></a>
@@ -373,7 +376,7 @@
     <tr><td>Harris</td><td>10/09/2026</td><td>2 052</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10263-pres-iv-toluna-harris-interactive-rtl-14-septembre.pdf" target="_blank">Notice</a></td></tr>
     <tr><td>OpinionWay</td><td>09/09/2026</td><td>1 001</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10259-pres-presitrack-v2-opinionway-les-echos-10-septembre.pdf" target="_blank">Notice</a></td></tr>
     <tr><td>Ipsos</td><td>09/09/2026</td><td>13 060</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10262-pres-enquete-electorale-ipsos-bva-le-monde-13-septembre.pdf" target="_blank">Notice</a></td></tr>
-    <tr><td>OpinionWay</td><td>03/09/2026</td><td>1 003</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10252-pres-iv-opinionway-jdd-7-septembre.pdf" target="_blank">Notice</a></td></tr>
+    <tr><td>OpinionWay</td><td>04/09/2026</td><td>1 034</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10264-pres-opinionway-facebook-15-septembre.pdf" target="_blank">Notice</a></td></tr>
     </table>
     <a href="sondages.html" class="voir-tous">Voir tous les sondages</a>
   </div>
@@ -479,18 +482,18 @@ const IS_MOBILE = window.innerWidth < 600;
 function xAxisConfig(dateDebut, dateFin) {
   const d0 = new Date(dateDebut), d1 = new Date(dateFin);
   const days = Math.round((d1 - d0) / 86400000);
-  // Période longue (> 4 mois) : mois abrégé. Courte : jour + mois abrégé.
   const unit = days > 120 ? 'month' : 'week';
   const displayFormats = {
-    week: 'd MMM',    // "12 sept."
-    month: 'MMM',     // "sept."
+    week: 'd MMM',
+    month: 'MMM',
   };
   return {
     type: 'time',
     time: { unit, displayFormats, tooltipFormat: 'd MMMM yyyy' },
     adapters: { date: { locale: window.dateFns?.locale?.fr } },
-    ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: IS_MOBILE ? 5 : 9 },
-    grid: { color: '#edeee9' },
+    ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: IS_MOBILE ? 5 : 9,
+      color: IS_MOBILE ? '#b0b5bc' : '#9aa2ac', font: { size: IS_MOBILE ? 10 : 11 } },
+    grid: { color: IS_MOBILE ? '#f0f1ed' : '#edeee9' },
   };
 }
 
@@ -618,20 +621,17 @@ class BlocChart {
     }
   }
 
-  delta30(cid) {
+  delta3m(cid) {
     const pts = this.candidats[cid];
     if (!pts || pts.length === 0) return null;
-    // Last non-null
     let last = null, lastIdx = -1;
     for (let i = pts.length - 1; i >= 0; i--) {
       if (pts[i].v !== null) { last = pts[i]; lastIdx = i; break; }
     }
     if (!last) return null;
-    // Value ~30 days before
     const target = new Date(last.d);
-    target.setDate(target.getDate() - 30);
+    target.setDate(target.getDate() - 90);
     const targetISO = target.toISOString().slice(0, 10);
-    // Find closest point on or before target date
     let prev = null;
     for (let i = lastIdx; i >= 0; i--) {
       if (pts[i].d <= targetISO && pts[i].v !== null) { prev = pts[i]; break; }
@@ -644,13 +644,12 @@ class BlocChart {
     const VISIBLE = 8;
     this.cbContainer.innerHTML = '';
 
-    // One header cell per visible column, showing "sur 30 j" aligned with the delta
     if (this.showDelta) {
       const ncols = IS_MOBILE ? 2 : 4;
       for (let c = 0; c < ncols; c++) {
         const hdr = document.createElement('div');
         hdr.className = 'cb-col-header';
-        hdr.innerHTML = '<span></span><span></span><span class="cb-delta-header" title="Écart entre la valeur lissée d\u2019aujourd\u2019hui et celle d\u2019il y a trente jours, en points de pourcentage">sur 30\u00a0j</span>';
+        hdr.innerHTML = '<span></span><span></span><span class="cb-avg-header"></span><span class="cb-delta-header" title="Variation de la moyenne pondérée sur trois mois, en points de pourcentage">sur 3\u00a0mois</span>';
         this.cbContainer.appendChild(hdr);
       }
     }
@@ -665,6 +664,7 @@ class BlocChart {
       const label = document.createElement('label');
       label.className = 'candidat-cb' + (this.showDelta ? '' : ' no-delta');
       label.style.setProperty('--col', col);
+      label.dataset.cid = cid;
 
       const cb = document.createElement('input');
       cb.type = 'checkbox';
@@ -674,10 +674,6 @@ class BlocChart {
         else this.checked.delete(cid);
         this.render();
       });
-
-      const pastille = document.createElement('span');
-      pastille.className = 'pastille';
-      pastille.style.background = col;
 
       const nameSpan = document.createElement('span');
       nameSpan.className = 'cb-name';
@@ -690,14 +686,35 @@ class BlocChart {
       label.appendChild(nameSpan);
 
       if (this.showDelta) {
-        const d = this.delta30(cid);
+        const avg = this.lastVal(cid);
+        const avgSpan = document.createElement('span');
+        avgSpan.className = 'cb-avg';
+        if (avg !== null) avgSpan.textContent = fmtPct(avg);
+        label.appendChild(avgSpan);
+
+        const d = this.delta3m(cid);
         const deltaSpan = document.createElement('span');
         deltaSpan.className = 'cb-delta';
         if (d !== null) {
           const sign = d > 0 ? '+' : '';
-          deltaSpan.textContent = `${sign}${d.toFixed(1).replace('.', ',')}`;
+          deltaSpan.textContent = `${sign}${d.toFixed(1).replace('.', ',')}\u00a0pt`;
         }
         label.appendChild(deltaSpan);
+      }
+
+      // Survol / toucher : renforcer la courbe, atténuer les autres
+      if (this.showDelta) {
+        const highlight = () => this.highlightCurve(cid);
+        const unhighlight = () => this.highlightCurve(null);
+        label.addEventListener('mouseenter', highlight);
+        label.addEventListener('mouseleave', unhighlight);
+        if (IS_TOUCH) {
+          label.addEventListener('touchstart', (e) => {
+            if (e.target.tagName === 'INPUT' || e.target.tagName === 'A') return;
+            highlight();
+          }, { passive: true });
+          label.addEventListener('touchend', unhighlight, { passive: true });
+        }
       }
 
       if (idx < VISIBLE) {
@@ -722,6 +739,36 @@ class BlocChart {
         extraWrap.appendChild(label);
       }
     }
+  }
+
+  highlightCurve(cid) {
+    if (!this.chart) return;
+    for (const ds of this.chart.data.datasets) {
+      if (!ds._cid) continue;
+      if (cid === null) {
+        ds.borderWidth = ds._origBorderWidth || ds.borderWidth;
+        ds.borderColor = ds._origBorderColor || ds.borderColor;
+        if (ds._isBrut) {
+          ds.backgroundColor = ds._origBgColor || ds.backgroundColor;
+          ds.borderColor = ds._origBorderColor || ds.borderColor;
+        }
+      } else if (ds._cid === cid) {
+        ds.borderWidth = ds._isGhost ? 1 : (IS_MOBILE ? 4 : 3.5);
+        ds.borderColor = ds._origBorderColor || ds.borderColor;
+        if (ds._isBrut) {
+          ds.backgroundColor = ds._origBgColor || ds.backgroundColor;
+        }
+      } else {
+        const orig = ds._origBorderColor || ds.borderColor;
+        ds.borderColor = ds._isGhost ? '#eee' : (orig.startsWith('#') ? orig + '25' : orig);
+        ds.borderWidth = ds._isGhost ? 1 : (ds._origBorderWidth || ds.borderWidth);
+        if (ds._isBrut) {
+          ds.backgroundColor = (ds._origBgColor || ds.backgroundColor).startsWith('#')
+            ? (ds._origBgColor || ds.backgroundColor) + '15' : ds.backgroundColor;
+        }
+      }
+    }
+    this.chart.update('none');
   }
 
   buildGhostSegments(cid, dateDebut) {
@@ -749,6 +796,9 @@ class BlocChart {
   render() {
     const dateDebut = this.getDateDebut();
     const datasets = [];
+    const CURVE_WIDTH = IS_MOBILE ? 2.8 : 2.5;
+    const PT_RADIUS = IS_MOBILE ? 1.2 : 1.8;
+    const PT_ALPHA = IS_MOBILE ? '50' : '70';
 
     for (const cid of this.sortedCids) {
       if (!this.checked.has(cid)) continue;
@@ -760,14 +810,16 @@ class BlocChart {
 
       const fallbackEnd = this.fallbackEndDate ? parseDate(this.fallbackEndDate) : null;
       const colFaded = col.startsWith('#')
-        ? col + '55'  // hex + alpha
+        ? col + '55'
         : col.replace('rgb(', 'rgba(').replace(')', ', 0.33)');
 
       datasets.push({
         label: nomCourt(cid),
         data: data,
         borderColor: col,
-        borderWidth: 2,
+        _origBorderColor: col,
+        borderWidth: CURVE_WIDTH,
+        _origBorderWidth: CURVE_WIDTH,
         pointRadius: 0,
         tension: 0,
         fill: false,
@@ -796,7 +848,9 @@ class BlocChart {
           label: '',
           data: seg,
           borderColor: '#ccc',
+          _origBorderColor: '#ccc',
           borderWidth: 1,
+          _origBorderWidth: 1,
           borderDash: [4, 4],
           pointRadius: 0,
           tension: 0,
@@ -806,7 +860,6 @@ class BlocChart {
         });
       }
 
-      // Points bruts (§4 SPEC) : petits cercles derrière la courbe
       if (this.pointsBruts && this.pointsBruts[cid]) {
         const bruts = this.pointsBruts[cid]
           .filter(p => p.d >= dateDebut)
@@ -819,11 +872,14 @@ class BlocChart {
           datasets.push({
             label: '',
             data: bruts,
-            borderColor: col,
-            backgroundColor: col,
+            borderColor: col + PT_ALPHA,
+            _origBorderColor: col + PT_ALPHA,
+            backgroundColor: col + PT_ALPHA,
+            _origBgColor: col + PT_ALPHA,
             borderWidth: 0,
-            pointRadius: 2.5,
-            pointHoverRadius: 5,
+            _origBorderWidth: 0,
+            pointRadius: PT_RADIUS,
+            pointHoverRadius: 4,
             showLine: false,
             _cid: cid,
             _isBrut: true,
@@ -836,7 +892,6 @@ class BlocChart {
 
     if (this.chart) this.chart.destroy();
 
-    // Plugin inline : bande de fond pour la zone fallback + tooltip natif
     const fallbackEndDate = this.fallbackEndDate;
     const getDateDebut = () => this.getDateDebut();
     const fallbackBandPlugin = fallbackEndDate ? {
@@ -869,21 +924,99 @@ class BlocChart {
       }
     } : null;
 
+    // Plugin : labels de fin de courbe (nom + moyenne)
+    const endLabelsPlugin = this.enableEndLabels ? {
+      id: 'endLabels',
+      afterDraw: (chart) => {
+        const ctx = chart.ctx;
+        const chartArea = chart.chartArea;
+        const labels = [];
+        const dsIndexMap = new Map();
+        chart.data.datasets.forEach((ds, i) => dsIndexMap.set(ds, i));
+
+        for (const ds of chart.data.datasets) {
+          if (ds._isGhost || ds._isBrut || !ds._cid) continue;
+          let lastPt = null, lastIdx = -1;
+          for (let i = ds.data.length - 1; i >= 0; i--) {
+            if (ds.data[i].y !== null && !isNaN(ds.data[i].y)) {
+              lastPt = ds.data[i]; lastIdx = i; break;
+            }
+          }
+          if (!lastPt) continue;
+          const meta = chart.getDatasetMeta(dsIndexMap.get(ds));
+          const ptMeta = meta.data[lastIdx];
+          if (!ptMeta) continue;
+          const atEnd = (chartArea.right - ptMeta.x) < 40;
+          labels.push({
+            cid: ds._cid,
+            text: `${nomCourt(ds._cid)} ${fmtPct(lastPt.y)}`,
+            x: ptMeta.x,
+            y: ptMeta.y,
+            targetY: ptMeta.y,
+            color: ds._origBorderColor || ds.borderColor,
+            atEnd,
+          });
+        }
+        if (labels.length === 0) return;
+
+        labels.sort((a, b) => a.y - b.y);
+        const GAP = IS_MOBILE ? 12 : 14;
+        for (let i = 1; i < labels.length; i++) {
+          if (labels[i].targetY - labels[i - 1].targetY < GAP) {
+            labels[i].targetY = labels[i - 1].targetY + GAP;
+          }
+        }
+        // Recentrer si le groupe dépasse le bas du graphe
+        const lastLabel = labels[labels.length - 1];
+        if (lastLabel.targetY > chartArea.bottom - 4) {
+          const shift = lastLabel.targetY - (chartArea.bottom - 4);
+          for (const l of labels) l.targetY -= shift;
+        }
+
+        ctx.save();
+        const fontSize = IS_MOBILE ? 10 : 11;
+        ctx.font = `500 ${fontSize}px 'IBM Plex Sans', system-ui, sans-serif`;
+        ctx.textBaseline = 'middle';
+
+        for (const lb of labels) {
+          const labelX = lb.atEnd ? chartArea.right + 6 : lb.x + 8;
+          if (Math.abs(lb.targetY - lb.y) > 3) {
+            ctx.strokeStyle = lb.color + '60';
+            ctx.lineWidth = 0.8;
+            ctx.beginPath();
+            ctx.moveTo(lb.atEnd ? chartArea.right : lb.x + 3, lb.y);
+            ctx.lineTo(labelX - 3, lb.targetY);
+            ctx.stroke();
+          }
+          ctx.fillStyle = lb.color;
+          ctx.textAlign = 'left';
+          ctx.fillText(lb.text, labelX, lb.targetY);
+        }
+        ctx.restore();
+      }
+    } : null;
+
+    const plugins = [];
+    if (fallbackBandPlugin) plugins.push(fallbackBandPlugin);
+    if (endLabelsPlugin) plugins.push(endLabelsPlugin);
+
     this.chart = new Chart(this.canvas, {
       type: 'line',
       data: { datasets },
-      plugins: fallbackBandPlugin ? [fallbackBandPlugin] : [],
+      plugins,
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        layout: this.enableEndLabels ? { padding: { right: IS_MOBILE ? 90 : 115 } } : {},
         interaction: { mode: 'nearest', axis: 'x', intersect: false },
         scales: {
           x: xAxisConfig(dateDebut, this.dateFin),
           y: {
             min: 0,
             max: yMax,
-            ticks: { callback: (v) => v + '\u00a0%' },
-            grid: { color: '#edeee9' },
+            ticks: { callback: (v) => v + '\u00a0%',
+              color: IS_MOBILE ? '#b0b5bc' : '#9aa2ac', font: { size: IS_MOBILE ? 10 : 11 } },
+            grid: { color: IS_MOBILE ? '#f0f1ed' : '#edeee9' },
           },
         },
         plugins: {
@@ -891,7 +1024,6 @@ class BlocChart {
           tooltip: {
             filter: (item, _idx, arr) => {
               if (item.dataset._isGhost) return false;
-              // Si un point brut est dans la sélection, ne garder que les bruts
               const hasBrut = arr.some(a => a.dataset._isBrut);
               if (hasBrut) return item.dataset._isBrut;
               return true;
@@ -1454,6 +1586,7 @@ async function init() {
     }
   }
   sondagesBloc.pointsBruts = pointsBruts;
+  sondagesBloc.enableEndLabels = true;
 
   sondagesBloc.setCandidats(sondagesCandidats, (a, b) => {
     const la = sondagesBloc.lastVal(a) || 0;

@@ -299,7 +299,7 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{nom} — sondages présidentielle 2027 : intentions de vote et électorat | Sondax</title>
 <meta name="description" content="Sondages {nom} pour la présidentielle 2027 : moyenne des intentions de vote au premier tour, évolution, duels de second tour et profil de son électorat.">
-<link rel="canonical" href="https://sondax.fr/candidats/{slug}">
+<link rel="canonical" href="https://sondax.fr/{slug}.html">
 <meta property="og:title" content="{nom} — sondages présidentielle 2027">
 <meta property="og:description" content="Intentions de vote, second tour et électorat de {nom}.">
 <meta property="og:type" content="article">
@@ -309,7 +309,7 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
 "@context":"https://schema.org","@type":"Person","name":"{nom}",
 "affiliation":{{"@type":"Organization","name":"{fiche['parti']}"}},
 "subjectOf":{{"@type":"WebPage","name":"Sondages {nom} — présidentielle 2027",
-"url":"https://sondax.fr/candidats/{slug}"}}}}</script>
+"url":"https://sondax.fr/{slug}.html"}}}}</script>
 </head><body><div class="page-candidat"><main>
 <div class="fil"><a href="/">Sondax</a> › Candidats › {nom}</div>
 <section class="carte hero"><div class="pad">

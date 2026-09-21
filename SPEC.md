@@ -794,3 +794,66 @@ Résultats officiels ; points bruts au premier tour.
 
 **Hors périmètre.** Traitement des rollings, regroupement par famille politique ou par
 rang, superposition de plusieurs élections sur un même graphe, élections de 1965 à 1995.
+
+## 13. Pages générées
+
+Toutes les pages ci-dessous sont générées au build depuis `/data`. Aucune n'est
+écrite à la main ; chacune possède un canonical correspondant à son URL réelle.
+
+### 13.1 Fiches candidat
+
+URL : `/<slug>.html` (9 candidats définis dans `scripts/bios.json`).
+Script : `scripts/build_pages_candidats.py`, qui appelle `scripts/generer.py`.
+Contenu : identité, courbe d'évolution, duels de second tour, profil de
+l'électorat (croisements Ipsos), liens vers les autres candidats.
+CSS scopé sous `.page-candidat` (`site/style-candidat.css`).
+
+### 13.2 Index des candidats
+
+URL : `/candidats/` (`site/candidats/index.html`).
+Script : `scripts/build_candidats_index.py`.
+Contenu : tableau de tous les candidats du référentiel, avec dernier score de
+l'hypothèse principale, date de dernière mesure, et lien vers la fiche.
+
+### 13.3 Pages par sondage
+
+URL : `/sondages/<id>.html` (un fichier par entrée de `sondages.json`).
+Script : `scripts/build_sondage_pages.py`.
+Contenu : institut, dates de terrain, échantillon, population, lien vers la
+notice, puis chaque hypothèse (tour, scores, marge d'erreur). L'hypothèse
+principale est affichée en premier. Marge d'erreur calculée sur l'échantillon de
+l'hypothèse si disponible, sinon sur l'échantillon total avec mention
+« approximative ».
+
+### 13.4 Pages par duel de second tour
+
+URL : `/second-tour/<slug-a>-<slug-b>.html` (slugs dans l'ordre alphabétique).
+Script : `scripts/pages_second_tour.py` (`generate_duel_page`).
+Contenu : tableau des sondages pour le duel. Graphique Chart.js si ≥ 5 mesures
+(SEUIL défini dans le script), tableau seul en dessous. Redirection HTML depuis
+le slug inversé.
+
+### 13.5 Balisage et SEO
+
+**Canonicals.** Chaque page déclare un `<link rel="canonical">` pointant vers
+son URL réelle (`https://sondax.fr/<chemin>`). Vérifié au build par
+`scripts/validate_urls.py`.
+
+**Sitemap.** Généré par `scripts/build_sitemap.py`, couvre toutes les pages
+publiques. Les pages de redirection en sont exclues. Vérifié au build.
+
+**JSON-LD Dataset.** Balisage `schema.org/Dataset` injecté par
+`scripts/build_jsonld_dataset.py` dans `index.html` et `sondages.html` :
+name, description, license (CC BY-SA 4.0), isBasedOn (page Wikipédia source),
+creator, temporalCoverage, dateModified, distributions (sondages.json,
+polymarket.json).
+
+**Dates de build.** Injectées en HTML statique par `scripts/build_dates.py` :
+dernier sondage intégré, date de vérification, revid Wikipédia. Affichées en
+haut de la page d'accueil et dans le pied de page de toutes les pages.
+
+**Validation.** `scripts/validate_urls.py` vérifie que chaque canonical et
+chaque URL du sitemap correspond à un fichier généré. Le build échoue (exit 1)
+en cas d'écart.
+
+**Hors périmètre.** Pages par institut, BreadcrumbList.

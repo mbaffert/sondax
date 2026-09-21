@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Injecte le balisage JSON-LD schema.org/Dataset dans donnees.html."""
+"""Injecte le balisage JSON-LD schema.org/Dataset : sondages sur donnees.html, cotes sur index.html."""
 
 import json, pathlib, datetime, re
 
@@ -47,35 +47,84 @@ def compute_dataset():
     }
 
 
-def main():
-    """Le balisage Dataset vit sur la seule page Données.
+def compute_dataset_polymarket():
+    """Second jeu de données, distinct : cotes Polymarket.
 
-    Les anciennes versions l'injectaient aussi dans index.html et sondages.html,
-    où il restait figé (la regex de remplacement ne correspondait pas). On l'y retire.
+    Pas de propriété license : les cotes relèvent des conditions d'utilisation de
+    Polymarket, pas de la CC BY-SA des sondages. Ne jamais les fusionner avec
+    le jeu de données des sondages.
     """
-    dataset = compute_dataset()
-    script_tag = f'<script type="application/ld+json">{json.dumps(dataset, ensure_ascii=False)}</script>'
-    pattern = re.compile(
+    pm = json.loads((ROOT / "data" / "polymarket.json").read_text())
+    dates = [h["d"] for m in pm["marches"].values()
+             for c in m["candidats"].values() for h in c.get("historique", [])]
+    return {
+        "@context": "https://schema.org",
+        "@type": "Dataset",
+        "name": "Cotes Polymarket de l\u2019\u00e9lection pr\u00e9sidentielle fran\u00e7aise 2027",
+        "description": "Probabilit\u00e9s implicites issues des march\u00e9s de pr\u00e9diction Polymarket "
+                       "pour la pr\u00e9sidentielle 2027 : victoire et acc\u00e8s au second tour, "
+                       "par candidat, historique quotidien. Ce sont des prix de march\u00e9, "
+                       "pas des intentions de vote.",
+        "url": "https://sondax.fr/#bloc-polymarket",
+        "isBasedOn": {
+            "@type": "CreativeWork",
+            "name": "Polymarket",
+            "url": "https://polymarket.com",
+        },
+        "creator": {
+            "@type": "Organization",
+            "name": "Sondax",
+            "url": "https://sondax.fr",
+        },
+        "temporalCoverage": f"{min(dates)}/{max(dates)}",
+        "dateModified": pm["maj"][:10],
+        "distribution": [
+            {
+                "@type": "DataDownload",
+                "contentUrl": "https://sondax.fr/data/polymarket.json",
+                "encodingFormat": "application/json",
+                "name": "Cotes Polymarket (JSON)",
+            },
+        ],
+    }
+
+
+def main():
+    """Deux jeux de données, deux pages.
+
+    - Sondages (CC BY-SA) : sur donnees.html uniquement.
+    - Cotes Polymarket (sans licence déclarée) : sur index.html, où elles s'affichent.
+    Chaque balise porte un id, ce qui rend l'injection idempotente.
+    """
+    ancien = re.compile(  # balises sans id des versions précédentes
         r'<script type="application/ld\+json">\{"@context":\s*"https://schema\.org",'
         r'\s*"@type":\s*"Dataset".*?</script>\n?', re.S)
 
-    for name in ["index.html", "sondages.html"]:
-        path = SITE / name
-        if path.exists():
-            content = path.read_text(encoding="utf-8")
-            nouveau = pattern.sub("", content).replace(MARKER + "\n", "").replace(MARKER, "")
-            if nouveau != content:
-                path.write_text(nouveau, encoding="utf-8")
-                print(f"  retiré  {name}")
+    def tag(ident, data):
+        return (f'<script type="application/ld+json" id="{ident}">'
+                f'{json.dumps(data, ensure_ascii=False)}</script>')
 
-    path = SITE / "donnees.html"
+    def poser(name, ident, data):
+        path = SITE / name
+        content = path.read_text(encoding="utf-8")
+        content = ancien.sub("", content).replace(MARKER + "\n", "").replace(MARKER, "")
+        propre = re.compile(rf'<script type="application/ld\+json" id="{ident}">.*?</script>', re.S)
+        if propre.search(content):
+            content = propre.sub(lambda _: tag(ident, data), content)
+        else:
+            content = content.replace("</head>", tag(ident, data) + "\n</head>", 1)
+        path.write_text(content, encoding="utf-8")
+        print(f"  OK  {ident} -> {name}")
+
+    # sondages.html ne porte plus de balisage Dataset
+    path = SITE / "sondages.html"
     content = path.read_text(encoding="utf-8")
-    if MARKER in content:
-        content = content.replace(MARKER, script_tag)
-    else:
-        content = pattern.sub(script_tag + "\n", content)
-    path.write_text(content, encoding="utf-8")
-    print("JSON-LD Dataset injecté dans donnees.html")
+    nouveau = ancien.sub("", content).replace(MARKER + "\n", "").replace(MARKER, "")
+    if nouveau != content:
+        path.write_text(nouveau, encoding="utf-8")
+
+    poser("donnees.html", "jsonld-dataset-sondages", compute_dataset())
+    poser("index.html", "jsonld-dataset-polymarket", compute_dataset_polymarket())
 
 
 if __name__ == "__main__":

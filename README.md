@@ -20,8 +20,7 @@ changer sans préavis. L'historique git de `data/sondages.json` donne l'état de
 
 - Sondages : page Wikipédia
   [Liste de sondages sur l'élection présidentielle française de 2027](https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027),
-  complétée à la main à partir des notices de la Commission des sondages quand un
-  sondage y manque. Le wikitexte brut de chaque version utilisée est conservé dans
+  et, pour quelques sondages, notices déposées à la Commission des sondages. Le wikitexte brut de chaque version utilisée est conservé dans
   `data/snapshots/`.
 - Cotes des marchés de prédiction : Polymarket (affichées sur le site, non incluses dans
   le jeu de données).

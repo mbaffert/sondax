@@ -45,8 +45,7 @@ COLONNES = [
     ("candidat", "Prénom et nom."),
     ("parti", "Parti ou mouvement."),
     ("score", "Intention de vote en % des suffrages exprimés, point décimal."),
-    ("source", "wikipedia, ou manuel pour un sondage saisi à partir de sa notice "
-               "parce qu’il manquait sur Wikipédia."),
+    ("source", "wikipedia, ou manuel pour un sondage saisi à partir de sa notice."),
     ("wikipedia_revid", "Version de la page Wikipédia dont la ligne est extraite. "
                         "Vide pour une saisie manuelle."),
     ("url_source", "Notice déposée à la Commission des sondages ou, à défaut, "
@@ -114,14 +113,13 @@ def page(nb_sondages, nb_lignes, poids_ko, dernier, premier):
 <h1>Données des sondages de la présidentielle 2027</h1>
 
 <p>Tous les sondages d’intentions de vote de la présidentielle 2027 recensés par Sondax,
-dans un fichier CSV mis à jour chaque jour. Une ligne par candidat, par configuration
-testée et par sondage.</p>
+dans un fichier CSV mis à jour chaque jour.</p>
 
 <p>Les chiffres viennent de la <a href="{WIKI}">page Wikipédia</a> qui recense ces
-sondages, complétée à partir des notices de la Commission des sondages quand un sondage
-y manque. Par rapport au tableau de Wikipédia, le fichier sépare chaque configuration
-testée, rattache chaque score au candidat réellement testé, y compris quand la cellule
-remplace celui de la colonne, et renvoie vers la notice de chaque sondage.</p>
+sondages et, pour quelques-uns, des notices déposées à la Commission des sondages.
+Chaque ligne donne le score d’un candidat dans une configuration testée&nbsp;: un sondage
+qui teste plusieurs listes de candidats ou plusieurs duels occupe autant de blocs de
+lignes. Chaque sondage renvoie vers sa notice.</p>
 
 <p class="telechargement"><a href="donnees/{NOM_CSV}" download>{NOM_CSV}</a><br>
 <span>{nb_sondages} sondages du {date_fr(premier)} au {date_fr(dernier)} · {nb_lignes}
@@ -151,8 +149,7 @@ ou corrigez directement Wikipédia&nbsp;: la correction apparaît ici au passage
 {dico}
 </tbody>
 </table></div>
-</main>
-{MARKER_JSONLD}"""
+</main>"""
 
     style = """<style>
   main.donnees { max-width: 760px; }

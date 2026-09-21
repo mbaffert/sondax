@@ -842,11 +842,16 @@ son URL réelle (`https://sondax.fr/<chemin>`). Vérifié au build par
 **Sitemap.** Généré par `scripts/build_sitemap.py`, couvre toutes les pages
 publiques. Les pages de redirection en sont exclues. Vérifié au build.
 
-**JSON-LD Dataset.** Balisage `schema.org/Dataset` injecté par
-`scripts/build_jsonld_dataset.py` dans la seule page `donnees.html` (§13.6) :
-name, description, license (CC BY-SA 4.0), isBasedOn (page Wikipédia source),
-creator, temporalCoverage, dateModified, distribution (le CSV public). Les cotes
-Polymarket n'y figurent pas.
+**JSON-LD Dataset.** Deux jeux de données distincts, injectés par
+`scripts/build_jsonld_dataset.py`, chacun sur la page où il est présenté :
+
+- Sondages, sur `donnees.html` (§13.6) : license CC BY-SA 4.0, isBasedOn (page
+  Wikipédia), distribution (le CSV public).
+- Cotes Polymarket, sur `index.html` : isBasedOn Polymarket, distribution
+  (`polymarket.json`), **sans propriété license** — les cotes relèvent des conditions
+  d'utilisation de Polymarket, pas de la CC BY-SA.
+
+Jamais fusionnés en un seul jeu de données.
 
 **Dates de build.** Injectées en HTML statique par `scripts/build_dates.py` :
 dernier sondage intégré, date de vérification, revid Wikipédia. Affichées en

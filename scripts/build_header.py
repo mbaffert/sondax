@@ -164,46 +164,16 @@ def load_all_sondages():
 
 
 def main():
-    candidats = load_json(DATA / "candidats.json")
     sondages = load_all_sondages()
 
     if not sondages:
         print("Aucun sondage trouvé.")
         return
 
-    latest = select_latest_sondage(sondages)
-
-    # Sélection de l'hypothèse
-    hyp = select_hypothesis(latest, candidats)
-    if not hyp:
-        print(f"Pas d'hypothèse T1 pour {latest['id']}")
-        return
-
-    # Top 4 candidats, ordre décroissant, "autre" exclu
-    scores = hyp.get("scores", {})
-    top4 = sorted(
-        ((cid, s) for cid, s in scores.items() if cid != "autre"),
-        key=lambda x: -x[1],
-    )[:4]
-
-    # Formater les scores
-    candidates_data = []
-    for cid, score in top4:
-        formatted = f"{score:.1f}".replace(".", ",")
-        # Séparer partie entière et décimale pour l'affichage
-        candidates_data.append({
-            "name": candidate_full_name(cid, candidats),
-            "score": formatted,
-        })
-
     # Statistiques
     poll_count = len(sondages)
     institutes = set(s["institut"] for s in sondages)
     institute_count = len(institutes)
-
-    # Libellé distinctif de l'hypothèse (pour le lien "Voir le détail")
-    all_t1 = [h for h in latest["hypotheses"] if h.get("tour") == 1]
-    hyp_distinctive = build_hyp_distinctive_label(hyp, all_t1, candidats)
 
     # Dates de l'élection depuis config.json
     config_path = DATA / "config.json"
@@ -212,13 +182,6 @@ def main():
 
     # Données pour le bandeau
     header_data = {
-        "institut": latest["institut"],
-        "terrainFin": latest["terrain_fin"],
-        "terrainLabel": format_date_fr(latest["terrain_fin"]),
-        "terrainLabelMobile": format_date_mobile(latest["terrain_fin"]),
-        "hypDistinctive": hyp_distinctive,
-        "sondageId": latest["id"],
-        "candidates": candidates_data,
         "pollCount": poll_count,
         "instituteCount": institute_count,
         "electionDates": {
@@ -235,8 +198,7 @@ def main():
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(js)
 
-    print(f"header-data.js écrit : {latest['institut']} {latest['terrain_fin']}, "
-          f"{poll_count} sondages, {institute_count} instituts")
+    print(f"header-data.js écrit : {poll_count} sondages, {institute_count} instituts")
 
 
 if __name__ == "__main__":

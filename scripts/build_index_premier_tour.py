@@ -243,7 +243,7 @@ def generate_dernier_sondage(sondages, candidats):
     meta_html = (
         f'    <p class="fiche-meta" id="fiche-meta">'
         f'{" · ".join(meta_parts)}'
-        f' · <a href="sondages.html" style="font-weight:500;">Voir la fiche</a></p>'
+        f' · <a href="sondages/{html_mod.escape(latest["id"])}.html" style="font-weight:500;">Voir la fiche</a></p>'
     )
 
     # Scores de l'hypothèse, tri décroissant, "autre" exclu

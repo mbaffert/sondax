@@ -334,7 +334,7 @@
     <h2 id="dernier-sondage">Explorer les sondages</h2>
     <p class="subtitle">Choisissez un sondage puis une configuration pour voir le détail</p>
     <!-- BEGIN:dernier-sondage -->
-    <p class="fiche-meta" id="fiche-meta">Harris, du 8 septembre 2026 au 10 septembre 2026 · 2 052 personnes · <a href="sondages.html" style="font-weight:500;">Voir la fiche</a></p>
+    <p class="fiche-meta" id="fiche-meta">Harris, du 8 septembre 2026 au 10 septembre 2026 · 2 052 personnes · <a href="sondages/harris-2026-09-10.html" style="font-weight:500;">Voir la fiche</a></p>
 <!-- END:dernier-sondage -->
     <div class="fiche-row">
       <label>Sondage :</label>
@@ -349,15 +349,14 @@
       <summary style="cursor:pointer;font-size:13.5px;font-weight:500;color:var(--bleu-vif);padding:8px 0;list-style:none;">Voir les chiffres</summary>
       <!-- BEGIN:fiche-scores -->
       <table class="t2-table" id="fiche-scores-table" style="max-width:420px;">
-        <tr><td>Marine Le Pen</td><td style="text-align:right;font-variant-numeric:tabular-nums;">33,0 %</td></tr>
-        <tr><td>Jean-Luc Mélenchon</td><td style="text-align:right;font-variant-numeric:tabular-nums;">16,0 %</td></tr>
-        <tr><td>Édouard Philippe</td><td style="text-align:right;font-variant-numeric:tabular-nums;">14,0 %</td></tr>
-        <tr><td>Raphaël Glucksmann</td><td style="text-align:right;font-variant-numeric:tabular-nums;">9,0 %</td></tr>
-        <tr><td>Gabriel Attal</td><td style="text-align:right;font-variant-numeric:tabular-nums;">8,0 %</td></tr>
-        <tr><td>Bruno Retailleau</td><td style="text-align:right;font-variant-numeric:tabular-nums;">7,0 %</td></tr>
+        <tr><td>Marine Le Pen</td><td style="text-align:right;font-variant-numeric:tabular-nums;">36,0 %</td></tr>
+        <tr><td>Jean-Luc Mélenchon</td><td style="text-align:right;font-variant-numeric:tabular-nums;">17,0 %</td></tr>
+        <tr><td>Gabriel Attal</td><td style="text-align:right;font-variant-numeric:tabular-nums;">15,0 %</td></tr>
+        <tr><td>Bruno Retailleau</td><td style="text-align:right;font-variant-numeric:tabular-nums;">10,0 %</td></tr>
+        <tr><td>François Hollande</td><td style="text-align:right;font-variant-numeric:tabular-nums;">7,0 %</td></tr>
         <tr><td>Éric Zemmour</td><td style="text-align:right;font-variant-numeric:tabular-nums;">5,0 %</td></tr>
-        <tr><td>Marine Tondelier</td><td style="text-align:right;font-variant-numeric:tabular-nums;">3,0 %</td></tr>
-        <tr><td>Fabien Roussel</td><td style="text-align:right;font-variant-numeric:tabular-nums;">2,0 %</td></tr>
+        <tr><td>Marine Tondelier</td><td style="text-align:right;font-variant-numeric:tabular-nums;">4,0 %</td></tr>
+        <tr><td>Fabien Roussel</td><td style="text-align:right;font-variant-numeric:tabular-nums;">3,0 %</td></tr>
         <tr><td>Nicolas Dupont-Aignan</td><td style="text-align:right;font-variant-numeric:tabular-nums;">2,0 %</td></tr>
         <tr><td>Nathalie Arthaud</td><td style="text-align:right;font-variant-numeric:tabular-nums;">1,0 %</td></tr>
       </table>
@@ -1151,7 +1150,7 @@ class ExplorerSondages {
     const manuelTag = s.source === 'manuel' ? ' · <span style="color:var(--bleu-vif);">saisie manuelle</span>' : '';
     if (metaEl) {
       metaEl.innerHTML = `${s.institut} — ${fmtDate(s.terrain_debut)} \u2192 ${fmtDate(s.terrain_fin)} — Échantillon\u00a0: ${echStr}${manuelTag}` +
-        (s.url_source ? ` · <a href="${s.url_source}" target="_blank" style="font-weight:500;">Voir la fiche</a>` : '');
+        ` · <a href="sondages/${encodeURIComponent(s.id)}.html" style="font-weight:500;">Voir la fiche</a>`;
     }
 
     // Mettre à jour le tableau de scores dans le <details>

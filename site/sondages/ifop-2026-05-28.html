@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ifop — 28/05/2026 — Sondax</title>
-<meta name="description" content="Résultats du sondage Ifop du 28/05/2026 pour l’élection présidentielle 2027.">
+<title>Sondage Ifop du 28 mai 2026 – présidentielle 2027</title>
+<meta name="description" content="Résultats du sondage Ifop du 28 mai 2026 pour l’élection présidentielle 2027 : scores, marges d’erreur.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sondax">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://sondax.fr/sondages/ifop-2026-05-28.html">
-<meta property="og:title" content="Ifop — 28/05/2026 — Sondax">
-<meta property="og:description" content="Résultats du sondage Ifop du 28/05/2026 pour l’élection présidentielle 2027.">
+<meta property="og:title" content="Sondage Ifop du 28 mai 2026 – présidentielle 2027">
+<meta property="og:description" content="Résultats du sondage Ifop du 28 mai 2026 pour l’élection présidentielle 2027 : scores, marges d’erreur.">
 <meta property="og:image" content="https://sondax.fr/assets/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -72,137 +72,77 @@
   }
 </style>
 <style>
-.sondage-page { padding: 24px 16px 60px; }
-.sondage-inner { max-width: 860px; margin: 0 auto; }
+.sondage-page { padding: 24px 16px 40px; }
+.sondage-inner { max-width: 780px; margin: 0 auto; }
 
-.breadcrumb { font-size: 13px; color: var(--gris); margin-bottom: 18px; }
-.breadcrumb a { color: var(--gris); text-decoration: none; }
-.breadcrumb a:hover { text-decoration: underline; }
-
-.sondage-title {
-  font-family: var(--titre);
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 700;
-  color: var(--bleu-nuit);
-  margin-bottom: 18px;
-  line-height: 1.2;
-}
 .sondage-date {
-  display: inline-block;
-  font-size: 0.65em;
-  font-weight: 500;
-  color: var(--gris);
-  margin-left: 10px;
+  font-size: 15px; color: var(--gris); margin: -12px 0 4px;
+}
+.sondage-meta-line {
+  font-size: 13.5px; color: var(--gris); margin-bottom: 0;
+}
+.sondage-meta-line a { font-weight: 500; }
+
+.section-sep {
+  border-top: 1px solid var(--bord); margin: 20px 0;
 }
 
-.sondage-meta {
-  background: var(--carte);
-  border: 1px solid var(--bord);
-  border-radius: 10px;
-  padding: 16px 20px;
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 6px 16px;
-  font-size: 14px;
-  margin-bottom: 32px;
-}
-.sondage-meta dt { color: var(--gris); font-weight: 500; }
-.sondage-meta dd { margin: 0; }
-
-.hypotheses-section h2 {
-  font-family: var(--titre);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--bleu-nuit);
-  margin-bottom: 18px;
-}
-
-.hypothese {
-  background: var(--carte);
-  border: 1px solid var(--bord);
-  border-radius: 10px;
-  padding: 18px 20px 14px;
-  margin-bottom: 18px;
-}
-.hypothese-principale {
-  border-color: var(--bleu-vif);
-  border-width: 2px;
-}
-
+/* Hypothèses */
+.hypothese { margin-bottom: 18px; }
+.hyp-principale { border-left: 3px solid var(--bleu-vif); padding-left: 16px; }
 .hyp-header {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--bleu-nuit);
-  margin-bottom: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
+  font-size: 14px; font-weight: 600; color: var(--bleu-nuit);
+  margin-bottom: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
 }
-.hyp-tour { font-size: 15px; }
-.hyp-ech { font-weight: 400; color: var(--gris); font-size: 13px; }
+.hyp-detail { font-weight: 400; color: var(--gris); font-size: 13px; }
 
-.badge-principale {
-  background: var(--bleu-vif);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 20px;
-  letter-spacing: 0.03em;
-}
-
-.scores-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-.scores-table th {
-  text-align: left;
-  color: var(--gris);
-  font-weight: 500;
-  font-size: 12px;
-  padding: 0 8px 8px 0;
-  border-bottom: 1px solid var(--bord);
-}
-.scores-table td {
-  padding: 7px 8px 7px 0;
-  border-bottom: 1px solid var(--bord);
-  vertical-align: middle;
-}
+.scores-table { font-size: 14px; }
+.scores-table th { font-size: 11px; padding: 0 8px 6px 0; }
+.scores-table td { padding: 5px 8px 5px 0; }
 .scores-table tr:last-child td { border-bottom: none; }
 
-.cand-name { min-width: 160px; font-weight: 500; }
-.cand-score { min-width: 180px; }
-.score-val { font-family: var(--mono); font-size: 13.5px; margin-right: 8px; }
-.score-bar-wrap {
-  display: inline-block;
-  width: 100px;
-  height: 8px;
-  background: #e8eaf0;
-  border-radius: 4px;
-  vertical-align: middle;
-}
-.score-bar {
-  display: block;
-  height: 100%;
-  background: var(--bleu-vif);
-  border-radius: 4px;
-}
-.cand-me { font-family: var(--mono); font-size: 12.5px; color: var(--gris); white-space: nowrap; }
+.cand-name { min-width: 140px; font-weight: 500; }
+.cand-name a { color: var(--texte); }
+.cand-name a:hover { color: var(--bleu-vif); }
+tr.type-parti .cand-name { font-style: italic; }
 
-.me-approx { color: #aaa; font-family: var(--corps); font-size: 11px; }
-.note-me {
-  margin-top: 10px;
-  font-size: 12.5px;
-  color: var(--gris);
-  font-style: italic;
+.col-score { white-space: nowrap; min-width: 130px; position: relative; }
+.bar {
+  display: inline-block; height: 6px; border-radius: 3px;
+  vertical-align: middle; margin-right: 8px; min-width: 2px;
 }
+.col-me { font-size: 12.5px; color: var(--gris); white-space: nowrap; }
+.me-approx { font-size: 10.5px; color: #aaa; }
+.col-ecart { font-size: 12.5px; color: var(--gris); white-space: nowrap; text-align: right; }
+.note-approx { font-size: 12px; color: var(--gris); font-style: italic; margin-top: 8px; }
+
+/* Duels T2 */
+.duels-section { margin-bottom: 18px; }
+.duel { margin-bottom: 14px; }
+.duel-bar {
+  display: flex; height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 6px;
+}
+.duel-part { display: block; height: 100%; }
+.duel-labels {
+  display: flex; justify-content: space-between; font-size: 14px;
+}
+.duel-cand strong { font-weight: 600; }
+.duel-cand-right { text-align: right; }
+.duel-me { font-size: 12px; color: var(--gris); }
+
+/* Navigation prev/next */
+.sondage-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 20px; border-top: 1px solid var(--bord); margin-top: 24px;
+  font-size: 13.5px;
+}
+.nav-prev, .nav-next { color: var(--gris); }
+.nav-prev:hover, .nav-next:hover { color: var(--bleu-vif); text-decoration: none; }
 
 @media (max-width: 600px) {
-  .score-bar-wrap { display: none; }
-  .scores-table th:last-child,
-  .scores-table td:last-child { display: none; }
+  .col-ecart { display: none; }
+  .col-me { font-size: 11.5px; }
+  .bar { display: none; }
 }
 </style>
 </head>
@@ -214,1062 +154,226 @@
 
 <main class="sondage-page">
   <div class="sondage-inner">
-    <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="../index.html">Sondax</a> › <a href="../sondages.html">Sondages</a> › <span>Ifop 28/05/2026</span></nav>
+    <nav class="fil" aria-label="Fil d’Ariane"><a href="../">Sondax</a> › <a href="../sondages.html">Sondages</a></nav>
+    <h1>Ifop</h1>
+    <p class="sondage-date">26 mai 2026 – 28 mai 2026</p>
+    <p class="sondage-meta-line">Ifop · 1 501 personnes · <a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/mai/10193-pres-ifop-le-figaro-29-mai.pdf" target="_blank" rel="noopener">Notice</a></p>
 
-    <h1 class="sondage-title">
-      Ifop
-      <span class="sondage-date">26/05/2026 – 28/05/2026</span>
-    </h1>
+    <div class="section-sep"></div>
+    <h2>Premier tour</h2>
+<div class="hypothese">
+  <div class="hyp-header">Hypothèse 1</div>
+  <table class="scores-table">
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <tbody>
+    <tr><td class="cand-name">Jordan Bardella</td><td class="col-score"><span class="bar" style="width:34%;background:#2B5FC2"></span>34,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="width:14%;background:#00B7FF"></span>14,0 %</td><td class="col-me">± 1.8 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:13%;background:#CC2443"></span>13,0 %</td><td class="col-me">± 1.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td><td class="col-score"><span class="bar" style="width:9%;background:#FF7043"></span>9,0 %</td><td class="col-me">± 1.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../attal.html">Gabriel Attal</a></td><td class="col-score"><span class="bar" style="width:9%;background:#7E57C2"></span>9,0 %</td><td class="col-me">± 1.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:8%;background:#0066CC"></span>8,0 %</td><td class="col-me">± 1.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:4%;background:#00C853"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:2%;background:#DD1111"></span>2,5 %</td><td class="col-me">± 0.8 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:2%;background:#0055A4"></span>2,0 %</td><td class="col-me">± 0.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:0%;background:#8B0000"></span>0,5 %</td><td class="col-me">± 0.4 % <span class="me-approx">(approx.)</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
+</div>
+<div class="hypothese">
+  <div class="hyp-header">Hypothèse 2</div>
+  <table class="scores-table">
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <tbody>
+    <tr><td class="cand-name">Jordan Bardella</td><td class="col-score"><span class="bar" style="width:34%;background:#2B5FC2"></span>34,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="width:18%;background:#00B7FF"></span>18,0 %</td><td class="col-me">± 1.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:13%;background:#CC2443"></span>13,0 %</td><td class="col-me">± 1.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td><td class="col-score"><span class="bar" style="width:10%;background:#FF7043"></span>10,0 %</td><td class="col-me">± 1.5 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:9%;background:#0066CC"></span>9,0 %</td><td class="col-me">± 1.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:4%;background:#00C853"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:4%;background:#DD1111"></span>3,5 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>3,5 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Dominique de Villepin</td><td class="col-score"><span class="bar" style="width:2%;background:#8B6914"></span>2,5 %</td><td class="col-me">± 0.8 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:2%;background:#0055A4"></span>2,0 %</td><td class="col-me">± 0.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:0%;background:#8B0000"></span>0,5 %</td><td class="col-me">± 0.4 % <span class="me-approx">(approx.)</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
+</div>
+<div class="hypothese">
+  <div class="hyp-header">Hypothèse 3</div>
+  <table class="scores-table">
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <tbody>
+    <tr><td class="cand-name">Jordan Bardella</td><td class="col-score"><span class="bar" style="width:34%;background:#2B5FC2"></span>34,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../attal.html">Gabriel Attal</a></td><td class="col-score"><span class="bar" style="width:16%;background:#7E57C2"></span>16,0 %</td><td class="col-me">± 1.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:13%;background:#CC2443"></span>13,0 %</td><td class="col-me">± 1.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td><td class="col-score"><span class="bar" style="width:11%;background:#FF7043"></span>11,0 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:10%;background:#0066CC"></span>10,0 %</td><td class="col-me">± 1.5 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:4%;background:#00C853"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:3%;background:#DD1111"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Dominique de Villepin</td><td class="col-score"><span class="bar" style="width:3%;background:#8B6914"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:3%;background:#1A1A2E"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:2%;background:#0055A4"></span>2,5 %</td><td class="col-me">± 0.8 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:0%;background:#8B0000"></span>0,5 %</td><td class="col-me">± 0.4 % <span class="me-approx">(approx.)</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
+</div>
+<div class="hypothese">
+  <div class="hyp-header">Hypothèse 4</div>
+  <table class="scores-table">
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <tbody>
+    <tr><td class="cand-name"><a href="../le-pen.html">Marine Le Pen</a></td><td class="col-score"><span class="bar" style="width:33%;background:#0D378A"></span>33,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="width:19%;background:#00B7FF"></span>19,0 %</td><td class="col-me">± 2.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:13%;background:#CC2443"></span>13,0 %</td><td class="col-me">± 1.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td><td class="col-score"><span class="bar" style="width:11%;background:#FF7043"></span>11,0 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:9%;background:#0066CC"></span>9,0 %</td><td class="col-me">± 1.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:4%;background:#00C853"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:3%;background:#DD1111"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Dominique de Villepin</td><td class="col-score"><span class="bar" style="width:2%;background:#8B6914"></span>2,0 %</td><td class="col-me">± 0.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:2%;background:#0055A4"></span>1,5 %</td><td class="col-me">± 0.6 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:0%;background:#8B0000"></span>0,5 %</td><td class="col-me">± 0.4 % <span class="me-approx">(approx.)</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
+</div>
+<div class="hypothese">
+  <div class="hyp-header">Hypothèse 5</div>
+  <table class="scores-table">
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <tbody>
+    <tr><td class="cand-name"><a href="../le-pen.html">Marine Le Pen</a></td><td class="col-score"><span class="bar" style="width:32%;background:#0D378A"></span>32,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../attal.html">Gabriel Attal</a></td><td class="col-score"><span class="bar" style="width:16%;background:#7E57C2"></span>16,0 %</td><td class="col-me">± 1.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:13%;background:#CC2443"></span>13,0 %</td><td class="col-me">± 1.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td><td class="col-score"><span class="bar" style="width:12%;background:#FF7043"></span>11,5 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:12%;background:#0066CC"></span>11,5 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:4%;background:#00C853"></span>3,5 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:3%;background:#DD1111"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Dominique de Villepin</td><td class="col-score"><span class="bar" style="width:3%;background:#8B6914"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:2%;background:#0055A4"></span>2,0 %</td><td class="col-me">± 0.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:0%;background:#8B0000"></span>0,5 %</td><td class="col-me">± 0.4 % <span class="me-approx">(approx.)</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
+</div>
+<div class="hypothese">
+  <div class="hyp-header">Hypothèse 6</div>
+  <table class="scores-table">
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <tbody>
+    <tr><td class="cand-name">Jordan Bardella</td><td class="col-score"><span class="bar" style="width:34%;background:#2B5FC2"></span>34,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="width:20%;background:#00B7FF"></span>20,0 %</td><td class="col-me">± 2.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:12%;background:#CC2443"></span>12,5 %</td><td class="col-me">± 1.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td><td class="col-score"><span class="bar" style="width:9%;background:#FF7043"></span>9,0 %</td><td class="col-me">± 1.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:9%;background:#0066CC"></span>9,0 %</td><td class="col-me">± 1.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:4%;background:#00C853"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:3%;background:#DD1111"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:3%;background:#1A1A2E"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">François Ruffin</td><td class="col-score"><span class="bar" style="width:3%;background:#CC3366"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:2%;background:#0055A4"></span>2,0 %</td><td class="col-me">± 0.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:0%;background:#8B0000"></span>0,5 %</td><td class="col-me">± 0.4 % <span class="me-approx">(approx.)</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
+</div>
+<div class="hypothese">
+  <div class="hyp-header">Hypothèse 7</div>
+  <table class="scores-table">
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <tbody>
+    <tr><td class="cand-name">Jordan Bardella</td><td class="col-score"><span class="bar" style="width:34%;background:#2B5FC2"></span>34,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="width:20%;background:#00B7FF"></span>20,0 %</td><td class="col-me">± 2.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:14%;background:#CC2443"></span>14,0 %</td><td class="col-me">± 1.8 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:9%;background:#0066CC"></span>9,0 %</td><td class="col-me">± 1.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">François Hollande</td><td class="col-score"><span class="bar" style="width:8%;background:#FF8080"></span>8,0 %</td><td class="col-me">± 1.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:5%;background:#00C853"></span>5,0 %</td><td class="col-me">± 1.1 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:4%;background:#DD1111"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:2%;background:#0055A4"></span>1,5 %</td><td class="col-me">± 0.6 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:0%;background:#8B0000"></span>0,5 %</td><td class="col-me">± 0.4 % <span class="me-approx">(approx.)</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
+</div>
+<div class="hypothese">
+  <div class="hyp-header">Hypothèse 8</div>
+  <table class="scores-table">
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <tbody>
+    <tr><td class="cand-name">Jordan Bardella</td><td class="col-score"><span class="bar" style="width:35%;background:#2B5FC2"></span>35,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../attal.html">Gabriel Attal</a></td><td class="col-score"><span class="bar" style="width:18%;background:#7E57C2"></span>18,5 %</td><td class="col-me">± 2.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:14%;background:#CC2443"></span>13,5 %</td><td class="col-me">± 1.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:10%;background:#0066CC"></span>10,0 %</td><td class="col-me">± 1.5 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">François Hollande</td><td class="col-score"><span class="bar" style="width:8%;background:#FF8080"></span>8,0 %</td><td class="col-me">± 1.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:5%;background:#00C853"></span>5,0 %</td><td class="col-me">± 1.1 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:4%;background:#DD1111"></span>3,5 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>3,5 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:2%;background:#0055A4"></span>2,0 %</td><td class="col-me">± 0.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:1%;background:#8B0000"></span>1,0 %</td><td class="col-me">± 0.5 % <span class="me-approx">(approx.)</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
+</div>
+<div class="hypothese">
+  <div class="hyp-header">Hypothèse 9</div>
+  <table class="scores-table">
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <tbody>
+    <tr><td class="cand-name">Jordan Bardella</td><td class="col-score"><span class="bar" style="width:35%;background:#2B5FC2"></span>35,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="width:21%;background:#00B7FF"></span>21,0 %</td><td class="col-me">± 2.1 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:14%;background:#CC2443"></span>13,5 %</td><td class="col-me">± 1.7 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:10%;background:#0066CC"></span>10,0 %</td><td class="col-me">± 1.5 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:6%;background:#DD1111"></span>6,0 %</td><td class="col-me">± 1.2 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:4%;background:#00C853"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Olivier Faure</td><td class="col-score"><span class="bar" style="width:4%;background:#E05070"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>3,5 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:2%;background:#0055A4"></span>2,5 %</td><td class="col-me">± 0.8 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:0%;background:#8B0000"></span>0,5 %</td><td class="col-me">± 0.4 % <span class="me-approx">(approx.)</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
+</div>
+<div class="hypothese">
+  <div class="hyp-header">Hypothèse 10</div>
+  <table class="scores-table">
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <tbody>
+    <tr><td class="cand-name">Jordan Bardella</td><td class="col-score"><span class="bar" style="width:34%;background:#2B5FC2"></span>34,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="width:22%;background:#00B7FF"></span>22,0 %</td><td class="col-me">± 2.1 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:15%;background:#CC2443"></span>15,0 %</td><td class="col-me">± 1.8 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">François Hollande</td><td class="col-score"><span class="bar" style="width:11%;background:#FF8080"></span>11,0 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:10%;background:#0066CC"></span>10,0 %</td><td class="col-me">± 1.5 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:2%;background:#0055A4"></span>2,5 %</td><td class="col-me">± 0.8 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:2%;background:#8B0000"></span>1,5 %</td><td class="col-me">± 0.6 % <span class="me-approx">(approx.)</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
+</div>
+<div class="hypothese">
+  <div class="hyp-header">Hypothèse 11</div>
+  <table class="scores-table">
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <tbody>
+    <tr><td class="cand-name">Jordan Bardella</td><td class="col-score"><span class="bar" style="width:33%;background:#2B5FC2"></span>33,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="width:22%;background:#00B7FF"></span>22,0 %</td><td class="col-me">± 2.1 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:15%;background:#CC2443"></span>15,0 %</td><td class="col-me">± 1.8 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td><td class="col-score"><span class="bar" style="width:12%;background:#FF7043"></span>12,0 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:10%;background:#0066CC"></span>10,0 %</td><td class="col-me">± 1.5 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:3%;background:#0055A4"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:1%;background:#8B0000"></span>1,0 %</td><td class="col-me">± 0.5 % <span class="me-approx">(approx.)</span></td></tr>
+    </tbody>
+  </table>
+  <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
+</div>
 
-    <dl class="sondage-meta">
-  <dt>Institut</dt><dd>Ifop</dd>
-  <dt>Terrain</dt><dd>26/05/2026 – 28/05/2026</dd>
-  <dt>Échantillon</dt><dd>1 501 personnes</dd>
-  <dt>Source</dt><dd><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/mai/10193-pres-ifop-le-figaro-29-mai.pdf" target="_blank" rel="noopener">Notice (Commission des sondages)</a></dd>
-</dl>
-
-    <section class="hypotheses-section">
-      <h2>11 hypothèses</h2>
-      <div class="hypothese  hypothese-principale">
-  <div class="hyp-header"><span class="hyp-tour">Tour 1</span> <span class="badge-principale">Principale</span></div>
-  <table class="scores-table">
-    <thead><tr>
-      <th>Candidat·e</th>
-      <th>Score</th>
-      <th>Marge d’erreur (95 %)</th>
-    </tr></thead>
-    <tbody>
-    <tr>
-      <td class="cand-name">Jordan Bardella</td>
-      <td class="cand-score">
-        <span class="score-val">34.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:34.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td>
-      <td class="cand-score">
-        <span class="score-val">14.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:14.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td>
-      <td class="cand-score">
-        <span class="score-val">13.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:13.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td>
-      <td class="cand-score">
-        <span class="score-val">9.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:9.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../attal.html">Gabriel Attal</a></td>
-      <td class="cand-score">
-        <span class="score-val">9.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:9.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td>
-      <td class="cand-score">
-        <span class="score-val">8.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:8.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td>
-      <td class="cand-score">
-        <span class="score-val">2.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:2.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nicolas Dupont-Aignan</td>
-      <td class="cand-score">
-        <span class="score-val">2.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:2.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nathalie Arthaud</td>
-      <td class="cand-score">
-        <span class="score-val">0.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:0.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    </tbody>
-  </table>
-  <p class="note-me">La marge d’erreur est approximative : calculée sur l’échantillon total du sondage, faute d’échantillon propre à cette hypothèse.</p>
-</div>
-<div class="hypothese">
-  <div class="hyp-header"><span class="hyp-tour">Tour 1</span></div>
-  <table class="scores-table">
-    <thead><tr>
-      <th>Candidat·e</th>
-      <th>Score</th>
-      <th>Marge d’erreur (95 %)</th>
-    </tr></thead>
-    <tbody>
-    <tr>
-      <td class="cand-name">Jordan Bardella</td>
-      <td class="cand-score">
-        <span class="score-val">34.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:34.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td>
-      <td class="cand-score">
-        <span class="score-val">18.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:18.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td>
-      <td class="cand-score">
-        <span class="score-val">13.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:13.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td>
-      <td class="cand-score">
-        <span class="score-val">10.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:10.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td>
-      <td class="cand-score">
-        <span class="score-val">9.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:9.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td>
-      <td class="cand-score">
-        <span class="score-val">3.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td>
-      <td class="cand-score">
-        <span class="score-val">3.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Dominique de Villepin</td>
-      <td class="cand-score">
-        <span class="score-val">2.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:2.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nicolas Dupont-Aignan</td>
-      <td class="cand-score">
-        <span class="score-val">2.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:2.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nathalie Arthaud</td>
-      <td class="cand-score">
-        <span class="score-val">0.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:0.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    </tbody>
-  </table>
-  <p class="note-me">La marge d’erreur est approximative : calculée sur l’échantillon total du sondage, faute d’échantillon propre à cette hypothèse.</p>
-</div>
-<div class="hypothese">
-  <div class="hyp-header"><span class="hyp-tour">Tour 1</span></div>
-  <table class="scores-table">
-    <thead><tr>
-      <th>Candidat·e</th>
-      <th>Score</th>
-      <th>Marge d’erreur (95 %)</th>
-    </tr></thead>
-    <tbody>
-    <tr>
-      <td class="cand-name">Jordan Bardella</td>
-      <td class="cand-score">
-        <span class="score-val">34.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:34.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../attal.html">Gabriel Attal</a></td>
-      <td class="cand-score">
-        <span class="score-val">16.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:16.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td>
-      <td class="cand-score">
-        <span class="score-val">13.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:13.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td>
-      <td class="cand-score">
-        <span class="score-val">11.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:11.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td>
-      <td class="cand-score">
-        <span class="score-val">10.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:10.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td>
-      <td class="cand-score">
-        <span class="score-val">3.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Dominique de Villepin</td>
-      <td class="cand-score">
-        <span class="score-val">3.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td>
-      <td class="cand-score">
-        <span class="score-val">3.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nicolas Dupont-Aignan</td>
-      <td class="cand-score">
-        <span class="score-val">2.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:2.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nathalie Arthaud</td>
-      <td class="cand-score">
-        <span class="score-val">0.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:0.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    </tbody>
-  </table>
-  <p class="note-me">La marge d’erreur est approximative : calculée sur l’échantillon total du sondage, faute d’échantillon propre à cette hypothèse.</p>
-</div>
-<div class="hypothese">
-  <div class="hyp-header"><span class="hyp-tour">Tour 1</span></div>
-  <table class="scores-table">
-    <thead><tr>
-      <th>Candidat·e</th>
-      <th>Score</th>
-      <th>Marge d’erreur (95 %)</th>
-    </tr></thead>
-    <tbody>
-    <tr>
-      <td class="cand-name"><a href="../le-pen.html">Marine Le Pen</a></td>
-      <td class="cand-score">
-        <span class="score-val">33.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:33.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td>
-      <td class="cand-score">
-        <span class="score-val">19.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:19.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td>
-      <td class="cand-score">
-        <span class="score-val">13.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:13.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td>
-      <td class="cand-score">
-        <span class="score-val">11.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:11.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td>
-      <td class="cand-score">
-        <span class="score-val">9.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:9.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td>
-      <td class="cand-score">
-        <span class="score-val">3.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Dominique de Villepin</td>
-      <td class="cand-score">
-        <span class="score-val">2.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:2.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nicolas Dupont-Aignan</td>
-      <td class="cand-score">
-        <span class="score-val">1.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:1.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nathalie Arthaud</td>
-      <td class="cand-score">
-        <span class="score-val">0.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:0.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    </tbody>
-  </table>
-  <p class="note-me">La marge d’erreur est approximative : calculée sur l’échantillon total du sondage, faute d’échantillon propre à cette hypothèse.</p>
-</div>
-<div class="hypothese">
-  <div class="hyp-header"><span class="hyp-tour">Tour 1</span></div>
-  <table class="scores-table">
-    <thead><tr>
-      <th>Candidat·e</th>
-      <th>Score</th>
-      <th>Marge d’erreur (95 %)</th>
-    </tr></thead>
-    <tbody>
-    <tr>
-      <td class="cand-name"><a href="../le-pen.html">Marine Le Pen</a></td>
-      <td class="cand-score">
-        <span class="score-val">32.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:32.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../attal.html">Gabriel Attal</a></td>
-      <td class="cand-score">
-        <span class="score-val">16.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:16.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td>
-      <td class="cand-score">
-        <span class="score-val">13.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:13.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td>
-      <td class="cand-score">
-        <span class="score-val">11.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:11.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td>
-      <td class="cand-score">
-        <span class="score-val">11.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:11.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td>
-      <td class="cand-score">
-        <span class="score-val">3.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td>
-      <td class="cand-score">
-        <span class="score-val">3.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Dominique de Villepin</td>
-      <td class="cand-score">
-        <span class="score-val">3.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nicolas Dupont-Aignan</td>
-      <td class="cand-score">
-        <span class="score-val">2.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:2.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nathalie Arthaud</td>
-      <td class="cand-score">
-        <span class="score-val">0.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:0.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    </tbody>
-  </table>
-  <p class="note-me">La marge d’erreur est approximative : calculée sur l’échantillon total du sondage, faute d’échantillon propre à cette hypothèse.</p>
-</div>
-<div class="hypothese">
-  <div class="hyp-header"><span class="hyp-tour">Tour 1</span></div>
-  <table class="scores-table">
-    <thead><tr>
-      <th>Candidat·e</th>
-      <th>Score</th>
-      <th>Marge d’erreur (95 %)</th>
-    </tr></thead>
-    <tbody>
-    <tr>
-      <td class="cand-name">Jordan Bardella</td>
-      <td class="cand-score">
-        <span class="score-val">34.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:34.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td>
-      <td class="cand-score">
-        <span class="score-val">20.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:20.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td>
-      <td class="cand-score">
-        <span class="score-val">14.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:14.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td>
-      <td class="cand-score">
-        <span class="score-val">9.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:9.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">François Hollande</td>
-      <td class="cand-score">
-        <span class="score-val">8.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:8.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td>
-      <td class="cand-score">
-        <span class="score-val">5.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:5.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nicolas Dupont-Aignan</td>
-      <td class="cand-score">
-        <span class="score-val">1.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:1.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nathalie Arthaud</td>
-      <td class="cand-score">
-        <span class="score-val">0.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:0.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    </tbody>
-  </table>
-  <p class="note-me">La marge d’erreur est approximative : calculée sur l’échantillon total du sondage, faute d’échantillon propre à cette hypothèse.</p>
-</div>
-<div class="hypothese">
-  <div class="hyp-header"><span class="hyp-tour">Tour 1</span></div>
-  <table class="scores-table">
-    <thead><tr>
-      <th>Candidat·e</th>
-      <th>Score</th>
-      <th>Marge d’erreur (95 %)</th>
-    </tr></thead>
-    <tbody>
-    <tr>
-      <td class="cand-name">Jordan Bardella</td>
-      <td class="cand-score">
-        <span class="score-val">35.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:35.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../attal.html">Gabriel Attal</a></td>
-      <td class="cand-score">
-        <span class="score-val">18.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:18.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td>
-      <td class="cand-score">
-        <span class="score-val">13.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:13.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td>
-      <td class="cand-score">
-        <span class="score-val">10.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:10.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">François Hollande</td>
-      <td class="cand-score">
-        <span class="score-val">8.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:8.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td>
-      <td class="cand-score">
-        <span class="score-val">5.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:5.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td>
-      <td class="cand-score">
-        <span class="score-val">3.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td>
-      <td class="cand-score">
-        <span class="score-val">3.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nicolas Dupont-Aignan</td>
-      <td class="cand-score">
-        <span class="score-val">2.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:2.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nathalie Arthaud</td>
-      <td class="cand-score">
-        <span class="score-val">1.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:1.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    </tbody>
-  </table>
-  <p class="note-me">La marge d’erreur est approximative : calculée sur l’échantillon total du sondage, faute d’échantillon propre à cette hypothèse.</p>
-</div>
-<div class="hypothese">
-  <div class="hyp-header"><span class="hyp-tour">Tour 1</span></div>
-  <table class="scores-table">
-    <thead><tr>
-      <th>Candidat·e</th>
-      <th>Score</th>
-      <th>Marge d’erreur (95 %)</th>
-    </tr></thead>
-    <tbody>
-    <tr>
-      <td class="cand-name">Jordan Bardella</td>
-      <td class="cand-score">
-        <span class="score-val">34.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:34.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td>
-      <td class="cand-score">
-        <span class="score-val">20.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:20.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td>
-      <td class="cand-score">
-        <span class="score-val">12.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:12.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td>
-      <td class="cand-score">
-        <span class="score-val">9.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:9.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td>
-      <td class="cand-score">
-        <span class="score-val">9.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:9.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td>
-      <td class="cand-score">
-        <span class="score-val">3.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td>
-      <td class="cand-score">
-        <span class="score-val">3.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">François Ruffin</td>
-      <td class="cand-score">
-        <span class="score-val">3.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nicolas Dupont-Aignan</td>
-      <td class="cand-score">
-        <span class="score-val">2.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:2.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nathalie Arthaud</td>
-      <td class="cand-score">
-        <span class="score-val">0.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:0.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    </tbody>
-  </table>
-  <p class="note-me">La marge d’erreur est approximative : calculée sur l’échantillon total du sondage, faute d’échantillon propre à cette hypothèse.</p>
-</div>
-<div class="hypothese">
-  <div class="hyp-header"><span class="hyp-tour">Tour 1</span></div>
-  <table class="scores-table">
-    <thead><tr>
-      <th>Candidat·e</th>
-      <th>Score</th>
-      <th>Marge d’erreur (95 %)</th>
-    </tr></thead>
-    <tbody>
-    <tr>
-      <td class="cand-name">Jordan Bardella</td>
-      <td class="cand-score">
-        <span class="score-val">35.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:35.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td>
-      <td class="cand-score">
-        <span class="score-val">21.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:21.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td>
-      <td class="cand-score">
-        <span class="score-val">13.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:13.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td>
-      <td class="cand-score">
-        <span class="score-val">10.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:10.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td>
-      <td class="cand-score">
-        <span class="score-val">6.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:6.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Olivier Faure</td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td>
-      <td class="cand-score">
-        <span class="score-val">3.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nicolas Dupont-Aignan</td>
-      <td class="cand-score">
-        <span class="score-val">2.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:2.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nathalie Arthaud</td>
-      <td class="cand-score">
-        <span class="score-val">0.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:0.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    </tbody>
-  </table>
-  <p class="note-me">La marge d’erreur est approximative : calculée sur l’échantillon total du sondage, faute d’échantillon propre à cette hypothèse.</p>
-</div>
-<div class="hypothese">
-  <div class="hyp-header"><span class="hyp-tour">Tour 1</span></div>
-  <table class="scores-table">
-    <thead><tr>
-      <th>Candidat·e</th>
-      <th>Score</th>
-      <th>Marge d’erreur (95 %)</th>
-    </tr></thead>
-    <tbody>
-    <tr>
-      <td class="cand-name">Jordan Bardella</td>
-      <td class="cand-score">
-        <span class="score-val">34.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:34.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td>
-      <td class="cand-score">
-        <span class="score-val">22.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:22.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td>
-      <td class="cand-score">
-        <span class="score-val">15.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:15.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">François Hollande</td>
-      <td class="cand-score">
-        <span class="score-val">11.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:11.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td>
-      <td class="cand-score">
-        <span class="score-val">10.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:10.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nicolas Dupont-Aignan</td>
-      <td class="cand-score">
-        <span class="score-val">2.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:2.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nathalie Arthaud</td>
-      <td class="cand-score">
-        <span class="score-val">1.5 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:1.5%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    </tbody>
-  </table>
-  <p class="note-me">La marge d’erreur est approximative : calculée sur l’échantillon total du sondage, faute d’échantillon propre à cette hypothèse.</p>
-</div>
-<div class="hypothese">
-  <div class="hyp-header"><span class="hyp-tour">Tour 1</span></div>
-  <table class="scores-table">
-    <thead><tr>
-      <th>Candidat·e</th>
-      <th>Score</th>
-      <th>Marge d’erreur (95 %)</th>
-    </tr></thead>
-    <tbody>
-    <tr>
-      <td class="cand-name">Jordan Bardella</td>
-      <td class="cand-score">
-        <span class="score-val">33.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:33.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td>
-      <td class="cand-score">
-        <span class="score-val">22.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:22.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td>
-      <td class="cand-score">
-        <span class="score-val">15.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:15.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td>
-      <td class="cand-score">
-        <span class="score-val">12.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:12.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td>
-      <td class="cand-score">
-        <span class="score-val">10.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:10.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td>
-      <td class="cand-score">
-        <span class="score-val">4.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:4.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nicolas Dupont-Aignan</td>
-      <td class="cand-score">
-        <span class="score-val">3.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:3.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    <tr>
-      <td class="cand-name">Nathalie Arthaud</td>
-      <td class="cand-score">
-        <span class="score-val">1.0 %</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:1.0%"></span></span>
-      </td>
-      <td class="cand-me">± 0.0 % <span class="me-approx" title="Calculée sur l'échantillon total du sondage">(approx.)</span></td>
-    </tr>
-    </tbody>
-  </table>
-  <p class="note-me">La marge d’erreur est approximative : calculée sur l’échantillon total du sondage, faute d’échantillon propre à cette hypothèse.</p>
-</div>
-    </section>
+    <nav class="sondage-nav"><a href="ifop-2026-02-27.html" class="nav-prev">← Ifop 27/02/2026</a><a href="ifop-2026-06-24.html" class="nav-next">Ifop 24/06/2026 →</a></nav>
   </div>
 </main>
 
@@ -1297,7 +401,7 @@
       </div>
     </div>
     <div>
-      <div id="footer-run">Dernier sondage intégré : 10 septembre 2026 · Données vérifiées le 21 septembre 2026 · revid : <a href="https://fr.wikipedia.org/w/index.php?oldid=239484326" target="_blank" style="color:inherit">239484326</a></div>
+      <div id="footer-run"></div>
       <div><a href="mailto:contact@sondax.fr">Contact</a></div>
       <div>Hébergeur · <a href="https://pages.github.com" target="_blank">GitHub Pages</a></div>
     </div>

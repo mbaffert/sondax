@@ -11,7 +11,11 @@ décide explicitement et se répercute ici.
 
 ## 1. Périmètre v1
 
-Une page d'accueil à sections nommées et ancrées :
+Un site statique multi-pages : page d'accueil à sections ancrées, pages par
+candidat, pages par sondage, pages par duel de second tour, pages d'élections
+passées, page de données, page de méthodologie et tableau complet des sondages.
+
+Page d'accueil à sections nommées et ancrées :
 
 1. **Bandeau d'en-tête.** Dernier sondage, compte à rebours, navigation (voir
    `scripts/build_header.py`).
@@ -211,9 +215,13 @@ se propager dans le code. Seul l'affichage les distingue (voir §4).
 
 Règles :
 
-- `id` déterministe : `slug(institut)-terrain_fin`. Le commanditaire n'est pas une
-  colonne de la page et n'est pas collecté. Une collision d'identifiant (même institut,
-  même date de fin) est une erreur bloquante, jamais un écrasement silencieux.
+- `id` déterministe : `slug(institut)-terrain_fin`. **L'identifiant est figé à la
+  première collecte** et ne doit jamais être recalculé, même si `terrain_fin` est
+  corrigé sur Wikipédia : l'URL `/sondages/<id>.html` ne doit pas changer, car
+  GitHub Pages ne gère pas les redirections et une URL modifiée casse les liens
+  entrants. Le commanditaire n'est pas une colonne de la page et n'est pas collecté.
+  Une collision d'identifiant (même institut, même date de fin) est une erreur
+  bloquante, jamais un écrasement silencieux.
 - Un candidat **absent d'une hypothèse est absent de `scores`**. Ne jamais écrire `0`.
 - `echantillon` au niveau de l'hypothèse est la base de calcul réelle de la marge
   d'erreur ; il vaut `null` s'il n'est pas publié, et on retombe alors sur l'échantillon
@@ -684,10 +692,13 @@ de requête n'est transmis.
   index.html
   sondages.html
   methodologie.html
+  donnees.html                   généré par build_donnees.py
   precedentes-elections.html     rubrique « Précédentes élections »
   presidentielle-{2002..2022}.html  une page par élection
-  sitemap.xml                    généré par pages_second_tour.py
+  sitemap.xml                    généré par build_sitemap.py
+  /sondages                      pages par sondage, reconstructible (.gitignore)
   /second-tour                   pages de duel, reconstructible (.gitignore)
+  /candidats                     index des candidats
   /assets
     historique.js                script partagé des pages d'élection
 ```
@@ -821,9 +832,16 @@ URL : `/sondages/<id>.html` (un fichier par entrée de `sondages.json`).
 Script : `scripts/build_sondage_pages.py`.
 Contenu : institut, dates de terrain, échantillon, population, lien vers la
 notice, puis chaque hypothèse (tour, scores, marge d'erreur). L'hypothèse
-principale est affichée en premier. Marge d'erreur calculée sur l'échantillon de
-l'hypothèse si disponible, sinon sur l'échantillon total avec mention
-« approximative ».
+principale est affichée en premier, avec l'écart de chaque candidat à la moyenne
+pondérée Sondax à la date de fin de terrain. Marge d'erreur calculée sur
+l'échantillon de l'hypothèse si disponible, sinon sur l'échantillon total avec
+mention « approximative ». Les duels de second tour sont affichés séparément.
+Navigation vers le sondage précédent et suivant du même institut. L'identifiant
+est figé (§3.2) ; il sert d'URL et ne doit jamais être recalculé.
+
+Maillage : dans `sondages.html`, chaque ligne du tableau renvoie vers la page
+du sondage. Sur la page d'accueil, « Voir la fiche » pointe vers la page du
+sondage sélectionné.
 
 ### 13.4 Pages par duel de second tour
 

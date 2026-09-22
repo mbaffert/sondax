@@ -4,6 +4,7 @@
 Données sources :
 - data/sondages.json
 - data/candidats.json
+- data/derived/series-t1.json  (écart à la moyenne)
 - scripts/bios.json (slugs avec page dédiée)
 """
 
@@ -20,20 +21,61 @@ import sys
 sys.path.insert(0, str(SCRIPTS))
 from site_template import render_page
 
+MOIS = [
+    "janvier", "février", "mars", "avril", "mai", "juin",
+    "juillet", "août", "septembre", "octobre", "novembre", "décembre",
+]
+
 # ---------- chargement ----------
 
 sondages = json.loads((ROOT / "data" / "sondages.json").read_text(encoding="utf-8"))
 candidats = json.loads((ROOT / "data" / "candidats.json").read_text(encoding="utf-8"))
 bios = json.loads((SCRIPTS / "bios.json").read_text(encoding="utf-8"))
 
+series_path = ROOT / "data" / "derived" / "series-t1.json"
+series_data = json.loads(series_path.read_text(encoding="utf-8")) if series_path.exists() else {}
+
 # Ensemble des slugs ayant une page dédiée
 slugs_avec_page = set(bios.keys())
 
 
+# ---------- index prev/next par institut ----------
+
+sondages_by_institut: dict[str, list] = {}
+for s in sorted(sondages, key=lambda s: s["terrain_fin"]):
+    inst = s["institut"]
+    sondages_by_institut.setdefault(inst, []).append(s)
+
+
+def prev_next(sondage):
+    """Retourne (prev_sondage, next_sondage) du même institut, ou (None, None)."""
+    inst = sondage["institut"]
+    lst = sondages_by_institut.get(inst, [])
+    idx = next((i for i, s in enumerate(lst) if s["id"] == sondage["id"]), -1)
+    if idx < 0:
+        return None, None
+    prev_s = lst[idx - 1] if idx > 0 else None
+    next_s = lst[idx + 1] if idx < len(lst) - 1 else None
+    return prev_s, next_s
+
+
+# ---------- moyenne pondérée à une date ----------
+
+def moyenne_a_date(cid, date_iso):
+    """Retourne la valeur de la série lissée pour `cid` à `date_iso`, ou None."""
+    pts = series_data.get("series", {}).get(cid, [])
+    val = None
+    for p in pts:
+        if p["d"] > date_iso:
+            break
+        if p["v"] is not None:
+            val = p["v"]
+    return val
+
+
 # ---------- helpers ----------
 
-def candidate_full_name(cid, candidats):
-    """Retourne prénom + nom depuis candidats.json, ou l'identifiant en fallback."""
+def candidate_full_name(cid):
     c = candidats.get(cid)
     if not c:
         return cid
@@ -43,120 +85,162 @@ def candidate_full_name(cid, candidats):
     return " ".join(parts) if parts else cid
 
 
+def date_lettres(iso):
+    """'2026-08-25' → '25 août 2026'"""
+    y, m, d = iso.split("-")
+    return f"{int(d)} {MOIS[int(m) - 1]} {y}"
+
+
 def fmt_date(iso):
-    """Formate une date ISO YYYY-MM-DD en JJ/MM/AAAA."""
-    try:
-        y, m, d = iso.split("-")
-        return f"{d}/{m}/{y}"
-    except Exception:
-        return iso
+    y, m, d = iso.split("-")
+    return f"{d}/{m}/{y}"
 
 
 def fmt_ech(n):
-    """Formate un nombre avec espace fine comme séparateur de milliers."""
     return f"{round(n):,}".replace(",", "\u202f")
 
 
+def fmt_pct(v):
+    return f"{v:.1f}".replace(".", ",") + "\u202f%"
+
+
 def marge_erreur(score, n):
-    """Calcule la marge d'erreur à 95 % (1,96 × sqrt(p(1-p)/n))."""
     p = score / 100.0
     if n <= 0 or p <= 0 or p >= 1:
         return None
-    return 1.96 * math.sqrt(p * (1 - p) / n)
+    return 1.96 * math.sqrt(p * (1 - p) / n) * 100
 
 
 def candidate_link(cid, nom_complet):
-    """Retourne un lien HTML vers la page du candidat si elle existe, sinon le nom brut."""
     esc = html_mod.escape(nom_complet)
     if cid in slugs_avec_page:
         return f'<a href="../{html_mod.escape(cid)}.html">{esc}</a>'
     return esc
 
 
-def build_hypothesis_html(hyp, sondage_echantillon, is_principale):
-    """Construit le bloc HTML pour une hypothèse."""
+def is_type_parti(cid):
+    return candidats.get(cid, {}).get("type") == "parti"
+
+
+# ---------- construction d'une hypothèse ----------
+
+def build_hypothesis_html(hyp, sondage_echantillon, is_principale, terrain_fin, label=""):
     tour = hyp.get("tour", "?")
     hyp_ech = hyp.get("echantillon")
     scores = hyp.get("scores", {})
 
-    # Tri des scores décroissant
-    sorted_scores = sorted(scores.items(), key=lambda kv: kv[1], reverse=True)
+    sorted_scores = sorted(
+        ((cid, v) for cid, v in scores.items() if cid != "autre"),
+        key=lambda kv: kv[1], reverse=True,
+    )
 
-    # Badge principale
-    badge = ' <span class="badge-principale">Principale</span>' if is_principale else ""
-
-    # Label tour
-    tour_label = f"Tour {tour}"
-
-    # Échantillon de l'hypothèse
+    # Header
+    parts = []
+    if label:
+        parts.append(label)
+    if is_principale:
+        parts.append('<span class="badge badge-principale">Principale</span>')
     if hyp_ech:
-        ech_label = f"Échantillon&nbsp;: {fmt_ech(hyp_ech)}"
-        ech_note = ""
-    else:
-        ech_label = ""
-        ech_note = ""
+        parts.append(f'<span class="hyp-detail">{fmt_ech(hyp_ech)}\u202fpersonnes</span>')
 
-    # En-tête hypothèse
-    header_parts = [f'<span class="hyp-tour">{html_mod.escape(str(tour_label))}</span>{badge}']
-    if ech_label:
-        header_parts.append(f'<span class="hyp-ech">{ech_label}</span>')
+    # Note marge approximative
+    approx_me = not hyp_ech and sondage_echantillon
+    n_for_me = hyp_ech if hyp_ech else sondage_echantillon
 
-    rows_html = []
+    # Colonnes : candidat, score, marge, (écart si principale T1)
+    show_ecart = is_principale and tour == 1
+
+    # En-tête de tableau
+    cols_th = '<th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th>'
+    if show_ecart:
+        cols_th += '<th class="col-ecart">Écart / moy.</th>'
+
+    rows = []
     for cid, score in sorted_scores:
-        nom = candidate_full_name(cid, candidats)
-        link_html = candidate_link(cid, nom)
+        nom = candidate_full_name(cid)
+        link = candidate_link(cid, nom)
+        parti_cls = ' class="type-parti"' if is_type_parti(cid) else ""
 
-        # Calcul marge d'erreur
-        n_for_me = hyp_ech if hyp_ech else sondage_echantillon
         me = marge_erreur(score, n_for_me) if n_for_me else None
+        me_str = f"±\u202f{me:.1f}\u202f%" if me is not None else "\u2014"
+        if me is not None and approx_me:
+            me_str += ' <span class="me-approx">(approx.)</span>'
 
-        if me is not None:
-            me_str = f"±\u202f{me:.1f}\u202f%"
-            if not hyp_ech and sondage_echantillon:
-                me_str += ' <span class="me-approx" title="Calculée sur l\'échantillon total du sondage">(approx.)</span>'
-        else:
-            me_str = "\u2014"
+        ecart_cell = ""
+        if show_ecart:
+            moy = moyenne_a_date(cid, terrain_fin)
+            if moy is not None:
+                delta = round(score - moy, 1)
+                sign = "+" if delta > 0 else ""
+                ecart_cell = f'<td class="col-ecart">{sign}{delta:.1f}'.replace(".", ",") + "\u202fpt</td>"
+            else:
+                ecart_cell = '<td class="col-ecart">\u2014</td>'
 
-        # Barre de progression
-        bar_width = min(max(score, 0), 100)
+        couleur = candidats.get(cid, {}).get("couleur", "#888")
+        bar_w = min(max(score, 0), 60)
 
-        rows_html.append(f"""    <tr>
-      <td class="cand-name">{link_html}</td>
-      <td class="cand-score">
-        <span class="score-val">{score:.1f}\u202f%</span>
-        <span class="score-bar-wrap"><span class="score-bar" style="width:{bar_width:.1f}%"></span></span>
-      </td>
-      <td class="cand-me">{me_str}</td>
-    </tr>""")
-
-    rows_joined = "\n".join(rows_html)
-
-    # Note marge approximative si applicable
-    note_me = ""
-    if not hyp_ech and sondage_echantillon:
-        note_me = (
-            '<p class="note-me">La marge d\u2019erreur est approximative\u202f: '
-            'calculée sur l\u2019\u00e9chantillon total du sondage, '
-            'faute d\u2019\u00e9chantillon propre à cette hypothèse.</p>'
+        rows.append(
+            f'    <tr{parti_cls}>'
+            f'<td class="cand-name">{link}</td>'
+            f'<td class="col-score"><span class="bar" style="width:{bar_w:.0f}%;background:{couleur}"></span>'
+            f'{fmt_pct(score)}</td>'
+            f'<td class="col-me">{me_str}</td>'
+            f'{ecart_cell}'
+            f'</tr>'
         )
 
-    header_html = " \u2014 ".join(header_parts)
+    header_html = " ".join(parts)
+    rows_html = "\n".join(rows)
 
-    return f"""<div class="hypothese{'  hypothese-principale' if is_principale else ''}">
+    note = ""
+    if approx_me:
+        note = '<p class="note-approx">Marge approximative, calculée sur l\u2019échantillon total.</p>'
+
+    return f"""<div class="hypothese{' hyp-principale' if is_principale else ''}">
   <div class="hyp-header">{header_html}</div>
   <table class="scores-table">
-    <thead><tr>
-      <th>Candidat·e</th>
-      <th>Score</th>
-      <th>Marge d\u2019erreur (95\u202f%)</th>
-    </tr></thead>
+    <thead><tr>{cols_th}</tr></thead>
     <tbody>
-{rows_joined}
+{rows_html}
     </tbody>
   </table>
-  {note_me}
+  {note}
 </div>"""
 
+
+def build_duel_html(hyp, sondage_echantillon):
+    """Construit un bloc pour un duel de second tour."""
+    scores = hyp.get("scores", {})
+    hyp_ech = hyp.get("echantillon")
+    sorted_scores = sorted(scores.items(), key=lambda kv: kv[1], reverse=True)
+    if len(sorted_scores) != 2:
+        return ""
+
+    (cid_a, score_a), (cid_b, score_b) = sorted_scores
+    nom_a = candidate_link(cid_a, candidate_full_name(cid_a))
+    nom_b = candidate_link(cid_b, candidate_full_name(cid_b))
+    couleur_a = candidats.get(cid_a, {}).get("couleur", "#888")
+    couleur_b = candidats.get(cid_b, {}).get("couleur", "#888")
+
+    n_for_me = hyp_ech if hyp_ech else sondage_echantillon
+    me_a = marge_erreur(score_a, n_for_me) if n_for_me else None
+    me_b = marge_erreur(score_b, n_for_me) if n_for_me else None
+    me_a_str = f"±\u202f{me_a:.1f}\u202f%" if me_a else ""
+    me_b_str = f"±\u202f{me_b:.1f}\u202f%" if me_b else ""
+
+    return f"""<div class="duel">
+  <div class="duel-bar">
+    <span class="duel-part" style="width:{score_a:.1f}%;background:{couleur_a}"></span>
+    <span class="duel-part" style="width:{score_b:.1f}%;background:{couleur_b}"></span>
+  </div>
+  <div class="duel-labels">
+    <span class="duel-cand">{nom_a} <strong>{fmt_pct(score_a)}</strong> <span class="duel-me">{me_a_str}</span></span>
+    <span class="duel-cand duel-cand-right">{nom_b} <strong>{fmt_pct(score_b)}</strong> <span class="duel-me">{me_b_str}</span></span>
+  </div>
+</div>"""
+
+
+# ---------- page complète ----------
 
 def build_page(sondage):
     sid = sondage["id"]
@@ -168,226 +252,193 @@ def build_page(sondage):
     url_source = sondage.get("url_source", "")
     hypotheses = sondage.get("hypotheses", [])
 
-    # Trier les hypothèses : principale d'abord
-    def hyp_sort_key(h):
-        return (0 if h.get("principale") else 1, h.get("tour", 99))
-
-    sorted_hyps = sorted(hypotheses, key=hyp_sort_key)
-
-    # Métadonnées sondage
-    date_label = fmt_date(terrain_fin)
-    title = f"{html_mod.escape(institut)} — {date_label} — Sondax"
+    # Titre et SEO
+    date_titre = date_lettres(terrain_fin)
+    title = f"Sondage {html_mod.escape(institut)} du {date_titre} \u2013 présidentielle 2027"
     canonical = f"https://sondax.fr/sondages/{html_mod.escape(sid)}.html"
     meta_desc = (
-        f"Résultats du sondage {html_mod.escape(institut)} du {date_label} "
-        f"pour l\u2019\u00e9lection pr\u00e9sidentielle 2027."
+        f"Résultats du sondage {html_mod.escape(institut)} du {date_titre} "
+        f"pour l\u2019élection présidentielle 2027 : scores, marges d\u2019erreur"
+        f"{', duels de second tour' if any(h['tour'] == 2 for h in hypotheses) else ''}."
     )
 
     # Breadcrumb
     breadcrumb = (
-        f'<nav class="breadcrumb" aria-label="Fil d\u2019Ariane">'
-        f'<a href="../index.html">Sondax</a>'
-        f' \u203a <a href="../sondages.html">Sondages</a>'
-        f' \u203a <span>{html_mod.escape(institut)} {date_label}</span>'
-        f'</nav>'
+        '<nav class="fil" aria-label="Fil d\u2019Ariane">'
+        '<a href="../">Sondax</a> \u203a '
+        '<a href="../sondages.html">Sondages</a>'
+        '</nav>'
     )
 
-    # Fiche sondage
-    meta_items = []
-    meta_items.append(f'<dt>Institut</dt><dd>{html_mod.escape(institut)}</dd>')
-    if terrain_debut:
-        meta_items.append(f'<dt>Terrain</dt><dd>{fmt_date(terrain_debut)}\u202f\u2013\u202f{fmt_date(terrain_fin)}</dd>')
+    # En-tête sondage : date en lettres
+    if terrain_debut and terrain_debut != terrain_fin:
+        date_display = f"{date_lettres(terrain_debut)} \u2013 {date_lettres(terrain_fin)}"
     else:
-        meta_items.append(f'<dt>Date de terrain</dt><dd>{fmt_date(terrain_fin)}</dd>')
+        date_display = date_lettres(terrain_fin)
+
+    # Métadonnées compactes
+    meta_parts = [f"{html_mod.escape(institut)}"]
     if echantillon:
-        meta_items.append(f'<dt>\u00c9chantillon</dt><dd>{fmt_ech(echantillon)}\u202fpersonnes</dd>')
+        meta_parts.append(f"{fmt_ech(echantillon)}\u202fpersonnes")
     if population:
-        meta_items.append(f'<dt>Population</dt><dd>{html_mod.escape(str(population))}</dd>')
+        meta_parts.append(html_mod.escape(str(population)))
     if url_source:
-        esc_url = html_mod.escape(url_source)
-        meta_items.append(
-            f'<dt>Source</dt>'
-            f'<dd><a href="{esc_url}" target="_blank" rel="noopener">Notice (Commission des sondages)</a></dd>'
+        esc = html_mod.escape(url_source)
+        meta_parts.append(f'<a href="{esc}" target="_blank" rel="noopener">Notice</a>')
+
+    meta_line = " · ".join(meta_parts)
+
+    # Hypothèses T1 et T2
+    t1 = [h for h in hypotheses if h.get("tour") == 1]
+    t2 = [h for h in hypotheses if h.get("tour") == 2]
+
+    # Tri T1 : principale d'abord, puis par nombre de candidats décroissant
+    t1.sort(key=lambda h: (0 if h.get("principale") else 1, -len(h.get("scores", {}))))
+
+    # Hypothèses T1 avec sous-titres numérotés
+    hyps_html = []
+    for i, hyp in enumerate(t1, 1):
+        is_p = bool(hyp.get("principale"))
+        label = f"Hypothèse\u00a0{i}" if len(t1) > 1 else ""
+        hyps_html.append(build_hypothesis_html(hyp, echantillon, is_p, terrain_fin, label))
+
+    # Duels T2
+    duels_html = []
+    for hyp in t2:
+        duels_html.append(build_duel_html(hyp, echantillon))
+
+    # Prev / next par institut
+    prev_s, next_s = prev_next(sondage)
+    nav_parts = []
+    if prev_s:
+        nav_parts.append(
+            f'<a href="{html_mod.escape(prev_s["id"])}.html" class="nav-prev">'
+            f'\u2190 {html_mod.escape(prev_s["institut"])} {fmt_date(prev_s["terrain_fin"])}</a>'
         )
+    else:
+        nav_parts.append('<span></span>')
+    if next_s:
+        nav_parts.append(
+            f'<a href="{html_mod.escape(next_s["id"])}.html" class="nav-next">'
+            f'{html_mod.escape(next_s["institut"])} {fmt_date(next_s["terrain_fin"])} \u2192</a>'
+        )
+    else:
+        nav_parts.append('<span></span>')
 
-    meta_html = '<dl class="sondage-meta">\n  ' + "\n  ".join(meta_items) + "\n</dl>"
+    nav_html = f'<nav class="sondage-nav">{"".join(nav_parts)}</nav>'
 
-    # Hypothèses
-    hyps_html_parts = []
-    for hyp in sorted_hyps:
-        is_principale = bool(hyp.get("principale"))
-        hyps_html_parts.append(build_hypothesis_html(hyp, echantillon, is_principale))
-
-    hyps_html = "\n".join(hyps_html_parts)
-
-    # Nombre d'hypothèses dans le titre de section
-    n_hyp = len(sorted_hyps)
-    hyps_section_title = (
-        f"{n_hyp}\u202fhypoth\u00e8se" if n_hyp == 1
-        else f"{n_hyp}\u202fhypoth\u00e8ses"
-    )
+    # Assemblage
+    sections = []
+    if hyps_html:
+        sections.append(
+            '<h2>Premier tour</h2>\n'
+            + "\n".join(hyps_html)
+        )
+    if duels_html:
+        sections.append(
+            '<div class="section-sep"></div>'
+            '<h2>Second tour</h2>\n'
+            + "\n".join(duels_html)
+        )
 
     body = f"""<main class="sondage-page">
   <div class="sondage-inner">
     {breadcrumb}
+    <h1>{html_mod.escape(institut)}</h1>
+    <p class="sondage-date">{date_display}</p>
+    <p class="sondage-meta-line">{meta_line}</p>
 
-    <h1 class="sondage-title">
-      {html_mod.escape(institut)}
-      <span class="sondage-date">{fmt_date(terrain_debut)}\u202f\u2013\u202f{fmt_date(terrain_fin)}</span>
-    </h1>
+    <div class="section-sep"></div>
+    {chr(10).join(sections)}
 
-    {meta_html}
-
-    <section class="hypotheses-section">
-      <h2>{hyps_section_title}</h2>
-      {hyps_html}
-    </section>
+    {nav_html}
   </div>
 </main>"""
-
-    extra_css = """<style>
-.sondage-page { padding: 24px 16px 60px; }
-.sondage-inner { max-width: 860px; margin: 0 auto; }
-
-.breadcrumb { font-size: 13px; color: var(--gris); margin-bottom: 18px; }
-.breadcrumb a { color: var(--gris); text-decoration: none; }
-.breadcrumb a:hover { text-decoration: underline; }
-
-.sondage-title {
-  font-family: var(--titre);
-  font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 700;
-  color: var(--bleu-nuit);
-  margin-bottom: 18px;
-  line-height: 1.2;
-}
-.sondage-date {
-  display: inline-block;
-  font-size: 0.65em;
-  font-weight: 500;
-  color: var(--gris);
-  margin-left: 10px;
-}
-
-.sondage-meta {
-  background: var(--carte);
-  border: 1px solid var(--bord);
-  border-radius: 10px;
-  padding: 16px 20px;
-  display: grid;
-  grid-template-columns: max-content 1fr;
-  gap: 6px 16px;
-  font-size: 14px;
-  margin-bottom: 32px;
-}
-.sondage-meta dt { color: var(--gris); font-weight: 500; }
-.sondage-meta dd { margin: 0; }
-
-.hypotheses-section h2 {
-  font-family: var(--titre);
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: var(--bleu-nuit);
-  margin-bottom: 18px;
-}
-
-.hypothese {
-  background: var(--carte);
-  border: 1px solid var(--bord);
-  border-radius: 10px;
-  padding: 18px 20px 14px;
-  margin-bottom: 18px;
-}
-.hypothese-principale {
-  border-color: var(--bleu-vif);
-  border-width: 2px;
-}
-
-.hyp-header {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--bleu-nuit);
-  margin-bottom: 14px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 8px;
-}
-.hyp-tour { font-size: 15px; }
-.hyp-ech { font-weight: 400; color: var(--gris); font-size: 13px; }
-
-.badge-principale {
-  background: var(--bleu-vif);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 2px 8px;
-  border-radius: 20px;
-  letter-spacing: 0.03em;
-}
-
-.scores-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-.scores-table th {
-  text-align: left;
-  color: var(--gris);
-  font-weight: 500;
-  font-size: 12px;
-  padding: 0 8px 8px 0;
-  border-bottom: 1px solid var(--bord);
-}
-.scores-table td {
-  padding: 7px 8px 7px 0;
-  border-bottom: 1px solid var(--bord);
-  vertical-align: middle;
-}
-.scores-table tr:last-child td { border-bottom: none; }
-
-.cand-name { min-width: 160px; font-weight: 500; }
-.cand-score { min-width: 180px; }
-.score-val { font-family: var(--mono); font-size: 13.5px; margin-right: 8px; }
-.score-bar-wrap {
-  display: inline-block;
-  width: 100px;
-  height: 8px;
-  background: #e8eaf0;
-  border-radius: 4px;
-  vertical-align: middle;
-}
-.score-bar {
-  display: block;
-  height: 100%;
-  background: var(--bleu-vif);
-  border-radius: 4px;
-}
-.cand-me { font-family: var(--mono); font-size: 12.5px; color: var(--gris); white-space: nowrap; }
-
-.me-approx { color: #aaa; font-family: var(--corps); font-size: 11px; }
-.note-me {
-  margin-top: 10px;
-  font-size: 12.5px;
-  color: var(--gris);
-  font-style: italic;
-}
-
-@media (max-width: 600px) {
-  .score-bar-wrap { display: none; }
-  .scores-table th:last-child,
-  .scores-table td:last-child { display: none; }
-}
-</style>"""
 
     return render_page(
         title=title,
         meta_description=meta_desc,
         canonical=canonical,
         body_content=body,
-        extra_head=extra_css,
+        extra_head=EXTRA_CSS,
         depth=1,
     )
+
+
+EXTRA_CSS = """<style>
+.sondage-page { padding: 24px 16px 40px; }
+.sondage-inner { max-width: 780px; margin: 0 auto; }
+
+.sondage-date {
+  font-size: 15px; color: var(--gris); margin: -12px 0 4px;
+}
+.sondage-meta-line {
+  font-size: 13.5px; color: var(--gris); margin-bottom: 0;
+}
+.sondage-meta-line a { font-weight: 500; }
+
+.section-sep {
+  border-top: 1px solid var(--bord); margin: 20px 0;
+}
+
+/* Hypothèses */
+.hypothese { margin-bottom: 18px; }
+.hyp-principale { border-left: 3px solid var(--bleu-vif); padding-left: 16px; }
+.hyp-header {
+  font-size: 14px; font-weight: 600; color: var(--bleu-nuit);
+  margin-bottom: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.hyp-detail { font-weight: 400; color: var(--gris); font-size: 13px; }
+
+.scores-table { font-size: 14px; }
+.scores-table th { font-size: 11px; padding: 0 8px 6px 0; }
+.scores-table td { padding: 5px 8px 5px 0; }
+.scores-table tr:last-child td { border-bottom: none; }
+
+.cand-name { min-width: 140px; font-weight: 500; }
+.cand-name a { color: var(--texte); }
+.cand-name a:hover { color: var(--bleu-vif); }
+tr.type-parti .cand-name { font-style: italic; }
+
+.col-score { white-space: nowrap; min-width: 130px; position: relative; }
+.bar {
+  display: inline-block; height: 6px; border-radius: 3px;
+  vertical-align: middle; margin-right: 8px; min-width: 2px;
+}
+.col-me { font-size: 12.5px; color: var(--gris); white-space: nowrap; }
+.me-approx { font-size: 10.5px; color: #aaa; }
+.col-ecart { font-size: 12.5px; color: var(--gris); white-space: nowrap; text-align: right; }
+.note-approx { font-size: 12px; color: var(--gris); font-style: italic; margin-top: 8px; }
+
+/* Duels T2 */
+.duels-section { margin-bottom: 18px; }
+.duel { margin-bottom: 14px; }
+.duel-bar {
+  display: flex; height: 10px; border-radius: 5px; overflow: hidden; margin-bottom: 6px;
+}
+.duel-part { display: block; height: 100%; }
+.duel-labels {
+  display: flex; justify-content: space-between; font-size: 14px;
+}
+.duel-cand strong { font-weight: 600; }
+.duel-cand-right { text-align: right; }
+.duel-me { font-size: 12px; color: var(--gris); }
+
+/* Navigation prev/next */
+.sondage-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 20px; border-top: 1px solid var(--bord); margin-top: 24px;
+  font-size: 13.5px;
+}
+.nav-prev, .nav-next { color: var(--gris); }
+.nav-prev:hover, .nav-next:hover { color: var(--bleu-vif); text-decoration: none; }
+
+@media (max-width: 600px) {
+  .col-ecart { display: none; }
+  .col-me { font-size: 11.5px; }
+  .bar { display: none; }
+}
+</style>"""
 
 
 # ---------- génération ----------
@@ -406,6 +457,5 @@ for sondage in sondages:
     html_content = build_page(sondage)
     html_out.write_text(html_content, encoding="utf-8")
     count += 1
-    print(f"  OK  sondages/{sid}.html")
 
 print(f"\n{count} pages sondage générées dans site/sondages/")

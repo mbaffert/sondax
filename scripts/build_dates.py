@@ -3,7 +3,6 @@
 
 Remplace les marqueurs :
 - <!-- BUILD:footer-dates --> dans le footer de toutes les pages
-- <!-- BUILD:header-dates --> en haut de la page d'accueil
 
 Données :
 - Dernier sondage intégré : terrain_fin max de sondages.json
@@ -63,18 +62,6 @@ def inject_into_footer(html_content, footer_text):
     return re.sub(r'<div id="footer-run">.*?</div>', replacement, html_content)
 
 
-def inject_header_dates(html_content, last_date, build_date):
-    """Ajoute une ligne de dates sous le H1 de la page d'accueil."""
-    marker = "<!-- BUILD:header-dates -->"
-    if marker not in html_content:
-        return html_content
-    text = (
-        f'<p class="subtitle" style="font-size:12.5px;margin-bottom:12px;">'
-        f'Dernier sondage intégré\u00a0: {date_lettres(last_date)} · '
-        f'Données vérifiées le {date_lettres(build_date)}</p>'
-    )
-    return html_content.replace(marker, text)
-
 
 def main():
     last_date, last_revid, build_date = compute_dates()
@@ -85,7 +72,6 @@ def main():
     for html_path in sorted(SITE.rglob("*.html")):
         content = html_path.read_text(encoding="utf-8")
         new_content = inject_into_footer(content, footer_text)
-        new_content = inject_header_dates(new_content, last_date, build_date)
         if new_content != content:
             html_path.write_text(new_content, encoding="utf-8")
             count += 1

@@ -124,7 +124,7 @@ def is_type_parti(cid):
 
 # ---------- construction d'une hypothèse ----------
 
-def build_hypothesis_html(hyp, sondage_echantillon, is_principale, terrain_fin):
+def build_hypothesis_html(hyp, sondage_echantillon, is_principale, terrain_fin, label=""):
     tour = hyp.get("tour", "?")
     hyp_ech = hyp.get("echantillon")
     scores = hyp.get("scores", {})
@@ -134,9 +134,10 @@ def build_hypothesis_html(hyp, sondage_echantillon, is_principale, terrain_fin):
         key=lambda kv: kv[1], reverse=True,
     )
 
-    # Header léger
+    # Header
     parts = []
-    parts.append(f"Tour\u00a0{tour}")
+    if label:
+        parts.append(label)
     if is_principale:
         parts.append('<span class="badge badge-principale">Principale</span>')
     if hyp_ech:
@@ -294,11 +295,12 @@ def build_page(sondage):
     # Tri T1 : principale d'abord, puis par nombre de candidats décroissant
     t1.sort(key=lambda h: (0 if h.get("principale") else 1, -len(h.get("scores", {}))))
 
-    # Hypothèses T1
+    # Hypothèses T1 avec sous-titres numérotés
     hyps_html = []
-    for hyp in t1:
+    for i, hyp in enumerate(t1, 1):
         is_p = bool(hyp.get("principale"))
-        hyps_html.append(build_hypothesis_html(hyp, echantillon, is_p, terrain_fin))
+        label = f"Hypothèse\u00a0{i}" if len(t1) > 1 else ""
+        hyps_html.append(build_hypothesis_html(hyp, echantillon, is_p, terrain_fin, label))
 
     # Duels T2
     duels_html = []
@@ -328,13 +330,15 @@ def build_page(sondage):
     # Assemblage
     sections = []
     if hyps_html:
-        sections.append("\n".join(hyps_html))
+        sections.append(
+            '<h2>Premier tour</h2>\n'
+            + "\n".join(hyps_html)
+        )
     if duels_html:
         sections.append(
-            '<div class="duels-section">'
             '<div class="section-sep"></div>'
+            '<h2>Second tour</h2>\n'
             + "\n".join(duels_html)
-            + '</div>'
         )
 
     body = f"""<main class="sondage-page">

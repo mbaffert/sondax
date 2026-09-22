@@ -109,30 +109,6 @@
   // --- Stats ---
   var statsText = D.pollCount + ' sondages agr\u00e9g\u00e9s \u00b7 ' + D.instituteCount + ' instituts';
 
-  // --- Scores grid ---
-  var gridHTML = '';
-  for (var c = 0; c < D.candidates.length; c++) {
-    var cand = D.candidates[c];
-    gridHTML += '<div class="sh-col">' +
-      '<div class="sh-name">' + cand.name + '</div>' +
-      '<div class="sh-score">' +
-        '<span class="sh-score-num">' + cand.score + '</span>' +
-        '<span class="sh-score-pct">%</span>' +
-      '</div>' +
-    '</div>';
-  }
-
-  var detailText = 'Voir le d\u00e9tail \u2192';
-
-  // --- Link target ---
-  var scoreHref = baseHref + 'index.html#dernier-sondage';
-
-  // --- Mobile title (short): "Institut · date" ---
-  var mobileTitleText = D.institut + ' \u00b7 ' + D.terrainLabelMobile;
-
-  // --- Desktop title: "Institut · date" ---
-  var desktopTitleText = D.institut + ' \u00b7 ' + D.terrainLabel;
-
   // --- Assemble header: left column THEN countdown (right) ---
   var html = '<div class="sh-inner">' +
     '<div class="sh-left">' +
@@ -149,16 +125,6 @@
           '<span class="sh-menu-bar"></span>' +
         '</button>' +
       '</div>' +
-      '<a class="sh-scores" href="' + scoreHref + '">' +
-        '<h2 class="sh-title">' +
-          '<span>Dernier sondage</span>' +
-          '<span class="sh-title-meta sh-title-text"> \u2014 ' + desktopTitleText + ' \u00b7 </span>' +
-          '<span class="sh-title-meta sh-title-text-mobile">' + mobileTitleText + '</span>' +
-          '<span class="sh-detail">' + detailText + '</span>' +
-        '</h2>' +
-        '<div class="sh-grid">' + gridHTML + '</div>' +
-        '<div class="sh-stats-mobile">' + statsText + '</div>' +
-      '</a>' +
     '</div>' +
     (hideCountdown ? '' :
     '<div class="sh-countdown">' +

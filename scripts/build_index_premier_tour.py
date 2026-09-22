@@ -35,6 +35,8 @@ SCORES_BEGIN = "<!-- BEGIN:fiche-scores -->"
 SCORES_END = "<!-- END:fiche-scores -->"
 DS_BEGIN = "<!-- BEGIN:derniers-sondages -->"
 DS_END = "<!-- END:derniers-sondages -->"
+BLOC_DS_BEGIN = "<!-- BEGIN:bloc-dernier-sondage -->"
+BLOC_DS_END = "<!-- END:bloc-dernier-sondage -->"
 
 
 def load_json(path):
@@ -327,6 +329,116 @@ def generate_dernier_sondage(sondages, candidats, series_data):
 
 
 # ---------------------------------------------------------------------------
+# Bloc « Dernier sondage » (nouveau bloc compact en haut de page)
+# ---------------------------------------------------------------------------
+
+MOIS_ABBREV = [
+    "janv.", "fév.", "mars", "avr.", "mai", "juin",
+    "juil.", "août", "sept.", "oct.", "nov.", "déc.",
+]
+
+
+def _last_smoothed(series_data, cid):
+    """Dernière valeur lissée non nulle pour un candidat."""
+    for p in reversed(series_data.get("series", {}).get(cid, [])):
+        if p["v"] is not None:
+            return p["v"]
+    return None
+
+
+def generate_bloc_dernier_sondage(sondages, candidats, series_data):
+    """Génère le bloc compact « Dernier sondage » affiché en haut de page."""
+    latest = select_latest_sondage(sondages)
+    if not latest:
+        return ""
+
+    hyp = select_hypothesis(latest, candidats)
+    if not hyp:
+        return ""
+
+    scores_raw = hyp.get("scores", {})
+    # Tri décroissant, sans "autre"
+    scores = sorted(
+        ((cid, v) for cid, v in scores_raw.items() if cid != "autre"),
+        key=lambda kv: -kv[1],
+    )
+    top4 = scores[:4]
+    others = scores[4:]
+
+    institut = html_mod.escape(latest["institut"])
+
+    # Dates
+    td = latest["terrain_debut"]
+    tf = latest["terrain_fin"]
+    td_y, td_m, td_d = td.split("-")
+    tf_y, tf_m, tf_d = tf.split("-")
+    if td == tf:
+        dates_str = f"{int(tf_d)} {MOIS[int(tf_m) - 1]} {tf_y}"
+    elif td_m == tf_m and td_y == tf_y:
+        dates_str = f"{int(td_d)}\u2013{int(tf_d)} {MOIS[int(tf_m) - 1]} {tf_y}"
+    else:
+        dates_str = (
+            f"{int(td_d)} {MOIS_ABBREV[int(td_m) - 1]} \u2013 "
+            f"{int(tf_d)} {MOIS_ABBREV[int(tf_m) - 1]} {tf_y}"
+        )
+
+    # Échantillon
+    ech = latest.get("echantillon")
+    ech_str = fmt_ech(ech) if ech else ""
+
+    # Header
+    lines = []
+    lines.append('<div class="bloc" id="dernier-sondage" style="padding:22px 28px 20px;">')
+    lines.append('  <div class="ds-header">')
+    lines.append('    <div class="section-label">Dernier sondage</div>')
+    lines.append(f'    <span class="ds-institut">{institut}</span>')
+    meta_parts = [dates_str]
+    if ech_str:
+        meta_parts.append(f"{ech_str}\u00a0personnes")
+    lines.append(f'    <span class="ds-meta">{" · ".join(meta_parts)}</span>')
+    lines.append(
+        f'    <a href="sondages/{html_mod.escape(latest["id"])}.html" class="ds-fiche">Voir la fiche \u2192</a>'
+    )
+    lines.append("  </div>")
+
+    # Top 4
+    max_score = top4[0][1] if top4 else 1
+    lines.append('  <div class="ds-top4">')
+    for cid, v in top4:
+        c = candidats.get(cid, {})
+        nom = html_mod.escape(c.get("nom", cid))
+        couleur = c.get("couleur", "#888")
+        pct = v / max_score * 100
+        moy = _last_smoothed(series_data, cid)
+        moy_str = f'{moy:.1f}'.replace(".", ",") if moy is not None else "\u2014"
+        lines.append('    <div class="ds-cand">')
+        lines.append(f'      <div class="ds-cand-name">{nom}</div>')
+        lines.append(f'      <div class="ds-cand-score">{v:.1f}<span class="pct"> %</span></div>')
+        lines.append(
+            f'      <div class="ds-bar-wrap"><div class="ds-bar" style="width:{pct:.0f}%;background:{couleur}"></div></div>'
+        )
+        lines.append(f'      <div class="ds-moy">moyenne {moy_str}\u00a0%</div>')
+        lines.append("    </div>")
+    lines.append("  </div>")
+
+    # Others
+    if others:
+        lines.append('  <div class="ds-others">')
+        for cid, v in others:
+            c = candidats.get(cid, {})
+            nom = html_mod.escape(c.get("nom", cid))
+            couleur = c.get("couleur", "#888")
+            lines.append(
+                f'    <span><span class="ds-other-dot" style="background:{couleur}"></span>'
+                f'{nom} <b>{v:.1f}\u00a0%</b></span>'
+            )
+        lines.append("  </div>")
+
+    lines.append("</div>")
+    return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
 # Tableau des derniers sondages agrégés
 # ---------------------------------------------------------------------------
 
@@ -388,12 +500,16 @@ def main():
     )
     content = inject(content, PT_BEGIN, PT_END, reperes_t1)
 
-    # 2. Fiche du dernier sondage : meta + scores
+    # 2. Bloc « Dernier sondage » (nouveau bloc compact)
+    bloc_ds = generate_bloc_dernier_sondage(sondages, candidats, series_data)
+    content = inject(content, BLOC_DS_BEGIN, BLOC_DS_END, bloc_ds)
+
+    # 3. Fiche du dernier sondage : meta + scores
     meta_html, scores_html = generate_dernier_sondage(sondages, candidats, series_data)
     content = inject(content, META_BEGIN, META_END, meta_html)
     content = inject(content, SCORES_BEGIN, SCORES_END, scores_html)
 
-    # 3. Derniers sondages agrégés
+    # 4. Derniers sondages agrégés
     ds_html = generate_derniers_sondages(sondages)
     content = inject(content, DS_BEGIN, DS_END, ds_html)
 

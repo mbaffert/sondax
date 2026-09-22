@@ -33,7 +33,7 @@ def main():
 
     rows = [
         '<tr><th>Institut</th><th>Date</th>'
-        '<th>Échantillon</th><th>Hypothèses</th></tr>'
+        '<th>Échantillon</th><th style="width:3em;text-align:center">Hyp.</th></tr>'
     ]
     for s in sondages:
         sid = s.get("id", "")
@@ -44,7 +44,7 @@ def main():
         inst_link = f'<a href="sondages/{html_mod.escape(sid)}.html">{institut}</a>' if sid else institut
         rows.append(
             f'<tr><td>{inst_link}</td><td>{date_str}</td>'
-            f'<td>{ech}</td><td>{nhyp}</td></tr>'
+            f'<td>{ech}</td><td style="text-align:center">{nhyp}</td></tr>'
         )
 
     table_html = (

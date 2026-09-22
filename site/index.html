@@ -105,7 +105,30 @@
   .fiche-row label { font-size: 13px; color: var(--gris); white-space: nowrap; display: flex; align-items: center; gap: 9px; }
   .fiche-row select { font-family: var(--corps); padding: 7px 10px; border: 1px solid #DDDFDA;
     border-radius: 8px; font-size: 13.5px; font-weight: 500; color: var(--texte); background: #fff; }
-  .fiche-chart-wrap { position: relative; width: 100%; height: 400px; }
+  #bloc-fiche .hypothese { margin-top: 18px; }
+  #bloc-fiche .hyp-principale { border-left: 3px solid var(--bleu-vif); padding-left: 16px; }
+  #bloc-fiche .hyp-header { font-size: 14px; font-weight: 600; color: var(--bleu-nuit);
+    margin-bottom: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  #bloc-fiche .hyp-detail { font-weight: 400; color: var(--gris); font-size: 13px; }
+  #bloc-fiche .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
+  #bloc-fiche .badge-principale { background: #E8F5E9; color: #2E7D32; }
+  #bloc-fiche .scores-table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  #bloc-fiche .scores-table th, #bloc-fiche .scores-table td { text-align: left; border-bottom: 1px solid #E3E5E0; }
+  #bloc-fiche .scores-table th { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 11px;
+    color: var(--gris); text-transform: uppercase; letter-spacing: 0.06em; padding: 0 8px 6px 0; }
+  #bloc-fiche .scores-table td { padding: 5px 8px 5px 0; font-variant-numeric: tabular-nums; }
+  #bloc-fiche .scores-table tr:last-child td { border-bottom: none; }
+  #bloc-fiche .cand-name { min-width: 140px; font-weight: 500; }
+  #bloc-fiche .cand-name a { color: var(--texte); }
+  #bloc-fiche .cand-name a:hover { color: var(--bleu-vif); }
+  #bloc-fiche tr.type-parti .cand-name { font-style: italic; }
+  #bloc-fiche .col-score { white-space: nowrap; min-width: 130px; }
+  #bloc-fiche .bar { display: inline-block; height: 6px; border-radius: 3px;
+    vertical-align: middle; margin-right: 8px; min-width: 2px; width: calc(var(--w) * 1%); }
+  #bloc-fiche .col-me { font-size: 12.5px; color: var(--gris); white-space: nowrap; }
+  #bloc-fiche .me-approx { font-size: 10.5px; color: #aaa; }
+  #bloc-fiche .scores-table .col-ecart { font-size: 12.5px; color: var(--gris); white-space: nowrap; text-align: right; }
+  #bloc-fiche .note-approx { font-size: 12px; color: var(--gris); font-style: italic; margin-top: 8px; }
   .approx { font-size: 0.75em; color: var(--gris); font-style: italic; margin-top: 0.5em; }
   .fiche-source { font-size: 0.85em; margin-top: 0.8em; }
   .fiche-source a { color: var(--bleu-vif); }
@@ -174,7 +197,11 @@
     main { padding: 14px 8px 0; }
     .bloc { padding: 18px 12px 16px; border-radius: 12px; }
     .chart-wrap { height: 265px; }
-    .fiche-chart-wrap { height: 300px; }
+    #bloc-fiche .scores-table .col-ecart { display: none; }
+    #bloc-fiche .col-me { font-size: 11.5px; }
+    #bloc-fiche .bar { width: calc(var(--w) * 1px); margin-right: 6px; }
+    #bloc-fiche .cand-name, #bloc-fiche .col-score { min-width: 0; }
+    #bloc-fiche .me-approx { display: none; }
     .periode { gap: 6px; }
     .periode span { display: none; }
     .periode .periode-group button { padding: 8px 12px; font-size: 13px; min-height: 44px; min-width: 44px; }
@@ -344,24 +371,11 @@
       <label>Configuration :</label>
       <select id="fiche-hyp"></select>
     </div>
-    <div id="fiche-result"></div>
-    <details id="fiche-scores-details">
-      <summary style="cursor:pointer;font-size:13.5px;font-weight:500;color:var(--bleu-vif);padding:8px 0;list-style:none;">Voir les chiffres</summary>
-      <!-- BEGIN:fiche-scores -->
-      <table class="t2-table" id="fiche-scores-table" style="max-width:420px;">
-        <tr><td>Marine Le Pen</td><td style="text-align:right;font-variant-numeric:tabular-nums;">36,0 %</td></tr>
-        <tr><td>Jean-Luc Mélenchon</td><td style="text-align:right;font-variant-numeric:tabular-nums;">17,0 %</td></tr>
-        <tr><td>Gabriel Attal</td><td style="text-align:right;font-variant-numeric:tabular-nums;">15,0 %</td></tr>
-        <tr><td>Bruno Retailleau</td><td style="text-align:right;font-variant-numeric:tabular-nums;">10,0 %</td></tr>
-        <tr><td>François Hollande</td><td style="text-align:right;font-variant-numeric:tabular-nums;">7,0 %</td></tr>
-        <tr><td>Éric Zemmour</td><td style="text-align:right;font-variant-numeric:tabular-nums;">5,0 %</td></tr>
-        <tr><td>Marine Tondelier</td><td style="text-align:right;font-variant-numeric:tabular-nums;">4,0 %</td></tr>
-        <tr><td>Fabien Roussel</td><td style="text-align:right;font-variant-numeric:tabular-nums;">3,0 %</td></tr>
-        <tr><td>Nicolas Dupont-Aignan</td><td style="text-align:right;font-variant-numeric:tabular-nums;">2,0 %</td></tr>
-        <tr><td>Nathalie Arthaud</td><td style="text-align:right;font-variant-numeric:tabular-nums;">1,0 %</td></tr>
-      </table>
+    <div id="fiche-result">
+    <!-- BEGIN:fiche-scores -->
+<div class="hypothese"><table class="scores-table"><thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead><tbody><tr><td class="cand-name"><a href="le-pen.html">Marine Le Pen</a></td><td class="col-score"><span class="bar" style="--w:36;background:#0D378A"></span>36,0 %</td><td class="col-me">± 2,1 % <span class="me-approx">(approx.)</span></td></tr><tr><td class="cand-name"><a href="melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="--w:17;background:#CC2443"></span>17,0 %</td><td class="col-me">± 1,6 % <span class="me-approx">(approx.)</span></td></tr><tr><td class="cand-name"><a href="attal.html">Gabriel Attal</a></td><td class="col-score"><span class="bar" style="--w:15;background:#7E57C2"></span>15,0 %</td><td class="col-me">± 1,5 % <span class="me-approx">(approx.)</span></td></tr><tr><td class="cand-name"><a href="retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="--w:10;background:#0066CC"></span>10,0 %</td><td class="col-me">± 1,3 % <span class="me-approx">(approx.)</span></td></tr><tr><td class="cand-name">François Hollande</td><td class="col-score"><span class="bar" style="--w:7;background:#FF8080"></span>7,0 %</td><td class="col-me">± 1,1 % <span class="me-approx">(approx.)</span></td></tr><tr><td class="cand-name"><a href="zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="--w:5;background:#1A1A2E"></span>5,0 %</td><td class="col-me">± 0,9 % <span class="me-approx">(approx.)</span></td></tr><tr><td class="cand-name"><a href="tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="--w:4;background:#00C853"></span>4,0 %</td><td class="col-me">± 0,8 % <span class="me-approx">(approx.)</span></td></tr><tr><td class="cand-name"><a href="roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="--w:3;background:#DD1111"></span>3,0 %</td><td class="col-me">± 0,7 % <span class="me-approx">(approx.)</span></td></tr><tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="--w:2;background:#0055A4"></span>2,0 %</td><td class="col-me">± 0,6 % <span class="me-approx">(approx.)</span></td></tr><tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="--w:1;background:#8B0000"></span>1,0 %</td><td class="col-me">± 0,4 % <span class="me-approx">(approx.)</span></td></tr></tbody></table><p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p></div>
 <!-- END:fiche-scores -->
-    </details>
+    </div>
   </div>
 
   <!-- BEGIN:derniers-sondages -->
@@ -1074,13 +1088,26 @@ function hypLabel(hyp, allT1) {
   return `avec ${distinctive.join(', ')}`;
 }
 
+function trierT1(s) {
+  // Principale d'abord, puis par nombre de candidats décroissant (comme les pages sondage)
+  return s.hypotheses.filter(h => h.tour === 1)
+    .map((h, i) => ({ h, i }))
+    .sort((a, b) => ((a.h.principale ? 0 : 1) - (b.h.principale ? 0 : 1))
+      || (Object.keys(b.h.scores).length - Object.keys(a.h.scores).length) || (a.i - b.i))
+    .map(x => x.h);
+}
+
+function escHtml(str) {
+  return String(str).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+}
+
 class ExplorerSondages {
-  constructor(sondages) {
+  constructor(sondages, seriesData) {
     this.sondages = sondages.slice().sort((a, b) => b.terrain_fin.localeCompare(a.terrain_fin));
+    this.series = (seriesData && seriesData.series) || {};
     this.selSondage = document.getElementById('fiche-sondage');
     this.selHyp = document.getElementById('fiche-hyp');
     this.result = document.getElementById('fiche-result');
-    this.barChart = null;
 
     this.populateSondages();
     this.selSondage.addEventListener('change', () => this.onSondageChange());
@@ -1098,7 +1125,7 @@ class ExplorerSondages {
       const ech = s.echantillon ? Math.round(s.echantillon).toLocaleString('fr-FR') : '?';
       const opt = document.createElement('option');
       opt.value = s.id;
-      opt.textContent = `${s.institut} — ${fmtDate(s.terrain_fin)} (n\u00a0=\u00a0${ech})`;
+      opt.textContent = `${s.institut} — ${fmtDate(s.terrain_fin)} (n = ${ech})`;
       this.selSondage.appendChild(opt);
     }
   }
@@ -1112,7 +1139,7 @@ class ExplorerSondages {
     this.selHyp.innerHTML = '';
     if (!s) { this.result.innerHTML = ''; return; }
 
-    const t1 = s.hypotheses.filter(h => h.tour === 1);
+    const t1 = trierT1(s);
     if (t1.length === 0) {
       const opt = document.createElement('option');
       opt.textContent = 'Aucune hypothèse de premier tour';
@@ -1131,144 +1158,82 @@ class ExplorerSondages {
     this.renderResult();
   }
 
+  moyenneADate(cid, dateIso) {
+    const pts = this.series[cid] || [];
+    let val = null;
+    for (const p of pts) {
+      if (p.d > dateIso) break;
+      if (p.v !== null) val = p.v;
+    }
+    return val;
+  }
+
   renderResult() {
     const s = this.currentSondage();
     const metaEl = document.getElementById('fiche-meta');
-    const scoresTable = document.getElementById('fiche-scores-table');
     if (!s) { this.result.innerHTML = ''; return; }
 
-    const t1 = s.hypotheses.filter(h => h.tour === 1);
-    const idx = parseInt(this.selHyp.value);
-    const hyp = t1[idx];
+    const t1 = trierT1(s);
+    const hyp = t1[parseInt(this.selHyp.value)];
     if (!hyp) { this.result.innerHTML = ''; return; }
 
     const ech = s.echantillon ? Math.round(s.echantillon) : null;
     const echStr = ech ? ech.toLocaleString('fr-FR') : '—';
-    const scores = Object.entries(hyp.scores).sort((a, b) => b[1] - a[1]);
 
-    // Mettre à jour la ligne de métadonnées
     const manuelTag = s.source === 'manuel' ? ' · <span style="color:var(--bleu-vif);">saisie manuelle</span>' : '';
     if (metaEl) {
-      metaEl.innerHTML = `${s.institut} — ${fmtDate(s.terrain_debut)} \u2192 ${fmtDate(s.terrain_fin)} — Échantillon\u00a0: ${echStr}${manuelTag}` +
+      metaEl.innerHTML = `${s.institut} — ${fmtDate(s.terrain_debut)} → ${fmtDate(s.terrain_fin)} — Échantillon : ${echStr}${manuelTag}` +
         ` · <a href="sondages/${encodeURIComponent(s.id)}.html" style="font-weight:500;">Voir la fiche</a>`;
     }
 
-    // Mettre à jour le tableau de scores dans le <details>
-    if (scoresTable) {
-      let rows = '';
-      for (const [cid, v] of scores) {
-        rows += `<tr><td>${nomCourt(cid)}</td><td style="text-align:right;font-variant-numeric:tabular-nums;">${fmtPct(v)}</td></tr>`;
-      }
-      scoresTable.innerHTML = rows;
-    }
+    const hypEch = hyp.echantillon || null;
+    const n = hypEch || ech;
+    const approx = !hypEch && !!ech;
+    const isP = !!hyp.principale;
+    const showEcart = isP;
 
-    // Graphique à barres
-    let html = '<div class="fiche-chart-wrap"><canvas id="fiche-bar-chart"></canvas></div>';
-    if (ech) {
-      html += '<p class="approx">Marges d\u2019erreur approximatives, calculées sur l\u2019échantillon total du sondage.</p>';
-    }
+    const scores = Object.entries(hyp.scores).filter(([cid]) => cid !== 'autre').sort((a, b) => b[1] - a[1]);
+
+    const head = [];
+    if (isP) head.push('<span class="badge badge-principale">Principale</span>');
+    if (hypEch) head.push(`<span class="hyp-detail">${Math.round(hypEch).toLocaleString('fr-FR')} personnes</span>`);
+
+    let th = '<th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th>';
+    if (showEcart) th += '<th class="col-ecart">Écart / moy.</th>';
+
+    const rows = scores.map(([cid, v]) => {
+      const c = CANDIDATS[cid] || {};
+      const nomComplet = escHtml([c.prenom, c.nom].filter(Boolean).join(' ') || cid);
+      const nom = PAGES_CANDIDATS.has(cid) ? `<a href="${cid}.html">${nomComplet}</a>` : nomComplet;
+      const partiCls = c.type === 'parti' ? ' class="type-parti"' : '';
+      const p = v / 100;
+      let meStr = '—';
+      if (n && p > 0 && p < 1) {
+        meStr = `± ${margeDErreur(p, n).toFixed(1).replace('.', ',')} %`;
+        if (approx) meStr += ' <span class="me-approx">(approx.)</span>';
+      }
+      let ecart = '';
+      if (showEcart) {
+        const moy = this.moyenneADate(cid, s.terrain_fin);
+        if (moy !== null) {
+          const d = Math.round((v - moy) * 10) / 10;
+          ecart = `<td class="col-ecart">${d > 0 ? '+' : ''}${d.toFixed(1).replace('.', ',')} pt</td>`;
+        } else {
+          ecart = '<td class="col-ecart">—</td>';
+        }
+      }
+      const w = Math.min(Math.max(v, 0), 60);
+      return `<tr${partiCls}><td class="cand-name">${nom}</td>` +
+        `<td class="col-score"><span class="bar" style="--w:${w.toFixed(0)};background:${couleur(cid)}"></span>${fmtPct(v)}</td>` +
+        `<td class="col-me">${meStr}</td>${ecart}</tr>`;
+    }).join('');
+
+    let html = `<div class="hypothese${isP ? ' hyp-principale' : ''}">`;
+    if (head.length) html += `<div class="hyp-header">${head.join(' ')}</div>`;
+    html += `<table class="scores-table"><thead><tr>${th}</tr></thead><tbody>${rows}</tbody></table>`;
+    if (approx) html += '<p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>';
+    html += '</div>';
     this.result.innerHTML = html;
-
-    const labels = scores.map(([cid]) => nomCourt(cid));
-    const values = scores.map(([, v]) => v);
-    const colors = scores.map(([cid]) => couleur(cid));
-    const errors = scores.map(([, v]) => ech ? margeDErreur(v / 100, ech) : 0);
-
-    const topValues = values.map((v, i) => v + errors[i]);
-    const yMax = Math.ceil((Math.max(...topValues) + 3) / 5) * 5;
-
-    if (this.barChart) this.barChart.destroy();
-
-    const errorBarPlugin = {
-      id: 'errorBars',
-      afterDraw(chart) {
-        const { ctx } = chart;
-        const meta = chart.getDatasetMeta(0);
-        const yScale = chart.scales.y;
-        meta.data.forEach((bar, i) => {
-          const val = values[i];
-          const me = errors[i];
-          if (!me) return;
-          const lo = Math.max(0, val - me);
-          const hi = val + me;
-          const xc = bar.x;
-          const yLo = yScale.getPixelForValue(lo);
-          const yHi = yScale.getPixelForValue(hi);
-          const capW = 6;
-          ctx.save();
-          ctx.strokeStyle = 'rgba(32,38,50,0.45)';
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.moveTo(xc, yLo); ctx.lineTo(xc, yHi);
-          ctx.moveTo(xc - capW, yLo); ctx.lineTo(xc + capW, yLo);
-          ctx.moveTo(xc - capW, yHi); ctx.lineTo(xc + capW, yHi);
-          ctx.stroke();
-          ctx.restore();
-        });
-      }
-    };
-
-    const valueLabelPlugin = {
-      id: 'valueLabels',
-      afterDraw(chart) {
-        const { ctx } = chart;
-        const meta = chart.getDatasetMeta(0);
-        const yScale = chart.scales.y;
-        ctx.save();
-        ctx.font = "500 12px 'IBM Plex Sans', system-ui, sans-serif";
-        ctx.fillStyle = '#202632';
-        ctx.textAlign = 'left';
-        ctx.textBaseline = 'middle';
-        meta.data.forEach((bar, i) => {
-          const yPos = yScale.getPixelForValue(values[i]);
-          ctx.fillText(fmtPct(values[i]), bar.x + bar.width / 2 + 6, yPos);
-        });
-        ctx.restore();
-      }
-    };
-
-    this.barChart = new Chart(document.getElementById('fiche-bar-chart'), {
-      type: 'bar',
-      data: {
-        labels: labels,
-        datasets: [{
-          data: values,
-          backgroundColor: colors,
-          borderWidth: 0,
-          barPercentage: 0.7,
-        }]
-      },
-      plugins: [errorBarPlugin, valueLabelPlugin],
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          x: {
-            ticks: { maxRotation: window.innerWidth < 600 ? 90 : 45, minRotation: 0, autoSkip: false,
-              font: { size: window.innerWidth < 600 ? 10 : 12 } },
-            grid: { display: false },
-          },
-          y: {
-            min: 0,
-            max: yMax,
-            ticks: { callback: (v) => v + '\u00a0%' },
-            grid: { color: '#edeee9' },
-          },
-        },
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: (ctx) => {
-                const me = errors[ctx.dataIndex];
-                const meStr = me ? ` (\u00b1\u00a0${fmtPct(me)})` : '';
-                return `${fmtPct(ctx.parsed.y)}${meStr}`;
-              }
-            }
-          }
-        },
-      }
-    });
   }
 }
 
@@ -1662,7 +1627,7 @@ async function init() {
   const t2 = new SecondTour(sondagesData);
 
   // --- Bloc explorer les sondages ---
-  new ExplorerSondages(sondagesData);
+  new ExplorerSondages(sondagesData, seriesData);
 
   // Bloc derniers sondages (5 plus récents)
   renderSondagesTable(

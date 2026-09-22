@@ -127,20 +127,16 @@
 </footer>
 
 <script>
-function fmtDate(iso) {
-  const [y, m, d] = iso.split('-');
-  return `${d}/${m}/${y}`;
-}
+function init() {
+  const table = document.getElementById('table-sondages');
+  const rows = [...table.querySelectorAll('tr')].filter(tr => !tr.querySelector('th'));
 
-let ALL_SONDAGES = [];
+  const instituts = [...new Set(rows.map(tr => {
+    const td = tr.cells[0];
+    const a = td.querySelector('a');
+    return a ? a.textContent : td.textContent;
+  }))].sort();
 
-async function init() {
-  const resp = await fetch('data/sondages.json');
-  ALL_SONDAGES = await resp.json();
-  ALL_SONDAGES.sort((a, b) => b.terrain_fin.localeCompare(a.terrain_fin));
-
-  // Populate institut filter
-  const instituts = [...new Set(ALL_SONDAGES.map(s => s.institut))].sort();
   const sel = document.getElementById('filtre-institut');
   for (const inst of instituts) {
     const opt = document.createElement('option');
@@ -149,35 +145,28 @@ async function init() {
     sel.appendChild(opt);
   }
 
+  function render() {
+    const institut = sel.value;
+    const query = document.getElementById('recherche').value.toLowerCase().trim();
+    let visible = 0;
+
+    for (const tr of rows) {
+      const td = tr.cells[0];
+      const a = td.querySelector('a');
+      const inst = a ? a.textContent : td.textContent;
+      const text = tr.textContent.toLowerCase();
+
+      const show = (!institut || inst === institut) && (!query || text.includes(query));
+      tr.style.display = show ? '' : 'none';
+      if (show) visible++;
+    }
+
+    document.getElementById('count').textContent = visible + ' sondage' + (visible > 1 ? 's' : '');
+  }
+
   sel.addEventListener('change', render);
   document.getElementById('recherche').addEventListener('input', render);
   render();
-}
-
-function render() {
-  const institut = document.getElementById('filtre-institut').value;
-  const query = document.getElementById('recherche').value.toLowerCase().trim();
-
-  let filtered = ALL_SONDAGES;
-  if (institut) filtered = filtered.filter(s => s.institut === institut);
-  if (query) filtered = filtered.filter(s =>
-    s.institut.toLowerCase().includes(query) ||
-    s.terrain_fin.includes(query) ||
-    fmtDate(s.terrain_fin).includes(query) ||
-    s.id.includes(query)
-  );
-
-  document.getElementById('count').textContent = `${filtered.length} sondage${filtered.length > 1 ? 's' : ''}`;
-
-  const table = document.getElementById('table-sondages');
-  let html = '<tr><th>Institut</th><th>Date</th><th>Échantillon</th><th style="width:3em;text-align:center">Hyp.</th></tr>';
-  for (const s of filtered) {
-    const ech = s.echantillon ? Math.round(s.echantillon).toLocaleString('fr-FR') : '—';
-    const nhyp = s.hypotheses.length;
-    const instLink = s.id ? `<a href="sondages/${encodeURIComponent(s.id)}.html">${s.institut}</a>` : s.institut;
-    html += `<tr><td>${instLink}</td><td>${fmtDate(s.terrain_fin)}</td><td>${ech}</td><td style="text-align:center">${nhyp}</td></tr>`;
-  }
-  table.innerHTML = html;
 }
 
 init();

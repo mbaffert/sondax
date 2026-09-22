@@ -86,6 +86,11 @@ def collect_sitemap_urls():
     return [loc.text for loc in tree.findall(".//sm:loc", ns)]
 
 
+def strip_scripts(html):
+    """Retire le contenu des balises <script> pour ne pas parser les href JS."""
+    return re.sub(r'<script[\s>].*?</script>', '', html, flags=re.DOTALL | re.IGNORECASE)
+
+
 def collect_internal_links():
     """Collecte tous les href internes de toutes les pages HTML."""
     links = []  # (href, source_path)
@@ -93,7 +98,9 @@ def collect_internal_links():
         content = html_path.read_text(encoding="utf-8")
         if len(content) < 500 and "Redirection" in content:
             continue
-        for m in re.finditer(r'href="([^"]*)"', content):
+        # Ignorer les href construits en JavaScript
+        clean = strip_scripts(content)
+        for m in re.finditer(r'href="([^"]*)"', clean):
             href = m.group(1)
             links.append((href, html_path))
     return links

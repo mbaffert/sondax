@@ -159,12 +159,8 @@ def select_latest_sondage(sondages):
 
 
 def load_all_sondages():
-    """Charge sondages.json + sondages_manuels.json."""
-    sondages = load_json(DATA / "sondages.json")
-    manuels_path = DATA / "sondages_manuels.json"
-    if manuels_path.exists():
-        sondages = sondages + load_json(manuels_path)
-    return sondages
+    """Charge sondages.json (contient déjà les manuels, fusionnés par le collecteur)."""
+    return load_json(DATA / "sondages.json")
 
 
 def main():

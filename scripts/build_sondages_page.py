@@ -26,10 +26,7 @@ def fmt_ech(n):
 def main():
     sondages = json.loads(SONDAGES_PATH.read_text(encoding="utf-8"))
 
-    # Charger les manuels
-    manuels_path = ROOT / "data" / "sondages_manuels.json"
-    if manuels_path.exists():
-        sondages += json.loads(manuels_path.read_text(encoding="utf-8"))
+    # sondages.json contient déjà les manuels (fusionnés par le collecteur)
 
     # Tri par terrain_fin décroissant
     sondages.sort(key=lambda s: s["terrain_fin"], reverse=True)
@@ -39,6 +36,7 @@ def main():
         '<th>Échantillon</th><th>Hypothèses</th><th>Source</th></tr>'
     ]
     for s in sondages:
+        sid = s.get("id", "")
         institut = html_mod.escape(s["institut"])
         date_str = fmt_date(s["terrain_fin"])
         ech = fmt_ech(s["echantillon"]) if s.get("echantillon") else "\u2014"
@@ -47,8 +45,9 @@ def main():
             f'<a href="{html_mod.escape(s["url_source"])}" target="_blank">Notice</a>'
             if s.get("url_source") else "\u2014"
         )
+        inst_link = f'<a href="sondages/{html_mod.escape(sid)}.html">{institut}</a>' if sid else institut
         rows.append(
-            f'<tr><td>{institut}</td><td>{date_str}</td>'
+            f'<tr><td>{inst_link}</td><td>{date_str}</td>'
             f'<td>{ech}</td><td>{nhyp}</td><td>{source}</td></tr>'
         )
 

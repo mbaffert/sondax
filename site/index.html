@@ -267,6 +267,7 @@
 <div id="site-header" class="sh"></div>
 <script src="assets/header-data.js?v=3"></script>
 <script src="assets/header.js?v=3"></script>
+<script src="assets/end-labels.js?v=1"></script>
 
 <nav class="sub-nav" id="sub-nav">
   <a href="#bloc-sondages">Intentions de vote</a>
@@ -1502,12 +1503,16 @@ class SecondTour {
 
     const CURVE_WIDTH = IS_MOBILE ? 2.8 : 2.5;
     const PT_RADIUS = IS_MOBILE ? 2.5 : 3;
-    const courbe = (cid, pts) => ({
-      label: nomCourt(cid), data: tendance(pts),
+    const courbe = (cid, pts) => {
+      const data = tendance(pts);
+      return {
+      label: nomCourt(cid), data,
+      _label: `${nomCourt(cid)} ${fmtPct(data[data.length - 1].y)}`,
       borderColor: couleur(cid), backgroundColor: couleur(cid),
       borderWidth: CURVE_WIDTH, pointRadius: 0, pointHoverRadius: 0,
       tension: 0.35, cubicInterpolationMode: 'monotone', fill: false, _cid: cid,
-    });
+      };
+    };
     const points = (cid, pts) => ({
       label: '', data: pts, showLine: false,
       backgroundColor: couleur(cid) + '55', borderWidth: 0,
@@ -1518,11 +1523,11 @@ class SecondTour {
     this.chart = new Chart(document.getElementById('chart-t2'), {
       type: 'line',
       data: { datasets: [points(cidA, brutA), points(cidB, brutB), courbe(cidA, brutA), courbe(cidB, brutB)] },
-      plugins: [ligne50],
+      plugins: [ligne50, SondaxEndLabels.plugin],
       options: {
         responsive: true,
         maintainAspectRatio: false,
-        layout: { padding: { top: 4 } },
+        layout: { padding: SondaxEndLabels.padding({ top: 4 }) },
         interaction: { mode: 'nearest', intersect: true },
         scales: {
           x: xAxisConfig(sorted[0].sondage.terrain_fin, sorted[sorted.length - 1].sondage.terrain_fin),
@@ -1535,14 +1540,7 @@ class SecondTour {
           },
         },
         plugins: {
-          legend: {
-            display: true, position: 'top',
-            labels: {
-              filter: (item, data) => !data.datasets[item.datasetIndex]._isBrut,
-              usePointStyle: true, pointStyle: 'line', boxWidth: 24,
-              font: { family: "'IBM Plex Sans'" },
-            },
-          },
+          legend: { display: false },
           tooltip: {
             filter: (item) => item.dataset._isBrut,
             callbacks: {
@@ -1686,6 +1684,7 @@ async function init() {
     nbDefault: 3,
     periodeEventPrefix: 'periode-cotes',
   });
+  polyBlocST.enableEndLabels = true;
   polyBlocST.setCandidats(stData.cands, (a, b) => {
     return (polyBlocST.lastVal(b) || 0) - (polyBlocST.lastVal(a) || 0);
   });
@@ -1699,6 +1698,7 @@ async function init() {
     nbDefault: 3,
     periodeEventPrefix: 'periode-cotes',
   });
+  polyBlocV.enableEndLabels = true;
   polyBlocV.setCandidats(vData.cands, (a, b) => {
     return (polyBlocV.lastVal(b) || 0) - (polyBlocV.lastVal(a) || 0);
   });

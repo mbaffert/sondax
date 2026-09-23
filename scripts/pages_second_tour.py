@@ -84,15 +84,35 @@ def header(title_text, depth=1):
 def footer(depth=1):
     prefix = "../" * depth
     return f"""\
-<footer>
+<footer class="site-footer">
   <div class="footer-inner">
-    <p>Données sondages\u00a0: <a href="https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027" target="_blank">Wikipédia</a>,
-    licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank">CC BY-SA 4.0</a> ·
-    Cotes\u00a0: <a href="https://polymarket.com" target="_blank">Polymarket</a> ·
-    <a href="{prefix}methodologie.html">Méthodologie</a> ·
-    <a href="{prefix}donnees.html">Données</a></p>
-    <p><a href="mailto:contact@sondax.fr">Contact</a> · Hébergeur\u00a0: <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
-    <p class="disclaimer">Marque indépendante. Le bleu et le rouge ne représentent aucun camp politique.</p>
+    <div>
+      <div style="margin-bottom:10px;">
+        <img src="{prefix}assets/logo-sondax-blanc.svg" alt="Sondax" style="height:22px;">
+      </div>
+      <p class="disclaimer">Marque indépendante. Le bleu et le rouge ne représentent aucun camp politique.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Données</div>
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <a href="https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027" target="_blank">Sondages · Wikipédia (CC BY-SA 4.0)</a>
+        <a href="https://polymarket.com" target="_blank">Cotes · Polymarket</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Le site</div>
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <a href="{prefix}methodologie.html">Méthodologie</a>
+        <a href="{prefix}sondages.html">Tous les sondages</a>
+        <a href="{prefix}donnees.html">Données</a>
+        <a href="{prefix}a-propos.html">À propos</a>
+      </div>
+    </div>
+    <div>
+      <div id="footer-run"></div>
+      <div><a href="mailto:contact@sondax.fr">Contact</a></div>
+      <div>Hébergeur · <a href="https://pages.github.com" target="_blank">GitHub Pages</a></div>
+    </div>
   </div>
 </footer>"""
 
@@ -114,11 +134,17 @@ CSS = """\
 
   main { max-width: 1180px; margin: 0 auto; padding: 26px 28px 40px; }
 
-  footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
-  footer .footer-inner { max-width: 1180px; margin: 0 auto; }
-  footer a { color: rgba(255,255,255,0.72); }
-  footer a:hover { color: #fff; text-decoration: none; }
-  footer .disclaimer { font-size: 12.5px; line-height: 1.6; margin-top: 8px; }
+  footer.site-footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
+  footer.site-footer .footer-inner { max-width: 1180px; margin: 0 auto; display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 16px 32px; }
+  footer.site-footer .footer-col-title { color: #fff; font-weight: 600; margin-bottom: 9px; font-size: 12.5px; }
+  footer.site-footer a { color: rgba(255,255,255,0.72); text-decoration: none; }
+  footer.site-footer a:hover { color: #fff; text-decoration: none; }
+  footer.site-footer .disclaimer { font-size: 12.5px; line-height: 1.6; }
+  @media (max-width: 900px) {
+    footer.site-footer { padding: 24px 16px; }
+    footer.site-footer .footer-inner { grid-template-columns: 1fr; gap: 20px; }
+  }
 
   h1 { font-family: var(--titre); font-size: 1.8em; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.3em; }
   h2 { font-family: var(--titre); font-size: 1.3em; font-weight: 700; margin: 1.5em 0 0.5em; }
@@ -141,7 +167,6 @@ CSS = """\
   @media (max-width: 600px) {
     main { padding: 14px 12px 30px; }
     .chart-wrap { height: 300px; }
-    footer { padding: 24px 16px; }
   }"""
 
 

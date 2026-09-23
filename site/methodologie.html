@@ -42,9 +42,17 @@
   main p { margin-bottom: 0.8em; }
   main strong { font-weight: 600; }
 
-  footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.7); padding: 1.5em 2em; font-size: 0.8em; line-height: 1.7; }
-  footer a { color: rgba(255,255,255,0.85); }
-  footer .disclaimer { color: rgba(255,255,255,0.5); font-style: italic; margin-top: 0.8em; }
+  footer.site-footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
+  footer.site-footer .footer-inner { max-width: 1180px; margin: 0 auto; display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 16px 32px; }
+  footer.site-footer .footer-col-title { color: #fff; font-weight: 600; margin-bottom: 9px; font-size: 12.5px; }
+  footer.site-footer a { color: rgba(255,255,255,0.72); text-decoration: none; }
+  footer.site-footer a:hover { color: #fff; text-decoration: none; }
+  footer.site-footer .disclaimer { font-size: 12.5px; line-height: 1.6; }
+  @media (max-width: 900px) {
+    footer.site-footer { padding: 24px 16px; }
+    footer.site-footer .footer-inner { grid-template-columns: 1fr; gap: 20px; }
+  }
 </style>
 </head>
 <body>
@@ -171,16 +179,36 @@ interrompue plutôt que publiée.</p>
 source&nbsp;: la correction profite à tout le monde et se répercute ici en quelques heures.</p>
 </main>
 
-<footer>
-  <div>
-    Données sondages : <a href="https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027" target="_blank">Wikipédia</a>,
-    licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank">CC BY-SA 4.0</a> ·
-    Cotes : <a href="https://polymarket.com" target="_blank">Polymarket</a> ·
-    <a href="methodologie.html">Méthodologie</a> ·
-    <a href="donnees.html">Données</a>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div style="margin-bottom:10px;">
+        <img src="assets/logo-sondax-blanc.svg" alt="Sondax" style="height:22px;">
+      </div>
+      <p class="disclaimer">Marque indépendante. Le bleu et le rouge ne représentent aucun camp politique.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Données</div>
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <a href="https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027" target="_blank">Sondages · Wikipédia (CC BY-SA 4.0)</a>
+        <a href="https://polymarket.com" target="_blank">Cotes · Polymarket</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Le site</div>
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <a href="methodologie.html">Méthodologie</a>
+        <a href="sondages.html">Tous les sondages</a>
+        <a href="donnees.html">Données</a>
+        <a href="a-propos.html">À propos</a>
+      </div>
+    </div>
+    <div>
+      <div id="footer-run"></div>
+      <div><a href="mailto:contact@sondax.fr">Contact</a></div>
+      <div>Hébergeur · <a href="https://pages.github.com" target="_blank">GitHub Pages</a></div>
+    </div>
   </div>
-  <div><a href="mailto:contact@sondax.fr">Contact</a> · Hébergeur : <a href="https://pages.github.com" target="_blank">GitHub Pages</a></div>
-  <div class="disclaimer">Marque indépendante — le bleu et le rouge ne représentent aucun camp politique.</div>
 </footer>
 
 </body>

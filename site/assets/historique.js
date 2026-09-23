@@ -51,10 +51,13 @@ function fmtTooltipDate(j) {
 }
 
 // Draw a label inside the chart; flip to left of line if it would overflow right
-function drawLabel(ctx, text, xPx, yPx, right) {
+function drawLabel(ctx, text, xPx, yPx, right, left = 0) {
   ctx.font = "11px 'IBM Plex Sans', sans-serif";
   const w = ctx.measureText(text).width;
-  if (xPx + 4 + w > right) {
+  if (xPx + 4 + w > right && xPx - 4 - w < left) {
+    ctx.textAlign = 'left';
+    ctx.fillText(text, left + 4, yPx);
+  } else if (xPx + 4 + w > right) {
     ctx.textAlign = 'right';
     ctx.fillText(text, xPx - 4, yPx);
   } else {
@@ -81,7 +84,7 @@ function vertLinesPlugin(id, jAuj) {
         ctx.beginPath(); ctx.moveTo(xJ0, top); ctx.lineTo(xJ0, bottom); ctx.stroke();
         ctx.setLineDash([]);
         ctx.fillStyle = 'rgba(32,38,50,0.5)';
-        drawLabel(ctx, '1er tour', xJ0, top + 4, right);
+        drawLabel(ctx, '1er tour', xJ0, top + 4, right, left);
       }
 
       // Aujourd'hui pour 2027
@@ -93,7 +96,7 @@ function vertLinesPlugin(id, jAuj) {
         ctx.beginPath(); ctx.moveTo(xAuj, top); ctx.lineTo(xAuj, bottom); ctx.stroke();
         ctx.setLineDash([]);
         ctx.fillStyle = 'rgba(12,108,242,0.6)';
-        drawLabel(ctx, `Aujourd\u2019hui pour 2027 (J-${joursAvant2027()})`, xAuj, top + 18, right);
+        drawLabel(ctx, `Aujourd\u2019hui pour 2027 (J-${joursAvant2027()})`, xAuj, top + 18, right, left);
       }
 
       ctx.restore();
@@ -160,7 +163,7 @@ function xAxisConfig(minJ, maxJ) {
         const t = ticks.find(t => t.value === value);
         return t ? fmtTickLabel(t.date, index === 0) : '';
       },
-      maxRotation: 0, autoSkip: false,
+      maxRotation: 0, autoSkip: true, autoSkipPadding: 8,
     },
     grid: { color: '#edeee9' },
   };
@@ -194,7 +197,8 @@ function renderT1() {
     if (info.resultat != null) {
       datasets.push({label:'', data:[{x:0,y:info.resultat}], borderColor:info.couleur,
         backgroundColor:info.couleur, pointRadius:6, pointStyle:'rectRot',
-        showLine:false, _isResult:true});
+        showLine:false, _isResult:true,
+        _label: `${info.nom} ${fmtPct2(info.resultat)}`, _labelColor: info.couleur});
     }
   }
 
@@ -210,10 +214,10 @@ function renderT1() {
   chartT1 = new Chart(document.getElementById('chart-t1'), {
     type: 'line',
     data: { datasets },
-    plugins: [vertLinesPlugin('vl-t1', jAuj)],
+    plugins: [vertLinesPlugin('vl-t1', jAuj), SondaxEndLabels.plugin],
     options: {
       responsive: true, maintainAspectRatio: false,
-      layout: { padding: { top: LABEL_PAD_TOP } },
+      layout: { padding: SondaxEndLabels.padding({ top: LABEL_PAD_TOP }) },
       interaction: { mode:'nearest', axis:'x', intersect:false },
       scales: {
         x: xAxisConfig(minJ, maxJ),
@@ -399,6 +403,7 @@ function renderT2Chart(duel, mesures, cidA, cidB, content, key) {
         label: candNom(cid), data,
         borderColor: candCouleur(cid), borderWidth: 2, pointRadius: 0,
         tension: 0, fill: false, spanGaps: false,
+        _label: resT2[cid] == null ? candNom(cid) : null, _labelColor: candCouleur(cid),
       });
       // Ghost segments for gaps
       for (const seg of buildGhostSegments(decoded, minJ)) {
@@ -421,7 +426,8 @@ function renderT2Chart(duel, mesures, cidA, cidB, content, key) {
     if (resT2[cid] != null) {
       datasets.push({label:'', data:[{x:t2Jour, y:resT2[cid]}],
         borderColor:candCouleur(cid), backgroundColor:candCouleur(cid),
-        pointRadius:6, pointStyle:'rectRot', showLine:false, _isResult:true});
+        pointRadius:6, pointStyle:'rectRot', showLine:false, _isResult:true,
+        _label: `${candNom(cid)} ${fmtPct2(resT2[cid])}`, _labelColor: candCouleur(cid)});
     }
   }
 
@@ -451,17 +457,16 @@ function renderT2Chart(duel, mesures, cidA, cidB, content, key) {
     }
   };
 
-  content.innerHTML = '<div class="chart-wrap"><canvas id="chart-t2"></canvas></div>' +
-    '<div class="candidats t2-legend" id="t2-legend"></div>';
+  content.innerHTML = '<div class="chart-wrap"><canvas id="chart-t2"></canvas></div>';
 
   if (chartT2) chartT2.destroy();
   chartT2 = new Chart(document.getElementById('chart-t2'), {
     type: 'line',
     data: { datasets },
-    plugins: [ligne50, vertLinesPlugin('vl-t2', jAuj)],
+    plugins: [ligne50, vertLinesPlugin('vl-t2', jAuj), SondaxEndLabels.plugin],
     options: {
       responsive: true, maintainAspectRatio: false,
-      layout: { padding: { top: LABEL_PAD_TOP } },
+      layout: { padding: SondaxEndLabels.padding({ top: LABEL_PAD_TOP }) },
       interaction: { mode:'nearest', axis:'x', intersect:false },
       scales: {
         x: xAxisConfig(minJ, maxJ),
@@ -479,25 +484,6 @@ function renderT2Chart(duel, mesures, cidA, cidB, content, key) {
       },
     },
   });
-
-  // Custom legend
-  const legend = document.getElementById('t2-legend');
-  for (const cid of [cidA, cidB]) {
-    const label = document.createElement('label');
-    label.className = 'cand';
-    label.style.cursor = 'default';
-    const pastille = document.createElement('span');
-    pastille.className = 'pastille'; pastille.style.background = candCouleur(cid);
-    const nom = document.createElement('span');
-    nom.className = 'nom'; nom.textContent = candNom(cid);
-    const res = document.createElement('span');
-    res.className = 'res';
-    res.textContent = resT2[cid] != null ? fmtPct2(resT2[cid]) : '';
-    // no checkbox for T2 legend
-    const spacer = document.createElement('span');
-    label.append(spacer, pastille, nom, res);
-    legend.appendChild(label);
-  }
 }
 
 // --- Initialisation ---

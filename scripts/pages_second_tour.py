@@ -185,71 +185,107 @@ def render_table_html(entries, cid_a, cid_b, candidats):
 
 
 def chart_js(entries, cid_a, cid_b, candidats):
-    """JS pour dessiner le graphique Chart.js du duel."""
+    """JS pour dessiner le graphique Chart.js du duel (même rendu que l'accueil :
+    points bruts pâles, courbe de tendance, nom et score au bout de la courbe)."""
     sorted_entries = sorted(entries, key=lambda e: e["terrain_fin"])
-    data_a = json.dumps([{"x": e["terrain_fin"], "y": e["scores"][cid_a]} for e in sorted_entries])
-    data_b = json.dumps([{"x": e["terrain_fin"], "y": e["scores"][cid_b]} for e in sorted_entries])
-    nom_a = nom_court(cid_a, candidats)
-    nom_b = nom_court(cid_b, candidats)
-    col_a = couleur(cid_a, candidats)
-    col_b = couleur(cid_b, candidats)
+    pts = json.dumps([
+        {"d": e["terrain_fin"], "a": e["scores"][cid_a], "b": e["scores"][cid_b],
+         "i": e.get("institut", "")}
+        for e in sorted_entries
+    ], ensure_ascii=False)
+    nom_a = json.dumps(nom_court(cid_a, candidats), ensure_ascii=False)
+    nom_b = json.dumps(nom_court(cid_b, candidats), ensure_ascii=False)
+    col_a = json.dumps(couleur(cid_a, candidats))
+    col_b = json.dumps(couleur(cid_b, candidats))
 
-    all_vals = [e["scores"][cid_a] for e in sorted_entries] + [e["scores"][cid_b] for e in sorted_entries]
-    lo = min(all_vals)
-    hi = max(all_vals)
-    y_min = min(int(lo // 5) * 5, 45)
-    y_max = max(-(-int(hi) // 5) * 5 + 5, 55)
+    ecart = max(abs(v - 50) for e in sorted_entries for v in (e["scores"][cid_a], e["scores"][cid_b]))
+    demi = max(5, -(-int(ecart + 1) // 5) * 5)
 
-    return f"""\
+    js = """\
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/date-fns@3/locale/fr/cdn.min.js"></script>
+<script src="../assets/end-labels.js?v=1"></script>
 <script>
-(function() {{
-  var dataA = {data_a};
-  var dataB = {data_b};
-  function parseD(s) {{ var p=s.split('-').map(Number); return new Date(p[0],p[1]-1,p[2]); }}
-  var ptsA = dataA.map(function(d){{ return {{x:parseD(d.x),y:d.y}}; }});
-  var ptsB = dataB.map(function(d){{ return {{x:parseD(d.x),y:d.y}}; }});
-  var ligne50 = {{
-    id:'ligne50',
-    beforeDraw:function(chart) {{
-      var y=chart.scales.y.getPixelForValue(50);
-      var ctx=chart.ctx, left=chart.chartArea.left, right=chart.chartArea.right;
-      ctx.save(); ctx.strokeStyle='rgba(32,38,50,0.25)'; ctx.lineWidth=1;
-      ctx.setLineDash([6,4]); ctx.beginPath(); ctx.moveTo(left,y); ctx.lineTo(right,y); ctx.stroke();
-      ctx.fillStyle='rgba(32,38,50,0.4)'; ctx.font="11px 'IBM Plex Sans',sans-serif";
-      ctx.textBaseline='bottom'; ctx.fillText('50\\u00a0%',left+4,y-3); ctx.restore();
-    }}
-  }};
+(function() {
+  var PTS = __PTS__;
+  var mobile = window.innerWidth < 600;
+  function parseD(s) { var p = s.split('-').map(Number); return new Date(p[0], p[1]-1, p[2]); }
+  function pct(v) { return v.toFixed(1).replace('.', ',') + '\\u00a0%'; }
+  function brut(k) { return PTS.map(function(p) { return { x: parseD(p.d), y: p[k], i: p.i, d: p.d }; }); }
+  // Tendance : moyenne des mesures des 30 jours précédents (au moins les 3 dernières)
+  function tendance(pts) {
+    var F = 30 * 86400000, out = [], vues = {};
+    pts.forEach(function(p) {
+      var t = +p.x; if (vues[t]) return; vues[t] = 1;
+      var avant = pts.filter(function(q) { return +q.x <= t; });
+      var fen = avant.filter(function(q) { return +q.x > t - F; });
+      if (fen.length < 3) fen = avant.slice(-3);
+      var m = fen.reduce(function(s, q) { return s + q.y; }, 0) / fen.length;
+      out.push({ x: t, y: Math.round(m * 10) / 10 });
+    });
+    return out;
+  }
+  function courbe(nom, col, pts) {
+    var d = tendance(pts);
+    return { label: nom, data: d, borderColor: col, borderWidth: mobile ? 2.8 : 2.5,
+      pointRadius: 0, pointHoverRadius: 0, tension: 0.35, cubicInterpolationMode: 'monotone',
+      fill: false, _label: nom + ' ' + pct(d[d.length - 1].y) };
+  }
+  function points(nom, col, pts) {
+    return { label: nom, data: pts, showLine: false, backgroundColor: col + '55',
+      borderWidth: 0, pointRadius: mobile ? 2.5 : 3, pointHoverRadius: 5, _isBrut: true };
+  }
+  var A = brut('a'), B = brut('b');
+  var ligne50 = {
+    id: 'ligne50',
+    beforeDatasetsDraw: function(chart) {
+      var y = chart.scales.y.getPixelForValue(50), ctx = chart.ctx, a = chart.chartArea;
+      ctx.save(); ctx.strokeStyle = 'rgba(32,38,50,0.35)'; ctx.lineWidth = 1;
+      ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(a.left, y); ctx.lineTo(a.right, y);
+      ctx.stroke(); ctx.restore();
+    }
+  };
+  var tickCol = mobile ? '#b0b5bc' : '#9aa2ac', gridCol = mobile ? '#f0f1ed' : '#edeee9';
   var locale = window.dateFns && window.dateFns.locale && window.dateFns.locale.fr;
-  new Chart(document.getElementById('chart-duel'), {{
-    type:'line',
-    data:{{ datasets:[
-      {{ label:{json.dumps(nom_a)}, data:ptsA, borderColor:{json.dumps(col_a)}, backgroundColor:{json.dumps(col_a)},
-         borderWidth:2, pointRadius:4, tension:0, fill:false }},
-      {{ label:{json.dumps(nom_b)}, data:ptsB, borderColor:{json.dumps(col_b)}, backgroundColor:{json.dumps(col_b)},
-         borderWidth:2, pointRadius:4, tension:0, fill:false }}
-    ] }},
-    plugins:[ligne50],
-    options:{{
-      responsive:true, maintainAspectRatio:false,
-      interaction:{{ mode:'nearest', axis:'x', intersect:false }},
-      scales:{{
-        x:{{ type:'time', time:{{ unit:'month', displayFormats:{{month:'MMM yyyy'}}, tooltipFormat:'d MMMM yyyy' }},
-             adapters:{{ date:{{ locale:locale }} }},
-             ticks:{{ maxRotation:0, autoSkip:true }}, grid:{{ color:'#edeee9' }} }},
-        y:{{ min:{y_min}, max:{y_max}, ticks:{{ callback:function(v){{return v+'\\u00a0%'}} }},
-             grid:{{ color:'#edeee9' }} }}
-      }},
-      plugins:{{
-        legend:{{ display:true, position:'top', labels:{{ font:{{ family:"'IBM Plex Sans'" }} }} }},
-        tooltip:{{ callbacks:{{ label:function(ctx){{ return ctx.dataset.label+'\\u00a0: '+ctx.parsed.y.toFixed(1).replace('.',',')+'\\u00a0%'; }} }} }}
-      }}
-    }}
-  }});
-}})();
+  new Chart(document.getElementById('chart-duel'), {
+    type: 'line',
+    data: { datasets: [
+      points(__NOM_A__, __COL_A__, A), points(__NOM_B__, __COL_B__, B),
+      courbe(__NOM_A__, __COL_A__, A), courbe(__NOM_B__, __COL_B__, B)
+    ] },
+    plugins: [ligne50, SondaxEndLabels.plugin],
+    options: {
+      responsive: true, maintainAspectRatio: false,
+      layout: { padding: SondaxEndLabels.padding({ top: 4 }) },
+      interaction: { mode: 'nearest', intersect: true },
+      scales: {
+        x: { type: 'time', time: { unit: 'month', displayFormats: { month: 'MMM yyyy' }, tooltipFormat: 'd MMMM yyyy' },
+             adapters: { date: { locale: locale } },
+             ticks: { maxRotation: 0, autoSkip: true, maxTicksLimit: mobile ? 5 : 9, color: tickCol, font: { size: mobile ? 10 : 11 } },
+             grid: { color: gridCol } },
+        y: { min: __YMIN__, max: __YMAX__, border: { display: false },
+             ticks: { stepSize: 5, callback: function(v) { return v + '\\u00a0%'; }, color: tickCol, font: { size: mobile ? 10 : 11 } },
+             grid: { color: gridCol } }
+      },
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          filter: function(item) { return item.dataset._isBrut; },
+          callbacks: {
+            title: function(items) { var r = items[0].raw, d = r.d.split('-'); return r.i + ' \\u00b7 ' + d[2] + '/' + d[1] + '/' + d[0]; },
+            label: function(ctx) { return ctx.dataset.label + '\\u00a0: ' + pct(ctx.parsed.y); }
+          }
+        }
+      }
+    }
+  });
+})();
 </script>"""
+    return (js.replace("__PTS__", pts)
+              .replace("__NOM_A__", nom_a).replace("__NOM_B__", nom_b)
+              .replace("__COL_A__", col_a).replace("__COL_B__", col_b)
+              .replace("__YMIN__", str(50 - demi)).replace("__YMAX__", str(50 + demi)))
 
 
 def generate_duel_page(slug, entries, candidats, out_dir):

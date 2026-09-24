@@ -69,7 +69,6 @@ def compute_dataset_polymarket():
         "isBasedOn": {
             "@type": "CreativeWork",
             "name": "Polymarket",
-            "url": "https://polymarket.com",
         },
         "creator": {
             "@type": "Organization",

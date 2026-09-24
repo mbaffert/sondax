@@ -88,7 +88,7 @@ def footer(depth=1):
   <div class="footer-inner">
     <p>Données sondages\u00a0: <a href="https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027" target="_blank">Wikipédia</a>,
     licence <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.fr" target="_blank">CC BY-SA 4.0</a> ·
-    Cotes\u00a0: <a href="https://polymarket.com" target="_blank">Polymarket</a> ·
+    Cotes\u00a0: Polymarket ·
     <a href="{prefix}methodologie.html">Méthodologie</a> ·
     <a href="{prefix}donnees.html">Données</a></p>
     <p><a href="mailto:contact@sondax.fr">Contact</a> · Hébergeur\u00a0: <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>

@@ -230,7 +230,7 @@ def wrap_in_site_template(slug, fiche, raw_html):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/header.css?v=4">
+<link rel="stylesheet" href="assets/header.css?v=5">
 <style>
   :root {{
     --bleu-vif: #0C6CF2;
@@ -272,7 +272,7 @@ def wrap_in_site_template(slug, fiche, raw_html):
 
 <div id="site-header" class="sh"></div>
 <script src="assets/header-data.js?v=3"></script>
-<script src="assets/header.js?v=3"></script>
+<script src="assets/header.js?v=6"></script>
 
 <div class="page-candidat">
 <main>
@@ -298,7 +298,7 @@ def wrap_in_site_template(slug, fiche, raw_html):
     <div>
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
-        <a href="methodologie.html">Méthodologie</a>
+        <a href="methodologie.html">Méthode</a>
         <a href="sondages.html">Tous les sondages</a>
         <a href="donnees.html">Données</a>
         <a href="a-propos.html">À propos</a>

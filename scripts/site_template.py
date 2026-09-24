@@ -50,7 +50,7 @@ def render_page(*, title, meta_description, canonical, body_content,
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{p}assets/header.css?v=4">
+<link rel="stylesheet" href="{p}assets/header.css?v=5">
 <style>
   :root {{
     --bleu-vif: #0C6CF2;
@@ -105,7 +105,7 @@ def render_page(*, title, meta_description, canonical, body_content,
 
 <div id="site-header" class="sh"></div>
 <script src="{p}assets/header-data.js?v=3"></script>
-<script src="{p}assets/header.js?v=5"></script>
+<script src="{p}assets/header.js?v=6"></script>
 
 {body_content}
 
@@ -127,7 +127,7 @@ def render_page(*, title, meta_description, canonical, body_content,
     <div>
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
-        <a href="{p}methodologie.html">Méthodologie</a>
+        <a href="{p}methodologie.html">Méthode</a>
         <a href="{p}sondages.html">Tous les sondages</a>
         <a href="{p}donnees.html">Données</a>
         <a href="{p}a-propos.html">À propos</a>

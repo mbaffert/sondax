@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/header.css?v=3">
+<link rel="stylesheet" href="assets/header.css?v=5">
 <style>
   :root {
     --bleu-vif: #0C6CF2;
@@ -41,17 +41,11 @@
   a { color: var(--bleu-vif); text-decoration: none; }
   a:hover { color: var(--bleu-nuit); text-decoration: underline; }
 
-  nav.sub-nav { position: sticky; top: 0; z-index: 20; background: var(--fond);
-    border-bottom: 1px solid #EDEEEA; display: flex; align-items: center;
-    padding: 0 30px; overflow-x: auto; -webkit-overflow-scrolling: touch;
-    scrollbar-width: none; }
-  nav.sub-nav::-webkit-scrollbar { display: none; }
-  nav.sub-nav a { font-family: var(--corps); font-size: 13px; font-weight: 500;
-    color: var(--gris); padding: 10px 14px; white-space: nowrap;
-    border-bottom: 2px solid transparent; transition: all 0.15s; text-decoration: none; }
-  nav.sub-nav a:first-child { padding-left: 0; }
-  nav.sub-nav a:hover { color: var(--texte); text-decoration: none; }
-  nav.sub-nav a.active { color: var(--texte); border-bottom-color: var(--bleu-vif); }
+  /* Sections de la sous-navigation : arrivée sous la barre collante
+     compacte (52 px ; 48 + 44 px en mobile). */
+  html { scroll-padding-top: 0; }
+  main [id] { scroll-margin-top: 68px; }
+  @media (max-width: 767px) { main [id] { scroll-margin-top: 104px; } }
 
   main { max-width: 1180px; margin: 0 auto; padding: 26px 28px 0; }
 
@@ -264,14 +258,14 @@
 
 <div id="site-header" class="sh"></div>
 <script src="assets/header-data.js?v=3"></script>
-<script src="assets/header.js?v=3"></script>
+<script src="assets/header.js?v=6"></script>
 <script src="assets/end-labels.js?v=1"></script>
 
-<nav class="sub-nav" id="sub-nav">
-  <a href="#bloc-sondages">Intentions de vote</a>
+<nav class="sub-nav" id="sub-nav" aria-label="Sections de la page">
+  <a href="#bloc-sondages">Premier tour</a>
   <a href="#second-tour">Second tour</a>
-  <a href="#bloc-polymarket">Marchés de prédiction</a>
-  <a href="#bloc-fiche">Tous les sondages</a>
+  <a href="#bloc-polymarket">Marchés</a>
+  <a href="#bloc-fiche">Explorer un sondage</a>
 </nav>
 
 <main>
@@ -494,7 +488,7 @@
     <div>
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
-        <a href="methodologie.html">Méthodologie</a>
+        <a href="methodologie.html">Méthode</a>
         <a href="sondages.html">Tous les sondages</a>
         <a href="donnees.html">Données</a>
         <a href="a-propos.html">À propos</a>
@@ -1744,39 +1738,6 @@ async function init() {
     if (revid) lines.push(`revid · <a href="https://fr.wikipedia.org/w/index.php?oldid=${revid}" target="_blank">${revid}</a>`);
     footerRun.innerHTML = lines.join('<br>');
   }
-
-  // Scroll spy pour la navigation par ancres
-  const navLinks = document.querySelectorAll('#sub-nav > a[href^="#"]');
-  const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
-  const navBar = document.getElementById('section-nav');
-  const offset = 50; // nav height
-
-  function updateActiveNav() {
-    let current = null;
-    for (const sec of sections) {
-      if (sec.getBoundingClientRect().top <= offset) current = sec;
-    }
-    navLinks.forEach(a => {
-      const target = a.getAttribute('href');
-      if (target.startsWith('#')) {
-        a.classList.toggle('active', current && target === '#' + current.id);
-      }
-    });
-  }
-  window.addEventListener('scroll', updateActiveNav, { passive: true });
-  updateActiveNav();
-
-  // Smooth scroll
-  navLinks.forEach(a => {
-    if (!a.getAttribute('href').startsWith('#')) return;
-    a.addEventListener('click', (e) => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        window.scrollTo({ top: target.offsetTop - offset + 10, behavior: 'smooth' });
-      }
-    });
-  });
 }
 
 init();

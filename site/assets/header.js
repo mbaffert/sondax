@@ -1,5 +1,10 @@
 // Bandeau d'en-tête Sondax — rendu client depuis HEADER_DATA
 // Le fichier header-data.js (généré au build) doit être chargé avant ce script.
+//
+// Une seule ligne collante : logo, navigation principale, compte à rebours.
+// Sur une page qui contient <nav id="sub-nav"> (l'accueil), la sous-navigation
+// est déplacée dans le bandeau et n'apparaît qu'une fois le H1 dépassé : le
+// bandeau passe alors en barre compacte (logo réduit, sections, bouton Menu).
 
 (function () {
   var D = window.HEADER_DATA;
@@ -15,29 +20,25 @@
   var d2 = Math.round((T2 - today) / 864e5);
   window._joursAvantT1_2027 = d1;
 
-  var cdLabel, cdBig, cdDate, cdDateMobile;
+  var cdBig, cdDate, cdDateCourte;
   var hideCountdown = d2 < 0;
 
   if (d1 > 0) {
-    cdLabel = 'Premier tour';
-    cdBig = 'J\u2212' + d1;
-    cdDate = 'dimanche 18 avril 2027';
-    cdDateMobile = '1<sup>er</sup> tour \u00b7 dim. 18 avril 2027';
+    cdBig = 'J−' + d1;
+    cdDate = '1<sup>er</sup> tour · 18 avril 2027';
+    cdDateCourte = '18 avril';
   } else if (d1 === 0) {
-    cdLabel = 'Premier tour';
     cdBig = 'J0';
-    cdDate = 'Premier tour aujourd\u2019hui';
-    cdDateMobile = '1<sup>er</sup> tour \u00b7 aujourd\u2019hui';
+    cdDate = '1<sup>er</sup> tour · aujourd’hui';
+    cdDateCourte = 'aujourd’hui';
   } else if (d2 > 0) {
-    cdLabel = 'Second tour';
-    cdBig = 'J\u2212' + d2;
-    cdDate = 'dimanche 2 mai 2027';
-    cdDateMobile = '2<sup>d</sup> tour \u00b7 dim. 2 mai 2027';
+    cdBig = 'J−' + d2;
+    cdDate = '2<sup>d</sup> tour · 2 mai 2027';
+    cdDateCourte = '2 mai';
   } else if (d2 === 0) {
-    cdLabel = 'Second tour';
     cdBig = 'J0';
-    cdDate = 'Second tour aujourd\u2019hui';
-    cdDateMobile = '2<sup>d</sup> tour \u00b7 aujourd\u2019hui';
+    cdDate = '2<sup>d</sup> tour · aujourd’hui';
+    cdDateCourte = 'aujourd’hui';
   }
 
   // --- Logo SVG (icône seule, deux courbes entrelacées) ---
@@ -52,13 +53,13 @@
 
   var candidatsPages = [
     { slug: 'le-pen', nom: 'Marine Le Pen' },
-    { slug: 'philippe', nom: '\u00c9douard Philippe' },
-    { slug: 'melenchon', nom: 'Jean-Luc M\u00e9lenchon' },
-    { slug: 'glucksmann', nom: 'Rapha\u00ebl Glucksmann' },
+    { slug: 'philippe', nom: 'Édouard Philippe' },
+    { slug: 'melenchon', nom: 'Jean-Luc Mélenchon' },
+    { slug: 'glucksmann', nom: 'Raphaël Glucksmann' },
     { slug: 'attal', nom: 'Gabriel Attal' },
     { slug: 'retailleau', nom: 'Bruno Retailleau' },
     { slug: 'tondelier', nom: 'Marine Tondelier' },
-    { slug: 'zemmour', nom: '\u00c9ric Zemmour' },
+    { slug: 'zemmour', nom: 'Éric Zemmour' },
     { slug: 'roussel', nom: 'Fabien Roussel' }
   ];
 
@@ -67,9 +68,9 @@
     { label: 'Candidats', href: '#', match: candidatsPages.map(function(c) { return c.slug + '.html'; }), dropdown: true },
     { label: 'Sondages', href: 'sondages.html', match: ['sondages.html'] },
     { label: 'Instituts', href: 'instituts.html', match: ['instituts.html'] },
-    { label: 'Pr\u00e9c\u00e9dentes \u00e9lections', href: 'precedentes-elections.html', match: ['precedentes-elections.html'] },
-    { label: 'M\u00e9thodologie', href: 'methodologie.html', match: ['methodologie.html'] },
-    { label: 'Donn\u00e9es', href: 'donnees.html', match: ['donnees.html'] }
+    { label: 'Élections passées', href: 'precedentes-elections.html', match: ['precedentes-elections.html'], prefixe: 'presidentielle-' },
+    { label: 'Méthode', href: 'methodologie.html', match: ['methodologie.html'] },
+    { label: 'Données', href: 'donnees.html', match: ['donnees.html'] }
   ];
 
   // Pages situées dans un sous-dossier : liens relatifs remontés d'un niveau
@@ -86,95 +87,201 @@
     for (var i = 0; i < item.match.length; i++) {
       if (page === item.match[i]) return true;
     }
-    if (item.label === 'Pr\u00e9c\u00e9dentes \u00e9lections' && page.indexOf('presidentielle-') === 0) {
-      return true;
+    return !!(item.prefixe && page.indexOf(item.prefixe) === 0);
+  }
+
+  function candidatsMenuHTML() {
+    var h = '<div class="menu-candidats">' +
+      '<a href="' + baseHref + 'candidats/" class="menu-candidats-label">Candidats</a>' +
+      '<div class="menu-panneau">';
+    for (var k = 0; k < candidatsPages.length; k++) {
+      var cp = candidatsPages[k];
+      h += '<a href="' + baseHref + cp.slug + '.html">' + cp.nom + '</a>';
     }
-    return false;
+    return h + '</div></div>';
   }
 
-  // Build candidats hover menu
-  var candidatsMenuHTML = '<div class="menu-candidats">' +
-    '<a href="' + baseHref + 'candidats/" class="menu-candidats-label">Candidats</a>' +
-    '<div class="menu-panneau">';
-  for (var k = 0; k < candidatsPages.length; k++) {
-    var cp = candidatsPages[k];
-    candidatsMenuHTML += '<a href="' + baseHref + cp.slug + '.html">' + cp.nom + '</a>';
-  }
-  candidatsMenuHTML += '</div></div>';
-
-  var navHTML = '';
-  for (var i = 0; i < navItems.length; i++) {
-    if (navItems[i].dropdown) {
-      navHTML += candidatsMenuHTML;
-    } else {
-      var cls = isActive(navItems[i]) ? ' class="is-active"' : '';
-      navHTML += '<a href="' + baseHref + navItems[i].href + '"' + cls + '>' + navItems[i].label + '</a>';
+  function navLinksHTML() {
+    var h = '';
+    for (var i = 0; i < navItems.length; i++) {
+      var it = navItems[i];
+      if (it.dropdown) {
+        h += candidatsMenuHTML();
+      } else if (isActive(it)) {
+        h += '<a href="' + baseHref + it.href + '" class="is-active" aria-current="page">' + it.label + '</a>';
+      } else {
+        h += '<a href="' + baseHref + it.href + '">' + it.label + '</a>';
+      }
     }
+    return h;
   }
 
-  // --- Stats ---
-  var statsText = D.pollCount + ' sondages agr\u00e9g\u00e9s \u00b7 ' + D.instituteCount + ' instituts';
-
-  // --- Assemble header: left column THEN countdown (right) ---
   var html = '<div class="sh-inner">' +
-    '<div class="sh-left">' +
-      '<div class="sh-nav-row">' +
-        '<a class="sh-logo" href="' + baseHref + 'index.html" aria-label="Sondax \u2014 accueil">' +
-          logoSVG +
-          '<span class="sh-wordmark">sondax</span>' +
-        '</a>' +
-        '<div class="sh-nav">' + navHTML + '</div>' +
-        '<div class="sh-stats sh-stats-desktop">' + statsText + '</div>' +
-        '<button class="sh-menu-btn" aria-label="Menu" aria-expanded="false">' +
-          '<span class="sh-menu-bar"></span>' +
-          '<span class="sh-menu-bar"></span>' +
-          '<span class="sh-menu-bar"></span>' +
-        '</button>' +
-      '</div>' +
+      '<a class="sh-logo" href="' + baseHref + 'index.html" aria-label="Sondax — accueil">' +
+        logoSVG +
+        '<span class="sh-wordmark">sondax</span>' +
+      '</a>' +
+      '<nav class="sh-nav" aria-label="Navigation principale">' + navLinksHTML() + '</nav>' +
+      '<div class="sh-sub-slot"></div>' +
+      (hideCountdown ? '' :
+      '<div class="sh-cd">' +
+        '<span class="sh-cd-big">' + cdBig + '</span>' +
+        '<span class="sh-cd-date sh-cd-date-longue">' + cdDate + '</span>' +
+        '<span class="sh-cd-date sh-cd-date-courte">' + cdDateCourte + '</span>' +
+      '</div>') +
+      '<button type="button" class="sh-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="sh-panel">' +
+        '<span class="sh-menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>' +
+        '<span class="sh-menu-txt" aria-hidden="true">Menu</span>' +
+      '</button>' +
     '</div>' +
-    (hideCountdown ? '' :
-    '<div class="sh-countdown">' +
-      '<div class="sh-cd-label">' + cdLabel + '</div>' +
-      '<div class="sh-cd-big">' + cdBig + '</div>' +
-      '<div class="sh-cd-date">' +
-        '<span class="sh-cd-date-desktop">' + cdDate + '</span>' +
-        '<span class="sh-cd-date-mobile">' + cdDateMobile + '</span>' +
-      '</div>' +
-    '</div>') +
-  '</div>';
-
-  html += '<nav class="sh-mobile-nav">';
-  for (var j = 0; j < navItems.length; j++) {
-    if (navItems[j].dropdown) {
-      html += candidatsMenuHTML;
-    } else {
-      var cls2 = isActive(navItems[j]) ? ' class="is-active"' : '';
-      html += '<a href="' + baseHref + navItems[j].href + '"' + cls2 + '>' + navItems[j].label + '</a>';
-    }
-  }
-  html += '</nav>';
+    '<nav class="sh-panel" id="sh-panel" aria-label="Navigation principale">' + navLinksHTML() + '</nav>';
 
   var el = document.getElementById('site-header');
-  if (el) {
-    el.innerHTML = html;
-  }
+  if (!el) return;
+  el.innerHTML = html;
 
-  var btn = el && el.querySelector('.sh-menu-btn');
-  var mobileNav = el && el.querySelector('.sh-mobile-nav');
-  if (btn && mobileNav) {
-    btn.addEventListener('click', function () {
-      var open = mobileNav.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+  var inner = el.querySelector('.sh-inner');
+  var logo = el.querySelector('.sh-logo');
+  var nav = el.querySelector('.sh-nav');
+  var cd = el.querySelector('.sh-cd');
+  var btn = el.querySelector('.sh-menu-btn');
+  var panel = el.querySelector('.sh-panel');
+  var mqMobile = window.matchMedia('(max-width: 767px)');
+
+  // --- Bouton Menu / burger ---
+  function fermerPanel() {
+    panel.classList.remove('is-open');
+    btn.setAttribute('aria-expanded', 'false');
   }
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    var open = panel.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', function (e) {
+    if (!panel.contains(e.target)) fermerPanel();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && panel.classList.contains('is-open')) {
+      fermerPanel();
+      btn.focus();
+    }
+  });
 
   // Close dropdown on outside click (hover opens it on desktop)
-  var menuWrap = el && el.querySelector('.sh-nav .menu-candidats');
+  var menuWrap = el.querySelector('.sh-nav .menu-candidats');
   if (menuWrap) {
     document.addEventListener('click', function (e) {
       if (!menuWrap.contains(e.target)) {
         menuWrap.classList.remove('is-open');
       }
     });
+  }
+
+  // --- La navigation principale ne passe jamais sur deux lignes ---
+  // Entre 768 et ~1 200 px, on mesure : si logo + navigation + compte à
+  // rebours ne tiennent pas sur la ligne, on bascule sur le burger.
+  function ajusterLargeur() {
+    if (mqMobile.matches || el.classList.contains('is-compact')) return;
+    el.classList.remove('is-narrow');
+    var style = getComputedStyle(inner);
+    var dispo = inner.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+    var gap = parseFloat(style.columnGap) || 0;
+    var requis = logo.offsetWidth + nav.scrollWidth + (cd ? cd.offsetWidth : 0) + 2 * gap + 24;
+    if (requis > dispo) el.classList.add('is-narrow');
+  }
+  ajusterLargeur();
+  if (window.ResizeObserver) {
+    new ResizeObserver(ajusterLargeur).observe(el);
+  } else {
+    window.addEventListener('resize', ajusterLargeur);
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(ajusterLargeur);
+
+  // --- Sous-navigation de l'accueil ---
+  function initSousNav() {
+    var sub = document.getElementById('sub-nav');
+    var h1 = document.querySelector('main h1') || document.querySelector('h1');
+    if (!sub || !h1 || !window.IntersectionObserver) return;
+
+    el.querySelector('.sh-sub-slot').appendChild(sub);
+    el.classList.add('has-subnav');
+
+    var liens = [].slice.call(sub.querySelectorAll('a[href^="#"]'));
+    var sections = liens.map(function (a) {
+      return document.getElementById(a.getAttribute('href').slice(1));
+    });
+    var actif = null;
+    var verrou = 0; // pendant un défilement déclenché par un clic
+
+    function activer(i) {
+      if (i === actif) return;
+      actif = i;
+      liens.forEach(function (a, j) {
+        if (j === i) {
+          a.classList.add('is-active');
+          a.setAttribute('aria-current', 'true');
+        } else {
+          a.classList.remove('is-active');
+          a.removeAttribute('aria-current');
+        }
+      });
+      // Rangée à défilement horizontal (mobile) : ramener la pastille active
+      var a = liens[i];
+      if (a && sub.scrollWidth > sub.clientWidth) {
+        sub.scrollTo({ left: a.offsetLeft - (sub.clientWidth - a.offsetWidth) / 2, behavior: 'smooth' });
+      }
+    }
+
+    // Barre compacte une fois le H1 passé sous le bandeau
+    new IntersectionObserver(function (entries) {
+      var e = entries[0];
+      var passe = !e.isIntersecting && e.boundingClientRect.top < e.rootBounds.top;
+      if (passe === el.classList.contains('is-compact')) return;
+      el.classList.toggle('is-compact', passe);
+      if (!passe) {
+        fermerPanel();
+        ajusterLargeur();
+      } else if (actif !== null) {
+        var a = liens[actif];
+        sub.scrollLeft = a.offsetLeft - (sub.clientWidth - a.offsetWidth) / 2;
+      }
+    }, { rootMargin: '-64px 0px 0px 0px' }).observe(h1);
+
+    // Scroll-spy : section présente dans la moitié haute de l'écran
+    var visibles = [];
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        visibles[sections.indexOf(e.target)] = e.isIntersecting;
+      });
+      if (Date.now() < verrou) return;
+      // Plusieurs sections dans la zone : la dernière entrée (la plus basse)
+      for (var i = sections.length - 1; i >= 0; i--) {
+        if (visibles[i]) { activer(i); return; }
+      }
+      // Aucune section dans la zone : au-dessus de la première, rien d'actif
+      if (sections[0] && sections[0].getBoundingClientRect().top > window.innerHeight / 2) activer(null);
+    }, { rootMargin: '-110px 0px -50% 0px' });
+    sections.forEach(function (s) { if (s) spy.observe(s); });
+
+    // Clic : défilement doux, compensé par scroll-margin-top sur les sections
+    var reduit = window.matchMedia('(prefers-reduced-motion: reduce)');
+    liens.forEach(function (a, i) {
+      a.addEventListener('click', function (e) {
+        var cible = sections[i];
+        if (!cible) return;
+        e.preventDefault();
+        activer(i);
+        verrou = Date.now() + 1000;
+        cible.scrollIntoView({ behavior: reduit.matches ? 'auto' : 'smooth', block: 'start' });
+        if (history.replaceState) history.replaceState(null, '', '#' + cible.id);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSousNav);
+  } else {
+    initSousNav();
   }
 })();

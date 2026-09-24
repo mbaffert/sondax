@@ -81,7 +81,7 @@ def header(title_text, depth=1):
     return f"""\
 <div id="site-header" class="sh"></div>
 <script src="{prefix}assets/header-data.js"></script>
-<script src="{prefix}assets/header.js"></script>"""
+<script src="{prefix}assets/header.js?v=6"></script>"""
 
 
 def footer(depth=1):
@@ -105,7 +105,7 @@ def footer(depth=1):
     <div>
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
-        <a href="{prefix}methodologie.html">Méthodologie</a>
+        <a href="{prefix}methodologie.html">Méthode</a>
         <a href="{prefix}sondages.html">Tous les sondages</a>
         <a href="{prefix}donnees.html">Données</a>
         <a href="{prefix}a-propos.html">À propos</a>
@@ -180,7 +180,7 @@ HEAD_COMMON = """\
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{prefix}assets/header.css">
+<link rel="stylesheet" href="{prefix}assets/header.css?v=5">
 <script data-goatcounter="https://sondax.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>"""
 

@@ -20,7 +20,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/header.css">
+<link rel="stylesheet" href="assets/header.css?v=5">
 <style>
   :root {
     --bleu-vif: #0C6CF2;
@@ -47,7 +47,7 @@
 
   .sondages-table { border-collapse: collapse; width: 100%; font-size: 0.85em; }
   .sondages-table th, .sondages-table td { border: 1px solid #e2e4e0; padding: 0.4em 0.7em; text-align: left; }
-  .sondages-table th { background: #f5f5f3; font-weight: 600; position: sticky; top: 0; }
+  .sondages-table th { background: #f5f5f3; font-weight: 600; position: sticky; top: var(--sh-h, 0px); }
   .sondages-table a { color: var(--bleu-vif); }
 
   footer.site-footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
@@ -75,7 +75,7 @@
 
 <div id="site-header" class="sh"></div>
 <script src="assets/header-data.js"></script>
-<script src="assets/header.js"></script>
+<script src="assets/header.js?v=6"></script>
 
 <main>
   <h1>Tous les sondages de la présidentielle 2027</h1>
@@ -138,7 +138,7 @@
     <div>
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
-        <a href="methodologie.html">Méthodologie</a>
+        <a href="methodologie.html">Méthode</a>
         <a href="sondages.html">Tous les sondages</a>
         <a href="donnees.html">Données</a>
         <a href="a-propos.html">À propos</a>

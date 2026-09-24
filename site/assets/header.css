@@ -1,44 +1,54 @@
 /* ===================================================================
-   Bandeau d'en-tête Sondax — option 1b
-   Fichier partagé, inclus dans toutes les pages.
+   Bandeau d'en-tête Sondax
+   Fichier partagé, inclus dans toutes les pages (rendu par header.js).
+
+   États :
+   - normal      : une ligne collante de 64 px (56 px sous 768 px) ;
+   - .is-narrow  : la navigation ne tient pas sur la ligne → burger ;
+   - .is-compact : accueil, H1 dépassé → barre de 52 px (48 px + rangée
+                   de sections sous 768 px) avec les sections en pastilles.
+   L'emprise du bandeau dans le flux reste celle de l'état normal (marge
+   basse compensatoire) : le passage en compact ne décale pas la page.
    =================================================================== */
 
-/* --- Desktop (>= 1220 px) ---------------------------------------- */
-
-.sh {
-  background: #F7F8F5;
-  border-bottom: 1px solid #DDDFDA;
+:root {
+  --sh-h: 64px;
 }
 
+/* Les ancres n'arrivent pas sous le bandeau collant */
+html {
+  scroll-padding-top: calc(var(--sh-h) + 12px);
+}
+
+.sh {
+  position: sticky;
+  top: 0;
+  z-index: 60;
+  background: #FFFFFF;
+  border-bottom: 1px solid #E1E3DE;
+}
 
 .sh-inner {
   display: flex;
-  align-items: stretch;
-}
-
-/* Colonne gauche */
-.sh-left {
-  padding: 12px 30px;
-}
-
-@media (min-width: 1220px) {
-  .sh-left {
-    flex: 1;
-    min-width: 0;
-  }
-}
-
-/* Rangée navigation */
-.sh-nav-row {
-  display: flex;
   align-items: center;
   gap: 24px;
+  height: calc(var(--sh-h) - 1px);
+  padding: 0 30px;
+  /* Pas de débordement horizontal ; le menu Candidats peut déborder en bas */
+  overflow: clip visible;
 }
+
+/* --- Logo --------------------------------------------------------- */
 
 .sh-logo {
   display: flex;
   align-items: center;
   gap: 9px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.sh-logo:hover {
   text-decoration: none;
 }
 
@@ -52,34 +62,48 @@
   font-family: 'Space Grotesk', system-ui, sans-serif;
   font-weight: 700;
   font-size: 28px;
+  line-height: 1;
   color: #0B2E6F;
   letter-spacing: -0.02em;
 }
 
+/* --- Navigation principale ---------------------------------------- */
+
 .sh-nav {
   display: flex;
-  gap: 20px;
+  align-self: stretch;
+  gap: 24px;
+  flex: none;
 }
 
-.sh-nav > a {
+.sh-nav > a,
+.sh-nav .menu-candidats > .menu-candidats-label {
+  display: flex;
+  align-items: center;
+  height: 100%;
   white-space: nowrap;
   font-family: 'IBM Plex Sans', system-ui, sans-serif;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
-  color: #66707D;
+  color: #4A5361;
   text-decoration: none;
-  padding-bottom: 2px;
-  border-bottom: 2px solid transparent;
 }
 
-.sh-nav > a:hover {
+.sh-nav > a:hover,
+.sh-nav .menu-candidats:hover > .menu-candidats-label,
+.sh-nav .menu-candidats.is-open > .menu-candidats-label {
   color: #0B2E6F;
   text-decoration: none;
 }
 
+/* Onglet actif : soulignement collé au bas du bandeau */
 .sh-nav > a.is-active {
   color: #0B2E6F;
-  border-bottom-color: #0C6CF2;
+  box-shadow: inset 0 -2px 0 #0C6CF2;
+}
+
+.sh-nav .menu-candidats {
+  height: 100%;
 }
 
 /* Menu déroulant Candidats — hover + click */
@@ -87,27 +111,20 @@
 
 .menu-candidats > .menu-candidats-label {
   cursor: pointer;
-  font-family: 'IBM Plex Sans', system-ui, sans-serif;
-  font-size: 17px;
-  color: #66707D; font-weight: 500;
-  padding-bottom: 2px;
-  border-bottom: 2px solid transparent;
   text-decoration: none !important;
   white-space: nowrap;
 }
-.menu-candidats:hover > .menu-candidats-label,
-.menu-candidats.is-open > .menu-candidats-label { color: #0B2E6F; }
 
 .menu-candidats > .menu-panneau {
   display: none;
-  position: absolute !important; top: calc(100% + 8px) !important; left: 0 !important;
+  position: absolute !important; top: calc(100% + 1px) !important; left: 0 !important;
   z-index: 100; width: 230px;
   flex-direction: column !important;
-  background: #fff; border: 1px solid #E3E5E0;
+  background: #fff; border: 1px solid #E1E3DE;
   border-radius: 12px; padding: 6px;
   box-shadow: 0 8px 24px rgba(32,38,50,.12);
 }
-/* Pont invisible pour combler le gap de 8px entre le label et le panneau */
+/* Pont invisible pour combler l'espace entre le label et le panneau */
 .menu-candidats > .menu-panneau::before {
   content: "";
   position: absolute; left: 0; right: 0; top: -10px; height: 10px;
@@ -123,226 +140,413 @@
 }
 .menu-candidats > .menu-panneau > a:hover { background: #F7F8F5; }
 
-@media (max-width: 620px) {
-  .menu-candidats > .menu-panneau { left: auto !important; right: 0 !important; }
-}
+/* --- Compte à rebours --------------------------------------------- */
 
-.sh-stats {
-  margin-left: auto;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #66707D;
-  white-space: nowrap;
-}
-
-/* Compteur de sondages masqué quand la place manque : il passerait sous le
-   compte à rebours (l'information est reprise sur la page d'accueil).
-   Seuils mesurés avec les polices du site : la navigation seule demande
-   ~1 195 px, avec le compteur ~1 500 px. */
-@media (max-width: 1519px) {
-  .sh-stats-desktop {
-    display: none;
-  }
-}
-
-/* Panneau droit — compte à rebours */
-.sh-countdown {
-  width: 220px;
-  flex-shrink: 0;
-  background: #0B2E6F;
-  color: #fff;
-  padding: 20px 24px;
+.sh-cd {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.sh-cd-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.62);
-  margin-bottom: 6px;
+  align-items: baseline;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: auto;
+  background: #0B2E6F;
+  border-radius: 8px;
+  padding: 8px 14px;
+  white-space: nowrap;
 }
 
 .sh-cd-big {
   font-family: 'Space Grotesk', system-ui, sans-serif;
   font-weight: 700;
-  font-size: 40px;
-  line-height: 0.92;
-  letter-spacing: -0.04em;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: -0.02em;
   font-variant-numeric: tabular-nums;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 .sh-cd-date {
   font-family: 'IBM Plex Sans', system-ui, sans-serif;
-  font-size: 13.5px;
-  color: rgba(255, 255, 255, 0.78);
-  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1;
+  color: #C9D3EA;
 }
 
-/* Desktop : seul le libellé long est visible */
-.sh-cd-date-mobile {
+.sh-cd-date sup {
+  font-size: 0.72em;
+  line-height: 0;
+}
+
+.sh-cd-date-courte {
   display: none;
 }
 
-/* Bouton menu mobile (masqué en desktop) */
+/* --- Bouton Menu / burger (masqué dans l'état normal desktop) ------ */
+
 .sh-menu-btn {
   display: none;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 12px;
-  margin: -12px;
+  color: #0B2E6F;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
 
-.sh-menu-bar {
+.sh-menu-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sh-menu-bars > span {
   display: block;
   width: 19px;
   height: 2px;
   background: #0B2E6F;
 }
 
-/* Menu mobile fermé */
-.sh-mobile-nav {
+.sh-menu-txt {
   display: none;
 }
 
-/* --- Mobile (< 1220 px) ------------------------------------------ */
+/* Panneau déroulé par le bouton : navigation principale */
+.sh-panel {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 30px;
+  width: 260px;
+  flex-direction: column;
+  background: #FFFFFF;
+  border: 1px solid #E1E3DE;
+  border-radius: 12px;
+  padding: 6px;
+  margin-top: 1px;
+  box-shadow: 0 8px 24px rgba(32,38,50,.12);
+}
 
-@media (max-width: 1219px) {
+.sh-panel.is-open {
+  display: flex;
+}
+
+.sh-panel > a,
+.sh-panel .menu-candidats > .menu-candidats-label {
+  display: block;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #4A5361;
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.sh-panel > a:hover,
+.sh-panel .menu-candidats > .menu-candidats-label:hover {
+  color: #0B2E6F;
+  background: #F7F8F5;
+  text-decoration: none;
+}
+
+.sh-panel > a.is-active {
+  color: #0B2E6F;
+  box-shadow: inset 3px 0 0 #0C6CF2;
+  border-radius: 0 8px 8px 0;
+}
+
+.sh-panel .menu-candidats {
+  display: block !important;
+}
+
+.sh-panel .menu-candidats > .menu-panneau {
+  position: static !important;
+  width: auto !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 0 4px 12px !important;
+}
+
+.sh-panel .menu-candidats > .menu-panneau::before {
+  display: none;
+}
+
+.sh-panel .menu-candidats > .menu-panneau > a {
+  font-size: 14px;
+  padding: 7px 12px;
+}
+
+/* --- Navigation trop large pour la ligne : burger ------------------ */
+
+.sh.is-narrow .sh-nav {
+  display: none;
+}
+
+.sh.is-narrow .sh-menu-btn {
+  display: flex;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+}
+
+/* --- Sous-navigation (sections de l'accueil) ----------------------- */
+
+.sh-sub-slot {
+  display: none;
+  min-width: 0;
+}
+
+.sub-nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.sub-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.sub-nav a {
+  flex-shrink: 0;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 7px 14px;
+  border-radius: 999px;
+  color: #4A5361;
+  background: transparent;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.sub-nav a:hover {
+  color: #0B2E6F;
+  text-decoration: none;
+}
+
+.sub-nav a.is-active {
+  background: #E4EAF6;
+  color: #0B2E6F;
+}
+
+/* --- Barre compacte (accueil, H1 dépassé) -------------------------- */
+
+.sh.is-compact {
+  margin-bottom: 12px; /* 64 − 52 : emprise constante dans le flux */
+}
+
+.sh.is-compact .sh-inner {
+  height: 51px;
+}
+
+.sh.is-compact .sh-logo {
+  gap: 7px;
+}
+
+.sh.is-compact .sh-logo svg {
+  width: 32px;
+  height: 19px;
+}
+
+.sh.is-compact .sh-logo .sh-wordmark {
+  font-size: 22px;
+}
+
+.sh.is-compact .sh-nav {
+  display: none;
+}
+
+.sh.is-compact .sh-sub-slot {
+  display: block;
+  flex: 1;
+}
+
+.sh.is-compact .sh-menu-btn {
+  display: flex;
+  order: 1;
+  height: 36px;
+  margin: 0 -2px 0 auto;
+  padding: 0 12px;
+  gap: 8px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.sh.is-compact .sh-menu-btn:hover {
+  background: #F7F8F5;
+}
+
+.sh.is-compact .sh-menu-bars > span {
+  width: 14px;
+}
+
+.sh.is-compact .sh-menu-bars {
+  gap: 3px;
+}
+
+.sh.is-compact .sh-menu-txt {
+  display: inline;
+}
+
+.sh.is-compact .sh-cd {
+  order: 2;
+  margin-left: 0;
+  background: none;
+  padding: 0;
+}
+
+.sh.is-compact .sh-cd-big {
+  font-size: 16px;
+  color: #0B2E6F;
+}
+
+.sh.is-compact .sh-cd-date {
+  display: none;
+}
+
+/* --- Mobile (< 768 px) -------------------------------------------- */
+
+@media (max-width: 767px) {
+  :root {
+    --sh-h: 56px;
+  }
+
   .sh-inner {
-    flex-direction: column;
-  }
-
-  /* Barre de marque — pas de padding ici, chaque rangée gère le sien */
-  .sh-left {
-    padding: 0;
-  }
-
-  .sh-nav-row {
-    height: 50px;
-    margin-bottom: 0;
+    gap: 10px;
     padding: 0 16px;
   }
 
+  .sh-logo {
+    gap: 7px;
+    margin-right: auto;
+  }
+
   .sh-logo svg {
-    width: 27px;
-    height: 16px;
+    width: 33px;
+    height: 20px;
   }
 
   .sh-logo .sh-wordmark {
-    font-size: 17px;
+    font-size: 21px;
   }
 
-  .sh-nav,
-  .sh-stats-desktop {
+  .sh-nav {
     display: none;
   }
 
-  .sh-menu-btn {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-left: auto;
-    align-items: center;
-    justify-content: center;
-    min-width: 44px;
-    min-height: 44px;
-  }
-
-  /* Bande compte à rebours — première visuellement */
-  .sh-countdown {
-    width: 100%;
-    padding: 12px 16px;
-    flex-direction: row;
-    align-items: baseline;
-    gap: 10px;
-    order: -1;
-  }
-
-  .sh-cd-label {
-    display: none;
+  .sh-cd {
+    margin-left: 0;
+    gap: 6px;
+    padding: 6px 10px;
   }
 
   .sh-cd-big {
-    font-size: 28px;
-    letter-spacing: -0.03em;
+    font-size: 16px;
   }
 
   .sh-cd-date {
     font-size: 12px;
-    color: rgba(255, 255, 255, 0.72);
-    margin-top: 0;
   }
 
-  /* Mobile : libellé court visible, long masqué */
-  .sh-cd-date-desktop {
+  .sh-cd-date-longue {
     display: none;
   }
 
-  .sh-cd-date-mobile {
+  .sh-cd-date-courte {
     display: inline;
   }
 
-  .sh-left {
-    min-width: 0;
-    max-width: 100%;
-  }
-
-  /* Menu mobile */
-  .sh-mobile-nav.is-open {
+  .sh-menu-btn,
+  .sh.is-compact .sh-menu-btn {
     display: flex;
-    flex-direction: column;
-    background: #F7F8F5;
-    border-bottom: 1px solid #DDDFDA;
-    padding: 8px 0;
-  }
-
-  .sh-mobile-nav a {
-    font-family: 'IBM Plex Sans', system-ui, sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: #66707D;
-    text-decoration: none;
-    padding: 10px 16px;
-  }
-
-  .sh-mobile-nav a:hover,
-  .sh-mobile-nav a.is-active {
-    color: #0B2E6F;
-  }
-
-  .sh-mobile-nav a.is-active {
-    border-left: 3px solid #0C6CF2;
-    padding-left: 13px;
-  }
-
-  /* Menu candidats dans le menu mobile */
-  .sh-mobile-nav .menu-candidats > .menu-candidats-label {
-    font-size: 14px;
-    padding: 10px 16px;
-    display: block;
-  }
-
-  .sh-mobile-nav .menu-candidats > .menu-panneau {
-    position: static !important;
-    width: auto !important;
-    box-shadow: none !important;
-    border: none !important;
-    border-radius: 0 !important;
-    padding: 0 0 0 16px !important;
-  }
-
-  .sh-mobile-nav .menu-candidats > .menu-panneau > a {
-    font-size: 13px;
-    padding: 7px 16px;
+    order: 3;
+    width: 44px;
+    height: 44px;
+    margin: 0 -10px 0 0;
+    padding: 0;
     border-radius: 0;
   }
-}
 
+  .sh.is-compact .sh-menu-btn:hover {
+    background: none;
+  }
+
+  .sh.is-compact .sh-menu-txt {
+    display: none;
+  }
+
+  .sh.is-compact .sh-menu-bars {
+    gap: 4px;
+  }
+
+  .sh.is-compact .sh-menu-bars > span {
+    width: 19px;
+  }
+
+  .sh-panel {
+    left: 0;
+    right: 0;
+    width: auto;
+    border-radius: 0;
+    border-width: 0 0 1px;
+    padding: 6px 4px 10px;
+    margin-top: 0;
+  }
+
+  /* Barre compacte : 48 px (logo, J−x, burger) + rangée de sections 44 px.
+     Emprise constante : 48 + 44 − 36 = 56. */
+  .sh.is-compact {
+    margin-bottom: -36px;
+  }
+
+  .sh.is-compact .sh-inner {
+    flex-wrap: wrap;
+    align-content: flex-start;
+    height: auto;
+    column-gap: 14px;
+    row-gap: 0;
+  }
+
+  .sh.is-compact .sh-logo {
+    height: 48px;
+  }
+
+  .sh.is-compact .sh-logo svg {
+    width: 27px;
+    height: 16px;
+  }
+
+  .sh.is-compact .sh-logo .sh-wordmark {
+    font-size: 18px;
+  }
+
+  .sh.is-compact .sh-cd {
+    order: 2;
+  }
+
+  .sh.is-compact .sh-sub-slot {
+    order: 4;
+    flex: 0 0 calc(100% + 32px);
+    margin: 0 -16px;
+    height: 43px;
+    border-top: 1px solid #E1E3DE;
+  }
+
+  .sh.is-compact .sub-nav {
+    height: 100%;
+    padding: 0 12px;
+  }
+
+  .sh.is-compact .sub-nav a {
+    padding: 6px 12px;
+  }
+}

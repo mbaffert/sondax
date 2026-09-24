@@ -5,10 +5,7 @@ référence site/instituts.html.
 Données sources :
 - data/instituts.json            référentiel édité à la main
 - data/sondages.json             (champ `principale` posé par principale.py)
-- data/candidats.json
-- data/derived/series-t1.json    moyenne pondérée (écart à la moyenne)
 - data/derived/commanditaires.json  produit par scripts/instituts.py
-- scripts/bios.json              slugs candidat ayant une page dédiée
 """
 
 import datetime
@@ -28,7 +25,6 @@ from site_template import render_page
 from instituts import charger_referentiel, slug_institut, logo_disponible
 
 BASE = "https://sondax.fr"
-SEUIL_MESURES = 3
 
 MOIS = [
     "janvier", "février", "mars", "avril", "mai", "juin",
@@ -46,11 +42,7 @@ def charger(nom):
 
 referentiel = charger_referentiel()
 sondages = charger("sondages.json")
-candidats = charger("candidats.json")
-bios = json.loads((SCRIPTS / "bios.json").read_text(encoding="utf-8"))
 
-_series_path = DATA / "derived" / "series-t1.json"
-series_data = json.loads(_series_path.read_text(encoding="utf-8")) if _series_path.exists() else {}
 _comm_path = DATA / "derived" / "commanditaires.json"
 commanditaires = json.loads(_comm_path.read_text(encoding="utf-8")) if _comm_path.exists() else {}
 
@@ -72,14 +64,6 @@ def fmt_ech(n):
     return f"{round(n):,}".replace(",", "\u202f")
 
 
-def fmt_ecart(v):
-    v = round(v, 1)
-    if v == 0:
-        v = 0.0  # évite « -0,0 »
-    signe = "+" if v > 0 else ("−" if v < 0 else "")
-    return f"{signe}{abs(v):.1f}".replace(".", ",") + "\u202fpt"
-
-
 def periode(debut, fin):
     """Période « du 22 mars au 10 septembre 2026 » (année omise si identique)."""
     if debut == fin:
@@ -88,40 +72,6 @@ def periode(debut, fin):
     if debut[:4] == fin[:4]:
         d = d.rsplit(" ", 1)[0]
     return f"du {d} au {date_lettres(fin)}"
-
-
-def nom_candidat(cid):
-    c = candidats.get(cid, {})
-    parts = [p for p in (c.get("prenom", ""), c.get("nom", "")) if p]
-    return " ".join(parts) if parts else cid
-
-
-def lien_candidat(cid, prefix):
-    esc = ESC(nom_candidat(cid))
-    if cid in bios:
-        return f'<a href="{prefix}{ESC(cid)}.html">{esc}</a>'
-    return esc
-
-
-def moyenne_a_date(cid, date_iso):
-    """Valeur de la série lissée pour `cid` à `date_iso`, ou None.
-
-    Même calcul que la colonne « Écart / moy. » des fiches sondage
-    (build_sondage_pages.moyenne_a_date)."""
-    val = None
-    for p in series_data.get("series", {}).get(cid, []):
-        if p["d"] > date_iso:
-            break
-        if p["v"] is not None:
-            val = p["v"]
-    return val
-
-
-def hypothese_principale(sondage):
-    for h in sondage.get("hypotheses", []):
-        if h.get("tour") == 1 and h.get("principale"):
-            return h
-    return None
 
 
 def est_notice(url):
@@ -144,27 +94,6 @@ for s in sondages:
 
 for lst in par_institut.values():
     lst.sort(key=lambda s: (s["terrain_fin"], s.get("echantillon") or 0), reverse=True)
-
-
-# ---------- calculs ----------
-
-def ecarts_par_candidat(liste):
-    """{cid: [écart, ...]} sur l'hypothèse principale T1 de chaque sondage."""
-    ecarts = {}
-    scores = {}
-    for s in liste:
-        h = hypothese_principale(s)
-        if not h:
-            continue
-        for cid, score in h.get("scores", {}).items():
-            if cid == "autre":
-                continue
-            moy = moyenne_a_date(cid, s["terrain_fin"])
-            if moy is None:
-                continue
-            ecarts.setdefault(cid, []).append(score - moy)
-            scores.setdefault(cid, []).append(score)
-    return ecarts, scores
 
 
 def chapeau(inst, liste):
@@ -220,7 +149,6 @@ EXTRA_CSS = """<style>
 
 .section-sep { border-top: 1px solid var(--bord); margin: 24px 0 20px; }
 .institut-page h2 { font-size: 18px; margin: 0 0 6px; }
-.note { font-size: 13px; color: var(--gris); margin: 0 0 12px; max-width: 64ch; }
 
 .institut-page table { font-size: 14px; }
 .institut-page th { font-size: 11px; padding: 0 12px 6px 0; }
@@ -228,10 +156,7 @@ EXTRA_CSS = """<style>
 .institut-page tr:last-child td { border-bottom: none; }
 .num { text-align: right; white-space: nowrap; }
 .institut-page th.num { text-align: right; }
-.cand a, .date a { font-weight: 500; }
-.cand a { color: var(--texte); }
-.cand a:hover { color: var(--bleu-vif); }
-td.muet { color: var(--gris); }
+.date a { font-weight: 500; }
 .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
 /* Liste des instituts */
@@ -283,37 +208,6 @@ def jsonld_institut(inst, titre, canonical):
             + "</script>")
 
 
-def table_ecarts(inst, liste, prefix):
-    ecarts, scores = ecarts_par_candidat(liste)
-    retenus = [cid for cid, e in ecarts.items() if len(e) >= SEUIL_MESURES]
-    if not retenus:
-        return ""
-    # Ordre : score moyen mesuré par l'institut, décroissant (pas l'écart,
-    # pour ne pas présenter le tableau comme un classement)
-    retenus.sort(key=lambda c: (-sum(scores[c]) / len(scores[c]), nom_candidat(c)))
-    rows = []
-    for cid in retenus:
-        e = ecarts[cid]
-        rows.append(
-            f'<tr><td class="cand">{lien_candidat(cid, prefix)}</td>'
-            f'<td class="num">{fmt_ecart(sum(e) / len(e))}</td>'
-            f'<td class="num muet">{len(e)}</td></tr>'
-        )
-    nom = ESC(inst["nom_complet"])
-    return f"""<div class="section-sep"></div>
-    <h2>Écart moyen à la moyenne Sondax</h2>
-    <p class="note">Pour chaque sondage {nom}, score de l’hypothèse principale du premier tour
-    comparé à la moyenne pondérée Sondax à la date de fin de terrain, comme dans la colonne
-    «\u00a0Écart / moy.\u00a0» des fiches. Candidats mesurés au moins {SEUIL_MESURES}\u00a0fois.
-    Ces écarts décrivent les résultats publiés\u00a0; ils ne corrigent pas la moyenne.</p>
-    <table>
-      <thead><tr><th>Candidat</th><th class="num">Écart moyen</th><th class="num">Mesures</th></tr></thead>
-      <tbody>
-{chr(10).join(rows)}
-      </tbody>
-    </table>"""
-
-
 def table_sondages(liste, prefix):
     rows = []
     for s in liste:
@@ -358,11 +252,10 @@ def build_page_institut(slug, inst, liste):
     fin = max(s["terrain_fin"] for s in liste)
     if n == 1:
         meta = (f"Le sondage {nom} sur la présidentielle 2027 ({date_lettres(fin)}) : "
-                f"commanditaire, échantillon, notice et écart à la moyenne Sondax.")
+                f"commanditaire, échantillon et notice.")
     else:
         meta = (f"Les {n} sondages {nom} sur la présidentielle 2027, "
-                f"{periode(debut, fin)} : commanditaires, échantillons, notices "
-                f"et écart moyen de chaque candidat à la moyenne Sondax.")
+                f"{periode(debut, fin)} : commanditaires, échantillons et notices.")
 
     site_html = ""
     if inst.get("site"):
@@ -376,7 +269,6 @@ def build_page_institut(slug, inst, liste):
     <h1>Sondages {ESC(nom)} — présidentielle 2027</h1>
     {site_html}
     <p class="inst-chapeau">{chapeau(inst, liste)}</p>
-    {table_ecarts(inst, liste, prefix)}
     {table_sondages(liste, prefix)}
   </div>
 </main>"""

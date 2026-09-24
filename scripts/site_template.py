@@ -115,7 +115,6 @@ def render_page(*, title, meta_description, canonical, body_content,
       <div style="margin-bottom:10px;">
         <img src="{p}assets/logo-sondax-blanc.svg" alt="Sondax" style="height:22px;">
       </div>
-      <p class="disclaimer">Marque indépendante. Le bleu et le rouge ne représentent aucun camp politique.</p>
     </div>
     <div>
       <div class="footer-col-title">Données</div>

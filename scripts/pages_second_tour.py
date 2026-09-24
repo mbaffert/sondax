@@ -93,7 +93,6 @@ def footer(depth=1):
       <div style="margin-bottom:10px;">
         <img src="{prefix}assets/logo-sondax-blanc.svg" alt="Sondax" style="height:22px;">
       </div>
-      <p class="disclaimer">Marque indépendante. Le bleu et le rouge ne représentent aucun camp politique.</p>
     </div>
     <div>
       <div class="footer-col-title">Données</div>

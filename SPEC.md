@@ -973,12 +973,16 @@ Page institut :
 - logo en tête de page s'il existe, lien simple vers le site de l'institut ;
 - chapeau généré : nombre de sondages, période des fins de terrain, intervalle moyen
   entre deux sondages, principaux commanditaires, mode de recueil ;
-- écart moyen à la moyenne, par candidat : pour chaque sondage, hypothèse principale
-  du tour 1, écart de chaque score à la moyenne pondérée Sondax à la date de fin de
-  terrain (même calcul que la colonne « Écart / moy. » des fiches, §13.3). Affiché
-  pour les candidats mesurés au moins 3 fois, avec le nombre de mesures. C'est une
-  description : rien n'est corrigé dans les courbes (les *house effects* restent
-  hors périmètre, §1) ;
+- graphique d'évolution, si l'institut compte au moins 5 sondages de tour 1 (sinon
+  rien, sans message) : même rendu que le graphique de premier tour de l'accueil
+  (`site/assets/bloc-chart.js`, partagé), sans sélecteur de période, axe du premier
+  au dernier sondage de l'institut. Courbes : scores de l'hypothèse principale du
+  tour 1, un point par sondage, reliés par des segments ; un sondage qui ne teste pas
+  le candidat interrompt la courbe (aucune interpolation). En fond, trait fin et
+  transparent, la moyenne Sondax des mêmes candidats. Cochés par défaut : les 4
+  premiers du dernier sondage de l'institut, plus les candidats passés par ce top 4
+  et absents du dernier sondage (Bardella avant son remplacement par Le Pen). La meta
+  description mentionne alors « évolution des intentions de vote » ;
 - liste de tous les sondages, du plus récent au plus ancien : dates de terrain (lien
   vers la fiche), commanditaire, échantillon, lien vers la notice.
 

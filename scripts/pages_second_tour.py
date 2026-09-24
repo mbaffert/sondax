@@ -96,7 +96,7 @@ def footer(depth=1):
       <div class="footer-col-title">Données</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
         <a href="https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027" target="_blank">Sondages · Wikipédia (CC BY-SA 4.0)</a>
-        <a href="https://polymarket.com" target="_blank">Cotes · Polymarket</a>
+        Cotes · Polymarket
       </div>
     </div>
     <div>

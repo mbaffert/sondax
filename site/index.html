@@ -1441,7 +1441,7 @@ class SecondTour {
     let html = `<table class="t2-table"><tr><th>Institut</th><th>Date</th><th>Échantillon</th><th>${nomCourt(cidA)}</th><th>${nomCourt(cidB)}</th></tr>`;
     for (const { sondage: s, hyp: h } of entries) {
       const ech = s.echantillon ? Math.round(s.echantillon).toLocaleString('fr-FR') : '—';
-      html += `<tr><td>${s.institut}</td><td>${fmtDate(s.terrain_fin)}</td><td>${ech}</td><td>${fmtPct(h.scores[cidA])}</td><td>${fmtPct(h.scores[cidB])}</td></tr>`;
+      html += `<tr><td>${lienInstitut(s.institut)}</td><td>${fmtDate(s.terrain_fin)}</td><td>${ech}</td><td>${fmtPct(h.scores[cidA])}</td><td>${fmtPct(h.scores[cidB])}</td></tr>`;
     }
     html += '</table>';
     this.content.innerHTML = html;
@@ -1552,6 +1552,12 @@ class SecondTour {
   }
 }
 
+// Nom de l'institut, en lien vers sa page (table fournie par header-data.js)
+function lienInstitut(nom) {
+  const slug = ((window.HEADER_DATA || {}).instituts || {})[nom];
+  return slug ? `<a href="instituts/${slug}.html">${nom}</a>` : nom;
+}
+
 // =========================================================================
 // Tableau de sondages (partagé entre page principale et page dédiée)
 // =========================================================================
@@ -1562,7 +1568,7 @@ function renderSondagesTable(table, sondages) {
     const nhyp = s.hypotheses.length;
     const source = s.url_source
       ? `<a href="${s.url_source}" target="_blank">Notice</a>` : '—';
-    html += `<tr><td>${s.institut}</td><td>${fmtDate(s.terrain_fin)}</td><td>${ech}</td><td>${nhyp}</td><td>${source}</td></tr>`;
+    html += `<tr><td>${lienInstitut(s.institut)}</td><td>${fmtDate(s.terrain_fin)}</td><td>${ech}</td><td>${nhyp}</td><td>${source}</td></tr>`;
   }
   table.innerHTML = html;
 }

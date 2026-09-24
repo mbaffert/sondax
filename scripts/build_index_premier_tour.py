@@ -17,6 +17,7 @@ SONDAGES_PATH = ROOT / "data" / "sondages.json"
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 
 sys.path.insert(0, str(ROOT / "scripts"))
+from instituts import charger_referentiel, lien_institut
 from build_header import (
     select_hypothesis, select_latest_sondage, candidate_full_name, load_all_sondages,
     REPERES_T1, JSONLD_T1,
@@ -293,7 +294,7 @@ def generate_dernier_sondage(sondages, candidats, series_data):
         return "", ""
 
     # Institut + commanditaire
-    institut = html_mod.escape(latest["institut"])
+    institut = lien_institut(latest["institut"], charger_referentiel())
     commanditaire = latest.get("commanditaire")
     source_label = institut
     if commanditaire:
@@ -357,7 +358,7 @@ def generate_bloc_dernier_sondage(sondages, candidats, series_data):
     top4 = scores[:4]
     others = scores[4:]
 
-    institut = html_mod.escape(latest["institut"])
+    institut = lien_institut(latest["institut"], charger_referentiel())
 
     # Dates
     td = latest["terrain_debut"]
@@ -435,9 +436,10 @@ def generate_derniers_sondages(sondages):
     """Table HTML des 5 derniers sondages."""
     sorted_s = sorted(sondages, key=lambda s: s["terrain_fin"], reverse=True)[:5]
 
+    referentiel = charger_referentiel()
     rows = ['    <tr><th>Institut</th><th>Date</th><th>Échantillon</th><th>Source</th></tr>']
     for s in sorted_s:
-        institut = html_mod.escape(s["institut"])
+        institut = lien_institut(s["institut"], referentiel)
         d = s["terrain_fin"].split("-")
         date_str = f"{d[2]}/{d[1]}/{d[0]}"
         ech = fmt_ech(s["echantillon"]) if s.get("echantillon") else "\u2014"

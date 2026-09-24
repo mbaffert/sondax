@@ -5,10 +5,12 @@ Trois contrôles, tous bloquants :
 2. Tous les candidats existent dans candidats.json.
 3. Le nombre total de sondages n'a pas diminué par rapport au run précédent.
 
-Produit data/derived/revue.html listant les sondages ajoutés ou modifiés.
+Produit data/derived/revue.html listant les sondages ajoutés ou modifiés, ainsi
+que les signalements non bloquants (commanditaires non reconnus, instituts absents
+de data/instituts.json).
 """
 
-import json, sys, pathlib, subprocess, datetime, urllib.request
+import json, re, sys, pathlib, subprocess, datetime, urllib.request
 
 
 def fmt_date(iso):
@@ -94,7 +96,24 @@ def _somme_class(total, tour):
     return ""
 
 
-def generate_revue(sondages, candidats, added, modified, poly_warnings=None):
+def alertes_instituts(sondages):
+    """Signalements non bloquants : commanditaires non reconnus, instituts
+    absents de data/instituts.json. Retourne une liste de (sondage, motif)."""
+    from instituts import calculer_commanditaires
+    alertes = []
+    extraction = calculer_commanditaires(sondages)
+    for s in sondages:
+        r = extraction[s["id"]]
+        if r["statut"] == "non_reconnu":
+            alertes.append((s, f"commanditaire non reconnu : <code>{r['slug']}</code> "
+                               "(à ajouter dans data/commanditaires.json)"))
+        elif r["statut"] == "institut_inconnu":
+            alertes.append((s, "institut absent de data/instituts.json"))
+    return alertes
+
+
+def generate_revue(sondages, candidats, added, modified, poly_warnings=None,
+                   alertes_inst=None):
     """Génère data/derived/revue.html."""
     now = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
@@ -138,7 +157,21 @@ def generate_revue(sondages, candidats, added, modified, poly_warnings=None):
             f'<table><tr><th>Avertissement</th></tr>{rows}</table>'
         )
 
-    if not blocks and not poly_block:
+    # Bloc commanditaires et instituts (non bloquant)
+    inst_block = ""
+    if alertes_inst:
+        rows = "".join(
+            f'<tr><td>{s["id"]}</td><td>{motif}</td>'
+            f'<td><a href="{s.get("url_source", "")}">notice</a></td></tr>'
+            for s, motif in alertes_inst
+        )
+        inst_block = (
+            '<h2>Instituts et commanditaires</h2>'
+            '<p class="meta">Non bloquant — le commanditaire n\u2019est pas affiché sur le site</p>'
+            f'<table><tr><th>Sondage</th><th>Signalement</th><th>Source</th></tr>{rows}</table>'
+        )
+
+    if not blocks and not poly_block and not inst_block:
         print("Rien de neuf, pas de page de revue.")
         return
 
@@ -170,6 +203,7 @@ def generate_revue(sondages, candidats, added, modified, poly_warnings=None):
 {"".join(blocks)}
 </table>
 {poly_block}
+{inst_block}
 </body>
 </html>
 """
@@ -339,7 +373,14 @@ def main():
         for w in poly_warnings:
             print(f"    {w}")
 
-    generate_revue(sondages, candidats, added, modified, poly_warnings)
+    # Contrôle non bloquant : commanditaires et référentiel des instituts
+    alertes_inst = alertes_instituts(sondages)
+    if alertes_inst:
+        print(f"  {len(alertes_inst)} signalement(s) instituts/commanditaires :")
+        for s, motif in alertes_inst:
+            print(f"    {s['id']} : {re.sub('<[^>]+>', '', motif)}")
+
+    generate_revue(sondages, candidats, added, modified, poly_warnings, alertes_inst)
 
     # Résumé pour le workflow (GITHUB_OUTPUT + fichier mail)
     import os

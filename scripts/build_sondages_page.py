@@ -4,9 +4,12 @@ Le JavaScript garde le tri et le filtrage ; le HTML statique contient
 toutes les données pour l'indexation.
 """
 
-import json, pathlib, html as html_mod
+import json, pathlib, sys, html as html_mod
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
+from instituts import charger_referentiel, lien_institut
+
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
 SONDAGES_HTML = ROOT / "site" / "sondages.html"
 
@@ -35,15 +38,17 @@ def main():
         '<tr><th>Institut</th><th>Date</th>'
         '<th>Échantillon</th><th style="width:3em;text-align:center">Hyp.</th></tr>'
     ]
+    referentiel = charger_referentiel()
     for s in sondages:
         sid = s.get("id", "")
-        institut = html_mod.escape(s["institut"])
         date_str = fmt_date(s["terrain_fin"])
         ech = fmt_ech(s["echantillon"]) if s.get("echantillon") else "\u2014"
         nhyp = len(s.get("hypotheses", []))
-        inst_link = f'<a href="sondages/{html_mod.escape(sid)}.html">{institut}</a>' if sid else institut
+        # Institut → page de l'institut ; date → fiche du sondage
+        inst_link = lien_institut(s["institut"], referentiel)
+        date_link = f'<a href="sondages/{html_mod.escape(sid)}.html">{date_str}</a>' if sid else date_str
         rows.append(
-            f'<tr><td>{inst_link}</td><td>{date_str}</td>'
+            f'<tr><td>{inst_link}</td><td>{date_link}</td>'
             f'<td>{ech}</td><td style="text-align:center">{nhyp}</td></tr>'
         )
 

@@ -6,6 +6,7 @@ sondage, de l'hypothèse sélectionnée et des statistiques agrégées.
 
 import json
 import os
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -188,6 +189,15 @@ def main():
             "premierTour": election.get("premier_tour", "2027-04-18"),
             "secondTour": election.get("second_tour", "2027-05-02"),
         },
+    }
+
+    # Pages institut : nom court (champ `institut`) → slug du référentiel
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from instituts import charger_referentiel, slug_institut
+    referentiel = charger_referentiel()
+    header_data["instituts"] = {
+        nom: slug for nom in sorted(institutes)
+        if (slug := slug_institut(nom, referentiel))
     }
 
     # Écrire le fichier JS

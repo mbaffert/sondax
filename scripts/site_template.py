@@ -50,7 +50,7 @@ def render_page(*, title, meta_description, canonical, body_content,
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{p}assets/header.css?v=3">
+<link rel="stylesheet" href="{p}assets/header.css?v=4">
 <style>
   :root {{
     --bleu-vif: #0C6CF2;
@@ -105,7 +105,7 @@ def render_page(*, title, meta_description, canonical, body_content,
 
 <div id="site-header" class="sh"></div>
 <script src="{p}assets/header-data.js?v=3"></script>
-<script src="{p}assets/header.js?v=3"></script>
+<script src="{p}assets/header.js?v=5"></script>
 
 {body_content}
 

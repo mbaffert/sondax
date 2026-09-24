@@ -20,6 +20,9 @@ SITE = ROOT / "site"
 import sys
 sys.path.insert(0, str(SCRIPTS))
 from site_template import render_page
+from instituts import charger_referentiel, lien_institut
+
+referentiel = charger_referentiel()
 
 MOIS = [
     "janvier", "février", "mars", "avril", "mai", "juin",
@@ -277,7 +280,7 @@ def build_page(sondage):
         date_display = date_lettres(terrain_fin)
 
     # Métadonnées compactes
-    meta_parts = [f"{html_mod.escape(institut)}"]
+    meta_parts = [lien_institut(institut, referentiel, "../")]
     if echantillon:
         meta_parts.append(f"{fmt_ech(echantillon)}\u202fpersonnes")
     if population:

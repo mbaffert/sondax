@@ -66,17 +66,23 @@
     { label: 'Accueil', href: 'index.html', match: ['index.html', ''] },
     { label: 'Candidats', href: '#', match: candidatsPages.map(function(c) { return c.slug + '.html'; }), dropdown: true },
     { label: 'Sondages', href: 'sondages.html', match: ['sondages.html'] },
+    { label: 'Instituts', href: 'instituts.html', match: ['instituts.html'] },
+    { label: 'Pr\u00e9c\u00e9dentes \u00e9lections', href: 'precedentes-elections.html', match: ['precedentes-elections.html'] },
     { label: 'M\u00e9thodologie', href: 'methodologie.html', match: ['methodologie.html'] },
-    { label: 'Donn\u00e9es', href: 'donnees.html', match: ['donnees.html'] },
-    { label: 'Pr\u00e9c\u00e9dentes \u00e9lections', href: 'precedentes-elections.html', match: ['precedentes-elections.html'] }
+    { label: 'Donn\u00e9es', href: 'donnees.html', match: ['donnees.html'] }
   ];
 
-  var baseHref = '';
-  if (pathname.indexOf('/second-tour/') !== -1) {
-    baseHref = '../';
-  }
+  // Pages situées dans un sous-dossier : liens relatifs remontés d'un niveau
+  var sousDossier = pathname.match(/\/(second-tour|sondages|instituts|candidats)\//);
+  var baseHref = sousDossier ? '../' : '';
+
+  // Rubrique d'une page de sous-dossier (fiches sondage, pages institut)
+  var rubriques = { sondages: 'Sondages', instituts: 'Instituts' };
 
   function isActive(item) {
+    if (sousDossier) {
+      return rubriques[sousDossier[1]] === item.label;
+    }
     for (var i = 0; i < item.match.length; i++) {
       if (page === item.match[i]) return true;
     }

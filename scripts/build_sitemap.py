@@ -2,7 +2,7 @@
 """Génère site/sitemap.xml au build, listant toutes les pages publiques.
 
 Parcourt site/ pour les pages statiques, puis ajoute les pages générées
-(candidats, sondages, duels) à partir des données.
+(candidats, sondages, duels, instituts) à partir des données.
 """
 
 import json, pathlib, datetime
@@ -45,6 +45,10 @@ def collect_urls():
     for f in sorted((SITE / "sondages").glob("*.html")):
         if f.name != "index.html":
             urls.append(f"{BASE}/sondages/{f.name}")
+
+    # Pages dans instituts/ (instituts.html est couvert par la racine)
+    for f in sorted((SITE / "instituts").glob("*.html")):
+        urls.append(f"{BASE}/instituts/{f.name}")
 
     return urls
 

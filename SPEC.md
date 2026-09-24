@@ -12,8 +12,9 @@ décide explicitement et se répercute ici.
 ## 1. Périmètre v1
 
 Un site statique multi-pages : page d'accueil à sections ancrées, pages par
-candidat, pages par sondage, pages par duel de second tour, pages d'élections
-passées, page de données, page de méthodologie et tableau complet des sondages.
+candidat, pages par sondage, pages par institut de sondage et page de référence
+des instituts, pages par duel de second tour, pages d'élections passées, page de
+données, page de méthodologie et tableau complet des sondages.
 
 Page d'accueil à sections nommées et ancrées :
 
@@ -114,8 +115,9 @@ accents corrompus, cf. §11).
 
 ## 3. Modèle de données
 
-Trois fichiers dans `/data` pour 2027, plus `historique.json` pour les élections
-2002-2022 (§12). Les snapshots de wikitexte vont dans `/data/snapshots`
+Trois fichiers dans `/data` pour 2027, deux référentiels des instituts
+(`instituts.json`, `commanditaires.json`, §3.5), plus `historique.json` pour les
+élections 2002-2022 (§12). Les snapshots de wikitexte vont dans `/data/snapshots`
 et ne sont jamais modifiés.
 
 ### 3.1 `candidats.json` — référentiel, édité à la main
@@ -219,7 +221,18 @@ Règles :
   première collecte** et ne doit jamais être recalculé, même si `terrain_fin` est
   corrigé sur Wikipédia : l'URL `/sondages/<id>.html` ne doit pas changer, car
   GitHub Pages ne gère pas les redirections et une URL modifiée casse les liens
-  entrants. Le commanditaire n'est pas une colonne de la page et n'est pas collecté.
+  entrants.
+- **Commanditaire.** Il n'est pas une colonne de la page Wikipédia et n'est pas
+  collecté. Il est déduit au build du nom de fichier de la notice de la commission
+  des sondages (`url_source`) : `10260-pres-iv-opinionway-cnews-11-septembre.pdf`
+  → `cnews`, soit le segment qui suit le nom de l'institut (`notice` dans
+  `instituts.json`), numéro de notice et date de publication retirés. Le slug est
+  traduit en nom affiché par `commanditaires.json` (§3.5). Le résultat va dans
+  `/data/derived/commanditaires.json`, jamais dans `sondages.json`. Pas de
+  commanditaire affiché quand l'URL n'est pas une notice (article de presse, site
+  de l'institut), quand le nom de fichier n'en porte pas, ou quand le slug est
+  absent de la table ; ce dernier cas est signalé sur la page de revue (§8), sans
+  faire échouer le run.
   Une collision d'identifiant (même institut, même date de fin) est une erreur
   bloquante, jamais un écrasement silencieux.
 - Un candidat **absent d'une hypothèse est absent de `scores`**. Ne jamais écrire `0`.
@@ -281,6 +294,40 @@ silencieux (§3.2).
   }
 }
 ```
+
+### 3.5 `instituts.json` et `commanditaires.json` — référentiels, édités à la main
+
+```json
+{
+  "toluna-harris-interactive": {
+    "nom": "Harris",
+    "nom_complet": "Toluna Harris Interactive",
+    "alias": ["Harris", "Harris Interactive", "Toluna Harris Interactive"],
+    "notice": ["toluna-harris-interactive", "harris-interactive"],
+    "mode_recueil": "en ligne",
+    "site": "https://harris-interactive.fr/",
+    "logo": "logos/toluna-harris-interactive.png",
+    "logo_source": "commons:Harris Toluna Company logo.png"
+  }
+}
+```
+
+- La clé est le **slug** de la page `/instituts/<slug>.html`. Comme l'identifiant
+  d'un sondage, il ne change plus une fois publié.
+- `nom` : nom court, celui du champ `institut` de `sondages.json` et des tableaux.
+  `alias` : autres graphies résolues vers la même entrée.
+- `nom_complet` : nom sous lequel le public cherche l'institut ; sert au titre et au
+  H1 de sa page.
+- `notice` : graphies de l'institut dans les noms de fichier des notices (§3.2).
+- `mode_recueil` : `en ligne`, `téléphone` ou `mixte` ; `null` si non vérifié.
+- `site` : page d'accueil de l'institut. `logo` : chemin relatif à `site/`.
+  `logo_source` : origine du logo (`commons:<fichier>`, `fr:<fichier>` ou URL),
+  lue par `scripts/logos.py` (§13.7).
+
+Un institut absent du référentiel ne fait pas échouer le run : son nom n'est pas
+lié, il n'a pas de page, et il est signalé sur la page de revue.
+
+`commanditaires.json` : table `slug → nom affiché` (`"les-echos": "Les Echos"`).
 
 ---
 
@@ -631,7 +678,8 @@ La PR est relue et fusionnée à la main.
 **Page de revue.** Chaque run produit `/data/derived/revue.html`, page statique jointe à
 la PR, listant les sondages ajoutés ou modifiés : institut, dates, échantillon, une ligne
 par hypothèse avec sa somme, lien vers la notice de la commission des sondages. Toute
-valeur en anomalie est surlignée.
+valeur en anomalie est surlignée. Elle signale aussi, sans bloquer, les commanditaires
+non reconnus et les instituts absents de `instituts.json` (§3.5).
 
 **Notification.** Un mail est envoyé à chaque run, quel que soit le résultat :
 nombre de sondages ajoutés en objet, détail (institut, dates de terrain) et lien
@@ -674,6 +722,8 @@ de requête n'est transmis.
 /data
   candidats.json
   sondages.json
+  instituts.json                  référentiel des instituts (§3.5)
+  commanditaires.json             slug de notice → nom affiché (§3.5)
   polymarket.json                 deux marchés : victoire + second tour
   historique.json                 2002-2022, produit une fois (§12)
   /snapshots                     wikitexte brut, immuable
@@ -684,6 +734,9 @@ de requête n'est transmis.
   collecte_polymarket.py         deux événements (victoire + second tour)
   pages_second_tour.py          pages de duel + sitemap, reconstructible
   validation.py
+  instituts.py                   référentiel instituts, commanditaires → /derived
+  build_pages_instituts.py       pages institut + instituts.html
+  logos.py                       logos des instituts, exécution ponctuelle
   series.py
   series_historique.py           séries 2002-2022 pour le front
   import_historique.py           import unique depuis les snapshots anglais
@@ -698,6 +751,9 @@ de requête n'est transmis.
   presidentielle-{2002..2022}.html  une page par élection
   sitemap.xml                    généré par build_sitemap.py
   /sondages                      pages par sondage, reconstructible (.gitignore)
+  instituts.html                 page de référence des instituts, générée
+  /instituts                     pages par institut, reconstructible (.gitignore)
+  /logos                         logos des instituts, versionnés (§13.7)
   /second-tour                   pages de duel, reconstructible (.gitignore)
   /candidats                     index des candidats
   /assets
@@ -880,7 +936,12 @@ haut de la page d'accueil et dans le pied de page de toutes les pages.
 chaque URL du sitemap correspond à un fichier généré. Le build échoue (exit 1)
 en cas d'écart.
 
-**Hors périmètre.** Pages par institut, BreadcrumbList.
+**JSON-LD Organization.** Chaque page institut porte un objet `Organization`
+(nom complet, `alternateName` si le nom court diffère, `url` du site de l'institut,
+`logo` si le fichier existe, `subjectOf` vers la page), sur le modèle de l'objet
+`Person` des fiches candidat.
+
+**Hors périmètre.** BreadcrumbList.
 
 ### 13.6 Jeu de données public
 
@@ -899,3 +960,38 @@ Wikipédia », avec lien vers sondax.fr.
 
 Le même fichier est référencé sur data.gouv.fr comme ressource distante (URL ci-dessus),
 jamais comme copie figée.
+
+### 13.7 Pages par institut
+
+URL : `/instituts/<slug>.html` (slug de `instituts.json`) et page de référence
+`/instituts.html`. Script : `scripts/build_pages_instituts.py`, après
+`scripts/instituts.py` (commanditaires) et `series.py`.
+
+Page institut :
+- title et H1 « Sondages <nom complet> — présidentielle 2027 », meta description
+  propre ;
+- logo en tête de page s'il existe, lien simple vers le site de l'institut ;
+- chapeau généré : nombre de sondages, période des fins de terrain, intervalle moyen
+  entre deux sondages, principaux commanditaires, mode de recueil ;
+- écart moyen à la moyenne, par candidat : pour chaque sondage, hypothèse principale
+  du tour 1, écart de chaque score à la moyenne pondérée Sondax à la date de fin de
+  terrain (même calcul que la colonne « Écart / moy. » des fiches, §13.3). Affiché
+  pour les candidats mesurés au moins 3 fois, avec le nombre de mesures. C'est une
+  description : rien n'est corrigé dans les courbes (les *house effects* restent
+  hors périmètre, §1) ;
+- liste de tous les sondages, du plus récent au plus ancien : dates de terrain (lien
+  vers la fiche), commanditaire, échantillon, lien vers la notice.
+
+Page de référence : chapeau généré (nombre d'instituts, de sondages, période), puis
+une ligne par institut avec son logo, le nombre de sondages et la date du dernier.
+
+Maillage : « Instituts » dans le bandeau d'en-tête, après « Sondages ». Le nom de
+l'institut est un lien vers sa page dans les tableaux de l'accueil, `sondages.html`
+(la date y mène à la fiche), les fiches sondage et les tableaux de second tour ;
+jamais de logo dans ces tableaux.
+
+**Logos.** Fichiers versionnés dans `site/logos/`, produits par `scripts/logos.py`
+(exécution à la main, hors build) : SVG quand la source est vectorielle, sinon PNG
+sur fond transparent ; marges recadrées ; monochrome gris foncé `#33383F`. La hauteur
+d'affichage est fixée par la CSS ; en thème sombre, la CSS inverse le gris. Un logo
+absent n'empêche pas la génération : la page s'affiche sans.

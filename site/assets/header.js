@@ -67,9 +67,9 @@
     { label: 'Candidats', href: '#', match: candidatsPages.map(function(c) { return c.slug + '.html'; }), dropdown: true },
     { label: 'Sondages', href: 'sondages.html', match: ['sondages.html'] },
     { label: 'Instituts', href: 'instituts.html', match: ['instituts.html'] },
+    { label: 'Pr\u00e9c\u00e9dentes \u00e9lections', href: 'precedentes-elections.html', match: ['precedentes-elections.html'] },
     { label: 'M\u00e9thodologie', href: 'methodologie.html', match: ['methodologie.html'] },
-    { label: 'Donn\u00e9es', href: 'donnees.html', match: ['donnees.html'] },
-    { label: 'Pr\u00e9c\u00e9dentes \u00e9lections', href: 'precedentes-elections.html', match: ['precedentes-elections.html'] }
+    { label: 'Donn\u00e9es', href: 'donnees.html', match: ['donnees.html'] }
   ];
 
   // Pages situées dans un sous-dossier : liens relatifs remontés d'un niveau

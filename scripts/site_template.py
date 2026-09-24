@@ -105,7 +105,7 @@ def render_page(*, title, meta_description, canonical, body_content,
 
 <div id="site-header" class="sh"></div>
 <script src="{p}assets/header-data.js?v=3"></script>
-<script src="{p}assets/header.js?v=4"></script>
+<script src="{p}assets/header.js?v=5"></script>
 
 {body_content}
 

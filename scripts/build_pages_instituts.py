@@ -6,9 +6,12 @@ Données sources :
 - data/instituts.json            référentiel édité à la main
 - data/sondages.json             (champ `principale` posé par principale.py)
 - data/candidats.json
-- data/derived/series-t1.json    moyenne pondérée (écart à la moyenne)
+- data/derived/series-t1.json    moyenne Sondax, en fond du graphique
 - data/derived/commanditaires.json  produit par scripts/instituts.py
 - scripts/bios.json              slugs candidat ayant une page dédiée
+
+Le graphique réutilise site/assets/bloc-chart.js, le rendu du graphique de
+premier tour de la home.
 """
 
 import datetime
@@ -28,7 +31,8 @@ from site_template import render_page
 from instituts import charger_referentiel, slug_institut, logo_disponible
 
 BASE = "https://sondax.fr"
-SEUIL_MESURES = 3
+SEUIL_GRAPHIQUE = 5   # sondages de 1er tour, en deçà : pas de graphique
+NB_DEFAUT = 4         # candidats cochés par défaut, comme NB_DEFAULT de la home
 
 MOIS = [
     "janvier", "février", "mars", "avril", "mai", "juin",
@@ -50,7 +54,8 @@ candidats = charger("candidats.json")
 bios = json.loads((SCRIPTS / "bios.json").read_text(encoding="utf-8"))
 
 _series_path = DATA / "derived" / "series-t1.json"
-series_data = json.loads(_series_path.read_text(encoding="utf-8")) if _series_path.exists() else {}
+series_t1 = json.loads(_series_path.read_text(encoding="utf-8")).get("series", {}) if _series_path.exists() else {}
+
 _comm_path = DATA / "derived" / "commanditaires.json"
 commanditaires = json.loads(_comm_path.read_text(encoding="utf-8")) if _comm_path.exists() else {}
 
@@ -72,14 +77,6 @@ def fmt_ech(n):
     return f"{round(n):,}".replace(",", "\u202f")
 
 
-def fmt_ecart(v):
-    v = round(v, 1)
-    if v == 0:
-        v = 0.0  # évite « -0,0 »
-    signe = "+" if v > 0 else ("−" if v < 0 else "")
-    return f"{signe}{abs(v):.1f}".replace(".", ",") + "\u202fpt"
-
-
 def periode(debut, fin):
     """Période « du 22 mars au 10 septembre 2026 » (année omise si identique)."""
     if debut == fin:
@@ -88,33 +85,6 @@ def periode(debut, fin):
     if debut[:4] == fin[:4]:
         d = d.rsplit(" ", 1)[0]
     return f"du {d} au {date_lettres(fin)}"
-
-
-def nom_candidat(cid):
-    c = candidats.get(cid, {})
-    parts = [p for p in (c.get("prenom", ""), c.get("nom", "")) if p]
-    return " ".join(parts) if parts else cid
-
-
-def lien_candidat(cid, prefix):
-    esc = ESC(nom_candidat(cid))
-    if cid in bios:
-        return f'<a href="{prefix}{ESC(cid)}.html">{esc}</a>'
-    return esc
-
-
-def moyenne_a_date(cid, date_iso):
-    """Valeur de la série lissée pour `cid` à `date_iso`, ou None.
-
-    Même calcul que la colonne « Écart / moy. » des fiches sondage
-    (build_sondage_pages.moyenne_a_date)."""
-    val = None
-    for p in series_data.get("series", {}).get(cid, []):
-        if p["d"] > date_iso:
-            break
-        if p["v"] is not None:
-            val = p["v"]
-    return val
 
 
 def hypothese_principale(sondage):
@@ -144,27 +114,6 @@ for s in sondages:
 
 for lst in par_institut.values():
     lst.sort(key=lambda s: (s["terrain_fin"], s.get("echantillon") or 0), reverse=True)
-
-
-# ---------- calculs ----------
-
-def ecarts_par_candidat(liste):
-    """{cid: [écart, ...]} sur l'hypothèse principale T1 de chaque sondage."""
-    ecarts = {}
-    scores = {}
-    for s in liste:
-        h = hypothese_principale(s)
-        if not h:
-            continue
-        for cid, score in h.get("scores", {}).items():
-            if cid == "autre":
-                continue
-            moy = moyenne_a_date(cid, s["terrain_fin"])
-            if moy is None:
-                continue
-            ecarts.setdefault(cid, []).append(score - moy)
-            scores.setdefault(cid, []).append(score)
-    return ecarts, scores
 
 
 def chapeau(inst, liste):
@@ -218,9 +167,15 @@ EXTRA_CSS = """<style>
 .inst-site a { font-weight: 500; }
 .inst-chapeau { font-size: 15px; margin-top: 16px; max-width: 64ch; }
 
+.note { font-size: 13px; color: var(--gris); margin: 4px 0 0; max-width: 64ch; }
+/* Graphique : carte blanche comme les blocs de la home, y compris en thème
+   sombre (couleurs des candidats et grille pensées pour un fond clair). */
+.inst-graph { background: #fff; color: #202632; border: 1px solid #E3E5E0; border-radius: 16px;
+  padding: 18px 20px 16px; --gris: #66707D; --bleu-vif: #0C6CF2; }
+.inst-graph .candidat-cb { font-size: 14px; }
+
 .section-sep { border-top: 1px solid var(--bord); margin: 24px 0 20px; }
 .institut-page h2 { font-size: 18px; margin: 0 0 6px; }
-.note { font-size: 13px; color: var(--gris); margin: 0 0 12px; max-width: 64ch; }
 
 .institut-page table { font-size: 14px; }
 .institut-page th { font-size: 11px; padding: 0 12px 6px 0; }
@@ -228,10 +183,7 @@ EXTRA_CSS = """<style>
 .institut-page tr:last-child td { border-bottom: none; }
 .num { text-align: right; white-space: nowrap; }
 .institut-page th.num { text-align: right; }
-.cand a, .date a { font-weight: 500; }
-.cand a { color: var(--texte); }
-.cand a:hover { color: var(--bleu-vif); }
-td.muet { color: var(--gris); }
+.date a { font-weight: 500; }
 .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 
 /* Liste des instituts */
@@ -245,6 +197,7 @@ td.muet { color: var(--gris); }
   .liste-instituts .logo-cell { width: 76px; padding-right: 10px; }
   .liste-instituts .logo-cell img { height: 14px; max-width: 70px; }
   .col-ech { display: none; }
+  .inst-graph { padding: 18px 12px 16px; border-radius: 12px; }
 }
 
 /* Thème sombre : contenu de la page (le bandeau d'en-tête reste commun au site) */
@@ -283,35 +236,89 @@ def jsonld_institut(inst, titre, canonical):
             + "</script>")
 
 
-def table_ecarts(inst, liste, prefix):
-    ecarts, scores = ecarts_par_candidat(liste)
-    retenus = [cid for cid, e in ecarts.items() if len(e) >= SEUIL_MESURES]
-    if not retenus:
-        return ""
-    # Ordre : score moyen mesuré par l'institut, décroissant (pas l'écart,
-    # pour ne pas présenter le tableau comme un classement)
-    retenus.sort(key=lambda c: (-sum(scores[c]) / len(scores[c]), nom_candidat(c)))
-    rows = []
-    for cid in retenus:
-        e = ecarts[cid]
-        rows.append(
-            f'<tr><td class="cand">{lien_candidat(cid, prefix)}</td>'
-            f'<td class="num">{fmt_ecart(sum(e) / len(e))}</td>'
-            f'<td class="num muet">{len(e)}</td></tr>'
-        )
+def donnees_graphique(liste):
+    """Données du graphique institut, ou None sous le seuil.
+
+    Une série par candidat, un point par sondage de l'institut (hypothèse
+    principale du 1er tour), None quand le sondage ne le teste pas : la courbe
+    s'interrompt, sans interpolation. Candidats : ceux du graphique de la home
+    (clés de series-t1.json), « autre » exclu.
+    """
+    mesures = [(s, h) for s in sorted(liste, key=lambda s: (s["terrain_fin"], s["id"]))
+               if (h := hypothese_principale(s))]
+    if len(mesures) < SEUIL_GRAPHIQUE:
+        return None
+
+    cids = sorted({cid for _, h in mesures for cid in h["scores"]
+                   if cid != "autre" and cid in series_t1})
+    points = {cid: [] for cid in cids}
+    for s, h in mesures:
+        meta = {"d": s["terrain_fin"], "institut": s["institut"],
+                "terrain_debut": s["terrain_debut"] or s["terrain_fin"],
+                "terrain_fin": s["terrain_fin"], "echantillon": s.get("echantillon")}
+        for cid in cids:
+            points[cid].append({**meta, "v": h["scores"].get(cid)})
+
+    debut, fin = mesures[0][0]["terrain_fin"], mesures[-1][0]["terrain_fin"]
+    fond = {cid: [{"d": p["d"], "v": p["v"]} for p in series_t1[cid] if debut <= p["d"] <= fin]
+            for cid in cids}
+
+    # Ordre et cases cochées comme sur la home : dernier sondage, score
+    # décroissant, les NB_DEFAUT premiers cochés. S'y ajoutent les candidats
+    # passés par ce top dans un sondage antérieur mais absents du dernier
+    # (Bardella remplacé par Le Pen), pour montrer la rupture.
+    def top(h):
+        return [c for c, _ in sorted(((c, v) for c, v in h["scores"].items() if c in points),
+                                     key=lambda cv: -cv[1])]
+    dernier = top(mesures[-1][1])
+
+    def dernier_score(cid):
+        return next((p["v"] for p in reversed(points[cid]) if p["v"] is not None), 0)
+    ordre = dernier + sorted((c for c in cids if c not in dernier), key=lambda c: -dernier_score(c))
+    coches = dernier[:NB_DEFAUT]
+    for _, h in mesures:
+        coches += [c for c in top(h)[:NB_DEFAUT] if c not in dernier and c not in coches]
+
+    return {
+        "dateDebut": debut, "dateFin": fin,
+        "candidats": {cid: {k: candidats[cid].get(k) for k in ("nom", "prenom", "couleur", "type")}
+                      for cid in cids},
+        "points": points, "fond": fond, "ordre": ordre, "coches": coches,
+    }
+
+
+def bloc_graphique(inst, graph):
+    donnees = json.dumps(graph, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+    pages = json.dumps(sorted(c for c in bios if c in graph["candidats"]))
     nom = ESC(inst["nom_complet"])
     return f"""<div class="section-sep"></div>
-    <h2>Écart moyen à la moyenne Sondax</h2>
-    <p class="note">Pour chaque sondage {nom}, score de l’hypothèse principale du premier tour
-    comparé à la moyenne pondérée Sondax à la date de fin de terrain, comme dans la colonne
-    «\u00a0Écart / moy.\u00a0» des fiches. Candidats mesurés au moins {SEUIL_MESURES}\u00a0fois.
-    Ces écarts décrivent les résultats publiés\u00a0; ils ne corrigent pas la moyenne.</p>
-    <table>
-      <thead><tr><th>Candidat</th><th class="num">Écart moyen</th><th class="num">Mesures</th></tr></thead>
-      <tbody>
-{chr(10).join(rows)}
-      </tbody>
-    </table>"""
+    <h2>Évolution des intentions de vote</h2>
+    <div class="inst-graph">
+      <div class="chart-wrap"><canvas id="chart-institut" role="img"
+        aria-label="Intentions de vote au premier tour dans les sondages {nom}"></canvas></div>
+      <p class="note">Points : sondages {nom}, hypothèse principale du premier tour.
+      Trait fin : moyenne Sondax · <a href="../methodologie.html">méthode</a></p>
+      <div class="candidats" id="cb-institut"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@3/locale/fr/cdn.min.js"></script>
+    <script src="../assets/bloc-chart.js?v=1"></script>
+    <script>
+    const PAGES_CANDIDATS = new Set({pages});
+    (function () {{
+      const G = {donnees};
+      CANDIDATS = G.candidats;
+      const bloc = new BlocChart({{
+        canvasId: 'chart-institut', cbContainerId: 'cb-institut',
+        dateDebut: G.dateDebut, dateFin: G.dateFin, lienPrefix: '../',
+      }});
+      bloc.courbesBrutes = true;
+      bloc.fond = G.fond;
+      bloc.enableEndLabels = true;
+      bloc.setCandidats(G.points, null, G.ordre, {{ checked: G.coches }});
+    }})();
+    </script>"""
 
 
 def table_sondages(liste, prefix):
@@ -356,13 +363,14 @@ def build_page_institut(slug, inst, liste):
     n = len(liste)
     debut = min(s["terrain_fin"] for s in liste)
     fin = max(s["terrain_fin"] for s in liste)
+    graph = donnees_graphique(liste)
+    evolution = "évolution des intentions de vote, " if graph else ""
     if n == 1:
         meta = (f"Le sondage {nom} sur la présidentielle 2027 ({date_lettres(fin)}) : "
-                f"commanditaire, échantillon, notice et écart à la moyenne Sondax.")
+                f"commanditaire, échantillon et notice.")
     else:
         meta = (f"Les {n} sondages {nom} sur la présidentielle 2027, "
-                f"{periode(debut, fin)} : commanditaires, échantillons, notices "
-                f"et écart moyen de chaque candidat à la moyenne Sondax.")
+                f"{periode(debut, fin)} : {evolution}commanditaires, échantillons et notices.")
 
     site_html = ""
     if inst.get("site"):
@@ -376,7 +384,7 @@ def build_page_institut(slug, inst, liste):
     <h1>Sondages {ESC(nom)} — présidentielle 2027</h1>
     {site_html}
     <p class="inst-chapeau">{chapeau(inst, liste)}</p>
-    {table_ecarts(inst, liste, prefix)}
+    {bloc_graphique(inst, graph) if graph else ""}
     {table_sondages(liste, prefix)}
   </div>
 </main>"""
@@ -386,7 +394,9 @@ def build_page_institut(slug, inst, liste):
         meta_description=ESC(meta),
         canonical=canonical,
         body_content=body,
-        extra_head=EXTRA_CSS + "\n" + jsonld_institut(inst, titre, canonical),
+        extra_head=(EXTRA_CSS + "\n"
+                    + ('<link rel="stylesheet" href="../assets/bloc-chart.css?v=1">\n' if graph else "")
+                    + jsonld_institut(inst, titre, canonical)),
         depth=1,
     )
 

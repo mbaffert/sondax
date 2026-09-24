@@ -3,7 +3,7 @@
    Fichier partagé, inclus dans toutes les pages.
    =================================================================== */
 
-/* --- Desktop (>= 901 px) ----------------------------------------- */
+/* --- Desktop (>= 1220 px) ---------------------------------------- */
 
 .sh {
   background: #F7F8F5;
@@ -21,7 +21,7 @@
   padding: 12px 30px;
 }
 
-@media (min-width: 901px) {
+@media (min-width: 1220px) {
   .sh-left {
     flex: 1;
     min-width: 0;
@@ -62,6 +62,7 @@
 }
 
 .sh-nav > a {
+  white-space: nowrap;
   font-family: 'IBM Plex Sans', system-ui, sans-serif;
   font-size: 17px;
   font-weight: 500;
@@ -92,6 +93,7 @@
   padding-bottom: 2px;
   border-bottom: 2px solid transparent;
   text-decoration: none !important;
+  white-space: nowrap;
 }
 .menu-candidats:hover > .menu-candidats-label,
 .menu-candidats.is-open > .menu-candidats-label { color: #0B2E6F; }
@@ -133,6 +135,16 @@
   text-transform: uppercase;
   color: #66707D;
   white-space: nowrap;
+}
+
+/* Compteur de sondages masqué quand la place manque : il passerait sous le
+   compte à rebours (l'information est reprise sur la page d'accueil).
+   Seuils mesurés avec les polices du site : la navigation seule demande
+   ~1 195 px, avec le compteur ~1 500 px. */
+@media (max-width: 1519px) {
+  .sh-stats-desktop {
+    display: none;
+  }
 }
 
 /* Panneau droit — compte à rebours */
@@ -201,9 +213,9 @@
   display: none;
 }
 
-/* --- Mobile (< 901 px) ------------------------------------------- */
+/* --- Mobile (< 1220 px) ------------------------------------------ */
 
-@media (max-width: 900px) {
+@media (max-width: 1219px) {
   .sh-inner {
     flex-direction: column;
   }

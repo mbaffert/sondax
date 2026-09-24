@@ -711,7 +711,7 @@ Développement et prévisualisation en local jusque-là.
 ## 10. Obligations
 
 - Mentions légales : éditeur, hébergeur, contact.
-- Attribution Wikipédia (CC BY-SA) et mention de Polymarket comme source des cotes.
+- Attribution Wikipédia (CC BY-SA) et mention de Polymarket comme source des cotes, en texte simple, sans lien vers polymarket.com.
 - Affichage en pied de page de la date du dernier run réussi et du `revid` utilisé.
 - **Loi du 19 juillet 1977** : interdiction de publier ou commenter des sondages la
   veille et le jour du scrutin. Le site doit pouvoir se mettre en veille automatiquement

@@ -18,6 +18,9 @@ SITEMAP_PATH = ROOT / "site" / "sitemap.xml"
 SEUIL = 5
 BASE_URL = "https://sondax.fr"
 
+sys.path.insert(0, str(ROOT / "scripts"))
+from instituts import charger_referentiel, lien_institut
+
 # ---------------------------------------------------------------------------
 # Données
 # ---------------------------------------------------------------------------
@@ -187,12 +190,13 @@ HEAD_COMMON = """\
 # ---------------------------------------------------------------------------
 
 def render_table_html(entries, cid_a, cid_b, candidats):
+    referentiel = charger_referentiel()
     rows = []
     for e in entries:
         ech = f'{round(e["echantillon"]):,}'.replace(",", "\u202f") if e["echantillon"] else "—"
         source = f'<a href="{html_mod.escape(e["url_source"])}" target="_blank">Notice</a>' if e["url_source"] else "—"
         rows.append(
-            f"<tr><td>{html_mod.escape(e['institut'])}</td>"
+            f"<tr><td>{lien_institut(e['institut'], referentiel, '../')}</td>"
             f"<td>{fmt_date(e['terrain_debut'])} → {fmt_date(e['terrain_fin'])}</td>"
             f"<td>{ech}</td>"
             f"<td>{fmt_pct(e['scores'][cid_a])}</td>"

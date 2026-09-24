@@ -1,0 +1,82 @@
+{
+  "ifop": {
+    "nom": "Ifop",
+    "nom_complet": "Ifop",
+    "alias": ["Ifop"],
+    "notice": ["ifop"],
+    "mode_recueil": "en ligne",
+    "site": "https://www.ifop.com/",
+    "logo": "logos/ifop.svg",
+    "logo_source": "commons:Logo de l'Institut français d'opinion publique (IFOP).svg"
+  },
+  "opinionway": {
+    "nom": "OpinionWay",
+    "nom_complet": "OpinionWay",
+    "alias": ["OpinionWay"],
+    "notice": ["opinionway"],
+    "mode_recueil": "en ligne",
+    "site": "https://www.opinion-way.com/",
+    "logo": "logos/opinionway.svg",
+    "logo_source": "commons:Opinionway logo.svg"
+  },
+  "toluna-harris-interactive": {
+    "nom": "Harris",
+    "nom_complet": "Toluna Harris Interactive",
+    "alias": ["Harris", "Harris Interactive", "Toluna Harris Interactive"],
+    "notice": ["toluna-harris-interactive", "harris-interactive"],
+    "mode_recueil": "en ligne",
+    "site": "https://harris-interactive.fr/",
+    "logo": "logos/toluna-harris-interactive.png",
+    "logo_source": "commons:Harris Toluna Company logo.png"
+  },
+  "ipsos-bva": {
+    "nom": "Ipsos",
+    "nom_complet": "Ipsos BVA",
+    "alias": ["Ipsos", "Ipsos BVA", "Ipsos bva"],
+    "notice": ["ipsos-bva", "ipsos"],
+    "mode_recueil": "en ligne",
+    "site": "https://www.ipsos.com/fr-fr",
+    "logo": "logos/ipsos-bva.svg",
+    "logo_source": "fr:Logo de l'Ipsos.svg"
+  },
+  "elabe": {
+    "nom": "Elabe",
+    "nom_complet": "Elabe",
+    "alias": ["Elabe"],
+    "notice": ["elabe"],
+    "mode_recueil": "en ligne",
+    "site": "https://elabe.fr/",
+    "logo": "logos/elabe.png",
+    "logo_source": "commons:ELABE.png"
+  },
+  "odoxa": {
+    "nom": "Odoxa",
+    "nom_complet": "Odoxa",
+    "alias": ["Odoxa"],
+    "notice": ["odoxa"],
+    "mode_recueil": "en ligne",
+    "site": "https://www.odoxa.fr/",
+    "logo": "logos/odoxa.svg",
+    "logo_source": null
+  },
+  "cluster17": {
+    "nom": "Cluster17",
+    "nom_complet": "Cluster17",
+    "alias": ["Cluster17", "Cluster 17"],
+    "notice": ["cluster17", "cluster-17"],
+    "mode_recueil": null,
+    "site": "https://cluster17.com/",
+    "logo": "logos/cluster17.svg",
+    "logo_source": "commons:Logo Cluster17.svg"
+  },
+  "verian": {
+    "nom": "Verian",
+    "nom_complet": "Verian",
+    "alias": ["Verian", "Verian (ex-Kantar Public)"],
+    "notice": ["verian"],
+    "mode_recueil": null,
+    "site": "https://www.veriangroup.com/fr",
+    "logo": "logos/verian.svg",
+    "logo_source": null
+  }
+}

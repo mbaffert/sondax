@@ -19,6 +19,7 @@ from pages_second_tour import (
     load_duels, nom_court, fmt_date, fmt_pct, find_pair_from_slug, SEUIL,
 )
 from build_header import REPERES_T2, JSONLD_T2
+from instituts import charger_referentiel, lien_institut
 
 BEGIN_MARKER = "<!-- BEGIN:second-tour -->"
 END_MARKER = "<!-- END:second-tour -->"
@@ -259,7 +260,7 @@ def format_duel_row(slug, entries, candidats):
 
     n = len(entries)
     date_str = fmt_date(latest["terrain_fin"])
-    institut = html_mod.escape(latest["institut"])
+    institut = lien_institut(latest["institut"], charger_referentiel())
 
     return (
         f'      <tr>'

@@ -301,6 +301,7 @@ def wrap_in_site_template(slug, fiche, raw_html):
         <a href="methodologie.html">Méthodologie</a>
         <a href="sondages.html">Tous les sondages</a>
         <a href="donnees.html">Données</a>
+        <a href="a-propos.html">À propos</a>
       </div>
     </div>
     <div>

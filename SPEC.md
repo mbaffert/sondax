@@ -692,6 +692,7 @@ de requête n'est transmis.
   index.html
   sondages.html
   methodologie.html
+  a-propos.html                  à propos, contact et mentions légales
   donnees.html                   généré par build_donnees.py
   precedentes-elections.html     rubrique « Précédentes élections »
   presidentielle-{2002..2022}.html  une page par élection
@@ -710,7 +711,7 @@ Développement et prévisualisation en local jusque-là.
 
 ## 10. Obligations
 
-- Mentions légales : éditeur, hébergeur, contact.
+- Mentions légales : page a-propos.html (éditeur, hébergeur, contact). L'adresse de l'éditeur n'est jamais publiée.
 - Attribution Wikipédia (CC BY-SA) et mention de Polymarket comme source des cotes, en texte simple, sans lien vers polymarket.com.
 - Affichage en pied de page de la date du dernier run réussi et du `revid` utilisé.
 - **Loi du 19 juillet 1977** : interdiction de publier ou commenter des sondages la

@@ -212,7 +212,6 @@
   .ds-cand:first-child .ds-cand-score { color: #0B2E6F; }
   .ds-bar-wrap { height: 4px; background: #F2F3F0; border-radius: 2px; margin: 6px 0 4px; }
   .ds-bar { height: 100%; border-radius: 2px; }
-  .ds-moy { font-size: 12.5px; color: var(--gris); }
   .ds-others { display: flex; flex-wrap: wrap; gap: 6px 16px;
     padding-top: 12px; border-top: 1px solid #EDEEEA; margin-top: 14px; font-size: 13.5px; color: var(--gris); }
   .ds-other-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; vertical-align: middle; margin-right: 4px; }
@@ -248,13 +247,12 @@
     .ds-header .section-label { margin-bottom: 0; }
     .ds-fiche { margin-left: 0; }
     .ds-top4 { grid-template-columns: 1fr; gap: 0; }
-    .ds-cand { display: grid; grid-template-columns: 1fr auto auto; align-items: baseline;
+    .ds-cand { display: grid; grid-template-columns: 1fr auto; align-items: baseline;
       gap: 0 10px; padding: 6px 0; border-right: none !important; border-bottom: 1px solid #EDEEEA; }
     .ds-cand:last-child { border-bottom: none; }
     .ds-cand-name { font-size: 15px; }
     .ds-cand-score { font-size: 16px; text-align: right; }
     .ds-cand-score .pct { font-size: 11px; }
-    .ds-moy { font-size: 12px; text-align: right; }
     .ds-bar-wrap { grid-column: 1 / -1; height: 3px; margin: 2px 0 0; }
     .ds-others { font-size: 12.5px; gap: 4px 12px; }
     .ds-others b { font-weight: 600; }
@@ -291,25 +289,21 @@
       <div class="ds-cand-name">Le Pen</div>
       <div class="ds-cand-score">33.0<span class="pct"> %</span></div>
       <div class="ds-bar-wrap"><div class="ds-bar" style="width:100%;background:#0D378A"></div></div>
-      <div class="ds-moy">moyenne 33,5 %</div>
     </div>
     <div class="ds-cand">
       <div class="ds-cand-name">Mélenchon</div>
       <div class="ds-cand-score">16.0<span class="pct"> %</span></div>
       <div class="ds-bar-wrap"><div class="ds-bar" style="width:48%;background:#CC2443"></div></div>
-      <div class="ds-moy">moyenne 16,0 %</div>
     </div>
     <div class="ds-cand">
       <div class="ds-cand-name">Philippe</div>
       <div class="ds-cand-score">14.0<span class="pct"> %</span></div>
       <div class="ds-bar-wrap"><div class="ds-bar" style="width:42%;background:#00B7FF"></div></div>
-      <div class="ds-moy">moyenne 14,8 %</div>
     </div>
     <div class="ds-cand">
       <div class="ds-cand-name">Glucksmann</div>
       <div class="ds-cand-score">9.0<span class="pct"> %</span></div>
       <div class="ds-bar-wrap"><div class="ds-bar" style="width:27%;background:#FF7043"></div></div>
-      <div class="ds-moy">moyenne 10,1 %</div>
     </div>
   </div>
   <div class="ds-others">

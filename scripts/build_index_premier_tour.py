@@ -338,14 +338,6 @@ MOIS_ABBREV = [
 ]
 
 
-def _last_smoothed(series_data, cid):
-    """Dernière valeur lissée non nulle pour un candidat."""
-    for p in reversed(series_data.get("series", {}).get(cid, [])):
-        if p["v"] is not None:
-            return p["v"]
-    return None
-
-
 def generate_bloc_dernier_sondage(sondages, candidats, series_data):
     """Génère le bloc compact « Dernier sondage » affiché en haut de page."""
     latest = select_latest_sondage(sondages)
@@ -409,15 +401,12 @@ def generate_bloc_dernier_sondage(sondages, candidats, series_data):
         nom = html_mod.escape(c.get("nom", cid))
         couleur = c.get("couleur", "#888")
         pct = v / max_score * 100
-        moy = _last_smoothed(series_data, cid)
-        moy_str = f'{moy:.1f}'.replace(".", ",") if moy is not None else "\u2014"
         lines.append('    <div class="ds-cand">')
         lines.append(f'      <div class="ds-cand-name">{nom}</div>')
         lines.append(f'      <div class="ds-cand-score">{v:.1f}<span class="pct"> %</span></div>')
         lines.append(
             f'      <div class="ds-bar-wrap"><div class="ds-bar" style="width:{pct:.0f}%;background:{couleur}"></div></div>'
         )
-        lines.append(f'      <div class="ds-moy">moyenne {moy_str}\u00a0%</div>')
         lines.append("    </div>")
     lines.append("  </div>")
 

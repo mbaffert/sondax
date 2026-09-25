@@ -125,6 +125,8 @@ lignes. Chaque sondage renvoie vers sa notice.</p>
 <span>{nb_sondages} sondages du {date_fr(premier)} au {date_fr(dernier)} · {nb_lignes}
 lignes · {poids_ko}&nbsp;Ko · généré le {date_fr(aujourdhui)}</span></p>
 
+<p>Aussi publié sur <a href="https://www.data.gouv.fr/datasets/sondages-dintentions-de-vote-election-presidentielle-2027">data.gouv.fr</a>.</p>
+
 <p>CSV encodé en UTF-8, séparateur virgule, point décimal. Le fichier contient les mesures
 publiées par les instituts, pas la moyenne calculée par Sondax
 (<a href="methodologie.html">méthode</a>).</p>

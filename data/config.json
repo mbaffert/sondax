@@ -5,9 +5,10 @@
     "officielles": false
   },
   "modele": {
-    "N_eff": 350,
-    "N_eff_source": "presidentielles",
+    "N_eff": 190,
+    "N_eff_source": "ensemble_sondax_j7",
     "tirages": 50000,
-    "graine": 20270418
+    "graine": 20270418,
+    "k_melange": 2
   }
 }

@@ -30,90 +30,114 @@
    "attal": 9.55,
    "retailleau": 8.05,
    "zemmour": 5.09,
-   "tondelier": 3.31,
    "roussel": 2.79,
+   "tondelier": 3.31,
    "dupont-aignan": 1.77,
    "arthaud": 0.77
   },
   "qualification": {
-   "bardella": 100.0,
-   "philippe": 59.22,
-   "melenchon": 38.33,
-   "glucksmann": 1.49,
-   "attal": 0.86,
-   "retailleau": 0.09,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
-   "arthaud": 0.0
+   "bardella": 99.85,
+   "philippe": 57.02,
+   "melenchon": 37.28,
+   "glucksmann": 2.84,
+   "attal": 2.04,
+   "retailleau": 0.78,
+   "zemmour": 0.11,
+   "roussel": 0.03,
+   "tondelier": 0.03,
+   "dupont-aignan": 0.01,
+   "arthaud": 0.01
   },
   "rangs": {
    "bardella": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.26,
+    "2": 0.59,
+    "3plus": 0.15
    },
    "philippe": {
-    "1": 0.0,
-    "2": 59.22,
-    "3plus": 40.78
+    "1": 0.28,
+    "2": 56.74,
+    "3plus": 42.98
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 38.33,
-    "3plus": 61.67
+    "1": 0.27,
+    "2": 37.02,
+    "3plus": 62.72
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 1.49,
-    "3plus": 98.51
+    "1": 0.06,
+    "2": 2.78,
+    "3plus": 97.16
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.86,
-    "3plus": 99.14
+    "1": 0.08,
+    "2": 1.96,
+    "3plus": 97.96
    },
    "retailleau": {
-    "1": 0.0,
-    "2": 0.09,
-    "3plus": 99.91
+    "1": 0.04,
+    "2": 0.74,
+    "3plus": 99.22
    },
    "zemmour": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.01,
+    "2": 0.11,
+    "3plus": 99.89
+   },
+   "roussel": {
+    "1": 0.01,
+    "2": 0.02,
+    "3plus": 99.97
    },
    "tondelier": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "roussel": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.02,
+    "3plus": 99.97
    },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    }
   },
   "duels": {
-   "bardella+philippe": 59.22,
-   "bardella+melenchon": 38.33,
-   "bardella+glucksmann": 1.49,
-   "attal+bardella": 0.86,
-   "bardella+retailleau": 0.09
+   "bardella+philippe": 56.95,
+   "bardella+melenchon": 37.2,
+   "bardella+glucksmann": 2.79,
+   "attal+bardella": 2.0,
+   "bardella+retailleau": 0.74,
+   "bardella+zemmour": 0.11,
+   "glucksmann+melenchon": 0.03,
+   "bardella+roussel": 0.02,
+   "bardella+tondelier": 0.02,
+   "melenchon+philippe": 0.02,
+   "attal+glucksmann": 0.01,
+   "attal+melenchon": 0.01,
+   "attal+philippe": 0.01,
+   "bardella+dupont-aignan": 0.01,
+   "glucksmann+philippe": 0.01,
+   "melenchon+retailleau": 0.01,
+   "philippe+retailleau": 0.01,
+   "arthaud+bardella": 0.0,
+   "arthaud+philippe": 0.0,
+   "attal+retailleau": 0.0,
+   "dupont-aignan+retailleau": 0.0,
+   "glucksmann+retailleau": 0.0,
+   "glucksmann+roussel": 0.0,
+   "melenchon+tondelier": 0.0,
+   "melenchon+zemmour": 0.0,
+   "philippe+roussel": 0.0,
+   "philippe+zemmour": 0.0,
+   "retailleau+roussel": 0.0,
+   "retailleau+zemmour": 0.0
   },
   "delta_bascule": {
-   "melenchon": 0.7,
+   "melenchon": 0.8,
    "glucksmann": 4.6
   }
  },
@@ -149,74 +173,74 @@
    "attal": 9.0,
    "retailleau": 7.92,
    "zemmour": 4.55,
-   "tondelier": 3.67,
    "roussel": 2.78,
+   "tondelier": 3.67,
    "dupont-aignan": 1.76,
    "arthaud": 0.76
   },
   "qualification": {
-   "bardella": 100.0,
-   "philippe": 57.24,
-   "melenchon": 39.8,
-   "glucksmann": 2.22,
-   "attal": 0.61,
-   "retailleau": 0.13,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
+   "bardella": 99.85,
+   "philippe": 55.31,
+   "melenchon": 38.41,
+   "glucksmann": 3.57,
+   "attal": 1.81,
+   "retailleau": 0.89,
+   "zemmour": 0.07,
+   "roussel": 0.04,
+   "tondelier": 0.04,
+   "dupont-aignan": 0.01,
    "arthaud": 0.0
   },
   "rangs": {
    "bardella": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.47,
+    "2": 0.38,
+    "3plus": 0.15
    },
    "philippe": {
-    "1": 0.0,
-    "2": 57.24,
-    "3plus": 42.76
+    "1": 0.18,
+    "2": 55.13,
+    "3plus": 44.69
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 39.8,
-    "3plus": 60.2
+    "1": 0.19,
+    "2": 38.22,
+    "3plus": 61.59
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 2.22,
-    "3plus": 97.78
+    "1": 0.07,
+    "2": 3.5,
+    "3plus": 96.43
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.61,
-    "3plus": 99.39
+    "1": 0.04,
+    "2": 1.77,
+    "3plus": 98.19
    },
    "retailleau": {
-    "1": 0.0,
-    "2": 0.13,
-    "3plus": 99.87
+    "1": 0.03,
+    "2": 0.86,
+    "3plus": 99.11
    },
    "zemmour": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "tondelier": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.07,
+    "3plus": 99.93
    },
    "roussel": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.01,
+    "2": 0.03,
+    "3plus": 99.96
+   },
+   "tondelier": {
+    "1": 0.01,
+    "2": 0.03,
+    "3plus": 99.96
    },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
@@ -225,14 +249,36 @@
    }
   },
   "duels": {
-   "bardella+philippe": 57.24,
-   "bardella+melenchon": 39.8,
-   "bardella+glucksmann": 2.22,
-   "attal+bardella": 0.61,
-   "bardella+retailleau": 0.13
+   "bardella+philippe": 55.23,
+   "bardella+melenchon": 38.33,
+   "bardella+glucksmann": 3.52,
+   "attal+bardella": 1.77,
+   "bardella+retailleau": 0.85,
+   "bardella+zemmour": 0.07,
+   "melenchon+philippe": 0.04,
+   "bardella+roussel": 0.03,
+   "bardella+tondelier": 0.03,
+   "glucksmann+melenchon": 0.02,
+   "attal+melenchon": 0.01,
+   "attal+philippe": 0.01,
+   "bardella+dupont-aignan": 0.01,
+   "glucksmann+philippe": 0.01,
+   "glucksmann+retailleau": 0.01,
+   "melenchon+retailleau": 0.01,
+   "philippe+retailleau": 0.01,
+   "attal+glucksmann": 0.0,
+   "attal+retailleau": 0.0,
+   "attal+roussel": 0.0,
+   "attal+tondelier": 0.0,
+   "glucksmann+roussel": 0.0,
+   "glucksmann+tondelier": 0.0,
+   "melenchon+roussel": 0.0,
+   "melenchon+tondelier": 0.0,
+   "philippe+roussel": 0.0,
+   "philippe+zemmour": 0.0
   },
   "delta_bascule": {
-   "melenchon": 0.6,
+   "melenchon": 0.7,
    "glucksmann": 4.2
   }
  },
@@ -274,68 +320,68 @@
    "arthaud": 0.8
   },
   "qualification": {
-   "bardella": 100.0,
-   "philippe": 73.91,
-   "melenchon": 20.89,
-   "glucksmann": 2.95,
-   "attal": 2.21,
-   "retailleau": 0.04,
-   "tondelier": 0.0,
-   "zemmour": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
+   "bardella": 99.83,
+   "philippe": 70.99,
+   "melenchon": 20.38,
+   "glucksmann": 4.49,
+   "attal": 3.57,
+   "retailleau": 0.61,
+   "tondelier": 0.05,
+   "zemmour": 0.03,
+   "roussel": 0.03,
+   "dupont-aignan": 0.01,
    "arthaud": 0.0
   },
   "rangs": {
    "bardella": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.27,
+    "2": 0.56,
+    "3plus": 0.17
    },
    "philippe": {
-    "1": 0.0,
-    "2": 73.91,
-    "3plus": 26.09
+    "1": 0.33,
+    "2": 70.66,
+    "3plus": 29.01
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 20.89,
-    "3plus": 79.11
+    "1": 0.18,
+    "2": 20.19,
+    "3plus": 79.62
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 2.95,
-    "3plus": 97.05
+    "1": 0.1,
+    "2": 4.39,
+    "3plus": 95.51
    },
    "attal": {
-    "1": 0.0,
-    "2": 2.21,
-    "3plus": 97.79
+    "1": 0.06,
+    "2": 3.51,
+    "3plus": 96.43
    },
    "retailleau": {
-    "1": 0.0,
-    "2": 0.04,
-    "3plus": 99.96
+    "1": 0.03,
+    "2": 0.58,
+    "3plus": 99.39
    },
    "tondelier": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.01,
+    "2": 0.05,
+    "3plus": 99.95
    },
    "zemmour": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.03,
+    "3plus": 99.97
    },
    "roussel": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.03,
+    "3plus": 99.97
    },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
@@ -344,15 +390,34 @@
    }
   },
   "duels": {
-   "bardella+philippe": 73.91,
-   "bardella+melenchon": 20.89,
-   "bardella+glucksmann": 2.95,
-   "attal+bardella": 2.21,
-   "bardella+retailleau": 0.04
+   "bardella+philippe": 70.89,
+   "bardella+melenchon": 20.31,
+   "bardella+glucksmann": 4.43,
+   "attal+bardella": 3.52,
+   "bardella+retailleau": 0.58,
+   "bardella+tondelier": 0.05,
+   "bardella+roussel": 0.03,
+   "bardella+zemmour": 0.03,
+   "glucksmann+philippe": 0.03,
+   "melenchon+philippe": 0.03,
+   "attal+glucksmann": 0.02,
+   "attal+philippe": 0.02,
+   "philippe+retailleau": 0.02,
+   "attal+melenchon": 0.01,
+   "glucksmann+melenchon": 0.01,
+   "melenchon+retailleau": 0.01,
+   "attal+retailleau": 0.0,
+   "attal+zemmour": 0.0,
+   "bardella+dupont-aignan": 0.0,
+   "dupont-aignan+philippe": 0.0,
+   "glucksmann+retailleau": 0.0,
+   "glucksmann+roussel": 0.0,
+   "melenchon+tondelier": 0.0,
+   "philippe+tondelier": 0.0
   },
   "delta_bascule": {
-   "melenchon": 1.9,
-   "glucksmann": 4.0
+   "melenchon": 2.0,
+   "glucksmann": 4.1
   }
  },
  {
@@ -387,91 +452,107 @@
    "attal": 9.35,
    "retailleau": 7.69,
    "zemmour": 3.76,
-   "tondelier": 3.36,
    "roussel": 2.85,
+   "tondelier": 3.36,
    "dupont-aignan": 1.88,
    "arthaud": 0.71
   },
   "qualification": {
-   "bardella": 100.0,
-   "philippe": 71.64,
-   "melenchon": 25.21,
-   "glucksmann": 2.08,
-   "attal": 1.0,
-   "retailleau": 0.06,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
-   "arthaud": 0.0
+   "bardella": 99.91,
+   "philippe": 68.63,
+   "melenchon": 24.61,
+   "glucksmann": 3.67,
+   "attal": 2.29,
+   "retailleau": 0.73,
+   "zemmour": 0.06,
+   "roussel": 0.04,
+   "tondelier": 0.03,
+   "dupont-aignan": 0.01,
+   "arthaud": 0.01
   },
   "rangs": {
    "bardella": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.54,
+    "2": 0.37,
+    "3plus": 0.09
    },
    "philippe": {
-    "1": 0.0,
-    "2": 71.64,
-    "3plus": 28.36
+    "1": 0.2,
+    "2": 68.43,
+    "3plus": 31.37
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 25.21,
-    "3plus": 74.79
+    "1": 0.13,
+    "2": 24.48,
+    "3plus": 75.39
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 2.08,
-    "3plus": 97.92
+    "1": 0.05,
+    "2": 3.62,
+    "3plus": 96.33
    },
    "attal": {
-    "1": 0.0,
-    "2": 1.0,
-    "3plus": 99.0
+    "1": 0.04,
+    "2": 2.26,
+    "3plus": 97.71
    },
    "retailleau": {
-    "1": 0.0,
+    "1": 0.03,
+    "2": 0.7,
+    "3plus": 99.27
+   },
+   "zemmour": {
+    "1": 0.01,
     "2": 0.06,
     "3plus": 99.94
    },
-   "zemmour": {
+   "roussel": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.04,
+    "3plus": 99.96
    },
    "tondelier": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "roussel": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.03,
+    "3plus": 99.97
    },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    }
   },
   "duels": {
-   "bardella+philippe": 71.64,
-   "bardella+melenchon": 25.21,
-   "bardella+glucksmann": 2.08,
-   "attal+bardella": 1.0,
-   "bardella+retailleau": 0.06
+   "bardella+philippe": 68.58,
+   "bardella+melenchon": 24.56,
+   "bardella+glucksmann": 3.64,
+   "attal+bardella": 2.28,
+   "bardella+retailleau": 0.71,
+   "bardella+zemmour": 0.06,
+   "bardella+roussel": 0.04,
+   "bardella+tondelier": 0.03,
+   "melenchon+philippe": 0.02,
+   "melenchon+retailleau": 0.02,
+   "arthaud+bardella": 0.01,
+   "attal+melenchon": 0.01,
+   "attal+philippe": 0.01,
+   "bardella+dupont-aignan": 0.01,
+   "glucksmann+melenchon": 0.01,
+   "glucksmann+philippe": 0.01,
+   "philippe+retailleau": 0.01,
+   "arthaud+philippe": 0.0,
+   "glucksmann+zemmour": 0.0,
+   "philippe+tondelier": 0.0,
+   "philippe+zemmour": 0.0
   },
   "delta_bascule": {
-   "melenchon": 1.6,
-   "glucksmann": 4.3
+   "melenchon": 1.7,
+   "glucksmann": 4.4
   }
  },
  {
@@ -511,68 +592,68 @@
    "arthaud": 0.68
   },
   "qualification": {
-   "le-pen": 100.0,
-   "philippe": 66.98,
-   "melenchon": 30.51,
-   "attal": 1.41,
-   "glucksmann": 1.07,
-   "retailleau": 0.02,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
+   "le-pen": 99.86,
+   "philippe": 64.38,
+   "melenchon": 29.77,
+   "attal": 2.96,
+   "glucksmann": 2.46,
+   "retailleau": 0.49,
+   "zemmour": 0.03,
+   "tondelier": 0.02,
+   "roussel": 0.01,
+   "dupont-aignan": 0.01,
    "arthaud": 0.0
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.37,
+    "2": 0.5,
+    "3plus": 0.14
    },
    "philippe": {
-    "1": 0.0,
-    "2": 66.98,
-    "3plus": 33.02
+    "1": 0.3,
+    "2": 64.08,
+    "3plus": 35.62
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 30.51,
-    "3plus": 69.49
+    "1": 0.18,
+    "2": 29.59,
+    "3plus": 70.23
    },
    "attal": {
-    "1": 0.0,
-    "2": 1.41,
-    "3plus": 98.59
+    "1": 0.06,
+    "2": 2.9,
+    "3plus": 97.04
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 1.07,
-    "3plus": 98.93
+    "1": 0.07,
+    "2": 2.4,
+    "3plus": 97.54
    },
    "retailleau": {
+    "1": 0.02,
+    "2": 0.47,
+    "3plus": 99.51
+   },
+   "zemmour": {
+    "1": 0.0,
+    "2": 0.03,
+    "3plus": 99.97
+   },
+   "tondelier": {
     "1": 0.0,
     "2": 0.02,
     "3plus": 99.98
    },
-   "zemmour": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "tondelier": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
    "roussel": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
@@ -581,15 +662,36 @@
    }
   },
   "duels": {
-   "le-pen+philippe": 66.98,
-   "le-pen+melenchon": 30.51,
-   "attal+le-pen": 1.41,
-   "glucksmann+le-pen": 1.07,
-   "le-pen+retailleau": 0.02
+   "le-pen+philippe": 64.29,
+   "le-pen+melenchon": 29.69,
+   "attal+le-pen": 2.93,
+   "glucksmann+le-pen": 2.42,
+   "le-pen+retailleau": 0.48,
+   "melenchon+philippe": 0.04,
+   "le-pen+zemmour": 0.03,
+   "glucksmann+melenchon": 0.02,
+   "glucksmann+philippe": 0.02,
+   "attal+melenchon": 0.01,
+   "attal+philippe": 0.01,
+   "dupont-aignan+le-pen": 0.01,
+   "le-pen+roussel": 0.01,
+   "le-pen+tondelier": 0.01,
+   "melenchon+retailleau": 0.01,
+   "arthaud+attal": 0.0,
+   "attal+glucksmann": 0.0,
+   "attal+retailleau": 0.0,
+   "glucksmann+retailleau": 0.0,
+   "glucksmann+roussel": 0.0,
+   "melenchon+roussel": 0.0,
+   "melenchon+tondelier": 0.0,
+   "philippe+retailleau": 0.0,
+   "philippe+roussel": 0.0,
+   "philippe+tondelier": 0.0,
+   "philippe+zemmour": 0.0
   },
   "delta_bascule": {
-   "melenchon": 1.2,
-   "attal": 4.6
+   "melenchon": 1.3,
+   "attal": 4.7
   }
  },
  {
@@ -628,79 +730,97 @@
    "arthaud": 0.76
   },
   "qualification": {
-   "le-pen": 100.0,
-   "philippe": 78.56,
-   "melenchon": 20.63,
-   "glucksmann": 0.47,
-   "attal": 0.3,
-   "retailleau": 0.03,
-   "tondelier": 0.0,
-   "zemmour": 0.0,
-   "roussel": 0.0,
-   "arthaud": 0.0
+   "le-pen": 99.88,
+   "philippe": 75.44,
+   "melenchon": 20.89,
+   "glucksmann": 1.79,
+   "attal": 1.41,
+   "retailleau": 0.52,
+   "tondelier": 0.03,
+   "zemmour": 0.02,
+   "roussel": 0.01,
+   "arthaud": 0.01
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.47,
+    "2": 0.41,
+    "3plus": 0.12
    },
    "philippe": {
-    "1": 0.0,
-    "2": 78.56,
-    "3plus": 21.44
+    "1": 0.28,
+    "2": 75.16,
+    "3plus": 24.56
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 20.63,
-    "3plus": 79.37
+    "1": 0.16,
+    "2": 20.73,
+    "3plus": 79.11
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 0.47,
-    "3plus": 99.53
+    "1": 0.04,
+    "2": 1.75,
+    "3plus": 98.21
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.3,
-    "3plus": 99.7
+    "1": 0.03,
+    "2": 1.38,
+    "3plus": 98.59
    },
    "retailleau": {
+    "1": 0.02,
+    "2": 0.51,
+    "3plus": 99.48
+   },
+   "tondelier": {
     "1": 0.0,
     "2": 0.03,
     "3plus": 99.97
    },
-   "tondelier": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
    "zemmour": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.02,
+    "3plus": 99.98
    },
    "roussel": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    }
   },
   "duels": {
-   "le-pen+philippe": 78.56,
-   "le-pen+melenchon": 20.63,
-   "glucksmann+le-pen": 0.47,
-   "attal+le-pen": 0.3,
-   "le-pen+retailleau": 0.03
+   "le-pen+philippe": 75.36,
+   "le-pen+melenchon": 20.81,
+   "glucksmann+le-pen": 1.77,
+   "attal+le-pen": 1.39,
+   "le-pen+retailleau": 0.51,
+   "melenchon+philippe": 0.05,
+   "le-pen+tondelier": 0.03,
+   "arthaud+melenchon": 0.01,
+   "attal+melenchon": 0.01,
+   "attal+philippe": 0.01,
+   "glucksmann+melenchon": 0.01,
+   "glucksmann+philippe": 0.01,
+   "le-pen+roussel": 0.01,
+   "le-pen+zemmour": 0.01,
+   "melenchon+retailleau": 0.01,
+   "philippe+retailleau": 0.01,
+   "arthaud+le-pen": 0.0,
+   "attal+glucksmann": 0.0,
+   "attal+retailleau": 0.0,
+   "glucksmann+roussel": 0.0,
+   "melenchon+tondelier": 0.0,
+   "philippe+roussel": 0.0,
+   "philippe+zemmour": 0.0
   },
   "delta_bascule": {
-   "melenchon": 2.0,
-   "glucksmann": 5.5
+   "melenchon": 2.1,
+   "glucksmann": 5.6
   }
  },
  {
@@ -739,88 +859,106 @@
    "tondelier": 3.62,
    "zemmour": 3.11,
    "roussel": 2.03,
-   "dupont-aignan": 1.44,
-   "arthaud": 0.84
+   "arthaud": 0.84,
+   "dupont-aignan": 1.44
   },
   "qualification": {
-   "le-pen": 100.0,
-   "philippe": 70.42,
-   "melenchon": 29.03,
-   "glucksmann": 0.44,
-   "attal": 0.09,
-   "retailleau": 0.02,
-   "tondelier": 0.0,
-   "zemmour": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
-   "arthaud": 0.0
+   "le-pen": 99.88,
+   "philippe": 68.61,
+   "melenchon": 28.46,
+   "glucksmann": 1.64,
+   "attal": 0.85,
+   "retailleau": 0.48,
+   "tondelier": 0.03,
+   "zemmour": 0.03,
+   "roussel": 0.02,
+   "arthaud": 0.01,
+   "dupont-aignan": 0.0
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.49,
+    "2": 0.39,
+    "3plus": 0.12
    },
    "philippe": {
-    "1": 0.0,
-    "2": 70.42,
-    "3plus": 29.58
+    "1": 0.28,
+    "2": 68.33,
+    "3plus": 31.39
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 29.03,
-    "3plus": 70.97
+    "1": 0.14,
+    "2": 28.32,
+    "3plus": 71.54
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 0.44,
-    "3plus": 99.56
+    "1": 0.03,
+    "2": 1.61,
+    "3plus": 98.36
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.09,
-    "3plus": 99.91
+    "1": 0.03,
+    "2": 0.82,
+    "3plus": 99.15
    },
    "retailleau": {
+    "1": 0.02,
+    "2": 0.46,
+    "3plus": 99.52
+   },
+   "tondelier": {
+    "1": 0.01,
+    "2": 0.03,
+    "3plus": 99.97
+   },
+   "zemmour": {
+    "1": 0.0,
+    "2": 0.03,
+    "3plus": 99.97
+   },
+   "roussel": {
     "1": 0.0,
     "2": 0.02,
     "3plus": 99.98
    },
-   "tondelier": {
+   "arthaud": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "zemmour": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "roussel": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "dupont-aignan": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "arthaud": {
     "1": 0.0,
     "2": 0.0,
     "3plus": 100.0
    }
   },
   "duels": {
-   "le-pen+philippe": 70.42,
-   "le-pen+melenchon": 29.03,
-   "glucksmann+le-pen": 0.44,
-   "attal+le-pen": 0.09,
-   "le-pen+retailleau": 0.02
+   "le-pen+philippe": 68.52,
+   "le-pen+melenchon": 28.39,
+   "glucksmann+le-pen": 1.61,
+   "attal+le-pen": 0.83,
+   "le-pen+retailleau": 0.45,
+   "melenchon+philippe": 0.05,
+   "le-pen+tondelier": 0.03,
+   "le-pen+zemmour": 0.03,
+   "arthaud+le-pen": 0.01,
+   "attal+philippe": 0.01,
+   "glucksmann+melenchon": 0.01,
+   "glucksmann+philippe": 0.01,
+   "le-pen+roussel": 0.01,
+   "melenchon+retailleau": 0.01,
+   "philippe+retailleau": 0.01,
+   "attal+glucksmann": 0.0,
+   "attal+retailleau": 0.0,
+   "dupont-aignan+le-pen": 0.0,
+   "glucksmann+roussel": 0.0,
+   "glucksmann+zemmour": 0.0,
+   "philippe+roussel": 0.0,
+   "philippe+tondelier": 0.0,
+   "retailleau+tondelier": 0.0
   },
   "delta_bascule": {
-   "melenchon": 1.3,
+   "melenchon": 1.4,
    "glucksmann": 5.6
   }
  },
@@ -857,75 +995,75 @@
    "attal": 9.71,
    "glucksmann": 9.38,
    "retailleau": 7.57,
-   "zemmour": 3.31,
    "tondelier": 3.22,
+   "zemmour": 3.31,
    "roussel": 2.0,
    "dupont-aignan": 1.98,
    "arthaud": 0.84
   },
   "qualification": {
-   "le-pen": 100.0,
-   "philippe": 64.35,
-   "melenchon": 35.04,
-   "attal": 0.34,
-   "glucksmann": 0.25,
-   "retailleau": 0.02,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
+   "le-pen": 99.84,
+   "philippe": 62.26,
+   "melenchon": 34.64,
+   "attal": 1.52,
+   "glucksmann": 1.24,
+   "retailleau": 0.4,
+   "tondelier": 0.04,
+   "zemmour": 0.03,
+   "roussel": 0.01,
+   "dupont-aignan": 0.01,
    "arthaud": 0.0
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.2,
+    "2": 0.64,
+    "3plus": 0.16
    },
    "philippe": {
-    "1": 0.0,
-    "2": 64.35,
-    "3plus": 35.65
+    "1": 0.43,
+    "2": 61.83,
+    "3plus": 37.74
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 35.04,
-    "3plus": 64.96
+    "1": 0.25,
+    "2": 34.39,
+    "3plus": 65.36
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.34,
-    "3plus": 99.66
+    "1": 0.06,
+    "2": 1.46,
+    "3plus": 98.48
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 0.25,
-    "3plus": 99.75
+    "1": 0.04,
+    "2": 1.2,
+    "3plus": 98.76
    },
    "retailleau": {
-    "1": 0.0,
-    "2": 0.02,
-    "3plus": 99.98
-   },
-   "zemmour": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.02,
+    "2": 0.38,
+    "3plus": 99.6
    },
    "tondelier": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.04,
+    "3plus": 99.96
+   },
+   "zemmour": {
+    "1": 0.0,
+    "2": 0.03,
+    "3plus": 99.97
    },
    "roussel": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
@@ -934,15 +1072,31 @@
    }
   },
   "duels": {
-   "le-pen+philippe": 64.35,
-   "le-pen+melenchon": 35.04,
-   "attal+le-pen": 0.34,
-   "glucksmann+le-pen": 0.25,
-   "le-pen+retailleau": 0.02
+   "le-pen+philippe": 62.14,
+   "le-pen+melenchon": 34.57,
+   "attal+le-pen": 1.47,
+   "glucksmann+le-pen": 1.2,
+   "le-pen+retailleau": 0.38,
+   "melenchon+philippe": 0.05,
+   "attal+philippe": 0.04,
+   "le-pen+tondelier": 0.04,
+   "le-pen+zemmour": 0.03,
+   "glucksmann+philippe": 0.02,
+   "attal+melenchon": 0.01,
+   "dupont-aignan+le-pen": 0.01,
+   "glucksmann+melenchon": 0.01,
+   "le-pen+roussel": 0.01,
+   "melenchon+retailleau": 0.01,
+   "philippe+retailleau": 0.01,
+   "attal+glucksmann": 0.0,
+   "attal+zemmour": 0.0,
+   "glucksmann+retailleau": 0.0,
+   "philippe+roussel": 0.0,
+   "philippe+zemmour": 0.0
   },
   "delta_bascule": {
    "melenchon": 1.0,
-   "attal": 5.6
+   "attal": 5.7
   }
  },
  {
@@ -975,91 +1129,112 @@
    "glucksmann": 9.64,
    "attal": 8.93,
    "retailleau": 6.49,
-   "zemmour": 3.13,
    "tondelier": 3.04,
+   "zemmour": 3.13,
    "dupont-aignan": 2.1,
    "roussel": 2.01,
    "arthaud": 0.98
   },
   "qualification": {
-   "le-pen": 100.0,
-   "melenchon": 68.53,
-   "philippe": 31.02,
-   "glucksmann": 0.33,
-   "attal": 0.12,
-   "retailleau": 0.0,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "dupont-aignan": 0.0,
-   "roussel": 0.0,
-   "arthaud": 0.0
+   "le-pen": 99.86,
+   "melenchon": 66.59,
+   "philippe": 30.86,
+   "glucksmann": 1.46,
+   "attal": 0.93,
+   "retailleau": 0.19,
+   "tondelier": 0.05,
+   "zemmour": 0.03,
+   "dupont-aignan": 0.02,
+   "roussel": 0.01,
+   "arthaud": 0.01
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.39,
+    "2": 0.47,
+    "3plus": 0.14
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 68.53,
-    "3plus": 31.47
+    "1": 0.34,
+    "2": 66.24,
+    "3plus": 33.41
    },
    "philippe": {
-    "1": 0.0,
-    "2": 31.02,
-    "3plus": 68.98
+    "1": 0.17,
+    "2": 30.69,
+    "3plus": 69.14
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 0.33,
-    "3plus": 99.67
+    "1": 0.04,
+    "2": 1.43,
+    "3plus": 98.54
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.12,
-    "3plus": 99.88
+    "1": 0.03,
+    "2": 0.9,
+    "3plus": 99.07
    },
    "retailleau": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "zemmour": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.01,
+    "2": 0.17,
+    "3plus": 99.81
    },
    "tondelier": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.01,
+    "2": 0.04,
+    "3plus": 99.95
+   },
+   "zemmour": {
+    "1": 0.01,
+    "2": 0.03,
+    "3plus": 99.97
    },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.02,
+    "3plus": 99.98
    },
    "roussel": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    }
   },
   "duels": {
-   "le-pen+melenchon": 68.53,
-   "le-pen+philippe": 31.02,
-   "glucksmann+le-pen": 0.33,
-   "attal+le-pen": 0.12,
-   "le-pen+retailleau": 0.0
+   "le-pen+melenchon": 66.49,
+   "le-pen+philippe": 30.76,
+   "glucksmann+le-pen": 1.44,
+   "attal+le-pen": 0.9,
+   "le-pen+retailleau": 0.18,
+   "melenchon+philippe": 0.07,
+   "le-pen+tondelier": 0.04,
+   "le-pen+zemmour": 0.03,
+   "arthaud+le-pen": 0.01,
+   "attal+melenchon": 0.01,
+   "attal+philippe": 0.01,
+   "dupont-aignan+le-pen": 0.01,
+   "glucksmann+melenchon": 0.01,
+   "glucksmann+philippe": 0.01,
+   "le-pen+roussel": 0.01,
+   "attal+roussel": 0.0,
+   "attal+tondelier": 0.0,
+   "dupont-aignan+melenchon": 0.0,
+   "glucksmann+retailleau": 0.0,
+   "glucksmann+tondelier": 0.0,
+   "melenchon+zemmour": 0.0,
+   "philippe+retailleau": 0.0,
+   "philippe+roussel": 0.0,
+   "philippe+tondelier": 0.0,
+   "philippe+zemmour": 0.0,
+   "tondelier+zemmour": 0.0
   },
   "delta_bascule": {
-   "philippe": 1.2,
+   "philippe": 1.3,
    "glucksmann": 5.8
   }
  },
@@ -1094,73 +1269,73 @@
    "retailleau": 6.14,
    "zemmour": 3.32,
    "tondelier": 2.97,
-   "roussel": 2.48,
    "dupont-aignan": 1.83,
+   "roussel": 2.48,
    "arthaud": 0.73
   },
   "qualification": {
-   "le-pen": 100.0,
-   "melenchon": 69.2,
-   "philippe": 29.98,
-   "glucksmann": 0.78,
-   "attal": 0.04,
-   "retailleau": 0.0,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
+   "le-pen": 99.86,
+   "melenchon": 67.39,
+   "philippe": 29.7,
+   "glucksmann": 2.17,
+   "attal": 0.65,
+   "retailleau": 0.15,
+   "zemmour": 0.03,
+   "tondelier": 0.03,
+   "dupont-aignan": 0.01,
+   "roussel": 0.01,
    "arthaud": 0.0
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.32,
+    "2": 0.54,
+    "3plus": 0.14
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 69.2,
-    "3plus": 30.8
+    "1": 0.35,
+    "2": 67.04,
+    "3plus": 32.61
    },
    "philippe": {
-    "1": 0.0,
-    "2": 29.98,
-    "3plus": 70.02
+    "1": 0.19,
+    "2": 29.51,
+    "3plus": 70.3
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 0.78,
-    "3plus": 99.22
+    "1": 0.07,
+    "2": 2.11,
+    "3plus": 97.83
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.04,
-    "3plus": 99.96
+    "1": 0.03,
+    "2": 0.61,
+    "3plus": 99.35
    },
    "retailleau": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.02,
+    "2": 0.14,
+    "3plus": 99.85
    },
    "zemmour": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.01,
+    "2": 0.02,
+    "3plus": 99.97
    },
    "tondelier": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "roussel": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.01,
+    "2": 0.02,
+    "3plus": 99.97
    },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
+   },
+   "roussel": {
+    "1": 0.0,
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
@@ -1169,10 +1344,30 @@
    }
   },
   "duels": {
-   "le-pen+melenchon": 69.2,
-   "le-pen+philippe": 29.98,
-   "glucksmann+le-pen": 0.78,
-   "attal+le-pen": 0.04
+   "le-pen+melenchon": 67.29,
+   "le-pen+philippe": 29.62,
+   "glucksmann+le-pen": 2.13,
+   "attal+le-pen": 0.61,
+   "le-pen+retailleau": 0.14,
+   "melenchon+philippe": 0.05,
+   "le-pen+zemmour": 0.03,
+   "attal+melenchon": 0.02,
+   "glucksmann+melenchon": 0.02,
+   "le-pen+tondelier": 0.02,
+   "attal+philippe": 0.01,
+   "dupont-aignan+le-pen": 0.01,
+   "glucksmann+philippe": 0.01,
+   "le-pen+roussel": 0.01,
+   "melenchon+tondelier": 0.01,
+   "arthaud+le-pen": 0.0,
+   "attal+glucksmann": 0.0,
+   "attal+retailleau": 0.0,
+   "attal+tondelier": 0.0,
+   "dupont-aignan+glucksmann": 0.0,
+   "glucksmann+retailleau": 0.0,
+   "melenchon+retailleau": 0.0,
+   "melenchon+zemmour": 0.0,
+   "philippe+retailleau": 0.0
   },
   "delta_bascule": {
    "philippe": 1.3,
@@ -1209,90 +1404,113 @@
    "attal": 7.27,
    "retailleau": 6.09,
    "zemmour": 3.51,
-   "tondelier": 3.14,
    "roussel": 2.69,
+   "tondelier": 3.14,
    "dupont-aignan": 2.19,
    "arthaud": 1.01
   },
   "qualification": {
-   "le-pen": 100.0,
-   "philippe": 51.62,
-   "melenchon": 46.84,
-   "glucksmann": 1.53,
-   "attal": 0.0,
-   "retailleau": 0.0,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
-   "arthaud": 0.0
+   "le-pen": 99.84,
+   "philippe": 50.32,
+   "melenchon": 46.02,
+   "glucksmann": 3.16,
+   "attal": 0.4,
+   "retailleau": 0.14,
+   "zemmour": 0.05,
+   "roussel": 0.04,
+   "tondelier": 0.02,
+   "dupont-aignan": 0.02,
+   "arthaud": 0.01
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.34,
+    "2": 0.5,
+    "3plus": 0.16
    },
    "philippe": {
-    "1": 0.0,
-    "2": 51.62,
-    "3plus": 48.38
+    "1": 0.28,
+    "2": 50.05,
+    "3plus": 49.68
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 46.84,
-    "3plus": 53.16
+    "1": 0.24,
+    "2": 45.78,
+    "3plus": 53.98
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 1.53,
-    "3plus": 98.47
+    "1": 0.1,
+    "2": 3.06,
+    "3plus": 96.84
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.03,
+    "2": 0.37,
+    "3plus": 99.6
    },
    "retailleau": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.01,
+    "2": 0.13,
+    "3plus": 99.86
    },
    "zemmour": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.05,
+    "3plus": 99.95
+   },
+   "roussel": {
+    "1": 0.01,
+    "2": 0.03,
+    "3plus": 99.96
    },
    "tondelier": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "roussel": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.02,
+    "3plus": 99.98
    },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.02,
+    "3plus": 99.98
    },
    "arthaud": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    }
   },
   "duels": {
-   "le-pen+philippe": 51.62,
-   "le-pen+melenchon": 46.84,
-   "glucksmann+le-pen": 1.53,
-   "attal+le-pen": 0.0
+   "le-pen+philippe": 50.22,
+   "le-pen+melenchon": 45.91,
+   "glucksmann+le-pen": 3.11,
+   "attal+le-pen": 0.37,
+   "le-pen+retailleau": 0.12,
+   "melenchon+philippe": 0.06,
+   "le-pen+zemmour": 0.04,
+   "le-pen+roussel": 0.03,
+   "dupont-aignan+le-pen": 0.02,
+   "glucksmann+melenchon": 0.02,
+   "glucksmann+philippe": 0.02,
+   "attal+melenchon": 0.01,
+   "attal+philippe": 0.01,
+   "le-pen+tondelier": 0.01,
+   "philippe+retailleau": 0.01,
+   "arthaud+le-pen": 0.0,
+   "arthaud+melenchon": 0.0,
+   "arthaud+roussel": 0.0,
+   "attal+glucksmann": 0.0,
+   "attal+retailleau": 0.0,
+   "glucksmann+retailleau": 0.0,
+   "glucksmann+roussel": 0.0,
+   "glucksmann+zemmour": 0.0,
+   "melenchon+retailleau": 0.0,
+   "melenchon+tondelier": 0.0,
+   "melenchon+zemmour": 0.0,
+   "philippe+roussel": 0.0
   },
   "delta_bascule": {
-   "melenchon": 0.2,
-   "glucksmann": 4.6
+   "melenchon": 0.3,
+   "glucksmann": 4.7
   }
  },
  {
@@ -1326,74 +1544,74 @@
    "attal": 9.0,
    "retailleau": 6.34,
    "zemmour": 3.4,
+   "dupont-aignan": 2.37,
    "tondelier": 2.69,
    "roussel": 2.39,
-   "dupont-aignan": 2.37,
    "arthaud": 0.98
   },
   "qualification": {
-   "le-pen": 100.0,
-   "philippe": 51.04,
-   "melenchon": 48.03,
-   "glucksmann": 0.85,
-   "attal": 0.08,
-   "retailleau": 0.0,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
+   "le-pen": 99.78,
+   "philippe": 49.94,
+   "melenchon": 46.72,
+   "glucksmann": 2.43,
+   "attal": 0.87,
+   "retailleau": 0.17,
+   "zemmour": 0.03,
+   "dupont-aignan": 0.02,
+   "tondelier": 0.01,
+   "roussel": 0.01,
    "arthaud": 0.0
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.05,
+    "2": 0.74,
+    "3plus": 0.22
    },
    "philippe": {
-    "1": 0.0,
-    "2": 51.04,
-    "3plus": 48.96
+    "1": 0.43,
+    "2": 49.51,
+    "3plus": 50.06
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 48.03,
-    "3plus": 51.97
+    "1": 0.37,
+    "2": 46.36,
+    "3plus": 53.28
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 0.85,
-    "3plus": 99.15
+    "1": 0.09,
+    "2": 2.34,
+    "3plus": 97.57
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.08,
-    "3plus": 99.92
+    "1": 0.05,
+    "2": 0.83,
+    "3plus": 99.13
    },
    "retailleau": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.01,
+    "2": 0.16,
+    "3plus": 99.83
    },
    "zemmour": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.02,
+    "3plus": 99.97
+   },
+   "dupont-aignan": {
+    "1": 0.01,
+    "2": 0.01,
+    "3plus": 99.98
    },
    "tondelier": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "roussel": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "dupont-aignan": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
@@ -1402,13 +1620,35 @@
    }
   },
   "duels": {
-   "le-pen+philippe": 51.04,
-   "le-pen+melenchon": 48.03,
-   "glucksmann+le-pen": 0.85,
-   "attal+le-pen": 0.08
+   "le-pen+philippe": 49.81,
+   "le-pen+melenchon": 46.56,
+   "glucksmann+le-pen": 2.37,
+   "attal+le-pen": 0.83,
+   "le-pen+retailleau": 0.16,
+   "melenchon+philippe": 0.09,
+   "glucksmann+melenchon": 0.04,
+   "attal+melenchon": 0.02,
+   "attal+philippe": 0.02,
+   "dupont-aignan+le-pen": 0.02,
+   "glucksmann+philippe": 0.02,
+   "le-pen+zemmour": 0.02,
+   "attal+glucksmann": 0.01,
+   "le-pen+roussel": 0.01,
+   "le-pen+tondelier": 0.01,
+   "melenchon+retailleau": 0.01,
+   "philippe+retailleau": 0.01,
+   "arthaud+le-pen": 0.0,
+   "arthaud+melenchon": 0.0,
+   "attal+dupont-aignan": 0.0,
+   "attal+zemmour": 0.0,
+   "dupont-aignan+melenchon": 0.0,
+   "melenchon+roussel": 0.0,
+   "melenchon+tondelier": 0.0,
+   "melenchon+zemmour": 0.0
   },
   "delta_bascule": {
-   "melenchon": 0.1,
+   "philippe": 0.0,
+   "melenchon": 0.2,
    "glucksmann": 5.1
   }
  },
@@ -1450,84 +1690,109 @@
    "arthaud": 0.84
   },
   "qualification": {
-   "le-pen": 100.0,
-   "philippe": 49.98,
-   "melenchon": 48.6,
-   "glucksmann": 1.35,
-   "attal": 0.07,
-   "retailleau": 0.0,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
-   "arthaud": 0.0
+   "le-pen": 99.8,
+   "philippe": 48.92,
+   "melenchon": 47.47,
+   "glucksmann": 2.78,
+   "attal": 0.76,
+   "retailleau": 0.16,
+   "zemmour": 0.04,
+   "tondelier": 0.02,
+   "roussel": 0.01,
+   "dupont-aignan": 0.01,
+   "arthaud": 0.01
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.18,
+    "2": 0.62,
+    "3plus": 0.2
    },
    "philippe": {
-    "1": 0.0,
-    "2": 49.97,
-    "3plus": 50.02
+    "1": 0.32,
+    "2": 48.6,
+    "3plus": 51.08
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 48.6,
-    "3plus": 51.4
+    "1": 0.35,
+    "2": 47.13,
+    "3plus": 52.53
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 1.35,
-    "3plus": 98.65
+    "1": 0.07,
+    "2": 2.72,
+    "3plus": 97.22
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.07,
-    "3plus": 99.93
+    "1": 0.04,
+    "2": 0.71,
+    "3plus": 99.24
    },
    "retailleau": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.01,
+    "2": 0.15,
+    "3plus": 99.84
    },
    "zemmour": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.01,
+    "2": 0.04,
+    "3plus": 99.96
    },
    "tondelier": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.01,
+    "2": 0.01,
+    "3plus": 99.98
    },
    "roussel": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
     "2": 0.0,
-    "3plus": 100.0
+    "3plus": 99.99
    }
   },
   "duels": {
-   "le-pen+philippe": 49.98,
-   "le-pen+melenchon": 48.6,
-   "glucksmann+le-pen": 1.35,
-   "attal+le-pen": 0.07
+   "le-pen+philippe": 48.79,
+   "le-pen+melenchon": 47.36,
+   "glucksmann+le-pen": 2.73,
+   "attal+le-pen": 0.71,
+   "le-pen+retailleau": 0.14,
+   "melenchon+philippe": 0.07,
+   "attal+philippe": 0.03,
+   "glucksmann+melenchon": 0.03,
+   "le-pen+zemmour": 0.03,
+   "le-pen+tondelier": 0.02,
+   "philippe+retailleau": 0.02,
+   "arthaud+melenchon": 0.01,
+   "attal+glucksmann": 0.01,
+   "attal+melenchon": 0.01,
+   "dupont-aignan+le-pen": 0.01,
+   "glucksmann+philippe": 0.01,
+   "le-pen+roussel": 0.01,
+   "arthaud+le-pen": 0.0,
+   "attal+retailleau": 0.0,
+   "attal+roussel": 0.0,
+   "attal+tondelier": 0.0,
+   "dupont-aignan+glucksmann": 0.0,
+   "dupont-aignan+philippe": 0.0,
+   "glucksmann+retailleau": 0.0,
+   "glucksmann+zemmour": 0.0,
+   "melenchon+zemmour": 0.0,
+   "philippe+roussel": 0.0,
+   "philippe+tondelier": 0.0,
+   "philippe+zemmour": 0.0
   },
   "delta_bascule": {
-   "philippe": 0.0,
-   "melenchon": 0.1,
+   "philippe": 0.1,
+   "melenchon": 0.2,
    "glucksmann": 4.8
   }
  },
@@ -1563,75 +1828,75 @@
    "glucksmann": 10.9,
    "attal": 8.32,
    "retailleau": 6.47,
-   "zemmour": 3.14,
    "tondelier": 2.87,
+   "zemmour": 3.14,
    "dupont-aignan": 2.36,
    "roussel": 2.23,
    "arthaud": 0.86
   },
   "qualification": {
-   "le-pen": 100.0,
-   "melenchon": 56.88,
-   "philippe": 41.87,
-   "glucksmann": 1.23,
-   "attal": 0.02,
-   "retailleau": 0.0,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "dupont-aignan": 0.0,
-   "roussel": 0.0,
+   "le-pen": 99.83,
+   "melenchon": 55.26,
+   "philippe": 41.2,
+   "glucksmann": 2.86,
+   "attal": 0.62,
+   "retailleau": 0.14,
+   "tondelier": 0.03,
+   "zemmour": 0.03,
+   "dupont-aignan": 0.02,
+   "roussel": 0.01,
    "arthaud": 0.0
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.14,
+    "2": 0.69,
+    "3plus": 0.17
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 56.88,
-    "3plus": 43.12
+    "1": 0.34,
+    "2": 54.92,
+    "3plus": 44.74
    },
    "philippe": {
-    "1": 0.0,
-    "2": 41.87,
-    "3plus": 58.13
+    "1": 0.34,
+    "2": 40.86,
+    "3plus": 58.8
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 1.23,
-    "3plus": 98.77
+    "1": 0.11,
+    "2": 2.75,
+    "3plus": 97.14
    },
    "attal": {
+    "1": 0.04,
+    "2": 0.58,
+    "3plus": 99.38
+   },
+   "retailleau": {
+    "1": 0.01,
+    "2": 0.13,
+    "3plus": 99.86
+   },
+   "tondelier": {
+    "1": 0.01,
+    "2": 0.02,
+    "3plus": 99.97
+   },
+   "zemmour": {
+    "1": 0.01,
+    "2": 0.02,
+    "3plus": 99.97
+   },
+   "dupont-aignan": {
     "1": 0.0,
     "2": 0.02,
     "3plus": 99.98
    },
-   "retailleau": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "zemmour": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "tondelier": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "dupont-aignan": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
    "roussel": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
@@ -1640,13 +1905,33 @@
    }
   },
   "duels": {
-   "le-pen+melenchon": 56.88,
-   "le-pen+philippe": 41.87,
-   "glucksmann+le-pen": 1.23,
-   "attal+le-pen": 0.02
+   "le-pen+melenchon": 55.14,
+   "le-pen+philippe": 41.1,
+   "glucksmann+le-pen": 2.79,
+   "attal+le-pen": 0.6,
+   "le-pen+retailleau": 0.12,
+   "melenchon+philippe": 0.06,
+   "glucksmann+melenchon": 0.04,
+   "le-pen+tondelier": 0.03,
+   "glucksmann+philippe": 0.02,
+   "le-pen+zemmour": 0.02,
+   "attal+melenchon": 0.01,
+   "dupont-aignan+le-pen": 0.01,
+   "le-pen+roussel": 0.01,
+   "melenchon+retailleau": 0.01,
+   "philippe+retailleau": 0.01,
+   "attal+glucksmann": 0.0,
+   "attal+philippe": 0.0,
+   "dupont-aignan+melenchon": 0.0,
+   "dupont-aignan+philippe": 0.0,
+   "glucksmann+retailleau": 0.0,
+   "glucksmann+zemmour": 0.0,
+   "melenchon+roussel": 0.0,
+   "melenchon+tondelier": 0.0,
+   "philippe+zemmour": 0.0
   },
   "delta_bascule": {
-   "philippe": 0.5,
+   "philippe": 0.6,
    "glucksmann": 4.9
   }
  },
@@ -1681,77 +1966,77 @@
    "melenchon": 15.7,
    "philippe": 15.03,
    "glucksmann": 11.12,
-   "retailleau": 6.57,
    "attal": 7.92,
-   "zemmour": 3.09,
+   "retailleau": 6.57,
    "tondelier": 2.88,
-   "dupont-aignan": 2.36,
+   "zemmour": 3.09,
    "roussel": 2.15,
+   "dupont-aignan": 2.36,
    "arthaud": 0.89
   },
   "qualification": {
-   "le-pen": 100.0,
-   "melenchon": 58.01,
-   "philippe": 40.29,
-   "glucksmann": 1.69,
-   "retailleau": 0.0,
-   "attal": 0.0,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "dupont-aignan": 0.0,
-   "roussel": 0.0,
+   "le-pen": 99.83,
+   "melenchon": 56.67,
+   "philippe": 39.6,
+   "glucksmann": 3.16,
+   "attal": 0.47,
+   "retailleau": 0.18,
+   "tondelier": 0.03,
+   "zemmour": 0.03,
+   "roussel": 0.02,
+   "dupont-aignan": 0.02,
    "arthaud": 0.0
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.22,
+    "2": 0.6,
+    "3plus": 0.17
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 58.01,
-    "3plus": 41.99
+    "1": 0.33,
+    "2": 56.34,
+    "3plus": 43.33
    },
    "philippe": {
-    "1": 0.0,
-    "2": 40.29,
-    "3plus": 59.71
+    "1": 0.3,
+    "2": 39.3,
+    "3plus": 60.4
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 1.69,
-    "3plus": 98.31
-   },
-   "retailleau": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.09,
+    "2": 3.07,
+    "3plus": 96.84
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.02,
+    "2": 0.45,
+    "3plus": 99.53
    },
-   "zemmour": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+   "retailleau": {
+    "1": 0.02,
+    "2": 0.16,
+    "3plus": 99.82
    },
    "tondelier": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.03,
+    "3plus": 99.97
    },
-   "dupont-aignan": {
+   "zemmour": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.02,
+    "3plus": 99.97
    },
    "roussel": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.98
+   },
+   "dupont-aignan": {
+    "1": 0.01,
+    "2": 0.01,
+    "3plus": 99.98
    },
    "arthaud": {
     "1": 0.0,
@@ -1760,15 +2045,37 @@
    }
   },
   "duels": {
-   "le-pen+melenchon": 58.01,
-   "le-pen+philippe": 40.29,
-   "glucksmann+le-pen": 1.69,
-   "attal+le-pen": 0.0,
-   "le-pen+retailleau": 0.0
+   "le-pen+melenchon": 56.56,
+   "le-pen+philippe": 39.49,
+   "glucksmann+le-pen": 3.1,
+   "attal+le-pen": 0.45,
+   "le-pen+retailleau": 0.16,
+   "melenchon+philippe": 0.07,
+   "le-pen+tondelier": 0.03,
+   "glucksmann+melenchon": 0.02,
+   "glucksmann+philippe": 0.02,
+   "le-pen+zemmour": 0.02,
+   "attal+melenchon": 0.01,
+   "attal+philippe": 0.01,
+   "dupont-aignan+le-pen": 0.01,
+   "dupont-aignan+philippe": 0.01,
+   "glucksmann+retailleau": 0.01,
+   "le-pen+roussel": 0.01,
+   "philippe+retailleau": 0.01,
+   "arthaud+melenchon": 0.0,
+   "attal+glucksmann": 0.0,
+   "glucksmann+tondelier": 0.0,
+   "melenchon+retailleau": 0.0,
+   "melenchon+roussel": 0.0,
+   "melenchon+tondelier": 0.0,
+   "melenchon+zemmour": 0.0,
+   "philippe+roussel": 0.0,
+   "philippe+zemmour": 0.0,
+   "retailleau+tondelier": 0.0
   },
   "delta_bascule": {
    "philippe": 0.6,
-   "glucksmann": 4.6
+   "glucksmann": 4.7
   }
  },
  {
@@ -1808,73 +2115,73 @@
    "retailleau": 7.08,
    "zemmour": 3.58,
    "tondelier": 3.22,
-   "roussel": 2.2,
    "dupont-aignan": 2.09,
+   "roussel": 2.2,
    "arthaud": 0.81
   },
   "qualification": {
-   "le-pen": 100.0,
-   "melenchon": 58.91,
-   "philippe": 39.82,
-   "glucksmann": 1.26,
-   "attal": 0.01,
-   "retailleau": 0.0,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
+   "le-pen": 99.86,
+   "melenchon": 57.72,
+   "philippe": 38.75,
+   "glucksmann": 2.97,
+   "attal": 0.34,
+   "retailleau": 0.27,
+   "zemmour": 0.04,
+   "tondelier": 0.03,
+   "dupont-aignan": 0.01,
+   "roussel": 0.01,
    "arthaud": 0.0
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.34,
+    "2": 0.52,
+    "3plus": 0.14
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 58.91,
-    "3plus": 41.09
+    "1": 0.29,
+    "2": 57.43,
+    "3plus": 42.28
    },
    "philippe": {
-    "1": 0.0,
-    "2": 39.82,
-    "3plus": 60.18
+    "1": 0.27,
+    "2": 38.49,
+    "3plus": 61.25
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 1.26,
-    "3plus": 98.74
+    "1": 0.05,
+    "2": 2.92,
+    "3plus": 97.03
    },
    "attal": {
+    "1": 0.02,
+    "2": 0.32,
+    "3plus": 99.66
+   },
+   "retailleau": {
+    "1": 0.02,
+    "2": 0.25,
+    "3plus": 99.73
+   },
+   "zemmour": {
+    "1": 0.01,
+    "2": 0.03,
+    "3plus": 99.96
+   },
+   "tondelier": {
+    "1": 0.0,
+    "2": 0.03,
+    "3plus": 99.97
+   },
+   "dupont-aignan": {
     "1": 0.0,
     "2": 0.01,
     "3plus": 99.99
    },
-   "retailleau": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "zemmour": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "tondelier": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
    "roussel": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "dupont-aignan": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
@@ -1883,14 +2190,34 @@
    }
   },
   "duels": {
-   "le-pen+melenchon": 58.91,
-   "le-pen+philippe": 39.82,
-   "glucksmann+le-pen": 1.26,
-   "attal+le-pen": 0.01,
-   "le-pen+retailleau": 0.0
+   "le-pen+melenchon": 57.63,
+   "le-pen+philippe": 38.66,
+   "glucksmann+le-pen": 2.93,
+   "attal+le-pen": 0.31,
+   "le-pen+retailleau": 0.25,
+   "melenchon+philippe": 0.05,
+   "le-pen+tondelier": 0.03,
+   "attal+philippe": 0.02,
+   "glucksmann+philippe": 0.02,
+   "le-pen+zemmour": 0.02,
+   "attal+melenchon": 0.01,
+   "dupont-aignan+le-pen": 0.01,
+   "glucksmann+melenchon": 0.01,
+   "le-pen+roussel": 0.01,
+   "melenchon+retailleau": 0.01,
+   "melenchon+zemmour": 0.01,
+   "philippe+retailleau": 0.01,
+   "arthaud+melenchon": 0.0,
+   "attal+dupont-aignan": 0.0,
+   "attal+glucksmann": 0.0,
+   "attal+zemmour": 0.0,
+   "dupont-aignan+melenchon": 0.0,
+   "glucksmann+retailleau": 0.0,
+   "glucksmann+zemmour": 0.0,
+   "philippe+tondelier": 0.0
   },
   "delta_bascule": {
-   "philippe": 0.6,
+   "philippe": 0.7,
    "glucksmann": 4.8
   }
  },
@@ -1934,85 +2261,106 @@
    "zemmour": 3.56,
    "tondelier": 3.14,
    "roussel": 2.12,
-   "dupont-aignan": 2.05,
-   "arthaud": 0.88
+   "arthaud": 0.88,
+   "dupont-aignan": 2.05
   },
   "qualification": {
-   "le-pen": 100.0,
-   "melenchon": 65.92,
-   "philippe": 33.6,
-   "glucksmann": 0.46,
-   "attal": 0.01,
-   "retailleau": 0.0,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "roussel": 0.0,
-   "dupont-aignan": 0.0,
-   "arthaud": 0.0
+   "le-pen": 99.83,
+   "melenchon": 64.3,
+   "philippe": 33.43,
+   "glucksmann": 1.68,
+   "attal": 0.37,
+   "retailleau": 0.27,
+   "zemmour": 0.04,
+   "tondelier": 0.03,
+   "roussel": 0.02,
+   "arthaud": 0.01,
+   "dupont-aignan": 0.01
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.36,
+    "2": 0.47,
+    "3plus": 0.17
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 65.92,
-    "3plus": 34.08
+    "1": 0.31,
+    "2": 63.98,
+    "3plus": 35.7
    },
    "philippe": {
-    "1": 0.0,
-    "2": 33.6,
-    "3plus": 66.4
+    "1": 0.22,
+    "2": 33.21,
+    "3plus": 66.57
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 0.46,
-    "3plus": 99.54
+    "1": 0.05,
+    "2": 1.63,
+    "3plus": 98.32
    },
    "attal": {
+    "1": 0.02,
+    "2": 0.35,
+    "3plus": 99.63
+   },
+   "retailleau": {
+    "1": 0.02,
+    "2": 0.25,
+    "3plus": 99.73
+   },
+   "zemmour": {
+    "1": 0.0,
+    "2": 0.04,
+    "3plus": 99.96
+   },
+   "tondelier": {
+    "1": 0.01,
+    "2": 0.02,
+    "3plus": 99.97
+   },
+   "roussel": {
+    "1": 0.0,
+    "2": 0.01,
+    "3plus": 99.98
+   },
+   "arthaud": {
     "1": 0.0,
     "2": 0.01,
     "3plus": 99.99
    },
-   "retailleau": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "zemmour": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "tondelier": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "roussel": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "arthaud": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    }
   },
   "duels": {
-   "le-pen+melenchon": 65.92,
-   "le-pen+philippe": 33.6,
-   "glucksmann+le-pen": 0.46,
-   "attal+le-pen": 0.01,
-   "le-pen+retailleau": 0.0
+   "le-pen+melenchon": 64.19,
+   "le-pen+philippe": 33.32,
+   "glucksmann+le-pen": 1.63,
+   "attal+le-pen": 0.34,
+   "le-pen+retailleau": 0.25,
+   "melenchon+philippe": 0.06,
+   "le-pen+zemmour": 0.04,
+   "glucksmann+melenchon": 0.03,
+   "glucksmann+philippe": 0.02,
+   "le-pen+tondelier": 0.02,
+   "arthaud+le-pen": 0.01,
+   "attal+glucksmann": 0.01,
+   "attal+melenchon": 0.01,
+   "attal+philippe": 0.01,
+   "dupont-aignan+le-pen": 0.01,
+   "le-pen+roussel": 0.01,
+   "philippe+retailleau": 0.01,
+   "arthaud+melenchon": 0.0,
+   "glucksmann+retailleau": 0.0,
+   "glucksmann+tondelier": 0.0,
+   "melenchon+retailleau": 0.0,
+   "melenchon+roussel": 0.0,
+   "melenchon+tondelier": 0.0,
+   "philippe+roussel": 0.0,
+   "philippe+zemmour": 0.0,
+   "retailleau+roussel": 0.0
   },
   "delta_bascule": {
    "philippe": 1.1,
@@ -2057,75 +2405,75 @@
    "glucksmann": 10.22,
    "attal": 9.18,
    "retailleau": 6.88,
-   "zemmour": 3.38,
    "tondelier": 2.77,
+   "zemmour": 3.38,
    "dupont-aignan": 2.31,
    "roussel": 1.98,
    "arthaud": 0.71
   },
   "qualification": {
-   "le-pen": 100.0,
-   "melenchon": 59.61,
-   "philippe": 39.94,
-   "glucksmann": 0.39,
-   "attal": 0.06,
-   "retailleau": 0.0,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "dupont-aignan": 0.0,
-   "roussel": 0.0,
+   "le-pen": 99.8,
+   "melenchon": 58.49,
+   "philippe": 39.08,
+   "glucksmann": 1.5,
+   "attal": 0.8,
+   "retailleau": 0.25,
+   "tondelier": 0.03,
+   "zemmour": 0.02,
+   "dupont-aignan": 0.01,
+   "roussel": 0.01,
    "arthaud": 0.0
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 98.92,
+    "2": 0.88,
+    "3plus": 0.2
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 59.6,
-    "3plus": 40.39
+    "1": 0.52,
+    "2": 57.97,
+    "3plus": 41.51
    },
    "philippe": {
-    "1": 0.0,
-    "2": 39.94,
-    "3plus": 60.06
+    "1": 0.42,
+    "2": 38.66,
+    "3plus": 60.92
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 0.39,
-    "3plus": 99.61
+    "1": 0.07,
+    "2": 1.43,
+    "3plus": 98.5
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.06,
-    "3plus": 99.94
+    "1": 0.04,
+    "2": 0.76,
+    "3plus": 99.2
    },
    "retailleau": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.02,
+    "2": 0.23,
+    "3plus": 99.75
+   },
+   "tondelier": {
+    "1": 0.01,
+    "2": 0.03,
+    "3plus": 99.97
    },
    "zemmour": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "tondelier": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.02,
+    "3plus": 99.98
    },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "roussel": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.01,
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
@@ -2134,14 +2482,33 @@
    }
   },
   "duels": {
-   "le-pen+melenchon": 59.61,
-   "le-pen+philippe": 39.94,
-   "glucksmann+le-pen": 0.39,
-   "attal+le-pen": 0.06,
-   "le-pen+retailleau": 0.0
+   "le-pen+melenchon": 58.34,
+   "le-pen+philippe": 38.93,
+   "glucksmann+le-pen": 1.45,
+   "attal+le-pen": 0.78,
+   "le-pen+retailleau": 0.23,
+   "melenchon+philippe": 0.1,
+   "le-pen+tondelier": 0.03,
+   "glucksmann+melenchon": 0.02,
+   "glucksmann+philippe": 0.02,
+   "le-pen+zemmour": 0.02,
+   "attal+melenchon": 0.01,
+   "attal+philippe": 0.01,
+   "dupont-aignan+le-pen": 0.01,
+   "melenchon+retailleau": 0.01,
+   "philippe+retailleau": 0.01,
+   "arthaud+glucksmann": 0.0,
+   "attal+glucksmann": 0.0,
+   "attal+roussel": 0.0,
+   "glucksmann+roussel": 0.0,
+   "le-pen+roussel": 0.0,
+   "melenchon+roussel": 0.0,
+   "melenchon+zemmour": 0.0,
+   "philippe+tondelier": 0.0,
+   "retailleau+tondelier": 0.0
   },
   "delta_bascule": {
-   "philippe": 0.6,
+   "philippe": 0.7,
    "glucksmann": 5.8
   }
  },
@@ -2183,75 +2550,75 @@
    "glucksmann": 10.2,
    "attal": 7.44,
    "retailleau": 6.92,
-   "zemmour": 3.92,
    "tondelier": 2.92,
+   "zemmour": 3.92,
    "dupont-aignan": 2.16,
    "roussel": 2.05,
    "arthaud": 0.85
   },
   "qualification": {
-   "le-pen": 100.0,
-   "melenchon": 73.06,
-   "philippe": 26.45,
-   "glucksmann": 0.47,
-   "attal": 0.01,
-   "retailleau": 0.0,
-   "zemmour": 0.0,
-   "tondelier": 0.0,
-   "dupont-aignan": 0.0,
-   "roussel": 0.0,
+   "le-pen": 99.87,
+   "melenchon": 70.99,
+   "philippe": 26.53,
+   "glucksmann": 1.86,
+   "attal": 0.35,
+   "retailleau": 0.28,
+   "tondelier": 0.05,
+   "zemmour": 0.05,
+   "dupont-aignan": 0.02,
+   "roussel": 0.01,
    "arthaud": 0.0
   },
   "rangs": {
    "le-pen": {
-    "1": 100.0,
-    "2": 0.0,
-    "3plus": 0.0
+    "1": 99.32,
+    "2": 0.54,
+    "3plus": 0.13
    },
    "melenchon": {
-    "1": 0.0,
-    "2": 73.06,
-    "3plus": 26.94
+    "1": 0.37,
+    "2": 70.62,
+    "3plus": 29.01
    },
    "philippe": {
-    "1": 0.0,
-    "2": 26.45,
-    "3plus": 73.55
+    "1": 0.2,
+    "2": 26.33,
+    "3plus": 73.47
    },
    "glucksmann": {
-    "1": 0.0,
-    "2": 0.47,
-    "3plus": 99.53
+    "1": 0.06,
+    "2": 1.79,
+    "3plus": 98.14
    },
    "attal": {
-    "1": 0.0,
-    "2": 0.01,
-    "3plus": 99.99
+    "1": 0.02,
+    "2": 0.33,
+    "3plus": 99.65
    },
    "retailleau": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
-   },
-   "zemmour": {
-    "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "1": 0.02,
+    "2": 0.26,
+    "3plus": 99.72
    },
    "tondelier": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.05,
+    "3plus": 99.95
+   },
+   "zemmour": {
+    "1": 0.0,
+    "2": 0.05,
+    "3plus": 99.95
    },
    "dupont-aignan": {
     "1": 0.0,
-    "2": 0.0,
-    "3plus": 100.0
+    "2": 0.02,
+    "3plus": 99.98
    },
    "roussel": {
     "1": 0.0,
     "2": 0.0,
-    "3plus": 100.0
+    "3plus": 99.99
    },
    "arthaud": {
     "1": 0.0,
@@ -2260,15 +2627,35 @@
    }
   },
   "duels": {
-   "le-pen+melenchon": 73.06,
-   "le-pen+philippe": 26.45,
-   "glucksmann+le-pen": 0.47,
-   "attal+le-pen": 0.01,
-   "le-pen+retailleau": 0.0
+   "le-pen+melenchon": 70.91,
+   "le-pen+philippe": 26.44,
+   "glucksmann+le-pen": 1.82,
+   "attal+le-pen": 0.33,
+   "le-pen+retailleau": 0.26,
+   "le-pen+tondelier": 0.05,
+   "melenchon+philippe": 0.05,
+   "le-pen+zemmour": 0.04,
+   "dupont-aignan+le-pen": 0.02,
+   "glucksmann+philippe": 0.02,
+   "attal+melenchon": 0.01,
+   "attal+philippe": 0.01,
+   "glucksmann+melenchon": 0.01,
+   "le-pen+roussel": 0.01,
+   "philippe+retailleau": 0.01,
+   "arthaud+le-pen": 0.0,
+   "attal+retailleau": 0.0,
+   "dupont-aignan+melenchon": 0.0,
+   "glucksmann+retailleau": 0.0,
+   "glucksmann+tondelier": 0.0,
+   "melenchon+retailleau": 0.0,
+   "melenchon+zemmour": 0.0,
+   "philippe+tondelier": 0.0,
+   "philippe+zemmour": 0.0,
+   "retailleau+roussel": 0.0
   },
   "delta_bascule": {
-   "philippe": 1.5,
-   "glucksmann": 5.6
+   "philippe": 1.6,
+   "glucksmann": 5.7
   }
  }
 ]

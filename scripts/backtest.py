@@ -2,9 +2,12 @@
 """Backtest du modèle Sondax et validation de la loi (SPEC §14.17, §14.20).
 
 Qu'aurait affiché Sondax avant les présidentielles 2002-2022 ? Pour chaque
-élection, en leave-one-out : N_eff calibré sur les quatre autres, moyenne
-Sondax à J−7 (même code que la courbe, series.calculer_series), moteur actuel,
-comparaison au résultat. Puis confrontation de la loi de Dirichlet aux erreurs
+élection, en leave-one-out : N_eff calibré sur toutes les autres élections
+(présidentielles et européennes), avec l'estimateur du moteur (moyenne Sondax à
+J−7), moyenne Sondax à J−7 de l'élection testée, moteur actuel (mélange k de
+config.json), comparaison au résultat. Le même exercice est refait avec la
+méthode de la phase A (moyenne simple de la dernière semaine, sans mélange)
+pour mesurer ce que la correction apporte. Puis confrontation de la loi de Dirichlet aux erreurs
 historiques. Écrit data/derived/backtest.json.
 """
 
@@ -12,7 +15,6 @@ import datetime, json, math, pathlib, statistics, sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import calibration, modele  # noqa: E402
-from series import calculer_series  # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUTPUT_PATH = ROOT / "data" / "derived" / "backtest.json"
@@ -23,32 +25,20 @@ TRANCHES_FIABILITE = [(0, 10), (10, 25), (25, 60), (60, 90), (90, 100.01)]
 TRANCHES_NIVEAU = calibration.TRANCHES
 
 
-def moyenne_sondax(election, jour):
-    """Moyenne Sondax (dernier point de la courbe) avec les seuls sondages dont
-    terrain_fin ≤ jour, pour les candidats officiels."""
-    sondages = [s for s in election["sondages"]
-                if datetime.date.fromisoformat(s["terrain_fin"]) <= jour]
-    series = calculer_series(sondages)
-    officiels = election["resultats"]["tour1"]
-    moy = {}
-    for c in officiels:
-        pts = series["series"].get(c)
-        if pts and pts[-1]["v"] is not None:
-            moy[c] = pts[-1]["v"]
-    return moy, series["date_fin"]
+moyenne_sondax = calibration.moyenne_sondax
 
 
 def top2(d):
     return sorted(d, key=d.get, reverse=True)[:2]
 
 
-def backtest_election(annee, election, n_eff, reglages):
+def backtest_election(annee, election, n_eff, reglages, k=None):
     t1 = datetime.date.fromisoformat(election["tour1"])
     moy, date_moy = moyenne_sondax(election, t1 - datetime.timedelta(days=HORIZON_JOURS))
     slugs = sorted(moy)
     total = sum(moy.values())
     parts = [100 * moy[c] / total for c in slugs]
-    comptes = modele.simuler(parts, n_eff, reglages["tirages"], reglages["graine"])
+    comptes = modele.simuler(parts, n_eff, reglages["tirages"], reglages["graine"], k)
     n = comptes["tirages"]
     resultat = election["resultats"]["tour1"]
     qualifies = set(top2(resultat))
@@ -97,6 +87,16 @@ def fiabilite(runs):
             "qualifies": sum(o for _, o in dans),
         })
     return {"brier": round(brier, 4), "n": len(evts), "table": table}
+
+
+def score_log(runs):
+    """Perte logarithmique sur l'événement « qualifié » (plus bas = mieux) et
+    chances données au qualifié le moins attendu de chaque élection."""
+    evts = [(l["qualification"] / 100, l["qualifie"]) for r in runs for l in r["candidats"]]
+    perte = -statistics.fmean(math.log(max(p if o else 1 - p, 1e-4)) for p, o in evts)
+    surprises = {r["election"]: min(l["qualification"] for l in r["candidats"] if l["qualifie"])
+                 for r in runs}
+    return {"perte_log": round(perte, 4), "qualifie_le_moins_attendu": surprises}
 
 
 def valider_loi(lignes, n_eff):
@@ -169,13 +169,22 @@ def main():
     reglages = json.loads(CONFIG_PATH.read_text())["modele"]
     elections = json.loads(calibration.SOURCES["presidentielles"].read_text())["elections"]
 
-    runs = []
-    for annee in sorted(elections):
-        autres = {a: e for a, e in elections.items() if a != annee}
-        n_eff = calibration.estimer_neff(calibration.comparaisons(autres))
-        runs.append(backtest_election(annee, elections[annee], n_eff, reglages))
+    tout = {}
+    for nom, el in calibration.charger_elections().items():
+        tout.update({f"{nom}-{an}": e for an, e in el.items()})
 
-    lignes = calibration.comparaisons(elections)
+    runs, runs_a = [], []
+    for annee in sorted(elections):
+        autres = {x: e for x, e in tout.items() if x != f"presidentielles-{annee}"}
+        n_eff = calibration.estimer_neff(calibration.comparaisons_sondax(autres))
+        runs.append(backtest_election(annee, elections[annee], n_eff, reglages,
+                                      reglages.get("k_melange")))
+        # Méthode de la phase A : présidentielles, moyenne simple, sans mélange
+        autres_a = {a: e for a, e in elections.items() if a != annee}
+        n_a = calibration.estimer_neff(calibration.comparaisons(autres_a))
+        runs_a.append(backtest_election(annee, elections[annee], n_a, reglages))
+
+    lignes = calibration.comparaisons_sondax(elections)
     for l in lignes:
         l["erreur"] = l["moyenne"] - l["resultat"]
     loi = valider_loi(lignes, reglages["N_eff"])
@@ -184,7 +193,7 @@ def main():
         tout = {}
         for nom, el in calibration.charger_elections().items():
             tout.update({f"{nom}-{an}": e for an, e in el.items()})
-        lignes_tout = calibration.comparaisons(tout)
+        lignes_tout = calibration.comparaisons_sondax(tout)
         for l in lignes_tout:
             l["erreur"] = l["moyenne"] - l["resultat"]
         loi_ensemble = valider_loi(lignes_tout, reglages["N_eff"])
@@ -195,6 +204,12 @@ def main():
         "methode": "leave-one-out : N_eff calibré sur les quatre autres présidentielles",
         "runs": runs,
         "fiabilite": fiabilite(runs),
+        "comparaison": {
+            "actuelle": {"methode": "moyenne Sondax à J−7, toutes élections, mélange k="
+                         f"{reglages.get('k_melange')}", **score_log(runs), **fiabilite(runs)},
+            "phase_a": {"methode": "moyenne simple de la dernière semaine, présidentielles, sans mélange",
+                        **score_log(runs_a), **fiabilite(runs_a)},
+        },
         "loi": loi,
         "loi_ensemble": loi_ensemble,
     }
@@ -209,6 +224,9 @@ def main():
         d, dr = r["duel_principal"], r["duel_reel"]
         print(f"    duel principal {'+'.join(d['candidats'])} {d['chance']} ; "
               f"réel {'+'.join(dr['candidats'])} {dr['chance']} (rang {dr['rang']})")
+    for cle, c in sortie["comparaison"].items():
+        print(f"{cle:8} Brier {c['brier']}  perte log {c['perte_log']}  "
+              f"qualifié le moins attendu {c['qualifie_le_moins_attendu']}")
     f = sortie["fiabilite"]
     print(f"Brier {f['brier']} sur {f['n']} cas")
     for t in f["table"]:

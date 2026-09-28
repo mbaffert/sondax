@@ -46,6 +46,25 @@ def nom(noms, annee, slug):
     return noms.get(annee, {}).get(slug, slug)
 
 
+def bloc_comparaison(comp, noms):
+    """Ce qu'a apporté la correction d'octobre 2026 (§14.5, §14.6)."""
+    if not comp:
+        return ""
+    a, b = comp["phase_a"], comp["actuelle"]
+    def surprise(c, an):
+        return fr(c["qualifie_le_moins_attendu"][an], 1)
+    lignes = "".join(
+        f'<tr><td>{an}</td><td class="n">{surprise(a, an)}</td><td class="n">{surprise(b, an)}</td></tr>'
+        for an in b["qualifie_le_moins_attendu"])
+    return f'''<p><strong>Correction de la méthode.</strong> Une première version calibrait le
+moteur sur la moyenne simple des sondages de la dernière semaine, sans variation de
+l'ampleur des erreurs. Elle était trop sûre d'elle&nbsp;: perte logarithmique de
+{fr(a["perte_log"], 3)} contre {fr(b["perte_log"], 3)} aujourd'hui (plus bas = mieux),
+score de Brier de {fr(a["brier"], 4)} contre {fr(b["brier"], 4)}. Chances données, par
+élection, au qualifié le moins attendu&nbsp;:</p>
+<table class="mm"><tr><th>Élection</th><th class="n">Première version</th><th class="n">Version actuelle</th></tr>{lignes}</table>'''
+
+
 def section(cal, bt, reglages, noms):
     jeux = cal["jeux"]
     ref = jeux.get(reglages["N_eff_source"]) or jeux["presidentielles"]
@@ -55,8 +74,16 @@ def section(cal, bt, reglages, noms):
     lignes_jeux = "".join(
         f'<tr><td>{JEUX.get(k, k)}</td><td>{", ".join(j["elections"])}</td>'
         f'<td class="n">{j["n_comparaisons"]}</td><td class="n">{fr(j["erreur_absolue_moyenne"])}</td>'
-        f'<td class="n">{fr(j["ecart_type"])}</td><td class="n">{fr(j["N_eff"], 0)}</td></tr>'
+        f'<td class="n">{fr(j["ecart_type"])}</td><td class="n">{fr(j["N_eff"], 0)}</td>'
+        f'<td class="n">{fr(j["moyenne_sondax_j7"]["ecart_type"])}</td>'
+        f'<td class="n">{fr(j["moyenne_sondax_j7"]["N_eff"], 0)}</td></tr>'
         for k, j in jeux.items())
+    source = reglages["N_eff_source"]
+    jeu_source = source.removesuffix("_sondax_j7")
+    estime_source = (jeux[jeu_source]["moyenne_sondax_j7"]["N_eff"] if source.endswith("_sondax_j7")
+                     else jeux[jeu_source]["N_eff"])
+    k_mel = reglages.get("k_melange")
+    comp = bt.get("comparaison", {})
     lignes_tranches = "".join(
         f'<tr><td>{TRANCHES[k]}</td><td class="n">{t["n"]}</td>'
         f'<td class="n">{fr(t["erreur_absolue_moyenne"])}</td><td class="n">{fr(t["ecart_type"])}</td></tr>'
@@ -142,7 +169,7 @@ Sur les présidentielles de {pres["elections"][0]} à {pres["elections"][-1]}&nb
 <strong>{fr(pres["erreur_absolue_moyenne"])} point</strong>, écart-type de
 <strong>{fr(pres["ecart_type"])} point</strong>.
 {("En " + ", ".join(faux) + ", les deux premiers des sondages n'étaient pas les deux qualifiés ; c'est la seule fois." if len(faux) == 1 else "")}</p>
-<table class="mm"><tr><th>Jeu</th><th>Élections</th><th class="n">Comparaisons</th><th class="n">Erreur absolue moyenne</th><th class="n">Écart-type</th><th class="n">N<sub>eff</sub> estimé</th></tr>{lignes_jeux}</table>
+<table class="mm"><tr><th rowspan="2">Jeu</th><th rowspan="2">Élections</th><th colspan="4">Moyenne simple, dernière semaine</th><th colspan="2">Moyenne Sondax à J−7</th></tr><tr><th class="n">Comparaisons</th><th class="n">Erreur absolue moyenne</th><th class="n">Écart-type</th><th class="n">N<sub>eff</sub></th><th class="n">Écart-type</th><th class="n">N<sub>eff</sub></th></tr>{lignes_jeux}</table>
 <p class="mm-legende">Répartition des erreurs (moyenne des sondages − résultat), par tranche de 0,5 point, de {fr(h_de, 1)} à {fr(h_a, 1)} point&nbsp;:</p>
 <div class="mm-histo" aria-hidden="true">{histo}</div>
 <table class="mm"><tr><th>Niveau du candidat</th><th class="n">Cas</th><th class="n">Erreur absolue moyenne</th><th class="n">Écart-type</th></tr>{lignes_tranches}</table>
@@ -153,16 +180,23 @@ Sur les présidentielles de {pres["elections"][0]} à {pres["elections"][-1]}&nb
 Dirichlet centrée sur les intentions de vote. Cette loi a deux propriétés utiles&nbsp;:
 chaque premier tour tiré totalise 100&nbsp;%, et l'ampleur possible de l'erreur dépend du
 niveau du candidat (plus large à 25&nbsp;% qu'à 2&nbsp;%). Son paramètre, N<sub>eff</sub>,
-règle l'ampleur des erreurs&nbsp;; il est calibré sur les erreurs historiques. La graine du
-tirage est fixe&nbsp;: d'un jour à l'autre, les écarts ne viennent que des sondages.</p>
+règle l'ampleur des erreurs&nbsp;; il est calibré sur les erreurs historiques.
+{("Certaines élections, les sondages se trompent plus que d'autres (2002, 2022) : l'ampleur des erreurs varie donc d'un premier tour tiré à l'autre (N<sub>eff</sub> tiré selon une loi gamma de forme " + str(k_mel) + "), en gardant en moyenne l'ampleur calibrée. Les surprises deviennent plus plausibles sans élargir l'incertitude moyenne." ) if k_mel else ""}
+La graine du tirage est fixe&nbsp;: d'un jour à l'autre, les écarts ne viennent que des
+sondages.</p>
 
 <h3>4. Calibration</h3>
 <p>Pour une loi de Dirichlet de paramètre N<sub>eff</sub>·p, la variance de la part d'un
 candidat vaut p(1−p)/(N<sub>eff</sub>+1). D'où l'estimateur, par la méthode des
-moments&nbsp;: <code>N_eff = Σ p(1−p) / Σ erreur² − 1</code>. Estimation sur le jeu retenu&nbsp;:
-{fr(ref["N_eff"], 1)}. <strong>Valeur utilisée&nbsp;: {reglages["N_eff"]}</strong>
-(jeu «&nbsp;{JEUX.get(reglages["N_eff_source"], reglages["N_eff_source"])}&nbsp;», arrondie à la
-dizaine). L'estimation ne change la valeur utilisée qu'après examen du backtest.</p>
+moments&nbsp;: <code>N_eff = Σ p(1−p) / Σ erreur² − 1</code>.</p>
+<p>Le moteur part de la moyenne Sondax, pondérée par la récence et fondée sur les
+sondages disponibles&nbsp;: c'est donc sur les erreurs de <em>cette</em> moyenne qu'il est
+calibré, mesurée sept jours avant le scrutin, l'horizon de «&nbsp;si on votait
+dimanche&nbsp;». Elle se trompe davantage que la moyenne simple des derniers sondages
+(tableau ci-dessus), d'où un N<sub>eff</sub> plus bas, c'est-à-dire des erreurs plus
+larges. Estimation sur le jeu retenu ({JEUX.get(jeu_source, jeu_source)}, moyenne
+Sondax à J−7)&nbsp;: {fr(estime_source, 1)}. <strong>Valeur utilisée&nbsp;:
+{reglages["N_eff"]}</strong>, arrondie à la dizaine.</p>
 
 <h3>5. Comptage</h3>
 <p>Dans chaque premier tour tiré, les candidats sont classés. Un candidat est qualifié
@@ -179,18 +213,18 @@ publié est arrondi au demi-point et n'est affiché qu'à 4 points ou moins&nbsp
 ordre de grandeur.</p>
 
 <h3>7. Backtest&nbsp;: qu'aurait affiché Sondax avant les présidentielles passées&nbsp;?</h3>
-<p>Pour chaque présidentielle, nous calibrons N<sub>eff</sub> sur les quatre autres
-(<em>leave-one-out</em>), calculons la moyenne Sondax avec les seuls sondages disponibles
-{bt["horizon_jours"]} jours avant le scrutin, puis appliquons exactement le moteur actuel.</p>
+<p>Pour chaque présidentielle, nous calibrons N<sub>eff</sub> sur toutes les autres
+élections (<em>leave-one-out</em>), calculons la moyenne Sondax avec les seuls sondages
+disponibles {bt["horizon_jours"]} jours avant le scrutin, puis appliquons exactement le
+moteur actuel.</p>
 <table class="mm"><tr><th>Élection</th><th>Candidat</th><th class="n">Moyenne</th><th class="n">Chances de qualification</th><th class="n">Résultat</th><th></th></tr>{"".join(lignes_bt)}</table>
 <table class="mm"><tr><th>Élection</th><th>Duel principal Sondax</th><th class="n">Chances</th><th>Duel réel</th><th class="n">Chances du duel réel</th></tr>{lignes_duels}</table>
 <p>Fiabilité&nbsp;: dans chaque tranche de chances annoncées, la part de candidats
 effectivement qualifiés (score de Brier&nbsp;: {fr(fia["brier"], 3)} sur {fia["n"]} cas).</p>
 <table class="mm"><tr><th>Chances annoncées</th><th class="n">Cas</th><th class="n">Moyenne annoncée</th><th class="n">Qualifiés observés (%)</th></tr>{lignes_fia}</table>
-<p><strong>Deux réserves.</strong> Cinq élections, c'est peu&nbsp;: toute conclusion reste
-prudente. Et l'horizon du backtest (sondages disponibles à J−{bt["horizon_jours"]}) est plus
-dur que celui de la calibration (sondages de la dernière semaine), ce qui pénalise un peu le
-modèle.</p>
+{bloc_comparaison(comp, noms)}
+<p><strong>Une réserve.</strong> Cinq élections, c'est peu&nbsp;: toute conclusion reste
+prudente.</p>
 
 <h3>8. Limites de la loi utilisée</h3>
 <p>Nous avons confronté la loi calibrée ({loi["N_eff"]}) aux erreurs historiques. Au global,

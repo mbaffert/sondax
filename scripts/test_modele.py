@@ -102,9 +102,23 @@ def test_bascule_affichee():
         assert modele.bascule_affichee(delta) == attendu, f"{delta} → {modele.bascule_affichee(delta)}"
 
 
+def test_melange():
+    """Avec k : chaque tirage totalise 100, même graine même résultat, et
+    l'ampleur moyenne des erreurs reste celle de N_eff (à 5 % près)."""
+    parts = [30, 25, 20, 15, 10]
+    x = modele.tirer(parts, 190, TIRAGES, GRAINE, k=2)
+    assert np.all(np.abs(x.sum(axis=1) - 1) < 1e-9), "un tirage ne totalise pas 100"
+    assert np.array_equal(x, modele.tirer(parts, 190, TIRAGES, GRAINE, k=2)), "graine non respectée"
+    p = np.asarray(parts) / 100
+    attendu = p * (1 - p) / 191
+    rapport = x.var(axis=0) / attendu
+    assert np.all(np.abs(rapport - 1) < 0.05), f"variance du mélange ≠ variance calibrée : {rapport}"
+
+
 TESTS = [test_tirages_totalisent_100, test_sommes_des_comptes,
          test_meme_graine_meme_resultat, test_candidat_a_40_quasi_toujours_qualifie,
-         test_symetrie, test_verdicts, test_point_de_bascule, test_bascule_affichee]
+         test_symetrie, test_verdicts, test_point_de_bascule, test_bascule_affichee,
+         test_melange]
 
 
 def main():

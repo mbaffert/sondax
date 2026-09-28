@@ -1260,17 +1260,31 @@ ci-dessus : 61 comparaisons, erreur absolue moyenne 0,90 point, écart-type 1,40
 bons. Sans les rollings, on obtient 0,89 / 1,37 / 356 : le choix est documenté, l'écart
 est négligeable.
 
+**Deuxième estimation : la moyenne Sondax à J−7** (décision du 28 septembre 2026).
+Le moteur part de la moyenne Sondax (§4), pondérée par la récence, pas de la moyenne
+simple de la dernière semaine. `calibration.py` estime donc aussi `N_eff` sur les
+erreurs de **cette** moyenne, calculée avec les seuls sondages connus sept jours avant
+le scrutin (`moyenne_sondax_j7` dans `calibration.json`). C'est cette estimation qui
+règle le moteur : on calibre sur ce qu'on publie, à l'horizon de « si on votait
+dimanche ». Référence : écart-type 1,86 (présidentielles), 1,56 (européennes), 1,75
+(ensemble) ; `N_eff` ≈ 195, 192 et 194. La première version (moyenne simple,
+`N_eff` 350) était trop sûre d'elle : voir la comparaison du backtest (§14.17).
+
 **Valeur retenue.** Le script **propose**, il ne décide pas. La valeur utilisée par le
 moteur est écrite à la main dans `data/config.json` :
 
 ```json
 "modele": {
-  "N_eff": 350,
-  "N_eff_source": "presidentielles",
+  "N_eff": 190,
+  "N_eff_source": "ensemble_sondax_j7",
+  "k_melange": 2,
   "tirages": 50000,
   "graine": 20270418
 }
 ```
+
+`N_eff_source` : nom du jeu (`presidentielles`, `europeennes`, `ensemble`), suffixé
+`_sondax_j7` quand l'estimation est celle de la moyenne Sondax.
 
 `N_eff` y est arrondi à la dizaine. La page de revue signale (sans bloquer) tout écart
 de plus de 20 % entre la valeur retenue et l'estimation du jeu déclaré dans
@@ -1287,6 +1301,14 @@ l'erreur dépend du niveau du candidat (écart-type ≈ 2,3 points à 25 %, ≈ 
 
 **Tirages.** 50 000 (`config.json`, `modele.tirages`). Tirage par variables gamma
 (`Xᵢ = Gᵢ / ΣG`, `Gᵢ ~ Gamma(αᵢ, 1)`).
+
+**Mélange** (`k_melange`, décision du 28 septembre 2026). Certaines élections, les
+sondages se trompent plus que d'autres (2002, 2022). Pour chaque premier tour tiré, le
+paramètre n de la Dirichlet est lui-même tiré selon une loi gamma de forme `k` et
+d'échelle `N_eff / (k − 1)`, de sorte que `E[1/n] = 1/N_eff` : l'ampleur **moyenne**
+des erreurs reste celle qui a été calibrée, seules les queues s'épaississent. `k` = 2,
+choisi par leave-one-out sur les présidentielles (perte logarithmique). `null`
+désactive le mélange.
 
 **Graine fixe**, la même à chaque run (`config.json`, `modele.graine`) : deux runs sur
 les mêmes données donnent exactement le même résultat, et d'un jour à l'autre les
@@ -1732,8 +1754,9 @@ présidentielle : un candidat non sondé n'a pas de moyenne).
 
 **Question :** qu'aurait affiché Sondax avant les présidentielles précédentes ?
 
-Pour chaque présidentielle 2002-2022, **en leave-one-out** : calibrer `N_eff` sur les
-quatre autres, puis, pour l'élection testée :
+Pour chaque présidentielle 2002-2022, **en leave-one-out** : calibrer `N_eff` sur toutes
+les autres élections (présidentielles et européennes), avec l'estimateur du moteur
+(moyenne Sondax à J−7), puis, pour l'élection testée :
 
 1. ne garder que les sondages dont `terrain_fin` ≤ J−7 ;
 2. calculer la moyenne **avec le code de la courbe** (`series_historique.py`, même
@@ -1757,6 +1780,11 @@ rare mais possible.
 
 À regarder en priorité : 2002 (chances annoncées pour Le Pen) et 2022.
 
+`backtest.json` contient aussi une **comparaison** avec la méthode de la phase A
+(moyenne simple, présidentielles, sans mélange) : Brier, perte logarithmique et
+chances données au qualifié le moins attendu de chaque élection. Au 28 septembre
+2026 : perte logarithmique 0,159 → 0,125 ; Le Pen 2002 : 1,3 → 4 sur 100.
+
 Deux réserves à écrire telles quelles sur la page Méthode : cinq élections, c'est peu,
 toute conclusion reste prudente ; et l'horizon du backtest (sondages à J−7) est plus
 dur que celui de la calibration (sondages de la dernière semaine), ce qui pénalise un
@@ -1779,7 +1807,9 @@ des contrôles suivants échoue. Tests unitaires dans `scripts/test_modele.py`, 
   à 1 point près (symétrie) ;
 - point de bascule : `seuil_bascule` donne bien 50 ± 1 sur 100 quand on relance le
   moteur avec ce seuil ;
-- `configuration` non vide et contenant au moins trois candidats.
+- `configuration` non vide et contenant au moins trois candidats ;
+- mélange : chaque tirage totalise 100, même graine même résultat, et la variance de
+  chaque part reste celle de `N_eff` à 5 % près.
 
 Pas de test sur les sommes des chiffres **arrondis** : 200 et 100 n'y sont pas garantis,
 et ce n'est pas une erreur.

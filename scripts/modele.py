@@ -54,13 +54,23 @@ def _date(s):
 
 # ---------------------------------------------------------------- moteur
 
-def tirer(parts, n_eff, tirages, graine):
-    """Tirages de Dirichlet(N_eff · p), une ligne par premier tour simulé.
-    `parts` : vecteur de parts (somme quelconque, renormalisé ici)."""
+def tirer(parts, n_eff, tirages, graine, k=None):
+    """Tirages de Dirichlet(n · p), une ligne par premier tour simulé.
+    `parts` : vecteur de parts (somme quelconque, renormalisé ici).
+
+    Sans `k`, n = N_eff pour tous les tirages. Avec `k` (§14.6, mélange), n est
+    tiré pour chaque premier tour selon une loi gamma de forme k telle que
+    E[1/n] = 1/N_eff : l'ampleur moyenne des erreurs est celle qui a été
+    calibrée, mais certaines élections se trompent plus que d'autres (queues
+    plus épaisses)."""
     p = np.asarray(parts, dtype=float)
     p = p / p.sum()
     rng = np.random.default_rng(graine)
-    g = rng.gamma(shape=n_eff * p, size=(tirages, len(p)))
+    if k is None:
+        n = n_eff
+    else:
+        n = rng.gamma(shape=k, scale=n_eff / (k - 1), size=(tirages, 1))
+    g = rng.gamma(shape=np.maximum(n * p, 1e-12), size=(tirages, len(p)))
     return g / g.sum(axis=1, keepdims=True)
 
 
@@ -79,8 +89,8 @@ def compter(x):
     return {"tirages": n, "r1": r1.tolist(), "r2": r2.tolist(), "duels": duels}
 
 
-def simuler(parts, n_eff, tirages, graine):
-    return compter(tirer(parts, n_eff, tirages, graine))
+def simuler(parts, n_eff, tirages, graine, k=None):
+    return compter(tirer(parts, n_eff, tirages, graine, k))
 
 
 def arrondi_chance(v):
@@ -177,7 +187,7 @@ def cle_duel(paire):
 
 # ------------------------------------------------------------ point de bascule
 
-def point_de_bascule(normalisees, slug, n_eff, tirages, graine):
+def point_de_bascule(normalisees, slug, n_eff, tirages, graine, k=None):
     """Part (échelle normalisée) qui donne environ 50 chances sur 100 au
     candidat, les autres rendant ou prenant la différence au prorata (§14.7).
     Retourne None si 50 n'est pas atteint à +10 points."""
@@ -186,9 +196,9 @@ def point_de_bascule(normalisees, slug, n_eff, tirages, graine):
     p0 = normalisees[slug]
 
     def chance(x):
-        k = (100 - x) / (100 - p0)
-        parts = [x if c == slug else normalisees[c] * k for c in slugs]
-        c = simuler(parts, n_eff, tirages, graine)
+        facteur = (100 - x) / (100 - p0)
+        parts = [x if c == slug else normalisees[c] * facteur for c in slugs]
+        c = simuler(parts, n_eff, tirages, graine, k)
         return 100 * (c["r1"][i] + c["r2"][i]) / tirages
 
     bas, haut = p0, min(p0 + BASCULE_MAX_ECART, 99.0)
@@ -415,7 +425,8 @@ def calculer(series, sondages, candidats, reglages, maintenant=None,
     normalisees = {c: 100 * moyennes[c] / total for c in slugs}
 
     n_eff, tirages, graine = reglages["N_eff"], reglages["tirages"], reglages["graine"]
-    comptes = simuler([normalisees[c] for c in slugs], n_eff, tirages, graine)
+    k = reglages.get("k_melange")
+    comptes = simuler([normalisees[c] for c in slugs], n_eff, tirages, graine, k)
 
     fenetres = sondages_par_candidat(sondages, jour)
     utilises = sorted({i for c in slugs for i in fenetres.get(c, [])})
@@ -446,7 +457,7 @@ def calculer(series, sondages, candidats, reglages, maintenant=None,
         for c in ordre[:BASCULE_RANG_MAX]:
             if qualif[c] >= BASCULE_CIBLE:
                 continue
-            seuil = point_de_bascule(normalisees, c, n_eff, tirages, graine)
+            seuil = point_de_bascule(normalisees, c, n_eff, tirages, graine, k)
             if seuil is not None:
                 res_cand[c]["seuil_bascule"] = round(seuil, 1)
                 res_cand[c]["delta_bascule"] = round(seuil - normalisees[c], 1)
@@ -467,6 +478,7 @@ def calculer(series, sondages, candidats, reglages, maintenant=None,
         "sondages_utilises": utilises,
         "N_eff": n_eff,
         "N_eff_source": reglages.get("N_eff_source"),
+        "k_melange": k,
         "tirages": tirages,
         "graine": graine,
         "comptes": {"r1": dict(zip(slugs, comptes["r1"])),

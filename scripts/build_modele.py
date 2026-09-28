@@ -352,7 +352,10 @@ def section_changement(modele, candidats, historique, index):
 
 
 def _instant(modele):
-    return datetime.datetime.fromisoformat(modele["date"].replace("Z", "+00:00"))
+    """Fin des courbes : la fin du jour du calcul (UTC), pour qu'une page ne
+    change pas d'un déploiement à l'autre quand aucun sondage n'est entré."""
+    d = datetime.datetime.fromisoformat(modele["date"].replace("Z", "+00:00"))
+    return d.replace(hour=23, minute=59, second=0, microsecond=0)
 
 
 def candidats_courbes(modele, historique):
@@ -804,7 +807,38 @@ def charger_index_sondages():
         return {}
 
 
+VEILLE_TEXTE = ("En application de la loi du 19 juillet 1977, aucun sondage n’est publié ni "
+                "commenté la veille et le jour du scrutin. Le modèle Sondax reprendra après le vote.")
+
+
+def main_veille():
+    """Veille électorale : le bloc d'accueil et la page Modèle ne montrent qu'un
+    avis ; les blocs des fiches candidat et des pages duel sont vidés."""
+    avis = f'<p class="mo-accroche">{VEILLE_TEXTE}</p>'
+    bloc = f'''<div class="bloc" id="bloc-modele">
+  <div class="section-label">Modèle Sondax</div>
+  <h2>Et si on votait dimanche&nbsp;?</h2>
+  {avis}
+</div>'''
+    corps = f'''<main class="page-modele"><div class="fil">Modèle Sondax</div>
+  <h1>Le modèle Sondax</h1><section class="bloc">{avis}</section></main>'''
+    PAGE_PATH.write_text(render_page(title="Le modèle Sondax", meta_description=e(VEILLE_TEXTE),
+                                     canonical=PAGE_URL, body_content=corps,
+                                     extra_head=f"<style>{CSS}</style>"), encoding="utf-8")
+    injecter(f"<style>{CSS}</style>\n{bloc}")
+    for chemin in list(SITE.glob("*.html")) + list((SITE / "second-tour").glob("*.html")):
+        contenu = chemin.read_text(encoding="utf-8")
+        for debut, fin in ((BEGIN_CANDIDAT, END_CANDIDAT), (BEGIN_DUEL, END_DUEL)):
+            if debut in contenu:
+                contenu = remplacer_entre(contenu, debut, fin, "")
+        chemin.write_text(contenu, encoding="utf-8")
+    print("Veille électorale : modèle Sondax masqué")
+
+
 def main():
+    import veille
+    if veille.en_veille():
+        return main_veille()
     modele = json.loads(MODELE_PATH.read_text())
     candidats = json.loads(CANDIDATS_PATH.read_text())
     pages = set(json.loads(BIOS_PATH.read_text()))

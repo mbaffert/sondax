@@ -1657,16 +1657,21 @@ du vainqueur du duel (§14.20).
 
 #### 14.14.5 Courbes
 
-Données lues dans `modele_history.json`, exportées au build dans
-`site/data/modele-history.json` (champs utiles seulement). Composant graphique partagé
-(`site/assets/bloc-chart.js`). Points reconstitués (§14.13) sans distinction visuelle,
-mais signalés sur la page Méthode.
+Données lues dans `modele_history.json`. Courbes en **SVG rendu au build**
+(`scripts/courbes_modele.py`), pas en Chart.js : elles sont présentes dans le HTML
+servi (contrainte du §1) et le JavaScript ne fait que changer de période et masquer
+ou afficher un candidat. Tracé en marches, sans interpolation : les chances ne
+changent qu'à l'entrée d'un sondage. Points reconstitués (§14.13) sans distinction
+visuelle, mais signalés sous la courbe et sur la page Méthode.
 
 ### 14.15 Partage
 
-Images générées au build par `scripts/partage_modele.py` (Pillow, police embarquée
-dans le dépôt), dans `site/partage/`, nom daté pour contourner les caches
-(`modele-2026-09-28-og.png`).
+Images générées au build par `scripts/partage_modele.py` (Pillow ; polices du site,
+Space Grotesk et IBM Plex Sans, embarquées dans `scripts/fonts/` sous licence OFL),
+dans `site/partage/` (ignoré par git), nom daté pour contourner les caches
+(`modele-2026-09-28-og.png`). `site/partage/modele.json` donne au bouton le gabarit,
+la phrase et les chemins ; l'`og:image` de la page Modèle pointe vers l'image du
+jour (`render_page(og_image=…)`).
 
 | Format | Taille | Usage |
 |---|---|---|
@@ -1824,16 +1829,22 @@ et les changements décidés sont consignés dans la PR correspondante.
 
 ### 14.22 Production
 
-- `collecte.yml` : après `series.py`, `modele.py` (calcul + ajout d'une entrée à
-  `modele_history.json`), puis `validation.py` ; `modele_history.json` est ajouté au
-  commit de collecte.
-- `pages.yml` : `calibration.py`, `backtest.py`, `modele.py --sans-historiser`,
-  `build_modele.py`, `partage_modele.py`, avant `build_sitemap.py` (qui inclut
-  `modele-sondax.html`).
-- **Loi du 19 juillet 1977** (§10) : le bloc d'accueil, la page Modèle, les blocs des
-  fiches candidat et duel et les images de partage se mettent en veille avec le reste
-  du site, la veille et le jour de chaque tour. Pendant la veille, aucune entrée n'est
-  ajoutée à l'historique.
+- `collecte.yml` : après `series.py`, `modele.py --historiser` (calcul + ajout d'une
+  entrée à `modele_history.json`), puis `validation.py --modele` (modele.json présent,
+  tests du §14.18) ; `modele_history.json` est ajouté au commit de collecte.
+- `pages.yml` : `calibration.py`, `backtest.py`, `modele.py` (sans historiser),
+  `partage_modele.py`, `build_modele.py` (après les fiches candidat et les pages duel,
+  dans lesquelles il injecte ses blocs), `build_methode_modele.py`, avant
+  `build_sitemap.py`. Dépendances : `requirements.txt` (numpy, Pillow).
+- `modele.py` recalcule la série en mémoire avec les hypothèses principales
+  (`principale.py`), comme au déploiement : la collecte, qui ne lance pas
+  `principale.py`, obtient ainsi les mêmes chiffres que le site.
+- **Loi du 19 juillet 1977** (§10) : `scripts/veille.py` (dates de `config.json`,
+  heure de Paris). En veille, le bloc d'accueil et la page Modèle n'affichent qu'un
+  avis, les blocs des fiches candidat et duel sont vidés, aucune image de partage
+  n'est produite et aucune entrée n'est ajoutée à l'historique. Le module ne couvre
+  encore que le modèle : le reste du site (courbes, derniers sondages) n'a pas de
+  veille à ce jour.
 - **Point juridique à trancher avant mise en ligne** : un chiffre dérivé de sondages
   est vraisemblablement un « commentaire de sondage » au sens de la loi de 1977 ; les
   mentions obligatoires (§10) doivent être accessibles depuis la page Modèle (lien vers

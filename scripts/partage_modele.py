@@ -130,6 +130,12 @@ def dessiner(modele, candidats, gabarit, titre, sous, fmt, jour):
 
 
 def main():
+    import veille
+    if veille.en_veille():
+        for ancien in SORTIE.glob("modele*"):
+            ancien.unlink()
+        print("Veille électorale (loi de 1977) : pas d'image de partage")
+        return
     modele = json.loads(MODELE_PATH.read_text())
     candidats = json.loads(CANDIDATS_PATH.read_text())
     index = {s["id"]: s for s in json.loads(SONDAGES_PATH.read_text())}

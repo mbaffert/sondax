@@ -341,7 +341,21 @@ def check_polymarket_coherence():
     return warnings
 
 
+def valider_modele():
+    """Contrôles du modèle Sondax (SPEC §14.18) : modele.json présent, tests du
+    moteur verts. Lancé après modele.py : python scripts/validation.py --modele."""
+    modele_path = ROOT / "data" / "derived" / "modele.json"
+    if not modele_path.exists():
+        print("VALIDATION ÉCHOUÉE : data/derived/modele.json manquant", file=sys.stderr)
+        sys.exit(1)
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import test_modele
+    test_modele.main()   # sortie 1 au premier échec
+
+
 def main():
+    if "--modele" in sys.argv:
+        return valider_modele()
     candidats = json.loads(CANDIDATS_PATH.read_text())
     sondages = json.loads(SONDAGES_PATH.read_text())
 

@@ -5,13 +5,18 @@
 # que .github/workflows/pages.yml, assemble le site comme au déploiement et le
 # sert sur http://localhost:8000 (port modifiable : scripts/apercu.sh 8080).
 #
-# Prérequis : Python 3.10+ ; numpy pour recalculer le modèle Sondax.
+# Prérequis : Python 3.10+ et pip install -r requirements.txt (numpy, Pillow).
 set -euo pipefail
 
 PORT="${1:-8000}"
 RACINE="$(cd "$(dirname "$0")/.." && pwd)"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
+
+if ! python3 -c "import numpy, PIL" 2>/dev/null; then
+  echo "Dépendances manquantes : pip install -r requirements.txt" >&2
+  exit 1
+fi
 
 echo "Copie du dépôt dans $TMP"
 tar -C "$RACINE" --exclude=.git --exclude=_site -cf - . | tar -C "$TMP" -xf -
@@ -23,16 +28,6 @@ while read -r etape; do
   echo "→ $etape"
   ${etape/python /python3 } > /dev/null
 done
-
-# Modèle Sondax (phase A, hors déploiement) : nécessite numpy
-if python3 -c "import numpy" 2>/dev/null; then
-  for etape in calibration modele build_modele build_sitemap; do
-    echo "→ python scripts/$etape.py"
-    python3 "scripts/$etape.py" > /dev/null
-  done
-else
-  echo "numpy absent (pip install -r requirements.txt) : modèle Sondax non recalculé"
-fi
 
 mkdir -p _site/data/derived
 cp -r site/* _site/

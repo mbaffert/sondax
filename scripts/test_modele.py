@@ -109,7 +109,7 @@ TESTS = [test_tirages_totalisent_100, test_sommes_des_comptes,
 
 def main():
     tests = list(TESTS)
-    if modele.SERIES_PATH.exists():
+    if modele.SONDAGES_PATH.exists():
         tests.append(test_sortie_reproductible)
     echecs = 0
     for t in tests:

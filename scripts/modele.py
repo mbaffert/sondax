@@ -16,7 +16,6 @@ import collections, datetime, json, pathlib, sys
 import numpy as np
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-SERIES_PATH = ROOT / "data" / "derived" / "series-t1.json"
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 CONFIG_PATH = ROOT / "data" / "config.json"
@@ -489,9 +488,16 @@ def derniere_revid(sondages):
 
 
 def charger():
-    series = json.loads(SERIES_PATH.read_text())
+    """Données d'entrée. La série est recalculée ici, avec les hypothèses
+    principales posées par principale.py, exactement comme au déploiement :
+    la collecte (qui ne lance pas principale.py) et le déploiement
+    obtiennent ainsi les mêmes chiffres."""
+    import principale
+    from series import calculer_series
     sondages = json.loads(SONDAGES_PATH.read_text())
     candidats = json.loads(CANDIDATS_PATH.read_text())
+    principale.calculer(sondages, candidats)
+    series = calculer_series(sondages, candidats)
     reglages = json.loads(CONFIG_PATH.read_text())["modele"]
     return series, sondages, candidats, reglages
 
@@ -533,8 +539,12 @@ def main():
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(resultat, ensure_ascii=False, indent=1) + "\n")
     if "--historiser" in sys.argv:
-        historique.append(entree_historique(resultat))
-        ecrire_historique(historique)
+        import veille
+        if veille.en_veille():
+            print("Veille électorale (loi de 1977) : aucune entrée ajoutée à l'historique")
+        else:
+            historique.append(entree_historique(resultat))
+            ecrire_historique(historique)
 
     print(f"Modèle au {resultat['jour_moyenne']} : {len(resultat['configuration'])} "
           f"candidats, {resultat['n_sondages']} sondages, N_eff {resultat['N_eff']}")

@@ -11,7 +11,7 @@
 <meta property="og:url" content="https://sondax.fr/modele-sondax.html">
 <meta property="og:title" content="Qui serait au second tour si on votait dimanche&nbsp;? — Modèle Sondax">
 <meta property="og:description" content="Le Pen – Mélenchon reste aujourd’hui le second tour le plus plausible. Philippe a 26 chances sur 100 d’y être. Chances d’être au second tour si on votait dimanche.">
-<meta property="og:image" content="https://sondax.fr/assets/og-default.png">
+<meta property="og:image" content="https://sondax.fr/partage/modele-2026-09-28-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -89,6 +89,12 @@
   .mo-barre span { display: block; height: 100%; border-radius: 5px; }
   .mo-verdict { font-size: 13px; color: var(--gris); }
   .mo-evo { white-space: nowrap; }
+  .mo-partage { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 4px 0 12px; }
+  .mo-bouton { border: 0; cursor: pointer; font-family: var(--corps); }
+  .mo-partage-menu { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13.5px; }
+  .mo-partage-menu button, .mo-partage-menu a { background: #fff; border: 1px solid #DDDFDA; border-radius: 8px;
+    padding: 7px 12px; cursor: pointer; font: 500 13.5px var(--corps); color: var(--texte); }
+  .mo-partage-ok { color: var(--gris); }
   .mo-table .mo-evo { font-size: 13px; color: var(--gris); }
   .mo-bascule { font-size: 13px; font-weight: 600; color: var(--bleu-nuit); margin-top: 2px; }
   .mo-mouvement { font-size: 14.5px; margin: 14px 0 0; }
@@ -331,6 +337,47 @@
     <p class="mo-lien-methode"><a href="methodologie.html#modele">Comprendre la méthode →</a></p>
     <p class="bloc-note">Si on votait dimanche · Calculé sur 12 sondages · Mis à jour le 28 septembre 2026.<br>Ne prédit pas ce qui se passera d’ici avril.</p>
   </section>
+  <div class="mo-partage" id="partage" data-gabarit="mouvement"
+       data-phrase="Le Pen – Mélenchon reste aujourd’hui le second tour le plus plausible. Philippe a 26 chances sur 100 d’y être." data-image="partage/modele-2026-09-28-carre.png">
+    <button type="button" class="mo-bouton" id="partager">Partager</button>
+    <div class="mo-partage-menu" hidden>
+      <button type="button" data-action="phrase">Copier la phrase</button>
+      <button type="button" data-action="lien">Copier le lien</button>
+      <a href="partage/modele-2026-09-28-carre.png" download data-action="image">Télécharger l’image</a>
+      <span class="mo-partage-ok" aria-live="polite"></span>
+    </div>
+  </div>
+<script>
+(function () {
+  var z = document.getElementById('partage');
+  if (!z) return;
+  var url = 'https://sondax.fr/modele-sondax.html';
+  var phrase = z.dataset.phrase, menu = z.querySelector('.mo-partage-menu');
+  var ok = z.querySelector('.mo-partage-ok');
+  function compter(m) { window.goatcounter?.count({ path: 'partage/' + z.dataset.gabarit + '/' + m, event: true }); }
+  function copier(t, m) {
+    navigator.clipboard.writeText(t).then(function () { ok.textContent = 'Copié.'; compter(m); });
+  }
+  document.getElementById('partager').addEventListener('click', async function () {
+    if (navigator.share) {
+      var donnees = { title: 'Le modèle Sondax', text: phrase, url: url };
+      try {
+        var r = await fetch(z.dataset.image);
+        var f = new File([await r.blob()], 'sondax.png', { type: 'image/png' });
+        if (navigator.canShare && navigator.canShare({ files: [f] })) donnees.files = [f];
+      } catch (err) {}
+      try { await navigator.share(donnees); compter('natif'); return; } catch (err) { if (err.name === 'AbortError') return; }
+    }
+    menu.hidden = !menu.hidden;
+  });
+  menu.addEventListener('click', function (ev) {
+    var a = ev.target.dataset.action;
+    if (a === 'phrase') copier(phrase + ' ' + url, 'phrase');
+    if (a === 'lien') copier(url, 'lien');
+    if (a === 'image') compter('image');
+  });
+})();
+</script>
 </main>
 <script>
 (function () {

@@ -27,6 +27,7 @@ MODELE_PATH = ROOT / "data" / "derived" / "modele.json"
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 BIOS_PATH = ROOT / "scripts" / "bios.json"
 HISTORY_PATH = ROOT / "data" / "modele_history.json"
+PARTAGE_PATH = SITE / "partage" / "modele.json"
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
 INDEX_PATH = SITE / "index.html"
 PAGE_PATH = SITE / "modele-sondax.html"
@@ -430,7 +431,55 @@ def notes_bascule(modele, candidats):
             f'candidat aurait une chance sur deux d’être au second tour.</p><ul>{"".join(notes)}</ul></div>')
 
 
-def page_modele(modele, candidats, pages, historique, index):
+def bouton_partage(partage):
+    """Bouton Partager (§14.15) : partage natif, sinon copie ou téléchargement."""
+    if not partage:
+        return ""
+    image = partage["images"]["carre"]
+    return f'''<div class="mo-partage" id="partage" data-gabarit="{e(partage["gabarit"])}"
+       data-phrase="{e(partage["phrase"])}" data-image="{e(image)}">
+    <button type="button" class="mo-bouton" id="partager">Partager</button>
+    <div class="mo-partage-menu" hidden>
+      <button type="button" data-action="phrase">Copier la phrase</button>
+      <button type="button" data-action="lien">Copier le lien</button>
+      <a href="{e(image)}" download data-action="image">Télécharger l’image</a>
+      <span class="mo-partage-ok" aria-live="polite"></span>
+    </div>
+  </div>
+<script>
+(function () {{
+  var z = document.getElementById('partage');
+  if (!z) return;
+  var url = 'https://sondax.fr/modele-sondax.html';
+  var phrase = z.dataset.phrase, menu = z.querySelector('.mo-partage-menu');
+  var ok = z.querySelector('.mo-partage-ok');
+  function compter(m) {{ window.goatcounter?.count({{ path: 'partage/' + z.dataset.gabarit + '/' + m, event: true }}); }}
+  function copier(t, m) {{
+    navigator.clipboard.writeText(t).then(function () {{ ok.textContent = 'Copié.'; compter(m); }});
+  }}
+  document.getElementById('partager').addEventListener('click', async function () {{
+    if (navigator.share) {{
+      var donnees = {{ title: 'Le modèle Sondax', text: phrase, url: url }};
+      try {{
+        var r = await fetch(z.dataset.image);
+        var f = new File([await r.blob()], 'sondax.png', {{ type: 'image/png' }});
+        if (navigator.canShare && navigator.canShare({{ files: [f] }})) donnees.files = [f];
+      }} catch (err) {{}}
+      try {{ await navigator.share(donnees); compter('natif'); return; }} catch (err) {{ if (err.name === 'AbortError') return; }}
+    }}
+    menu.hidden = !menu.hidden;
+  }});
+  menu.addEventListener('click', function (ev) {{
+    var a = ev.target.dataset.action;
+    if (a === 'phrase') copier(phrase + ' ' + url, 'phrase');
+    if (a === 'lien') copier(url, 'lien');
+    if (a === 'image') compter('image');
+  }});
+}})();
+</script>'''
+
+
+def page_modele(modele, candidats, pages, historique, index, partage=None):
     lignes = "\n      ".join(ligne_candidat(candidats, pages, c, v, modele)
                              for c, v in modele["candidats"].items())
     return f'''<main class="page-modele">
@@ -469,6 +518,7 @@ def page_modele(modele, candidats, pages, historique, index):
     <p class="mo-lien-methode"><a href="methodologie.html#modele">Comprendre la méthode →</a></p>
     <p class="bloc-note">{ligne_contexte(modele)}<br>Ne prédit pas ce qui se passera d’ici avril.</p>
   </section>
+  {bouton_partage(partage)}
 </main>
 {JS_COURBES}'''
 
@@ -491,6 +541,12 @@ CSS = '''
   .mo-barre span { display: block; height: 100%; border-radius: 5px; }
   .mo-verdict { font-size: 13px; color: var(--gris); }
   .mo-evo { white-space: nowrap; }
+  .mo-partage { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 4px 0 12px; }
+  .mo-bouton { border: 0; cursor: pointer; font-family: var(--corps); }
+  .mo-partage-menu { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13.5px; }
+  .mo-partage-menu button, .mo-partage-menu a { background: #fff; border: 1px solid #DDDFDA; border-radius: 8px;
+    padding: 7px 12px; cursor: pointer; font: 500 13.5px var(--corps); color: var(--texte); }
+  .mo-partage-ok { color: var(--gris); }
   .mo-table .mo-evo { font-size: 13px; color: var(--gris); }
   .mo-bascule { font-size: 13px; font-weight: 600; color: var(--bleu-nuit); margin-top: 2px; }
   .mo-mouvement { font-size: 14.5px; margin: 14px 0 0; }
@@ -757,7 +813,8 @@ def main():
     INDEX.update(index)
 
     bloc = bloc_accueil(modele, candidats, pages, index)
-    corps = page_modele(modele, candidats, pages, historique, index)
+    partage = json.loads(PARTAGE_PATH.read_text()) if PARTAGE_PATH.exists() else None
+    corps = page_modele(modele, candidats, pages, historique, index, partage)
     verifier_vocabulaire(bloc, "le bloc d'accueil")
     verifier_vocabulaire(corps, "la page Modèle")
 
@@ -769,6 +826,8 @@ def main():
         canonical=PAGE_URL,
         body_content=corps,
         extra_head=f"<style>{CSS}{C.CSS}</style>",
+        og_image=(f"https://sondax.fr/{partage['images']['og']}" if partage
+                  else "https://sondax.fr/assets/og-default.png"),
     )
     PAGE_PATH.write_text(page, encoding="utf-8")
     injecter(f"<style>{CSS}</style>\n{bloc}")

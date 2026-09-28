@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sondage Ifop du 27 février 2026 – présidentielle 2027</title>
-<meta name="description" content="Résultats du sondage Ifop du 27 février 2026 pour l’élection présidentielle 2027 : scores, marges d’erreur.">
+<meta name="description" content="Jordan Bardella arrive en tête avec 36 %, devant Édouard Philippe (16 %) et Jean-Luc Mélenchon (11 %). C’est le premier sondage Ifop de la série.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sondax">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://sondax.fr/sondages/ifop-2026-02-27.html">
 <meta property="og:title" content="Sondage Ifop du 27 février 2026 – présidentielle 2027">
-<meta property="og:description" content="Résultats du sondage Ifop du 27 février 2026 pour l’élection présidentielle 2027 : scores, marges d’erreur.">
+<meta property="og:description" content="Jordan Bardella arrive en tête avec 36 %, devant Édouard Philippe (16 %) et Jean-Luc Mélenchon (11 %). C’est le premier sondage Ifop de la série.">
 <meta property="og:image" content="https://sondax.fr/assets/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -75,13 +75,13 @@
 .sondage-page { padding: 24px 16px 40px; }
 .sondage-inner { max-width: 780px; margin: 0 auto; }
 
-.sondage-date {
-  font-size: 15px; color: var(--gris); margin: -12px 0 4px;
-}
 .sondage-meta-line {
-  font-size: 13.5px; color: var(--gris); margin-bottom: 0;
+  font-size: 13.5px; color: var(--gris); margin: -8px 0 0;
 }
 .sondage-meta-line a { font-weight: 500; }
+.sondage-chapo {
+  font-size: 15.5px; line-height: 1.6; margin-top: 16px; max-width: 68ch;
+}
 
 .section-sep {
   border-top: 1px solid var(--bord); margin: 20px 0;
@@ -129,6 +129,7 @@ tr.type-parti .cand-name { font-style: italic; }
 .duel-cand strong { font-weight: 600; }
 .duel-cand-right { text-align: right; }
 .duel-me { font-size: 12px; color: var(--gris); }
+.duel-lien { display: inline-block; font-size: 12.5px; margin-top: 4px; }
 
 /* Navigation prev/next */
 .sondage-nav {
@@ -136,7 +137,9 @@ tr.type-parti .cand-name { font-style: italic; }
   padding-top: 20px; border-top: 1px solid var(--bord); margin-top: 24px;
   font-size: 13.5px;
 }
-.nav-prev, .nav-next { color: var(--gris); }
+.nav-prev, .nav-next { color: var(--gris); display: flex; flex-direction: column; }
+.nav-next { text-align: right; }
+.nav-sens { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; }
 .nav-prev:hover, .nav-next:hover { color: var(--bleu-vif); text-decoration: none; }
 
 @media (max-width: 600px) {
@@ -155,34 +158,34 @@ tr.type-parti .cand-name { font-style: italic; }
 <main class="sondage-page">
   <div class="sondage-inner">
     <nav class="fil" aria-label="Fil d’Ariane"><a href="../">Sondax</a> › <a href="../sondages.html">Sondages</a></nav>
-    <h1>Ifop</h1>
-    <p class="sondage-date">26 février 2026 – 27 février 2026</p>
-    <p class="sondage-meta-line">Ifop · 1 393 personnes · <a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10118-pres-ifop-le-figaro-4-mars.pdf" target="_blank" rel="noopener">Notice</a></p>
+    <h1>Sondage Ifop du 27 février 2026</h1>
+    <p class="sondage-meta-line">Terrain du 26 au 27 février 2026 · <a href="../instituts/ifop.html">Ifop</a> · 1 393 personnes · <a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/mars/10118-pres-ifop-le-figaro-4-mars.pdf" target="_blank" rel="noopener">Notice</a></p>
+    <p class="sondage-chapo">Jordan Bardella arrive en tête avec 36 %, devant Édouard Philippe (16 %) et Jean-Luc Mélenchon (11 %). C’est le premier sondage Ifop de la série. L’institut a testé dix configurations, avec ou sans Jordan Bardella, Édouard Philippe et Raphaël Glucksmann, ainsi que deux hypothèses avec Marine Le Pen, deux avec Gabriel Attal et une avec Gérald Darmanin.</p>
 
     <div class="section-sep"></div>
     <h2>Premier tour</h2>
-<div class="hypothese">
-  <div class="hyp-header">Hypothèse 1</div>
+<div class="hypothese hyp-principale">
+  <div class="hyp-header">Hypothèse 1 <span class="badge badge-principale">Principale</span></div>
   <table class="scores-table">
-    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th><th class="col-ecart">Écart / moy.</th></tr></thead>
     <tbody>
-    <tr><td class="cand-name">Jordan Bardella</td><td class="col-score"><span class="bar" style="width:36%;background:#2B5FC2"></span>36,0 %</td><td class="col-me">± 2.5 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="width:16%;background:#00B7FF"></span>16,0 %</td><td class="col-me">± 1.9 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:11%;background:#CC2443"></span>11,0 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td><td class="col-score"><span class="bar" style="width:10%;background:#FF7043"></span>10,0 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:10%;background:#0066CC"></span>10,0 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:4%;background:#00C853"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name">Dominique de Villepin</td><td class="col-score"><span class="bar" style="width:4%;background:#8B6914"></span>3,5 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:2%;background:#0055A4"></span>2,5 %</td><td class="col-me">± 0.8 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:2%;background:#DD1111"></span>2,0 %</td><td class="col-me">± 0.7 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:1%;background:#8B0000"></span>1,0 %</td><td class="col-me">± 0.5 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name">Jordan Bardella</td><td class="col-score"><span class="bar" style="width:36%;background:#2B5FC2"></span>36,0 %</td><td class="col-me">± 2.5 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">0,0 pt</td></tr>
+    <tr><td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="width:16%;background:#00B7FF"></span>16,0 %</td><td class="col-me">± 1.9 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">0,0 pt</td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:11%;background:#CC2443"></span>11,0 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">0,0 pt</td></tr>
+    <tr><td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td><td class="col-score"><span class="bar" style="width:10%;background:#FF7043"></span>10,0 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">0,0 pt</td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:10%;background:#0066CC"></span>10,0 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">0,0 pt</td></tr>
+    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:4%;background:#00C853"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">0,0 pt</td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">0,0 pt</td></tr>
+    <tr><td class="cand-name">Dominique de Villepin</td><td class="col-score"><span class="bar" style="width:4%;background:#8B6914"></span>3,5 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">0,0 pt</td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:2%;background:#0055A4"></span>2,5 %</td><td class="col-me">± 0.8 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">0,0 pt</td></tr>
+    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:2%;background:#DD1111"></span>2,0 %</td><td class="col-me">± 0.7 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">0,0 pt</td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:1%;background:#8B0000"></span>1,0 %</td><td class="col-me">± 0.5 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">0,0 pt</td></tr>
     </tbody>
   </table>
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 2</div>
+  <div class="hyp-header">Hypothèse 2 — avec Le Pen, sans Bardella</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -202,7 +205,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 3</div>
+  <div class="hyp-header">Hypothèse 3 — avec Attal, sans Philippe</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -222,7 +225,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 4</div>
+  <div class="hyp-header">Hypothèse 4 — avec Le Pen et Attal, sans Bardella et Philippe</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -242,7 +245,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 5</div>
+  <div class="hyp-header">Hypothèse 5 — avec Darmanin, sans Philippe</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -262,7 +265,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 6</div>
+  <div class="hyp-header">Hypothèse 6 — avec Lecornu, sans Philippe</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -282,7 +285,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 7</div>
+  <div class="hyp-header">Hypothèse 7 — avec Hollande, sans Glucksmann et de Villepin</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -301,7 +304,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 8</div>
+  <div class="hyp-header">Hypothèse 8 — avec Faure, sans Glucksmann et de Villepin</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -320,7 +323,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 9</div>
+  <div class="hyp-header">Hypothèse 9 — sans Retailleau et de Villepin</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -338,7 +341,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 10</div>
+  <div class="hyp-header">Hypothèse 10 — sans Philippe et de Villepin</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -356,7 +359,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 
-    <nav class="sondage-nav"><span></span><a href="ifop-2026-05-28.html" class="nav-next">Ifop 28/05/2026 →</a></nav>
+    <nav class="sondage-nav"><span></span><a href="harris-2026-03-22.html" class="nav-next" rel="next"><span class="nav-sens">Sondage suivant →</span>Harris du 22 mars 2026</a></nav>
   </div>
 </main>
 
@@ -384,7 +387,7 @@ tr.type-parti .cand-name { font-style: italic; }
       </div>
     </div>
     <div>
-      <div id="footer-run"></div>
+      <div id="footer-run">Dernier sondage intégré : 24 septembre 2026 · Données vérifiées le 28 septembre 2026 · revid : <a href="https://fr.wikipedia.org/w/index.php?oldid=239883627" target="_blank" style="color:inherit">239883627</a></div>
       <div><a href="mailto:contact@sondax.fr">Contact</a></div>
       <div>Hébergeur · <a href="https://pages.github.com" target="_blank">GitHub Pages</a></div>
     </div>

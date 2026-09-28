@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sondage OpinionWay du 26 mars 2026 – présidentielle 2027</title>
-<meta name="description" content="Résultats du sondage OpinionWay du 26 mars 2026 pour l’élection présidentielle 2027 : scores, marges d’erreur.">
+<meta name="description" content="Jordan Bardella arrive en tête avec 37 %, devant Édouard Philippe (18 %) et Raphaël Glucksmann (15 %). C’est le premier sondage OpinionWay de la série.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sondax">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://sondax.fr/sondages/opinionway-2026-03-26.html">
 <meta property="og:title" content="Sondage OpinionWay du 26 mars 2026 – présidentielle 2027">
-<meta property="og:description" content="Résultats du sondage OpinionWay du 26 mars 2026 pour l’élection présidentielle 2027 : scores, marges d’erreur.">
+<meta property="og:description" content="Jordan Bardella arrive en tête avec 37 %, devant Édouard Philippe (18 %) et Raphaël Glucksmann (15 %). C’est le premier sondage OpinionWay de la série.">
 <meta property="og:image" content="https://sondax.fr/assets/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -75,13 +75,13 @@
 .sondage-page { padding: 24px 16px 40px; }
 .sondage-inner { max-width: 780px; margin: 0 auto; }
 
-.sondage-date {
-  font-size: 15px; color: var(--gris); margin: -12px 0 4px;
-}
 .sondage-meta-line {
-  font-size: 13.5px; color: var(--gris); margin-bottom: 0;
+  font-size: 13.5px; color: var(--gris); margin: -8px 0 0;
 }
 .sondage-meta-line a { font-weight: 500; }
+.sondage-chapo {
+  font-size: 15.5px; line-height: 1.6; margin-top: 16px; max-width: 68ch;
+}
 
 .section-sep {
   border-top: 1px solid var(--bord); margin: 20px 0;
@@ -129,6 +129,7 @@ tr.type-parti .cand-name { font-style: italic; }
 .duel-cand strong { font-weight: 600; }
 .duel-cand-right { text-align: right; }
 .duel-me { font-size: 12px; color: var(--gris); }
+.duel-lien { display: inline-block; font-size: 12.5px; margin-top: 4px; }
 
 /* Navigation prev/next */
 .sondage-nav {
@@ -136,7 +137,9 @@ tr.type-parti .cand-name { font-style: italic; }
   padding-top: 20px; border-top: 1px solid var(--bord); margin-top: 24px;
   font-size: 13.5px;
 }
-.nav-prev, .nav-next { color: var(--gris); }
+.nav-prev, .nav-next { color: var(--gris); display: flex; flex-direction: column; }
+.nav-next { text-align: right; }
+.nav-sens { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; }
 .nav-prev:hover, .nav-next:hover { color: var(--bleu-vif); text-decoration: none; }
 
 @media (max-width: 600px) {
@@ -155,9 +158,9 @@ tr.type-parti .cand-name { font-style: italic; }
 <main class="sondage-page">
   <div class="sondage-inner">
     <nav class="fil" aria-label="Fil d’Ariane"><a href="../">Sondax</a> › <a href="../sondages.html">Sondages</a></nav>
-    <h1>OpinionWay</h1>
-    <p class="sondage-date">25 mars 2026 – 26 mars 2026</p>
-    <p class="sondage-meta-line">OpinionWay · 988 personnes · certains_daller_voter · <a href="https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2257" target="_blank" rel="noopener">Notice</a></p>
+    <h1>Sondage OpinionWay du 26 mars 2026</h1>
+    <p class="sondage-meta-line">Terrain du 25 au 26 mars 2026 · <a href="../instituts/opinionway.html">OpinionWay</a> · 988 personnes · certains_daller_voter · <a href="https://www.commission-des-sondages.fr/notices/medias/fichiers/add/2257" target="_blank" rel="noopener">Notice</a></p>
+    <p class="sondage-chapo">Jordan Bardella arrive en tête avec 37 %, devant Édouard Philippe (18 %) et Raphaël Glucksmann (15 %). C’est le premier sondage OpinionWay de la série. L’institut a testé quatre configurations, avec ou sans Édouard Philippe et Raphaël Glucksmann, ainsi que deux hypothèses avec Gabriel Attal et deux avec François Hollande.</p>
 
     <div class="section-sep"></div>
     <h2>Premier tour</h2>
@@ -178,7 +181,7 @@ tr.type-parti .cand-name { font-style: italic; }
   
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 2 <span class="hyp-detail">788 personnes</span></div>
+  <div class="hyp-header">Hypothèse 2 — avec Attal, sans Philippe <span class="hyp-detail">788 personnes</span></div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -194,7 +197,7 @@ tr.type-parti .cand-name { font-style: italic; }
   
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 3 <span class="hyp-detail">788 personnes</span></div>
+  <div class="hyp-header">Hypothèse 3 — avec Hollande, sans Glucksmann <span class="hyp-detail">788 personnes</span></div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -210,7 +213,7 @@ tr.type-parti .cand-name { font-style: italic; }
   
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 4 <span class="hyp-detail">788 personnes</span></div>
+  <div class="hyp-header">Hypothèse 4 — avec Attal et Hollande, sans Philippe et Glucksmann <span class="hyp-detail">788 personnes</span></div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -226,7 +229,7 @@ tr.type-parti .cand-name { font-style: italic; }
   
 </div>
 
-    <nav class="sondage-nav"><span></span><a href="opinionway-2026-06-11.html" class="nav-next">OpinionWay 11/06/2026 →</a></nav>
+    <nav class="sondage-nav"><a href="odoxa-2026-03-26.html" class="nav-prev" rel="prev"><span class="nav-sens">← Sondage précédent</span>Odoxa du 26 mars 2026</a><a href="elabe-2026-03-27.html" class="nav-next" rel="next"><span class="nav-sens">Sondage suivant →</span>Elabe du 27 mars 2026</a></nav>
   </div>
 </main>
 
@@ -254,7 +257,7 @@ tr.type-parti .cand-name { font-style: italic; }
       </div>
     </div>
     <div>
-      <div id="footer-run"></div>
+      <div id="footer-run">Dernier sondage intégré : 24 septembre 2026 · Données vérifiées le 28 septembre 2026 · revid : <a href="https://fr.wikipedia.org/w/index.php?oldid=239883627" target="_blank" style="color:inherit">239883627</a></div>
       <div><a href="mailto:contact@sondax.fr">Contact</a></div>
       <div>Hébergeur · <a href="https://pages.github.com" target="_blank">GitHub Pages</a></div>
     </div>

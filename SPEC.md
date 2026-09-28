@@ -887,14 +887,47 @@ l'hypothèse principale, date de dernière mesure, et lien vers la fiche.
 
 URL : `/sondages/<id>.html` (un fichier par entrée de `sondages.json`).
 Script : `scripts/build_sondage_pages.py`.
-Contenu : institut, dates de terrain, échantillon, population, lien vers la
-notice, puis chaque hypothèse (tour, scores, marge d'erreur). L'hypothèse
+Contenu : h1 « Sondage <institut> du <date de fin de terrain> », puis une ligne
+avec la période de terrain, l'institut (lien vers sa page), l'échantillon, la
+population et le lien vers la notice. Vient ensuite un chapô rédigé, puis chaque
+hypothèse (tour, scores, marge d'erreur). L'hypothèse
 principale est affichée en premier, avec l'écart de chaque candidat à la moyenne
 pondérée Sondax à la date de fin de terrain. Marge d'erreur calculée sur
 l'échantillon de l'hypothèse si disponible, sinon sur l'échantillon total avec
 mention « approximative ». Les duels de second tour sont affichés séparément.
-Navigation vers le sondage précédent et suivant du même institut. L'identifiant
-est figé (§3.2) ; il sert d'URL et ne doit jamais être recalculé.
+L'identifiant est figé (§3.2) ; il sert d'URL et ne doit jamais être recalculé.
+
+**Chapô.** Généré au build, sans appel à un modèle, sur le modèle du chapeau
+de l'accueil : chiffres au format français, espace insécable avant « % ».
+Dans l'ordre :
+
+1. podium de l'hypothèse principale (trois premiers, noms complets) ;
+2. évolution des trois premiers par rapport au précédent sondage du même
+   institut, d'hypothèse principale à hypothèse principale : seuls les
+   mouvements d'au moins 1 point sont chiffrés, les autres sont dits stables ;
+   un candidat absent de l'hypothèse principale précédente est signalé comme
+   tel, jamais comparé à une autre configuration. Sans précédent : « C'est le
+   premier sondage <institut> de la série. » ;
+3. nombre de configurations de premier tour et ce qui les distingue : candidats
+   de l'hypothèse principale absents d'au moins une autre (« avec ou sans »,
+   limités à ceux qui y pèsent 5 % ou plus, trois au plus), puis candidats
+   ajoutés ailleurs (trois au plus) ;
+4. s'il y a des duels : leur nombre, le vainqueur et le duel le plus serré.
+
+Une phrase dont la donnée manque est omise, jamais remplacée par un texte
+générique. Deux fiches ne peuvent pas avoir le même chapô : le build échoue
+sinon. La meta description reprend la première phrase du chapô, plus la
+seconde si l'ensemble tient en 155 caractères ; le title reste
+« Sondage <institut> du <date> – présidentielle 2027 ».
+
+**Libellé des hypothèses.** « Hypothèse n — avec X, sans Y », calculé par
+différence de candidats avec l'hypothèse principale ; « Hypothèse n » seul
+si la liste est identique.
+
+**Navigation.** Sondage précédent et suivant dans l'ordre chronologique de
+tous les sondages (fin de terrain, puis début de terrain, puis identifiant),
+libellés avec l'institut et la date. Sous chaque duel, lien vers la page du
+duel (§13.4).
 
 Maillage : dans `sondages.html`, chaque ligne du tableau renvoie vers la page
 du sondage. Sur la page d'accueil, « Voir la fiche » pointe vers la page du

@@ -136,21 +136,11 @@ Les barres par candidat restent uniquement sur la page Modèle (§5.2).
 
 ### 4.4 Principal mouvement
 
-Mettre en évidence une seule information.
-Exemple :
-Philippe se rapproche : +11 chances en une semaine.
-ou :
-Mélenchon repasse devant Philippe.
-ou :
-Peu de changement depuis une semaine.
+Pas sur la home. Le principal mouvement est présenté sur la page Modèle, dans « Ce qui a changé » (§5.10 et §5.11). Sur la home, l’évolution de chaque duel figure dans le bloc « Les seconds tours possibles » (§4.3).
 
 ### 4.5 Point de bascule
 
-Lorsque l’information est particulièrement pertinente, afficher :
-Philippe est à environ 1 point du basculement.
-Tooltip ou texte secondaire :
-Avec environ un point supplémentaire dans les sondages actuels, ses chances d’accéder au second tour seraient proches d’une sur deux.
-Ne pas afficher le point de bascule systématiquement sur la home.
+Pas sur la home. Le point de bascule est présenté sur la page Modèle (§5.1, §5.2 et §5.9).
 
 ### 4.6 CTA
 
@@ -896,10 +886,10 @@ Revue en local, mobile et desktop. Ajustement des seuils de verdict et du wordin
 `backtest.py`, leave-one-out, `backtest.json`. Validation de la loi (section 10).
 
 **B3 — Historisation**
-`modele_history.json` à chaque run ; évolutions 1 j, 7 j, 30 j avec la règle d’affichage de 5.4.
+`modele_history.json` à chaque run ; évolutions 1 j, 7 j, 30 j, attribuées au sondage déclencheur quand un seul est entré (5.11).
 
 **B4 — « Ce qui a changé »**
-Règles de 5.11, avec attribution au sondage déclencheur. Accroches de mouvement (4.2, 4.4).
+Règles de 5.11, avec attribution au sondage déclencheur. Accroches de mouvement (4.2).
 
 **B5 — Point de bascule**
 Section 8.6, affichage borné (5.9).

@@ -1383,7 +1383,9 @@ l'ordre :
 
 1. **depuis la dernière mise à jour** (`horizon: "maj"`), si au moins un sondage est
    entré depuis ;
-2. **sur 7 jours** (`horizon: "7j"`), si au moins trois sondages sont entrés (§14.9).
+2. **sur 7 jours** (`horizon: "7j"`), si au moins un sondage est entré. Sous trois
+   sondages, le texte nomme le ou les sondages (formulation attribuée) : c'est ce qui
+   le distingue d'un « +13 en 7 jours » anonyme, que la règle du §14.9 interdit.
 
 Pour chaque horizon, première règle vérifiée dans cet ordre de priorité :
 

@@ -6,11 +6,17 @@ Données sources :
 - data/candidats.json
 - data/derived/series-t1.json  (écart à la moyenne)
 - scripts/bios.json (slugs avec page dédiée)
+
+Chaque page porte un chapô rédigé au build à partir des données (podium,
+évolution depuis le précédent sondage de l'institut, hypothèses testées,
+duels de second tour), sur le modèle du chapeau de l'accueil
+(build_index_premier_tour.py) : texte déterministe, sans appel à un modèle.
 """
 
 import json
 import math
 import pathlib
+import re
 import html as html_mod
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -21,6 +27,7 @@ import sys
 sys.path.insert(0, str(SCRIPTS))
 from site_template import render_page
 from instituts import charger_referentiel, lien_institut
+from pages_second_tour import load_duels
 
 referentiel = charger_referentiel()
 
@@ -41,25 +48,36 @@ series_data = json.loads(series_path.read_text(encoding="utf-8")) if series_path
 # Ensemble des slugs ayant une page dédiée
 slugs_avec_page = set(bios.keys())
 
+# Duels ayant une page /second-tour/<slug>.html (pages_second_tour.py en
+# génère une pour chaque duel mesuré ; slug = clés triées, jointes par un tiret)
+duels_avec_page = set(load_duels()[0].keys())
 
-# ---------- index prev/next par institut ----------
 
-sondages_by_institut: dict[str, list] = {}
-for s in sorted(sondages, key=lambda s: s["terrain_fin"]):
-    inst = s["institut"]
-    sondages_by_institut.setdefault(inst, []).append(s)
+# ---------- ordre chronologique ----------
+
+# Tous instituts confondus, pour la navigation précédent / suivant
+chronologie = sorted(
+    sondages, key=lambda s: (s["terrain_fin"], s.get("terrain_debut", ""), s["id"])
+)
 
 
 def prev_next(sondage):
-    """Retourne (prev_sondage, next_sondage) du même institut, ou (None, None)."""
-    inst = sondage["institut"]
-    lst = sondages_by_institut.get(inst, [])
-    idx = next((i for i, s in enumerate(lst) if s["id"] == sondage["id"]), -1)
+    """Retourne (prev_sondage, next_sondage) dans l'ordre chronologique global."""
+    idx = next((i for i, s in enumerate(chronologie) if s["id"] == sondage["id"]), -1)
     if idx < 0:
         return None, None
-    prev_s = lst[idx - 1] if idx > 0 else None
-    next_s = lst[idx + 1] if idx < len(lst) - 1 else None
+    prev_s = chronologie[idx - 1] if idx > 0 else None
+    next_s = chronologie[idx + 1] if idx < len(chronologie) - 1 else None
     return prev_s, next_s
+
+
+def precedent_meme_institut(sondage):
+    """Dernier sondage du même institut, antérieur et comportant un tour 1."""
+    idx = next(i for i, s in enumerate(chronologie) if s["id"] == sondage["id"])
+    for s in reversed(chronologie[:idx]):
+        if s["institut"] == sondage["institut"] and hypothese_principale(s):
+            return s
+    return None
 
 
 # ---------- moyenne pondérée à une date ----------
@@ -94,11 +112,6 @@ def date_lettres(iso):
     return f"{int(d)} {MOIS[int(m) - 1]} {y}"
 
 
-def fmt_date(iso):
-    y, m, d = iso.split("-")
-    return f"{d}/{m}/{y}"
-
-
 def fmt_ech(n):
     return f"{round(n):,}".replace(",", "\u202f")
 
@@ -123,6 +136,367 @@ def candidate_link(cid, nom_complet):
 
 def is_type_parti(cid):
     return candidats.get(cid, {}).get("type") == "parti"
+
+
+# ---------- texte rédigé ----------
+# Même mécanique que le chapeau de l'accueil : chaque phrase est calculée à
+# partir des données et omise si une donnée manque. Chiffres au format
+# français, espace insécable avant « % ».
+
+NOMBRES = [
+    "zéro", "un", "deux", "trois", "quatre", "cinq", "six", "sept", "huit",
+    "neuf", "dix", "onze", "douze", "treize", "quatorze", "quinze", "seize",
+    "dix-sept", "dix-huit", "dix-neuf", "vingt",
+]
+
+
+def nombre_lettres(n, feminin=False):
+    if n == 1:
+        return "une" if feminin else "un"
+    return NOMBRES[n] if 0 <= n < len(NOMBRES) else str(n)
+
+
+def majuscule(texte):
+    return texte[:1].upper() + texte[1:]
+
+
+def enumeration_fr(items, conj="et"):
+    """['A', 'B', 'C'] → 'A, B et C'"""
+    if len(items) <= 1:
+        return "".join(items)
+    return ", ".join(items[:-1]) + f" {conj} " + items[-1]
+
+
+def fmt_nombre(v):
+    """33.0 → '33', 14.5 → '14,5'"""
+    v = round(v, 1)
+    return str(int(v)) if v == int(v) else f"{v:.1f}".replace(".", ",")
+
+
+def fmt_pct_txt(v):
+    return fmt_nombre(v) + "\u00a0%"
+
+
+def fmt_points(delta):
+    d = abs(delta)
+    return f"{fmt_nombre(d)}\u00a0{'point' if d < 2 else 'points'}"
+
+
+def jour_mois(iso, annee=True):
+    """'2026-09-01' → '1er septembre 2026'"""
+    y, m, d = iso.split("-")
+    jour = "1er" if int(d) == 1 else str(int(d))
+    return f"{jour} {MOIS[int(m) - 1]}" + (f" {y}" if annee else "")
+
+
+def terrain_lettres(debut, fin):
+    """Période de terrain : 'du 24 au 25 août 2026', 'le 10 juillet 2026'."""
+    if not debut or debut == fin:
+        return f"le {jour_mois(fin)}"
+    if debut[:4] != fin[:4]:
+        return f"du {jour_mois(debut)} au {jour_mois(fin)}"
+    if debut[:7] == fin[:7]:
+        return f"du {jour_mois(debut).split(' ')[0]} au {jour_mois(fin)}"
+    return f"du {jour_mois(debut, annee=False)} au {jour_mois(fin)}"
+
+
+def nom_court(cid):
+    return candidats.get(cid, {}).get("nom", cid)
+
+
+def genre(cid):
+    return candidats.get(cid, {}).get("genre", "m")
+
+
+def scores_tries(hyp):
+    return sorted(
+        ((cid, v) for cid, v in hyp.get("scores", {}).items() if cid != "autre"),
+        key=lambda kv: -kv[1],
+    )
+
+
+def candidats_hyp(hyp):
+    return set(hyp.get("scores", {})) - {"autre"}
+
+
+def hypothese_principale(sondage):
+    """Hypothèse T1 marquée principale (principale.py), sinon la plus fournie."""
+    t1 = [h for h in sondage.get("hypotheses", []) if h.get("tour") == 1]
+    if not t1:
+        return None
+    for h in t1:
+        if h.get("principale"):
+            return h
+    return max(t1, key=lambda h: len(candidats_hyp(h)))
+
+
+def duels(sondage):
+    return [
+        h for h in sondage.get("hypotheses", [])
+        if h.get("tour") == 2 and len(candidats_hyp(h)) == 2
+    ]
+
+
+def lien_sondage(s, texte):
+    return f'<a href="{html_mod.escape(s["id"])}.html">{html_mod.escape(texte)}</a>'
+
+
+def phrase_podium(principale):
+    """a. « Marine Le Pen arrive en tête avec 33 %, devant X (16 %) et Y (14,5 %). »"""
+    top = scores_tries(principale)
+    if not top:
+        return None
+    score_1 = top[0][1]
+    tete = [cid for cid, v in top if v == score_1]
+    if len(tete) > 1:
+        noms = enumeration_fr([candidate_full_name(c) for c in tete])
+        phrase = f"{noms} arrivent en tête à égalité avec {fmt_pct_txt(score_1)}"
+        suivants = top[len(tete):3] if len(tete) < 3 else []
+    else:
+        phrase = f"{candidate_full_name(tete[0])} arrive en tête avec {fmt_pct_txt(score_1)}"
+        suivants = top[1:3]
+    if suivants:
+        autres = [f"{candidate_full_name(c)} ({fmt_pct_txt(v)})" for c, v in suivants]
+        phrase += f", devant {enumeration_fr(autres)}"
+    return html_mod.escape(phrase) + "."
+
+
+def phrase_evolution(sondage, principale):
+    """b. Évolution des trois premiers depuis le précédent sondage de l'institut.
+
+    Comparaison d'hypothèse principale à hypothèse principale : un candidat
+    absent de celle du précédent sondage est signalé, jamais comparé à une
+    autre configuration.
+    """
+    institut = sondage["institut"]
+    prec = precedent_meme_institut(sondage)
+    if prec is None:
+        return html_mod.escape(f"C\u2019est le premier sondage {institut} de la série.")
+
+    top = [cid for cid, _ in scores_tries(principale)[:3]]
+    if not top:
+        return None
+    avant = hypothese_principale(prec)["scores"]
+    actuel = principale["scores"]
+
+    mouvements, stables, absents = {}, [], []
+    for cid in top:
+        if cid not in avant:
+            absents.append(cid)
+            continue
+        delta = round(actuel[cid] - avant[cid], 1)
+        if abs(delta) >= 1:
+            # Mouvements identiques regroupés : « Le Pen et Mélenchon gagnent 1 point »
+            mouvements.setdefault(delta, []).append(nom_court(cid))
+        else:
+            stables.append(nom_court(cid))
+
+    fragments = []
+    for delta, noms in mouvements.items():
+        if delta > 0:
+            verbe = "gagne" if len(noms) == 1 else "gagnent"
+        else:
+            verbe = "perd" if len(noms) == 1 else "perdent"
+        fragments.append(f"{enumeration_fr(noms)} {verbe} {fmt_points(delta)}")
+    if stables:
+        verbe = "est stable" if len(stables) == 1 else "sont stables"
+        fragments.append(f"{enumeration_fr(stables)} {verbe}")
+    # Mouvements et stables séparés par des virgules, l'absence par un point-virgule
+    texte = ", ".join(fragments)
+    if absents:
+        verbe = "ne figurait pas" if len(absents) == 1 else "ne figuraient pas"
+        verbe += " dans son hypothèse principale"
+        absence = f"{enumeration_fr([nom_court(c) for c in absents])} {verbe}"
+        texte = f"{texte}\u00a0; {absence}" if texte else absence
+
+    meme_annee = prec["terrain_fin"][:4] == sondage["terrain_fin"][:4]
+    ref = f"l\u2019enquête {institut} du {jour_mois(prec['terrain_fin'], annee=not meme_annee)}"
+    return f"Par rapport à {lien_sondage(prec, ref)}, {html_mod.escape(texte)}."
+
+
+def phrase_hypotheses(t1, principale):
+    """c. Nombre de configurations testées et ce qui les distingue."""
+    n = len(t1)
+    if n == 0:
+        return None
+    if n == 1:
+        return "L\u2019institut n\u2019a testé qu\u2019une configuration de premier tour."
+
+    base = candidats_hyp(principale)
+    autres = [h for h in t1 if h is not principale]
+    # Candidats de l'hypothèse principale absents d'au moins une autre
+    alternants = [c for c in base if any(c not in candidats_hyp(h) for h in autres)]
+    # Candidats absents de l'hypothèse principale, ajoutés ailleurs
+    entrants = {}
+    for h in autres:
+        for c in candidats_hyp(h) - base:
+            entrants[c] = entrants.get(c, 0) + 1
+
+    # Les candidats à 5 % ou plus suffisent à caractériser les configurations ;
+    # à défaut, tous les candidats qui varient
+    scores_p = principale["scores"]
+    notables = [c for c in alternants if scores_p[c] >= 5] or alternants
+    notables = sorted(notables, key=lambda c: -scores_p[c])[:3]
+    max_score = {c: max(h["scores"].get(c, 0) for h in autres) for c in entrants}
+    entrants_tries = sorted(entrants, key=lambda c: -max_score[c])[:3]
+
+    debut = f"L\u2019institut a testé {nombre_lettres(n, feminin=True)} configurations"
+    frag_entrants = []
+    for i, c in enumerate(entrants_tries):
+        k = nombre_lettres(entrants[c], feminin=True)
+        if i == 0:
+            mot = "hypothèse" if entrants[c] == 1 else "hypothèses"
+            frag_entrants.append(f"{k} {mot} avec {candidate_full_name(c)}")
+        else:
+            frag_entrants.append(f"{k} avec {candidate_full_name(c)}")
+
+    if notables:
+        phrase = f"{debut}, avec ou sans {enumeration_fr([candidate_full_name(c) for c in notables])}"
+        if frag_entrants:
+            suite = enumeration_fr(frag_entrants)
+            elision = "qu\u2019" if suite.startswith("un") else "que "
+            phrase += f", ainsi {elision}{suite}"
+    elif frag_entrants:
+        phrase = f"{debut}, dont {enumeration_fr(frag_entrants)}"
+    else:
+        phrase = f"{debut} avec la même liste de candidats"
+    return html_mod.escape(phrase) + "."
+
+
+def fmt_duel(hyp):
+    (_, a), (_, b) = scores_tries(hyp)
+    return f"{fmt_nombre(a)}-{fmt_nombre(b)}"
+
+
+def phrase_duels(t2):
+    """d. Nombre de duels, vainqueur, duel le plus serré."""
+    n = len(t2)
+    if n == 0:
+        return None
+    issues = []  # (vainqueur ou None, perdant/adversaire, écart, hyp)
+    for h in t2:
+        (ca, a), (cb, b) = scores_tries(h)
+        issues.append((ca if a > b else None, cb, ca, round(a - b, 1), h))
+
+    if n == 1:
+        v, cb, ca, ecart, h = issues[0]
+        if v:
+            return html_mod.escape(
+                f"Un seul duel de second tour a été testé\u00a0: {nom_court(ca)} "
+                f"l\u2019emporte face à {nom_court(cb)} ({fmt_duel(h)})."
+            )
+        return html_mod.escape(
+            f"Un seul duel de second tour a été testé\u00a0: {nom_court(ca)} et "
+            f"{nom_court(cb)} sont à égalité ({fmt_duel(h)})."
+        )
+
+    phrases = [f"{majuscule(nombre_lettres(n))} duels de second tour ont été testés."]
+    ecart_min = min(i[3] for i in issues)
+    serres = [i for i in issues if i[3] == ecart_min]
+
+    communs = set.intersection(*(candidats_hyp(h) for h in t2))
+    if len(communs) == 1:
+        pivot = communs.pop()
+        victoires = sum(1 for i in issues if i[0] == pivot)
+        if victoires == n:
+            face = " et ".join(
+                f"{'face ' if k == 0 else ''}à {nom_court(i[1])} ({fmt_duel(i[4])})"
+                for k, i in enumerate(serres)
+            )
+            tous = "les deux" if n == 2 else "tous"
+            phrases.append(
+                f"{majuscule(nom_court(pivot))} l\u2019emporte dans {tous}, "
+                f"avec un écart minimal {face}."
+            )
+            return html_mod.escape(" ".join(phrases))
+        if victoires == 0 and all(i[0] for i in issues):
+            battu = "battue" if genre(pivot) == "f" else "battu"
+            tous = "les deux" if n == 2 else "tous"
+            phrases.append(f"{majuscule(nom_court(pivot))} est {battu} dans {tous}.")
+        else:
+            phrases.append(
+                f"{majuscule(nom_court(pivot))} l\u2019emporte dans "
+                f"{nombre_lettres(victoires)} des {nombre_lettres(n)}."
+            )
+    else:
+        compte = {}
+        for i in issues:
+            if i[0]:
+                compte[i[0]] = compte.get(i[0], 0) + 1
+        if compte:
+            ordre = sorted(compte, key=lambda c: -compte[c])
+            frags = []
+            for k, c in enumerate(ordre):
+                nb = nombre_lettres(compte[c])
+                if k == 0:
+                    frags.append(f"{majuscule(nom_court(c))} l\u2019emporte dans "
+                                 f"{nb} duel{'s' if compte[c] > 1 else ''}")
+                else:
+                    frags.append(f"{nom_court(c)} dans {nb}")
+            phrases.append(enumeration_fr(frags) + ".")
+
+    duels_serres = [
+        f"{nom_court(i[2])} à {nom_court(i[1])} ({fmt_duel(i[4])})" for i in serres
+    ]
+    if ecart_min == 0:
+        phrases.append(f"Le duel le plus serré est à égalité\u00a0: {enumeration_fr(duels_serres)}.")
+    else:
+        verbe = "oppose" if len(serres) == 1 else "opposent"
+        sujet = "Le duel le plus serré" if len(serres) == 1 else "Les duels les plus serrés"
+        phrases.append(f"{sujet} {verbe} {enumeration_fr(duels_serres)}.")
+    return html_mod.escape(" ".join(phrases))
+
+
+def chapo_phrases(sondage):
+    """Liste des phrases du chapô (HTML), dans l'ordre a, b, c, d."""
+    t1 = [h for h in sondage.get("hypotheses", []) if h.get("tour") == 1]
+    principale = hypothese_principale(sondage)
+    phrases = []
+    if principale:
+        phrases += [
+            phrase_podium(principale),
+            phrase_evolution(sondage, principale),
+            phrase_hypotheses(t1, principale),
+        ]
+    phrases.append(phrase_duels(duels(sondage)))
+    return [p for p in phrases if p]
+
+
+def texte_brut(fragment_html):
+    return html_mod.unescape(re.sub(r"<[^>]+>", "", fragment_html))
+
+
+def meta_description_chapo(phrases, limite=155):
+    """Première phrase du chapô, plus la seconde si l'ensemble tient en 155 caractères."""
+    brutes = [texte_brut(p) for p in phrases]
+    if not brutes:
+        return ""
+    texte = brutes[0]
+    if len(brutes) > 1 and len(texte) + 1 + len(brutes[1]) <= limite:
+        texte += " " + brutes[1]
+    return html_mod.escape(texte)
+
+
+def libelle_hypothese(i, hyp, principale):
+    """« Hypothèse 2 — sans Attal », calculé par différence avec la principale."""
+    label = f"Hypothèse\u00a0{i}"
+    if hyp is principale or principale is None:
+        return label
+    base, mine = candidats_hyp(principale), candidats_hyp(hyp)
+    avec = sorted(mine - base, key=lambda c: -hyp["scores"][c])
+    sans = sorted(base - mine, key=lambda c: -principale["scores"][c])
+    parts = []
+    if avec:
+        parts.append("avec " + enumeration_fr([nom_court(c) for c in avec]))
+    if sans:
+        parts.append("sans " + enumeration_fr([nom_court(c) for c in sans]))
+    if not parts:
+        return label
+    return f"{label} \u2014 {html_mod.escape(', '.join(parts))}"
+
+
+def slug_duel(hyp):
+    return "-".join(sorted(candidats_hyp(hyp)))
 
 
 # ---------- construction d'une hypothèse ----------
@@ -231,6 +605,15 @@ def build_duel_html(hyp, sondage_echantillon):
     me_a_str = f"±\u202f{me_a:.1f}\u202f%" if me_a else ""
     me_b_str = f"±\u202f{me_b:.1f}\u202f%" if me_b else ""
 
+    lien = ""
+    slug = slug_duel(hyp)
+    if slug in duels_avec_page:
+        a, b = (nom_court(c) for c in sorted(candidats_hyp(hyp)))
+        lien = (
+            f'  <a class="duel-lien" href="../second-tour/{html_mod.escape(slug)}.html">'
+            f'Tous les sondages {html_mod.escape(a)} \u2013 {html_mod.escape(b)} \u2192</a>\n'
+        )
+
     return f"""<div class="duel">
   <div class="duel-bar">
     <span class="duel-part" style="width:{score_a:.1f}%;background:{couleur_a}"></span>
@@ -240,7 +623,7 @@ def build_duel_html(hyp, sondage_echantillon):
     <span class="duel-cand">{nom_a} <strong>{fmt_pct(score_a)}</strong> <span class="duel-me">{me_a_str}</span></span>
     <span class="duel-cand duel-cand-right">{nom_b} <strong>{fmt_pct(score_b)}</strong> <span class="duel-me">{me_b_str}</span></span>
   </div>
-</div>"""
+{lien}</div>"""
 
 
 # ---------- page complète ----------
@@ -259,11 +642,9 @@ def build_page(sondage):
     date_titre = date_lettres(terrain_fin)
     title = f"Sondage {html_mod.escape(institut)} du {date_titre} \u2013 présidentielle 2027"
     canonical = f"https://sondax.fr/sondages/{html_mod.escape(sid)}.html"
-    meta_desc = (
-        f"Résultats du sondage {html_mod.escape(institut)} du {date_titre} "
-        f"pour l\u2019élection présidentielle 2027 : scores, marges d\u2019erreur"
-        f"{', duels de second tour' if any(h['tour'] == 2 for h in hypotheses) else ''}."
-    )
+    phrases = chapo_phrases(sondage)
+    meta_desc = meta_description_chapo(phrases)
+    h1 = f"Sondage {institut} du {jour_mois(terrain_fin)}"
 
     # Breadcrumb
     breadcrumb = (
@@ -273,14 +654,11 @@ def build_page(sondage):
         '</nav>'
     )
 
-    # En-tête sondage : date en lettres
-    if terrain_debut and terrain_debut != terrain_fin:
-        date_display = f"{date_lettres(terrain_debut)} \u2013 {date_lettres(terrain_fin)}"
-    else:
-        date_display = date_lettres(terrain_fin)
-
-    # Métadonnées compactes
-    meta_parts = [lien_institut(institut, referentiel, "../")]
+    # Ligne sous le h1 : terrain complet, échantillon, institut, notice
+    meta_parts = [
+        f"Terrain {terrain_lettres(terrain_debut, terrain_fin)}",
+        lien_institut(institut, referentiel, "../"),
+    ]
     if echantillon:
         meta_parts.append(f"{fmt_ech(echantillon)}\u202fpersonnes")
     if population:
@@ -299,10 +677,11 @@ def build_page(sondage):
     t1.sort(key=lambda h: (0 if h.get("principale") else 1, -len(h.get("scores", {}))))
 
     # Hypothèses T1 avec sous-titres numérotés
+    principale = hypothese_principale(sondage)
     hyps_html = []
     for i, hyp in enumerate(t1, 1):
         is_p = bool(hyp.get("principale"))
-        label = f"Hypothèse\u00a0{i}" if len(t1) > 1 else ""
+        label = libelle_hypothese(i, hyp, principale) if len(t1) > 1 else ""
         hyps_html.append(build_hypothesis_html(hyp, echantillon, is_p, terrain_fin, label))
 
     # Duels T2
@@ -310,20 +689,22 @@ def build_page(sondage):
     for hyp in t2:
         duels_html.append(build_duel_html(hyp, echantillon))
 
-    # Prev / next par institut
+    # Précédent / suivant, tous instituts confondus
     prev_s, next_s = prev_next(sondage)
     nav_parts = []
     if prev_s:
         nav_parts.append(
-            f'<a href="{html_mod.escape(prev_s["id"])}.html" class="nav-prev">'
-            f'\u2190 {html_mod.escape(prev_s["institut"])} {fmt_date(prev_s["terrain_fin"])}</a>'
+            f'<a href="{html_mod.escape(prev_s["id"])}.html" class="nav-prev" rel="prev">'
+            f'<span class="nav-sens">\u2190 Sondage précédent</span>'
+            f'{html_mod.escape(prev_s["institut"])} du {jour_mois(prev_s["terrain_fin"])}</a>'
         )
     else:
         nav_parts.append('<span></span>')
     if next_s:
         nav_parts.append(
-            f'<a href="{html_mod.escape(next_s["id"])}.html" class="nav-next">'
-            f'{html_mod.escape(next_s["institut"])} {fmt_date(next_s["terrain_fin"])} \u2192</a>'
+            f'<a href="{html_mod.escape(next_s["id"])}.html" class="nav-next" rel="next">'
+            f'<span class="nav-sens">Sondage suivant \u2192</span>'
+            f'{html_mod.escape(next_s["institut"])} du {jour_mois(next_s["terrain_fin"])}</a>'
         )
     else:
         nav_parts.append('<span></span>')
@@ -344,13 +725,14 @@ def build_page(sondage):
             + "\n".join(duels_html)
         )
 
+    chapo_html = f'    <p class="sondage-chapo">{" ".join(phrases)}</p>\n' if phrases else ""
+
     body = f"""<main class="sondage-page">
   <div class="sondage-inner">
     {breadcrumb}
-    <h1>{html_mod.escape(institut)}</h1>
-    <p class="sondage-date">{date_display}</p>
+    <h1>{html_mod.escape(h1)}</h1>
     <p class="sondage-meta-line">{meta_line}</p>
-
+{chapo_html}
     <div class="section-sep"></div>
     {chr(10).join(sections)}
 
@@ -372,13 +754,13 @@ EXTRA_CSS = """<style>
 .sondage-page { padding: 24px 16px 40px; }
 .sondage-inner { max-width: 780px; margin: 0 auto; }
 
-.sondage-date {
-  font-size: 15px; color: var(--gris); margin: -12px 0 4px;
-}
 .sondage-meta-line {
-  font-size: 13.5px; color: var(--gris); margin-bottom: 0;
+  font-size: 13.5px; color: var(--gris); margin: -8px 0 0;
 }
 .sondage-meta-line a { font-weight: 500; }
+.sondage-chapo {
+  font-size: 15.5px; line-height: 1.6; margin-top: 16px; max-width: 68ch;
+}
 
 .section-sep {
   border-top: 1px solid var(--bord); margin: 20px 0;
@@ -426,6 +808,7 @@ tr.type-parti .cand-name { font-style: italic; }
 .duel-cand strong { font-weight: 600; }
 .duel-cand-right { text-align: right; }
 .duel-me { font-size: 12px; color: var(--gris); }
+.duel-lien { display: inline-block; font-size: 12.5px; margin-top: 4px; }
 
 /* Navigation prev/next */
 .sondage-nav {
@@ -433,7 +816,9 @@ tr.type-parti .cand-name { font-style: italic; }
   padding-top: 20px; border-top: 1px solid var(--bord); margin-top: 24px;
   font-size: 13.5px;
 }
-.nav-prev, .nav-next { color: var(--gris); }
+.nav-prev, .nav-next { color: var(--gris); display: flex; flex-direction: column; }
+.nav-next { text-align: right; }
+.nav-sens { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; }
 .nav-prev:hover, .nav-next:hover { color: var(--bleu-vif); text-decoration: none; }
 
 @media (max-width: 600px) {
@@ -450,6 +835,7 @@ out_dir = SITE / "sondages"
 out_dir.mkdir(parents=True, exist_ok=True)
 
 count = 0
+chapos = {}
 for sondage in sondages:
     sid = sondage.get("id")
     if not sid:
@@ -460,5 +846,12 @@ for sondage in sondages:
     html_content = build_page(sondage)
     html_out.write_text(html_content, encoding="utf-8")
     count += 1
+    chapos.setdefault(" ".join(chapo_phrases(sondage)), []).append(sid)
+
+doublons = [ids for texte, ids in chapos.items() if len(ids) > 1]
+if doublons:
+    for ids in doublons:
+        print(f"ERREUR  chapô identique : {', '.join(ids)}", file=sys.stderr)
+    sys.exit(1)
 
 print(f"\n{count} pages sondage générées dans site/sondages/")

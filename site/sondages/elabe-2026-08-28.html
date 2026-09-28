@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sondage Elabe du 28 août 2026 – présidentielle 2027</title>
-<meta name="description" content="Résultats du sondage Elabe du 28 août 2026 pour l’élection présidentielle 2027 : scores, marges d’erreur, duels de second tour.">
+<meta name="description" content="Marine Le Pen arrive en tête avec 34 %, devant Édouard Philippe (17 %) et Jean-Luc Mélenchon (14 %).">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sondax">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://sondax.fr/sondages/elabe-2026-08-28.html">
 <meta property="og:title" content="Sondage Elabe du 28 août 2026 – présidentielle 2027">
-<meta property="og:description" content="Résultats du sondage Elabe du 28 août 2026 pour l’élection présidentielle 2027 : scores, marges d’erreur, duels de second tour.">
+<meta property="og:description" content="Marine Le Pen arrive en tête avec 34 %, devant Édouard Philippe (17 %) et Jean-Luc Mélenchon (14 %).">
 <meta property="og:image" content="https://sondax.fr/assets/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -75,13 +75,13 @@
 .sondage-page { padding: 24px 16px 40px; }
 .sondage-inner { max-width: 780px; margin: 0 auto; }
 
-.sondage-date {
-  font-size: 15px; color: var(--gris); margin: -12px 0 4px;
-}
 .sondage-meta-line {
-  font-size: 13.5px; color: var(--gris); margin-bottom: 0;
+  font-size: 13.5px; color: var(--gris); margin: -8px 0 0;
 }
 .sondage-meta-line a { font-weight: 500; }
+.sondage-chapo {
+  font-size: 15.5px; line-height: 1.6; margin-top: 16px; max-width: 68ch;
+}
 
 .section-sep {
   border-top: 1px solid var(--bord); margin: 20px 0;
@@ -129,6 +129,7 @@ tr.type-parti .cand-name { font-style: italic; }
 .duel-cand strong { font-weight: 600; }
 .duel-cand-right { text-align: right; }
 .duel-me { font-size: 12px; color: var(--gris); }
+.duel-lien { display: inline-block; font-size: 12.5px; margin-top: 4px; }
 
 /* Navigation prev/next */
 .sondage-nav {
@@ -136,7 +137,9 @@ tr.type-parti .cand-name { font-style: italic; }
   padding-top: 20px; border-top: 1px solid var(--bord); margin-top: 24px;
   font-size: 13.5px;
 }
-.nav-prev, .nav-next { color: var(--gris); }
+.nav-prev, .nav-next { color: var(--gris); display: flex; flex-direction: column; }
+.nav-next { text-align: right; }
+.nav-sens { font-size: 11.5px; text-transform: uppercase; letter-spacing: .06em; }
 .nav-prev:hover, .nav-next:hover { color: var(--bleu-vif); text-decoration: none; }
 
 @media (max-width: 600px) {
@@ -155,34 +158,34 @@ tr.type-parti .cand-name { font-style: italic; }
 <main class="sondage-page">
   <div class="sondage-inner">
     <nav class="fil" aria-label="Fil d’Ariane"><a href="../">Sondax</a> › <a href="../sondages.html">Sondages</a></nav>
-    <h1>Elabe</h1>
-    <p class="sondage-date">26 août 2026 – 28 août 2026</p>
-    <p class="sondage-meta-line">Elabe · 1 501 personnes · <a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10245-pres-iv-elabe-29-aout.pdf" target="_blank" rel="noopener">Notice</a></p>
+    <h1>Sondage Elabe du 28 août 2026</h1>
+    <p class="sondage-meta-line">Terrain du 26 au 28 août 2026 · <a href="../instituts/elabe.html">Elabe</a> · 1 501 personnes · <a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10245-pres-iv-elabe-29-aout.pdf" target="_blank" rel="noopener">Notice</a></p>
+    <p class="sondage-chapo">Marine Le Pen arrive en tête avec 34 %, devant Édouard Philippe (17 %) et Jean-Luc Mélenchon (14 %). Par rapport à <a href="elabe-2026-07-10.html">l’enquête Elabe du 10 juillet</a>, Le Pen perd 1 point, Philippe gagne 3 points, Mélenchon est stable. L’institut a testé six configurations, avec ou sans Édouard Philippe et Raphaël Glucksmann, ainsi que trois hypothèses avec Gabriel Attal, deux avec François Hollande et une avec François Ruffin. Quatre duels de second tour ont été testés. Le Pen l’emporte dans tous, avec un écart minimal face à Philippe (52,5-47,5).</p>
 
     <div class="section-sep"></div>
     <h2>Premier tour</h2>
-<div class="hypothese">
-  <div class="hyp-header">Hypothèse 1</div>
+<div class="hypothese hyp-principale">
+  <div class="hyp-header">Hypothèse 1 <span class="badge badge-principale">Principale</span></div>
   <table class="scores-table">
-    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
+    <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th><th class="col-ecart">Écart / moy.</th></tr></thead>
     <tbody>
-    <tr><td class="cand-name"><a href="../le-pen.html">Marine Le Pen</a></td><td class="col-score"><span class="bar" style="width:34%;background:#0D378A"></span>34,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="width:17%;background:#00B7FF"></span>17,0 %</td><td class="col-me">± 1.9 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:14%;background:#CC2443"></span>14,0 %</td><td class="col-me">± 1.8 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td><td class="col-score"><span class="bar" style="width:12%;background:#FF7043"></span>11,5 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:6%;background:#0066CC"></span>6,5 %</td><td class="col-me">± 1.2 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:4%;background:#00C853"></span>3,5 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:3%;background:#DD1111"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:3%;background:#0055A4"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name">Dominique de Villepin</td><td class="col-score"><span class="bar" style="width:2%;background:#8B6914"></span>2,0 %</td><td class="col-me">± 0.7 % <span class="me-approx">(approx.)</span></td></tr>
-    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:2%;background:#8B0000"></span>1,5 %</td><td class="col-me">± 0.6 % <span class="me-approx">(approx.)</span></td></tr>
+    <tr><td class="cand-name"><a href="../le-pen.html">Marine Le Pen</a></td><td class="col-score"><span class="bar" style="width:34%;background:#0D378A"></span>34,0 %</td><td class="col-me">± 2.4 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">+0,1 pt</td></tr>
+    <tr><td class="cand-name"><a href="../philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="width:17%;background:#00B7FF"></span>17,0 %</td><td class="col-me">± 1.9 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">+1,6 pt</td></tr>
+    <tr><td class="cand-name"><a href="../melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="width:14%;background:#CC2443"></span>14,0 %</td><td class="col-me">± 1.8 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">-1,2 pt</td></tr>
+    <tr><td class="cand-name"><a href="../glucksmann.html">Raphaël Glucksmann</a></td><td class="col-score"><span class="bar" style="width:12%;background:#FF7043"></span>11,5 %</td><td class="col-me">± 1.6 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">+0,6 pt</td></tr>
+    <tr><td class="cand-name"><a href="../retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="width:6%;background:#0066CC"></span>6,5 %</td><td class="col-me">± 1.2 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">+0,3 pt</td></tr>
+    <tr><td class="cand-name"><a href="../zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="width:4%;background:#1A1A2E"></span>4,0 %</td><td class="col-me">± 1.0 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">+0,4 pt</td></tr>
+    <tr><td class="cand-name"><a href="../tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="width:4%;background:#00C853"></span>3,5 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">+0,3 pt</td></tr>
+    <tr><td class="cand-name"><a href="../roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="width:3%;background:#DD1111"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">+0,3 pt</td></tr>
+    <tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="width:3%;background:#0055A4"></span>3,0 %</td><td class="col-me">± 0.9 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">+0,8 pt</td></tr>
+    <tr><td class="cand-name">Dominique de Villepin</td><td class="col-score"><span class="bar" style="width:2%;background:#8B6914"></span>2,0 %</td><td class="col-me">± 0.7 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">-0,2 pt</td></tr>
+    <tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="width:2%;background:#8B0000"></span>1,5 %</td><td class="col-me">± 0.6 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">+0,5 pt</td></tr>
     </tbody>
   </table>
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 2</div>
+  <div class="hyp-header">Hypothèse 2 — avec Attal, sans Philippe</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -202,7 +205,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 3</div>
+  <div class="hyp-header">Hypothèse 3 — avec Hollande et Lisnard, sans Glucksmann et de Villepin</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -222,7 +225,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 4</div>
+  <div class="hyp-header">Hypothèse 4 — avec Attal, Hollande, Ruffin et Lisnard, sans Philippe, Glucksmann, Tondelier et de Villepin</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -242,7 +245,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 5</div>
+  <div class="hyp-header">Hypothèse 5 — avec Faure, sans Glucksmann</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -262,7 +265,7 @@ tr.type-parti .cand-name { font-style: italic; }
   <p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>
 </div>
 <div class="hypothese">
-  <div class="hyp-header">Hypothèse 6</div>
+  <div class="hyp-header">Hypothèse 6 — avec Attal, sans Tondelier et de Villepin</div>
   <table class="scores-table">
     <thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th></tr></thead>
     <tbody>
@@ -290,6 +293,7 @@ tr.type-parti .cand-name { font-style: italic; }
     <span class="duel-cand"><a href="../le-pen.html">Marine Le Pen</a> <strong>57,0 %</strong> <span class="duel-me">± 2.5 %</span></span>
     <span class="duel-cand duel-cand-right"><a href="../attal.html">Gabriel Attal</a> <strong>43,0 %</strong> <span class="duel-me">± 2.5 %</span></span>
   </div>
+  <a class="duel-lien" href="../second-tour/attal-le-pen.html">Tous les sondages Attal – Le Pen →</a>
 </div>
 <div class="duel">
   <div class="duel-bar">
@@ -300,6 +304,7 @@ tr.type-parti .cand-name { font-style: italic; }
     <span class="duel-cand"><a href="../le-pen.html">Marine Le Pen</a> <strong>57,0 %</strong> <span class="duel-me">± 2.5 %</span></span>
     <span class="duel-cand duel-cand-right"><a href="../glucksmann.html">Raphaël Glucksmann</a> <strong>43,0 %</strong> <span class="duel-me">± 2.5 %</span></span>
   </div>
+  <a class="duel-lien" href="../second-tour/glucksmann-le-pen.html">Tous les sondages Glucksmann – Le Pen →</a>
 </div>
 <div class="duel">
   <div class="duel-bar">
@@ -310,6 +315,7 @@ tr.type-parti .cand-name { font-style: italic; }
     <span class="duel-cand"><a href="../le-pen.html">Marine Le Pen</a> <strong>69,5 %</strong> <span class="duel-me">± 2.3 %</span></span>
     <span class="duel-cand duel-cand-right"><a href="../melenchon.html">Jean-Luc Mélenchon</a> <strong>30,5 %</strong> <span class="duel-me">± 2.3 %</span></span>
   </div>
+  <a class="duel-lien" href="../second-tour/le-pen-melenchon.html">Tous les sondages Le Pen – Mélenchon →</a>
 </div>
 <div class="duel">
   <div class="duel-bar">
@@ -320,9 +326,10 @@ tr.type-parti .cand-name { font-style: italic; }
     <span class="duel-cand"><a href="../le-pen.html">Marine Le Pen</a> <strong>52,5 %</strong> <span class="duel-me">± 2.5 %</span></span>
     <span class="duel-cand duel-cand-right"><a href="../philippe.html">Édouard Philippe</a> <strong>47,5 %</strong> <span class="duel-me">± 2.5 %</span></span>
   </div>
+  <a class="duel-lien" href="../second-tour/le-pen-philippe.html">Tous les sondages Le Pen – Philippe →</a>
 </div>
 
-    <nav class="sondage-nav"><a href="elabe-2026-07-10.html" class="nav-prev">← Elabe 10/07/2026</a><span></span></nav>
+    <nav class="sondage-nav"><a href="ifop-2026-08-25.html" class="nav-prev" rel="prev"><span class="nav-sens">← Sondage précédent</span>Ifop du 25 août 2026</a><a href="cluster17-2026-09-01.html" class="nav-next" rel="next"><span class="nav-sens">Sondage suivant →</span>Cluster17 du 1er septembre 2026</a></nav>
   </div>
 </main>
 
@@ -350,7 +357,7 @@ tr.type-parti .cand-name { font-style: italic; }
       </div>
     </div>
     <div>
-      <div id="footer-run"></div>
+      <div id="footer-run">Dernier sondage intégré : 24 septembre 2026 · Données vérifiées le 28 septembre 2026 · revid : <a href="https://fr.wikipedia.org/w/index.php?oldid=239883627" target="_blank" style="color:inherit">239883627</a></div>
       <div><a href="mailto:contact@sondax.fr">Contact</a></div>
       <div>Hébergeur · <a href="https://pages.github.com" target="_blank">GitHub Pages</a></div>
     </div>

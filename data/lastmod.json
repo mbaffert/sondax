@@ -1,0 +1,294 @@
+{
+ "a-propos.html": {
+  "hash": "23319776153d1acf572fe447b982a68ff4e44e47e36a9089c3c85ac37514767d",
+  "date": "2026-09-24"
+ },
+ "attal.html": {
+  "hash": "b3b086d2f970cd0ade4a066c9672bb55847152f170182afb29527e8a45401259",
+  "date": "2026-09-24"
+ },
+ "candidats/index.html": {
+  "hash": "ba5683f9bb334a72e7146a3a827b75e1eaa8b7c46e50f7613b508065bc2e724b",
+  "date": "2026-09-24"
+ },
+ "donnees.html": {
+  "hash": "a45cbdd6ddce5d2fbcdcabbe07382075303324f9f5615712212dc4ccbc246bb7",
+  "date": "2026-09-25"
+ },
+ "glucksmann.html": {
+  "hash": "d215e6ec5b9d0a935a995ed75cb7e4e6227fe5c4a4b51d88ce4c31b97ccc6f56",
+  "date": "2026-09-24"
+ },
+ "index.html": {
+  "hash": "a2ed23db4198aab40fa8b459f790081026f07e685ad45f167f902449d3c3e3b8",
+  "date": "2026-09-24"
+ },
+ "instituts.html": {
+  "hash": "5b6d3a3171f7cf04dd4d20eff534d9eebacc954391f2f62d838999bc61eb29c1",
+  "date": "2026-09-24"
+ },
+ "instituts/cluster17.html": {
+  "hash": "fe39d206072610a1fcc07fc6dc6d25caf8ff8a37d15927c78f70ec463fef5607",
+  "date": "2026-09-24"
+ },
+ "instituts/elabe.html": {
+  "hash": "ac269e6a506905e652babc540abd614f6c99154d1c4839d03d6bcb4d4eefae3b",
+  "date": "2026-09-24"
+ },
+ "instituts/ifop.html": {
+  "hash": "999313ae21df78a3fe3f1b6010d7d6d7f32730e6e9f563550c4f29e0c91f681d",
+  "date": "2026-09-24"
+ },
+ "instituts/ipsos-bva.html": {
+  "hash": "63ad56d7c7fd77f62927bd5f06ebd0e3a6dea254f3c3660e141db6c126bfead6",
+  "date": "2026-09-24"
+ },
+ "instituts/odoxa.html": {
+  "hash": "0a95e5afb247d0c6c6a5fa680a7dab357366bcf7fe33117b16869da2f11e7e9c",
+  "date": "2026-09-24"
+ },
+ "instituts/opinionway.html": {
+  "hash": "5a295fd5ad207b6b30e6481bb4d8b144f9cd77be3b202fab91dc646c0a1688d2",
+  "date": "2026-09-24"
+ },
+ "instituts/toluna-harris-interactive.html": {
+  "hash": "8e9a043b22951d5beb6b97dfc11628582b2131954a165f962076d40051ed8511",
+  "date": "2026-09-24"
+ },
+ "instituts/verian.html": {
+  "hash": "dfd8a937055307e9752c350289ecf0e3da5bf28214516fa760b204fe816f6089",
+  "date": "2026-09-24"
+ },
+ "le-pen.html": {
+  "hash": "cc83d293329a09be5855533a6898a4ff0614b757c5bb0bf55db586fccf51f675",
+  "date": "2026-09-24"
+ },
+ "melenchon.html": {
+  "hash": "13f0a8d8c7aad4098d6c217a02d3e5e27cf3d3156280a98c18d70de0d313d888",
+  "date": "2026-09-24"
+ },
+ "methodologie.html": {
+  "hash": "9d89f4b55af65abbcfd98efe8e578421bc71cd7714e15832c52ac6833fe5a802",
+  "date": "2026-09-24"
+ },
+ "philippe.html": {
+  "hash": "f1fc271277fbd564fc4005b3d325f56cd7fff19cc121262b593ed83fe6a304be",
+  "date": "2026-09-24"
+ },
+ "precedentes-elections.html": {
+  "hash": "a18ce501e6bc7b5923ad68c025a24411ee0c9e3cefb7149ebf8ac832d0ded91b",
+  "date": "2026-09-24"
+ },
+ "presidentielle-2002.html": {
+  "hash": "404a38f4adcdbd4bf6b688fae00db83d744da68e6e6bbbd7f541bae5f9cdacaf",
+  "date": "2026-09-24"
+ },
+ "presidentielle-2007.html": {
+  "hash": "30803afbf1e59d1addc408a9b7ebf525cd1fc09cbc290c08d78f34770dfea1d5",
+  "date": "2026-09-24"
+ },
+ "presidentielle-2012.html": {
+  "hash": "5df7adcd38653e35cab8f5e11015eff905908f8449addf0ae014e3029922e0d9",
+  "date": "2026-09-24"
+ },
+ "presidentielle-2017.html": {
+  "hash": "7e89e885cb99b6284995c6d55ff972f5348c56879915427e215c10cbd1b6a7d0",
+  "date": "2026-09-24"
+ },
+ "presidentielle-2022.html": {
+  "hash": "9069f3e26c2c0ff17bd3c5519a68479462b43632cc8a21d3c2c5c282503fd82d",
+  "date": "2026-09-24"
+ },
+ "retailleau.html": {
+  "hash": "2d56f87df08df9876e79d8b273cfd5db279603d5f0f32db05ffd3dbdf46f940c",
+  "date": "2026-09-24"
+ },
+ "roussel.html": {
+  "hash": "664c23dbf75b2edefc8ab3983c230758bf628f1e155b807ca71cd3390296ec1a",
+  "date": "2026-09-24"
+ },
+ "second-tour/attal-bardella.html": {
+  "hash": "1fb2e4a7dda378d4822b7ba3721b2acead3554d3055aa6502516800ead2e5b33",
+  "date": "2026-09-24"
+ },
+ "second-tour/attal-le-pen.html": {
+  "hash": "d520cef42a98c2ac03244234d25d171d29cfb9fa031551ea242de40e5eb55688",
+  "date": "2026-09-24"
+ },
+ "second-tour/bardella-glucksmann.html": {
+  "hash": "21746d22b271512534e30a2bb278febd342e4bc5ba972bf8ea31a19e89289e09",
+  "date": "2026-09-24"
+ },
+ "second-tour/bardella-melenchon.html": {
+  "hash": "b1683839e2c358dfcb22cad4e5a637b48f3793ace3f145c4519f5e3229ac5d07",
+  "date": "2026-09-24"
+ },
+ "second-tour/bardella-philippe.html": {
+  "hash": "5320659b0ee035e3b6a539bf048792354cb7aa3e474f46a463851c97c89e919d",
+  "date": "2026-09-24"
+ },
+ "second-tour/bardella-retailleau.html": {
+  "hash": "38cef494cfa92b8e1b0827037715ca8817043a69d95fe4aecd9ac620d111dbe9",
+  "date": "2026-09-24"
+ },
+ "second-tour/glucksmann-le-pen.html": {
+  "hash": "b7556f3ba77926474218b9e5e915b75ccc9fe1fb9a9d9d1fe7cb094d979b39e8",
+  "date": "2026-09-24"
+ },
+ "second-tour/hollande-le-pen.html": {
+  "hash": "76ad84ad4f3c49ed233546e4bda567400c9b7ac084d639086414c00d2a17ff84",
+  "date": "2026-09-24"
+ },
+ "second-tour/index.html": {
+  "hash": "13e12da58c9f88469dac9063b192fb4c8c6d75e4794e0b86af70b3b7348c406e",
+  "date": "2026-09-24"
+ },
+ "second-tour/le-pen-melenchon.html": {
+  "hash": "b638670969cf1e7dabacb79ea12f5e14c5650ada0bdcc3361c69f98915765c66",
+  "date": "2026-09-24"
+ },
+ "second-tour/le-pen-philippe.html": {
+  "hash": "3f9fd5e9acf883ffbbae1f1c88c91f0cab52dd7ba92507e8d7b032a9bbf8214e",
+  "date": "2026-09-24"
+ },
+ "second-tour/le-pen-retailleau.html": {
+  "hash": "d029f1da1ecb6d6c740a7583a58b8e531d5d7e973e17898b938e920055c631d0",
+  "date": "2026-09-24"
+ },
+ "sondages.html": {
+  "hash": "66d5bc18806deda0bc11bd1d6aa39d7a38baf0d9ac54f9148ede938856355b8f",
+  "date": "2026-09-24"
+ },
+ "sondages/cluster17-2026-07-24.html": {
+  "hash": "1ea8b6083fb5be74f5c662ff73e481633a9125f790fae79911c147dba53f9637",
+  "date": "2026-07-24"
+ },
+ "sondages/cluster17-2026-09-01.html": {
+  "hash": "54fff27119f62459c99dfbeff02ba62409c48159016acd0de81a79edbe58ec2f",
+  "date": "2026-09-01"
+ },
+ "sondages/cluster17-2026-09-16.html": {
+  "hash": "578fcdb140fc8880f7c2f2af07a9e91326513a77fd4fc99bb8bce300d0360edc",
+  "date": "2026-09-16"
+ },
+ "sondages/elabe-2026-03-27.html": {
+  "hash": "daa3139ac516bc034808cdd609773675296ca4df1ff7e3ef1f65edca5b47d8d9",
+  "date": "2026-03-27"
+ },
+ "sondages/elabe-2026-07-10.html": {
+  "hash": "dbc17ea05d0a73f1d2f53792db246208fab74b9f5913ace404ef910132208be5",
+  "date": "2026-07-10"
+ },
+ "sondages/elabe-2026-08-28.html": {
+  "hash": "d87145d21f435f61971cb3c6bf8c84359dd39ca3e6f329c5a59cb14a3c73d5c0",
+  "date": "2026-08-28"
+ },
+ "sondages/harris-2026-03-22.html": {
+  "hash": "caf4f6bf146352d60a256614205f6ada2a49fe7c13df8c5d6d9cba668686ee15",
+  "date": "2026-03-22"
+ },
+ "sondages/harris-2026-04-30.html": {
+  "hash": "3d8409c31bd9fba22ac108a32659447c2e3bdd30953f0fd8c409eb8a84abe87d",
+  "date": "2026-04-30"
+ },
+ "sondages/harris-2026-05-27.html": {
+  "hash": "20d490dda2194017f8b266ca7a7a496554cf8a71ebbd2ebc7c0be50a5aee8b16",
+  "date": "2026-05-27"
+ },
+ "sondages/harris-2026-07-08.html": {
+  "hash": "7a8d840d92aba9c9d22c7293aa227feaf5c9fcb9ae93a913621db9cc4ea38980",
+  "date": "2026-07-08"
+ },
+ "sondages/harris-2026-08-19.html": {
+  "hash": "79d0b060979c661380e9bbd9d19c9aaa7644c001ac8bd044e2964198561ccdb0",
+  "date": "2026-08-19"
+ },
+ "sondages/harris-2026-09-10.html": {
+  "hash": "e5986b941453d22290499d80e38ccf5cf5ff946757465c814511e7a947cb4773",
+  "date": "2026-09-10"
+ },
+ "sondages/harris-2026-09-24.html": {
+  "hash": "df5e5c9623b8dbf2b788eaa59f12f3890ba4e65bd1a7b5f399bb370523c7951a",
+  "date": "2026-09-24"
+ },
+ "sondages/ifop-2026-02-27.html": {
+  "hash": "c7fae5f15e33c66be77154c5b8e5ab575da28ab1187f3e943466df0c70bc8ff9",
+  "date": "2026-02-27"
+ },
+ "sondages/ifop-2026-05-28.html": {
+  "hash": "c0bc97ada0f8bbc88bcef31709f4b7c5b34ec425d4bd707b678d52b469549151",
+  "date": "2026-05-28"
+ },
+ "sondages/ifop-2026-06-24.html": {
+  "hash": "6cd4b220db93f2974ee4fd873a00ced045f1161eeccdf4948881f6db11dd5bce",
+  "date": "2026-06-24"
+ },
+ "sondages/ifop-2026-07-08.html": {
+  "hash": "5ce2b0fe74e58b6c374b56a7b0e63a7f34321ae5cc554446dd49186a7b08397b",
+  "date": "2026-07-08"
+ },
+ "sondages/ifop-2026-08-25.html": {
+  "hash": "027417be67080b4b1944c079b58afd9753ae7552303920a54ddb30188c12ae18",
+  "date": "2026-08-25"
+ },
+ "sondages/ipsos-2026-05-28.html": {
+  "hash": "eabe3ecd48b95cd3b574726b91b44f9c5c834c624f4bc25a58116366b2f5d5a6",
+  "date": "2026-05-28"
+ },
+ "sondages/ipsos-2026-09-02.html": {
+  "hash": "6de449e1bde43bb520d5365239c215741a5ac230784cd6c190499944f58160a4",
+  "date": "2026-09-02"
+ },
+ "sondages/ipsos-2026-09-09.html": {
+  "hash": "ca55cc48ded03eeeeb40d83835fa2e73b8581a1fd2bfe4f299f92bafce09cc09",
+  "date": "2026-09-09"
+ },
+ "sondages/odoxa-2026-03-26.html": {
+  "hash": "9c023a60dfcbb0936bff431cf7042a1c3cdabaa56de2e5d31ddaa8a3c7e4e69a",
+  "date": "2026-03-26"
+ },
+ "sondages/odoxa-2026-05-21.html": {
+  "hash": "ede0efbbda6512d72750f80960b7ac9a7efc252750850420417e6e2db961cf45",
+  "date": "2026-05-21"
+ },
+ "sondages/opinionway-2026-03-26.html": {
+  "hash": "3b00f75a44d8470f7f861d2fd2aaf41e7eb1eff25e5d161a3e98a61bf85f1820",
+  "date": "2026-03-26"
+ },
+ "sondages/opinionway-2026-06-11.html": {
+  "hash": "0dc126418af4a12a69ed5b31e19a95abb3d6ee618da410a8a44b0a9285c76653",
+  "date": "2026-06-11"
+ },
+ "sondages/opinionway-2026-07-09.html": {
+  "hash": "c84a62f86f61b29d45694e81fb795f0a2563580b3775ac87fac78832b091d5aa",
+  "date": "2026-07-09"
+ },
+ "sondages/opinionway-2026-09-03.html": {
+  "hash": "8684d12003a9eae6fe07fa3b184729b7ffe534f0353fec7cc71251a077e924f0",
+  "date": "2026-09-03"
+ },
+ "sondages/opinionway-2026-09-04.html": {
+  "hash": "e5861f5cb35ff2bfe1010709ae0b181ea6149a7d3aad4e75077154a6e1b405a8",
+  "date": "2026-09-04"
+ },
+ "sondages/opinionway-2026-09-09.html": {
+  "hash": "b1dcaab187905abb641f924c071cc5227603f1759d55a6fb1d3a7154829911b3",
+  "date": "2026-09-09"
+ },
+ "sondages/opinionway-2026-09-10.html": {
+  "hash": "0ffd8879f0fb8ed388ebe74fde857aed305b820da2c462aaf8f162675f2a485a",
+  "date": "2026-09-10"
+ },
+ "sondages/verian-2026-07-10.html": {
+  "hash": "bee20597219bb5e5a5c115345a6ce337b54149963ddb42366f4909566485d78d",
+  "date": "2026-07-10"
+ },
+ "tondelier.html": {
+  "hash": "8f6f8ffe20417fe22a73a54d93b52e7c389b9df9c3caf980f6d0b8bea11f1351",
+  "date": "2026-09-24"
+ },
+ "zemmour.html": {
+  "hash": "a34abf7170d96e06ddbe79a8d8218f5c0a5c5c4eecbca62a6e9b5a0b5452ab23",
+  "date": "2026-09-24"
+ }
+}

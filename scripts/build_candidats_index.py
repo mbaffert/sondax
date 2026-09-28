@@ -106,7 +106,7 @@ for slug, cand in candidats.items():
     }
 
 # Groupe 1 : candidats de l'hypothèse principale du dernier sondage, par score desc
-group1 = [all_rows[s] for s in latest_principale_cids if s in all_rows]
+group1 = [all_rows[s] for s in sorted(latest_principale_cids) if s in all_rows]
 group1.sort(key=lambda r: -r["score"])
 
 # Groupe 2 : les autres, par date de dernière mesure décroissante

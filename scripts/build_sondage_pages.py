@@ -325,11 +325,11 @@ def phrase_hypotheses(t1, principale):
     base = candidats_hyp(principale)
     autres = [h for h in t1 if h is not principale]
     # Candidats de l'hypothèse principale absents d'au moins une autre
-    alternants = [c for c in base if any(c not in candidats_hyp(h) for h in autres)]
+    alternants = [c for c in sorted(base) if any(c not in candidats_hyp(h) for h in autres)]
     # Candidats absents de l'hypothèse principale, ajoutés ailleurs
     entrants = {}
     for h in autres:
-        for c in candidats_hyp(h) - base:
+        for c in sorted(candidats_hyp(h) - base):
             entrants[c] = entrants.get(c, 0) + 1
 
     # Les candidats à 5 % ou plus suffisent à caractériser les configurations ;
@@ -483,8 +483,8 @@ def libelle_hypothese(i, hyp, principale):
     if hyp is principale or principale is None:
         return label
     base, mine = candidats_hyp(principale), candidats_hyp(hyp)
-    avec = sorted(mine - base, key=lambda c: -hyp["scores"][c])
-    sans = sorted(base - mine, key=lambda c: -principale["scores"][c])
+    avec = sorted(sorted(mine - base), key=lambda c: -hyp["scores"][c])
+    sans = sorted(sorted(base - mine), key=lambda c: -principale["scores"][c])
     parts = []
     if avec:
         parts.append("avec " + enumeration_fr([nom_court(c) for c in avec]))

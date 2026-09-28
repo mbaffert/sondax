@@ -1368,6 +1368,13 @@ d'entrée assez ancienne → `null`.
   présent dans `sondages_utilises` (§14.13) du jour et absent de celui de l'entrée de
   J−7.
 
+**Exception d'attribution** : sous trois sondages, une évolution d'au moins 2 reste
+affichée si elle nomme le ou les sondages qui l'expliquent (« −13 en 7 jours, après le
+sondage Harris du 24 septembre ») ; la liste de la page Modèle porte alors une seule
+mention en tête (« Un seul nouveau sondage en 7 jours : les évolutions indiquées lui
+sont dues. ») au lieu d'un « peu de changement » par ligne. Sans cette exception, une
+fiche affichait « peu de changement » pour un candidat qui venait de perdre 13 chances.
+
 Motivation : en 2026, un « +11 en 7 jours » serait presque toujours l'effet d'un seul
 sondage — le soubresaut que la méthode veut éviter. La règle se relâche d'elle-même
 quand la cadence augmente en 2027.

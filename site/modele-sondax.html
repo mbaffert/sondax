@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Qui serait au second tour si on votait dimanche&nbsp;? — Modèle Sondax</title>
-<meta name="description" content="Le Pen – Mélenchon est aujourd’hui le second tour le plus plausible. Philippe a 26 chances sur 100 d’y être. Chances d’être au second tour si on votait dimanche.">
+<meta name="description" content="Le Pen – Mélenchon reste aujourd’hui le second tour le plus plausible. Philippe a 26 chances sur 100 d’y être. Chances d’être au second tour si on votait dimanche.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sondax">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://sondax.fr/modele-sondax.html">
 <meta property="og:title" content="Qui serait au second tour si on votait dimanche&nbsp;? — Modèle Sondax">
-<meta property="og:description" content="Le Pen – Mélenchon est aujourd’hui le second tour le plus plausible. Philippe a 26 chances sur 100 d’y être. Chances d’être au second tour si on votait dimanche.">
+<meta property="og:description" content="Le Pen – Mélenchon reste aujourd’hui le second tour le plus plausible. Philippe a 26 chances sur 100 d’y être. Chances d’être au second tour si on votait dimanche.">
 <meta property="og:image" content="https://sondax.fr/assets/og-default.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -88,6 +88,19 @@
   .mo-barre { height: 10px; background: #F0F1EE; border-radius: 5px; margin: 5px 0 4px; overflow: hidden; }
   .mo-barre span { display: block; height: 100%; border-radius: 5px; }
   .mo-verdict { font-size: 13px; color: var(--gris); }
+  .mo-evo { white-space: nowrap; }
+  .mo-table .mo-evo { font-size: 13px; color: var(--gris); }
+  .mo-bascule { font-size: 13px; font-weight: 600; color: var(--bleu-nuit); margin-top: 2px; }
+  .mo-mouvement { font-size: 14.5px; margin: 14px 0 0; }
+  .mo-notes { margin-top: 14px; }
+  .mo-notes ul { margin: 4px 0 0 18px; }
+  .mo-periodes { display: flex; background: #F2F3F0; border-radius: 9px; padding: 3px; width: fit-content; margin-bottom: 12px; }
+  .mo-periodes button { border: 0; cursor: pointer; font: 500 13px var(--corps); padding: 6px 13px;
+    border-radius: 7px; background: transparent; color: var(--gris); }
+  .mo-periodes button.active { background: #fff; color: var(--texte); box-shadow: 0 1px 2px rgba(32,38,50,.08); }
+  .mo-cases { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 13.5px; }
+  .mo-cases label { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
+  .mo-cases input { accent-color: var(--c); }
   .mo-accroche { font-size: 16.5px; line-height: 1.5; margin: 0 0 18px; max-width: 46em; }
   .mo-accroche strong { font-weight: 600; }
   .mo-cta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 20px; }
@@ -135,6 +148,13 @@
     .mo-accroche { font-size: 15.5px; }
     .mo-chance { font-size: 15px; }
   }
+
+  .mo-courbe { width: 100%; height: auto; display: block; }
+  .mo-courbe .grille { stroke: #EDEEEA; stroke-width: 1; }
+  .mo-courbe .grille.mi { stroke: #C9CDD2; stroke-dasharray: 4 4; }
+  .mo-courbe .axe { font-size: 11px; fill: #8A929C; font-family: var(--corps, sans-serif); }
+  .mo-courbe .ligne { fill: none; stroke-width: 2.5; stroke-linejoin: round; }
+  .mo-courbe .ligne.cache { display: none; }
 </style>
 </head>
 <body>
@@ -151,13 +171,13 @@
 
   <section class="bloc mo-une">
     <div class="section-label">Aujourd’hui</div>
-    <p class="mo-accroche"><strong>Le Pen – Mélenchon est aujourd’hui le second tour le plus plausible.</strong> Philippe a 26 chances sur 100 d’y être.</p>
+    <p class="mo-accroche"><strong>Le Pen – Mélenchon reste aujourd’hui le second tour le plus plausible.</strong> Philippe a 26 chances sur 100 d’y être. Philippe est à environ 1,5&nbsp;point du basculement.</p>
     <p class="bloc-note">Si on votait dimanche · Calculé sur 12 sondages · Mis à jour le 28 septembre 2026.</p>
   </section>
 
   <section class="bloc" id="chances">
     <h2>Chances d’être au second tour</h2>
-    <p class="subtitle">Pour chaque candidat, sur 100.</p>
+    <p class="subtitle">Pour chaque candidat, sur 100. Un seul nouveau sondage en 7 jours : les évolutions indiquées lui sont dues.</p>
     <ul class="mo-liste">
       <li class="mo-ligne">
       <img class="mo-photo" src="photos/le-pen.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#0D378A">
@@ -165,6 +185,7 @@
         <div class="mo-tete"><span class="mo-nom"><a href="le-pen.html">Marine Le Pen</a></span><span class="mo-chance">plus de 99&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:100.0%;background:#0D378A"></span></div>
         <div class="mo-verdict">Quasi sûre d’y être</div>
+        
       </div>
     </li>
       <li class="mo-ligne">
@@ -172,7 +193,8 @@
       <div class="mo-corps">
         <div class="mo-tete"><span class="mo-nom"><a href="melenchon.html">Jean-Luc Mélenchon</a></span><span class="mo-chance">73&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:73.1%;background:#CC2443"></span></div>
-        <div class="mo-verdict">Bien placé</div>
+        <div class="mo-verdict">Bien placé · <span class="mo-evo">+13 en 7&nbsp;jours, après le sondage Harris du 24 septembre</span></div>
+        
       </div>
     </li>
       <li class="mo-ligne">
@@ -180,7 +202,8 @@
       <div class="mo-corps">
         <div class="mo-tete"><span class="mo-nom"><a href="philippe.html">Édouard Philippe</a></span><span class="mo-chance">26&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:26.4%;background:#00B7FF"></span></div>
-        <div class="mo-verdict">Rien n’est joué</div>
+        <div class="mo-verdict">Rien n’est joué · <span class="mo-evo">−13 en 7&nbsp;jours, après le sondage Harris du 24 septembre</span></div>
+        <div class="mo-bascule" title="Avec environ 1,5&nbsp;point de plus dans les sondages actuels, ses chances d’être au second tour seraient proches d’une sur deux.">À environ 1,5&nbsp;point du basculement</div>
       </div>
     </li>
       <li class="mo-ligne">
@@ -189,6 +212,7 @@
         <div class="mo-tete"><span class="mo-nom"><a href="glucksmann.html">Raphaël Glucksmann</a></span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#FF7043"></span></div>
         <div class="mo-verdict">Très improbable aujourd’hui</div>
+        
       </div>
     </li>
       <li class="mo-ligne">
@@ -197,6 +221,7 @@
         <div class="mo-tete"><span class="mo-nom"><a href="attal.html">Gabriel Attal</a></span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#7E57C2"></span></div>
         <div class="mo-verdict">Très improbable aujourd’hui</div>
+        
       </div>
     </li>
       <li class="mo-ligne">
@@ -205,6 +230,7 @@
         <div class="mo-tete"><span class="mo-nom"><a href="retailleau.html">Bruno Retailleau</a></span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#0066CC"></span></div>
         <div class="mo-verdict">Très improbable aujourd’hui</div>
+        
       </div>
     </li>
       <li class="mo-ligne">
@@ -213,6 +239,7 @@
         <div class="mo-tete"><span class="mo-nom"><a href="zemmour.html">Éric Zemmour</a></span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#1A1A2E"></span></div>
         <div class="mo-verdict">Très improbable aujourd’hui</div>
+        
       </div>
     </li>
       <li class="mo-ligne">
@@ -221,6 +248,7 @@
         <div class="mo-tete"><span class="mo-nom"><a href="tondelier.html">Marine Tondelier</a></span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#00C853"></span></div>
         <div class="mo-verdict">Très improbable aujourd’hui</div>
+        
       </div>
     </li>
       <li class="mo-ligne">
@@ -229,6 +257,7 @@
         <div class="mo-tete"><span class="mo-nom">Nicolas Dupont-Aignan</span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#0055A4"></span></div>
         <div class="mo-verdict">Très improbable aujourd’hui</div>
+        
       </div>
     </li>
       <li class="mo-ligne">
@@ -237,6 +266,7 @@
         <div class="mo-tete"><span class="mo-nom"><a href="roussel.html">Fabien Roussel</a></span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#DD1111"></span></div>
         <div class="mo-verdict">Très improbable aujourd’hui</div>
+        
       </div>
     </li>
       <li class="mo-ligne">
@@ -245,9 +275,17 @@
         <div class="mo-tete"><span class="mo-nom">Nathalie Arthaud</span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#8B0000"></span></div>
         <div class="mo-verdict">Très improbable aujourd’hui</div>
+        
       </div>
     </li>
     </ul>
+    <div class="mo-petit mo-notes"><p>« Basculement » : le seuil à partir duquel un candidat aurait une chance sur deux d’être au second tour.</p><ul><li><strong>Philippe</strong> : Avec environ 1,5&nbsp;point de plus dans les sondages actuels, ses chances d’être au second tour seraient proches d’une sur deux.</li></ul></div>
+  </section>
+
+  <section class="bloc" id="ce-qui-a-change">
+    <h2>Ce qui a changé</h2>
+    <p class="mo-accroche"><strong>Le sondage Harris du 24 septembre éloigne Philippe du second tour : −13 chances sur 100.</strong> Ses chances d’être au second tour passent de 40 à 26 sur 100.</p>
+    <table class="mo-table mo-table-rangs"><tr><th>Chances sur 100</th><th class="mo-num">Aujourd’hui</th><th class="mo-num">Mise à jour précédente</th><th class="mo-num">Il y a 7 jours</th></tr><tr><td>Le Pen</td><td class="mo-num">plus de 99</td><td class="mo-num">plus de 99</td><td class="mo-num">plus de 99</td></tr><tr><td>Mélenchon</td><td class="mo-num">73</td><td class="mo-num">73</td><td class="mo-num">60</td></tr><tr><td>Philippe</td><td class="mo-num">26</td><td class="mo-num">26</td><td class="mo-num">40</td></tr><tr><td>Glucksmann</td><td class="mo-num">moins de 1</td><td class="mo-num">moins de 1</td><td class="mo-num">moins de 1</td></tr></table>
   </section>
 
   <section class="bloc" id="seconds-tours">
@@ -256,13 +294,22 @@
     <div class="mo-duels">
       <div class="mo-grille" aria-hidden="true"><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#FF7043"></span></div>
       <div>
-        <table class="mo-table"><tr><td><span class="mo-pastille" style="background:#CC2443"></span>Le Pen – Mélenchon</td><td class="mo-num">73&nbsp;sur&nbsp;100</td></tr><tr><td><span class="mo-pastille" style="background:#00B7FF"></span>Le Pen – Philippe</td><td class="mo-num">26&nbsp;sur&nbsp;100</td></tr><tr><td><span class="mo-pastille" style="background:#FF7043"></span>Le Pen – Glucksmann</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td></tr></table>
+        <table class="mo-table"><tr><td><span class="mo-pastille" style="background:#CC2443"></span>Le Pen – Mélenchon</td><td class="mo-num">73&nbsp;sur&nbsp;100</td><td class="mo-num mo-evo">+13 en 7&nbsp;jours, après le sondage Harris du 24 septembre</td></tr><tr><td><span class="mo-pastille" style="background:#00B7FF"></span>Le Pen – Philippe</td><td class="mo-num">26&nbsp;sur&nbsp;100</td><td class="mo-num mo-evo">−13 en 7&nbsp;jours, après le sondage Harris du 24 septembre</td></tr><tr><td><span class="mo-pastille" style="background:#FF7043"></span>Le Pen – Glucksmann</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td class="mo-num mo-evo"></td></tr></table>
         <details class="mo-repli">
       <summary><span class="mo-pastille" style="background:#D5D9DE"></span>Autres scénarios · moins de 1&nbsp;sur&nbsp;100</summary>
-      <table class="mo-table"><tr><td>Le Pen – Attal</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td></tr><tr><td>Le Pen – Retailleau</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td></tr></table>
+      <table class="mo-table"><tr><td>Le Pen – Attal</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Le Pen – Retailleau</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr></table>
     </details>
       </div>
     </div>
+  </section>
+
+  <section class="bloc" id="historique">
+    <h2>Évolution des chances d’être au second tour</h2>
+    <p class="subtitle">Sur 100. Ce ne sont pas des intentions de vote : ce sont les chances de chacun d’être au second tour, recalculées à chaque nouveau sondage.</p>
+    <div class="mo-periodes" role="group" aria-label="Période"><button type="button" data-periode="7j">7 jours</button><button type="button" data-periode="30j" class="active">30 jours</button><button type="button" data-periode="tout">Depuis le début</button></div>
+    <div class="mo-periode" data-periode="7j" hidden><svg class="mo-courbe" viewBox="0 0 720 250" role="img" aria-label="Évolution des chances d’être au second tour, sur 100"><line x1="34" x2="708" y1="224.0" y2="224.0" class="grille"/><text x="28" y="228.0" class="axe" text-anchor="end">0</text><line x1="34" x2="708" y1="170.5" y2="170.5" class="grille"/><text x="28" y="174.5" class="axe" text-anchor="end">25</text><line x1="34" x2="708" y1="117.0" y2="117.0" class="grille mi"/><text x="28" y="121.0" class="axe" text-anchor="end">50</text><line x1="34" x2="708" y1="63.5" y2="63.5" class="grille"/><text x="28" y="67.5" class="axe" text-anchor="end">75</text><line x1="34" x2="708" y1="10.0" y2="10.0" class="grille"/><text x="28" y="14.0" class="axe" text-anchor="end">100</text><text x="34.0" y="244" class="axe" text-anchor="start">21 sept.</text><text x="202.5" y="244" class="axe" text-anchor="middle">23 sept.</text><text x="371.0" y="244" class="axe" text-anchor="middle">25 sept.</text><text x="539.5" y="244" class="axe" text-anchor="middle">26 sept.</text><text x="708.0" y="244" class="axe" text-anchor="end">28 sept.</text><path d="M34.0,10.0H332.8V10.0H708.0V10.0" data-c="le-pen" class="ligne" stroke="#0D378A"/><path d="M34.0,96.4H332.8V67.7H708.0V67.7" data-c="melenchon" class="ligne" stroke="#CC2443"/><path d="M34.0,138.5H332.8V167.4H708.0V167.4" data-c="philippe" class="ligne" stroke="#00B7FF"/><path d="M34.0,223.2H332.8V223.0H708.0V223.0" data-c="glucksmann" class="ligne" stroke="#FF7043"/><path d="M34.0,223.9H332.8V224.0H708.0V224.0" data-c="attal" class="ligne cache" stroke="#7E57C2"/><path d="" data-c="bardella" class="ligne cache" stroke="#2B5FC2"/></svg></div><div class="mo-periode" data-periode="30j"><svg class="mo-courbe" viewBox="0 0 720 250" role="img" aria-label="Évolution des chances d’être au second tour, sur 100"><line x1="34" x2="708" y1="224.0" y2="224.0" class="grille"/><text x="28" y="228.0" class="axe" text-anchor="end">0</text><line x1="34" x2="708" y1="170.5" y2="170.5" class="grille"/><text x="28" y="174.5" class="axe" text-anchor="end">25</text><line x1="34" x2="708" y1="117.0" y2="117.0" class="grille mi"/><text x="28" y="121.0" class="axe" text-anchor="end">50</text><line x1="34" x2="708" y1="63.5" y2="63.5" class="grille"/><text x="28" y="67.5" class="axe" text-anchor="end">75</text><line x1="34" x2="708" y1="10.0" y2="10.0" class="grille"/><text x="28" y="14.0" class="axe" text-anchor="end">100</text><text x="34.0" y="244" class="axe" text-anchor="start">29 août</text><text x="168.8" y="244" class="axe" text-anchor="middle">4 sept.</text><text x="303.6" y="244" class="axe" text-anchor="middle">10 sept.</text><text x="438.4" y="244" class="axe" text-anchor="middle">16 sept.</text><text x="573.2" y="244" class="axe" text-anchor="middle">22 sept.</text><text x="708.0" y="244" class="axe" text-anchor="end">28 sept.</text><path d="M34.0,10.0H103.7V10.0H126.2V10.0H148.6V10.0H171.1V10.0H283.4V10.0H305.9V10.0H440.7V10.0H620.4V10.0H708.0V10.0" data-c="le-pen" class="ligne" stroke="#0D378A"/><path d="M34.0,123.8H103.7V121.2H126.2V120.0H148.6V102.3H171.1V99.9H283.4V97.9H305.9V82.9H440.7V96.4H620.4V67.7H708.0V67.7" data-c="melenchon" class="ligne" stroke="#CC2443"/><path d="M34.0,113.5H103.7V114.8H126.2V117.0H148.6V134.4H171.1V137.8H283.4V138.8H305.9V152.1H440.7V138.5H620.4V167.4H708.0V167.4" data-c="philippe" class="ligne" stroke="#00B7FF"/><path d="M34.0,220.7H103.7V222.2H126.2V221.1H148.6V221.4H171.1V220.4H283.4V221.3H305.9V223.0H440.7V223.2H620.4V223.0H708.0V223.0" data-c="glucksmann" class="ligne" stroke="#FF7043"/><path d="M34.0,224.0H103.7V223.8H126.2V223.9H148.6V224.0H171.1V224.0H283.4V224.0H305.9V224.0H440.7V223.9H620.4V224.0H708.0V224.0" data-c="attal" class="ligne cache" stroke="#7E57C2"/><path d="" data-c="bardella" class="ligne cache" stroke="#2B5FC2"/></svg></div><div class="mo-periode" data-periode="tout" hidden><svg class="mo-courbe" viewBox="0 0 720 250" role="img" aria-label="Évolution des chances d’être au second tour, sur 100"><line x1="34" x2="708" y1="224.0" y2="224.0" class="grille"/><text x="28" y="228.0" class="axe" text-anchor="end">0</text><line x1="34" x2="708" y1="170.5" y2="170.5" class="grille"/><text x="28" y="174.5" class="axe" text-anchor="end">25</text><line x1="34" x2="708" y1="117.0" y2="117.0" class="grille mi"/><text x="28" y="121.0" class="axe" text-anchor="end">50</text><line x1="34" x2="708" y1="63.5" y2="63.5" class="grille"/><text x="28" y="67.5" class="axe" text-anchor="end">75</text><line x1="34" x2="708" y1="10.0" y2="10.0" class="grille"/><text x="28" y="14.0" class="axe" text-anchor="end">100</text><text x="34.0" y="244" class="axe" text-anchor="start">27 mai</text><text x="168.8" y="244" class="axe" text-anchor="middle">21 juin</text><text x="303.6" y="244" class="axe" text-anchor="middle">16 juil.</text><text x="438.4" y="244" class="axe" text-anchor="middle">10 août</text><text x="573.2" y="244" class="axe" text-anchor="middle">3 sept.</text><text x="708.0" y="244" class="axe" text-anchor="end">28 sept.</text><path d="M262.5,10.0H267.9V10.0H273.4V10.0H349.5V10.0H491.0V10.0H523.6V10.0H539.9V10.0H561.7V10.0H567.1V10.0H572.6V10.0H578.0V10.0H605.2V10.0H610.6V10.0H643.3V10.0H686.8V10.0H708.0V10.0" data-c="le-pen" class="ligne" stroke="#0D378A"/><path d="M34.0,142.0H39.4V138.8H115.6V179.3H186.3V170.1H262.5V158.7H267.9V179.9H273.4V161.9H349.5V149.0H491.0V77.3H523.6V75.9H539.9V123.8H561.7V121.2H567.1V120.0H572.6V102.3H578.0V99.9H605.2V97.9H610.6V82.9H643.3V96.4H686.8V67.7H708.0V67.7" data-c="melenchon" class="ligne" stroke="#CC2443"/><path d="M34.0,97.3H39.4V101.5H115.6V65.8H186.3V70.7H262.5V80.7H267.9V55.9H273.4V73.3H349.5V86.3H491.0V157.6H523.6V159.8H539.9V113.5H561.7V114.8H567.1V117.0H572.6V134.4H578.0V137.8H605.2V138.8H610.6V152.1H643.3V138.5H686.8V167.4H708.0V167.4" data-c="philippe" class="ligne" stroke="#00B7FF"/><path d="M34.0,220.8H39.4V219.2H115.6V217.7H186.3V219.5H262.5V221.7H267.9V223.0H273.4V223.1H349.5V223.5H491.0V223.3H523.6V222.3H539.9V220.7H561.7V222.2H567.1V221.1H572.6V221.4H578.0V220.4H605.2V221.3H610.6V223.0H643.3V223.2H686.8V223.0H708.0V223.0" data-c="glucksmann" class="ligne" stroke="#FF7043"/><path d="M34.0,222.2H39.4V222.7H115.6V219.3H186.3V221.9H262.5V221.0H267.9V223.4H273.4V223.8H349.5V223.3H491.0V223.7H523.6V223.9H539.9V224.0H561.7V223.8H567.1V223.9H572.6V224.0H578.0V224.0H605.2V224.0H610.6V224.0H643.3V223.9H686.8V224.0H708.0V224.0" data-c="attal" class="ligne cache" stroke="#7E57C2"/><path d="M34.0,10.0H39.4V10.0H115.6V10.0H186.3V10.0" data-c="bardella" class="ligne cache" stroke="#2B5FC2"/></svg></div>
+    <div class="mo-cases"><label style="--c:#0D378A"><input type="checkbox" data-c="le-pen" checked> Le Pen</label><label style="--c:#CC2443"><input type="checkbox" data-c="melenchon" checked> Mélenchon</label><label style="--c:#00B7FF"><input type="checkbox" data-c="philippe" checked> Philippe</label><label style="--c:#FF7043"><input type="checkbox" data-c="glucksmann" checked> Glucksmann</label><label style="--c:#7E57C2"><input type="checkbox" data-c="attal"> Attal</label><label style="--c:#2B5FC2"><input type="checkbox" data-c="bardella"> Bardella</label></div>
+    <p class="mo-petit">Les points sont recalculés après coup, avec les sondages publiés à chaque date.</p>
   </section>
 
   <section class="bloc" id="qui-finit-ou">
@@ -285,6 +332,25 @@
     <p class="bloc-note">Si on votait dimanche · Calculé sur 12 sondages · Mis à jour le 28 septembre 2026.<br>Ne prédit pas ce qui se passera d’ici avril.</p>
   </section>
 </main>
+<script>
+(function () {
+  var s = document.getElementById('historique');
+  if (!s) return;
+  s.querySelectorAll('.mo-periodes button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      s.querySelectorAll('.mo-periodes button').forEach(function (x) { x.classList.toggle('active', x === b); });
+      s.querySelectorAll('.mo-periode').forEach(function (d) { d.hidden = d.dataset.periode !== b.dataset.periode; });
+    });
+  });
+  s.querySelectorAll('.mo-cases input').forEach(function (i) {
+    i.addEventListener('change', function () {
+      s.querySelectorAll('path[data-c="' + i.dataset.c + '"]').forEach(function (p) {
+        p.classList.toggle('cache', !i.checked);
+      });
+    });
+  });
+})();
+</script>
 
 <footer class="site-footer">
   <div class="footer-inner">

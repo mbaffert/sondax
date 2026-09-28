@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 """Page « Le modèle Sondax » et bloc d'accueil (SPEC §14.14).
 
-Lit data/derived/modele.json (scripts/modele.py) et écrit :
+Lit data/derived/modele.json (scripts/modele.py) et data/modele_history.json,
+et écrit :
 - site/modele-sondax.html ;
 - le bloc #bloc-modele de site/index.html, entre <!-- BEGIN:bloc-modele --> et
-  <!-- END:bloc-modele -->.
+  <!-- END:bloc-modele --> ;
+- le bloc « Et si on votait dimanche ? » des fiches candidat (site/<slug>.html) ;
+- le bloc du modèle des pages duel (site/second-tour/<a>-<b>.html).
+À lancer après build_pages_candidats.py et pages_second_tour.py.
 
 Tout le texte est rendu au build. Échoue si un mot réservé à la page Méthode
 apparaît dans le texte rendu (§14.3).
@@ -14,12 +18,16 @@ import datetime, html, json, pathlib, re, sys
 from zoneinfo import ZoneInfo
 
 from site_template import render_page
+import courbes_modele as C
+import textes_modele as T
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 MODELE_PATH = ROOT / "data" / "derived" / "modele.json"
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 BIOS_PATH = ROOT / "scripts" / "bios.json"
+HISTORY_PATH = ROOT / "data" / "modele_history.json"
+SONDAGES_PATH = ROOT / "data" / "sondages.json"
 INDEX_PATH = SITE / "index.html"
 PAGE_PATH = SITE / "modele-sondax.html"
 PAGE_URL = "https://sondax.fr/modele-sondax.html"
@@ -40,6 +48,9 @@ VERDICTS = {
 }
 
 ACCUEIL_MIN, ACCUEIL_MAX, ACCUEIL_SEUIL = 2, 4, 5   # §14.14.1
+COURBES_DEFAUT = 4                                   # candidats cochés (§14.14.2)
+COURBES_SEUIL = 1          # candidats proposés : au moins 1 sur 100 dans l'historique
+SECOND_TOUR_FREQUENT_MIN = 8                         # fiches candidat (§14.14.3)
 DUELS_AFFICHES = 3                                   # §14.14.2
 
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
@@ -112,19 +123,50 @@ def ligne_contexte(modele):
 
 # ------------------------------------------------------------------- blocs
 
-def ligne_candidat(candidats, pages, slug, v, p="", detail=True):
+INDEX = {}   # index des sondages, renseigné par main() (attribution des évolutions)
+
+
+def evolution_ligne(modele, valeur, chance):
+    """Évolution d'une ligne de liste : rien sous 1 sur 100, et rien quand trop
+    peu de sondages sont entrés (la mention est alors donnée une fois, en tête)."""
+    evo = T.evolution(modele, valeur, index=INDEX)
+    if evo == "peu de changement" or (chance < 1 and evo == "stable"):
+        return None
+    return evo
+
+
+def mention_semaine(modele):
+    """Mention unique quand la règle des trois sondages s'applique (§14.9)."""
+    if T.evolution(modele, 0) != "peu de changement":
+        return ""
+    n = modele.get("sondages_entres_7j", 0)
+    if n == 0:
+        return " Aucun nouveau sondage en 7 jours."
+    if n == 1:
+        return " Un seul nouveau sondage en 7 jours : les évolutions indiquées lui sont dues."
+    return f" {n} nouveaux sondages seulement en 7 jours : les évolutions indiquées leur sont dues."
+
+
+def ligne_candidat(candidats, pages, slug, v, modele, p="", detail=True, bascule=True):
     q = v["qualification_exacte"]
+    evo = evolution_ligne(modele, v.get("evolution_7j"), q)
+    infos = [e(verdict_texte(candidats, slug, v["verdict"]))] if detail else []
+    if evo:
+        infos.append(f'<span class="mo-evo">{evo}</span>')
+    bas = T.bascule_courte(v) if bascule else None
+    ligne_bascule = (f'<div class="mo-bascule" title="{T.bascule_explication(v)}">{bas}</div>'
+                     if bas else "")
     nom_html = e(nom_complet(candidats, slug))
     if slug in pages:
         nom_html = f'<a href="{p}{slug}.html">{nom_html}</a>'
-    verdict = verdict_texte(candidats, slug, v["verdict"])
     largeur = max(q, 0.6)
     return f'''<li class="mo-ligne">
       {portrait(candidats, slug, p)}
       <div class="mo-corps">
         <div class="mo-tete"><span class="mo-nom">{nom_html}</span><span class="mo-chance">{sur_100(q)}</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:{largeur:.1f}%;background:{candidats[slug]['couleur']}"></span></div>
-        {f'<div class="mo-verdict">{e(verdict)}</div>' if detail else ''}
+        {f'<div class="mo-verdict">{" · ".join(infos)}</div>' if infos else ''}
+        {ligne_bascule}
       </div>
     </li>'''
 
@@ -138,15 +180,34 @@ def candidats_accueil(modele):
     return retenus
 
 
-def accroche_html(modele, balise="p"):
+def accroche_html(modele, balise="p", candidats=None):
+    """Accroche ; avec `candidats`, version développée (point de bascule)."""
     a = modele["accroche"]
+    suite = ""
+    une = T.bascule_a_la_une(modele) if candidats else None
+    if une:
+        c, v = une
+        suite = (f' {e(nom(candidats, c))} est à environ '
+                 f'{T.points(T.bascule_affichee(v["delta_bascule"]))} du basculement.')
     return (f'<{balise} class="mo-accroche"><strong>{e(a["titre"])}</strong> '
-            f'{e(a["detail"])}</{balise}>')
+            f'{e(a["detail"])}{suite}</{balise}>')
 
 
-def bloc_accueil(modele, candidats, pages):
-    lignes = "\n    ".join(ligne_candidat(candidats, pages, c, v)
-                           for c, v in candidats_accueil(modele))
+def bloc_accueil(modele, candidats, pages, index):
+    retenus = candidats_accueil(modele)
+    lignes = "\n    ".join(ligne_candidat(candidats, pages, c, v, modele, bascule=False)
+                           for c, v in retenus)
+    extras = []
+    mvt = T.mouvement_accueil(modele, candidats, index, ordre_modele(modele))
+    if mvt:
+        extras.append(f'<p class="mo-mouvement">{mvt}</p>')
+    une = T.bascule_a_la_une(modele)
+    if une and une[0] in dict(retenus):
+        c, v = une
+        extras.append(f'<p class="mo-mouvement"><strong>{e(nom(candidats, c))} est à environ '
+                      f'{T.points(T.bascule_affichee(v["delta_bascule"]))} du basculement.</strong> '
+                      f'<span class="mo-petit">{T.bascule_explication(v)}</span></p>')
+    extras = "\n  ".join(extras)
     return f'''<div class="bloc" id="bloc-modele">
   <div class="section-label">Modèle Sondax</div>
   <h2>Et si on votait dimanche&nbsp;?</h2>
@@ -155,6 +216,7 @@ def bloc_accueil(modele, candidats, pages):
   <ul class="mo-liste">
     {lignes}
   </ul>
+  {extras}
   <div class="mo-cta">
     <a class="mo-bouton" href="modele-sondax.html">Voir le modèle Sondax →</a>
     <span>Chances d’être au second tour, seconds tours possibles et évolution de la course.</span>
@@ -190,13 +252,14 @@ def section_duels(modele, candidats):
         parts.append((d["candidats"], d["chance_exacte"], couleur))
         lignes.append(f'<tr><td><span class="mo-pastille" style="background:{couleur}"></span>'
                       f'{e(libelle_duel(candidats, d["candidats"], ordre))}</td>'
-                      f'<td class="mo-num">{sur_100(d["chance_exacte"])}</td></tr>')
+                      f'<td class="mo-num">{sur_100(d["chance_exacte"])}</td>'
+                      f'<td class="mo-num mo-evo">{evolution_ligne(modele, d.get("evolution_7j"), d["chance_exacte"]) or ""}</td></tr>')
     parts.append(("autres", reste, "#D5D9DE"))
 
     details = ""
     if autres:
         sous = "".join(f'<tr><td>{e(libelle_duel(candidats, d["candidats"], ordre))}</td>'
-                       f'<td class="mo-num">{sur_100(d["chance_exacte"])}</td></tr>'
+                       f'<td class="mo-num">{sur_100(d["chance_exacte"])}</td><td></td></tr>'
                        for d in autres)
         details = f'''<details class="mo-repli">
       <summary><span class="mo-pastille" style="background:#D5D9DE"></span>Autres scénarios · {sur_100(reste)}</summary>
@@ -253,8 +316,122 @@ def section_rangs(modele, candidats):
   </section>'''
 
 
-def page_modele(modele, candidats, pages):
-    lignes = "\n      ".join(ligne_candidat(candidats, pages, c, v)
+def entree_avant(historique, instant, jours):
+    limite = (instant - datetime.timedelta(days=jours)).date()
+    avant = [h for h in historique if h["date"][:10] <= limite.isoformat()]
+    return avant[-1] if avant else None
+
+
+def entree_precedente(historique, modele):
+    avant = [h for h in historique if h["date"] < modele["date"]]
+    return avant[-1] if avant else None
+
+
+def section_changement(modele, candidats, historique, index):
+    ordre = ordre_modele(modele)
+    texte = T.changement(modele, candidats, index, ordre)
+    if texte is None:
+        return ""
+    instant = _instant(modele)
+    reperes = [("Aujourd’hui", {c: v["qualification_exacte"] for c, v in modele["candidats"].items()}),
+               ("Mise à jour précédente", (entree_precedente(historique, modele) or {}).get("qualification")),
+               ("Il y a 7 jours", (entree_avant(historique, instant, 7) or {}).get("qualification"))]
+    reperes = [(lib, q) for lib, q in reperes if q]
+    tete = "".join(f'<th class="mo-num">{lib}</th>' for lib, _ in reperes)
+    lignes = []
+    for c in ordre[:4]:
+        cellules = "".join(f'<td class="mo-num">{T.chances(q[c]) if c in q else "—"}</td>'
+                           for _, q in reperes)
+        lignes.append(f'<tr><td>{e(nom(candidats, c))}</td>{cellules}</tr>')
+    return f'''<section class="bloc" id="ce-qui-a-change">
+    <h2>Ce qui a changé</h2>
+    <p class="mo-accroche"><strong>{texte[0]}</strong> {texte[1]}</p>
+    <table class="mo-table mo-table-rangs"><tr><th>Chances sur 100</th>{tete}</tr>{"".join(lignes)}</table>
+  </section>'''
+
+
+def _instant(modele):
+    return datetime.datetime.fromisoformat(modele["date"].replace("Z", "+00:00"))
+
+
+def candidats_courbes(modele, historique):
+    """Candidats proposés (au moins 1 sur 100 à un moment) et cochés par défaut."""
+    ordre = ordre_modele(modele)
+    maxi = {}
+    for h in historique:
+        for c, q in h["qualification"].items():
+            maxi[c] = max(maxi.get(c, 0), q)
+    proposes = [c for c in ordre if maxi.get(c, 0) >= COURBES_SEUIL]
+    proposes += sorted(c for c in maxi if maxi[c] >= COURBES_SEUIL and c not in proposes)
+    return proposes, set(ordre[:COURBES_DEFAUT])
+
+
+def section_courbes(modele, candidats, historique):
+    if len(historique) < 2:
+        return ""
+    instant = _instant(modele)
+    proposes, coches = candidats_courbes(modele, historique)
+    proposes = [c for c in proposes if c in candidats]
+    periodes = [("7j", "7 jours", 7), ("30j", "30 jours", 30), ("tout", "Depuis le début", None)]
+    actif = ' class="active"'
+    boutons = "".join(f'<button type="button" data-periode="{k}"{actif if k == "30j" else ""}>{lib}</button>'
+                      for k, lib, _ in periodes)
+    svgs = "".join(f'<div class="mo-periode" data-periode="{k}"{"" if k == "30j" else " hidden"}>'
+                   f'{C.svg(historique, candidats, proposes, instant, j, coches)}</div>'
+                   for k, _, j in periodes)
+    cases = "".join(f'<label style="--c:{candidats[c]["couleur"]}"><input type="checkbox" data-c="{c}"'
+                    f'{" checked" if c in coches else ""}> {e(nom(candidats, c))}</label>'
+                    for c in proposes)
+    return f'''<section class="bloc" id="historique">
+    <h2>Évolution des chances d’être au second tour</h2>
+    <p class="subtitle">Sur 100. Ce ne sont pas des intentions de vote : ce sont les chances de chacun d’être au second tour, recalculées à chaque nouveau sondage.</p>
+    <div class="mo-periodes" role="group" aria-label="Période">{boutons}</div>
+    {svgs}
+    <div class="mo-cases">{cases}</div>
+    <p class="mo-petit">{note_reconstitue(historique)}</p>
+  </section>'''
+
+
+def note_reconstitue(historique):
+    reels = [h for h in historique if not h.get("reconstitue")]
+    if not reels:
+        return "Les points sont recalculés après coup, avec les sondages publiés à chaque date."
+    return (f"Avant le {date_longue(reels[0]['date'])}, les points sont recalculés après coup, "
+            f"avec les sondages publiés à chaque date.")
+
+
+JS_COURBES = '''<script>
+(function () {
+  var s = document.getElementById('historique');
+  if (!s) return;
+  s.querySelectorAll('.mo-periodes button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      s.querySelectorAll('.mo-periodes button').forEach(function (x) { x.classList.toggle('active', x === b); });
+      s.querySelectorAll('.mo-periode').forEach(function (d) { d.hidden = d.dataset.periode !== b.dataset.periode; });
+    });
+  });
+  s.querySelectorAll('.mo-cases input').forEach(function (i) {
+    i.addEventListener('change', function () {
+      s.querySelectorAll('path[data-c="' + i.dataset.c + '"]').forEach(function (p) {
+        p.classList.toggle('cache', !i.checked);
+      });
+    });
+  });
+})();
+</script>'''
+
+
+def notes_bascule(modele, candidats):
+    notes = [f'<li><strong>{e(nom(candidats, c))}</strong> : {T.bascule_explication(v)}</li>'
+             for c, v in modele["candidats"].items() if T.bascule_explication(v)]
+    if not notes:
+        return ""
+    return (f'<div class="mo-petit mo-notes"><p>« Basculement » : le seuil à partir duquel un '
+            f'candidat aurait une chance sur deux d’être au second tour.</p><ul>{"".join(notes)}</ul></div>')
+
+
+def page_modele(modele, candidats, pages, historique, index):
+    lignes = "\n      ".join(ligne_candidat(candidats, pages, c, v, modele)
                              for c, v in modele["candidats"].items())
     return f'''<main class="page-modele">
   <div class="fil">Modèle Sondax</div>
@@ -264,19 +441,24 @@ def page_modele(modele, candidats, pages):
 
   <section class="bloc mo-une">
     <div class="section-label">Aujourd’hui</div>
-    {accroche_html(modele)}
+    {accroche_html(modele, candidats=candidats)}
     <p class="bloc-note">{ligne_contexte(modele)}</p>
   </section>
 
   <section class="bloc" id="chances">
     <h2>Chances d’être au second tour</h2>
-    <p class="subtitle">Pour chaque candidat, sur 100.</p>
+    <p class="subtitle">Pour chaque candidat, sur 100.{mention_semaine(modele)}</p>
     <ul class="mo-liste">
       {lignes}
     </ul>
+    {notes_bascule(modele, candidats)}
   </section>
 
+  {section_changement(modele, candidats, historique, index)}
+
   {section_duels(modele, candidats)}
+
+  {section_courbes(modele, candidats, historique)}
 
   {section_rangs(modele, candidats)}
 
@@ -287,7 +469,8 @@ def page_modele(modele, candidats, pages):
     <p class="mo-lien-methode"><a href="methodologie.html#modele">Comprendre la méthode →</a></p>
     <p class="bloc-note">{ligne_contexte(modele)}<br>Ne prédit pas ce qui se passera d’ici avril.</p>
   </section>
-</main>'''
+</main>
+{JS_COURBES}'''
 
 
 CSS = '''
@@ -307,6 +490,19 @@ CSS = '''
   .mo-barre { height: 10px; background: #F0F1EE; border-radius: 5px; margin: 5px 0 4px; overflow: hidden; }
   .mo-barre span { display: block; height: 100%; border-radius: 5px; }
   .mo-verdict { font-size: 13px; color: var(--gris); }
+  .mo-evo { white-space: nowrap; }
+  .mo-table .mo-evo { font-size: 13px; color: var(--gris); }
+  .mo-bascule { font-size: 13px; font-weight: 600; color: var(--bleu-nuit); margin-top: 2px; }
+  .mo-mouvement { font-size: 14.5px; margin: 14px 0 0; }
+  .mo-notes { margin-top: 14px; }
+  .mo-notes ul { margin: 4px 0 0 18px; }
+  .mo-periodes { display: flex; background: #F2F3F0; border-radius: 9px; padding: 3px; width: fit-content; margin-bottom: 12px; }
+  .mo-periodes button { border: 0; cursor: pointer; font: 500 13px var(--corps); padding: 6px 13px;
+    border-radius: 7px; background: transparent; color: var(--gris); }
+  .mo-periodes button.active { background: #fff; color: var(--texte); box-shadow: 0 1px 2px rgba(32,38,50,.08); }
+  .mo-cases { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 13.5px; }
+  .mo-cases label { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
+  .mo-cases input { accent-color: var(--c); }
   .mo-accroche { font-size: 16.5px; line-height: 1.5; margin: 0 0 18px; max-width: 46em; }
   .mo-accroche strong { font-weight: 600; }
   .mo-cta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 20px; }
@@ -387,13 +583,181 @@ def injecter(bloc):
     INDEX_PATH.write_text(contenu, encoding="utf-8")
 
 
+# --------------------------------------------------- fiches candidat, duels
+
+BEGIN_CANDIDAT, END_CANDIDAT = "<!-- BEGIN:modele-candidat -->", "<!-- END:modele-candidat -->"
+BEGIN_DUEL, END_DUEL = "<!-- BEGIN:modele-duel -->", "<!-- END:modele-duel -->"
+
+
+def duel_le_plus_frequent(modele, slug):
+    return next((d for d in modele["duels"] if slug in d["candidats"]), None)
+
+
+def bloc_candidat(modele, candidats, slug, historique):
+    v = modele["candidats"].get(slug)
+    if v is None:
+        return ""
+    lignes = [f'<p class="mc-chance"><b>{T.chances(v["qualification_exacte"])}</b> chances sur 100 '
+              f'd’être au second tour</p>',
+              f'<p class="mc-verdict">{e(verdict_texte(candidats, slug, v["verdict"]))}.</p>']
+    evo = T.evolution(modele, v.get("evolution_7j"), index=INDEX)
+    if evo:
+        lignes.append(f'<p class="mc-evo">{evo[0].upper() + evo[1:]}.</p>')
+    d = duel_le_plus_frequent(modele, slug)
+    if d and v["qualification_exacte"] >= SECOND_TOUR_FREQUENT_MIN:
+        autre = next(c for c in d["candidats"] if c != slug)
+        lignes.append(f'<p>Son second tour le plus fréquent : face à {e(nom_complet(candidats, autre))}.</p>')
+    bas = T.bascule_courte(v)
+    if bas:
+        lignes.append(f'<p class="mc-bascule">{bas}. <span>{T.bascule_explication(v)}</span></p>')
+    courbe = ""
+    if len(historique) >= 2:
+        instant = _instant(modele)
+        couleurs = {slug: candidats[slug]}
+        courbe = (f'<div class="mc-courbe"><div class="mc-periodes">'
+                  f'<button type="button" data-p="7" >7 jours</button>'
+                  f'<button type="button" data-p="30" class="active">30 jours</button></div>'
+                  f'<div data-p="7" hidden>{C.svg(historique, couleurs, [slug], instant, 7, hauteur=170)}</div>'
+                  f'<div data-p="30">{C.svg(historique, couleurs, [slug], instant, 30, hauteur=170)}</div>'
+                  f'<div class="mc-sous">Évolution de ses chances d’être au second tour, sur 100</div></div>')
+    return f'''<section class="carte modele-candidat"><div class="pad">
+  <div class="label">Modèle Sondax</div>
+  <h2>Et si on votait dimanche&nbsp;?</h2>
+  <div class="txt">{"".join(lignes)}</div>
+  {courbe}
+  <p class="mc-lien"><a href="/modele-sondax.html">Voir le modèle Sondax →</a> · <span>Ne prédit pas ce qui se passera d’ici avril.</span></p>
+</div></section>
+<style>{C.CSS}
+.modele-candidat .mc-chance {{ font-size: 18px; }}
+.modele-candidat .mc-chance b {{ font-family: var(--titre); font-size: 26px; }}
+.modele-candidat .txt p {{ margin: 0 0 4px; }}
+.modele-candidat .mc-bascule span {{ display: block; font-size: 13px; color: var(--gris); }}
+.modele-candidat .mc-periodes {{ display: flex; gap: 4px; margin: 6px 0; }}
+.modele-candidat .mc-periodes button {{ border: 1px solid var(--bord); background: #fff; border-radius: 7px;
+  padding: 4px 10px; font-size: 12.5px; cursor: pointer; color: var(--gris); }}
+.modele-candidat .mc-periodes button.active {{ color: var(--texte); border-color: var(--texte); }}
+.modele-candidat .mc-sous, .modele-candidat .mc-lien span {{ font-size: 12.5px; color: var(--gris); }}
+.modele-candidat .mc-lien {{ margin: 12px 0 20px; font-size: 14px; }}
+</style>
+<script>
+document.querySelectorAll('.modele-candidat .mc-periodes button').forEach(function (b) {{
+  b.addEventListener('click', function () {{
+    var s = b.closest('.mc-courbe');
+    s.querySelectorAll('button').forEach(function (x) {{ x.classList.toggle('active', x === b); }});
+    s.querySelectorAll('div[data-p]').forEach(function (d) {{ d.hidden = d.dataset.p !== b.dataset.p; }});
+  }});
+}});
+</script>'''
+
+
+def libelle_rang_duel(modele, d):
+    """Libellé de rang d'un duel (§14.14.4)."""
+    rang = modele["duels"].index(d) + 1
+    v = d["chance_exacte"]
+    if v < 5:
+        return "Peu fréquent aujourd’hui"
+    if rang == 1:
+        return "Le second tour le plus fréquent aujourd’hui"
+    lib = "Le deuxième second tour le plus fréquent" if rang == 2 else f"Le {rang}<sup>e</sup> second tour le plus fréquent"
+    for k in (2, 3, 4, 5):
+        if abs(100 / k - v) < 3:
+            return f"{lib} : près d’un sur {['', '', 'deux', 'trois', 'quatre', 'cinq'][k]}"
+    return lib
+
+
+def bloc_duel(modele, candidats, paire, historique):
+    d = next((x for x in modele["duels"] if sorted(x["candidats"]) == sorted(paire)), None)
+    if d is None:
+        return ""
+    ordre = ordre_modele(modele)
+    instant = _instant(modele)
+    ref = entree_avant(historique, instant, 7)
+    lignes = [f'<p class="md-chance"><b>{T.chances(d["chance_exacte"])}</b> fois sur 100 aujourd’hui</p>']
+    evo = T.evolution(modele, d.get("evolution_7j"), index=INDEX)
+    if ref is not None and evo not in (None, "peu de changement"):
+        avant = ref["duels"].get("+".join(sorted(paire)), 0.0)
+        lignes.append(f'<p>{T.chances(avant)} il y a une semaine · {evo}</p>')
+    elif evo:
+        lignes.append(f'<p>{evo[0].upper() + evo[1:]} sur 7 jours</p>')
+    return f'''<section class="modele-duel">
+  <div class="md-label">Modèle Sondax · Et si on votait dimanche&nbsp;?</div>
+  <h2>{e(libelle_duel(candidats, d["candidats"], ordre))}</h2>
+  <p class="md-rang">{libelle_rang_duel(modele, d)}</p>
+  {"".join(lignes)}
+  <p class="md-note">Combien de fois ce duel sortirait au premier tour si on votait dimanche. Cela ne dit rien du vainqueur du second tour. <a href="../modele-sondax.html">Voir le modèle Sondax →</a></p>
+</section>
+<style>
+.modele-duel {{ background: #fff; border: 1px solid #E3E5E0; border-radius: 14px; padding: 16px 20px; margin: 10px 0 22px; }}
+.modele-duel h2 {{ margin: 2px 0 2px; font-size: 20px; }}
+.modele-duel .md-label {{ font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--bleu-vif); }}
+.modele-duel .md-rang {{ font-weight: 600; margin-bottom: 4px; }}
+.modele-duel .md-chance b {{ font-family: var(--titre); font-size: 24px; }}
+.modele-duel .md-note {{ font-size: 13px; color: var(--gris); margin-top: 8px; }}
+</style>'''
+
+
+def remplacer_entre(contenu, debut, fin, bloc):
+    i, j = contenu.index(debut), contenu.index(fin)
+    return contenu[:i] + debut + "\n" + bloc + "\n" + contenu[j:]
+
+
+def injecter_candidats(modele, candidats, pages, historique):
+    n = 0
+    for slug in sorted(pages):
+        chemin = SITE / f"{slug}.html"
+        if not chemin.exists():
+            continue
+        contenu = chemin.read_text(encoding="utf-8")
+        bloc = bloc_candidat(modele, candidats, slug, historique)
+        if BEGIN_CANDIDAT not in contenu:
+            # Après la section « Tendance » (première carte après le portrait)
+            i = contenu.index('<div class="label">Tendance</div>')
+            j = contenu.index("</section>", i) + len("</section>")
+            contenu = contenu[:j] + f"\n{BEGIN_CANDIDAT}\n{END_CANDIDAT}" + contenu[j:]
+        verifier_vocabulaire(bloc, f"la fiche {slug}")
+        chemin.write_text(remplacer_entre(contenu, BEGIN_CANDIDAT, END_CANDIDAT, bloc), encoding="utf-8")
+        n += bool(bloc)
+    return n
+
+
+def injecter_duels(modele, candidats, historique):
+    dossier = SITE / "second-tour"
+    n = 0
+    for d in modele["duels"]:
+        chemin = dossier / f"{'-'.join(sorted(d['candidats']))}.html"
+        if not chemin.exists():
+            continue
+        contenu = chemin.read_text(encoding="utf-8")
+        if "Redirection" in contenu and len(contenu) < 500:
+            continue
+        if BEGIN_DUEL not in contenu:
+            i = contenu.index("</h1>")
+            j = contenu.index("</p>", i) + len("</p>")
+            contenu = contenu[:j] + f"\n{BEGIN_DUEL}\n{END_DUEL}" + contenu[j:]
+        bloc = bloc_duel(modele, candidats, d["candidats"], historique)
+        verifier_vocabulaire(bloc, f"la page duel {chemin.name}")
+        chemin.write_text(remplacer_entre(contenu, BEGIN_DUEL, END_DUEL, bloc), encoding="utf-8")
+        n += 1
+    return n
+
+
+def charger_index_sondages():
+    try:
+        return {s["id"]: s for s in json.loads(SONDAGES_PATH.read_text())}
+    except FileNotFoundError:
+        return {}
+
+
 def main():
     modele = json.loads(MODELE_PATH.read_text())
     candidats = json.loads(CANDIDATS_PATH.read_text())
     pages = set(json.loads(BIOS_PATH.read_text()))
+    historique = json.loads(HISTORY_PATH.read_text()) if HISTORY_PATH.exists() else []
+    index = charger_index_sondages()
+    INDEX.update(index)
 
-    bloc = bloc_accueil(modele, candidats, pages)
-    corps = page_modele(modele, candidats, pages)
+    bloc = bloc_accueil(modele, candidats, pages, index)
+    corps = page_modele(modele, candidats, pages, historique, index)
     verifier_vocabulaire(bloc, "le bloc d'accueil")
     verifier_vocabulaire(corps, "la page Modèle")
 
@@ -404,11 +768,14 @@ def main():
         meta_description=e(description),
         canonical=PAGE_URL,
         body_content=corps,
-        extra_head=f"<style>{CSS}</style>",
+        extra_head=f"<style>{CSS}{C.CSS}</style>",
     )
     PAGE_PATH.write_text(page, encoding="utf-8")
     injecter(f"<style>{CSS}</style>\n{bloc}")
-    print(f"Écrit {PAGE_PATH.relative_to(ROOT)} et le bloc #bloc-modele de l'accueil")
+    n_c = injecter_candidats(modele, candidats, pages, historique)
+    n_d = injecter_duels(modele, candidats, historique)
+    print(f"Écrit {PAGE_PATH.relative_to(ROOT)}, le bloc #bloc-modele de l'accueil, "
+          f"{n_c} fiches candidat et {n_d} pages duel")
 
 
 if __name__ == "__main__":

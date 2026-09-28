@@ -358,6 +358,19 @@
   .mo-barre { height: 10px; background: #F0F1EE; border-radius: 5px; margin: 5px 0 4px; overflow: hidden; }
   .mo-barre span { display: block; height: 100%; border-radius: 5px; }
   .mo-verdict { font-size: 13px; color: var(--gris); }
+  .mo-evo { white-space: nowrap; }
+  .mo-table .mo-evo { font-size: 13px; color: var(--gris); }
+  .mo-bascule { font-size: 13px; font-weight: 600; color: var(--bleu-nuit); margin-top: 2px; }
+  .mo-mouvement { font-size: 14.5px; margin: 14px 0 0; }
+  .mo-notes { margin-top: 14px; }
+  .mo-notes ul { margin: 4px 0 0 18px; }
+  .mo-periodes { display: flex; background: #F2F3F0; border-radius: 9px; padding: 3px; width: fit-content; margin-bottom: 12px; }
+  .mo-periodes button { border: 0; cursor: pointer; font: 500 13px var(--corps); padding: 6px 13px;
+    border-radius: 7px; background: transparent; color: var(--gris); }
+  .mo-periodes button.active { background: #fff; color: var(--texte); box-shadow: 0 1px 2px rgba(32,38,50,.08); }
+  .mo-cases { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 13.5px; }
+  .mo-cases label { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
+  .mo-cases input { accent-color: var(--c); }
   .mo-accroche { font-size: 16.5px; line-height: 1.5; margin: 0 0 18px; max-width: 46em; }
   .mo-accroche strong { font-weight: 600; }
   .mo-cta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 20px; }
@@ -410,7 +423,7 @@
   <div class="section-label">Modèle Sondax</div>
   <h2>Et si on votait dimanche&nbsp;?</h2>
   <p class="subtitle">Qui serait au second tour, d’après les sondages d’aujourd’hui&nbsp;?</p>
-  <p class="mo-accroche"><strong>Le Pen – Mélenchon est aujourd’hui le second tour le plus plausible.</strong> Philippe a 26 chances sur 100 d’y être.</p>
+  <p class="mo-accroche"><strong>Le Pen – Mélenchon reste aujourd’hui le second tour le plus plausible.</strong> Philippe a 26 chances sur 100 d’y être.</p>
   <ul class="mo-liste">
     <li class="mo-ligne">
       <img class="mo-photo" src="photos/le-pen.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#0D378A">
@@ -418,6 +431,7 @@
         <div class="mo-tete"><span class="mo-nom"><a href="le-pen.html">Marine Le Pen</a></span><span class="mo-chance">plus de 99&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:100.0%;background:#0D378A"></span></div>
         <div class="mo-verdict">Quasi sûre d’y être</div>
+        
       </div>
     </li>
     <li class="mo-ligne">
@@ -425,7 +439,8 @@
       <div class="mo-corps">
         <div class="mo-tete"><span class="mo-nom"><a href="melenchon.html">Jean-Luc Mélenchon</a></span><span class="mo-chance">73&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:73.1%;background:#CC2443"></span></div>
-        <div class="mo-verdict">Bien placé</div>
+        <div class="mo-verdict">Bien placé · <span class="mo-evo">+13 en 7&nbsp;jours, après le sondage Harris du 24 septembre</span></div>
+        
       </div>
     </li>
     <li class="mo-ligne">
@@ -433,10 +448,13 @@
       <div class="mo-corps">
         <div class="mo-tete"><span class="mo-nom"><a href="philippe.html">Édouard Philippe</a></span><span class="mo-chance">26&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:26.4%;background:#00B7FF"></span></div>
-        <div class="mo-verdict">Rien n’est joué</div>
+        <div class="mo-verdict">Rien n’est joué · <span class="mo-evo">−13 en 7&nbsp;jours, après le sondage Harris du 24 septembre</span></div>
+        
       </div>
     </li>
   </ul>
+  <p class="mo-mouvement">Le sondage Harris du 24 septembre éloigne Philippe du second tour : −13 chances sur 100.</p>
+  <p class="mo-mouvement"><strong>Philippe est à environ 1,5&nbsp;point du basculement.</strong> <span class="mo-petit">Avec environ 1,5&nbsp;point de plus dans les sondages actuels, ses chances d’être au second tour seraient proches d’une sur deux.</span></p>
   <div class="mo-cta">
     <a class="mo-bouton" href="modele-sondax.html">Voir le modèle Sondax →</a>
     <span>Chances d’être au second tour, seconds tours possibles et évolution de la course.</span>

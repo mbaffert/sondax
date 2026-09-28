@@ -6,6 +6,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
+  contents: write   # commit de data/lastmod.json
   pages: write
   id-token: write
 
@@ -62,3 +63,18 @@ jobs:
 
       - uses: actions/deploy-pages@v4
         id: deploy
+
+      # data/lastmod.json porte les dates de dernière modification du sitemap.
+      # Sans ce commit, chaque build repartirait de la version du dépôt et
+      # redaterait au jour du build les pages déjà modifiées depuis.
+      # Un push fait avec GITHUB_TOKEN ne relance pas ce workflow.
+      - name: Enregistrer data/lastmod.json
+        run: |
+          git diff --quiet data/lastmod.json && exit 0
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/lastmod.json
+          git commit -m "lastmod : dates de modification des pages"
+          # Si main a avancé, un nouveau déploiement est en route et recalculera
+          # le fichier : on n'échoue pas.
+          git push origin HEAD:main || echo "::warning::main a avancé, lastmod.json non enregistré"

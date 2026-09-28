@@ -9,7 +9,6 @@ import datetime, html
 
 e = html.escape
 
-MIN_SONDAGES_EVOLUTION = 3       # §14.9
 BASCULE_AFFICHAGE_MAX = 4.0      # §14.7
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
         "septembre", "octobre", "novembre", "décembre"]
@@ -47,21 +46,22 @@ def points(x):
 # ---------------------------------------------------------------- évolutions
 
 def evolution(modele, valeur, jours=7, index=None):
-    """« +11 en 7 jours », « −5 en 7 jours », « stable », « peu de changement »,
-    ou None sans historique (§14.9). Sous trois sondages en 7 jours, avec
-    `index`, un mouvement d'au moins 2 est donné en nommant le ou les sondages
-    (« −13 en 7 jours, après le sondage Harris du 24 septembre »)."""
+    """« +11 en 7 jours », « −5 en 7 jours » ou « stable » ; None sans historique.
+
+    Règle unique (§5.11 du brief) : quand un seul sondage est entré en 7 jours,
+    l'évolution le nomme (« +13 en 7 jours, après le sondage Harris du
+    24 septembre ») ; sinon, formulation générale. Il n'y a plus de seuil de
+    trois sondages."""
     if valeur is None:
         return None
-    if jours == 7 and modele.get("sondages_entres_7j", 0) < MIN_SONDAGES_EVOLUTION:
-        ids = (modele.get("sondages_entres") or {}).get("7j") or []
-        if index is not None and ids and abs(valeur) >= 2:
-            qui = nommer_sondages(ids, index)
-            return f"{signe(valeur)} en 7&nbsp;jours, après {qui[0].lower() + qui[1:]}"
-        return "peu de changement"
     if abs(valeur) <= 1:
         return "stable"
-    return f"{signe(valeur)} en {jours}&nbsp;jours"
+    texte = f"{signe(valeur)} en {jours}&nbsp;jours"
+    ids = (modele.get("sondages_entres") or {}).get("7j") or []
+    if jours == 7 and index is not None and len(ids) == 1:
+        qui = nommer_sondages(ids, index)
+        texte += f", après {qui[0].lower() + qui[1:]}"
+    return texte
 
 
 # ------------------------------------------------------------------- bascule
@@ -121,7 +121,7 @@ def changement(modele, candidats, index, ordre):
         return None
     t = ev["type"]
     ids = ev.get("sondages_declencheurs", [])
-    attribue = len(ids) in (1, 2)
+    attribue = len(ids) == 1          # §5.11 : un seul sondage déclencheur
     sujet = nommer_sondages(ids, index) if ids else ""
     verbe_pl = len(ids) > 1
 
@@ -179,22 +179,3 @@ def changement(modele, candidats, index, ordre):
                 f"Il lui manque désormais environ {points(ev['apres'])}, contre "
                 f"{points(ev['avant'])} {_quand(ev)}.")
     return None
-
-
-def mouvement_accueil(modele, candidats, index, ordre):
-    """Une seule phrase pour l'accueil (§14.14.1, point 4)."""
-    ev = modele.get("changement")
-    if not ev:
-        return None
-    t = ev["type"]
-    ids = ev.get("sondages_declencheurs", [])
-    if t in ("candidate_gain", "candidate_loss"):
-        x = nom(candidats, ev["candidate"])
-        if len(ids) in (1, 2):
-            return changement(modele, candidats, index, ordre)[0]
-        periode = "en une semaine" if ev.get("horizon") == "7j" else "depuis la dernière mise à jour"
-        verbe = "se rapproche" if t == "candidate_gain" else "s’éloigne"
-        return f"{x} {verbe} : {signe(ev['delta'])} chances {periode}."
-    if t in ("aucun_sondage", "peu_de_changement"):
-        return "Peu de changement depuis une semaine."
-    return changement(modele, candidats, index, ordre)[0]

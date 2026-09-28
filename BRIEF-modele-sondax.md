@@ -129,35 +129,10 @@ Le second tour se stabilise.
 Les deux premiers disposent aujourd’hui d’une nette avance sur leurs poursuivants.
 L’objectif est de raconter ce qu’il faut retenir aujourd’hui.
 
-### 4.3 Candidats affichés sur la home
+### 4.3 Les seconds tours possibles (composant de §5.6)
 
-Ne pas nécessairement afficher les six candidats.
-Afficher prioritairement les candidats ayant une chance réelle de qualification.
-Par exemple les quatre premiers :
-
-```text
-Marine Le Pen
-> 99 sur 100
-Quasi sûre d’y être
-
-
-Jean-Luc Mélenchon
-46 sur 100
-−5 en 7 jours
-
-
-Édouard Philippe
-38 sur 100
-+11 en 7 jours
-
-
-Raphaël Glucksmann
-12 sur 100
-−2 en 7 jours
-```
-
-Barres horizontales + photo + nom.
-Pas de tableau complexe.
+Le bloc « Les seconds tours possibles » de la page Modèle (§5.6), identique : même composant, mêmes données. 100 carrés et liste des duels, avec leur évolution et, le cas échéant, le sondage déclencheur (§5.11).
+Les barres par candidat restent uniquement sur la page Modèle (§5.2).
 
 ### 4.4 Principal mouvement
 
@@ -289,7 +264,6 @@ Afficher pour chaque candidat :
 −5 en 7 jours
 stable
 L’évolution porte sur les chances de qualification, pas sur le score dans les sondages.
-Règle d’affichage : l’évolution sur 7 jours n’est affichée que si au moins trois sondages sont entrés dans la fenêtre de calcul depuis 7 jours. Sinon, afficher « peu de changement ». En 2026, un « +11 en 7 jours » serait presque toujours l’effet d’un seul sondage ; c’est le soubresaut que la page Méthode dit vouloir éviter. La règle se relâche d’elle-même quand la cadence augmente en 2027.
 Stocker également :
 
 ```text

@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Qui serait au second tour si on votait dimanche&nbsp;? — Modèle Sondax</title>
-<meta name="description" content="Le Pen – Mélenchon reste aujourd’hui le second tour le plus plausible. Philippe a 27 chances sur 100 d’y être. Chances d’être au second tour si on votait dimanche.">
+<meta name="description" content="Le Pen – Mélenchon reste aujourd’hui le second tour le plus plausible. Philippe a 27 chances sur 100 d’y être, contre 39 il y a une semaine. Chances d’être au second tour si on votait dimanche.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sondax">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:url" content="https://sondax.fr/modele-sondax.html">
 <meta property="og:title" content="Qui serait au second tour si on votait dimanche&nbsp;? — Modèle Sondax">
-<meta property="og:description" content="Le Pen – Mélenchon reste aujourd’hui le second tour le plus plausible. Philippe a 27 chances sur 100 d’y être. Chances d’être au second tour si on votait dimanche.">
+<meta property="og:description" content="Le Pen – Mélenchon reste aujourd’hui le second tour le plus plausible. Philippe a 27 chances sur 100 d’y être, contre 39 il y a une semaine. Chances d’être au second tour si on votait dimanche.">
 <meta property="og:image" content="https://sondax.fr/partage/modele-2026-09-28-og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -88,7 +88,7 @@
   .mo-barre { height: 10px; background: #F0F1EE; border-radius: 5px; margin: 5px 0 4px; overflow: hidden; }
   .mo-barre span { display: block; height: 100%; border-radius: 5px; }
   .mo-verdict { font-size: 13px; color: var(--gris); }
-  .mo-evo { white-space: nowrap; }
+  .mo-evo { white-space: normal; }
   .mo-partage { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 4px 0 12px; }
   .mo-bouton { border: 0; cursor: pointer; font-family: var(--corps); }
   .mo-partage-menu { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13.5px; }
@@ -126,7 +126,19 @@
     font-size: 12px; color: #8A929C; line-height: 1.6; }
   .page-modele .mo-une .mo-accroche { margin-bottom: 0; font-size: 18px; }
   .page-modele #comment p { max-width: 46em; margin-bottom: 10px; }
+  .mo-seconds-tours { margin: 4px 0 6px; }
+  .mo-seconds-titre { font-family: var(--titre); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 4px; }
+  h3.mo-seconds-titre { font-size: 18px; }
   .mo-duels { display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: start; }
+  .mo-duels-liste { list-style: none; margin: 0; padding: 0; }
+  .mo-duels-liste li { display: grid; grid-template-columns: 19px 1fr auto; column-gap: 0;
+    padding: 9px 0; border-bottom: 1px solid #F0F1EE; font-size: 14.5px; align-items: baseline; }
+  .mo-duels-liste .mo-pastille { margin: 0; }
+  .mo-duel-nom { font-weight: 600; }
+  .mo-duel-chance { white-space: nowrap; font-variant-numeric: tabular-nums; text-align: right; }
+  .mo-duel-evo { grid-column: 2 / 4; font-size: 13px; color: var(--gris); margin-top: 1px; }
+  .mo-duels-autres li { font-size: 13.5px; }
+  .mo-duels-autres .mo-duel-nom { font-weight: 400; }
   .mo-grille { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
   .mo-grille span { aspect-ratio: 1; border-radius: 3px; }
   .mo-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
@@ -147,9 +159,31 @@
   .mo-rangs:not([open]) > summary::after { content: ' ▸'; }
   .mo-petit { font-size: 13px; color: var(--gris); margin-top: 10px; }
   .mo-lien-methode a { font-weight: 600; }
+  @media (max-width: 599px) {
+    /* Téléphone : carrés au-dessus de la liste, en 5 rangées de 20 */
+    .mo-duels { grid-template-columns: 1fr; gap: 10px; }
+    .mo-grille { grid-template-columns: repeat(20, 1fr); gap: 2px; }
+    .mo-grille span { border-radius: 2px; }
+    .mo-seconds-tours .subtitle { font-size: 13px; margin-bottom: 10px; }
+    .mo-seconds-titre { font-size: 19px; }
+    h3.mo-seconds-titre { font-size: 17px; }
+    .mo-duels-liste li { padding: 6px 0; font-size: 14px; }
+    .mo-duel-evo { font-size: 12px; letter-spacing: -0.01em; grid-column: 1 / 4; }
+    .mo-table-rangs { font-size: 13px; }
+    .mo-table-rangs th { white-space: normal; letter-spacing: 0; }
+    #bloc-modele { padding: 18px 16px 14px; }
+    #bloc-modele h2 { font-size: 22px; }
+    #bloc-modele .mo-accroche { font-size: 15px; }
+    #bloc-modele .mo-seconds-tours .subtitle { font-size: 12.5px; }
+    #bloc-modele .subtitle { margin-bottom: 12px; }
+    #bloc-modele .mo-accroche { margin-bottom: 14px; }
+    #bloc-modele .mo-cta { margin-top: 14px; }
+    #bloc-modele .mo-cta span { display: none; }
+    #bloc-modele .bloc-note { margin-top: 12px; padding-top: 8px; font-size: 11.5px; }
+    #bloc-modele .mo-repli { margin-top: 4px; }
+    #bloc-modele .mo-repli summary { padding: 4px 0; }
+  }
   @media (max-width: 640px) {
-    .mo-duels { grid-template-columns: 1fr; }
-    .mo-grille { max-width: 260px; }
     .page-modele .bloc { padding: 20px 16px 16px; }
     .mo-accroche { font-size: 15.5px; }
     .mo-chance { font-size: 15px; }
@@ -177,20 +211,20 @@
 
   <section class="bloc mo-une">
     <div class="section-label">Aujourd’hui</div>
-    <p class="mo-accroche"><strong>Le Pen – Mélenchon reste aujourd’hui le second tour le plus plausible.</strong> Philippe a 27 chances sur 100 d’y être. Philippe est à environ 1,5&nbsp;point du basculement.</p>
+    <p class="mo-accroche"><strong>Le Pen – Mélenchon reste aujourd’hui le second tour le plus plausible.</strong> Philippe a 27 chances sur 100 d’y être, contre 39 il y a une semaine. Philippe est à environ 1,5&nbsp;point du basculement.</p>
     <p class="bloc-note">Si on votait dimanche · Calculé sur 12 sondages · Mis à jour le 28 septembre 2026.</p>
   </section>
 
   <section class="bloc" id="chances">
     <h2>Chances d’être au second tour</h2>
-    <p class="subtitle">Pour chaque candidat, sur 100. Un seul nouveau sondage en 7 jours : les évolutions indiquées lui sont dues.</p>
+    <p class="subtitle">Pour chaque candidat, sur 100.</p>
     <ul class="mo-liste">
       <li class="mo-ligne">
       <img class="mo-photo" src="photos/le-pen.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#0D378A">
       <div class="mo-corps">
         <div class="mo-tete"><span class="mo-nom"><a href="le-pen.html">Marine Le Pen</a></span><span class="mo-chance">plus de 99&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:99.9%;background:#0D378A"></span></div>
-        <div class="mo-verdict">Quasi sûre d’y être</div>
+        <div class="mo-verdict">Quasi sûre d’y être · <span class="mo-evo">stable</span></div>
         
       </div>
     </li>
@@ -217,7 +251,7 @@
       <div class="mo-corps">
         <div class="mo-tete"><span class="mo-nom"><a href="glucksmann.html">Raphaël Glucksmann</a></span><span class="mo-chance">2&nbsp;sur&nbsp;100</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:1.9%;background:#FF7043"></span></div>
-        <div class="mo-verdict">Très improbable aujourd’hui</div>
+        <div class="mo-verdict">Très improbable aujourd’hui · <span class="mo-evo">stable</span></div>
         
       </div>
     </li>
@@ -295,18 +329,20 @@
   </section>
 
   <section class="bloc" id="seconds-tours">
-    <h2>Les seconds tours possibles</h2>
+    <div class="mo-seconds-tours">
+    <h2 class="mo-seconds-titre">Les seconds tours possibles</h2>
     <p class="subtitle">Sur 100 premiers tours refaits à partir des sondages d’aujourd’hui, voici combien de fois chaque duel sort.</p>
     <div class="mo-duels">
       <div class="mo-grille" aria-hidden="true"><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#FF7043"></span><span style="background:#FF7043"></span><span style="background:#D5D9DE"></span></div>
       <div>
-        <table class="mo-table"><tr><td><span class="mo-pastille" style="background:#CC2443"></span>Le Pen – Mélenchon</td><td class="mo-num">71&nbsp;sur&nbsp;100</td><td class="mo-num mo-evo">+13 en 7&nbsp;jours, après le sondage Harris du 24 septembre</td></tr><tr><td><span class="mo-pastille" style="background:#00B7FF"></span>Le Pen – Philippe</td><td class="mo-num">26&nbsp;sur&nbsp;100</td><td class="mo-num mo-evo">−12 en 7&nbsp;jours, après le sondage Harris du 24 septembre</td></tr><tr><td><span class="mo-pastille" style="background:#FF7043"></span>Le Pen – Glucksmann</td><td class="mo-num">2&nbsp;sur&nbsp;100</td><td class="mo-num mo-evo"></td></tr></table>
+        <ul class="mo-duels-liste"><li><span class="mo-pastille" style="background:#CC2443"></span><span class="mo-duel-nom">Le Pen – Mélenchon</span><span class="mo-duel-chance">71&nbsp;sur&nbsp;100</span><span class="mo-duel-evo">+13 en 7&nbsp;jours, après le sondage Harris du 24 septembre</span></li><li><span class="mo-pastille" style="background:#00B7FF"></span><span class="mo-duel-nom">Le Pen – Philippe</span><span class="mo-duel-chance">26&nbsp;sur&nbsp;100</span><span class="mo-duel-evo">−12 en 7&nbsp;jours, après le sondage Harris du 24 septembre</span></li><li><span class="mo-pastille" style="background:#FF7043"></span><span class="mo-duel-nom">Le Pen – Glucksmann</span><span class="mo-duel-chance">2&nbsp;sur&nbsp;100</span><span class="mo-duel-evo">stable</span></li></ul>
         <details class="mo-repli">
-      <summary><span class="mo-pastille" style="background:#D5D9DE"></span>Autres scénarios · 1&nbsp;sur&nbsp;100</summary>
-      <table class="mo-table"><tr><td>Le Pen – Attal</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Le Pen – Retailleau</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Le Pen – Tondelier</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Mélenchon – Philippe</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Le Pen – Zemmour</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Le Pen – Dupont-Aignan</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Philippe – Glucksmann</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Mélenchon – Attal</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Philippe – Attal</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Mélenchon – Glucksmann</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Le Pen – Roussel</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Philippe – Retailleau</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Le Pen – Arthaud</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Attal – Retailleau</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Mélenchon – Dupont-Aignan</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Glucksmann – Retailleau</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Glucksmann – Tondelier</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Mélenchon – Retailleau</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Mélenchon – Zemmour</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Philippe – Tondelier</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Philippe – Zemmour</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr><tr><td>Retailleau – Roussel</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td><td></td></tr></table>
-    </details>
+        <summary><span class="mo-pastille" style="background:#D5D9DE"></span>Autres scénarios · 1&nbsp;sur&nbsp;100</summary>
+        <ul class="mo-duels-liste mo-duels-autres"><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Le Pen – Attal</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Le Pen – Retailleau</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Le Pen – Tondelier</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Mélenchon – Philippe</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Le Pen – Zemmour</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Le Pen – Dupont-Aignan</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Philippe – Glucksmann</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Mélenchon – Attal</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Philippe – Attal</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Mélenchon – Glucksmann</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Le Pen – Roussel</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Philippe – Retailleau</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Le Pen – Arthaud</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Attal – Retailleau</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Mélenchon – Dupont-Aignan</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Glucksmann – Retailleau</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Glucksmann – Tondelier</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Mélenchon – Retailleau</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Mélenchon – Zemmour</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Philippe – Tondelier</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Philippe – Zemmour</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li><li><span class="mo-pastille" style="background:transparent"></span><span class="mo-duel-nom">Retailleau – Roussel</span><span class="mo-duel-chance">moins de 1&nbsp;sur&nbsp;100</span></li></ul>
+      </details>
       </div>
     </div>
+  </div>
   </section>
 
   <section class="bloc" id="historique">

@@ -29,7 +29,6 @@ FENETRE_MAX_JOURS = 90
 EXCLUS = {"autre"}
 
 HORIZONS = {"1j": 1, "7j": 7, "30j": 30}   # évolutions (§14.9)
-MIN_SONDAGES_EVOLUTION = 3                 # règle d'affichage du 7 jours
 SEUIL_VARIATION = 5                        # événement « gain / perte » (§14.10)
 SEUIL_BASCULE_CHANGE = 1.0
 BASCULE_CIBLE = 50.0                       # point de bascule (§14.7)
@@ -366,7 +365,7 @@ def accroche(candidats, m, ref_7j=None):
     q = [qualif[s] for s in ordre]
     deux, trois = ordre[1], ordre[2]
     duel = libelle_duel(candidats, m["duels"][0]["candidats"], ordre)
-    semaine = ref_7j is not None and m.get("sondages_entres_7j", 0) >= MIN_SONDAGES_EVOLUTION
+    semaine = ref_7j is not None
     if ref_7j is not None:
         q7 = ref_7j["qualification"]
         o7 = sorted(q7, key=lambda c: -q7[c])

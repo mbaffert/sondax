@@ -59,7 +59,7 @@ def choisir(modele, candidats, index):
         verbe = "gagne" if t == "candidate_gain" else "perd"
         sous = "Chances d’être au second tour, si on votait dimanche."
         ids = ev.get("sondages_declencheurs") or []
-        if len(ids) in (1, 2):
+        if len(ids) == 1:
             qui = T.nommer_sondages(ids, index)
             sous = f"Après {qui[0].lower() + qui[1:]}."
         return ("mouvement", f"{x} {verbe} {n} chances d’être au second tour en une semaine.", sous)

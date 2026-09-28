@@ -1384,22 +1384,16 @@ d'entrée assez ancienne → `null`.
 **Affichage** (7 jours par défaut) :
 
 - `« +11 en 7 jours »` / `« −5 en 7 jours »` si |évolution arrondie| ≥ 2 ;
-- `« stable »` si |évolution arrondie| ≤ 1 ;
-- **`« peu de changement »`** si moins de **trois sondages** sont entrés dans le calcul
-  depuis 7 jours, quelle que soit l'évolution. Un sondage « entré » est un identifiant
-  présent dans `sondages_utilises` (§14.13) du jour et absent de celui de l'entrée de
-  J−7.
+- `« stable »` si |évolution arrondie| ≤ 1.
 
-**Exception d'attribution** : sous trois sondages, une évolution d'au moins 2 reste
-affichée si elle nomme le ou les sondages qui l'expliquent (« −13 en 7 jours, après le
-sondage Harris du 24 septembre ») ; la liste de la page Modèle porte alors une seule
-mention en tête (« Un seul nouveau sondage en 7 jours : les évolutions indiquées lui
-sont dues. ») au lieu d'un « peu de changement » par ligne. Sans cette exception, une
-fiche affichait « peu de changement » pour un candidat qui venait de perdre 13 chances.
-
-Motivation : en 2026, un « +11 en 7 jours » serait presque toujours l'effet d'un seul
-sondage — le soubresaut que la méthode veut éviter. La règle se relâche d'elle-même
-quand la cadence augmente en 2027.
+**Règle unique : l'attribution** (décision du 28 septembre 2026, brief §5.11). Quand un
+**seul** sondage est entré dans le calcul depuis 7 jours, l'évolution le nomme :
+« +13 en 7 jours, après le sondage Harris du 24 septembre ». Avec deux sondages ou
+plus, formulation générale. Un sondage « entré » est un identifiant présent dans
+`sondages_utilises` (§14.13) du jour et absent de celui de l'entrée de J−7.
+L'ancienne règle des trois sondages (« peu de changement » sous ce seuil) est
+supprimée : elle affichait « peu de changement » pour un candidat qui venait de perdre
+13 chances à cause d'un seul sondage ; nommer ce sondage est plus honnête.
 
 L'évolution porte sur les **chances**, jamais sur le score dans les sondages : le
 libellé le dit (« chances »), et les deux chiffres ne sont jamais juxtaposés sans ce
@@ -1412,9 +1406,7 @@ l'ordre :
 
 1. **depuis la dernière mise à jour** (`horizon: "maj"`), si au moins un sondage est
    entré depuis ;
-2. **sur 7 jours** (`horizon: "7j"`), si au moins un sondage est entré. Sous trois
-   sondages, le texte nomme le ou les sondages (formulation attribuée) : c'est ce qui
-   le distingue d'un « +13 en 7 jours » anonyme, que la règle du §14.9 interdit.
+2. **sur 7 jours** (`horizon: "7j"`), si au moins un sondage est entré.
 
 Pour chaque horizon, première règle vérifiée dans cet ordre de priorité :
 
@@ -1482,7 +1474,7 @@ dans l'ordre (`q1 ≥ q2 ≥ q3` : chances de qualification des trois premiers) 
 Avec historique (phase B), les formulations de mouvement deviennent possibles, et
 **seulement** avec lui : « se resserre » exige que `q2 − q3` ait diminué d'au moins
 5 sur 7 jours ; « reste » exige que le duel principal soit le même qu'à J−7 ;
-« contre {n} il y a une semaine » exige la règle des trois sondages (§14.9). Sans
+« contre {n} il y a une semaine » exige une entrée d'historique à J−7. Sans
 historique, aucun mot ne suppose un changement (« désormais », « reste », « se
 resserre » sont exclus en phase A).
 
@@ -1581,25 +1573,28 @@ Usages : évolutions 1 j / 7 j / 30 j, courbes (§14.14.5), contenus partagés (
 
 Rendu au build (contrainte générale du §1) par `scripts/build_modele.py`. Ne présente
 qu'une version condensée ; son seul objectif est d'être compris en dix secondes et de
-donner envie d'ouvrir la page.
+donner envie d'ouvrir la page. Dans l'ordre (décision du 28 septembre 2026) :
 
 1. **Titre** : « Et si on votait dimanche ? » ; sous-titre : « Qui serait au second
    tour, d'après les sondages d'aujourd'hui ? »
 2. **Accroche** (§14.11).
-3. **Candidats** : photo, nom, barre horizontale, « {n} sur 100 », puis évolution
-   (phase B) ou verdict pour le premier. Pas de tableau. Affichés : les candidats à 5
-   sur 100 ou plus, **quatre au plus, deux au moins**, par chances décroissantes.
-4. **Principal mouvement** (phase B) : une seule phrase, tirée de `changement`
-   (« Philippe se rapproche : +11 chances en une semaine. », « Mélenchon repasse devant
-   Philippe. », « Peu de changement depuis une semaine. »).
-5. **Point de bascule** (phase B), seulement si un des candidats affichés a un point de
-   bascule affichable (§14.7) **et** que ses chances sont entre 25 et 49 : « Philippe
-   est à environ 1 point du basculement. » ; l'explication de §14.7 en texte secondaire
-   (bouton d'aide accessible au clavier, pas de survol seul).
-6. **Bouton** : « Voir le modèle Sondax → » vers `/modele-sondax` ; dessous : « Chances
-   de qualification, seconds tours possibles et évolution de la course. »
-7. **Ligne de contexte** : « Si on votait dimanche · Calculé sur {n} sondages · Mis à
+3. **Les seconds tours possibles** : le composant de la page Modèle (§14.14.2, point 4),
+   **le même** (`composant_duels`, une seule fonction pour les deux pages), avec les
+   mêmes données : 100 carrés et liste des duels, avec leur évolution et le sondage
+   déclencheur (§14.9). Seul le niveau de titre change (`h3` sur l'accueil). Les barres
+   par candidat restent uniquement sur la page Modèle.
+4. **Bouton** : « Voir le modèle Sondax → » vers `/modele-sondax` ; dessous : « Chances
+   de qualification, seconds tours possibles et évolution de la course. » (masqué sur
+   téléphone).
+5. **Ligne de contexte** : « Si on votait dimanche · Calculé sur {n} sondages · Mis à
    jour le {date}. » puis « Ne prédit pas ce qui se passera d'ici avril. »
+
+Le principal mouvement et le point de bascule ne figurent plus sur l'accueil ; ils
+restent sur la page Modèle (« Ce qui a changé », liste des chances).
+
+**Téléphone** : sous 600 px, les carrés passent au-dessus de la liste, en 5 rangées de
+20 ; le bloc entier doit tenir sur un écran (vérifié à 749 px de haut pour un écran de
+390 × 844 au 28 septembre 2026).
 
 #### 14.14.2 Page « Le modèle Sondax » (`/modele-sondax`)
 
@@ -1620,10 +1615,19 @@ Sections, dans l'ordre :
    évolution 7 jours, point de bascule s'il est affichable.
 3. **Ce qui a changé** (phase B) : aujourd'hui / dernière mise à jour / J−7, texte de
    §14.10.
-4. **Les seconds tours possibles** : les trois duels les plus fréquents, puis « Autres
-   scénarios » (somme du reste) dans un `<details>` natif listant chaque duel. Grille
-   de 100 carrés colorés par duel, répartis par la méthode du plus fort reste pour
-   totaliser exactement 100. Évolution 7 jours de chaque duel (phase B).
+4. **Les seconds tours possibles** (`composant_duels`, partagé avec l'accueil) : les
+   trois duels les plus fréquents, puis « Autres scénarios » (somme du reste) dans un
+   `<details>` natif listant chaque duel. Grille de 100 carrés, répartis par la méthode
+   du plus fort reste pour totaliser exactement 100. Liste en lignes à deux niveaux
+   (duel et chances, puis évolution 7 jours attribuée, §14.9).
+
+   **Couleurs des duels** (`couleurs_duels`) : chaque duel prend la couleur de son
+   challenger, le moins bien placé des deux (rouge Mélenchon pour Le Pen – Mélenchon) ;
+   si cette couleur est déjà prise par un duel mieux classé, celle de l'autre
+   candidat. Gris (`DUEL_COULEUR_AUTRES`) pour les autres scénarios. Décision du
+   28 septembre 2026 : des palettes propres aux duels, sans couleur de candidat (vert /
+   bleu-vert / doré, gris-bleus, gamme de rouges), ont été essayées et jugées moins
+   lisibles.
 5. **Historique** (phase B) : « Chances d'être au second tour », sélecteur 7 jours |
    30 jours | Depuis le début, une courbe par candidat, les quatre premiers cochés par
    défaut, les autres ajoutables (même composant de cases à cocher que la courbe du

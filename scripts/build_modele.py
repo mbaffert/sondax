@@ -48,7 +48,10 @@ VERDICTS = {
     "tres_improbable": ("Très improbable aujourd’hui", "Très improbable aujourd’hui"),
 }
 
-ACCUEIL_MIN, ACCUEIL_MAX, ACCUEIL_SEUIL = 2, 4, 5   # §14.14.1
+# Couleur d'un duel : celle du challenger, le moins bien placé des deux
+# (décision du 28 septembre 2026, après essai de palettes neutres jugées
+# illisibles). Gris pour les autres scénarios.
+DUEL_COULEUR_AUTRES = "#D5D9DE"
 COURBES_DEFAUT = 4                                   # candidats cochés (§14.14.2)
 COURBES_SEUIL = 1          # candidats proposés : au moins 1 sur 100 dans l'historique
 SECOND_TOUR_FREQUENT_MIN = 8                         # fiches candidat (§14.14.3)
@@ -101,11 +104,6 @@ def libelle_duel(candidats, paire, ordre):
     return f"{nom(candidats, a)} – {nom(candidats, b)}"
 
 
-def couleur_duel(candidats, paire, ordre):
-    """Couleur du moins bien placé des deux : c'est lui qui distingue le duel."""
-    return candidats[max(paire, key=ordre.index)]["couleur"]
-
-
 def portrait(candidats, slug, p=""):
     photo = SITE / "photos" / f"{slug}.jpg"
     couleur = candidats[slug]["couleur"]
@@ -128,24 +126,12 @@ INDEX = {}   # index des sondages, renseigné par main() (attribution des évolu
 
 
 def evolution_ligne(modele, valeur, chance):
-    """Évolution d'une ligne de liste : rien sous 1 sur 100, et rien quand trop
-    peu de sondages sont entrés (la mention est alors donnée une fois, en tête)."""
+    """Évolution d'une ligne de liste, attribuée au sondage quand un seul est
+    entré (règle unique, §5.11) ; rien pour « stable » sous 1 sur 100."""
     evo = T.evolution(modele, valeur, index=INDEX)
-    if evo == "peu de changement" or (chance < 1 and evo == "stable"):
+    if chance < 1 and evo == "stable":
         return None
     return evo
-
-
-def mention_semaine(modele):
-    """Mention unique quand la règle des trois sondages s'applique (§14.9)."""
-    if T.evolution(modele, 0) != "peu de changement":
-        return ""
-    n = modele.get("sondages_entres_7j", 0)
-    if n == 0:
-        return " Aucun nouveau sondage en 7 jours."
-    if n == 1:
-        return " Un seul nouveau sondage en 7 jours : les évolutions indiquées lui sont dues."
-    return f" {n} nouveaux sondages seulement en 7 jours : les évolutions indiquées leur sont dues."
 
 
 def ligne_candidat(candidats, pages, slug, v, modele, p="", detail=True, bascule=True):
@@ -172,15 +158,6 @@ def ligne_candidat(candidats, pages, slug, v, modele, p="", detail=True, bascule
     </li>'''
 
 
-def candidats_accueil(modele):
-    tries = list(modele["candidats"].items())
-    retenus = [(c, v) for c, v in tries if v["qualification_exacte"] >= ACCUEIL_SEUIL]
-    retenus = retenus[:ACCUEIL_MAX]
-    if len(retenus) < ACCUEIL_MIN:
-        retenus = tries[:ACCUEIL_MIN]
-    return retenus
-
-
 def accroche_html(modele, balise="p", candidats=None):
     """Accroche ; avec `candidats`, version développée (point de bascule)."""
     a = modele["accroche"]
@@ -194,30 +171,15 @@ def accroche_html(modele, balise="p", candidats=None):
             f'{e(a["detail"])}{suite}</{balise}>')
 
 
-def bloc_accueil(modele, candidats, pages, index):
-    retenus = candidats_accueil(modele)
-    lignes = "\n    ".join(ligne_candidat(candidats, pages, c, v, modele, bascule=False)
-                           for c, v in retenus)
-    extras = []
-    mvt = T.mouvement_accueil(modele, candidats, index, ordre_modele(modele))
-    if mvt:
-        extras.append(f'<p class="mo-mouvement">{mvt}</p>')
-    une = T.bascule_a_la_une(modele)
-    if une and une[0] in dict(retenus):
-        c, v = une
-        extras.append(f'<p class="mo-mouvement"><strong>{e(nom(candidats, c))} est à environ '
-                      f'{T.points(T.bascule_affichee(v["delta_bascule"]))} du basculement.</strong> '
-                      f'<span class="mo-petit">{T.bascule_explication(v)}</span></p>')
-    extras = "\n  ".join(extras)
+def bloc_accueil(modele, candidats):
+    """Bloc d'accueil (§14.14.1) : titre, accroche, « Les seconds tours
+    possibles » (même composant que la page Modèle), bouton, ligne de contexte."""
     return f'''<div class="bloc" id="bloc-modele">
   <div class="section-label">Modèle Sondax</div>
   <h2>Et si on votait dimanche&nbsp;?</h2>
   <p class="subtitle">Qui serait au second tour, d’après les sondages d’aujourd’hui&nbsp;?</p>
   {accroche_html(modele)}
-  <ul class="mo-liste">
-    {lignes}
-  </ul>
-  {extras}
+  {composant_duels(modele, candidats, titre="h3")}
   <div class="mo-cta">
     <a class="mo-bouton" href="modele-sondax.html">Voir le modèle Sondax →</a>
     <span>Chances d’être au second tour, seconds tours possibles et évolution de la course.</span>
@@ -241,42 +203,66 @@ def grille_100(parts):
     return f'<div class="mo-grille" aria-hidden="true">{"".join(cases)}</div>'
 
 
-def section_duels(modele, candidats):
+def couleurs_duels(candidats, duels, ordre):
+    """Couleur de chaque duel : le challenger ; si elle est déjà prise par un
+    duel mieux classé, celle de l'autre candidat ; à défaut, gris foncé."""
+    prises, couleurs = set(), []
+    for d in duels:
+        challenger, favori = sorted(d["candidats"], key=ordre.index, reverse=True)
+        couleur = next((candidats[c]["couleur"] for c in (challenger, favori)
+                        if candidats[c]["couleur"] not in prises), "#66707D")
+        prises.add(couleur)
+        couleurs.append(couleur)
+    return couleurs
+
+
+def ligne_duel(modele, candidats, d, couleur, ordre):
+    evo = evolution_ligne(modele, d.get("evolution_7j"), d["chance_exacte"])
+    return (f'<li><span class="mo-pastille" style="background:{couleur}"></span>'
+            f'<span class="mo-duel-nom">{e(libelle_duel(candidats, d["candidats"], ordre))}</span>'
+            f'<span class="mo-duel-chance">{sur_100(d["chance_exacte"])}</span>'
+            + (f'<span class="mo-duel-evo">{evo}</span>' if evo else '') + '</li>')
+
+
+def composant_duels(modele, candidats, titre="h2"):
+    """« Les seconds tours possibles » (§5.6 du brief) : 100 carrés et liste des
+    duels avec leur évolution. Un seul composant, pour la page Modèle et
+    l'accueil ; `titre` donne le niveau du titre selon la page."""
     ordre = ordre_modele(modele)
     duels = modele["duels"]
     principaux, autres = duels[:DUELS_AFFICHES], duels[DUELS_AFFICHES:]
     reste = max(0.0, 100 - sum(d["chance_exacte"] for d in principaux))
 
     lignes, parts = [], []
-    for d in principaux:
-        couleur = couleur_duel(candidats, d["candidats"], ordre)
+    for d, couleur in zip(principaux, couleurs_duels(candidats, principaux, ordre)):
         parts.append((d["candidats"], d["chance_exacte"], couleur))
-        lignes.append(f'<tr><td><span class="mo-pastille" style="background:{couleur}"></span>'
-                      f'{e(libelle_duel(candidats, d["candidats"], ordre))}</td>'
-                      f'<td class="mo-num">{sur_100(d["chance_exacte"])}</td>'
-                      f'<td class="mo-num mo-evo">{evolution_ligne(modele, d.get("evolution_7j"), d["chance_exacte"]) or ""}</td></tr>')
-    parts.append(("autres", reste, "#D5D9DE"))
+        lignes.append(ligne_duel(modele, candidats, d, couleur, ordre))
+    parts.append(("autres", reste, DUEL_COULEUR_AUTRES))
 
     details = ""
     if autres:
-        sous = "".join(f'<tr><td>{e(libelle_duel(candidats, d["candidats"], ordre))}</td>'
-                       f'<td class="mo-num">{sur_100(d["chance_exacte"])}</td><td></td></tr>'
-                       for d in autres)
+        sous = "".join(ligne_duel(modele, candidats, d, "transparent", ordre) for d in autres)
         details = f'''<details class="mo-repli">
-      <summary><span class="mo-pastille" style="background:#D5D9DE"></span>Autres scénarios · {sur_100(reste)}</summary>
-      <table class="mo-table">{sous}</table>
-    </details>'''
+        <summary><span class="mo-pastille" style="background:{DUEL_COULEUR_AUTRES}"></span>Autres scénarios · {sur_100(reste)}</summary>
+        <ul class="mo-duels-liste mo-duels-autres">{sous}</ul>
+      </details>'''
 
-    return f'''<section class="bloc" id="seconds-tours">
-    <h2>Les seconds tours possibles</h2>
+    return f'''<div class="mo-seconds-tours">
+    <{titre} class="mo-seconds-titre">Les seconds tours possibles</{titre}>
     <p class="subtitle">Sur 100 premiers tours refaits à partir des sondages d’aujourd’hui, voici combien de fois chaque duel sort.</p>
     <div class="mo-duels">
       {grille_100(parts)}
       <div>
-        <table class="mo-table">{"".join(lignes)}</table>
+        <ul class="mo-duels-liste">{"".join(lignes)}</ul>
         {details}
       </div>
     </div>
+  </div>'''
+
+
+def section_duels(modele, candidats):
+    return f'''<section class="bloc" id="seconds-tours">
+    {composant_duels(modele, candidats)}
   </section>'''
 
 
@@ -499,7 +485,7 @@ def page_modele(modele, candidats, pages, historique, index, partage=None):
 
   <section class="bloc" id="chances">
     <h2>Chances d’être au second tour</h2>
-    <p class="subtitle">Pour chaque candidat, sur 100.{mention_semaine(modele)}</p>
+    <p class="subtitle">Pour chaque candidat, sur 100.</p>
     <ul class="mo-liste">
       {lignes}
     </ul>
@@ -543,7 +529,7 @@ CSS = '''
   .mo-barre { height: 10px; background: #F0F1EE; border-radius: 5px; margin: 5px 0 4px; overflow: hidden; }
   .mo-barre span { display: block; height: 100%; border-radius: 5px; }
   .mo-verdict { font-size: 13px; color: var(--gris); }
-  .mo-evo { white-space: nowrap; }
+  .mo-evo { white-space: normal; }
   .mo-partage { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 4px 0 12px; }
   .mo-bouton { border: 0; cursor: pointer; font-family: var(--corps); }
   .mo-partage-menu { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13.5px; }
@@ -581,7 +567,19 @@ CSS = '''
     font-size: 12px; color: #8A929C; line-height: 1.6; }
   .page-modele .mo-une .mo-accroche { margin-bottom: 0; font-size: 18px; }
   .page-modele #comment p { max-width: 46em; margin-bottom: 10px; }
+  .mo-seconds-tours { margin: 4px 0 6px; }
+  .mo-seconds-titre { font-family: var(--titre); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 4px; }
+  h3.mo-seconds-titre { font-size: 18px; }
   .mo-duels { display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: start; }
+  .mo-duels-liste { list-style: none; margin: 0; padding: 0; }
+  .mo-duels-liste li { display: grid; grid-template-columns: 19px 1fr auto; column-gap: 0;
+    padding: 9px 0; border-bottom: 1px solid #F0F1EE; font-size: 14.5px; align-items: baseline; }
+  .mo-duels-liste .mo-pastille { margin: 0; }
+  .mo-duel-nom { font-weight: 600; }
+  .mo-duel-chance { white-space: nowrap; font-variant-numeric: tabular-nums; text-align: right; }
+  .mo-duel-evo { grid-column: 2 / 4; font-size: 13px; color: var(--gris); margin-top: 1px; }
+  .mo-duels-autres li { font-size: 13.5px; }
+  .mo-duels-autres .mo-duel-nom { font-weight: 400; }
   .mo-grille { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
   .mo-grille span { aspect-ratio: 1; border-radius: 3px; }
   .mo-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
@@ -602,9 +600,31 @@ CSS = '''
   .mo-rangs:not([open]) > summary::after { content: ' ▸'; }
   .mo-petit { font-size: 13px; color: var(--gris); margin-top: 10px; }
   .mo-lien-methode a { font-weight: 600; }
+  @media (max-width: 599px) {
+    /* Téléphone : carrés au-dessus de la liste, en 5 rangées de 20 */
+    .mo-duels { grid-template-columns: 1fr; gap: 10px; }
+    .mo-grille { grid-template-columns: repeat(20, 1fr); gap: 2px; }
+    .mo-grille span { border-radius: 2px; }
+    .mo-seconds-tours .subtitle { font-size: 13px; margin-bottom: 10px; }
+    .mo-seconds-titre { font-size: 19px; }
+    h3.mo-seconds-titre { font-size: 17px; }
+    .mo-duels-liste li { padding: 6px 0; font-size: 14px; }
+    .mo-duel-evo { font-size: 12px; letter-spacing: -0.01em; grid-column: 1 / 4; }
+    .mo-table-rangs { font-size: 13px; }
+    .mo-table-rangs th { white-space: normal; letter-spacing: 0; }
+    #bloc-modele { padding: 18px 16px 14px; }
+    #bloc-modele h2 { font-size: 22px; }
+    #bloc-modele .mo-accroche { font-size: 15px; }
+    #bloc-modele .mo-seconds-tours .subtitle { font-size: 12.5px; }
+    #bloc-modele .subtitle { margin-bottom: 12px; }
+    #bloc-modele .mo-accroche { margin-bottom: 14px; }
+    #bloc-modele .mo-cta { margin-top: 14px; }
+    #bloc-modele .mo-cta span { display: none; }
+    #bloc-modele .bloc-note { margin-top: 12px; padding-top: 8px; font-size: 11.5px; }
+    #bloc-modele .mo-repli { margin-top: 4px; }
+    #bloc-modele .mo-repli summary { padding: 4px 0; }
+  }
   @media (max-width: 640px) {
-    .mo-duels { grid-template-columns: 1fr; }
-    .mo-grille { max-width: 260px; }
     .page-modele .bloc { padding: 20px 16px 16px; }
     .mo-accroche { font-size: 15.5px; }
     .mo-chance { font-size: 15px; }
@@ -846,7 +866,7 @@ def main():
     index = charger_index_sondages()
     INDEX.update(index)
 
-    bloc = bloc_accueil(modele, candidats, pages, index)
+    bloc = bloc_accueil(modele, candidats)
     partage = json.loads(PARTAGE_PATH.read_text()) if PARTAGE_PATH.exists() else None
     corps = page_modele(modele, candidats, pages, historique, index, partage)
     verifier_vocabulaire(bloc, "le bloc d'accueil")

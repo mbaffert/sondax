@@ -3,5 +3,11 @@
     "premier_tour": "2027-04-18",
     "second_tour": "2027-05-02",
     "officielles": false
+  },
+  "modele": {
+    "N_eff": 350,
+    "N_eff_source": "presidentielles",
+    "tirages": 50000,
+    "graine": 20270418
   }
 }

@@ -1438,7 +1438,7 @@ un candidat déjà à plus de 90.
 Générée à chaque mise à jour, deux phrases au plus, à partir de `modele.json`. Règles
 dans l'ordre (`q1 ≥ q2 ≥ q3` : chances de qualification des trois premiers) :
 
-1. **second tour dessiné** — `q2 ≥ 70` et `q3 < 30` : « Le second tour semble se
+1. **second tour dessiné** — `q2 ≥ 80` et `q3 < 20` : « Le second tour semble se
    dessiner. Les deux premiers ont aujourd'hui une nette avance sur leurs
    poursuivants. » (Phase B : « Le second tour se stabilise. » si, en plus, la règle
    était déjà vérifiée à J−7.)

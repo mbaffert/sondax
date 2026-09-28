@@ -66,7 +66,7 @@
   var navItems = [
     { label: 'Accueil', href: 'index.html', match: ['index.html', ''] },
     { label: 'Candidats', href: '#', match: candidatsPages.map(function(c) { return c.slug + '.html'; }), dropdown: true },
-    { label: 'Sondages', href: 'sondages.html', match: ['sondages.html'] },
+    { label: 'Explorer les sondages', href: 'sondages.html', match: ['sondages.html'] },
     { label: 'Instituts', href: 'instituts.html', match: ['instituts.html'] },
     { label: 'Élections passées', href: 'precedentes-elections.html', match: ['precedentes-elections.html'], prefixe: 'presidentielle-' },
     { label: 'Méthode', href: 'methodologie.html', match: ['methodologie.html'] },
@@ -78,7 +78,7 @@
   var baseHref = sousDossier ? '../' : '';
 
   // Rubrique d'une page de sous-dossier (fiches sondage, pages institut)
-  var rubriques = { sondages: 'Sondages', instituts: 'Instituts' };
+  var rubriques = { sondages: 'Explorer les sondages', instituts: 'Instituts' };
 
   function isActive(item) {
     if (sousDossier) {

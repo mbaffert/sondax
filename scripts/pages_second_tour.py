@@ -81,7 +81,7 @@ def header(title_text, depth=1):
     return f"""\
 <div id="site-header" class="sh"></div>
 <script src="{prefix}assets/header-data.js"></script>
-<script src="{prefix}assets/header.js?v=6"></script>"""
+<script src="{prefix}assets/header.js?v=7"></script>"""
 
 
 def footer(depth=1):
@@ -105,7 +105,7 @@ def footer(depth=1):
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
         <a href="{prefix}methodologie.html">Méthode</a>
-        <a href="{prefix}sondages.html">Tous les sondages</a>
+        <a href="{prefix}sondages.html">Explorer les sondages</a>
         <a href="{prefix}donnees.html">Données</a>
         <a href="{prefix}a-propos.html">À propos</a>
       </div>

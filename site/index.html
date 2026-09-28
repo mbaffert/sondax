@@ -3,6 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  // Le module « Explorer les sondages » a quitté l'accueil pour sondages.html
+  if (location.hash === '#bloc-fiche') location.replace('sondages.html' + location.search + '#bloc-fiche');
+</script>
 <title>Sondages présidentielle 2027 : dernier sondage, premier et second tour — Sondax</title>
 <meta name="description" content="Moyenne des sondages pour la présidentielle 2027, dernier sondage publié, duels de second tour et cotes des marchés de prédiction. Mise à jour quotidienne.">
 <meta property="og:type" content="website">
@@ -75,39 +79,6 @@
 
   .chart-wrap.chart-t2 { height: 360px; }
   .chart-wrap.with-labels { /* réserve de place pour les labels de fin de courbe */ }
-
-  .fiche-row { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; margin-bottom: 0.8em; }
-  .fiche-row label { font-size: 13px; color: var(--gris); white-space: nowrap; display: flex; align-items: center; gap: 9px; }
-  .fiche-row select { font-family: var(--corps); padding: 7px 10px; border: 1px solid #DDDFDA;
-    border-radius: 8px; font-size: 13.5px; font-weight: 500; color: var(--texte); background: #fff; }
-  #bloc-fiche .hypothese { margin-top: 18px; }
-  #bloc-fiche .hyp-principale { border-left: 3px solid var(--bleu-vif); padding-left: 16px; }
-  #bloc-fiche .hyp-header { font-size: 14px; font-weight: 600; color: var(--bleu-nuit);
-    margin-bottom: 10px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
-  #bloc-fiche .hyp-detail { font-weight: 400; color: var(--gris); font-size: 13px; }
-  #bloc-fiche .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; }
-  #bloc-fiche .badge-principale { background: #E8F5E9; color: #2E7D32; }
-  #bloc-fiche .scores-table { border-collapse: collapse; width: 100%; font-size: 14px; }
-  #bloc-fiche .scores-table th, #bloc-fiche .scores-table td { text-align: left; border-bottom: 1px solid #E3E5E0; }
-  #bloc-fiche .scores-table th { font-family: 'IBM Plex Mono', monospace; font-weight: 600; font-size: 11px;
-    color: var(--gris); text-transform: uppercase; letter-spacing: 0.06em; padding: 0 8px 6px 0; }
-  #bloc-fiche .scores-table td { padding: 5px 8px 5px 0; font-variant-numeric: tabular-nums; }
-  #bloc-fiche .scores-table tr:last-child td { border-bottom: none; }
-  #bloc-fiche .cand-name { min-width: 140px; font-weight: 500; }
-  #bloc-fiche .cand-name a { color: var(--texte); }
-  #bloc-fiche .cand-name a:hover { color: var(--bleu-vif); }
-  #bloc-fiche tr.type-parti .cand-name { font-style: italic; }
-  #bloc-fiche .col-score { white-space: nowrap; min-width: 130px; }
-  #bloc-fiche .bar { display: inline-block; height: 6px; border-radius: 3px;
-    vertical-align: middle; margin-right: 8px; min-width: 2px; width: calc(var(--w) * 1%); }
-  #bloc-fiche .col-me { font-size: 12.5px; color: var(--gris); white-space: nowrap; }
-  #bloc-fiche .me-approx { font-size: 10.5px; color: #aaa; }
-  #bloc-fiche .scores-table .col-ecart { font-size: 12.5px; color: var(--gris); white-space: nowrap; text-align: right; }
-  #bloc-fiche .note-approx { font-size: 12px; color: var(--gris); font-style: italic; margin-top: 8px; }
-  .approx { font-size: 0.75em; color: var(--gris); font-style: italic; margin-top: 0.5em; }
-  .fiche-source { font-size: 0.85em; margin-top: 0.8em; }
-  .fiche-source a { color: var(--bleu-vif); }
-  .fiche-meta { font-size: 0.85em; color: var(--gris); margin-bottom: 0.5em; }
 
   .tabs { display: flex; background: #F2F3F0; border-radius: 9px; padding: 3px;
     margin-bottom: 18px; width: fit-content; }
@@ -195,17 +166,10 @@
     main { padding: 14px 8px 0; }
     .bloc { padding: 18px 12px 16px; border-radius: 12px; }
     .chart-wrap.chart-t2 { height: 240px; }
-    #bloc-fiche .scores-table .col-ecart { display: none; }
-    #bloc-fiche .col-me { font-size: 11.5px; }
-    #bloc-fiche .bar { width: calc(var(--w) * 1px); margin-right: 6px; }
-    #bloc-fiche .cand-name, #bloc-fiche .col-score { min-width: 0; }
-    #bloc-fiche .me-approx { display: none; }
     .periode { gap: 6px; }
     .periode span { display: none; }
     .periode .periode-group button { padding: 8px 12px; font-size: 13px; min-height: 44px; min-width: 44px; }
     .periode input[type="date"] { display: none; }
-    .fiche-row { flex-direction: column; gap: 6px; }
-    .fiche-row select { width: 100%; }
     .duel-select { flex-direction: column; align-items: flex-start; gap: 6px; }
     .duel-select select { width: 100%; }
     .t2-table { font-size: 12px; }
@@ -236,14 +200,13 @@
 
 <div id="site-header" class="sh"></div>
 <script src="assets/header-data.js?v=3"></script>
-<script src="assets/header.js?v=6"></script>
+<script src="assets/header.js?v=7"></script>
 <script src="assets/end-labels.js?v=1"></script>
 
 <nav class="sub-nav" id="sub-nav" aria-label="Sections de la page">
   <a href="#bloc-sondages">Premier tour</a>
   <a href="#second-tour">Second tour</a>
   <a href="#bloc-polymarket">Prédictions</a>
-  <a href="#bloc-fiche">Explorer un sondage</a>
 </nav>
 
 <main>
@@ -409,29 +372,6 @@
     <a href="methodologie.html" style="color:var(--bleu-vif);">En savoir plus.</a></p>
   </div>
 
-  <!-- Bloc 3 : Explorer les sondages -->
-  <div class="bloc" id="bloc-fiche">
-    <div class="section-label">Sondage par sondage</div>
-    <h2>Explorer les sondages</h2>
-    <p class="subtitle">Choisissez un sondage puis une configuration pour voir le détail</p>
-    <!-- BEGIN:dernier-sondage -->
-    <p class="fiche-meta" id="fiche-meta">Harris, du 8 septembre 2026 au 10 septembre 2026 · 2 052 personnes · <a href="sondages/harris-2026-09-10.html" style="font-weight:500;">Voir la fiche</a></p>
-<!-- END:dernier-sondage -->
-    <div class="fiche-row">
-      <label>Sondage :</label>
-      <select id="fiche-sondage"></select>
-    </div>
-    <div class="fiche-row">
-      <label>Configuration :</label>
-      <select id="fiche-hyp"></select>
-    </div>
-    <div id="fiche-result">
-    <!-- BEGIN:fiche-scores -->
-<div class="hypothese hyp-principale"><div class="hyp-header"><span class="badge badge-principale">Principale</span></div><table class="scores-table"><thead><tr><th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th><th class="col-ecart">Écart / moy.</th></tr></thead><tbody><tr><td class="cand-name"><a href="le-pen.html">Marine Le Pen</a></td><td class="col-score"><span class="bar" style="--w:33;background:#0D378A"></span>33,0 %</td><td class="col-me">± 2,0 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">-0,5 pt</td></tr><tr><td class="cand-name"><a href="melenchon.html">Jean-Luc Mélenchon</a></td><td class="col-score"><span class="bar" style="--w:16;background:#CC2443"></span>16,0 %</td><td class="col-me">± 1,6 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">0,0 pt</td></tr><tr><td class="cand-name"><a href="philippe.html">Édouard Philippe</a></td><td class="col-score"><span class="bar" style="--w:14;background:#00B7FF"></span>14,0 %</td><td class="col-me">± 1,5 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">-0,8 pt</td></tr><tr><td class="cand-name"><a href="glucksmann.html">Raphaël Glucksmann</a></td><td class="col-score"><span class="bar" style="--w:9;background:#FF7043"></span>9,0 %</td><td class="col-me">± 1,2 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">-1,1 pt</td></tr><tr><td class="cand-name"><a href="attal.html">Gabriel Attal</a></td><td class="col-score"><span class="bar" style="--w:8;background:#7E57C2"></span>8,0 %</td><td class="col-me">± 1,2 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">+0,5 pt</td></tr><tr><td class="cand-name"><a href="retailleau.html">Bruno Retailleau</a></td><td class="col-score"><span class="bar" style="--w:7;background:#0066CC"></span>7,0 %</td><td class="col-me">± 1,1 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">-0,1 pt</td></tr><tr><td class="cand-name"><a href="zemmour.html">Éric Zemmour</a></td><td class="col-score"><span class="bar" style="--w:5;background:#1A1A2E"></span>5,0 %</td><td class="col-me">± 0,9 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">+1,4 pt</td></tr><tr><td class="cand-name"><a href="tondelier.html">Marine Tondelier</a></td><td class="col-score"><span class="bar" style="--w:3;background:#00C853"></span>3,0 %</td><td class="col-me">± 0,7 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">-0,2 pt</td></tr><tr><td class="cand-name"><a href="roussel.html">Fabien Roussel</a></td><td class="col-score"><span class="bar" style="--w:2;background:#DD1111"></span>2,0 %</td><td class="col-me">± 0,6 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">-0,1 pt</td></tr><tr><td class="cand-name">Nicolas Dupont-Aignan</td><td class="col-score"><span class="bar" style="--w:2;background:#0055A4"></span>2,0 %</td><td class="col-me">± 0,6 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">-0,1 pt</td></tr><tr><td class="cand-name">Nathalie Arthaud</td><td class="col-score"><span class="bar" style="--w:1;background:#8B0000"></span>1,0 %</td><td class="col-me">± 0,4 % <span class="me-approx">(approx.)</span></td><td class="col-ecart">+0,1 pt</td></tr></tbody></table><p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p></div>
-<!-- END:fiche-scores -->
-    </div>
-  </div>
-
   <!-- BEGIN:derniers-sondages -->
   <div class="bloc" id="bloc-derniers">
     <div class="section-label">Traçabilité</div>
@@ -467,7 +407,7 @@
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
         <a href="methodologie.html">Méthode</a>
-        <a href="sondages.html">Tous les sondages</a>
+        <a href="sondages.html">Explorer les sondages</a>
         <a href="donnees.html">Données</a>
         <a href="a-propos.html">À propos</a>
       </div>
@@ -487,175 +427,6 @@
 <script src="assets/bloc-chart.js?v=1"></script>
 <script>
 const PAGES_CANDIDATS = new Set(["attal","glucksmann","le-pen","melenchon","philippe","retailleau","roussel","tondelier","zemmour"]);
-
-// =========================================================================
-// Bloc 3 : Explorer les sondages
-// =========================================================================
-
-function margeDErreur(p, n) {
-  return 1.96 * Math.sqrt(p * (1 - p) / n) * 100;
-}
-
-function hypLabel(hyp, allT1) {
-  const sets = allT1.map(h => new Set(Object.keys(h.scores)));
-  const common = new Set(sets[0]);
-  for (const s of sets.slice(1)) {
-    for (const c of common) { if (!s.has(c)) common.delete(c); }
-  }
-  const mine = new Set(Object.keys(hyp.scores));
-  const distinctive = [...mine].filter(c => !common.has(c)).map(c => nomCourt(c));
-  if (distinctive.length === 0) return `${Object.keys(hyp.scores).length} candidats`;
-  return `avec ${distinctive.join(', ')}`;
-}
-
-function trierT1(s) {
-  // Principale d'abord, puis par nombre de candidats décroissant (comme les pages sondage)
-  return s.hypotheses.filter(h => h.tour === 1)
-    .map((h, i) => ({ h, i }))
-    .sort((a, b) => ((a.h.principale ? 0 : 1) - (b.h.principale ? 0 : 1))
-      || (Object.keys(b.h.scores).length - Object.keys(a.h.scores).length) || (a.i - b.i))
-    .map(x => x.h);
-}
-
-function escHtml(str) {
-  return String(str).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-}
-
-class ExplorerSondages {
-  constructor(sondages, seriesData) {
-    this.sondages = sondages.slice().sort((a, b) => b.terrain_fin.localeCompare(a.terrain_fin));
-    this.series = (seriesData && seriesData.series) || {};
-    this.selSondage = document.getElementById('fiche-sondage');
-    this.selHyp = document.getElementById('fiche-hyp');
-    this.result = document.getElementById('fiche-result');
-
-    this.populateSondages();
-    this.selSondage.addEventListener('change', () => this.onSondageChange());
-    this.selHyp.addEventListener('change', () => {
-      const s = this.currentSondage();
-      if (s) trackEvent('hypothese/1/' + s.id);
-      this.renderResult();
-    });
-    this.onSondageChange();
-  }
-
-  populateSondages() {
-    this.selSondage.innerHTML = '';
-    for (const s of this.sondages) {
-      const ech = s.echantillon ? Math.round(s.echantillon).toLocaleString('fr-FR') : '?';
-      const opt = document.createElement('option');
-      opt.value = s.id;
-      opt.textContent = `${s.institut} — ${fmtDate(s.terrain_fin)} (n = ${ech})`;
-      this.selSondage.appendChild(opt);
-    }
-  }
-
-  currentSondage() {
-    return this.sondages.find(s => s.id === this.selSondage.value) || null;
-  }
-
-  onSondageChange() {
-    const s = this.currentSondage();
-    this.selHyp.innerHTML = '';
-    if (!s) { this.result.innerHTML = ''; return; }
-
-    const t1 = trierT1(s);
-    if (t1.length === 0) {
-      const opt = document.createElement('option');
-      opt.textContent = 'Aucune hypothèse de premier tour';
-      this.selHyp.appendChild(opt);
-      this.result.innerHTML = '';
-      return;
-    }
-
-    t1.forEach((h, i) => {
-      const opt = document.createElement('option');
-      opt.value = i;
-      opt.textContent = hypLabel(h, t1);
-      this.selHyp.appendChild(opt);
-    });
-
-    this.renderResult();
-  }
-
-  moyenneADate(cid, dateIso) {
-    const pts = this.series[cid] || [];
-    let val = null;
-    for (const p of pts) {
-      if (p.d > dateIso) break;
-      if (p.v !== null) val = p.v;
-    }
-    return val;
-  }
-
-  renderResult() {
-    const s = this.currentSondage();
-    const metaEl = document.getElementById('fiche-meta');
-    if (!s) { this.result.innerHTML = ''; return; }
-
-    const t1 = trierT1(s);
-    const hyp = t1[parseInt(this.selHyp.value)];
-    if (!hyp) { this.result.innerHTML = ''; return; }
-
-    const ech = s.echantillon ? Math.round(s.echantillon) : null;
-    const echStr = ech ? ech.toLocaleString('fr-FR') : '—';
-
-    const manuelTag = s.source === 'manuel' ? ' · <span style="color:var(--bleu-vif);">saisie manuelle</span>' : '';
-    if (metaEl) {
-      metaEl.innerHTML = `${s.institut} — ${fmtDate(s.terrain_debut)} → ${fmtDate(s.terrain_fin)} — Échantillon : ${echStr}${manuelTag}` +
-        ` · <a href="sondages/${encodeURIComponent(s.id)}.html" style="font-weight:500;">Voir la fiche</a>`;
-    }
-
-    const hypEch = hyp.echantillon || null;
-    const n = hypEch || ech;
-    const approx = !hypEch && !!ech;
-    const isP = !!hyp.principale;
-    const showEcart = isP;
-
-    const scores = Object.entries(hyp.scores).filter(([cid]) => cid !== 'autre').sort((a, b) => b[1] - a[1]);
-
-    const head = [];
-    if (isP) head.push('<span class="badge badge-principale">Principale</span>');
-    if (hypEch) head.push(`<span class="hyp-detail">${Math.round(hypEch).toLocaleString('fr-FR')} personnes</span>`);
-
-    let th = '<th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th>';
-    if (showEcart) th += '<th class="col-ecart">Écart / moy.</th>';
-
-    const rows = scores.map(([cid, v]) => {
-      const c = CANDIDATS[cid] || {};
-      const nomComplet = escHtml([c.prenom, c.nom].filter(Boolean).join(' ') || cid);
-      const nom = PAGES_CANDIDATS.has(cid) ? `<a href="${cid}.html">${nomComplet}</a>` : nomComplet;
-      const partiCls = c.type === 'parti' ? ' class="type-parti"' : '';
-      const p = v / 100;
-      let meStr = '—';
-      if (n && p > 0 && p < 1) {
-        meStr = `± ${margeDErreur(p, n).toFixed(1).replace('.', ',')} %`;
-        if (approx) meStr += ' <span class="me-approx">(approx.)</span>';
-      }
-      let ecart = '';
-      if (showEcart) {
-        const moy = this.moyenneADate(cid, s.terrain_fin);
-        if (moy !== null) {
-          const d = Math.round((v - moy) * 10) / 10;
-          ecart = `<td class="col-ecart">${d > 0 ? '+' : ''}${d.toFixed(1).replace('.', ',')} pt</td>`;
-        } else {
-          ecart = '<td class="col-ecart">—</td>';
-        }
-      }
-      const w = Math.min(Math.max(v, 0), 60);
-      return `<tr${partiCls}><td class="cand-name">${nom}</td>` +
-        `<td class="col-score"><span class="bar" style="--w:${w.toFixed(0)};background:${couleur(cid)}"></span>${fmtPct(v)}</td>` +
-        `<td class="col-me">${meStr}</td>${ecart}</tr>`;
-    }).join('');
-
-    let html = `<div class="hypothese${isP ? ' hyp-principale' : ''}">`;
-    if (head.length) html += `<div class="hyp-header">${head.join(' ')}</div>`;
-    html += `<table class="scores-table"><thead><tr>${th}</tr></thead><tbody>${rows}</tbody></table>`;
-    if (approx) html += '<p class="note-approx">Marge approximative, calculée sur l’échantillon total.</p>';
-    html += '</div>';
-    this.result.innerHTML = html;
-  }
-}
 
 // =========================================================================
 // Bloc 1 bis : Second tour
@@ -1062,9 +833,6 @@ async function init() {
 
   // --- Bloc second tour (sélecteur de duel dans #second-tour) ---
   const t2 = new SecondTour(sondagesData);
-
-  // --- Bloc explorer les sondages ---
-  new ExplorerSondages(sondagesData, seriesData);
 
   // Bloc derniers sondages (5 plus récents)
   renderSondagesTable(

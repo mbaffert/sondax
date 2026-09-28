@@ -272,7 +272,7 @@ def wrap_in_site_template(slug, fiche, raw_html):
 
 <div id="site-header" class="sh"></div>
 <script src="assets/header-data.js?v=3"></script>
-<script src="assets/header.js?v=6"></script>
+<script src="assets/header.js?v=7"></script>
 
 <div class="page-candidat">
 <main>
@@ -298,7 +298,7 @@ def wrap_in_site_template(slug, fiche, raw_html):
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
         <a href="methodologie.html">Méthode</a>
-        <a href="sondages.html">Tous les sondages</a>
+        <a href="sondages.html">Explorer les sondages</a>
         <a href="donnees.html">Données</a>
         <a href="a-propos.html">À propos</a>
       </div>

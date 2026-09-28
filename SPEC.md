@@ -33,8 +33,13 @@ Page d'accueil à sections nommées et ancrées :
    probabilités implicites par candidat, deux onglets : accession au second tour
    et victoire. Les titres ne nomment pas Polymarket, la source est citée dans
    le corps du bloc et en pied de page.
-5. **Fiche technique.** Sélection d'une configuration puis d'un sondage, et affichage
-   de ses caractéristiques et de ses marges d'erreur (voir §5).
+
+La page `sondages.html` (« Explorer les sondages de la présidentielle 2027 ») porte
+en tête le module **« Explorer les sondages »** (`#bloc-fiche`) : sélection d'un
+sondage puis d'une configuration, et affichage de ses scores et de ses marges
+d'erreur (voir §5). Viennent ensuite le filtre par institut et le tableau de tous
+les sondages. L'ancienne ancre `index.html#bloc-fiche` redirige vers
+`sondages.html#bloc-fiche`.
 
 **Contrainte générale de rendu** : tout le contenu textuel des sections est rendu au
 build et présent dans le HTML servi par le serveur. Le JavaScript ne sert qu'à
@@ -356,7 +361,8 @@ Conséquence à assumer et à afficher sur le site : **les courbes ne s'addition
 100 %**, chaque candidat étant mesuré dans la configuration qui reflète le mieux la
 concurrence réelle. Le graphe montre des trajectoires individuelles, pas une
 répartition. Les courbes de tendance n'utilisent que les hypothèses sélectionnées ;
-les autres restent accessibles dans le bloc fiche technique.
+les autres restent accessibles dans le module « Explorer les sondages »
+(`sondages.html#bloc-fiche`).
 
 La règle ne s'applique pas au tour 2 : tous les duels sont également valides.
 
@@ -368,10 +374,10 @@ dernier sondage. Règle de départage :
 2. en cas d'égalité, le plus grand `echantillon` total ;
 3. en cas d'égalité encore, l'ordre d'apparition dans `sondages.json`.
 
-Le bandeau affiche les quatre premiers scores. La fiche du dernier sondage, en tête
-de la section « Explorer les sondages » (`#dernier-sondage`), affiche l'intégralité
-des scores de l'hypothèse retenue. Le lien « Voir le détail » du bandeau pointe vers
-cette fiche.
+Le bandeau affiche les quatre premiers scores. Le bloc « Dernier sondage » de
+l'accueil (`#dernier-sondage`) affiche le même sondage ; le module « Explorer les
+sondages » de `sondages.html` s'ouvre sur ce sondage et affiche l'intégralité des
+scores de l'hypothèse retenue.
 
 **Sélection de l'hypothèse.** Parmi les hypothèses T1 du sondage retenu, la sélection
 suit trois niveaux :
@@ -485,7 +491,14 @@ approximative lorsqu'elle est calculée sur l'échantillon total faute de mieux.
 
 ---
 
-## 5. Sélection d'une configuration (bloc fiche technique)
+## 5. Sélection d'une configuration (module « Explorer les sondages »)
+
+Le module est en tête de `sondages.html` (`#bloc-fiche`). État initial rendu au build
+par `scripts/build_sondages_page.py` (dernier sondage publié, hypothèse principale),
+interaction dans `site/assets/explorer-sondages.js`. Tableau à trois colonnes :
+Candidat / Score / Marge d'erreur. Un clic sur une ligne du tableau des sondages de
+la même page charge ce sondage dans le module, sans rechargement, et remonte au
+module ; la date de la ligne reste un lien vers la fiche `/sondages/<id>.html`.
 
 Une hypothèse n'a pas de nom sur Wikipédia : elle n'existe que comme un ensemble de
 candidats testés. Sur les données de 2026, 106 hypothèses de premier tour donnent
@@ -648,8 +661,9 @@ Toute page publiée porte :
 est généré par `scripts/pages_second_tour.py`.
 
 Les pages des élections passées (2002-2022) portent un chapeau rendu au build
-(`scripts/build_elections_chapeaux.py`) et la page `sondages.html` contient le
-tableau complet des sondages en HTML statique (`scripts/build_sondages_page.py`).
+(`scripts/build_elections_chapeaux.py`) et la page `sondages.html` contient l'état
+initial du module « Explorer les sondages » et le tableau complet des sondages en
+HTML statique (`scripts/build_sondages_page.py`).
 
 ---
 
@@ -700,7 +714,8 @@ asynchrone et ignoré s'il est bloqué par un adblock (optional chaining, pas de
   alphabétiquement).
 - `periode-sondages/<3m|6m|annee|tout|libre>` : raccourci de période, courbe sondages.
 - `periode-cotes/<3m|6m|annee|tout|libre>` : raccourci de période, bloc Polymarket.
-- `hypothese/<tour>/<id-sondage>` : ouverture d'une hypothèse dans la fiche technique.
+- `hypothese/<tour>/<id-sondage>` : ouverture d'une hypothèse dans le module
+  « Explorer les sondages ».
 
 Aucune date libre saisie par l'utilisateur, aucune valeur de champ texte, aucun paramètre
 de requête n'est transmis.
@@ -758,6 +773,7 @@ de requête n'est transmis.
   /candidats                     index des candidats
   /assets
     historique.js                script partagé des pages d'élection
+    explorer-sondages.js         module « Explorer les sondages » (sondages.html)
 ```
 
 **Mise en ligne.** Le déploiement public n'intervient qu'après accord explicite.
@@ -929,9 +945,10 @@ tous les sondages (fin de terrain, puis début de terrain, puis identifiant),
 libellés avec l'institut et la date. Sous chaque duel, lien vers la page du
 duel (§13.4).
 
-Maillage : dans `sondages.html`, chaque ligne du tableau renvoie vers la page
-du sondage. Sur la page d'accueil, « Voir la fiche » pointe vers la page du
-sondage sélectionné.
+Maillage : dans `sondages.html`, la date de chaque ligne du tableau renvoie vers
+la page du sondage, et « Voir la fiche » du module « Explorer les sondages »
+pointe vers la page du sondage sélectionné. Sur la page d'accueil, « Voir la
+fiche » du bloc « Dernier sondage » pointe vers la page du dernier sondage.
 
 ### 13.4 Pages par duel de second tour
 
@@ -1022,7 +1039,7 @@ Page institut :
 Page de référence : chapeau généré (nombre d'instituts, de sondages, période), puis
 une ligne par institut avec son logo, le nombre de sondages et la date du dernier.
 
-Maillage : « Instituts » dans le bandeau d'en-tête, après « Sondages ». Le nom de
+Maillage : « Instituts » dans le bandeau d'en-tête, après « Explorer les sondages ». Le nom de
 l'institut est un lien vers sa page dans les tableaux de l'accueil, `sondages.html`
 (la date y mène à la fiche), les fiches sondage et les tableaux de second tour ;
 jamais de logo dans ces tableaux.

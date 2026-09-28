@@ -1,8 +1,8 @@
 """Injecte le contenu statique du premier tour dans site/index.html.
 
 Lit data/derived/series-t1.json, data/sondages.json et data/candidats.json.
-Génère le chapeau, le bloc « Dernier sondage publié » et le tableau des
-derniers sondages agrégés, et les remplace entre leurs marqueurs respectifs.
+Génère le chapeau, le bloc « Dernier sondage » et le tableau des derniers
+sondages agrégés, et les remplace entre leurs marqueurs respectifs.
 
 Tout le contenu est rendu au build et présent dans le HTML servi.
 """
@@ -30,10 +30,6 @@ MOIS = [
 
 PT_BEGIN = "<!-- BEGIN:premier-tour -->"
 PT_END = "<!-- END:premier-tour -->"
-META_BEGIN = "<!-- BEGIN:dernier-sondage -->"
-META_END = "<!-- END:dernier-sondage -->"
-SCORES_BEGIN = "<!-- BEGIN:fiche-scores -->"
-SCORES_END = "<!-- END:fiche-scores -->"
 DS_BEGIN = "<!-- BEGIN:derniers-sondages -->"
 DS_END = "<!-- END:derniers-sondages -->"
 BLOC_DS_BEGIN = "<!-- BEGIN:bloc-dernier-sondage -->"
@@ -202,134 +198,6 @@ def generate_chapeau(series_data, sondages, candidats):
 
 
 # ---------------------------------------------------------------------------
-# Tableau d'hypothèse (même présentation que les pages sondage ; le JS
-# de index.html produit le même balisage quand on change de sélection)
-# ---------------------------------------------------------------------------
-
-BIOS_PATH = ROOT / "scripts" / "bios.json"
-
-
-def _moyenne_a_date(series_data, cid, date_iso):
-    val = None
-    for p in series_data.get("series", {}).get(cid, []):
-        if p["d"] > date_iso:
-            break
-        if p["v"] is not None:
-            val = p["v"]
-    return val
-
-
-def render_hypothese(hyp, sondage, candidats, series_data):
-    import math
-    slugs = set(load_json(BIOS_PATH).keys())
-    ech = sondage.get("echantillon")
-    hyp_ech = hyp.get("echantillon")
-    n = hyp_ech or ech
-    approx = not hyp_ech and bool(ech)
-    is_p = bool(hyp.get("principale"))
-
-    head = []
-    if is_p:
-        head.append('<span class="badge badge-principale">Principale</span>')
-    if hyp_ech:
-        head.append(f'<span class="hyp-detail">{fmt_ech(hyp_ech)}\u202fpersonnes</span>')
-
-    th = '<th>Candidat</th><th class="col-score">Score</th><th class="col-me">Marge</th>'
-    if is_p:
-        th += '<th class="col-ecart">Écart / moy.</th>'
-
-    rows = []
-    for cid, v in sorted(((c, x) for c, x in hyp.get("scores", {}).items() if c != "autre"),
-                         key=lambda kv: -kv[1]):
-        c = candidats.get(cid, {})
-        nom = html_mod.escape(" ".join(x for x in (c.get("prenom"), c.get("nom")) if x) or cid)
-        if cid in slugs:
-            nom = f'<a href="{html_mod.escape(cid)}.html">{nom}</a>'
-        parti = ' class="type-parti"' if c.get("type") == "parti" else ""
-        p = v / 100
-        me = "\u2014"
-        if n and 0 < p < 1:
-            me = f"±\u202f{1.96 * math.sqrt(p * (1 - p) / n) * 100:.1f}".replace(".", ",") + "\u202f%"
-            if approx:
-                me += ' <span class="me-approx">(approx.)</span>'
-        ecart = ""
-        if is_p:
-            moy = _moyenne_a_date(series_data, cid, sondage["terrain_fin"])
-            if moy is not None:
-                d = round(v - moy, 1)
-                ecart = f'<td class="col-ecart">{"+" if d > 0 else ""}{d:.1f}'.replace(".", ",") + "\u202fpt</td>"
-            else:
-                ecart = '<td class="col-ecart">\u2014</td>'
-        w = min(max(v, 0), 60)
-        rows.append(
-            f'<tr{parti}><td class="cand-name">{nom}</td>'
-            f'<td class="col-score"><span class="bar" style="--w:{w:.0f};background:{c.get("couleur", "#888")}"></span>{fmt_pct(v)}</td>'
-            f'<td class="col-me">{me}</td>{ecart}</tr>'
-        )
-
-    out = f'<div class="hypothese{" hyp-principale" if is_p else ""}">'
-    if head:
-        out += f'<div class="hyp-header">{" ".join(head)}</div>'
-    out += f'<table class="scores-table"><thead><tr>{th}</tr></thead><tbody>' + "".join(rows) + "</tbody></table>"
-    if approx:
-        out += '<p class="note-approx">Marge approximative, calculée sur l\u2019échantillon total.</p>'
-    out += "</div>"
-    return out
-
-# ---------------------------------------------------------------------------
-# Bloc « Dernier sondage publié »
-# ---------------------------------------------------------------------------
-
-def generate_dernier_sondage(sondages, candidats, series_data):
-    """Génère la ligne de métadonnées et le tableau de scores du dernier sondage.
-
-    Retourne (meta_html, scores_html).
-    """
-    latest = select_latest_sondage(sondages)
-    if not latest:
-        return "", ""
-
-    hyp = select_hypothesis(latest, candidats)
-    if not hyp:
-        return "", ""
-
-    # Institut + commanditaire
-    institut = lien_institut(latest["institut"], charger_referentiel())
-    commanditaire = latest.get("commanditaire")
-    source_label = institut
-    if commanditaire:
-        source_label += f" pour {html_mod.escape(commanditaire)}"
-
-    # Dates en toutes lettres
-    td = date_lettres(latest["terrain_debut"])
-    tf = date_lettres(latest["terrain_fin"])
-    if latest["terrain_debut"] == latest["terrain_fin"]:
-        dates_str = f"le {tf}"
-    else:
-        dates_str = f"du {td} au {tf}"
-
-    # Échantillon
-    ech = latest.get("echantillon")
-    ech_str = f"{fmt_ech(ech)}\u00a0personnes" if ech else ""
-    pop = latest.get("population")
-    if pop and ech_str:
-        ech_str += f" ({html_mod.escape(pop)})"
-
-    meta_parts = [f"{source_label}, {dates_str}"]
-    if ech_str:
-        meta_parts.append(ech_str)
-
-    meta_html = (
-        f'    <p class="fiche-meta" id="fiche-meta">'
-        f'{" · ".join(meta_parts)}'
-        f' · <a href="sondages/{html_mod.escape(latest["id"])}.html" style="font-weight:500;">Voir la fiche</a></p>'
-    )
-
-    scores_html = render_hypothese(hyp, latest, candidats, series_data)
-    return meta_html, scores_html
-
-
-# ---------------------------------------------------------------------------
 # Bloc « Dernier sondage » (nouveau bloc compact en haut de page)
 # ---------------------------------------------------------------------------
 
@@ -495,12 +363,7 @@ def main():
     bloc_ds = generate_bloc_dernier_sondage(sondages, candidats, series_data)
     content = inject(content, BLOC_DS_BEGIN, BLOC_DS_END, bloc_ds)
 
-    # 3. Fiche du dernier sondage : meta + scores
-    meta_html, scores_html = generate_dernier_sondage(sondages, candidats, series_data)
-    content = inject(content, META_BEGIN, META_END, meta_html)
-    content = inject(content, SCORES_BEGIN, SCORES_END, scores_html)
-
-    # 4. Derniers sondages agrégés
+    # 3. Derniers sondages agrégés
     ds_html = generate_derniers_sondages(sondages)
     content = inject(content, DS_BEGIN, DS_END, ds_html)
 

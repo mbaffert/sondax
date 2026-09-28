@@ -1697,12 +1697,32 @@ GoatCounter `partage/<gabarit>/<methode>` ajouté à la liste fermée du §8.
 
 ### 14.16 Import des européennes — `scripts/import_europeennes.py`
 
-Même démarche que `import_historique.py` (§12) : pages Wikipédia figées par `revid`,
-snapshots dans `data/snapshots/historique/`, sortie unique
+Même démarche que `import_historique.py` (§12) : pages Wikipédia anglaises figées par
+`revid`, snapshots dans `data/snapshots/historique/`, sortie unique
 `data/historique_europeennes.json` au même schéma que `historique.json` (listes
-plutôt que candidats : l'identifiant est le slug de la liste, `type: "liste"`).
-Élections : 2019, 2024. Uniquement les sondages nationaux ; résultats officiels du
-ministère de l'Intérieur.
+plutôt que candidats : l'identifiant est le slug du sigle de la colonne,
+`type: "liste"`). Élections : 2019, 2024. Uniquement les sondages nationaux.
+
+- **2019** : « Opinion polling for the 2019 European Parliament election in France »
+  (revid 1306346350) ; le résultat officiel est la ligne de l'élection en tête du
+  tableau.
+- **2024** : pas de page de sondages en anglais ; tableau de la section « Opinion
+  polling » de « 2024 European Parliament election in France » (revid 1370942182).
+  Résultat : voix du modèle `{{Election results}}` du même article, rapportées au
+  total des exprimés, avec une correspondance liste → colonne écrite à la main
+  (`RESULTATS_2024`). Les listes sondées sans liste correspondante au scrutin (GE,
+  PS dissident, NE, DLF) n'ont pas de résultat et n'entrent pas dans les
+  comparaisons.
+- Une ligne dont le nombre de cellules ne correspond pas à l'en-tête est écartée et
+  comptée (18 en 2024, toutes de 2023 : hypothèses de listes d'union) ; une cellule
+  fusionnée sur plusieurs listes va dans `scores_groupes`, « <0,5 » dans
+  `scores_inferieurs_a`.
+
+Référence au 28 septembre 2026 : européennes seules, 34 comparaisons, erreur absolue
+moyenne 0,83, écart-type 1,44, `N_eff` ≈ 227 ; ensemble, 95 comparaisons, 0,88, 1,41,
+`N_eff` ≈ 300. Le défaut de la loi entre 10 et 20 % se retrouve (LR 2019 : +4,5 ;
+EELV 2019 : −5,7). `N_eff_source` reste `presidentielles` en attendant une
+décision.
 
 Précaution : les européennes comptent beaucoup de listes (plus de 30 en 2024) ; les
 petites listes non sondées n'entrent pas dans les comparaisons (même règle que la

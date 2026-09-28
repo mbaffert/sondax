@@ -107,6 +107,15 @@ def section(cal, bt, reglages, noms):
     ratio_10_20 = niv["10_20"]["rapport_variance"]
     ratio_20 = niv["plus_20"]["rapport_variance"]
 
+    ens = bt.get("loi_ensemble")
+    phrase_ensemble = ""
+    if ens:
+        ne = ens["par_niveau"]
+        phrase_ensemble = (
+            f" Le constat tient en ajoutant les européennes de 2019 et 2024 "
+            f"({ens['global']['n']} comparaisons)&nbsp;: rapport des variances de "
+            f"{fr(ne['10_20']['rapport_variance'], 1)} entre 10 et 20&nbsp;%, "
+            f"{fr(ne['plus_20']['rapport_variance'], 2)} au-dessus de 20&nbsp;%.")
     tirages = entier(reglages["tirages"])
     return f'''<section id="modele" class="methode-modele">
 <h2>Comment fonctionne le modèle Sondax&nbsp;?</h2>
@@ -195,7 +204,7 @@ et 20&nbsp;%, les erreurs réelles ont été {fr(ratio_10_20, 1)} fois plus disp
 variance) que ce que la loi prévoit&nbsp;; au-dessus de 20&nbsp;%, {fr(ratio_20, 2)} fois
 seulement. Le modèle est donc probablement <strong>trop sûr de lui pour les candidats
 situés entre 10 et 20&nbsp;%</strong>, souvent ceux qui se disputent la deuxième place,
-et trop prudent pour les premiers. Le backtest le montre&nbsp;: les qualifications
+et trop prudent pour les premiers.{phrase_ensemble} Le backtest le montre&nbsp;: les qualifications
 surprises de 2002 et la remontée de 2022 y étaient jugées très improbables. Côté
 corrélations, la loi n'impose que des corrélations négatives et faibles entre candidats&nbsp;;
 sur {cor["paires"]} paires de candidats de tête, {cor["meme_sens"]} erreurs vont dans le même

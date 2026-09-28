@@ -65,6 +65,7 @@ jobs:
           cp -r data/*.json _site/data/
           cp -r data/derived/*.json _site/data/derived/
           rm -f _site/data/historique.json
+          rm -f _site/data/historique_europeennes.json
 
       - uses: actions/upload-pages-artifact@v3
         with:

@@ -1,0 +1,4429 @@
+{{short description|Opinion polls regarding the 2019 European Parliament election in France}}
+{{use dmy dates|date=March 2019}}
+This page lists public [[opinion poll]]s conducted for the [[2019 European Parliament election in France]], was held on 26 May 2019.
+
+Unless otherwise noted, all polls listed below are compliant with the regulations of the national polling commission (''Commission nationale des sondages'') and utilize the [[quota sampling|quota method]].
+
+== Graphical summary ==
+The averages in the graphs below were constructed using polls listed below, excluding those conducted on behalf of a political party or movement. Trendlines are [[local regression]]s. Where possible, the scenario with ''gilets jaunes'' lists is used.
+
+[[File:Opinion polling for the 2019 European Parliament election in France.svg]]
+
+== Voting intentions ==
+Polls marked with an asterisk (*) were conducted on behalf of a political party. The May 2018 Viavoice poll was conducted for [[Europe Ecology – The Greens]] (EELV). The October 2018 Ifop polls tested two scenarios: one in which [[Ségolène Royal]] did not lead the [[Socialist Party (France)|Socialist Party]] (PS) list (in which the PS received 6%), and the other in which she did (in which it the PS received 7.5%). The December 2018 Ipsos poll was commissioned by [[La République En Marche!]] and obtained by ''[[Le Journal du Dimanche]]'', and the Ifop poll fielded from 3 to 4 December was conducted for [[Raphaël Glucksmann]]'s movement [[Place Publique]] (including the movement in a union list of the left).
+
+Ifop-Fiducial polls completed on or after 7 March listed in the table below are "rolling" polls unless otherwise denoted by two asterisks (**),<ref>{{cite web|title=[COMMUNIQUE DE PRESSE] EURO-ROLLING 2019 - Le rendez-vous quotidien du scrutin européen|url=https://www.ifop.com/wp-content/uploads/2019/03/CP-lancement-Euro-Rolling-Ifop-Fiducial-Cnews-Paris-Match-Sud-Radio.pdf|publisher=Ifop|date=4 March 2019|accessdate=4 March 2019}}</ref> as is the case with Harris Interactive polls completed on or after 26 April. Starting on 15 March, the Ifop-Fiducial poll asked specifically about a list consisting of Place Publique and the Socialist Party, as opposed to the PS alone; until 26 March, it continued to ask about a list conducted by the NPA, which later ruled out its participation in the European elections due to its lack of funds; and until 15 April, also continued to ask about a [[Résistons!]] list, which also lacked sufficient financing.
+
+In 2014, the EELV alone received 8.95% of valid votes; in 2019, the party will run in a common list with the [[Independent Ecological Alliance]] (AEI) and [[Régions et Peuples Solidaires]] (R&PS), which received 1.12% and 0.34% of the vote in 2014, respectively, for a total of 10.41% of votes in 2014. The PS, which will run in a common list alongside Place Publique, received 13.98% of valid votes in 2014; in 2019, it will also be allied with [[New Deal (France)|New Deal]], which received 2.90% of the vote in 2014; together, the lists received 16.88% of the vote in 2014.
+
+On 4 May 2019, following the publication of the entire list of 33 electoral lists in the election by the Ministry of the Interior, the polling commission recommended that pollsters test all 33 lists with the names, supporting parties, and lead candidates, and list the individual scores for each list even for those lists which obtain only low voting intentions, using a designation such as "less than 0.5%" if necessary.<ref>{{cite web|title=Communiqué de la commission des sondages du 4 mai 2019|url=http://www.commission-des-sondages.fr/hist/communiques/communique-sondages-elections-europeennes-4mai2019.htm|publisher=Commission des sondages|date=4 May 2019|accessdate=6 May 2019}}</ref>
+
+The publication of polls will be prohibited after midnight on 24 May 2019.<ref>{{cite web|title=Communiqué de la commission des sondages du 21 mai 2019|url=http://www.commission-des-sondages.fr/hist/communiques/communique-sondages-elections-europeennes-21mai2019.htm|publisher=Commission des sondages|date=21 May 2019|accessdate=24 May 2019}}</ref>
+
+As in every national vote, several polling firms will release estimations of the results after the closing of ballot boxes, including Harris Interactive with Epoka (on behalf of TF1, RTL, ''Le Figaro''),<ref>{{cite tweet|user=TF1Pro|number=1099690056036560897|title=LE GROUPE TF1, RTL et LE FIGARO SIGNENT UN PARTENARIAT AVEC HARRIS INTERACTIVE et l'Agence EPOKA POUR LES ELECTIONS EUROPÉENNES|date=24 February 2019|accessdate=24 February 2019}}</ref> as well as Ipsos with Sopra Steria (on behalf of France Télévisions with Radio France), a partnership running through 2022.<ref>{{cite news|title=Elections : France Télévisions et Radio France choisissent Ipsos|url=https://www.cbnews.fr/medias/elections-france-televisions-radio-france-choisissent-ipsos-43314|publisher=CB News|date=12 May 2019|accessdate=12 May 2019}}</ref>
+
+{| class="wikitable sortable" style="text-align:center;font-size:90%;line-height:14px;"
+|- style="height:40px;"
+! style="width:100px;" rowspan="2"| Polling firm
+! style="width:110px;" rowspan="2"| Fieldwork date
+! style="width:35px;" rowspan="2"| Sample<br>size
+! style="width:30px;" rowspan="2"| {{abbr|Abs.|Abstention}}
+! class="unsortable" style="width:40px;"| [[Lutte Ouvrière|LO]]
+! class="unsortable" style="width:40px;"| [[New Anticapitalist Party|NPA]]
+! class="unsortable" style="width:40px;"| [[La France Insoumise|FI]]
+! class="unsortable" style="width:40px;"| [[French Communist Party|PCF]]
+! class="unsortable" style="width:40px;"| [[Socialist Party (France)|PS]]/<br>[[Place Publique|PP]]/[[New Deal (France)|ND]]
+! class="unsortable" style="width:40px;"| [[Génération.s|G.s]]
+! class="unsortable" style="width:40px;"| [[Europe Ecology – The Greens|EELV]]
+! class="unsortable" style="width:40px;"| [[Ecology Generation|GE]]/[[Independent Ecological Movement|MEI]]/<br>[[Movement of Progressives|MdP]]
+! class="unsortable" style="width:40px;"| [[Animalist Party|PA]]
+! class="unsortable" style="width:40px;"| [[La République En Marche!|LREM]]/<br>[[Democratic Movement (France)|MoDem]]
+! class="unsortable" style="width:40px;"| [[Union of Democrats and Independents|UDI]]
+! class="unsortable" style="width:40px;"| [[Agir (France)|Agir]]
+! class="unsortable" style="width:40px;"| [[The Republicans (France)|LR]]/<br>[[The Centrists|LC]]
+! class="unsortable" style="width:40px;"| [[Debout la France|DLF]]
+! class="unsortable" style="width:40px;"| [[National Rally (France)|RN]]
+! class="unsortable" style="width:40px;"| [[The Patriots (France)|LP]]
+! class="unsortable" style="width:40px;"| [[Popular Republican Union (2007)|UPR]]
+! class="unsortable" style="width:40px;"| [[Résistons!|R!]]
+! class="unsortable" style="width:40px;"| [[Alliance Jaune|AJ]]/[[Yellow vests movement|GJ]]
+! class="unsortable" style="width:40px;"| [[Sans étiquette|DIV]]
+|-
+! style="background:{{party color|Lutte Ouvrière}};"|
+! style="background:{{party color|New Anticapitalist Party}};"|
+! style="background:{{party color|La France Insoumise}};"|
+! style="background:{{party color|French Communist Party}};"|
+! style="background:{{party color|Socialist Party (France)}};"|
+! style="background:{{party color|Génération.s}};"|
+! style="background:{{party color|Europe Ecology – The Greens}};"|
+! style="background:#578937;"|
+! style="background:{{party color|Animalist Party}};"|
+! style="background:{{party color|La République En Marche!}};"|
+! style="background:{{party color|Union of Democrats and Independents}};"|
+! style="background:{{party color|Agir (France)}};"|
+! style="background:{{party color|The Republicans (France)}};"|
+! style="background:{{party color|Debout la France}};"|
+! style="background:{{party color|National Rally (France)}};"|
+! style="background:{{party color|The Patriots (France)}};"|
+! style="background:{{party color|Popular Republican Union (2007)}};"|
+! style="background:#0050A3;"|
+! style="background:#EECA3B;"|
+! style="background:{{party color|Sans étiquette}};"|
+|- style="background:#E9E9E9;"
+| [[2019 European Parliament election in France|2019 election]]
+| data-sort-value="2019-05-26"| 26 May 2019
+| –
+| 49.88%
+| 0.78%
+| –
+| 6.31%
+| 2.49%
+| 6.19%
+| 3.27%
+| 13.48%
+| 1.82%
+| 2.16%
+| 22.42%
+| 2.50%
+| –
+| 8.48%
+| 3.51%
+| style="background:#C1CCE1;"| '''23.34%'''
+| 0.65%
+| 1.17%
+| –
+| 0.54%{{efn|Alliance Jaune with 0.54%}}
+| 0.89%{{efn|Les Oubliés de l'Europe with 0.23%; Pirate Party and Union des Démocrates Musulmans Français with 0.13%; Europe Démocratie Espéranto with 0.08%; European Federalist Party and Décroissance 2019 with 0.05%; Allons Enfants with 0.04%; À Voix Égales, Parti des Citoyens Européens, and Mouvement pour l'Initiative Citoyenne with 0.03%; Union Démocratique pour la Liberté, Égalité, Fraternité and Reconquête with 0.02%; Alliance Royale, Démocratie Représentative, Évolution Citoyenne, La Ligne Claire, Parti Révolutionnaire Communistes, and Neutre et Actif with 0.01%}}
+|-
+| style="background:#04FBF4;"| [https://www.ipsos.com/sites/default/files/ct/news/documents/2019-05/rapport_ipsos_intentions_de_vote_europeennes_soir24mai.pdf Ipsos]
+| data-sort-value="2019-05-24"| 24 May 2019
+| 5,877
+| 53%
+| 0.5%
+| –
+| 7.5%
+| 2.5%
+| 5.5%
+| 2.5%
+| 9.5%
+| 0.5%
+| 1.5%
+| 23%
+| 1.5%
+| –
+| 13%
+| 3.5%
+| style="background:#C1CCE1;"| '''25%'''
+| 0.5%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 1.5%{{efn|name="0UDMF"}}
+|-
+| style="background:#CAD5F7;"| [https://elabe.fr/wp-content/uploads/2019/05/20190524_elabe_bfmtv_les-francais-et-lelection-europeenne.pdf Elabe]
+| data-sort-value="2019-05-24"| 23–24 May 2019
+| 2,010
+| 55%
+| 1%
+| –
+| 8.5%
+| 2.5%
+| 4.5%
+| 2.5%
+| 9%
+| 1%
+| 1.5%
+| 22.5%
+| 1%
+| –
+| 13%
+| 4%
+| style="background:#C1CCE1;"| '''25%'''
+| 2%
+| 1%
+| –
+| data-sort-value="0%"| <0.5%{{efn|name="AJ0"}}
+| 1%{{efn|name="0UDMF"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5ce806133b4d7_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-35.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190524182010/https://www.2019opinions.com/uploads/media/5ce806133b4d7_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-35.pdf |date=24 May 2019 }}
+| data-sort-value="2019-05-24"| 23–24 May 2019
+| 1,015
+| –
+| 1%
+| –
+| 9%
+| 3.5%
+| 5%
+| 2%
+| 7.5%
+| 1%
+| 1.5%
+| 22.5%
+| 1.5%
+| –
+| 12%
+| 3.5%
+| style="background:#C1CCE1;"| '''25%'''
+| 1%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 2%{{efn|name="0UDMF"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/24-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-24"| 21–24 May 2019
+| 2,773
+| 53.5%
+| 0.5%
+| –
+| 7.5%
+| 3%
+| 5.5%
+| 2%
+| 8%
+| 0.5%
+| 1.5%
+| 23%
+| 1.5%
+| –
+| 13.5%
+| 4%
+| style="background:#C1CCE1;"| '''25.5%'''
+| 1.5%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 0.5%{{efn|name="UDMF0.5"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5ce69fd3737bd_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-34.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190523161406/https://www.2019opinions.com/uploads/media/5ce69fd3737bd_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-34.pdf |date=23 May 2019 }}
+| data-sort-value="2019-05-23"| 22–23 May 2019
+| 1,027
+| –
+| 1%
+| –
+| 9.5%
+| 3.5%
+| 5%
+| 2%
+| 7.5%
+| 0.5%
+| 1.5%
+| 22.5%
+| 1.5%
+| –
+| 12%
+| 3.5%
+| style="background:#C1CCE1;"| '''24.5%'''
+| 1.5%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 2%{{efn|name="0UDMF"}}
+|-
+| style="background:#04FBF4;"| [https://www.ipsos.com/sites/default/files/ct/news/documents/2019-05/ipsos_electionseuropeennes_ft_rf_mai2019.pdf Ipsos]
+| data-sort-value="2019-05-23"| 22–23 May 2019
+| 3,355
+| 55%
+| 1%
+| –
+| 7.5%
+| 2.5%
+| 5.5%
+| 3%
+| 9%
+| 0.5%
+| 1.5%
+| 23%
+| 1.5%
+| –
+| 13%
+| 3.5%
+| style="background:#C1CCE1;"| '''24.5%'''
+| 0.5%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 1.5%{{efn|name="0UDMF"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/23-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-23"| 20–23 May 2019
+| 2,757
+| 54.5%
+| 0.5%
+| –
+| 8%
+| 3.5%
+| 6%
+| 2%
+| 7%
+| 1%
+| 1%
+| 23%
+| 1.5%
+| –
+| 14%
+| 4%
+| style="background:#C1CCE1;"| '''24.5%'''
+| 2%
+| 1.5%
+| –
+| 0.5%{{efn|name="AJ0.5"}}
+| data-sort-value="0%"| <0.5%{{efn|name="0UDMF"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5ce56f3c0a373_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-33.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190523162239/https://www.2019opinions.com/uploads/media/5ce56f3c0a373_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-33.pdf |date=23 May 2019 }}
+| data-sort-value="2019-05-22"| 21–22 May 2019
+| 1,007
+| –
+| 1%
+| –
+| 9.5%
+| 3.5%
+| 4.5%
+| 2%
+| 7.5%
+| 0.5%
+| 1%
+| 22.5%
+| 1.5%
+| –
+| 12.5%
+| 3.5%
+| style="background:#C1CCE1;"| '''24%'''
+| 1.5%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 3%{{efn|name="0UDMF"}}
+|-
+| style="background:aquamarine;"| [https://www.opinion-way.com/fr/component/edocman/opinionway-pour-tilder-les-echos-radio-classique-resultats-eurotrack-23-mai-2019/viewdocument.html OpinionWay]
+| data-sort-value="2019-05-22"| 20–22 May 2019
+| 2,914
+| 56%
+| 1%
+| –
+| 8%
+| 3%
+| 6%
+| 2%
+| 9%
+| 1%
+| 1%
+| 23%
+| 1%
+| –
+| 13%
+| 3%
+| style="background:#C1CCE1;"| '''25%'''
+| 1%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 1%{{efn|name="OWUDMF0"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/22-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-22"| 18–22 May 2019
+| 2,750
+| 55%
+| 0.5%
+| –
+| 8.5%
+| 3.5%
+| 6%
+| 2.5%
+| 6.5%
+| 1%
+| 1%
+| 23%
+| 1.5%
+| –
+| 14%
+| 4%
+| style="background:#C1CCE1;"| '''24.5%'''
+| 1.5%
+| 1.5%
+| –
+| 0.5%{{efn|name="AJ0.5"}}
+| data-sort-value="0%"| <0.5%{{efn|name="0UDMF"}}
+|-
+| style="background:#FFDFCC;"| [https://staticswww.bva-group.com/wp-content/uploads/2019/05/Intentions-de-vote-aux-%C3%A9lections-europ%C3%A9ennes-BVA-Orange-La-Tribune-Europe-1-Presse-r%C3%A9gionale-22-mai-2019.pdf BVA] {{Webarchive|url=https://web.archive.org/web/20190528022149/https://staticswww.bva-group.com/wp-content/uploads/2019/05/Intentions-de-vote-aux-%C3%A9lections-europ%C3%A9ennes-BVA-Orange-La-Tribune-Europe-1-Presse-r%C3%A9gionale-22-mai-2019.pdf |date=28 May 2019 }}
+| data-sort-value="2019-05-21"| 20–21 May 2019
+| 1,347
+| 51%
+| 0.5%
+| –
+| 8.5%
+| 3%
+| 5%
+| 2.5%
+| 8%
+| 1%
+| 1.5%
+| 22%
+| 1.5%
+| –
+| 13%
+| 3.5%
+| style="background:#C1CCE1;"| '''23%'''
+| 2%
+| 1.5%
+| –
+| data-sort-value="0%"| <0.5%{{efn|Alliance Jaune with <0.5%|name="AJ0"}}
+| 3.5%{{efn|name="0UDMF"}}
+|-
+| style="background:GreenYellow;"| [https://web.archive.org/web/20190522150456/https://www.2019opinions.com/uploads/media/5ce41e2b39f67_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-32.pdf Harris Interactive]
+| data-sort-value="2019-05-21"| 20–21 May 2019
+| 1,024
+| –
+| 1%
+| –
+| 9.5%
+| 3%
+| 5%
+| 2%
+| 7%
+| 0.5%
+| 1%
+| 22.5%
+| 1.5%
+| –
+| 12.5%
+| 3.5%
+| style="background:#C1CCE1;"| '''24%'''
+| 2%
+| 1%
+| –
+| 0.5%{{efn|name="AJ0.5"}}
+| 3.5%{{efn|name="0UDMF"}}
+|-
+| style="background:#04FBF4;"| [https://www.ipsos.com/sites/default/files/ct/news/documents/2019-05/enquete_elections_europeennes_-_france_tv_radio_france_-_mai_2019_0.pdf Ipsos]
+| data-sort-value="2019-05-21"| 20–21 May 2019
+| 1,495
+| 58%
+| 0.5%
+| –
+| 7.5%
+| 2.5%
+| 5.5%
+| 2.5%
+| 9%
+| 1.5%
+| 1%
+| 23.5%
+| 1%
+| –
+| 13%
+| 4%
+| style="background:#C1CCE1;"| '''24%'''
+| 1%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 1.5%{{efn|name="0UDMF"}}
+|-
+| style="background:#CAD5F7;"| [https://elabe.fr/wp-content/uploads/2019/05/20190521_elabe_bfmtv_les-francais-et-lelection-europeenne.pdf Elabe]
+| data-sort-value="2019-05-21"| 19–21 May 2019
+| 2,004
+| 54%
+| 1.5%
+| –
+| 8%
+| 3%
+| 4%
+| 3%
+| 8.5%
+| 1.5%
+| 1.5%
+| 23%
+| 1%
+| –
+| 12.5%
+| 4.5%
+| style="background:#C1CCE1;"| '''23.5%'''
+| 2%
+| 1%
+| –
+| 0.5%{{efn|Alliance Jaune with 0.5%|name="AJ0.5"}}
+| 1%{{efn|Parti des Citoyens Européens and Allons Enfants with 0.5%; Alliance Royale, La Ligne Claire, Pirate Party, Démocratie Représentative, Reconquête, European Federalist Party, Mouvement pour l'Initiative Citoyenne, Décroissance 2019, À Voix Égales, Neutre et Actif, Parti Révolutionnaire Communistes, Europe Démocratie Espéranto, Évolution Citoyenne, Les Oubliés de l'Europe, Union Démocratique pour la Liberté, Égalité, Fraternité, and Union des Démocrates Musulmans Français with <0.5%}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/21-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-21"| 17–21 May 2019
+| 2,739
+| 56%
+| 0.5%
+| –
+| 8.5%
+| 3.5%
+| 6%
+| 2.5%
+| 6.5%
+| 1%
+| 1.5%
+| 23%
+| 1.5%
+| –
+| 14%
+| 4%
+| style="background:#C1CCE1;"| '''24%'''
+| 1.5%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| data-sort-value="0%"| <0.5%{{efn|name="0UDMF"}}
+|-
+| style="background:GreenYellow;"| [https://web.archive.org/web/20190522150451/https://www.2019opinions.com/uploads/media/5ce277d959313_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-31.pdf Harris Interactive]
+| data-sort-value="2019-05-20"| 19–20 May 2019
+| 1,022
+| –
+| 0.5%
+| –
+| 10%
+| 3%
+| 5%
+| 2%
+| 7%
+| 1%
+| 1%
+| 22%
+| 2%
+| –
+| 12.5%
+| 3.5%
+| style="background:#C1CCE1;"| '''24%'''
+| 2%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 2.5%{{efn|name="0UDMF"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/20-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-20"| 16–20 May 2019
+| 2,754
+| 56%
+| 0.5%
+| –
+| 9%
+| 3.5%
+| 6%
+| 2%
+| 6.5%
+| 1%
+| 1.5%
+| 22.5%
+| 1.5%
+| –
+| 13.5%
+| 4.5%
+| style="background:#C1CCE1;"| '''24%'''
+| 2%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| data-sort-value="0%"| <0.5%{{efn|name="0UDMF"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5ce17a704fde2_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-30.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20210924122750/https://www.2019opinions.com/uploads/media/5ce17a704fde2_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-30.pdf |date=24 September 2021 }}
+| data-sort-value="2019-05-19"| 18–19 May 2019
+| 1,006
+| –
+| 0.5%
+| –
+| 10%
+| 3%
+| 5%
+| 2%
+| 7.5%
+| 0.5%
+| 0.5%
+| 22.5%
+| 1.5%
+| –
+| 12.5%
+| 3.5%
+| style="background:#C1CCE1;"| '''24%'''
+| 2%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 3%{{efn|name="0UDMF"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5ce02ac3edbec_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-29.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190518160245/https://www.2019opinions.com/uploads/media/5ce02ac3edbec_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-29.pdf |date=18 May 2019 }}
+| data-sort-value="2019-05-18"| 17–18 May 2019
+| 1,031
+| –
+| 0.5%
+| –
+| 10%
+| 3%
+| 5%
+| 2%
+| 7%
+| 0.5%
+| 0.5%
+| 22%
+| 1.5%
+| –
+| 12.5%
+| 3.5%
+| style="background:#C1CCE1;"| '''24%'''
+| 2%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 4%{{efn|name="0UDMF"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cded839bb5da_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-28.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190517160212/https://www.2019opinions.com/uploads/media/5cded839bb5da_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-28.pdf |date=17 May 2019 }}
+| data-sort-value="2019-05-17"| 16–17 May 2019
+| 1,014
+| –
+| 0.5%
+| –
+| 9.5%
+| 3.5%
+| 5%
+| 2.5%
+| 7%
+| 0.5%
+| 0.5%
+| 22.5%
+| 1%
+| –
+| 12.5%
+| 3.5%
+| style="background:#C1CCE1;"| '''23.5%'''
+| 2%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 4%{{efn|name="0UDMF"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/17-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-17"| 14–17 May 2019
+| 2,773
+| 56.5%
+| 0.5%
+| –
+| 9%
+| 3%
+| 6%
+| 2%
+| 7%
+| 1%
+| 1%
+| 22.5%
+| 1.5%
+| –
+| 13.5%
+| 4.5%
+| style="background:#C1CCE1;"| '''24%'''
+| 2%
+| 1.5%
+| –
+| 1%{{efn|name="AJ1"}}
+| data-sort-value="0%"| <0.5%{{efn|name="0UDMF"}}
+|-
+| style="background:#04FBF4;"| [https://www.ipsos.com/sites/default/files/ct/news/documents/2019-05/rapport_ipsos_enquete_electorale_mai_2019.pdf Ipsos]
+| data-sort-value="2019-05-17"| 14–17 May 2019
+| 9,610
+| 57%
+| 1%
+| –
+| 7.5%
+| 3%
+| 5.5%
+| 3%
+| 8.5%
+| 1%
+| 1%
+| 23%
+| 1.5%
+| –
+| 13%
+| 4%
+| style="background:#C1CCE1;"| '''23.5%'''
+| 1%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 1.5%{{efn|name="0UDMF"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cdd7e2caadc8_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-27.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190516191434/https://www.2019opinions.com/uploads/media/5cdd7e2caadc8_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-27.pdf |date=16 May 2019 }}
+| data-sort-value="2019-05-16"| 15–16 May 2019
+| 1,048
+| –
+| 1%
+| –
+| 9.5%
+| 3%
+| 5%
+| 2.5%
+| 7.5%
+| 0.5%
+| 0.5%
+| 22.5%
+| 1.5%
+| –
+| 12.5%
+| 3.5%
+| style="background:#C1CCE1;"| '''23%'''
+| 2%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 3.5%{{efn|name="0UDMF"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/16-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-16"| 13–16 May 2019
+| 2,765
+| 56%
+| 0.5%
+| –
+| 8.5%
+| 3%
+| 5.5%
+| 2.5%
+| 7%
+| 1%
+| 1%
+| 23%
+| 1.5%
+| –
+| 14%
+| 4%
+| style="background:#C1CCE1;"| '''24%'''
+| 2%
+| 1.5%
+| –
+| 1%{{efn|name="AJ1"}}
+| data-sort-value="0%"| <0.5%{{efn|name="0UDMF"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cdc28fc9b906_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-26.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190516190538/https://2019opinions.com/uploads/media/5cdc28fc9b906_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-26.pdf |date=16 May 2019 }}
+| data-sort-value="2019-05-15"| 14–15 May 2019
+| 1,033
+| –
+| 1%
+| –
+| 9.5%
+| 2.5%
+| 5%
+| 2.5%
+| 7%
+| 0.5%
+| 0.5%
+| 22%
+| 1.5%
+| –
+| 13%
+| 3%
+| style="background:#C1CCE1;"| '''23%'''
+| 2.5%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 4.5%{{efn|name="0UDMF"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/15-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-15"| 11–15 May 2019
+| 2,301
+| 56%
+| 0.5%
+| –
+| 8.5%
+| 3%
+| 5.5%
+| 2.5%
+| 7%
+| 1%
+| 1%
+| 22.5%
+| 2%
+| –
+| 14%
+| 4%
+| style="background:#C1CCE1;"| '''23.5%'''
+| 2.5%
+| 1.5%
+| –
+| 1%{{efn|name="AJ1"}}
+| data-sort-value="0%"| <0.5%{{efn|name="0UDMF"}}
+|-
+| style="background:aquamarine;"| [https://www.opinion-way.com/fr/component/edocman/opinionway-pour-tilder-les-echos-radio-classique-resultats-eurotrack-15-mai-2019/viewdocument.html OpinionWay]
+| data-sort-value="2019-05-15"| 8–15 May 2019
+| 1,973
+| 60%
+| 1%
+| –
+| 8%
+| 4%
+| 5%
+| 2%
+| 7%
+| 1%
+| 1%
+| 22%
+| 2%
+| –
+| 14%
+| 4%
+| style="background:#C1CCE1;"| '''24%'''
+| 1%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 2%{{efn|Alliance Royale, La Ligne Claire, Pirate Party, Démocratie Représentative, Parti des Citoyens Européens, Reconquête, European Federalist Party, Mouvement pour l'Initiative Citoyenne, Allons Enfants, Décroissance 2019, À Voix Égales, Neutre et Actif, Parti Révolutionnaire Communistes, Europe Démocratie Espéranto, Évolution Citoyenne, Les Oubliés de l'Europe, Union Démocratique pour la Liberté, Égalité, Fraternité, and Union des Démocrates Musulmans Français with <1%|name="OWUDMF0"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cdae230d227c_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-25.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190514160654/https://www.2019opinions.com/uploads/media/5cdae230d227c_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-25.pdf |date=14 May 2019 }}
+| data-sort-value="2019-05-14"| 13–14 May 2019
+| 1,052
+| –
+| 1%
+| –
+| 9.5%
+| 2.5%
+| 5%
+| 2.5%
+| 7%
+| 0.5%
+| 0.5%
+| 22%
+| 1.5%
+| –
+| 13%
+| 3.5%
+| style="background:#C1CCE1;"| '''22.5%'''
+| 2.5%
+| 1.5%
+| –
+| 1.5%{{efn|name="AJ1.5"}}
+| 3.5%{{efn|name="0UDMF"}}
+|-
+| style="background:#CAD5F7;"| [https://elabe.fr/wp-content/uploads/2019/05/elabe1505.pdf Elabe]
+| data-sort-value="2019-05-14"| 12–14 May 2019
+| 2,002
+| 59%
+| 1.5%
+| –
+| 7.5%
+| 2%
+| 4%
+| 2.5%
+| 10%
+| 1.5%
+| 1.5%
+| style="background:#FFED99;"| '''23.5%'''
+| 1.5%
+| –
+| 11%
+| 4%
+| 22%
+| 2.5%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 3%{{efn|Pirate Party, Neutre et Actif, and Union des Démocrates Musulmans Français with 0.5%; Alliance Royale, La Ligne Claire, Démocratie Représentative, Parti des Citoyens Européens, Reconquête, European Federalist Party, Mouvement pour l'Initiative Citoyenne, Allons Enfants, Décroissance 2019, À Voix Égales, Parti Révolutionnaire Communistes, Europe Démocratie Espéranto, Évolution Citoyenne, Les Oubliés de l'Europe, and Union Démocratique pour la Liberté, Égalité, Fraternité with <0.5%}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/14-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-14"| 10–14 May 2019
+| 1,836
+| 56%
+| 0.5%
+| –
+| 8.5%
+| 3%
+| 5.5%
+| 2.5%
+| 7.5%
+| 1%
+| 0.5%
+| 22.5%
+| 2%
+| –
+| 14%
+| 4.5%
+| style="background:#C1CCE1;"| '''23%'''
+| 2.5%
+| 1.5%
+| –
+| 1%{{efn|name="AJ1"}}
+| data-sort-value="0%"| <0.5%{{efn|name="0UDMF"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cd981031bbd4_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-24.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190513164442/https://www.2019opinions.com/uploads/media/5cd981031bbd4_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-24.pdf |date=13 May 2019 }}
+| data-sort-value="2019-05-13"| 12–13 May 2019
+| 1,034
+| –
+| 1%
+| –
+| 9.5%
+| 2%
+| 5%
+| 2.5%
+| 7%
+| 0.5%
+| 0.5%
+| 22%
+| 1%
+| –
+| 13%
+| 3.5%
+| style="background:#C1CCE1;"| '''22.5%'''
+| 2.5%
+| 1%
+| –
+| 1.5%{{efn|name="AJ1.5"}}
+| 5%{{efn|name="0UDMF"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/13-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-13"| 9–13 May 2019
+| 1,370
+| 57%
+| 0.5%
+| –
+| 8%
+| 2.5%
+| 6%
+| 3%
+| 7.5%
+| 1%
+| 0.5%
+| style="background:#FFED99;"| '''22.5%'''
+| 2%
+| –
+| 14%
+| 4.5%
+| style="background:#C1CCE1;"| '''22.5%'''
+| 3%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 0.5%{{efn|Union des Démocrates Musulmans Français with 0.5%; Alliance Royale, La Ligne Claire, Pirate Party, Démocratie Représentative, Parti des Citoyens Européens, Reconquête, European Federalist Party, Mouvement pour l'Initiative Citoyenne, Allons Enfants, Décroissance 2019, À Voix Égales, Neutre et Actif, Parti Révolutionnaire Communistes, Europe Démocratie Espéranto, Évolution Citoyenne, Les Oubliés de l'Europe, and Union Démocratique pour la Liberté, Égalité, Fraternité with <0.5%|name="UDMF0.5"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cd820b5b5c8a_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-23.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190512161542/https://www.2019opinions.com/uploads/media/5cd820b5b5c8a_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-23.pdf |date=12 May 2019 }}
+| data-sort-value="2019-05-12"| 11–12 May 2019
+| 1,031
+| –
+| 1%
+| –
+| 10%
+| 2.5%
+| 4.5%
+| 2.5%
+| 7%
+| 0.5%
+| 0.5%
+| 22%
+| 1%
+| –
+| 13%
+| 3.5%
+| style="background:#C1CCE1;"| '''22.5%'''
+| 2.5%
+| 1.5%
+| –
+| 1.5%{{efn|name="AJ1.5"}}
+| 4%{{efn|name="0UDMF"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cd6a3c957e9b_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-22.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190511170524/https://www.2019opinions.com/uploads/media/5cd6a3c957e9b_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-22.pdf |date=11 May 2019 }}
+| data-sort-value="2019-05-11"| 10–11 May 2019
+| 1,033
+| –
+| 1%
+| –
+| 10%
+| 3%
+| 4.5%
+| 2%
+| 7%
+| 1%
+| 0.5%
+| 22%
+| 1.5%
+| –
+| 12.5%
+| 3.5%
+| style="background:#C1CCE1;"| '''22.5%'''
+| 3%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 4%{{efn|Alliance Royale, La Ligne Claire, Pirate Party, Démocratie Représentative, Parti des Citoyens Européens, Reconquête, European Federalist Party, Mouvement pour l'Initiative Citoyenne, Allons Enfants, Décroissance 2019, À Voix Égales, Neutre et Actif, Parti Révolutionnaire Communistes, Europe Démocratie Espéranto, Évolution Citoyenne, Les Oubliés de l'Europe, Union Démocratique pour la Liberté, Égalité, Fraternité, and Union des Démocrates Musulmans Français with <0.5%|name="0UDMF"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cd5811a65984_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-21.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190510160632/https://www.2019opinions.com/uploads/media/5cd5811a65984_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-21.pdf |date=10 May 2019 }}
+| data-sort-value="2019-05-10"| 9–10 May 2019
+| 1,060
+| –
+| 1%
+| –
+| 10%
+| 2.5%
+| 4.5%
+| 2.5%
+| 7%
+| 0.5%
+| 0.5%
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 13%
+| 3%
+| style="background:#C1CCE1;"| '''22%'''
+| 3%
+| 1.5%
+| –
+| 1%{{efn|name="AJ1"}}
+| 4%{{efn|name="sansUDMF0"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/10-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-10"| 7–10 May 2019
+| 1,368
+| 58%
+| 0.5%
+| –
+| 7.5%
+| 2.5%
+| 6%
+| 3%
+| 8%
+| 1.5%
+| 1%
+| style="background:#FFED99;"| '''23%'''
+| 1.5%
+| –
+| 14%
+| 5%
+| 22%
+| 2.5%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| data-sort-value="0%"| <0.5%{{efn|name="sansUDMF0"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cd43ee2ab887_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-20.pdf Harris Interactive]{{Dead link|date=August 2025 |bot=InternetArchiveBot |fix-attempted=yes }}
+| data-sort-value="2019-05-09"| 8–9 May 2019
+| 1,053
+| –
+| 1%
+| –
+| 9.5%
+| 2.5%
+| 5%
+| 2%
+| 7%
+| 0.5%
+| 0.5%
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 13%
+| 3%
+| style="background:#C1CCE1;"| '''22%'''
+| 2.5%
+| 1.5%
+| –
+| 1%{{efn|name="AJ1"}}
+| 5%{{efn|name="sansUDMF0"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/09-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-09"| 6–9 May 2019
+| 1,374
+| 58%
+| 1%
+| –
+| 8%
+| 3%
+| 5.5%
+| 2.5%
+| 8.5%
+| 1%
+| 1%
+| style="background:#FFED99;"| '''22.5%'''
+| 2%
+| –
+| 14%
+| 5%
+| 21.5%
+| 2.5%
+| 0.5%
+| –
+| 1.5%{{efn|name="AJ1.5"}}
+| data-sort-value="0%"| <0.5%{{efn|name="sansUDMF0"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cd2f9256a8f5_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-19.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190508161248/https://www.2019opinions.com/uploads/media/5cd2f9256a8f5_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-19.pdf |date=8 May 2019 }}
+| data-sort-value="2019-05-08"| 7–8 May 2019
+| 1,043
+| –
+| 1%
+| –
+| 9.5%
+| 3%
+| 5%
+| 2%
+| 7%
+| 1%
+| 0.5%
+| style="background:#FFED99;"| '''21.5%'''
+| 1.5%
+| –
+| 13.5%
+| 3.5%
+| style="background:#C1CCE1;"| '''21.5%'''
+| 2%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 5.5%{{efn|name="sansUDMF0"}}
+|-
+| style="background:burlywood;"| [https://fr.kantar.com/opinion-publique/politique/2019/les-francais-et-les-elections-europeennes-2019/ Kantar Sofres] {{Webarchive|url=https://web.archive.org/web/20190514165620/https://fr.kantar.com/opinion-publique/politique/2019/les-francais-et-les-elections-europeennes-2019/ |date=14 May 2019 }}
+| data-sort-value="2019-05-08"| 6–8 May 2019
+| 2,010
+| 57%
+| 2%
+| –
+| 8%
+| 2%
+| 5%
+| 3.5%
+| 8%
+| 1.5%
+| 1%
+| 20%
+| 1.5%
+| –
+| 14%
+| 4.5%
+| style="background:#C1CCE1;"| '''23%'''
+| 1%
+| 1%
+| –
+| 1%{{efn|name="AJ1"}}
+| 3%{{efn|name="sansUDMF0"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/08-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-08"| 4–8 May 2019
+| 1,389
+| 57.5%
+| 0.5%
+| –
+| 8.5%
+| 3%
+| 5.5%
+| 3%
+| 8%
+| 1%
+| 0.5%
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 14%
+| 5%
+| style="background:#C1CCE1;"| '''22%'''
+| 2.5%
+| 1%
+| –
+| 1.5%{{efn|name="AJ1.5"}}
+| data-sort-value="0%"| <0.5%{{efn|name="sansUDMF0"}}
+|-
+| style="background:#CAD5F7;"| [https://elabe.fr/wp-content/uploads/2019/05/20190507_elabe_bfmtv_les-francais-et-lelection-europeenne.pdf Elabe]
+| data-sort-value="2019-05-07"| 6–7 May 2019
+| 1,583
+| 60%
+| 1.5%
+| –
+| 9%
+| 2.5%
+| 4.5%
+| 2%
+| 9.5%
+| 1%
+| 1%
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 14%
+| 5%
+| style="background:#C1CCE1;"| '''22%'''
+| 2%
+| 0.5%
+| –
+| 1%{{efn|name="AJ1"}}
+| 0.5%{{efn|Pirate Party with 0.5%; Alliance Royale, La Ligne Claire, Démocratie Représentative, Parti des Citoyens Européens, Reconquête, European Federalist Party, Mouvement pour l'Initiative Citoyenne, Allons Enfants, Décroissance 2019, À Voix Égales, Neutre et Actif, Parti Révolutionnaire Communistes, Europe Démocratie Espéranto, Évolution Citoyenne, Les Oubliés de l'Europe, and Union Démocratique pour la Liberté, Égalité, Fraternité with <0.5%}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cd1ab9d3fb63_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-18.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190507160403/https://www.2019opinions.com/uploads/media/5cd1ab9d3fb63_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-18.pdf |date=7 May 2019 }}
+| data-sort-value="2019-05-07"| 6–7 May 2019
+| 1,043
+| –
+| 1.5%
+| –
+| 9.5%
+| 2.5%
+| 5%
+| 2.5%
+| 7.5%
+| 1%
+| 0.5%
+| style="background:#FFED99;"| '''21.5%'''
+| 1.5%
+| –
+| 13.5%
+| 3%
+| style="background:#C1CCE1;"| '''21.5%'''
+| 2.5%
+| 1%
+| –
+| 1%{{efn|Alliance Jaune with 1%|name="AJ1"}}
+| 4.5%{{efn|name="sansUDMF0"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/07-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-07"| 4–7 May 2019
+| 1,405
+| 57%
+| 0.5%
+| –
+| 9%
+| 3%
+| 5.5%
+| 3%
+| 8%
+| 0.5%
+| 0.5%
+| 21.5%
+| 2%
+| –
+| 14.5%
+| 5%
+| style="background:#C1CCE1;"| '''22%'''
+| 2%
+| 1%
+| –
+| 2%{{efn|name="AJ2"}}
+| data-sort-value="0%"| <0.5%{{efn|name="sansUDMF0"}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cd0581e0ae3a_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-17.pdf Harris Interactive]{{Dead link|date=August 2025 |bot=InternetArchiveBot |fix-attempted=yes }}
+| data-sort-value="2019-05-06"| 5–6 May 2019
+| 1,015
+| –
+| 1.5%
+| –
+| 9%
+| 3%
+| 5%
+| 2.5%
+| 7.5%
+| 1%
+| 0.5%
+| style="background:#FFED99;"| '''21.5%'''
+| 2%
+| –
+| 14%
+| 3%
+| style="background:#C1CCE1;"| '''21.5%'''
+| 2.5%
+| 1%
+| –
+| 1.5%{{efn|name="AJ1.5"}}
+| 3%{{efn|Alliance Royale, La Ligne Claire, Pirate Party, Démocratie Représentative, Parti des Citoyens Européens, Reconquête, European Federalist Party, Mouvement pour l'Initiative Citoyenne, Allons Enfants, Décroissance 2019, À Voix Égales, Neutre et Actif, Parti Révolutionnaire Communistes, Europe Démocratie Espéranto, Évolution Citoyenne, Les Oubliés de l'Europe, and Union Démocratique pour la Liberté, Égalité, Fraternité with <0.5%|name="sansUDMF0"}}
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/06-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-06"| 4–6 May 2019
+| 945
+| 58%
+| 0.5%
+| –
+| 9%
+| 3%
+| 5.5%
+| 2.5%
+| 8%
+| 1%
+| 0.5%
+| 21.5%
+| 2%
+| –
+| 14.5%
+| 5%
+| style="background:#C1CCE1;"| '''22.5%'''
+| 1.5%
+| 1%
+| –
+| 1.5%{{efn|Alliance Jaune with 1.5%|name="AJ1.5"}}
+| 0.5%{{efn|Parti Révolutionnaire Communistes with 0.5%; Alliance Royale, La Ligne Claire, Pirate Party, Démocratie Représentative, Parti des Citoyens Européens, Reconquête, European Federalist Party, Mouvement pour l'Initiative Citoyenne, Allons Enfants, Décroissance 2019, À Voix Égales, Neutre et Actif, Europe Démocratie Espéranto, Évolution Citoyenne, Les Oubliés de l'Europe, and Union Démocratique pour la Liberté, Égalité, Fraternité with <0.5%}}
+|-
+| style="background:aquamarine;"| [https://www.opinion-way.com/fr/component/edocman/opinionway-pour-tilder-les-echos-radio-classique-resultats-eurotrack-7-mai-2019/viewdocument.html OpinionWay]
+| data-sort-value="2019-05-06"| 4–6 May 2019
+| 1,917
+| 59%
+| 1%
+| –
+| 8%
+| 3%
+| 5%
+| 3%
+| 7%
+| 1%
+| 1%
+| 22%
+| 2%
+| –
+| 14%
+| 4%
+| style="background:#C1CCE1;"| '''24%'''
+| 1%
+| 1%
+| –
+| 2%{{efn|name="AJ2"}}
+| 1%{{efn|Alliance Royale, La Ligne Claire, Pirate Party, Démocratie Représentative, Parti des Citoyens Européens, Reconquête, European Federalist Party, Mouvement pour l'Initiative Citoyenne, Allons Enfants, Décroissance 2019, À Voix Égales, Neutre et Actif, Parti Révolutionnaire Communistes, Europe Démocratie Espéranto, Évolution Citoyenne, Les Oubliés de l'Europe, and Union Démocratique pour la Liberté, Égalité, Fraternité with <1%}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5ccf053ba8b85_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-16.pdf Harris Interactive]{{Dead link|date=August 2025 |bot=InternetArchiveBot |fix-attempted=yes }}
+| data-sort-value="2019-05-05"| 4–5 May 2019
+| 1,033
+| –
+| 1.5%
+| –
+| 9.5%
+| 3%
+| 4.5%
+| 2.5%
+| 8%
+| 1%
+| 0.5%
+| style="background:#FFED99;"| '''21.5%'''
+| 2%
+| –
+| 14%
+| 3%
+| 21%
+| 2.5%
+| 1%
+| –
+| 2%{{efn|name="AJ2"}}
+| 2.5%{{efn|La Ligne Claire and Pirate Party with 0.5%; Alliance Royale, Démocratie Représentative, Parti des Citoyens Européens, Reconquête, European Federalist Party, Mouvement pour l'Initiative Citoyenne, Allons Enfants, Décroissance 2019, À Voix Égales, Neutre et Actif, Parti Révolutionnaire Communistes, Europe Démocratie Espéranto, Évolution Citoyenne, Les Oubliés de l'Europe, and Union Démocratique pour la Liberté, Égalité, Fraternité with <0.5%}}
+|-
+| style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5ccdb45b849a1_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-15.pdf Harris Interactive] {{Webarchive|url=https://web.archive.org/web/20190504183412/https://www.2019opinions.com/uploads/media/5ccdb45b849a1_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-15.pdf |date=4 May 2019 }}
+| data-sort-value="2019-05-04"| 3–4 May 2019
+| 1,032
+| –
+| 1%
+| –
+| 8.5%
+| 2%
+| 5%
+| 3%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 14.5%
+| 3.5%
+| 20.5%
+| 2%
+| 1%
+| –
+| 3%
+| 1.5%
+|-
+| rowspan="2" style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5ccc6395757d9_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-14.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-05-03"| 2–3 May 2019
+| rowspan="2"| 1,066
+| rowspan="2"| –
+| 1.5%
+| –
+| 9%
+| 2.5%
+| 5%
+| 3.5%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 1.5%
+| –
+| 14%
+| 4.5%
+| 21%
+| 2%
+| 1%
+| –
+| –
+| 2%
+|-
+| 1%
+| –
+| 8.5%
+| 2.5%
+| 5%
+| 3.5%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 14%
+| 4%
+| 20%
+| 2%
+| 1%
+| –
+| 2.5%
+| 2%
+|-
+| style="background:#04FBF4;"| [https://www.ipsos.com/sites/default/files/ct/news/documents/2019-05/enquete_elections_europeennes_-_france_tv_radio_france_-_avril_2019_vdef.pdf Ipsos]
+| data-sort-value="2019-05-03"| 2–3 May 2019
+| 1,500
+| 60%
+| 1%
+| –
+| 8%
+| 2%
+| 5.5%
+| 3.5%
+| 8.5%
+| –
+| –
+| 21.5%
+| 2%
+| –
+| 13.5%
+| 5%
+| style="background:#C1CCE1;"| '''22%'''
+| 1.5%
+| 1%
+| –
+| 2%{{efn|Alliance Jaune with 2%|name="AJ2"}}
+| 3%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/03-05-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-05-03"| 30 Apr–3 May 2019
+| 1,397
+| 60%
+| 1%
+| –
+| 8.5%
+| 3%
+| 5.5%
+| 2.5%
+| 9%
+| –
+| –
+| 21.5%
+| 1.5%
+| –
+| 15%
+| 4.5%
+| style="background:#C1CCE1;"| '''23%'''
+| 1%
+| 1%
+| –
+| 2%
+| 1%
+|-
+| rowspan="2" style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5ccb13d00d43a_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-13.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-05-02"| 1–2 May 2019
+| rowspan="2"| 1,052
+| rowspan="2"| –
+| 1.5%
+| –
+| 8.5%
+| 2%
+| 5%
+| 3.5%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 2%
+| –
+| 14%
+| 4%
+| 21%
+| 2%
+| 1.5%
+| –
+| –
+| 3%
+|-
+| 1.5%
+| –
+| 8.5%
+| 2%
+| 5%
+| 3.5%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 13.5%
+| 4%
+| 20%
+| 2%
+| 1.5%
+| –
+| 3%
+| 2%
+|-
+| style="background:#FFDFCC;"| [https://web.archive.org/web/20190522150452/https://staticswww.bva-group.com/wp-content/uploads/2019/05/Intentions-de-vote-aux-%C3%A9lections-europ%C3%A9ennes-BVA-Orange-La-Tribune-Europe-1-2-mai-2019.pdf BVA]
+| data-sort-value="2019-05-02"| 30 Apr–2 May 2019
+| 1,397
+| 49%
+| 1.5%
+| –
+| 9%
+| 2.5%
+| 5.5%
+| 3%
+| 7.5%
+| 1%
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 13%
+| 4.5%
+| 21%
+| 2%
+| 1%
+| –
+| 3%
+| 1.5%
+|-
+| rowspan="2" style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/02-05-2019.pdf Ifop-Fiducial]
+| rowspan="2" data-sort-value="2019-05-02"| 29 Apr–2 May 2019
+| rowspan="2"| 1,404
+| rowspan="2"| 60%
+| 1%
+| –
+| 9.5%
+| 3.5%
+| 5%
+| 3%
+| 9%
+| –
+| –
+| 21.5%
+| 1%
+| –
+| 14.5%
+| 5%
+| style="background:#C1CCE1;"| '''23%'''
+| 1.5%
+| 1.5%
+| –
+| –
+| 1%
+|-
+| 1%
+| –
+| 8.5%
+| 3%
+| 5%
+| 3%
+| 9%
+| –
+| –
+| 21.5%
+| 1.5%
+| –
+| 15%
+| 4.5%
+| style="background:#C1CCE1;"| '''22.5%'''
+| 1.5%
+| 1%
+| –
+| 2%
+| 1%
+|-
+| rowspan="2" style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cc9bde391576_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-12.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-05-01"| 30 Apr–1 May 2019
+| rowspan="2"| 1,043
+| rowspan="2"| –
+| 1%
+| –
+| 9.5%
+| 2%
+| 5%
+| 3%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2.5%
+| –
+| 14.5%
+| 4%
+| 21%
+| 2%
+| 1.5%
+| –
+| –
+| 2%
+|-
+| 1%
+| –
+| 9%
+| 2%
+| 5%
+| 3%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 14%
+| 4%
+| 20.5%
+| 2%
+| 1%
+| –
+| 3%
+| 1.5%
+|-
+| style="background:aquamarine;"| [https://f.dviz.factoviz.com/Pdfs/8/e/e/EuroTrack2mai2019.pdf OpinionWay]
+| data-sort-value="2019-04-30"| 24–30 Apr 2019
+| 1,930
+| 61%
+| 1%
+| –
+| 8%
+| 3%
+| 5%
+| 4%
+| 8%
+| –
+| –
+| 21%
+| 3%
+| –
+| 14%
+| 4%
+| style="background:#C1CCE1;"| '''24%'''
+| 1%
+| 1%
+| –
+| –
+| 3%
+|-
+| rowspan="2" style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cc86dd91a7ca_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-11.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-04-30"| 29–30 Apr 2019
+| rowspan="2"| 1,037
+| rowspan="2"| –
+| 1.5%
+| –
+| 9.5%
+| 2%
+| 5.5%
+| 2.5%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 2.5%
+| –
+| 14%
+| 4%
+| 21.5%
+| 1.5%
+| 1.5%
+| –
+| –
+| 2%
+|-
+| 1.5%
+| –
+| 9%
+| 2%
+| 5.5%
+| 2.5%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 2.5%
+| –
+| 13.5%
+| 4%
+| 21%
+| 1.5%
+| 1%
+| –
+| 2.5%
+| 1.5%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/30-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-30"| 26–30 Apr 2019
+| 1,379
+| 59%
+| 0.5%
+| –
+| 8%
+| 2.5%
+| 5%
+| 3%
+| 9.5%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 1%
+| –
+| 14.5%
+| 5%
+| 22%
+| 2%
+| 1%
+| –
+| 2.5%
+| 1%
+|-
+| rowspan="2" style="background:#CAD5F7;"| [https://elabe.fr/wp-content/uploads/2019/04/20190430_elabe_bfmtv_les-francais-et-lelection-europeenne.pdf Elabe]
+| rowspan="2" data-sort-value="2019-04-29"| 28–29 Apr 2019
+| rowspan="2"| 1,200
+| rowspan="2"| 61%
+| 1%
+| –
+| 8%
+| 1.5%
+| 4%
+| 4%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 3.5%
+| –
+| 15.5%
+| 4%
+| 21.5%
+| 1.5%
+| 1%
+| –
+| –
+| 3%
+|-
+| 1%
+| –
+| 8%
+| 1.5%
+| 4%
+| 3.5%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 4%
+| –
+| 14.5%
+| 3.5%
+| 21%
+| 2%
+| 1%
+| –
+| 2%
+| 2.5%
+|-
+| rowspan="2" style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cc71f16eac95_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-10.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-04-29"| 28–29 Apr 2019
+| rowspan="2"| 1,052
+| rowspan="2"| –
+| 1%
+| –
+| 9%
+| 2.5%
+| 5%
+| 3%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 2%
+| –
+| 14.5%
+| 3.5%
+| 21.5%
+| 1.5%
+| 1.5%
+| –
+| –
+| 3%
+|-
+| 1%
+| –
+| 8.5%
+| 2.5%
+| 5%
+| 3%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 2%
+| –
+| 14%
+| 3.5%
+| 21.5%
+| 1.5%
+| 1.5%
+| –
+| 2.5%
+| 1.5%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/29-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-29"| 25–29 Apr 2019
+| 1,369
+| 59%
+| 0.5%
+| –
+| 8%
+| 2.5%
+| 5.5%
+| 3%
+| 9.5%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 1%
+| –
+| 14.5%
+| 4.5%
+| 21.5%
+| 2%
+| 1%
+| –
+| 2.5%
+| 1%
+|-
+| rowspan="2" style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cc5ce5ac3846_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-9.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-04-28"| 27–28 Apr 2019
+| rowspan="2"| 1,052
+| rowspan="2"| –
+| 1.5%
+| –
+| 9.5%
+| 2%
+| 5.5%
+| 3.5%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 15%
+| 4%
+| 21%
+| 1%
+| 1%
+| –
+| –
+| 2%
+|-
+| 1%
+| –
+| 9%
+| 2.5%
+| 5%
+| 3.5%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 14.5%
+| 4%
+| 21%
+| 1%
+| 1%
+| –
+| 2%
+| 1.5%
+|-
+| rowspan="2" style="background:GreenYellow;"| [https://www.2019opinions.com/uploads/media/5cc4762de7caf_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-8.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-04-27"| 26–27 Apr 2019
+| rowspan="2"| 1,059
+| rowspan="2"| –
+| 1%
+| –
+| 9.5%
+| 2%
+| 5.5%
+| 3%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 2%
+| –
+| 15%
+| 4%
+| 21%
+| 1%
+| 1%
+| –
+| –
+| 2%
+|-
+| 1%
+| –
+| 9%
+| 2%
+| 5.5%
+| 3%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 2%
+| –
+| 14.5%
+| 4%
+| 21%
+| 1%
+| 1%
+| –
+| 2%
+| 1%
+|-
+| rowspan="2" style="background:GreenYellow;"| [https://2019opinions.com/uploads/media/5cc32c3d737e0_rapport-harris-interactive-x-agence-epoka-barometre-europeennes-vague-7.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-04-26"| 25–26 Apr 2019
+| rowspan="2"| 1,072
+| rowspan="2"| –
+| 1%
+| –
+| 10%
+| 2.5%
+| 6%
+| 3%
+| 9.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 14.5%
+| 3.5%
+| 21%
+| 0.5%
+| 1.5%
+| –
+| –
+| 1.5%
+|-
+| 1%
+| –
+| 9.5%
+| 2.5%
+| 6%
+| 3%
+| 9.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 14%
+| 3.5%
+| 20.5%
+| 0.5%
+| 1.5%
+| –
+| 1.5%
+| 1.5%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/26-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-26"| 23–26 Apr 2019
+| 1,385
+| 60%
+| 0.5%
+| –
+| 9%
+| 2.5%
+| 5.5%
+| 3%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 1.5%
+| –
+| 15%
+| 4%
+| 21.5%
+| 2%
+| 1%
+| –
+| 1.5%
+| 1%
+|-
+| rowspan="2" style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/25-04-2019.pdf Ifop-Fiducial]
+| rowspan="2" data-sort-value="2019-04-25"| 20–25 Apr 2019
+| rowspan="2"| 1,850
+| rowspan="2"| 59.5%
+| 1%
+| –
+| 9.5%
+| 2.5%
+| 6%
+| 3%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 1.5%
+| –
+| 14.5%
+| 4.5%
+| 22%
+| 2%
+| 1.5%
+| –
+| –
+| 1%
+|-
+| 1%
+| –
+| 9%
+| 2.5%
+| 6%
+| 3%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 1.5%
+| –
+| 15%
+| 4%
+| 21%
+| 2%
+| 1%
+| –
+| 2%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/24-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-24"| 20–24 Apr 2019
+| 1,393
+| 59.5%
+| 1%
+| –
+| 9%
+| 2%
+| 6%
+| 3%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 1.5%
+| –
+| 15%
+| 4.5%
+| 20.5%
+| 2.5%
+| 1.5%
+| –
+| 2%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/23-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-23"| 19–23 Apr 2019
+| 1,369
+| 59%
+| 1%
+| –
+| 8.5%
+| 2.5%
+| 6%
+| 3%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 1.5%
+| –
+| 14.5%
+| 4.5%
+| 21%
+| 2.5%
+| 1.5%
+| –
+| 2%
+| 1%
+|-
+| style="background:aquamarine;"| [https://www.opinion-way.com/fr/component/edocman/opinionway-pour-tilder-les-echos-radio-classique-resultats-eurotrack-avril-2019/viewdocument.html OpinionWay]
+| data-sort-value="2019-04-23"| 17–23 Apr 2019
+| 1,965
+| 60%
+| 1%
+| –
+| 9%
+| 3%
+| 6%
+| 3%
+| 7%
+| –
+| –
+| 21%
+| 3%
+| –
+| 14%
+| 4%
+| style="background:#C1CCE1;"| '''24%'''
+| 1%
+| 1%
+| –
+| –
+| 3%
+|-
+| rowspan="2" style="background:#04FBF4;"| [https://www.ipsos.com/sites/default/files/ct/news/documents/2019-04/rapport_ipsos_enquete_electorale_avril_2019.pdf Ipsos]
+| rowspan="2" data-sort-value="2019-04-22"| 18–22 Apr 2019
+| rowspan="2"| 8,747
+| rowspan="2"| 58%
+| 1%
+| –
+| 7.5%
+| 2%
+| 6.5%
+| 4%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 2%
+| –
+| 13.5%
+| 5%
+| 22.5%
+| 1%
+| 1%
+| –
+| –
+| 2.5%
+|-
+| 1%
+| –
+| 7%
+| 2%
+| 6.5%
+| 4%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 2%
+| –
+| 13.5%
+| 4.5%
+| 22%
+| 1%
+| 1%
+| –
+| 2%
+| 2%
+|-
+| style="background:#FFDFCC;"| [https://staticswww.bva-group.com/wp-content/uploads/2019/04/BVA-Presse-r%C3%A9gionale-Les-Fran%C3%A7ais-et-les-%C3%A9lections-europ%C3%A9ennes-Pr%C3%A9sentation-des-r%C3%A9sultats-25-avril-2019.pdf BVA] {{Webarchive|url=https://web.archive.org/web/20190623134823/https://staticswww.bva-group.com/wp-content/uploads/2019/04/BVA-Presse-r%C3%A9gionale-Les-Fran%C3%A7ais-et-les-%C3%A9lections-europ%C3%A9ennes-Pr%C3%A9sentation-des-r%C3%A9sultats-25-avril-2019.pdf |date=23 June 2019 }}
+| data-sort-value="2019-04-21"| 15–21 Apr 2019
+| 5,324
+| 53.5%
+| 1%
+| –
+| 7.5%
+| 2.5%
+| 6%
+| 3.5%
+| 8%
+| 1%
+| –
+| style="background:#FFED99;"| '''23%'''
+| 2%
+| –
+| 13%
+| 4.5%
+| 22%
+| 2%
+| 1%
+| –
+| 2%
+| 1%
+|-
+| rowspan="2" style="background:GreenYellow;"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2019/04/Rapport_Harris_Interactive_x_Agence_Epoka-Barometre_Europeennes-Vague_6.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-04-20"| 19–20 Apr 2019
+| rowspan="2"| 1,056
+| rowspan="2"| –
+| 1.5%
+| –
+| 9.5%
+| 2%
+| 6.5%
+| 3%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 1.5%
+| –
+| 14%
+| 4%
+| 21.5%
+| 0.5%
+| 1.5%
+| –
+| –
+| 1.5%
+|-
+| 1.5%
+| –
+| 9%
+| 2.5%
+| 6.5%
+| 3%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 1.5%
+| –
+| 13.5%
+| 4%
+| 21%
+| 0.5%
+| 1.5%
+| –
+| 2%
+| 1.5%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/19-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-19"| 16–19 Apr 2019
+| 1,361
+| 59%
+| 1%
+| –
+| 7%
+| 2.5%
+| 6.5%
+| 3%
+| 8.5%
+| –
+| –
+| 22%
+| 1.5%
+| –
+| 14%
+| 4.5%
+| style="background:#C1CCE1;"| '''22.5%'''
+| 2%
+| 1%
+| –
+| 3%
+| 1%
+|-
+| rowspan="2" style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/18-04-2019.pdf Ifop-Fiducial]
+| rowspan="2" data-sort-value="2019-04-18"| 15–18 Apr 2019
+| rowspan="2"| 1,333
+| rowspan="2"| 59%
+| 1%
+| –
+| 8%
+| 3%
+| 6%
+| 3.5%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 13.5%
+| 5.5%
+| style="background:#C1CCE1;"| '''22%'''
+| 2.5%
+| 1%
+| –
+| –
+| 1%
+|-
+| 1%
+| –
+| 7%
+| 2.5%
+| 6.5%
+| 3%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 13.5%
+| 5%
+| 21.5%
+| 2%
+| 1%
+| –
+| 3%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/17-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-17"| 13–17 Apr 2019
+| 1,335
+| 58%
+| 1%
+| –
+| 7.5%
+| 2.5%
+| 6%
+| 3.5%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 13.5%
+| 5%
+| 21.5%
+| 2%
+| 1%
+| data-sort-value="0%"| <0.5%
+| 2.5%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/16-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-16"| 12–16 Apr 2019
+| 1,358
+| 57%
+| 1%
+| –
+| 8%
+| 3%
+| 6%
+| 3.5%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''21.5%'''
+| 2%
+| –
+| 13%
+| 5%
+| 21%
+| 1.5%
+| 2%
+| data-sort-value="0%"| <0.5%
+| 2.5%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/15-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-15"| 11–15 Apr 2019
+| 1,391
+| 57%
+| 1%
+| –
+| 8%
+| 3%
+| 6%
+| 3.5%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''21.5%'''
+| 2%
+| –
+| 13%
+| 5%
+| style="background:#C1CCE1;"| '''21.5%'''
+| 1%
+| 1.5%
+| 0.5%
+| 3%
+| 1%
+|-
+| rowspan="2" style="background:GreenYellow;"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2019/04/Rapport-Harris_Interactive-Agence_Epoka-Barometre_Europeennes-Vague_5.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-04-13"| 12–13 Apr 2019
+| rowspan="2"| 1,031
+| rowspan="2"| –
+| 1%
+| –
+| 9.5%
+| 2.5%
+| 6.5%
+| 4%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 2%
+| –
+| 14%
+| 4%
+| 21%
+| 1%
+| 2%
+| –
+| –
+| 2%
+|-
+| 1%
+| –
+| 9%
+| 2.5%
+| 6.5%
+| 4%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 2%
+| –
+| 14%
+| 4%
+| 20.5%
+| 1%
+| 2%
+| –
+| 2.5%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/12-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-12"| 9–12 Apr 2019
+| 1,388
+| 58%
+| 1%
+| –
+| 8.5%
+| 3.5%
+| 5.5%
+| 3%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 13%
+| 5%
+| 21.5%
+| 1.5%
+| 1%
+| 1%
+| 3%
+| 1%
+|-
+| style="background:#FFDFCC;"| [https://staticswww.bva-group.com/wp-content/uploads/2019/04/Intentions-de-vote-aux-%C3%A9lections-europ%C3%A9ennes-BVA-Orange-La-Tribune-Europe-1-11-avril-2019-1.pdf BVA] {{Webarchive|url=https://web.archive.org/web/20190412113546/https://staticswww.bva-group.com/wp-content/uploads/2019/04/Intentions-de-vote-aux-%C3%A9lections-europ%C3%A9ennes-BVA-Orange-La-Tribune-Europe-1-11-avril-2019-1.pdf |date=12 April 2019 }}
+| data-sort-value="2019-04-11"| 10–11 Apr 2019
+| 1,402
+| 53%
+| 1.5%
+| –
+| 8%
+| 2%
+| 5.5%
+| 3.5%
+| 7%
+| 1%
+| –
+| style="background:#FFED99;"| '''24%'''
+| 2%
+| –
+| 13.5%
+| 4%
+| 20%
+| 1%
+| 1%
+| 1.5%
+| 3%
+| 1.5%
+|-
+| rowspan="2" style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/11-04-2019.pdf Ifop-Fiducial]
+| rowspan="2" data-sort-value="2019-04-11"| 8–11 Apr 2019
+| rowspan="2"| 1,395
+| rowspan="2"| 58.5%
+| 1%
+| –
+| 9%
+| 3.5%
+| 5%
+| 3.5%
+| 7%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 2.5%
+| –
+| 13.5%
+| 5%
+| 22%
+| 1.5%
+| 1.5%
+| 1%
+| –
+| 1.5%
+|-
+| 1%
+| –
+| 8.5%
+| 3%
+| 5.5%
+| 3%
+| 7%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 2.5%
+| –
+| 13.5%
+| 4.5%
+| 21.5%
+| 1.5%
+| 1%
+| 1%
+| 3%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/10-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-10"| 6–10 Apr 2019
+| 1,401
+| 58.5%
+| 1%
+| –
+| 9%
+| 3%
+| 5.5%
+| 3%
+| 7%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 2.5%
+| –
+| 13.5%
+| 4.5%
+| 21%
+| 1.5%
+| 1%
+| 1%
+| 3%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/09-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-09"| 5–9 Apr 2019
+| 1,396
+| 58%
+| 1%
+| –
+| 8.5%
+| 2.5%
+| 5.5%
+| 3%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 3%
+| –
+| 13%
+| 4.5%
+| 21%
+| 2%
+| 1%
+| 0.5%
+| 3.5%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/08-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-08"| 4–8 Apr 2019
+| 1,370
+| 58%
+| 1%
+| –
+| 8.5%
+| 2.5%
+| 5%
+| 3%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 3%
+| –
+| 13%
+| 4.5%
+| 20.5%
+| 2.5%
+| 1%
+| 0.5%
+| 3.5%
+| 1%
+|-
+| rowspan="2" style="background:GreenYellow;"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2019/04/Rapport_Harris_Interactive_x_Agence_Epoka-Barometre_Europeennes-Vague_4.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-04-06"| 5–6 Apr 2019
+| rowspan="2"| 1,051
+| rowspan="2"| –
+| 1%
+| –
+| 8.5%
+| 2%
+| 5.5%
+| 3.5%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 2%
+| –
+| 13%
+| 5%
+| 21%
+| 1.5%
+| 2%
+| 2%
+| –
+| 2%
+|-
+| 1%
+| –
+| 8.5%
+| 2%
+| 5.5%
+| 3.5%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 2%
+| –
+| 12%
+| 5%
+| 20%
+| 1.5%
+| 2%
+| 1.5%
+| 3%
+| 1.5%
+|-
+| style="background:aquamarine;"| [https://www.insa-consulere.de/wie-wuerden-die-europaeer-aktuell-zur-europawahl-waehlen-2/ OpinionWay]
+| data-sort-value="2019-04-05"| 3–5 Apr 2019
+| 968
+| –
+| 2%
+| –
+| 8%
+| 2%
+| 6%
+| 3%
+| 7%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 3%
+| –
+| 14%
+| 5%
+| style="background:#C1CCE1;"| '''22%'''
+| 1%
+| 1%
+| –
+| –
+| 4%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/05-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-05"| 2–5 Apr 2019
+| 1,368
+| 58.5%
+| 1%
+| –
+| 8.5%
+| 2%
+| 5%
+| 3.5%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2.5%
+| –
+| 13%
+| 5%
+| 21%
+| 2%
+| 1%
+| 0.5%
+| 3%
+| 1%
+|-
+| rowspan="2" style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/04-04-2019.pdf Ifop-Fiducial]
+| rowspan="2" data-sort-value="2019-04-04"| 1–4 Apr 2019
+| rowspan="2"| 1,373
+| rowspan="2"| 59%
+| 1%
+| –
+| 8.5%
+| 2%
+| 5.5%
+| 3%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 13%
+| 5.5%
+| 22%
+| 2.5%
+| 1%
+| 1.5%
+| –
+| 1.5%
+|-
+| 1%
+| –
+| 8%
+| 2%
+| 5%
+| 3.5%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 13%
+| 5.5%
+| 21%
+| 2%
+| 1%
+| 1%
+| 3%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/03-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-03"| 30 Mar–3 Apr 2019
+| 1,370
+| 59%
+| 1%
+| –
+| 8.5%
+| 2.5%
+| 5.5%
+| 3%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 1.5%
+| –
+| 13%
+| 5.5%
+| 21%
+| 2%
+| 0.5%
+| 1%
+| 3.5%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/02-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-02"| 29 Mar–2 Apr 2019
+| 1,397
+| 59%
+| 1%
+| –
+| 8.5%
+| 2.5%
+| 5.5%
+| 3%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 1.5%
+| –
+| 13.5%
+| 5.5%
+| 20.5%
+| 1.5%
+| 0.5%
+| 1%
+| 3.5%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/01-04-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-04-01"| 28 Mar–1 Apr 2019
+| 1,370
+| 59%
+| 1%
+| –
+| 8.5%
+| 2%
+| 5%
+| 3%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 2%
+| –
+| 14%
+| 5.5%
+| 21%
+| 1.5%
+| 0.5%
+| 1%
+| 3.5%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/29-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-29"| 26–29 Mar 2019
+| 1,366
+| 58%
+| 1%
+| –
+| 8%
+| 2%
+| 5%
+| 3.5%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 1.5%
+| –
+| 14%
+| 5%
+| 21%
+| 2%
+| 0.5%
+| 0.5%
+| 4%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/28-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-28"| 25–28 Mar 2019
+| 1,361
+| 58%
+| 1%
+| data-sort-value="0%"| <0.5%
+| 8%
+| 2%
+| 5.5%
+| 3%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 1.5%
+| –
+| 14%
+| 5%
+| 21%
+| 2%
+| 1%
+| 0.5%
+| 4%
+| 1%
+|-
+| rowspan="2" style="background:#CAD5F7;"| [https://elabe.fr/wp-content/uploads/2019/03/20190327_elabe_bfmtv_les-francais-et-les-elections-europeennes-1.pdf Elabe]
+| rowspan="2" data-sort-value="2019-03-27"| 25–27 Mar 2019
+| rowspan="2"| 1,201
+| rowspan="2"| 56%
+| colspan="2"| 0.5%
+| 7.5%
+| 2%
+| 6%
+| 5%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 3.5%
+| –
+| 14%
+| 3%
+| 22%
+| 1%
+| 1%
+| –
+| –
+| 3%
+|-
+| colspan="2"| 0.5%
+| 7.5%
+| 2%
+| 5.5%
+| 5%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 3.5%
+| –
+| 12.5%
+| 3.5%
+| 21%
+| 1%
+| 1%
+| –
+| 2.5%
+| 2.5%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/27-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-27"| 23–27 Mar 2019
+| 1,382
+| 58.5%
+| 1%
+| data-sort-value="0%"| <0.5%
+| 8%
+| 2.5%
+| 5%
+| 3%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 14%
+| 5%
+| 20.5%
+| 1.5%
+| 1%
+| 0.5%
+| 5%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/28-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-27"| 22–27 Mar 2019
+| 1,860
+| –
+| 1%
+| 0.5%
+| 8%
+| 2.5%
+| 5%
+| 3.5%
+| 8.5%
+| –
+| –
+| 21%
+| 2%
+| –
+| 14.5%
+| 6%
+| style="background:#C1CCE1;"| '''21.5%'''
+| 1.5%
+| 1%
+| 1.5%
+| –
+| 2%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/26-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-26"| 22–26 Mar 2019
+| 1,402
+| 58%
+| 1%
+| 0.5%
+| 8.5%
+| 2%
+| 5%
+| 3%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 14%
+| 5%
+| 20%
+| 1%
+| 1.5%
+| 0.5%
+| 5%
+| 1%
+|-
+| style="background:aquamarine;"| [https://www.opinion-way.com/fr/component/edocman/opinionway-pour-tilder-les-echos-radio-classique-resultats-eurotrack-mars-2019/viewdocument.html OpinionWay]
+| data-sort-value="2019-03-26"| 20–26 Mar 2019
+| 1,889
+| 59%
+| 2%
+| –
+| 7%
+| 3%
+| 6%
+| 2%
+| 7%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 3%
+| –
+| 13%
+| 6%
+| style="background:#C1CCE1;"| '''23%'''
+| 1%
+| 1%
+| –
+| –
+| 3%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/25-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-25"| 21–25 Mar 2019
+| 1,409
+| 58%
+| 1%
+| 0.5%
+| 8.5%
+| 2%
+| 5%
+| 3%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 14%
+| 4.5%
+| 20%
+| 0.5%
+| 2%
+| 1%
+| 5.5%
+| 1%
+|-
+| rowspan="2" style="background:GreenYellow;"| [http://harris-interactive.fr/wp-content/uploads/sites/6/2019/03/Rapport-Harris_Interactive-Agence_Epoka-Barometre_Europeennes-Vague_3-TF1-LCI-RTL-LeFigaro.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-03-23"| 22–23 Mar 2019
+| rowspan="2"| 1,068
+| rowspan="2"| –
+| 1%
+| 1%
+| 8%
+| 2%
+| 7%
+| 2.5%
+| 7%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 2%
+| –
+| 13%
+| 5%
+| 22%
+| 1.5%
+| 1.5%
+| 1.5%
+| –
+| 2%
+|-
+| 1%
+| 0.5%
+| 8%
+| 1.5%
+| 7%
+| 2.5%
+| 7%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 2%
+| –
+| 13%
+| 5%
+| 21.5%
+| 1%
+| 1%
+| 1%
+| 3%
+| 2%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/22-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-22"| 19–22 Mar 2019
+| 1,390
+| 59%
+| 1%
+| 0.5%
+| 8%
+| 2%
+| 6%
+| 3%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 2%
+| –
+| 13.5%
+| 4.5%
+| 20.5%
+| 0.5%
+| 1.5%
+| 0.5%
+| 5%
+| 1%
+|-
+| style="background:#FFDFCC;"| [https://staticswww.bva-group.com/wp-content/uploads/2019/03/Intentions-de-vote-aux-%C3%A9lections-europ%C3%A9ennes-BVA-Orange-La-Tribune-Europe-1-Mars-2019.pdf BVA] {{Webarchive|url=https://web.archive.org/web/20190328184834/https://staticswww.bva-group.com/wp-content/uploads/2019/03/Intentions-de-vote-aux-%C3%A9lections-europ%C3%A9ennes-BVA-Orange-La-Tribune-Europe-1-Mars-2019.pdf |date=28 March 2019 }}
+| data-sort-value="2019-03-21"| 20–21 Mar 2019
+| 1,398
+| 52%
+| 1.5%
+| 1%
+| 7.5%
+| 2%
+| 5%
+| 4%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 1.5%
+| –
+| 12%
+| 5%
+| 21%
+| 1%
+| 0.5%
+| 1.5%
+| 3%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/21-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-21"| 18–21 Mar 2019
+| 1,402
+| 59.5%
+| 1%
+| 0.5%
+| 8%
+| 2%
+| 5.5%
+| 3.5%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 13%
+| 4.5%
+| 21%
+| 0.5%
+| 1%
+| 1%
+| 4.5%
+| 1%
+|-
+| rowspan="2" style="background:#04FBF4;"| [https://www.ipsos.com/sites/default/files/ct/news/documents/2019-03/rapport_ipsos_enquete_electorale_mars_2019.pdf Ipsos]
+| rowspan="2" data-sort-value="2019-03-21"| 15–21 Mar 2019
+| rowspan="2"| 10,049
+| rowspan="2"| 58%
+| 0.5%
+| 1%
+| 8%
+| 2%
+| 6.5%
+| 4%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 12%
+| 5%
+| 22%
+| 0.5%
+| 1%
+| 1.5%
+| –
+| 2.5%
+|-
+| 0.5%
+| 1%
+| 7.5%
+| 2%
+| 6.5%
+| 4%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 2%
+| –
+| 12%
+| 4.5%
+| 21%
+| 0.5%
+| 1%
+| 1.5%
+| 2.5%
+| 2%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/20-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-20"| 16–20 Mar 2019
+| 1,413
+| 59.5%
+| 0.5%
+| 1%
+| 7.5%
+| 2%
+| 5.5%
+| 3.5%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 1.5%
+| –
+| 13%
+| 4.5%
+| 21.5%
+| 0.5%
+| 1%
+| 1.5%
+| 4%
+| 1.5%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/19-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-19"| 15–19 Mar 2019
+| 1,399
+| 59%
+| 0.5%
+| 1%
+| 7.5%
+| 2%
+| 5.5%
+| 3.5%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 1.5%
+| –
+| 13%
+| 4.5%
+| 20.5%
+| 0.5%
+| 1%
+| 1.5%
+| 4.5%
+| 2%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/18-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-18"| 14–18 Mar 2019
+| 1,393
+| 59%
+| 0.5%
+| 1%
+| 7.5%
+| 2%
+| 6%
+| 3%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 1.5%
+| –
+| 13.5%
+| 4.5%
+| 20.5%
+| 0.5%
+| 1%
+| 1.5%
+| 4%
+| 1.5%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/15-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-15"| 12–15 Mar 2019
+| 1,398
+| 59%
+| 0.5%
+| 1%
+| 7%
+| 2%
+| 6%
+| 2.5%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 1.5%
+| –
+| 13.5%
+| 5%
+| 21%
+| 0.5%
+| 1%
+| 1.5%
+| 4%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/14-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-14"| 10–14 Mar 2019
+| 1,401
+| 59%
+| 0.5%
+| 1%
+| 7.5%
+| 2%
+| 5.5%
+| 2.5%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 1.5%
+| –
+| 13.5%
+| 4.5%
+| 21%
+| 0.5%
+| 1%
+| 1%
+| 4%
+| 1.5%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/13-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-13"| 9–13 Mar 2019
+| 1,384
+| 58%
+| 0.5%
+| 1%
+| 7.5%
+| 2%
+| 5.5%
+| 2.5%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 1.5%
+| –
+| 13%
+| 4.5%
+| 21.5%
+| 0.5%
+| 1%
+| 1%
+| 4%
+| 1.5%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/12-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-12"| 8–12 Mar 2019
+| 1,378
+| 58%
+| 0.5%
+| 1%
+| 7.5%
+| 2%
+| 5.5%
+| 2.5%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''24.5%'''
+| 1.5%
+| –
+| 12.5%
+| 5%
+| 21.5%
+| 1%
+| 1%
+| 1.5%
+| 3.5%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/11-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-11"| 7–11 Mar 2019
+| 1,371
+| 57.5%
+| 0.5%
+| 1%
+| 7%
+| 2%
+| 5.5%
+| 3%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''25%'''
+| 1.5%
+| –
+| 12.5%
+| 5%
+| 21.5%
+| 1%
+| 1%
+| 1.5%
+| 3%
+| 1%
+|-
+| rowspan="2" style="background:GreenYellow;"| [http://harris-interactive.fr/wp-content/uploads/sites/6/2019/03/Rapport-Harris_Interactiv-Agence_Epoka-Barometre_Europeennes-Vague_2-TF1-LCI-RTL-LeFigaro.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-03-09"| 8–9 Mar 2019
+| rowspan="2"| 1,090
+| rowspan="2"| –
+| 2%
+| 1%
+| 9%
+| 2%
+| 5%
+| 3%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 1%
+| –
+| 14%
+| 5%
+| 21%
+| 2%
+| 1%
+| 1%
+| –
+| 3%
+|-
+| 2%
+| 1%
+| 9%
+| 1%
+| 5%
+| 3%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 1%
+| –
+| 13%
+| 5%
+| 20%
+| 2%
+| 1%
+| 1%
+| 3%
+| 3%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/08-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-08"| 5–8 Mar 2019
+| 1,386
+| 58%
+| 0.5%
+| 1%
+| 7%
+| 2%
+| 5%
+| 2.5%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''24.5%'''
+| 2.5%
+| –
+| 13%
+| 5%
+| 22%
+| 0.5%
+| 1.5%
+| 1.5%
+| 3%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://ladaws-pm-prod.s3.eu-west-1.amazonaws.com/var/partenaire/ifop/europeennes_2019/07-03-2019.pdf Ifop-Fiducial]
+| data-sort-value="2019-03-07"| 4–7 Mar 2019
+| 1,381
+| 59%
+| 0.5%
+| 1%
+| 7%
+| 2.5%
+| 5%
+| 2%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 3%
+| –
+| 13%
+| 5.5%
+| 22%
+| 0.5%
+| 1.5%
+| 1%
+| 3%
+| 1%
+|-
+| rowspan="2" style="background:#CAD5F7;"| [https://elabe.fr/wp-content/uploads/2019/02/rapport_20190227_elabe_bfmtv_les-francais-et-les-elections-europeennes.pdf Elabe]
+| rowspan="2" data-sort-value="2019-02-27"| 25–27 Feb 2019
+| rowspan="2"| 1,201
+| rowspan="2"| 59%
+| colspan="2"| 1%
+| 8%
+| 2.5%
+| 5%
+| 3%
+| 10%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 13%
+| 5.5%
+| style="background:#C1CCE1;"| '''22%'''
+| 1%
+| 1%
+| –
+| –
+| 4%
+|-
+| colspan="2"| 1%
+| 7%
+| 3%
+| 5%
+| 3%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2.5%
+| –
+| 12%
+| 5%
+| 21.5%
+| 1%
+| 1%
+| –
+| 3%
+| 4%
+|-
+| style="background:aquamarine;"| [https://www.opinion-way.com/fr/component/edocman/opinionway-pour-tilder-les-echos-radio-classique-resultats-eurotrack-vague-2-fevrier-2019/viewdocument.html OpinionWay]
+| data-sort-value="2019-02-27"| 20–27 Feb 2019
+| 2,218
+| 59%
+| 2%
+| –
+| 7%
+| 2%
+| 6%
+| 4%
+| 6%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 14%
+| 5%
+| style="background:#C1CCE1;"| '''22%'''
+| 1%
+| 1%
+| –
+| –
+| 6%
+|-
+| rowspan="2" style="background:GreenYellow;"| [http://harris-interactive.fr/wp-content/uploads/sites/6/2019/02/Rapport-Harris_InteractivexAgence_Epoka-Barometre_Europeeennes-Vague1-TF1-LCI-RTL-LeFigaro.pdf Harris Interactive]
+| rowspan="2" data-sort-value="2019-02-23"| 22–23 Feb 2019
+| rowspan="2"| 1,064
+| rowspan="2"| –
+| 1%
+| 2%
+| 8%
+| 2%
+| 6%
+| 4%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 12%
+| 6%
+| 20%
+| 1%
+| 1%
+| 1%
+| –
+| 4%
+|-
+| 1%
+| 2%
+| 8%
+| 2%
+| 6%
+| 4%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''22%'''
+| 2%
+| –
+| 12%
+| 5%
+| 19%
+| 1%
+| 1%
+| 1%
+| 3%
+| 3%
+|-
+| style="background:#FFDFCC;"| [https://staticswww.bva-group.com/wp-content/uploads/2019/02/Intentions-de-vote-aux-élections-européennes-BVA-Orange-La-Tribune-RTL-Février-2019.pdf BVA] {{Webarchive|url=https://web.archive.org/web/20190224001757/https://staticswww.bva-group.com/wp-content/uploads/2019/02/Intentions-de-vote-aux-%C3%A9lections-europ%C3%A9ennes-BVA-Orange-La-Tribune-RTL-F%C3%A9vrier-2019.pdf |date=24 February 2019 }}
+| data-sort-value="2019-02-21"| 20–21 Feb 2019
+| 929
+| 50.5%
+| 1%
+| 1%
+| 7.5%
+| 2%
+| 5%
+| 3%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''25%'''
+| 2%
+| –
+| 10%
+| 6%
+| 19%
+| 1%
+| 0.5%
+| 1.5%
+| 4%
+| 2.5%
+|-
+| style="background:#FFCCCC;"| [https://www.atlantico.fr/decryptage/3568600/exclusif--le-regard-des-europeens-sur-la-situation-de-leurs-pays-et-de-l-union-europeenne-ifop Ifop]
+| data-sort-value="2019-02-21"| 20–21 Feb 2019
+| 1,004
+| –
+| 1%
+| 1%
+| 6.5%
+| 2%
+| 5%
+| 4%
+| 8.5%
+| –
+| –
+| 22%
+| 3.5%
+| –
+| 10%
+| 6.5%
+| style="background:#C1CCE1;"| '''23%'''
+| 1%
+| 0.5%
+| 2.5%
+| –
+| 3%
+|-
+| rowspan="2" style="background:#04FBF4;"| [https://www.ipsos.com/sites/default/files/ct/news/documents/2019-02/rapport_ipsos_sopra_steria_eef_fevrier_2019.pdf Ipsos]
+| rowspan="2" data-sort-value="2019-02-21"| 15–21 Feb 2019
+| rowspan="2"| 10,002
+| rowspan="2"| 58%
+| 0.5%
+| 1%
+| 8.5%
+| 2%
+| 5.5%
+| 5.5%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 2.5%
+| –
+| 12%
+| 6.5%
+| 21%
+| 1%
+| 0.5%
+| 2%
+| –
+| –
+|-
+| 0.5%
+| 1%
+| 8%
+| 2%
+| 5%
+| 5%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 2.5%
+| –
+| 12%
+| 6%
+| 19.5%
+| 1%
+| 0.5%
+| 1.5%
+| 4.5%
+| –
+|-
+| rowspan="2" style="background:#FFCCCC;"| [https://www.ifop.com/wp-content/uploads/2019/02/116181-Rapport.pdf Ifop-Fiducial]
+| rowspan="2" data-sort-value="2019-02-15"| 13–15 Feb 2019
+| rowspan="2"| 1,367
+| rowspan="2"| –
+| 1%
+| 1%
+| 7.5%
+| 3%
+| 6%
+| 3.5%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 2%
+| –
+| 10%
+| 6%
+| 20%
+| 1.5%
+| 0.5%
+| 2%
+| –
+| 3%
+|-
+| 1%
+| 1%
+| 7%
+| 2.5%
+| 6%
+| 3.5%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| 2.5%
+| –
+| 10%
+| 6%
+| 20%
+| 1%
+| data-sort-value="0%"| <0.5%
+| 1.5%
+| 3%
+| 2.5%
+|-
+| style="background:aquamarine;"| [https://www.opinion-way.com/fr/component/edocman/opinionway-pour-tilder-les-echos-radio-classique-resultats-eurotrack-vague-1-31-janvier-2019/viewdocument.html OpinionWay]
+| data-sort-value="2019-01-25"| 17–25 Jan 2019
+| 1,810
+| 57%
+| 1%
+| –
+| 8%
+| 2%
+| 6%
+| 4%
+| 8%
+| –
+| –
+| 20%
+| 3%
+| –
+| 12%
+| 7%
+| style="background:#C1CCE1;"| '''22%'''
+| 1%
+| data-sort-value="0%"| <1%
+| –
+| –
+| 6%
+|-
+| rowspan="2" style="background:#CAD5F7;"| [https://elabe.fr/wp-content/uploads/2019/01/20192301_elabe_bfmtv_les-francais-et-lelection-europeenne.pdf Elabe]
+| rowspan="2" data-sort-value="2019-01-23"| 22–23 Jan 2019
+| rowspan="2"| 1,000
+| rowspan="2"| 70%
+| colspan="2"| 0.5%
+| 9.5%
+| 2%
+| 6%
+| 2%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''23.5%'''
+| 3%
+| –
+| 12.5%
+| 5%
+| 20.5%
+| 1.5%
+| 1%
+| –
+| –
+| 4%
+|-
+| colspan="2"| 0.5%
+| 8%
+| 2%
+| 5%
+| 1.5%
+| 8.5%
+| –
+| –
+| style="background:#FFED99;"| '''22.5%'''
+| 3%
+| –
+| 11.5%
+| 3.5%
+| 17.5%
+| 0.5%
+| 1%
+| –
+| 13%
+| 2%
+|-
+| rowspan="2" style="background:#FFCCCC;"| [https://www.ifop.com/wp-content/uploads/2019/01/116087-Rapport-IV-europ%C3%A9enne.pdf Ifop-Fiducial]
+| rowspan="2" data-sort-value="2019-01-09"| 8–9 Jan 2019
+| rowspan="2"| 934
+| rowspan="2"| –
+| –
+| 1.5%
+| 9.5%
+| 2.5%
+| 4%
+| 2.5%
+| 6.5%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 3.5%
+| –
+| 10%
+| 7.5%
+| 21%
+| 1.5%
+| 0.5%
+| 3%
+| –
+| 3.5%
+|-
+| –
+| 1.5%
+| 7%
+| 2.5%
+| 4.5%
+| 2.5%
+| 6.5%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| 3.5%
+| –
+| 10%
+| 6%
+| 18.5%
+| 1.5%
+| 0.5%
+| 2%
+| 7.5%
+| 3%
+|-
+| rowspan="2" style="background:#FFCCFF;"| [http://www.odoxa.fr/wp-content/uploads/2018/12/Odoxa-Dentsu-Consulting-pour-FranceInfo-Intentions-de-vote-Europeennes.pdf Odoxa]
+| rowspan="2" data-sort-value="2018-12-20"| 19–20 Dec 2018
+| rowspan="2"| 926
+| rowspan="2"| –
+| –
+| 2.5%
+| 11.5%
+| 2%
+| 7%
+| 3%
+| 6.5%
+| –
+| –
+| 19%
+| 2.5%
+| –
+| 8%
+| 7%
+| style="background:#C1CCE1;"| '''24%'''
+| 1%
+| 1%
+| 3%
+| –
+| 2%
+|-
+| –
+| 3.5%
+| 10.5%
+| 1%
+| 6%
+| 3%
+| 6%
+| –
+| –
+| 19%
+| 2%
+| –
+| 8%
+| 7%
+| style="background:#C1CCE1;"| '''21%'''
+| 1%
+| 1%
+| 2%
+| 8%
+| 1%
+|-
+| style="background:#FFCCCC;"| [https://www.ifop.com/wp-content/uploads/2018/12/116044-Rapport.pdf Ifop]
+| data-sort-value="2018-12-10"| 7–10 Dec 2018
+| 938
+| –
+| –
+| 1.5%
+| 9%
+| 2.5%
+| 4.5%
+| 3.5%
+| 8%
+| –
+| –
+| 18%
+| 3%
+| –
+| 11%
+| 8%
+| style="background:#C1CCE1;"| '''24%'''
+| 1%
+| 0.5%
+| 2.5%
+| –
+| 3%
+|-
+| rowspan="2" style="background:#04FBF4;"| [http://www.commission-des-sondages.fr/notices/files/notices/2018/decembre/8791-eur-ipsos-jdd.pdf Ipsos]*
+| rowspan="2" data-sort-value="2018-12-06"| 5–6 Dec 2018
+| rowspan="2"| 957
+| rowspan="2"| –
+| colspan="2"| 1.5%
+| 12%
+| 1%
+| 4%
+| 3.5%
+| 14%
+| –
+| –
+| style="background:#FFED99;"| '''21%'''
+| 3%
+| –
+| 12.5%
+| 6%
+| 17%
+| 0.5%
+| 0.5%
+| 3.5%
+| –
+| –
+|-
+| colspan="2"| 1%
+| 9%
+| 1.5%
+| 3%
+| 3%
+| 13%
+| –
+| –
+| style="background:#FFED99;"| '''21%'''
+| 3%
+| –
+| 11%
+| 4.5%
+| 14%
+| 0.5%
+| 0.5%
+| 3%
+| 12%
+| –
+|-
+| style="background:#FFDFCC;"| [http://www.commission-des-sondages.fr/notices/files/notices/2018/decembre/8792-eur-bva-pqr.pdf BVA]
+| data-sort-value="2018-12-06"| 26 Nov–6 Dec 2018
+| 5,456
+| 52.5%
+| –
+| 1%
+| 10%
+| 2%
+| 5%
+| 5%
+| 7%
+| –
+| –
+| 20%
+| 3%
+| –
+| 12%
+| 7%
+| style="background:#C1CCE1;"| '''21%'''
+| 1%
+| 1%
+| 2%
+| –
+| 3%
+|-
+| rowspan="2" style="background:#FFCCCC;"| [https://www.ifop.com/wp-content/uploads/2018/12/116014-Rapport-6.12.2018.pdf Ifop]*
+| rowspan="2" data-sort-value="2018-12-04"| 3–4 Dec 2018
+| rowspan="2"| 944
+| rowspan="2"| –
+| –
+| 1.5%
+| 11.5%
+| colspan="4"| 14%
+| –
+| –
+| 15%
+| 4%
+| –
+| 13%
+| 7.5%
+| style="background:#C1CCE1;"| '''23.5%'''
+| 1%
+| 1%
+| 2%
+| –
+| 6%
+|-
+| –
+| 1.5%
+| 11.5%
+| colspan="3"| 11.5%
+| 4%
+| –
+| –
+| 16%
+| 4.5%
+| –
+| 12.5%
+| 8%
+| style="background:#C1CCE1;"| '''24%'''
+| 0.5%
+| 1%
+| 1.5%
+| –
+| 3.5%
+|-
+| style="background:#FFCCCC;"| [http://www.commission-des-sondages.fr/notices/files/notices/2018/novembre/8790-eur-ifop-atlantico-14-nov.pdf Ifop]
+| data-sort-value="2018-11-12"| 9–12 Nov 2018
+| 945
+| –
+| –
+| 1%
+| 10%
+| 2%
+| 6%
+| 3%
+| 7%
+| –
+| –
+| 19%
+| 4%
+| –
+| 13%
+| 6%
+| style="background:#C1CCE1;"| '''22%'''
+| 1%
+| 1%
+| 2%
+| –
+| 3%
+|-
+| style="background:#CAD5F7;"| [https://elabe.fr/wp-content/uploads/2018/11/20181107_elabe_bfmtv_les-francais-et-lunion-europeenne.pdf Elabe]
+| data-sort-value="2018-11-07"| 6–7 Nov 2018
+| 1,002
+| 56%
+| colspan="2"| 0.5%
+| 11%
+| 2.5%
+| 7%
+| 2.5%
+| 7%
+| –
+| –
+| 19.5%
+| 4%
+| –
+| 15%
+| 6.5%
+| style="background:#C1CCE1;"| '''20%'''
+| 1%
+| 0.5%
+| –
+| –
+| 3%
+|-
+| style="background:#FFCCCC;"| [https://www.ifop.com/wp-content/uploads/2018/11/115929-Rapport.pdf Ifop]
+| data-sort-value="2018-10-31"| 30–31 Oct 2018
+| 905
+| –
+| –
+| 2%
+| 11%
+| 2%
+| 7.5%
+| 2.5%
+| 7%
+| –
+| –
+| 19%
+| 3%
+| –
+| 13%
+| 7%
+| style="background:#C1CCE1;"| '''21%'''
+| 1%
+| 1%
+| –
+| –
+| 3%
+|-
+| style="background:#FFCCCC;"| [https://www.ifop.com/wp-content/uploads/2018/11/115929-Rapport.pdf Ifop]
+| data-sort-value="2018-10-29"| 25–29 Oct 2018
+| 1,382
+| –
+| –
+| 1%
+| 11%
+| 3%
+| 6%
+| 3%
+| 7%
+| –
+| –
+| style="background:#FFED99;"| '''20%'''
+| 3%
+| –
+| 14%
+| 6.5%
+| style="background:#C1CCE1;"| '''20%'''
+| 1%
+| 1.5%
+| –
+| –
+| 3%
+|-
+| style="background:#FFCCFF;"| [http://www.odoxa.fr/wp-content/uploads/2018/09/Odoxa-Dentsu-Consulting-Les-europeennes.pdf Odoxa]
+| data-sort-value="2018-09-13"| 12–13 Sep 2018
+| 907
+| –
+| –
+| 1%
+| 12.5%
+| 1.5%
+| 4.5%
+| 4%
+| 5%
+| –
+| –
+| style="background:#FFED99;"| '''21.5%'''
+| 3%
+| –
+| 14%
+| 6%
+| 21%
+| 1.5%
+| 1%
+| 1%
+| –
+| 2.5%
+|-
+| rowspan="2" style="background:#FFCCCC;"| [https://www.ifop.com/wp-content/uploads/2018/09/115781-Rapport-PM.pdf Ifop-Fiducial]
+| rowspan="2" data-sort-value="2018-08-31"| 30–31 Aug 2018
+| rowspan="2"| 1,403
+| rowspan="2"| –
+| –
+| 2%
+| 14%
+| 2%
+| 6%
+| 3%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''20%'''
+| 2.5%
+| –
+| 15%
+| 6.5%
+| 17%
+| 1%
+| 0.5%
+| –
+| –
+| 3%
+|-
+| –
+| 2%
+| 14%
+| 2%
+| 6%
+| 3%
+| 7.5%
+| –
+| –
+| style="background:#FFED99;"| '''21%'''
+| –
+| 4%
+| 14%
+| 6.5%
+| 17%
+| 0.5%
+| 0.5%
+| –
+| –
+| 2%
+|-
+| style="background:#04FBF4;"| [https://www.ipsos.com/sites/default/files/ct/publication/documents/2018-07/fractures_francaises_2018.pdf Ipsos]
+| data-sort-value="2018-07-02"| 27 Jun–2 Jul 2018
+| 998
+| 58%<!-- http://www.commission-des-sondages.fr/notices/files/notices/2018/juillet/8777-eur-ipsos-le-monde-pdf.pdf -->
+| 1%
+| 1%
+| 13%
+| 1%
+| 4%
+| 4%
+| 4%
+| –
+| –
+| style="background:#FFED99;"| '''26%'''
+| colspan="2"| 3%
+| 15%
+| 7%
+| 18%
+| 1%
+| 1%
+| 1%
+| –
+| –
+|-
+| style="background:#FFCCCC;"| [https://www.ifop.com/wp-content/uploads/2018/06/115209-Rapport-CN-SR-34.pdf Ifop-Fiducial]
+| data-sort-value="2018-06-27"| 25–27 Jun 2018
+| 1,374
+| –
+| –
+| 1%
+| 11%
+| 2.5%
+| 6%
+| 3%
+| 6%
+| –
+| –
+| style="background:#FFED99;"| '''23%'''
+| colspan="2"| 2.5%
+| 15%
+| 6%
+| 19%
+| 1%
+| 1%
+| –
+| –
+| 3%
+|-
+| style="background:#CAD5F7;"| [https://elabe.fr/wp-content/uploads/2018/05/30052018_bfmtv_les-francais-et-lunion-europeenne.pdf Elabe]
+| data-sort-value="2018-05-30"| 29–30 May 2018
+| 1,004
+| 67%
+| colspan="2"| 1%
+| 10%
+| 1%
+| 6%
+| 1.5%
+| 8%
+| –
+| –
+| style="background:#FFED99;"| '''24%'''
+| colspan="2"| 2%
+| 15%
+| 5.5%
+| 19.5%
+| 1.5%
+| 1%
+| –
+| –
+| 4%
+|-
+| style="background:GreenYellow;"| [http://harris-interactive.fr/wp-content/uploads/sites/6/2018/05/Rapport_Harris-Les_Francais_un_an_avant_les_elections_europrennes_de_2019-LCP.pdf Harris Interactive]
+| data-sort-value="2018-05-23"| 22–23 May 2018
+| 1,673
+| –
+| colspan="2"| 1%
+| 12%
+| 2%
+| 8%
+| 2%
+| 4%
+| –
+| –
+| style="background:#FFED99;"| '''28%'''
+| colspan="2"| 2%
+| 13%
+| 7%
+| 15%
+| 1%
+| 1%
+| 1%
+| –
+| 3%
+|-
+| rowspan="2" style="background:#DDEEFF;"| [https://web.archive.org/web/20180526213059/https://eelv.fr/wp-content/uploads/2018/05/Elections-europe%CC%81ennes-Mai-2018.pdf Viavoice]*
+| rowspan="2" data-sort-value="2018-05-11"| 7–11 May 2018
+| rowspan="2"| 1,506
+| rowspan="2"| –
+| 2%
+| 2%
+| 9%
+| 1%
+| 6%
+| 7%
+| 9%
+| –
+| –
+| style="background:#FFED99;"| '''32%'''
+| –
+| –
+| 12%
+| 6%
+| 14%
+| –
+| –
+| –
+| –
+| –
+|-
+| 3%
+| 2%
+| 11%
+| 2%
+| 7%
+| colspan="2"| 13%
+| –
+| –
+| style="background:#FFED99;"| '''33%'''
+| –
+| –
+| 11%
+| 6%
+| 12%
+| –
+| –
+| –
+| –
+| –
+|-
+| rowspan="2" style="background:#FFCCCC;"| [https://www.ifop.com/wp-content/uploads/2018/05/vote-europeennes-2019.pdf Ifop]
+| rowspan="2" data-sort-value="2018-05-09"| 7–9 May 2018
+| rowspan="2"| 920
+| rowspan="2"| –
+| –
+| 2%
+| 14%
+| –
+| 7%
+| 3%
+| 3%
+| –
+| –
+| style="background:#FFED99;"| '''27%'''
+| –
+| –
+| 15%
+| 6%
+| 17%
+| 1%
+| 1%
+| 1%
+| –
+| 3%
+|-
+| colspan="2"| 2%
+| 13%
+| 2%
+| 8%
+| –
+| 4%
+| –
+| –
+| style="background:#FFED99;"| '''27%'''
+| colspan="2"| 3%
+| 13%
+| 6%
+| 17%
+| 1%
+| 1%
+| –
+| –
+| 3%
+|-
+| style="background:#FFCCCC;"| [https://www.ifop.com/wp-content/uploads/2018/03/3929-1-study_file.pdf Ifop]
+| data-sort-value="2017-12-01"| 29 Nov–1 Dec 2017
+| 1,007
+| –
+| colspan="2"| 1%
+| 14%
+| 2%
+| 8%
+| –
+| 4%
+| –
+| –
+| style="background:#FFED99;"| '''26%'''
+| colspan="2"| 3.5%
+| 12%
+| 6%
+| 17%
+| 2%
+| 1.5%
+| –
+| –
+| 3%
+|- style="background:#E9E9E9;"
+| [[2014 European Parliament election in France|2014 election]]
+| data-sort-value="2014-05-25"| 25 May 2014
+| –
+| 57.57%
+| 1.17%
+| 0.39%
+| colspan="2"| 6.61% ([[Left Front (France)|FG]])
+| 16.88%
+| –
+| colspan="2"| 10.41%
+| –
+| colspan="2"| 9.94% ([[The Alternative (France)|L'Alt.]])
+| –
+| 20.81%
+| 3.82%
+| style="background:#C1CCE1;"| '''24.86%'''
+| –
+| 0.41%
+| –
+| –
+| 4.02%
+|}
+
+== See also ==
+*[[Opinion polling for the 2014 European Parliament election in France]]
+*[[Opinion polling for the 2009 European Parliament election in France]]
+
+== Notes ==
+;Additional lists
+{{notelist}}
+
+== References ==
+{{reflist}}
+
+== External links ==
+*[http://www.commission-des-sondages.fr/notices/ Notices of the French polling commission] {{in lang|fr}}
+*[https://www.ifop.com/elections-europeennes-2019/ Continuous results for the Ifop-Fiducial rolling poll (Ifop site)] {{in lang|fr}}
+*[https://www.parismatch.com/Les-europeennes-en-temps-reel Continuous results for the Ifop-Fiducial rolling poll (''Paris Match'' site)] {{in lang|fr}}
+*[https://2019opinions.com/ Continuous results for the Harris Interactive rolling poll] {{Webarchive|url=https://web.archive.org/web/20190426143833/https://2019opinions.com/ |date=26 April 2019 }} {{in lang|fr}}
+
+[[Category:2019 European Parliament election in France]]
+[[Category:Opinion polling in France]]
+[[Category:Opinion polling for elections|France]]

@@ -34,6 +34,7 @@ cp -r site/* _site/
 cp data/*.json _site/data/
 cp data/derived/*.json _site/data/derived/
 rm -f _site/data/historique.json
+rm -f _site/data/historique_europeennes.json
 
 echo
 echo "Site servi sur http://localhost:$PORT/instituts.html  (Ctrl+C pour arrêter)"

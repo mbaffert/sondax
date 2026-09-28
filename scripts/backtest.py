@@ -179,6 +179,15 @@ def main():
     for l in lignes:
         l["erreur"] = l["moyenne"] - l["resultat"]
     loi = valider_loi(lignes, reglages["N_eff"])
+    loi_ensemble = None
+    if calibration.SOURCES["europeennes"].exists():
+        tout = {}
+        for nom, el in calibration.charger_elections().items():
+            tout.update({f"{nom}-{an}": e for an, e in el.items()})
+        lignes_tout = calibration.comparaisons(tout)
+        for l in lignes_tout:
+            l["erreur"] = l["moyenne"] - l["resultat"]
+        loi_ensemble = valider_loi(lignes_tout, reglages["N_eff"])
 
     sortie = {
         "genere_le": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -187,6 +196,7 @@ def main():
         "runs": runs,
         "fiabilite": fiabilite(runs),
         "loi": loi,
+        "loi_ensemble": loi_ensemble,
     }
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(sortie, ensure_ascii=False, indent=1) + "\n")

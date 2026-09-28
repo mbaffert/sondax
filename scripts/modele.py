@@ -157,7 +157,7 @@ def accroche(candidats, qualif, duels, ordre):
         return {
             "regle": "dessine",
             "titre": "Le second tour semble se dessiner.",
-            "detail": f"{duel} est aujourd'hui le second tour le plus plausible : "
+            "detail": f"{duel} est aujourd’hui le second tour le plus plausible : "
                       f"les deux premiers ont une nette avance sur leurs poursuivants.",
         }
     if q[1] - q[2] < 15:
@@ -169,9 +169,9 @@ def accroche(candidats, qualif, duels, ordre):
         }
     return {
         "regle": "general",
-        "titre": f"{duel} est aujourd'hui le second tour le plus plausible.",
+        "titre": f"{duel} est aujourd’hui le second tour le plus plausible.",
         "detail": f"{nom_court(candidats, trois)} a {formater_chance(q[2])} "
-                  f"d'y être.",
+                  f"d’y être.",
     }
 
 

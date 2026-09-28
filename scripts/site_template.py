@@ -126,6 +126,7 @@ def render_page(*, title, meta_description, canonical, body_content,
     <div>
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
+        <a href="{p}modele-sondax.html">Modèle Sondax</a>
         <a href="{p}methodologie.html">Méthode</a>
         <a href="{p}sondages.html">Explorer les sondages</a>
         <a href="{p}donnees.html">Données</a>

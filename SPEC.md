@@ -1117,8 +1117,9 @@ au-dessus.
 | 2 | `/modele-sondax.html` | explorer et comprendre la course |
 | 3 | `/methodologie.html#modele` | vérifier la construction statistique |
 
-- URL canonique de la page produit : `https://sondax.fr/modele-sondax` (fichier
-  `site/modele-sondax.html`, même convention que les autres pages).
+- URL de la page produit : `/modele-sondax` ; canonique
+  `https://sondax.fr/modele-sondax.html` (fichier `site/modele-sondax.html`), même
+  convention que les autres pages, vérifiée par `validate_urls.py`.
 - Architecture principale affichée : **Sondages | Modèle Sondax | Marchés | Méthode**.
   Élections passées, Instituts, Tous les sondages et Explorer un sondage restent là où
   ils sont (bandeau et pied de page).
@@ -1597,8 +1598,10 @@ Sections, dans l'ordre :
    défaut, les autres ajoutables (même composant de cases à cocher que la courbe du
    premier tour). Titre et axe disent « chances sur 100 », jamais « % », pour ne pas
    confondre avec la courbe des intentions de vote.
-6. **Qui finit où ?** : tableau 1er / 2e / 3e ou moins, secondaire (replié par défaut
-   sur mobile). Une note rappelle que 1er + 2e = chances d'être au second tour.
+6. **Qui finit où ?** : tableau 1er / 2e / 3e ou moins, secondaire. Une note rappelle
+   que 1er + 2e = chances d'être au second tour. Seuls les candidats à 1 sur 100 ou
+   plus y figurent ; une phrase compte les autres. Valeurs courtes dans les cellules
+   (« < 1 », « > 99 ») pour tenir sur mobile.
 7. **Explication courte** : « Les sondages se trompent toujours un peu. Sondax regarde
    donc les écarts réellement observés lors des élections précédentes et refait le
    premier tour 50 000 fois. Nous comptons ensuite combien de fois chaque candidat

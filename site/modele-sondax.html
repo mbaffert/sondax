@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qui serait au second tour si on votait dimanche&nbsp;? — Modèle Sondax</title>
+<meta name="description" content="Le Pen – Mélenchon est aujourd’hui le second tour le plus plausible. Philippe a 26 chances sur 100 d’y être. Chances d’être au second tour si on votait dimanche.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sondax">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://sondax.fr/modele-sondax.html">
+<meta property="og:title" content="Qui serait au second tour si on votait dimanche&nbsp;? — Modèle Sondax">
+<meta property="og:description" content="Le Pen – Mélenchon est aujourd’hui le second tour le plus plausible. Philippe a 26 chances sur 100 d’y être. Chances d’être au second tour si on votait dimanche.">
+<meta property="og:image" content="https://sondax.fr/assets/og-default.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://sondax.fr/modele-sondax.html">
+<script data-goatcounter="https://sondax.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<link rel="icon" type="image/svg+xml" href="assets/logo-sondax.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/header.css?v=5">
+<style>
+  :root {
+    --bleu-vif: #0C6CF2;
+    --bleu-nuit: #0B2E6F;
+    --fond: #F7F8F5;
+    --carte: #fff;
+    --bord: #E3E5E0;
+    --texte: #202632;
+    --gris: #66707D;
+    --titre: 'Space Grotesk', system-ui, sans-serif;
+    --corps: 'IBM Plex Sans', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--corps); background: var(--fond); color: var(--texte);
+         font-size: 15px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  a { color: var(--bleu-vif); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  main { max-width: 1060px; margin: 0 auto; padding: 24px 24px 64px; }
+  h1 { font-family: var(--titre); font-size: 28px; font-weight: 700; letter-spacing: -0.02em; margin: 0 0 18px; }
+  h2 { font-family: var(--titre); font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin: 24px 0 12px; }
+
+  .fil { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+          text-transform: uppercase; color: var(--gris); padding: 0 0 18px; }
+
+  table { border-collapse: collapse; width: 100%; font-size: 14px; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--bord); }
+  th { font-weight: 600; font-size: 12px; color: var(--gris); text-transform: uppercase;
+       letter-spacing: 0.06em; font-family: var(--mono); }
+  td { font-variant-numeric: tabular-nums; }
+
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px;
+            font-size: 11px; font-weight: 600; }
+  .badge-principale { background: #E8F5E9; color: #2E7D32; }
+
+  footer.site-footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
+  footer.site-footer .footer-inner { max-width: 1180px; margin: 0 auto; display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr 1fr; gap: 16px 32px; }
+  footer.site-footer .footer-col-title { color: #fff; font-weight: 600; margin-bottom: 9px; font-size: 12.5px; }
+  footer.site-footer a { color: rgba(255,255,255,0.72); text-decoration: none; }
+  footer.site-footer a:hover { color: #fff; text-decoration: none; }
+  footer.site-footer .disclaimer { font-size: 12.5px; line-height: 1.6; }
+  @media (max-width: 900px) {
+    footer.site-footer { padding: 24px 16px; }
+    footer.site-footer .footer-inner { grid-template-columns: 1fr; gap: 20px; }
+  }
+</style>
+<style>
+  .mo-liste { list-style: none; display: flex; flex-direction: column; gap: 14px; margin: 6px 0 4px; }
+  .mo-ligne { display: flex; gap: 12px; align-items: flex-start; }
+  .mo-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none;
+    border: 2px solid var(--c); background: #F2F3F0; }
+  .mo-initiales { display: inline-flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; color: var(--c); }
+  .mo-corps { flex: 1; min-width: 0; }
+  .mo-tete { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 10px; align-items: baseline; }
+  .mo-tete .mo-chance { margin-left: auto; }
+  .mo-nom { font-weight: 600; font-size: 15px; }
+  .mo-nom a { color: inherit; }
+  .mo-chance { font-family: var(--titre); font-weight: 600; font-size: 17px; white-space: nowrap;
+    font-variant-numeric: tabular-nums; }
+  .mo-barre { height: 10px; background: #F0F1EE; border-radius: 5px; margin: 5px 0 4px; overflow: hidden; }
+  .mo-barre span { display: block; height: 100%; border-radius: 5px; }
+  .mo-verdict { font-size: 13px; color: var(--gris); }
+  .mo-accroche { font-size: 16.5px; line-height: 1.5; margin: 0 0 18px; max-width: 46em; }
+  .mo-accroche strong { font-weight: 600; }
+  .mo-cta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 20px; }
+  .mo-cta span { font-size: 13px; color: var(--gris); }
+  .mo-bouton { display: inline-block; background: var(--bleu-vif); color: #fff; font-weight: 600;
+    font-size: 14.5px; padding: 10px 18px; border-radius: 9px; }
+  .mo-bouton:hover { background: var(--bleu-nuit); color: #fff; text-decoration: none; }
+  .mo-sous-titre { font-family: var(--titre); font-size: 20px; font-weight: 500; margin: -10px 0 10px; }
+  .mo-intro { max-width: 46em; color: var(--texte); margin-bottom: 20px; }
+  .page-modele .bloc { background: #fff; border: 1px solid #E3E5E0; border-radius: 16px;
+    padding: 24px 26px 20px; margin-bottom: 18px; box-shadow: 0 1px 2px rgba(32,38,50,0.04); }
+  .page-modele .bloc h2 { margin-top: 0; }
+  .page-modele .section-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--bleu-vif); margin-bottom: 8px; }
+  .page-modele .subtitle { font-size: 13.5px; color: var(--gris); margin-bottom: 16px; }
+  .page-modele .bloc-note { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid #EDEEEA;
+    font-size: 12px; color: #8A929C; line-height: 1.6; }
+  .page-modele .mo-une .mo-accroche { margin-bottom: 0; font-size: 18px; }
+  .page-modele #comment p { max-width: 46em; margin-bottom: 10px; }
+  .mo-duels { display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: start; }
+  .mo-grille { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
+  .mo-grille span { aspect-ratio: 1; border-radius: 3px; }
+  .mo-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  .mo-table td, .mo-table th { padding: 8px 4px; border-bottom: 1px solid #F0F1EE; text-align: left; }
+  .mo-table th { font-family: var(--mono); font-size: 10.5px; font-weight: 500; color: var(--gris);
+    letter-spacing: .08em; text-transform: uppercase; }
+  .mo-table-rangs th.mo-num { text-transform: none; letter-spacing: 0; font-family: var(--corps); font-size: 12.5px; }
+  .mo-num { text-align: right !important; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .mo-pastille { display: inline-block; width: 11px; height: 11px; border-radius: 3px;
+    margin-right: 8px; vertical-align: -1px; }
+  .mo-repli { margin-top: 10px; }
+  .mo-repli summary { cursor: pointer; font-size: 14px; color: var(--bleu-vif); padding: 6px 4px;
+    list-style: none; }
+  .mo-repli summary::-webkit-details-marker { display: none; }
+  .mo-rangs > summary { color: var(--texte); padding: 0; }
+  .mo-rangs > summary h2 { display: inline; }
+  .mo-rangs > summary::after { content: ' ▾'; color: var(--gris); font-size: 14px; }
+  .mo-rangs:not([open]) > summary::after { content: ' ▸'; }
+  .mo-petit { font-size: 13px; color: var(--gris); margin-top: 10px; }
+  .mo-lien-methode a { font-weight: 600; }
+  @media (max-width: 640px) {
+    .mo-duels { grid-template-columns: 1fr; }
+    .mo-grille { max-width: 260px; }
+    .page-modele .bloc { padding: 20px 16px 16px; }
+    .mo-accroche { font-size: 15.5px; }
+    .mo-chance { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="site-header" class="sh"></div>
+<script src="assets/header-data.js?v=3"></script>
+<script src="assets/header.js?v=7"></script>
+
+<main class="page-modele">
+  <div class="fil">Modèle Sondax</div>
+  <h1>Le modèle Sondax</h1>
+  <p class="mo-sous-titre">Et si on votait dimanche&nbsp;?</p>
+  <p class="mo-intro">À partir des sondages disponibles aujourd’hui, Sondax mesure à quel point chaque candidat a réellement ses chances d’accéder au second tour. Ce n’est pas une prévision d’avril 2027&nbsp;: c’est une photographie de la course aujourd’hui.</p>
+
+  <section class="bloc mo-une">
+    <div class="section-label">Aujourd’hui</div>
+    <p class="mo-accroche"><strong>Le Pen – Mélenchon est aujourd’hui le second tour le plus plausible.</strong> Philippe a 26 chances sur 100 d’y être.</p>
+    <p class="bloc-note">Si on votait dimanche · Calculé sur 12 sondages · Mis à jour le 28 septembre 2026.</p>
+  </section>
+
+  <section class="bloc" id="chances">
+    <h2>Chances d’être au second tour</h2>
+    <p class="subtitle">Pour chaque candidat, sur 100.</p>
+    <ul class="mo-liste">
+      <li class="mo-ligne">
+      <img class="mo-photo" src="photos/le-pen.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#0D378A">
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom"><a href="le-pen.html">Marine Le Pen</a></span><span class="mo-chance">plus de 99&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:100.0%;background:#0D378A"></span></div>
+        <div class="mo-verdict">Quasi sûre d’y être</div>
+      </div>
+    </li>
+      <li class="mo-ligne">
+      <img class="mo-photo" src="photos/melenchon.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#CC2443">
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom"><a href="melenchon.html">Jean-Luc Mélenchon</a></span><span class="mo-chance">73&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:73.1%;background:#CC2443"></span></div>
+        <div class="mo-verdict">Bien placé</div>
+      </div>
+    </li>
+      <li class="mo-ligne">
+      <img class="mo-photo" src="photos/philippe.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#00B7FF">
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom"><a href="philippe.html">Édouard Philippe</a></span><span class="mo-chance">26&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:26.4%;background:#00B7FF"></span></div>
+        <div class="mo-verdict">Rien n’est joué</div>
+      </div>
+    </li>
+      <li class="mo-ligne">
+      <img class="mo-photo" src="photos/glucksmann.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#FF7043">
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom"><a href="glucksmann.html">Raphaël Glucksmann</a></span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#FF7043"></span></div>
+        <div class="mo-verdict">Très improbable aujourd’hui</div>
+      </div>
+    </li>
+      <li class="mo-ligne">
+      <img class="mo-photo" src="photos/attal.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#7E57C2">
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom"><a href="attal.html">Gabriel Attal</a></span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#7E57C2"></span></div>
+        <div class="mo-verdict">Très improbable aujourd’hui</div>
+      </div>
+    </li>
+      <li class="mo-ligne">
+      <img class="mo-photo" src="photos/retailleau.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#0066CC">
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom"><a href="retailleau.html">Bruno Retailleau</a></span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#0066CC"></span></div>
+        <div class="mo-verdict">Très improbable aujourd’hui</div>
+      </div>
+    </li>
+      <li class="mo-ligne">
+      <img class="mo-photo" src="photos/zemmour.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#1A1A2E">
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom"><a href="zemmour.html">Éric Zemmour</a></span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#1A1A2E"></span></div>
+        <div class="mo-verdict">Très improbable aujourd’hui</div>
+      </div>
+    </li>
+      <li class="mo-ligne">
+      <img class="mo-photo" src="photos/tondelier.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#00C853">
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom"><a href="tondelier.html">Marine Tondelier</a></span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#00C853"></span></div>
+        <div class="mo-verdict">Très improbable aujourd’hui</div>
+      </div>
+    </li>
+      <li class="mo-ligne">
+      <span class="mo-photo mo-initiales" style="--c:#0055A4">ND</span>
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom">Nicolas Dupont-Aignan</span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#0055A4"></span></div>
+        <div class="mo-verdict">Très improbable aujourd’hui</div>
+      </div>
+    </li>
+      <li class="mo-ligne">
+      <img class="mo-photo" src="photos/roussel.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#DD1111">
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom"><a href="roussel.html">Fabien Roussel</a></span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#DD1111"></span></div>
+        <div class="mo-verdict">Très improbable aujourd’hui</div>
+      </div>
+    </li>
+      <li class="mo-ligne">
+      <span class="mo-photo mo-initiales" style="--c:#8B0000">NA</span>
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom">Nathalie Arthaud</span><span class="mo-chance">moins de 1&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:0.6%;background:#8B0000"></span></div>
+        <div class="mo-verdict">Très improbable aujourd’hui</div>
+      </div>
+    </li>
+    </ul>
+  </section>
+
+  <section class="bloc" id="seconds-tours">
+    <h2>Les seconds tours possibles</h2>
+    <p class="subtitle">Sur 100 premiers tours refaits à partir des sondages d’aujourd’hui, voici combien de fois chaque duel sort.</p>
+    <div class="mo-duels">
+      <div class="mo-grille" aria-hidden="true"><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#CC2443"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#00B7FF"></span><span style="background:#FF7043"></span></div>
+      <div>
+        <table class="mo-table"><tr><td><span class="mo-pastille" style="background:#CC2443"></span>Le Pen – Mélenchon</td><td class="mo-num">73&nbsp;sur&nbsp;100</td></tr><tr><td><span class="mo-pastille" style="background:#00B7FF"></span>Le Pen – Philippe</td><td class="mo-num">26&nbsp;sur&nbsp;100</td></tr><tr><td><span class="mo-pastille" style="background:#FF7043"></span>Le Pen – Glucksmann</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td></tr></table>
+        <details class="mo-repli">
+      <summary><span class="mo-pastille" style="background:#D5D9DE"></span>Autres scénarios · moins de 1&nbsp;sur&nbsp;100</summary>
+      <table class="mo-table"><tr><td>Le Pen – Attal</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td></tr><tr><td>Le Pen – Retailleau</td><td class="mo-num">moins de 1&nbsp;sur&nbsp;100</td></tr></table>
+    </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloc" id="qui-finit-ou">
+    <details class="mo-repli mo-rangs" open>
+      <summary><h2>Qui finit où&nbsp;?</h2></summary>
+      <p class="subtitle">Sur 100, combien de fois chaque candidat termine premier, deuxième, ou plus loin. Premier + deuxième = ses chances d’être au second tour.</p>
+      <table class="mo-table mo-table-rangs">
+        <tr><th>Candidat</th><th class="mo-num">1<sup>er</sup></th><th class="mo-num">2<sup>e</sup></th><th class="mo-num">3<sup>e</sup> ou&nbsp;moins</th></tr>
+        <tr><td>Marine Le Pen</td><td class="mo-num">&gt;&nbsp;99</td><td class="mo-num">&lt;&nbsp;1</td><td class="mo-num">&lt;&nbsp;1</td></tr><tr><td>Jean-Luc Mélenchon</td><td class="mo-num">&lt;&nbsp;1</td><td class="mo-num">73</td><td class="mo-num">27</td></tr><tr><td>Édouard Philippe</td><td class="mo-num">&lt;&nbsp;1</td><td class="mo-num">26</td><td class="mo-num">74</td></tr>
+      </table>
+      <p class="mo-petit">Les 8 autres candidats finissent troisièmes ou au-delà plus de 99 fois sur 100.</p>
+    </details>
+  </section>
+
+  <section class="bloc" id="comment">
+    <h2>Comment lire ces chiffres</h2>
+    <p>Les sondages se trompent toujours un peu. Sondax regarde donc les écarts réellement observés lors des élections précédentes et refait le premier tour 50&nbsp;000 fois. Nous comptons ensuite combien de fois chaque candidat termine dans les deux premiers.</p>
+    <p>Un point d’écart dans les sondages ne signifie donc pas nécessairement une grande différence de chances d’être au second tour.</p>
+    <p class="mo-lien-methode"><a href="methodologie.html#modele">Comprendre la méthode →</a></p>
+    <p class="bloc-note">Si on votait dimanche · Calculé sur 12 sondages · Mis à jour le 28 septembre 2026.<br>Ne prédit pas ce qui se passera d’ici avril.</p>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div style="margin-bottom:10px;">
+        <img src="assets/logo-sondax-blanc.svg" alt="Sondax" style="height:22px;">
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Données</div>
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <a href="https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027" target="_blank">Sondages · Wikipédia (CC BY-SA 4.0)</a>
+        Cotes · Polymarket
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Le site</div>
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <a href="modele-sondax.html">Modèle Sondax</a>
+        <a href="methodologie.html">Méthode</a>
+        <a href="sondages.html">Explorer les sondages</a>
+        <a href="donnees.html">Données</a>
+        <a href="a-propos.html">À propos</a>
+      </div>
+    </div>
+    <div>
+      <div id="footer-run"></div>
+      <div><a href="mailto:contact@sondax.fr">Contact</a></div>
+      <div>Hébergeur · <a href="https://pages.github.com" target="_blank">GitHub Pages</a></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

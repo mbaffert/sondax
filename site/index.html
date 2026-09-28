@@ -206,6 +206,7 @@
 <nav class="sub-nav" id="sub-nav" aria-label="Sections de la page">
   <a href="#bloc-sondages">Premier tour</a>
   <a href="#second-tour">Second tour</a>
+  <a href="#bloc-modele">Modèle</a>
   <a href="#bloc-polymarket">Prédictions</a>
 </nav>
 
@@ -339,6 +340,111 @@
   </div>
 <!-- END:second-tour -->
 
+  <!-- BEGIN:bloc-modele -->
+<style>
+  .mo-liste { list-style: none; display: flex; flex-direction: column; gap: 14px; margin: 6px 0 4px; }
+  .mo-ligne { display: flex; gap: 12px; align-items: flex-start; }
+  .mo-photo { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; flex: none;
+    border: 2px solid var(--c); background: #F2F3F0; }
+  .mo-initiales { display: inline-flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; color: var(--c); }
+  .mo-corps { flex: 1; min-width: 0; }
+  .mo-tete { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0 10px; align-items: baseline; }
+  .mo-tete .mo-chance { margin-left: auto; }
+  .mo-nom { font-weight: 600; font-size: 15px; }
+  .mo-nom a { color: inherit; }
+  .mo-chance { font-family: var(--titre); font-weight: 600; font-size: 17px; white-space: nowrap;
+    font-variant-numeric: tabular-nums; }
+  .mo-barre { height: 10px; background: #F0F1EE; border-radius: 5px; margin: 5px 0 4px; overflow: hidden; }
+  .mo-barre span { display: block; height: 100%; border-radius: 5px; }
+  .mo-verdict { font-size: 13px; color: var(--gris); }
+  .mo-accroche { font-size: 16.5px; line-height: 1.5; margin: 0 0 18px; max-width: 46em; }
+  .mo-accroche strong { font-weight: 600; }
+  .mo-cta { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; margin-top: 20px; }
+  .mo-cta span { font-size: 13px; color: var(--gris); }
+  .mo-bouton { display: inline-block; background: var(--bleu-vif); color: #fff; font-weight: 600;
+    font-size: 14.5px; padding: 10px 18px; border-radius: 9px; }
+  .mo-bouton:hover { background: var(--bleu-nuit); color: #fff; text-decoration: none; }
+  .mo-sous-titre { font-family: var(--titre); font-size: 20px; font-weight: 500; margin: -10px 0 10px; }
+  .mo-intro { max-width: 46em; color: var(--texte); margin-bottom: 20px; }
+  .page-modele .bloc { background: #fff; border: 1px solid #E3E5E0; border-radius: 16px;
+    padding: 24px 26px 20px; margin-bottom: 18px; box-shadow: 0 1px 2px rgba(32,38,50,0.04); }
+  .page-modele .bloc h2 { margin-top: 0; }
+  .page-modele .section-label { font-family: var(--mono); font-size: 10.5px; letter-spacing: .14em;
+    text-transform: uppercase; color: var(--bleu-vif); margin-bottom: 8px; }
+  .page-modele .subtitle { font-size: 13.5px; color: var(--gris); margin-bottom: 16px; }
+  .page-modele .bloc-note { margin: 16px 0 0; padding-top: 12px; border-top: 1px solid #EDEEEA;
+    font-size: 12px; color: #8A929C; line-height: 1.6; }
+  .page-modele .mo-une .mo-accroche { margin-bottom: 0; font-size: 18px; }
+  .page-modele #comment p { max-width: 46em; margin-bottom: 10px; }
+  .mo-duels { display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: start; }
+  .mo-grille { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
+  .mo-grille span { aspect-ratio: 1; border-radius: 3px; }
+  .mo-table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  .mo-table td, .mo-table th { padding: 8px 4px; border-bottom: 1px solid #F0F1EE; text-align: left; }
+  .mo-table th { font-family: var(--mono); font-size: 10.5px; font-weight: 500; color: var(--gris);
+    letter-spacing: .08em; text-transform: uppercase; }
+  .mo-table-rangs th.mo-num { text-transform: none; letter-spacing: 0; font-family: var(--corps); font-size: 12.5px; }
+  .mo-num { text-align: right !important; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .mo-pastille { display: inline-block; width: 11px; height: 11px; border-radius: 3px;
+    margin-right: 8px; vertical-align: -1px; }
+  .mo-repli { margin-top: 10px; }
+  .mo-repli summary { cursor: pointer; font-size: 14px; color: var(--bleu-vif); padding: 6px 4px;
+    list-style: none; }
+  .mo-repli summary::-webkit-details-marker { display: none; }
+  .mo-rangs > summary { color: var(--texte); padding: 0; }
+  .mo-rangs > summary h2 { display: inline; }
+  .mo-rangs > summary::after { content: ' ▾'; color: var(--gris); font-size: 14px; }
+  .mo-rangs:not([open]) > summary::after { content: ' ▸'; }
+  .mo-petit { font-size: 13px; color: var(--gris); margin-top: 10px; }
+  .mo-lien-methode a { font-weight: 600; }
+  @media (max-width: 640px) {
+    .mo-duels { grid-template-columns: 1fr; }
+    .mo-grille { max-width: 260px; }
+    .page-modele .bloc { padding: 20px 16px 16px; }
+    .mo-accroche { font-size: 15.5px; }
+    .mo-chance { font-size: 15px; }
+  }
+</style>
+<div class="bloc" id="bloc-modele">
+  <div class="section-label">Modèle Sondax</div>
+  <h2>Et si on votait dimanche&nbsp;?</h2>
+  <p class="subtitle">Qui serait au second tour, d’après les sondages d’aujourd’hui&nbsp;?</p>
+  <p class="mo-accroche"><strong>Le Pen – Mélenchon est aujourd’hui le second tour le plus plausible.</strong> Philippe a 26 chances sur 100 d’y être.</p>
+  <ul class="mo-liste">
+    <li class="mo-ligne">
+      <img class="mo-photo" src="photos/le-pen.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#0D378A">
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom"><a href="le-pen.html">Marine Le Pen</a></span><span class="mo-chance">plus de 99&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:100.0%;background:#0D378A"></span></div>
+        <div class="mo-verdict">Quasi sûre d’y être</div>
+      </div>
+    </li>
+    <li class="mo-ligne">
+      <img class="mo-photo" src="photos/melenchon.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#CC2443">
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom"><a href="melenchon.html">Jean-Luc Mélenchon</a></span><span class="mo-chance">73&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:73.1%;background:#CC2443"></span></div>
+        <div class="mo-verdict">Bien placé</div>
+      </div>
+    </li>
+    <li class="mo-ligne">
+      <img class="mo-photo" src="photos/philippe.jpg" alt="" width="40" height="40" loading="lazy" style="--c:#00B7FF">
+      <div class="mo-corps">
+        <div class="mo-tete"><span class="mo-nom"><a href="philippe.html">Édouard Philippe</a></span><span class="mo-chance">26&nbsp;sur&nbsp;100</span></div>
+        <div class="mo-barre" aria-hidden="true"><span style="width:26.4%;background:#00B7FF"></span></div>
+        <div class="mo-verdict">Rien n’est joué</div>
+      </div>
+    </li>
+  </ul>
+  <div class="mo-cta">
+    <a class="mo-bouton" href="modele-sondax.html">Voir le modèle Sondax →</a>
+    <span>Chances d’être au second tour, seconds tours possibles et évolution de la course.</span>
+  </div>
+  <p class="bloc-note">Si on votait dimanche · Calculé sur 12 sondages · Mis à jour le 28 septembre 2026.<br>Ne prédit pas ce qui se passera d’ici avril.</p>
+</div>
+<!-- END:bloc-modele -->
+
   <!-- Bloc 2 : Polymarket -->
   <div class="bloc" id="bloc-polymarket">
     <div class="section-label">Marchés de prédiction</div>
@@ -406,6 +512,7 @@
     <div>
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
+        <a href="modele-sondax.html">Modèle Sondax</a>
         <a href="methodologie.html">Méthode</a>
         <a href="sondages.html">Explorer les sondages</a>
         <a href="donnees.html">Données</a>

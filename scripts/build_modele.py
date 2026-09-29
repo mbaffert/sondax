@@ -763,10 +763,12 @@ def bloc_candidat(modele, candidats, slug, historique):
     v = modele["candidats"].get(slug)
     if v is None:
         return ""
-    lignes = [f'<p class="mc-chance"><b>{T.chances(v["qualification_exacte"])}</b> chances sur 100 '
-              f'd’être au second tour</p>',
+    chance = T.chances(v["qualification_exacte"])
+    mot = "chance" if chance in ("1", "moins de 1") else "chances"
+    lignes = [f'<p class="mc-chance"><strong>{e(nom_complet(candidats, slug))}</strong> a '
+              f'<b>{chance}</b> {mot} sur 100 d’être au second tour</p>',
               f'<p class="mc-verdict">{e(verdict_texte(candidats, slug, v["verdict"]))}.</p>']
-    evo = T.evolution(modele, v.get("evolution_7j"), index=INDEX)
+    evo = T.evolution(modele, v.get("evolution_30j"), jours=30, index=INDEX)
     if evo:
         lignes.append(f'<p class="mc-evo">{evo[0].upper() + evo[1:]}.</p>')
     d = duel_le_plus_frequent(modele, slug)
@@ -777,39 +779,26 @@ def bloc_candidat(modele, candidats, slug, historique):
     if len(historique) >= 2:
         instant = _instant(modele)
         couleurs = {slug: candidats[slug]}
-        courbe = (f'<div class="mc-courbe"><div class="mc-periodes">'
-                  f'<button type="button" data-p="7" >7 jours</button>'
-                  f'<button type="button" data-p="30" class="active">30 jours</button></div>'
-                  f'<div data-p="7" hidden>{C.svg(historique, couleurs, [slug], instant, 7, hauteur=170)}</div>'
-                  f'<div data-p="30">{C.svg(historique, couleurs, [slug], instant, 30, hauteur=170)}</div>'
-                  f'<div class="mc-sous">Évolution de ses chances d’être au second tour, sur 100</div></div>')
+        courbe = (f'<div class="mc-courbe">{C.svg(historique, couleurs, [slug], instant, 30, hauteur=170)}'
+                  f'<div class="mc-sous">Évolution de ses chances d’être au second tour, sur 100, '
+                  f'depuis 30&nbsp;jours</div></div>')
     return f'''<section class="carte modele-candidat"><div class="pad">
   <div class="label">Modèle Sondax</div>
   <h2>Et si on votait dimanche&nbsp;?</h2>
   <div class="txt">{"".join(lignes)}</div>
   {courbe}
-  <p class="mc-lien"><a href="/modele-sondax.html">Voir le modèle Sondax →</a> · <span>Ne prédit pas ce qui se passera d’ici avril.</span></p>
+  <p class="mo-lien-accueil"><a href="/modele-sondax.html#{ANCRE_EXPLICATION}">Comment ces probabilités sont-elles calculées&nbsp;? →</a></p>
 </div></section>
 <style>{C.CSS}
 .modele-candidat .mc-chance {{ font-size: 18px; }}
+.modele-candidat .mc-chance strong {{ font-weight: 600; }}
 .modele-candidat .mc-chance b {{ font-family: var(--titre); font-size: 26px; }}
 .modele-candidat .txt p {{ margin: 0 0 4px; }}
-.modele-candidat .mc-periodes {{ display: flex; gap: 4px; margin: 6px 0; }}
-.modele-candidat .mc-periodes button {{ border: 1px solid var(--bord); background: #fff; border-radius: 7px;
-  padding: 4px 10px; font-size: 12.5px; cursor: pointer; color: var(--gris); }}
-.modele-candidat .mc-periodes button.active {{ color: var(--texte); border-color: var(--texte); }}
-.modele-candidat .mc-sous, .modele-candidat .mc-lien span {{ font-size: 12.5px; color: var(--gris); }}
-.modele-candidat .mc-lien {{ margin: 12px 0 20px; font-size: 14px; }}
-</style>
-<script>
-document.querySelectorAll('.modele-candidat .mc-periodes button').forEach(function (b) {{
-  b.addEventListener('click', function () {{
-    var s = b.closest('.mc-courbe');
-    s.querySelectorAll('button').forEach(function (x) {{ x.classList.toggle('active', x === b); }});
-    s.querySelectorAll('div[data-p]').forEach(function (d) {{ d.hidden = d.dataset.p !== b.dataset.p; }});
-  }});
-}});
-</script>'''
+.modele-candidat .mc-courbe {{ margin-top: 6px; }}
+.modele-candidat .mc-sous {{ font-size: 12.5px; color: var(--gris); }}
+.modele-candidat .mo-lien-accueil {{ margin: 18px 0 20px; }}
+.modele-candidat .mo-lien-accueil a {{ color: var(--bleu-vif); font-weight: 500; font-size: 15px; }}
+</style>'''
 
 
 def libelle_rang_duel(modele, d):

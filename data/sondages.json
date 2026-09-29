@@ -5,7 +5,7 @@
   "terrain_debut": "2026-09-22",
   "terrain_fin": "2026-09-24",
   "echantillon": 1974.0,
-  "url_source": "https://www.rtl.fr/actu/politique/sondage-rtl-presidentielle-2027-marine-le-pen-face-a-jean-luc-melenchon-au-second-tour-dans-tous-les-cas-de-figure-7900677372",
+  "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10277-pres-toluna-harris-interactive-rtl-28-septembre.pdf",
   "hypotheses": [
    {
     "tour": 1,
@@ -174,7 +174,274 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
+ },
+ {
+  "id": "yougov-2026-09-21",
+  "institut": "YouGov",
+  "terrain_debut": "2026-09-17",
+  "terrain_fin": "2026-09-21",
+  "echantillon": 1103.0,
+  "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10270-pres-iv-yougov-huffpost-23-septembre.pdf",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 17.0,
+     "roussel": 2.0,
+     "tondelier": 3.0,
+     "glucksmann": 8.0,
+     "attal": 9.0,
+     "philippe": 12.0,
+     "retailleau": 8.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 34.0,
+     "zemmour": 6.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-maire",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 17.0,
+     "roussel": 2.0,
+     "tondelier": 3.0,
+     "glucksmann": 9.0,
+     "le-maire": 3.0,
+     "philippe": 13.0,
+     "retailleau": 8.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 35.0,
+     "zemmour": 6.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 17.0,
+     "roussel": 3.0,
+     "tondelier": 3.0,
+     "glucksmann": 9.0,
+     "attal": 14.0,
+     "retailleau": 10.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 35.0,
+     "zemmour": 5.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 18.0,
+     "roussel": 3.0,
+     "tondelier": 7.0,
+     "philippe": 17.0,
+     "retailleau": 8.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 37.0,
+     "zemmour": 5.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "faure",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 16.0,
+     "roussel": 2.0,
+     "tondelier": 4.0,
+     "faure": 5.0,
+     "attal": 9.0,
+     "philippe": 12.0,
+     "retailleau": 8.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 35.0,
+     "zemmour": 6.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "bertrand",
+     "dupont-aignan",
+     "glucksmann",
+     "hollande",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "ruffin",
+     "tondelier",
+     "villepin",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 15.0,
+     "roussel": 1.0,
+     "tondelier": 2.0,
+     "glucksmann": 5.0,
+     "attal": 8.0,
+     "philippe": 10.0,
+     "villepin": 2.0,
+     "retailleau": 7.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 33.0,
+     "zemmour": 5.0,
+     "hollande": 4.0,
+     "lisnard": 2.0,
+     "ruffin": 2.0,
+     "bertrand": 1.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "attal",
+     "le-pen"
+    ],
+    "scores": {
+     "attal": 43.0,
+     "le-pen": 57.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "glucksmann",
+     "le-pen"
+    ],
+    "scores": {
+     "glucksmann": 41.0,
+     "le-pen": 59.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "hollande",
+     "le-pen"
+    ],
+    "scores": {
+     "hollande": 44.0,
+     "le-pen": 56.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "melenchon"
+    ],
+    "scores": {
+     "melenchon": 36.0,
+     "le-pen": 64.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "philippe"
+    ],
+    "scores": {
+     "philippe": 45.0,
+     "le-pen": 55.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "melenchon",
+     "philippe"
+    ],
+    "scores": {
+     "philippe": 61.0,
+     "melenchon": 39.0
+    }
+   }
+  ],
+  "revid": 239923330
  },
  {
   "id": "cluster17-2026-09-16",
@@ -269,7 +536,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "opinionway-2026-09-10",
@@ -406,7 +673,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "harris-2026-09-10",
@@ -595,7 +862,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "opinionway-2026-09-09",
@@ -692,7 +959,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "ipsos-2026-09-09",
@@ -875,7 +1142,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "opinionway-2026-09-04",
@@ -914,7 +1181,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "opinionway-2026-09-03",
@@ -1041,7 +1308,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "ipsos-2026-09-02",
@@ -1224,7 +1491,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "cluster17-2026-09-01",
@@ -1327,7 +1594,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "elabe-2026-08-28",
@@ -1564,7 +1831,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "ifop-2026-08-25",
@@ -1753,11 +2020,11 @@
      "roussel": 3.0,
      "tondelier": 3.0,
      "glucksmann": 18.0,
+     "le-maire": 6.0,
      "retailleau": 12.0,
      "dupont-aignan": 2.0,
      "le-pen": 35.0,
-     "zemmour": 3.0,
-     "le-maire": 6.0
+     "zemmour": 3.0
     }
    },
    {
@@ -1833,7 +2100,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "harris-2026-08-19",
@@ -2022,7 +2289,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "cluster17-2026-07-24",
@@ -2153,7 +2420,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "elabe-2026-07-10",
@@ -2400,7 +2667,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "verian-2026-07-10",
@@ -2435,7 +2702,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "opinionway-2026-07-09",
@@ -2526,7 +2793,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "ifop-2026-07-08",
@@ -2629,7 +2896,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "harris-2026-07-08",
@@ -2818,7 +3085,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "ifop-2026-06-24",
@@ -3049,7 +3316,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "opinionway-2026-06-11",
@@ -3140,7 +3407,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "ipsos-2026-05-28",
@@ -3383,7 +3650,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "ifop-2026-05-28",
@@ -3706,7 +3973,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "harris-2026-05-27",
@@ -3931,7 +4198,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "odoxa-2026-05-21",
@@ -3982,7 +4249,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "harris-2026-04-30",
@@ -4105,7 +4372,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "elabe-2026-03-27",
@@ -4366,7 +4633,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "odoxa-2026-03-26",
@@ -4443,7 +4710,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "opinionway-2026-03-26",
@@ -4585,7 +4852,7 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  },
  {
   "id": "ifop-2026-02-27",
@@ -4884,6 +5151,6 @@
     }
    }
   ],
-  "revid": 239900453
+  "revid": 239923330
  }
 ]

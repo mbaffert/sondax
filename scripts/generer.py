@@ -239,12 +239,13 @@ def barres_mini(titre, rows, national, amp):
     lignes = ""
     for lab, v in rows:
         e = v - national; w = abs(e) / amp * 48
-        if round(v) == round(national):   # même score affiché : pas de barre
-            w = 0
         cote = f"left:50%;width:{w:.1f}%" if e > 0 else f"right:50%;width:{w:.1f}%"
         cls = "pos" if e > 0 else "neg"
+        # Même score affiché que le score national : petit trait neutre au centre
+        marque = ('<span class="egal"></span>' if round(v) == round(national)
+                  else f'<span class="barre {cls}" style="{cote}"></span>')
         lignes += (f'<div class="lab">{JOLI.get(lab, lab)}</div>'
-                   f'<div class="piste"><span class="barre {cls}" style="{cote}"></span></div>'
+                   f'<div class="piste">{marque}</div>'
                    f'<div class="val">{fr(v,0)}&nbsp;%</div>')
     return f'<div class="mini"><h3>{titre}</h3><div class="mini-lignes">{lignes}</div></div>'
 

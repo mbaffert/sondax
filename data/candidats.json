@@ -368,5 +368,18 @@
     "declare_le": null,
     "prenom": "Éric",
     "genre": "m"
+  },
+  "bertrand": {
+    "nom": "Bertrand",
+    "parti": "LR",
+    "type": "personne",
+    "couleur": "#4A7BB7",
+    "alias_wikipedia": [
+      "bertrand"
+    ],
+    "condition_polymarket": null,
+    "declare_le": null,
+    "prenom": "Xavier",
+    "genre": "m"
   }
 }

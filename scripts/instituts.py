@@ -56,6 +56,16 @@ def slug_institut(nom, referentiel):
     return index_alias(referentiel).get(_cle(nom))
 
 
+def cle_institut(nom, referentiel):
+    """Clé de dédoublonnage : slug du référentiel, sinon libellé normalisé."""
+    return slug_institut(nom, referentiel) or _cle(nom)
+
+
+def compter_instituts(sondages, referentiel):
+    """Nombre d'instituts distincts, alias regroupés (Harris / Harris Interactive…)."""
+    return len({cle_institut(s["institut"], referentiel) for s in sondages})
+
+
 def lien_institut(nom, referentiel, prefix=""):
     """Nom de l'institut, en lien vers sa page s'il est dans le référentiel."""
     esc = html_mod.escape(nom)

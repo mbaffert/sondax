@@ -103,11 +103,13 @@ def apply_successions(sondages_raw, merges):
     return result
 
 
-def calculer_series(sondages_raw, candidats=None):
+def calculer_series(sondages_raw, candidats=None, jusqu_au=None):
     """Calcule les séries de tendance T1 à partir d'une liste de sondages.
 
     Retourne un dict avec date_debut, date_fin, fenetre_jours, demi_vies,
-    points_bruts et series. Réutilisable pour 2027 et l'historique."""
+    points_bruts et series. Réutilisable pour 2027 et l'historique.
+    jusqu_au (date) prolonge le calcul au-delà du dernier sondage (Rétro-Sondax,
+    jusqu'à la veille du scrutin)."""
     # Pré-traitement : liste de (date, sondage) pour les sondages ayant au moins une hyp T1
     sondages = []
     for s in sondages_raw:
@@ -142,6 +144,8 @@ def calculer_series(sondages_raw, candidats=None):
 
     date_debut = sondages[0]["date"]
     date_fin = sondages[-1]["date"]
+    if jusqu_au is not None:
+        date_fin = max(date_fin, jusqu_au)
     nb_jours = (date_fin - date_debut).days + 1
 
     serie_par_candidat = {c: [] for c in sorted(all_candidats)}

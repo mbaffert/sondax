@@ -239,7 +239,7 @@ def rendre_bloc(retro, x):
         colonnes.append(f'    <div class="rs-col"><div class="rs-annee">{annee}</div>{cells}</div>')
     return (f'<div class="bloc" id="retro-sondax">\n'
             f'  <h2>Rétro-Sondax</h2>\n'
-            f'  <p class="subtitle">À J-{x} de la présidentielle, qui était en tête des sondages ?</p>\n'
+            f'  <p class="subtitle rs-question">À J-{x} de la présidentielle, qui était en tête des sondages ?</p>\n'
             f'  <div class="rs-grille">\n' + "\n".join(colonnes) + '\n  </div>\n</div>')
 
 

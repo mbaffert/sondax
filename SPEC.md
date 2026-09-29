@@ -2016,8 +2016,9 @@ premier tour et avant la galerie des candidats. Ancre `#retro-sondax`. CSS :
 
 Bloc `.bloc` standard :
 - titre h2 en Space Grotesk : « Rétro-Sondax » ;
-- sous-titre gris : « À J-201 de la présidentielle, qui était en tête des sondages ? »
-  (x dynamique) ;
+- question sous le titre, plus grande et plus contrastée qu'un sous-titre standard
+  (18 px, 500, couleur du texte ; 16 px sur mobile) : « À J-201 de la présidentielle,
+  qui était en tête des sondages ? » (x dynamique) ;
 - grille 4 colonnes (2022, 2017, 2012, 2007), 4 lignes. Chaque cellule : nom court en
   Space Grotesk 600, score en gras `tabular-nums`, barre fine de 4 px à la couleur du
   candidat (largeur relative au premier de la colonne), comme dans le bloc « Dernier

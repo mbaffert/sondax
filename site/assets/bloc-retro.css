@@ -1,5 +1,6 @@
 /* Bloc Rétro-Sondax de la home (#retro-sondax), rendu par build_retro.py.
    Cellules calquées sur le bloc « Dernier sondage » (.ds-cand). */
+#retro-sondax .rs-question { font-size: 18px; font-weight: 500; color: var(--texte); line-height: 1.4; }
 .rs-grille { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
   padding-top: 14px; border-top: 1px solid #EDEEEA; }
 .rs-col { padding: 0 16px; min-width: 0; }
@@ -27,6 +28,7 @@
   .rs-col, .rs-col:first-child, .rs-col:last-child { padding: 0 12px; }
   .rs-col:nth-child(odd) { padding-left: 0; border-right: 1px solid #EDEEEA; }
   .rs-col:nth-child(even) { padding-right: 0; border-right: none; }
+  #retro-sondax .rs-question { font-size: 16px; }
   .rs-annee { font-size: 17px; }
   .rs-nom { font-size: 14px; }
   .rs-score { font-size: 17px; }

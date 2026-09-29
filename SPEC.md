@@ -1615,14 +1615,14 @@ calculée : elle sert à la page Modèle, à la meta description et au partage.
 
 Structure (décision du 29 septembre 2026), dans cet ordre et rien d'autre :
 
-1. **Titre** : « Le modèle Sondax ».
-2. **« Comment fonctionne le modèle Sondax »** (ancre `#comment-fonctionne`, cible du
+1. **Titre** : « Le modèle Sondax », sans surtitre.
+2. **« Comment fonctionne ce modèle ? »** (ancre `#comment-fonctionne`, cible du
    lien « Comment ces probabilités sont-elles calculées ? » de l'accueil). Texte fourni
    tel quel (`EXPLICATION` dans `build_modele.py`), quatre paragraphes. Le nombre de
    tirages vient de `modele.json` ; le nombre de l'exemple (« 30 000 simulations sur
    50 000 ») en est 60 %, pour rester juste. Les deux premiers paragraphes sont
-   visibles, les deux derniers repliés sous « Ce que le modèle mesure, et ce qu'il ne
-   mesure pas → » (`<details>` natif). Ce texte est exclu du contrôle des mots
+   visibles, les deux derniers repliés sous « Lire la suite » (`<details>` natif ; le
+   lien disparaît une fois le texte déplié). Ce texte est exclu du contrôle des mots
    réservés (§14.3), le reste de la page y reste soumis.
 3. **« Chances d'être au second tour »** : tous les candidats de la configuration,
    par chances décroissantes. Par ligne : photo, nom, barre, « {n} sur 100 »,

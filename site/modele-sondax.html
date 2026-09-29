@@ -172,6 +172,7 @@
     font-size: 15px; margin: 4px 0 12px; }
   .mo-plus summary::-webkit-details-marker { display: none; }
   .mo-plus summary:hover { text-decoration: underline; }
+  .mo-plus[open] summary { display: none; }
   @media (max-width: 599px) {
     /* Téléphone : carrés au-dessus de la liste, en 5 rangées de 20 */
     .mo-duels { grid-template-columns: 1fr; gap: 10px; }
@@ -220,15 +221,14 @@
 <script src="assets/header.js?v=7"></script>
 
 <main class="page-modele">
-  <div class="fil">Modèle Sondax</div>
   <h1>Le modèle Sondax</h1>
 
   <section class="bloc mo-explication">
-    <h2 id="comment-fonctionne">Comment fonctionne le modèle Sondax</h2>
+    <h2 id="comment-fonctionne">Comment fonctionne ce modèle&nbsp;?</h2>
     <p>Le modèle Sondax part de la moyenne actuelle des sondages. Il simule ensuite 50 000 élections fictives selon la méthode dite de Monte-Carlo.<br>Dans chacune de ces simulations, le score de chaque candidat peut être un peu supérieur ou inférieur à celui donné par les derniers sondages. L’ampleur de ces variations est calibrée à partir des écarts observés entre les sondages et les résultats des précédentes élections présidentielles.<br>On obtient ainsi 50 000 scénarios différents, tous compatibles avec les sondages actuels et avec le niveau d’incertitude observé historiquement.</p>
     <p>Pour chaque simulation, Sondax observe quels candidats arrivent en tête et lesquels se qualifient pour le second tour. Imaginons qu’un duel Le Pen – Philippe apparaisse dans 30 000 simulations sur 50 000. Le modèle affichera alors 60 chances sur 100. Cela signifie que dans 60 % des scénarios simulés à partir des sondages actuels, Le Pen et Philippe arrivent aux deux premières places.</p>
     <details class="mo-plus">
-      <summary>Ce que le modèle mesure, et ce qu’il ne mesure pas →</summary>
+      <summary>Lire la suite</summary>
       <p>Sondax ne cherche donc pas à prédire qui sera qualifié au second tour dans plusieurs mois.<br>Il répond à une question plus précise : si le rapport de forces mesuré aujourd’hui dans les sondages était celui du jour du vote, quels seraient les classements possibles compte tenu de l’incertitude habituelle des sondages ?<br>Le modèle mesure donc surtout la solidité du classement actuel. Deux candidats peuvent sembler « dans un mouchoir de poche » mais, en réalité, les chances de l’un d’atteindre le second tour à la date du dernier sondage sont statistiquement beaucoup plus élevées.</p>
       <p>Le modèle ne prend pas en compte l’avenir, il ne peut pas anticiper les débats, les événements de campagne, les nouvelles candidatures, les retraits ou les déplacements de l’opinion dans les prochains mois.<br>Il ne prétend donc surtout pas prédire le résultat de l’élection.<br>Il transforme simplement les sondages disponibles aujourd’hui et leur marge d’incertitude en une estimation de la solidité des différents scénarios de premier tour.</p>
     </details>

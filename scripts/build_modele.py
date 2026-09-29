@@ -574,10 +574,10 @@ def section_explication(modele):
     visibles = "\n    ".join(f"<p>{paragraphe(t, n)}</p>" for t in EXPLICATION[:EXPLICATION_VISIBLES])
     replies = "\n      ".join(f"<p>{paragraphe(t, n)}</p>" for t in EXPLICATION[EXPLICATION_VISIBLES:])
     return f'''<section class="bloc mo-explication">
-    <h2 id="{ANCRE_EXPLICATION}">Comment fonctionne le modèle Sondax</h2>
+    <h2 id="{ANCRE_EXPLICATION}">Comment fonctionne ce modèle&nbsp;?</h2>
     {visibles}
     <details class="mo-plus">
-      <summary>Ce que le modèle mesure, et ce qu’il ne mesure pas →</summary>
+      <summary>Lire la suite</summary>
       {replies}
     </details>
   </section>'''
@@ -589,7 +589,6 @@ def page_modele(modele, candidats, pages, historique):
     lignes = "\n      ".join(ligne_candidat(candidats, pages, c, v, modele)
                              for c, v in modele["candidats"].items())
     return f'''<main class="page-modele">
-  <div class="fil">Modèle Sondax</div>
   <h1>Le modèle Sondax</h1>
 
   {section_explication(modele)}
@@ -709,6 +708,7 @@ CSS = '''
     font-size: 15px; margin: 4px 0 12px; }
   .mo-plus summary::-webkit-details-marker { display: none; }
   .mo-plus summary:hover { text-decoration: underline; }
+  .mo-plus[open] summary { display: none; }
   @media (max-width: 599px) {
     /* Téléphone : carrés au-dessus de la liste, en 5 rangées de 20 */
     .mo-duels { grid-template-columns: 1fr; gap: 10px; }
@@ -955,7 +955,7 @@ def main_veille():
   <h2>Qui serait au second tour si on votait dimanche prochain&nbsp;?</h2>
   {avis}
 </div>'''
-    corps = f'''<main class="page-modele"><div class="fil">Modèle Sondax</div>
+    corps = f'''<main class="page-modele">
   <h1>Le modèle Sondax</h1><section class="bloc">{avis}</section></main>'''
     PAGE_PATH.write_text(render_page(title="Le modèle Sondax", meta_description=e(VEILLE_TEXTE),
                                      canonical=PAGE_URL, body_content=corps,

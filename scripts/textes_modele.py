@@ -9,7 +9,6 @@ import datetime, html
 
 e = html.escape
 
-BASCULE_AFFICHAGE_MAX = 4.0      # §14.7
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
         "septembre", "octobre", "novembre", "décembre"]
 MOINS = "−"
@@ -37,12 +36,6 @@ def date_jour_mois(iso):
     return f"{'1er' if d.day == 1 else d.day} {MOIS[d.month - 1]}"
 
 
-def points(x):
-    """« 1 point », « 1,5 point », « 2 points »."""
-    txt = (f"{x:.1f}".rstrip("0").rstrip(".")).replace(".", ",")
-    return f"{txt}&nbsp;point{'s' if x >= 2 else ''}"
-
-
 # ---------------------------------------------------------------- évolutions
 
 def evolution(modele, valeur, jours=7, index=None):
@@ -62,36 +55,6 @@ def evolution(modele, valeur, jours=7, index=None):
         qui = nommer_sondages(ids, index)
         texte += f", après {qui[0].lower() + qui[1:]}"
     return texte
-
-
-# ------------------------------------------------------------------- bascule
-
-def bascule_affichee(delta):
-    if delta is None or delta > BASCULE_AFFICHAGE_MAX:
-        return None
-    return max(0.5, round(delta * 2) / 2)
-
-
-def bascule_courte(v):
-    b = bascule_affichee(v.get("delta_bascule"))
-    return f"À environ {points(b)} du basculement" if b is not None else None
-
-
-def bascule_explication(v):
-    b = bascule_affichee(v.get("delta_bascule"))
-    if b is None:
-        return None
-    return (f"Avec environ {points(b)} de plus dans les sondages actuels, ses chances "
-            f"d’être au second tour seraient proches d’une sur deux.")
-
-
-def bascule_a_la_une(modele):
-    """Candidat dont le point de bascule mérite la une : affichable et chances
-    entre 25 et 49 (§14.14.1)."""
-    for c, v in modele["candidats"].items():
-        if 25 <= v["qualification"] < 50 and bascule_affichee(v.get("delta_bascule")) is not None:
-            return c, v
-    return None
 
 
 # ------------------------------------------------------ sondages déclencheurs
@@ -172,10 +135,4 @@ def changement(modele, candidats, index, ordre):
                 f"Ses chances d’être au second tour passent de {chances(ev['avant'])} à "
                 f"{chances(ev['apres'])} sur 100.")
 
-    if t == "bascule_change":
-        x = nom(candidats, ev["candidate"])
-        proche = ev["apres"] < ev["avant"]
-        return (f"{x} {'se rapproche du basculement' if proche else 's’éloigne du basculement'}.",
-                f"Il lui manque désormais environ {points(ev['apres'])}, contre "
-                f"{points(ev['avant'])} {_quand(ev)}.")
     return None

@@ -1109,12 +1109,12 @@ code :
 Jamais sur un même graphe, jamais additionnés (même règle qu'au §11 pour sondages et
 cotes).
 
-Quatre questions auxquelles le produit doit répondre :
+Trois questions auxquelles le produit doit répondre (la quatrième, la distance au
+basculement, a été retirée le 29 septembre 2026, voir §14.7) :
 
 1. Qui a aujourd'hui ses chances d'être au second tour ?
 2. Quels seconds tours restent réellement possibles ?
 3. Qui gagne ou perd des chances de qualification ?
-4. À quelle distance la situation se trouve-t-elle d'un basculement ?
 
 ### 14.2 Architecture et navigation
 
@@ -1149,7 +1149,7 @@ statistique ne doit être nécessaire.
 configuration, échantillon, calibration, Dirichlet, variance, distribution.
 
 **Vocabulaire à utiliser** : chances, sur 100, une chance sur trois, dimanche, duel,
-second tour, y être, basculer, se rapprocher, s'éloigner, gagner des chances, perdre
+second tour, y être, se rapprocher, s'éloigner, gagner des chances, perdre
 des chances.
 
 « Modèle Sondax » est le nom du produit et peut s'employer partout. Les termes qui
@@ -1166,8 +1166,6 @@ Formats de nombres :
   → « plus de 99 sur 100 » ;
 - évolutions : « +11 en 7 jours », « −5 en 7 jours » (vrai signe moins U+2212),
   « stable » ;
-- points de bascule : « à environ 1 point », « à environ 1,5 point », « à environ
-  2 points » (virgule décimale, espace insécable avant « point »).
 
 ### 14.4 Moyenne d'entrée et configuration du modèle
 
@@ -1327,8 +1325,7 @@ les mêmes données donnent exactement le même résultat, et d'un jour à l'aut
 
 **Dépendance.** `numpy` (générateur `numpy.random.default_rng(graine)`). C'est la
 première dépendance hors bibliothèque standard ; elle est installée dans les deux
-workflows et figée dans un `requirements.txt`. En pur Python, le point de bascule
-(plusieurs dizaines de millions de tirages gamma) prendrait plusieurs minutes.
+workflows et figée dans un `requirements.txt`.
 
 **Comptage**, pour chaque tirage : classer les candidats par part décroissante (égalité
 exacte : ordre de la configuration, cas de probabilité nulle en pratique).
@@ -1342,29 +1339,13 @@ Toutes les fréquences sont gardées **exactes** (deux décimales) pour les calc
 d'évolution et les tests, et **arrondies à l'entier** pour l'affichage. Une évolution
 se calcule sur les valeurs exactes, puis s'arrondit.
 
-### 14.7 Point de bascule
+### 14.7 Point de bascule — supprimé
 
-Pour chaque candidat dont la chance de qualification est **inférieure à 50 sur 100**
-et qui figure parmi les **quatre premiers** en chances de qualification :
-
-1. faire varier sa part `x` (échelle normalisée) ;
-2. rendre ou prendre la différence **proportionnellement à tous les autres** :
-   `pⱼ' = pⱼ · (100 − x) / (100 − pᵢ)` — le choix le plus neutre ;
-3. relancer le moteur (même graine, donc fonction lisse de `x`) ;
-4. chercher par dichotomie le `x` qui donne 50 sur 100, entre `pᵢ` et `pᵢ + 10`,
-   tolérance 0,05 point, 20 itérations au plus.
-
-Stocker `seuil_bascule` (= `x`, une décimale) et `delta_bascule` (= `x − pᵢ`, une
-décimale). Si 50 sur 100 n'est pas atteint à `pᵢ + 10`, `seuil_bascule` et
-`delta_bascule` valent `null`.
-
-**Affichage** : arrondi au demi-point le plus proche, 0,5 minimum (« à environ 1 point »
-pour 0,8 ou 1,2 ; jamais « +1,27 point »). Affiché seulement si `delta_bascule` ≤ 4. Jamais
-calculé pour un candidat déjà à 50 sur 100 ou plus. Le chiffre public est un ordre de
-grandeur, présenté comme tel.
-
-Texte associé : « Avec environ un point de plus dans les sondages actuels, ses chances
-d'être au second tour seraient proches d'une sur deux. »
+Décision du 29 septembre 2026 : la notion de basculement (score qu'il faudrait à un
+candidat pour avoir une chance sur deux d'être au second tour) est retirée du produit,
+calcul compris : ni `seuil_bascule` ni `delta_bascule` dans `modele.json` et
+l'historique, ni affichage sur l'accueil, la page Modèle, les fiches candidat et la page
+Méthode, ni événement « se rapproche du basculement ».
 
 ### 14.8 Verdicts
 
@@ -1426,8 +1407,7 @@ Pour chaque horizon, première règle vérifiée dans cet ordre de priorité :
 | 2 | `deuxieme_change` | le deuxième candidat en chances de qualification n'est plus le même |
 | 3 | `candidate_gain` / `candidate_loss` | variation d'au moins 5 chances pour un candidat (le plus grand écart absolu l'emporte) |
 | 4 | `verdict_change` | un candidat change de verdict (§14.8) |
-| 5 | `bascule_change` | `delta_bascule` affiché varie d'au moins 1 point |
-| 6 | `peu_de_changement` | sinon |
+| 5 | `peu_de_changement` | sinon |
 
 Si aucun sondage n'est entré depuis la dernière mise à jour ni dans les 7 jours :
 `type: "aucun_sondage"`.
@@ -1460,7 +1440,6 @@ Gabarits (une phrase de titre, une phrase de détail, pas plus) :
 | `candidate_gain` | « {X} se rapproche. » | « Ses chances passent de {a} à {b} sur 100. » + conséquence sur les duels si le rang d'un duel change |
 | `candidate_loss` | « {X} s'éloigne. » | idem |
 | `verdict_change` | « {X} : {verdict}. » | chances avant → après |
-| `bascule_change` | « {X} se rapproche du basculement. » / « s'en éloigne » | point de bascule avant → après |
 | `peu_de_changement` | « Peu de changement aujourd'hui. » | « Le dernier sondage reste proche de la moyenne actuelle et modifie peu la course au second tour. » |
 | `aucun_sondage` | « Pas de nouveau sondage depuis la dernière mise à jour. » | — |
 
@@ -1516,9 +1495,7 @@ resserre » sont exclus en phase A).
       "evolution_7j": 11,
       "evolution_30j": 15,
       "sondages_entres_7j": 3,
-      "rang": { "1": 5, "2": 33, "3plus": 62 },
-      "seuil_bascule": 18.5,
-      "delta_bascule": 1.0
+      "rang": { "1": 5, "2": 33, "3plus": 62 }
     }
   },
 
@@ -1541,7 +1518,7 @@ resserre » sont exclus en phase A).
   décroissante.
 - `rang` : entiers arrondis pour l'affichage ; le test de somme (§14.18) porte sur les
   comptes exacts.
-- Champs d'évolution et de bascule : absents ou `null` en phase A ; le front les ignore
+- Champs d'évolution : absents ou `null` en phase A ; le front les ignore
   alors sans message.
 
 ### 14.13 Historisation — `data/modele_history.json`
@@ -1557,8 +1534,7 @@ resserre » sont exclus en phase A).
   "moyennes": { "philippe": 18.1 },
   "qualification": { "philippe": 38.41 },
   "rangs": { "philippe": { "1": 5.02, "2": 33.39, "3plus": 61.59 } },
-  "duels": { "le-pen+melenchon": 43.87 },
-  "delta_bascule": { "philippe": 1.0 }
+  "duels": { "le-pen+melenchon": 43.87 }
 }
 ```
 
@@ -1626,8 +1602,7 @@ Structure (décision du 29 septembre 2026), dans cet ordre et rien d'autre :
    réservés (§14.3), le reste de la page y reste soumis.
 3. **« Chances d'être au second tour »** : tous les candidats de la configuration,
    par chances décroissantes. Par ligne : photo, nom, barre, « {n} sur 100 »,
-   verdict, évolution 7 jours (§14.9), point de bascule s'il est affichable, et la
-   note sur le basculement.
+   verdict, évolution 7 jours (§14.9).
 4. **« Évolution des chances d'être au second tour »** : sélecteur 7 jours | 30 jours
    | Depuis le début, une courbe par candidat, les quatre premiers cochés par défaut.
    Les candidats remplacés (`succede_a` dans `candidats.json` : Bardella) ne sont pas
@@ -1650,7 +1625,6 @@ Sous le score moyen, bloc « Et si on votait dimanche ? » :
 - évolution 7 jours (phase B) ;
 - « Son second tour le plus fréquent : face à {X}. » — le duel le plus fréquent qui
   contient le candidat ; affiché seulement si ses chances sont d'au moins 8 ;
-- point de bascule s'il est affichable ;
 - petite courbe « Évolution de ses chances de qualification », 7 jours / 30 jours
   (phase B).
 
@@ -1705,7 +1679,7 @@ Trois gabarits, choisis par le type d'événement du jour :
    / « Le second tour le plus fréquent aujourd'hui. » ;
 2. **mouvement** (`candidate_gain`/`candidate_loss` sur 7 jours) : « Philippe gagne
    11 chances d'être au second tour en une semaine. » ;
-3. **basculement** (`deuxieme_change`, ou accroche « course serrée ») : « La course à
+3. **course serrée** (`deuxieme_change`, ou accroche « course serrée ») : « La course à
    la deuxième place devient indécise. »
 
 Chaque image porte « sondax.fr », la date et « Ne prédit pas avril 2027 ».
@@ -1804,8 +1778,6 @@ des contrôles suivants échoue. Tests unitaires dans `scripts/test_modele.py`, 
 - vecteur test `[40, 20, 15, 10, 8, 7]`, `N_eff` = 350 : chances du candidat à 40 ≥ 99 ;
 - vecteur test `[30, 20, 20, 15, 15]` : les deux candidats à 20 ont des chances égales
   à 1 point près (symétrie) ;
-- point de bascule : `seuil_bascule` donne bien 50 ± 1 sur 100 quand on relance le
-  moteur avec ce seuil ;
 - `configuration` non vide et contenant au moins trois candidats ;
 - mélange : chaque tirage totalise 100, même graine même résultat, et la variance de
   chaque part reste celle de `N_eff` à 5 % près.
@@ -1829,10 +1801,9 @@ modèle Sondax ? ». Tous les chiffres viennent de `calibration.json`, `backtest
 4. **Calibration** : formule de `N_eff`, valeurs par jeu (présidentielles,
    européennes, ensemble), valeur retenue et pourquoi.
 5. **Comptage** : qualification, rang, duel ; arrondis.
-6. **Point de bascule** : méthode et arrondi.
-7. **Backtest** : tableaux et table de fiabilité, réserves (§14.17).
-8. **Limites de la loi** (§14.20).
-9. **Ce que le modèle ne fait pas** (§14.20), et la phrase centrale : « Le modèle Sondax
+6. **Backtest** : tableaux et table de fiabilité, réserves (§14.17).
+7. **Limites de la loi** (§14.20).
+8. **Ce que le modèle ne fait pas** (§14.20), et la phrase centrale : « Le modèle Sondax
    mesure la solidité du classement observé aujourd'hui. Il ne prédit pas le résultat
    de l'élection d'avril 2027. »
 
@@ -1870,7 +1841,6 @@ spécialistes :
 - Sondax dit-il que Philippe fera 38 % ?
 - Sondax prédit-il avril 2027 ?
 - Que signifie « +11 en une semaine » ?
-- Que signifie « à un point du basculement » ?
 - Quelle différence entre la courbe des sondages et la courbe du modèle ?
 
 Une confusion importante impose de revoir le wording avant publication. Les réponses
@@ -1908,8 +1878,8 @@ le wording et les seuils).
 | Étape | Contenu | Critère de fin |
 |---|---|---|
 | A1 | `calibration.py` sur les présidentielles | 61 comparaisons, 0,90, 1,40, `N_eff` ≈ 345 ; 2002 seule année aux qualifiés faux |
-| A2 | `modele.py` → `modele.json` (chances, rangs, duels) ; tests §14.18 hors bascule | tests verts |
-| A3 | Page Modèle : §14.14.2 sections 1, 2, 4, 6, 7 ; sans évolution, bascule ni historique | rendu statique, mots interdits contrôlés |
+| A2 | `modele.py` → `modele.json` (chances, rangs, duels) ; tests §14.18 | tests verts |
+| A3 | Page Modèle : §14.14.2 sections 1, 2, 4, 6, 7 ; sans évolution ni historique | rendu statique, mots interdits contrôlés |
 | A4 | Bloc d'accueil : titre, accroche (règles 1 à 3 de §14.11, sans mots de changement), candidats, bouton, ligne de contexte | idem |
 
 Puis revue en local, mobile et desktop ; ajustement des seuils de verdict et du
@@ -1923,7 +1893,7 @@ wording sur les chiffres réels ; tests de compréhension (§14.21).
 | B2 | `backtest.py` leave-one-out, `backtest.json`, validation de la loi (§14.20) |
 | B3 | `modele_history.json` à chaque run, amorçage ; évolutions 1 j / 7 j / 30 j avec la règle de §14.9 |
 | B4 | « Ce qui a changé » (§14.10) avec attribution ; accroches et mouvement de l'accueil |
-| B5 | Point de bascule (§14.7), affichage borné |
+| B5 | Point de bascule (§14.7) : réalisé puis supprimé le 29 septembre 2026 |
 | B6 | Courbes de la page Modèle |
 | B7 | Fiches candidat et pages duel (§14.14.3, §14.14.4) |
 | B8 | Partage (§14.15) |

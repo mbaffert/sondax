@@ -135,10 +135,6 @@
    "philippe+zemmour": 0.0,
    "retailleau+roussel": 0.0,
    "retailleau+zemmour": 0.0
-  },
-  "delta_bascule": {
-   "melenchon": 0.8,
-   "glucksmann": 4.6
   }
  },
  {
@@ -276,10 +272,6 @@
    "melenchon+tondelier": 0.0,
    "philippe+roussel": 0.0,
    "philippe+zemmour": 0.0
-  },
-  "delta_bascule": {
-   "melenchon": 0.7,
-   "glucksmann": 4.2
   }
  },
  {
@@ -414,10 +406,6 @@
    "glucksmann+roussel": 0.0,
    "melenchon+tondelier": 0.0,
    "philippe+tondelier": 0.0
-  },
-  "delta_bascule": {
-   "melenchon": 2.0,
-   "glucksmann": 4.1
   }
  },
  {
@@ -549,10 +537,6 @@
    "glucksmann+zemmour": 0.0,
    "philippe+tondelier": 0.0,
    "philippe+zemmour": 0.0
-  },
-  "delta_bascule": {
-   "melenchon": 1.7,
-   "glucksmann": 4.4
   }
  },
  {
@@ -688,10 +672,6 @@
    "philippe+roussel": 0.0,
    "philippe+tondelier": 0.0,
    "philippe+zemmour": 0.0
-  },
-  "delta_bascule": {
-   "melenchon": 1.3,
-   "attal": 4.7
   }
  },
  {
@@ -817,10 +797,6 @@
    "melenchon+tondelier": 0.0,
    "philippe+roussel": 0.0,
    "philippe+zemmour": 0.0
-  },
-  "delta_bascule": {
-   "melenchon": 2.1,
-   "glucksmann": 5.6
   }
  },
  {
@@ -956,10 +932,6 @@
    "philippe+roussel": 0.0,
    "philippe+tondelier": 0.0,
    "retailleau+tondelier": 0.0
-  },
-  "delta_bascule": {
-   "melenchon": 1.4,
-   "glucksmann": 5.6
   }
  },
  {
@@ -1093,10 +1065,6 @@
    "glucksmann+retailleau": 0.0,
    "philippe+roussel": 0.0,
    "philippe+zemmour": 0.0
-  },
-  "delta_bascule": {
-   "melenchon": 1.0,
-   "attal": 5.7
   }
  },
  {
@@ -1232,10 +1200,6 @@
    "philippe+tondelier": 0.0,
    "philippe+zemmour": 0.0,
    "tondelier+zemmour": 0.0
-  },
-  "delta_bascule": {
-   "philippe": 1.3,
-   "glucksmann": 5.8
   }
  },
  {
@@ -1368,10 +1332,6 @@
    "melenchon+retailleau": 0.0,
    "melenchon+zemmour": 0.0,
    "philippe+retailleau": 0.0
-  },
-  "delta_bascule": {
-   "philippe": 1.3,
-   "glucksmann": 5.3
   }
  },
  {
@@ -1507,10 +1467,6 @@
    "melenchon+tondelier": 0.0,
    "melenchon+zemmour": 0.0,
    "philippe+roussel": 0.0
-  },
-  "delta_bascule": {
-   "melenchon": 0.3,
-   "glucksmann": 4.7
   }
  },
  {
@@ -1645,11 +1601,6 @@
    "melenchon+roussel": 0.0,
    "melenchon+tondelier": 0.0,
    "melenchon+zemmour": 0.0
-  },
-  "delta_bascule": {
-   "philippe": 0.0,
-   "melenchon": 0.2,
-   "glucksmann": 5.1
   }
  },
  {
@@ -1789,11 +1740,6 @@
    "philippe+roussel": 0.0,
    "philippe+tondelier": 0.0,
    "philippe+zemmour": 0.0
-  },
-  "delta_bascule": {
-   "philippe": 0.1,
-   "melenchon": 0.2,
-   "glucksmann": 4.8
   }
  },
  {
@@ -1929,10 +1875,6 @@
    "melenchon+roussel": 0.0,
    "melenchon+tondelier": 0.0,
    "philippe+zemmour": 0.0
-  },
-  "delta_bascule": {
-   "philippe": 0.6,
-   "glucksmann": 4.9
   }
  },
  {
@@ -2072,10 +2014,6 @@
    "philippe+roussel": 0.0,
    "philippe+zemmour": 0.0,
    "retailleau+tondelier": 0.0
-  },
-  "delta_bascule": {
-   "philippe": 0.6,
-   "glucksmann": 4.7
   }
  },
  {
@@ -2215,10 +2153,6 @@
    "glucksmann+retailleau": 0.0,
    "glucksmann+zemmour": 0.0,
    "philippe+tondelier": 0.0
-  },
-  "delta_bascule": {
-   "philippe": 0.7,
-   "glucksmann": 4.8
   }
  },
  {
@@ -2361,10 +2295,6 @@
    "philippe+roussel": 0.0,
    "philippe+zemmour": 0.0,
    "retailleau+roussel": 0.0
-  },
-  "delta_bascule": {
-   "philippe": 1.1,
-   "glucksmann": 5.6
   }
  },
  {
@@ -2506,10 +2436,6 @@
    "melenchon+zemmour": 0.0,
    "philippe+tondelier": 0.0,
    "retailleau+tondelier": 0.0
-  },
-  "delta_bascule": {
-   "philippe": 0.7,
-   "glucksmann": 5.8
   }
  },
  {
@@ -2652,10 +2578,6 @@
    "philippe+tondelier": 0.0,
    "philippe+zemmour": 0.0,
    "retailleau+roussel": 0.0
-  },
-  "delta_bascule": {
-   "philippe": 1.6,
-   "glucksmann": 5.7
   }
  }
 ]

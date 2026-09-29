@@ -205,14 +205,7 @@ qualifications divisé par {tirages}. Même comptage pour les rangs et pour les 
 (les deux premiers de chaque tirage). Les chiffres sont arrondis à l'entier&nbsp;; sous 1, nous
 écrivons «&nbsp;moins de 1 sur 100&nbsp;», au-dessus de 99, «&nbsp;plus de 99 sur 100&nbsp;».</p>
 
-<h3>6. Point de bascule</h3>
-<p>Pour les principaux candidats sous 50 chances sur 100, nous cherchons par dichotomie le
-score qui leur donnerait environ une chance sur deux. Le point ajouté au candidat est pris
-à tous les autres proportionnellement à leur score, le choix le plus neutre. Le chiffre
-publié est arrondi au demi-point et n'est affiché qu'à 4 points ou moins&nbsp;: c'est un
-ordre de grandeur.</p>
-
-<h3>7. Backtest&nbsp;: qu'aurait affiché Sondax avant les présidentielles passées&nbsp;?</h3>
+<h3>6. Backtest&nbsp;: qu'aurait affiché Sondax avant les présidentielles passées&nbsp;?</h3>
 <p>Pour chaque présidentielle, nous calibrons N<sub>eff</sub> sur toutes les autres
 élections (<em>leave-one-out</em>), calculons la moyenne Sondax avec les seuls sondages
 disponibles {bt["horizon_jours"]} jours avant le scrutin, puis appliquons exactement le
@@ -226,7 +219,7 @@ effectivement qualifiés (score de Brier&nbsp;: {fr(fia["brier"], 3)} sur {fia["
 <p><strong>Une réserve.</strong> Cinq élections, c'est peu&nbsp;: toute conclusion reste
 prudente.</p>
 
-<h3>8. Limites de la loi utilisée</h3>
+<h3>7. Limites de la loi utilisée</h3>
 <p>Nous avons confronté la loi calibrée ({loi["N_eff"]}) aux erreurs historiques. Au global,
 l'écart-type observé ({fr(loi["global"]["ecart_type_observe"])}) est celui de la loi
 ({fr(loi["global"]["ecart_type_attendu"])}). Les grandes erreurs ne sont pas plus
@@ -247,7 +240,7 @@ de celle de la loi ({fr(cor["covariance_moyenne_attendue"])}).</p>
 <p>Nous documentons ces limites sans complexifier le moteur&nbsp;: modèle simple, backtest,
 transparence. Un changement de loi serait une décision explicite, annoncée ici.</p>
 
-<h3>9. Ce que le modèle ne fait pas</h3>
+<h3>8. Ce que le modèle ne fait pas</h3>
 <p>Aucune correction discrétionnaire (biais supposés des petits candidats, dynamique
 supposée, biais par institut)&nbsp;; aucune pondération par institut&nbsp;; aucune prévision de
 l'évolution des intentions de vote&nbsp;; aucune prise en compte des campagnes, débats,

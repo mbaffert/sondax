@@ -4,7 +4,7 @@
 Lit data/derived/modele.json et écrit dans site/partage/ deux images datées :
 modele-<jour>-og.png (1200 × 630 : OpenGraph, LinkedIn, X) et
 modele-<jour>-carre.png (1080 × 1080 : messageries). Le gabarit dépend de
-l'événement du jour : duel principal, mouvement ou basculement. Écrit aussi
+l'événement du jour : duel principal, mouvement ou course serrée. Écrit aussi
 site/partage/modele.json (gabarit, phrase, chemins) pour le bouton Partager.
 """
 
@@ -64,7 +64,7 @@ def choisir(modele, candidats, index):
             sous = f"Après {qui[0].lower() + qui[1:]}."
         return ("mouvement", f"{x} {verbe} {n} chances d’être au second tour en une semaine.", sous)
     if t == "deuxieme_change" or modele["accroche"]["regle"] == "serree":
-        return ("basculement", "La course à la deuxième place devient indécise.",
+        return ("course_serree", "La course à la deuxième place devient indécise.",
                 modele["accroche"]["detail"])
     a, b = sorted(modele["duels"][0]["candidats"], key=ordre.index)
     return ("duel", f"{T.nom(candidats, a)} – {T.nom(candidats, b)}",

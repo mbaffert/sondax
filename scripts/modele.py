@@ -30,12 +30,6 @@ EXCLUS = {"autre"}
 
 HORIZONS = {"1j": 1, "7j": 7, "30j": 30}   # évolutions (§14.9)
 SEUIL_VARIATION = 5                        # événement « gain / perte » (§14.10)
-SEUIL_BASCULE_CHANGE = 1.0
-BASCULE_CIBLE = 50.0                       # point de bascule (§14.7)
-BASCULE_MAX_ECART = 10.0
-BASCULE_TOLERANCE = 0.05
-BASCULE_AFFICHAGE_MAX = 4.0
-BASCULE_RANG_MAX = 4
 
 # Verdicts (§14.8), sur la chance arrondie affichée : (minimum inclus, clé).
 VERDICTS = [
@@ -184,41 +178,6 @@ def cle_duel(paire):
     return "+".join(sorted(paire))
 
 
-# ------------------------------------------------------------ point de bascule
-
-def point_de_bascule(normalisees, slug, n_eff, tirages, graine, k=None):
-    """Part (échelle normalisée) qui donne environ 50 chances sur 100 au
-    candidat, les autres rendant ou prenant la différence au prorata (§14.7).
-    Retourne None si 50 n'est pas atteint à +10 points."""
-    slugs = sorted(normalisees)
-    i = slugs.index(slug)
-    p0 = normalisees[slug]
-
-    def chance(x):
-        facteur = (100 - x) / (100 - p0)
-        parts = [x if c == slug else normalisees[c] * facteur for c in slugs]
-        c = simuler(parts, n_eff, tirages, graine, k)
-        return 100 * (c["r1"][i] + c["r2"][i]) / tirages
-
-    bas, haut = p0, min(p0 + BASCULE_MAX_ECART, 99.0)
-    if chance(haut) < BASCULE_CIBLE:
-        return None
-    while haut - bas > BASCULE_TOLERANCE:
-        milieu = (bas + haut) / 2
-        if chance(milieu) < BASCULE_CIBLE:
-            bas = milieu
-        else:
-            haut = milieu
-    return (bas + haut) / 2
-
-
-def bascule_affichee(delta):
-    """Demi-point le plus proche, 0,5 minimum ; None au-delà de 4 points."""
-    if delta is None or delta > BASCULE_AFFICHAGE_MAX:
-        return None
-    return max(0.5, round(delta * 2) / 2)
-
-
 # ---------------------------------------------------------------- historique
 
 def charger_historique():
@@ -238,8 +197,6 @@ def entree_historique(m, reconstitue=False):
         "qualification": {c: v["qualification_exacte"] for c, v in m["candidats"].items()},
         "rangs": {c: v["rang_exact"] for c, v in m["candidats"].items()},
         "duels": {cle_duel(d["candidats"]): d["chance_exacte"] for d in m["duels"]},
-        "delta_bascule": {c: v["delta_bascule"] for c, v in m["candidats"].items()
-                          if v.get("delta_bascule") is not None},
     }
 
 
@@ -327,12 +284,6 @@ def detecter(m, entree):
                 "apres": q_ap[c], "verdict": verdict(arrondi_chance(q_ap[c])),
                 "delta": arrondi_chance(ecarts[c])}
 
-    b_av = entree.get("delta_bascule", {})
-    for c, v in m["candidats"].items():
-        a, b = bascule_affichee(b_av.get(c)), bascule_affichee(v.get("delta_bascule"))
-        if a is not None and b is not None and abs(a - b) >= SEUIL_BASCULE_CHANGE:
-            return {"type": "bascule_change", "candidate": c, "avant": a, "apres": b}
-
     return {"type": "peu_de_changement"}
 
 
@@ -404,7 +355,7 @@ def accroche(candidats, m, ref_7j=None):
 # ------------------------------------------------------------------- calcul
 
 def calculer(series, sondages, candidats, reglages, maintenant=None,
-             historique=None, bascule=True):
+             historique=None):
     maintenant = maintenant or datetime.datetime.now(datetime.timezone.utc)
     historique = historique or []
     jour = _date(series["date_fin"])
@@ -446,20 +397,9 @@ def calculer(series, sondages, candidats, reglages, maintenant=None,
                      "3plus": arrondi_chance(100 - q)},
             "rang_exact": {"1": round(r1, 2), "2": round(r2, 2),
                            "3plus": round(100 - q, 2)},
-            "seuil_bascule": None,
-            "delta_bascule": None,
         }
     ordre = sorted(slugs, key=lambda c: (-qualif[c], -moyennes[c], c))
     res_cand = {c: res_cand[c] for c in ordre}
-
-    if bascule:
-        for c in ordre[:BASCULE_RANG_MAX]:
-            if qualif[c] >= BASCULE_CIBLE:
-                continue
-            seuil = point_de_bascule(normalisees, c, n_eff, tirages, graine, k)
-            if seuil is not None:
-                res_cand[c]["seuil_bascule"] = round(seuil, 1)
-                res_cand[c]["delta_bascule"] = round(seuil - normalisees[c], 1)
 
     duels = sorted(
         ({"candidats": [slugs[i], slugs[j]], "chance": arrondi_chance(100 * n / tirages),
@@ -560,9 +500,8 @@ def main():
     print(f"Modèle au {resultat['jour_moyenne']} : {len(resultat['configuration'])} "
           f"candidats, {resultat['n_sondages']} sondages, N_eff {resultat['N_eff']}")
     for c, v in resultat["candidats"].items():
-        b = f"  bascule +{v['delta_bascule']}" if v["delta_bascule"] is not None else ""
         print(f"  {c:15} {v['moyenne_normalisee']:5.1f} %  → {v['qualification_exacte']:6.2f} "
-              f"sur 100  7j {v['evolution_7j']}  ({v['verdict']}){b}")
+              f"sur 100  7j {v['evolution_7j']}  ({v['verdict']})")
     for d in resultat["duels"][:4]:
         print(f"  {'+'.join(d['candidats']):28} {d['chance_exacte']:6.2f}  7j {d['evolution_7j']}")
     if resultat["ecartes"]:

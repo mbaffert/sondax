@@ -138,15 +138,12 @@ def evolution_ligne(modele, valeur, chance):
     return evo
 
 
-def ligne_candidat(candidats, pages, slug, v, modele, p="", detail=True, bascule=True):
+def ligne_candidat(candidats, pages, slug, v, modele, p="", detail=True):
     q = v["qualification_exacte"]
     evo = evolution_ligne(modele, v.get("evolution_7j"), q)
     infos = [e(verdict_texte(candidats, slug, v["verdict"]))] if detail else []
     if evo:
         infos.append(f'<span class="mo-evo">{evo}</span>')
-    bas = T.bascule_courte(v) if bascule else None
-    ligne_bascule = (f'<div class="mo-bascule" title="{T.bascule_explication(v)}">{bas}</div>'
-                     if bas else "")
     nom_html = e(nom_complet(candidats, slug))
     if slug in pages:
         nom_html = f'<a href="{p}{slug}.html">{nom_html}</a>'
@@ -157,22 +154,8 @@ def ligne_candidat(candidats, pages, slug, v, modele, p="", detail=True, bascule
         <div class="mo-tete"><span class="mo-nom">{nom_html}</span><span class="mo-chance">{sur_100(q)}</span></div>
         <div class="mo-barre" aria-hidden="true"><span style="width:{largeur:.1f}%;background:{candidats[slug]['couleur']}"></span></div>
         {f'<div class="mo-verdict">{" · ".join(infos)}</div>' if infos else ''}
-        {ligne_bascule}
       </div>
     </li>'''
-
-
-def accroche_html(modele, balise="p", candidats=None):
-    """Accroche ; avec `candidats`, version développée (point de bascule)."""
-    a = modele["accroche"]
-    suite = ""
-    une = T.bascule_a_la_une(modele) if candidats else None
-    if une:
-        c, v = une
-        suite = (f' {e(nom(candidats, c))} est à environ '
-                 f'{T.points(T.bascule_affichee(v["delta_bascule"]))} du basculement.')
-    return (f'<{balise} class="mo-accroche"><strong>{e(a["titre"])}</strong> '
-            f'{e(a["detail"])}{suite}</{balise}>')
 
 
 def phrase_duel_principal(modele, candidats, historique):
@@ -480,15 +463,6 @@ JS_COURBES = '''<script>
 </script>'''
 
 
-def notes_bascule(modele, candidats):
-    notes = [f'<li><strong>{e(nom(candidats, c))}</strong> : {T.bascule_explication(v)}</li>'
-             for c, v in modele["candidats"].items() if T.bascule_explication(v)]
-    if not notes:
-        return ""
-    return (f'<div class="mo-petit mo-notes"><p>« Basculement » : le seuil à partir duquel un '
-            f'candidat aurait une chance sur deux d’être au second tour.</p><ul>{"".join(notes)}</ul></div>')
-
-
 def bouton_partage(partage):
     """Bouton Partager (§14.15) : partage natif, sinon copie ou téléchargement."""
     if not partage:
@@ -599,7 +573,6 @@ def page_modele(modele, candidats, pages, historique):
     <ul class="mo-liste">
       {lignes}
     </ul>
-    {notes_bascule(modele, candidats)}
   </section>
 
   {section_courbes(modele, candidats, historique)}
@@ -632,7 +605,6 @@ CSS = '''
     padding: 7px 12px; cursor: pointer; font: 500 13.5px var(--corps); color: var(--texte); }
   .mo-partage-ok { color: var(--gris); }
   .mo-table .mo-evo { font-size: 13px; color: var(--gris); }
-  .mo-bascule { font-size: 13px; font-weight: 600; color: var(--bleu-nuit); margin-top: 2px; }
   .mo-mouvement { font-size: 14.5px; margin: 14px 0 0; }
   .mo-notes { margin-top: 14px; }
   .mo-notes ul { margin: 4px 0 0 18px; }
@@ -801,9 +773,6 @@ def bloc_candidat(modele, candidats, slug, historique):
     if d and v["qualification_exacte"] >= SECOND_TOUR_FREQUENT_MIN:
         autre = next(c for c in d["candidats"] if c != slug)
         lignes.append(f'<p>Son second tour le plus fréquent : face à {e(nom_complet(candidats, autre))}.</p>')
-    bas = T.bascule_courte(v)
-    if bas:
-        lignes.append(f'<p class="mc-bascule">{bas}. <span>{T.bascule_explication(v)}</span></p>')
     courbe = ""
     if len(historique) >= 2:
         instant = _instant(modele)
@@ -825,7 +794,6 @@ def bloc_candidat(modele, candidats, slug, historique):
 .modele-candidat .mc-chance {{ font-size: 18px; }}
 .modele-candidat .mc-chance b {{ font-family: var(--titre); font-size: 26px; }}
 .modele-candidat .txt p {{ margin: 0 0 4px; }}
-.modele-candidat .mc-bascule span {{ display: block; font-size: 13px; color: var(--gris); }}
 .modele-candidat .mc-periodes {{ display: flex; gap: 4px; margin: 6px 0; }}
 .modele-candidat .mc-periodes button {{ border: 1px solid var(--bord); background: #fff; border-radius: 7px;
   padding: 4px 10px; font-size: 12.5px; cursor: pointer; color: var(--gris); }}

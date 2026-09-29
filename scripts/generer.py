@@ -251,9 +251,9 @@ def barres_mini(titre, rows, national, amp):
 def graphiques_electorat(dims, national):
     dims = [(t, rows) for t, rows in dims if rows]
     amp = max([4] + [abs(v - national) for _, rows in dims for _, v in rows])
-    return (f'<div class="minis">{"".join(barres_mini(t, rows, national, amp) for t, rows in dims)}</div>'
-            f'<div class="minis-legende">Écart au score national ({fr(national,0)}&nbsp;%)&nbsp;: '
-            f'en bleu au-dessus, en rouge en dessous.</div>')
+    return (f'<div class="minis-titre">Écart au score national ({fr(national,0)}&nbsp;%)&nbsp;: '
+            f'en bleu au-dessus, en rouge en dessous</div>'
+            f'<div class="minis">{"".join(barres_mini(t, rows, national, amp) for t, rows in dims)}</div>')
 
 def barres_simple(rows):
     mx = max(v for _, v in rows) or 1

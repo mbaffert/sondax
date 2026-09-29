@@ -19,8 +19,10 @@ BASE = "https://sondax.fr"
 
 # Chaînes qui changent à chaque build sans que le contenu change
 VOLATILES = [
-    # Pied de page : « Dernier sondage intégré … · Données vérifiées le … · revid … »
+    # Pied de page : « N sondages agrégés · Dernier sondage intégré … · Données vérifiées le … · revid … »
     (re.compile(r'<div id="footer-run">.*?</div>', re.S), '<div id="footer-run"></div>'),
+    # Accueil, sous le H1 : « N sondages · M instituts · mis à jour le 29 septembre 2026 »
+    (re.compile(r" · mis à jour le [^<]*"), ""),
     # donnees.html : « … · généré le 28 septembre 2026 »
     (re.compile(r" · généré le [^<]*"), ""),
     # donnees.html : JSON-LD Dataset des sondages, dateModified = date du build

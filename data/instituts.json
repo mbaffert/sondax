@@ -22,7 +22,7 @@
   "toluna-harris-interactive": {
     "nom": "Harris",
     "nom_complet": "Toluna Harris Interactive",
-    "alias": ["Harris", "Harris Interactive", "Toluna Harris Interactive"],
+    "alias": ["Harris", "Harris Interactive", "Harris-Interactive", "Toluna Harris Interactive"],
     "notice": ["toluna-harris-interactive", "harris-interactive"],
     "mode_recueil": "en ligne",
     "site": "https://harris-interactive.fr/",
@@ -72,7 +72,7 @@
   "verian": {
     "nom": "Verian",
     "nom_complet": "Verian",
-    "alias": ["Verian", "Verian (ex-Kantar Public)"],
+    "alias": ["Verian", "Verian (ex-Kantar Public)", "Kantar", "Kantar Public"],
     "notice": ["verian"],
     "mode_recueil": null,
     "site": "https://www.veriangroup.com/fr",

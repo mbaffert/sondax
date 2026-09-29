@@ -146,6 +146,8 @@
   .ds-header .section-label { margin-bottom: 0; }
   .ds-institut { font-family: var(--titre); font-size: 20px; font-weight: 600; color: #0B2E6F; }
   .ds-meta { font-size: 14px; color: var(--gris); }
+  /* Compteur sous le H1, rempli au build (build_dates.py) */
+  #compteur-sondages { font-size: 13.5px; color: #4A5361; margin-bottom: 18px; }
   .ds-fiche { margin-left: auto; font-size: 13.5px; font-weight: 500; white-space: nowrap; }
   .ds-top4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 0;
     padding-top: 14px; border-top: 1px solid #EDEEEA; }
@@ -214,7 +216,8 @@
 </nav>
 
 <main>
-  <h1 style="font-family:var(--titre);font-size:28px;font-weight:700;letter-spacing:-0.02em;margin:0 0 18px;">Tous les sondages de la présidentielle 2027</h1>
+  <h1 style="font-family:var(--titre);font-size:28px;font-weight:700;letter-spacing:-0.02em;margin:0 0 4px;">Tous les sondages de la présidentielle 2027</h1>
+  <p id="compteur-sondages"></p>
   <!-- BEGIN:bloc-dernier-sondage -->
 <div class="bloc" id="dernier-sondage" style="padding:22px 28px 20px;">
   <div class="ds-header">
@@ -971,17 +974,6 @@ async function init() {
 
   // --- Bloc second tour (sélecteur de duel dans #second-tour) ---
   const t2 = new SecondTour(sondagesData);
-
-  // Pied de page : date du dernier run et revid
-  const revid = sondagesData.length > 0 ? sondagesData[0].revid : null;
-  const maj = polyData.maj || null;
-  const footerRun = document.getElementById('footer-run');
-  if (footerRun) {
-    let lines = [];
-    if (maj) lines.push(`collecte · ${fmtDate(maj.slice(0, 10))}`);
-    if (revid) lines.push(`revid · <a href="https://fr.wikipedia.org/w/index.php?oldid=${revid}" target="_blank">${revid}</a>`);
-    footerRun.innerHTML = lines.join('<br>');
-  }
 }
 
 init();

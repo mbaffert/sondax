@@ -85,6 +85,23 @@ def test_sortie_reproductible():
     controler_sortie(a)
 
 
+def test_point_de_bascule():
+    parts = {"a": 32, "b": 18, "c": 16, "d": 12, "e": 10, "f": 12}
+    seuil = modele.point_de_bascule(parts, "c", N_EFF, TIRAGES, GRAINE)
+    assert seuil is not None and parts["c"] < seuil < parts["c"] + 10, f"seuil {seuil}"
+    k = (100 - seuil) / (100 - parts["c"])
+    slugs = sorted(parts)
+    c = modele.simuler([seuil if s == "c" else parts[s] * k for s in slugs], N_EFF, TIRAGES, GRAINE)
+    i = slugs.index("c")
+    q = 100 * (c["r1"][i] + c["r2"][i]) / TIRAGES
+    assert abs(q - 50) <= 1, f"au seuil, {q:.2f} chances au lieu de 50"
+
+
+def test_bascule_affichee():
+    for delta, attendu in ((0.1, 0.5), (0.8, 1.0), (1.2, 1.0), (1.3, 1.5), (4.0, 4.0), (4.1, None), (None, None)):
+        assert modele.bascule_affichee(delta) == attendu, f"{delta} → {modele.bascule_affichee(delta)}"
+
+
 def test_melange():
     """Avec k : chaque tirage totalise 100, même graine même résultat, et
     l'ampleur moyenne des erreurs reste celle de N_eff (à 5 % près)."""
@@ -100,7 +117,7 @@ def test_melange():
 
 TESTS = [test_tirages_totalisent_100, test_sommes_des_comptes,
          test_meme_graine_meme_resultat, test_candidat_a_40_quasi_toujours_qualifie,
-         test_symetrie, test_verdicts,
+         test_symetrie, test_verdicts, test_point_de_bascule, test_bascule_affichee,
          test_melange]
 
 

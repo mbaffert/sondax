@@ -1571,30 +1571,31 @@ Usages : évolutions 1 j / 7 j / 30 j, courbes (§14.14.5), contenus partagés (
 
 #### 14.14.1 Bloc d'accueil (`#bloc-modele`)
 
-Rendu au build (contrainte générale du §1) par `scripts/build_modele.py`. Ne présente
-qu'une version condensée ; son seul objectif est d'être compris en dix secondes et de
-donner envie d'ouvrir la page. Dans l'ordre (décision du 28 septembre 2026) :
+Rendu au build (contrainte générale du §1) par `scripts/build_modele.py`
+(`bloc_accueil`). Version simplifiée (décision du 29 septembre 2026), de haut en bas :
 
-1. **Titre** : « Et si on votait dimanche ? » ; sous-titre : « Qui serait au second
-   tour, d'après les sondages d'aujourd'hui ? »
-2. **Accroche** (§14.11).
-3. **Les seconds tours possibles** : le composant de la page Modèle (§14.14.2, point 4),
-   **le même** (`composant_duels`, une seule fonction pour les deux pages), avec les
-   mêmes données : 100 carrés et liste des duels, avec leur évolution et le sondage
-   déclencheur (§14.9). Seul le niveau de titre change (`h3` sur l'accueil). Les barres
-   par candidat restent uniquement sur la page Modèle.
-4. **Bouton** : « Voir le modèle Sondax → » vers `/modele-sondax` ; dessous : « Chances
-   de qualification, seconds tours possibles et évolution de la course. » (masqué sur
-   téléphone).
-5. **Ligne de contexte** : « Si on votait dimanche · Calculé sur {n} sondages · Mis à
-   jour le {date}. » puis « Ne prédit pas ce qui se passera d'ici avril. »
+1. **Surtitre** « Modèle Sondax ».
+2. **Titre** : « Qui serait au second tour si on votait dimanche prochain ? »
+3. **Une phrase**, sans gras, générée (`phrase_duel_principal`) : « {duel le plus
+   fréquent} reste, au vu des sondages les plus récents, le second tour le plus
+   plausible. » ; « est » au lieu de « reste » si ce duel n'était pas le plus fréquent
+   à la référence de 7 jours.
+4. **Gaufre de 100 carrés et liste des duels** : variante « accueil » du composant de
+   la page Modèle (`composant_duels(…, variante="accueil")`, une seule fonction). Ni
+   titre ni phrase d'explication. Chaque ligne : pastille, duel, « {n} sur 100 »,
+   variation datée « +13 depuis le 16/9 » / « −12 depuis le 16/9 » / « stable » si
+   l'écart arrondi est nul. La date est celle de l'entrée d'historique de référence
+   des évolutions à 7 jours (la dernière datée de J−7 ou avant, §14.9), au format
+   j/m sans zéro initial. « Autres scénarios · {n} sur 100 » en ligne grisée, sans
+   variation. Sous 600 px : gaufre au-dessus de la liste, variation sous les chances.
+5. **Lien texte** : « Comment ces probabilités sont-elles calculées ? → » vers
+   `methodologie.html#modele`. Seule exception à la liste des mots interdits (§14.3),
+   déclarée dans `EXCEPTIONS_VOCABULAIRE`.
 
-Le principal mouvement et le point de bascule ne figurent plus sur l'accueil ; ils
-restent sur la page Modèle (« Ce qui a changé », liste des chances).
-
-**Téléphone** : sous 600 px, les carrés passent au-dessus de la liste, en 5 rangées de
-20 ; le bloc entier doit tenir sur un écran (vérifié à 749 px de haut pour un écran de
-390 × 844 au 28 septembre 2026).
+Plus de bouton, de ligne de contexte, d'accroche développée ni de barres par
+candidat sur l'accueil. Le nombre de sondages et la date de mise à jour restent
+affichés sur la page Modèle (ligne de contexte). L'accroche du jour (§14.11) reste
+calculée : elle sert à la page Modèle, à la meta description et au partage.
 
 #### 14.14.2 Page « Le modèle Sondax » (`/modele-sondax`)
 

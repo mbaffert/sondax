@@ -37,6 +37,9 @@ BEGIN_MARKER = "<!-- BEGIN:bloc-modele -->"
 END_MARKER = "<!-- END:bloc-modele -->"
 
 # Mots réservés à la page Méthode (§14.3), cherchés en début de mot.
+# Libellés demandés tels quels, retirés du texte avant le contrôle (décision du
+# 29 septembre 2026 : le lien de l'accueil vers la méthode dit « probabilités »).
+EXCEPTIONS_VOCABULAIRE = ["Comment ces probabilités sont-elles calculées"]
 MOTS_INTERDITS = ["simulation", "probabilit", "tirage", "configuration", "échantillon",
                   "calibration", "dirichlet", "variance", "distribution"]
 
@@ -171,20 +174,28 @@ def accroche_html(modele, balise="p", candidats=None):
             f'{e(a["detail"])}{suite}</{balise}>')
 
 
-def bloc_accueil(modele, candidats):
-    """Bloc d'accueil (§14.14.1) : titre, accroche, « Les seconds tours
-    possibles » (même composant que la page Modèle), bouton, ligne de contexte."""
+def phrase_duel_principal(modele, candidats, historique):
+    """Phrase unique de l'accueil : le duel le plus fréquent, « reste » s'il
+    l'était déjà à la référence de 7 jours, « est » sinon."""
+    ordre = ordre_modele(modele)
+    duel = modele["duels"][0]
+    ref = entree_avant(historique, _instant(modele), 7)
+    reste = ref is not None and ref["duels"] and max(ref["duels"], key=ref["duels"].get) == "+".join(sorted(duel["candidats"]))
+    verbe = "reste" if reste else "est"
+    return (f"{e(libelle_duel(candidats, duel['candidats'], ordre))} {verbe}, au vu des "
+            f"sondages les plus récents, le second tour le plus plausible.")
+
+
+def bloc_accueil(modele, candidats, historique):
+    """Bloc d'accueil (§14.14.1) : surtitre, titre, phrase du duel principal,
+    gaufre et liste des duels (variante « accueil » du composant de la page
+    Modèle), lien vers la méthode."""
     return f'''<div class="bloc" id="bloc-modele">
   <div class="section-label">Modèle Sondax</div>
-  <h2>Et si on votait dimanche&nbsp;?</h2>
-  <p class="subtitle">Qui serait au second tour, d’après les sondages d’aujourd’hui&nbsp;?</p>
-  {accroche_html(modele)}
-  {composant_duels(modele, candidats, titre="h3")}
-  <div class="mo-cta">
-    <a class="mo-bouton" href="modele-sondax.html">Voir le modèle Sondax →</a>
-    <span>Chances d’être au second tour, seconds tours possibles et évolution de la course.</span>
-  </div>
-  <p class="bloc-note">{ligne_contexte(modele)}<br>Ne prédit pas ce qui se passera d’ici avril.</p>
+  <h2>Qui serait au second tour si on votait dimanche prochain&nbsp;?</h2>
+  <p class="mo-phrase">{phrase_duel_principal(modele, candidats, historique)}</p>
+  {composant_duels(modele, candidats, historique=historique, variante="accueil")}
+  <p class="mo-lien-accueil"><a href="methodologie.html#modele">Comment ces probabilités sont-elles calculées&nbsp;? →</a></p>
 </div>'''
 
 
@@ -216,7 +227,28 @@ def couleurs_duels(candidats, duels, ordre):
     return couleurs
 
 
-def ligne_duel(modele, candidats, d, couleur, ordre):
+def date_courte(iso):
+    """« 21/9 » : jour/mois sans zéro initial."""
+    d = datetime.date.fromisoformat(iso[:10])
+    return f"{d.day}/{d.month}"
+
+
+def evolution_depuis(valeur, reference):
+    """Variante accueil : « +13 depuis le 21/9 », « stable » si l'écart est nul."""
+    if valeur is None or reference is None:
+        return None
+    if valeur == 0:
+        return "stable"
+    return f"{T.signe(valeur)} depuis le {date_courte(reference['date'])}"
+
+
+def ligne_duel(modele, candidats, d, couleur, ordre, reference=None, variante="page"):
+    if variante == "accueil":
+        evo = evolution_depuis(d.get("evolution_7j"), reference)
+        return (f'<li><span class="mo-pastille" style="background:{couleur}"></span>'
+                f'<span class="mo-duel-nom">{e(libelle_duel(candidats, d["candidats"], ordre))}</span>'
+                f'<span class="mo-duel-chance">{sur_100(d["chance_exacte"])}</span>'
+                + (f'<span class="mo-duel-var">{evo}</span>' if evo else '<span></span>') + '</li>')
     evo = evolution_ligne(modele, d.get("evolution_7j"), d["chance_exacte"])
     return (f'<li><span class="mo-pastille" style="background:{couleur}"></span>'
             f'<span class="mo-duel-nom">{e(libelle_duel(candidats, d["candidats"], ordre))}</span>'
@@ -224,20 +256,35 @@ def ligne_duel(modele, candidats, d, couleur, ordre):
             + (f'<span class="mo-duel-evo">{evo}</span>' if evo else '') + '</li>')
 
 
-def composant_duels(modele, candidats, titre="h2"):
+def composant_duels(modele, candidats, titre="h2", historique=None, variante="page"):
     """« Les seconds tours possibles » (§5.6 du brief) : 100 carrés et liste des
     duels avec leur évolution. Un seul composant, pour la page Modèle et
-    l'accueil ; `titre` donne le niveau du titre selon la page."""
+    l'accueil. Variante « accueil » : ni titre ni phrase d'explication,
+    variation datée (« +13 depuis le 21/9 »), « Autres scénarios » en ligne
+    grisée sans variation."""
     ordre = ordre_modele(modele)
     duels = modele["duels"]
     principaux, autres = duels[:DUELS_AFFICHES], duels[DUELS_AFFICHES:]
     reste = max(0.0, 100 - sum(d["chance_exacte"] for d in principaux))
 
     lignes, parts = [], []
+    reference = entree_avant(historique or [], _instant(modele), 7) if variante == "accueil" else None
     for d, couleur in zip(principaux, couleurs_duels(candidats, principaux, ordre)):
         parts.append((d["candidats"], d["chance_exacte"], couleur))
-        lignes.append(ligne_duel(modele, candidats, d, couleur, ordre))
+        lignes.append(ligne_duel(modele, candidats, d, couleur, ordre, reference, variante))
     parts.append(("autres", reste, DUEL_COULEUR_AUTRES))
+
+    if variante == "accueil":
+        if autres or reste >= 0.5:
+            lignes.append(f'<li class="mo-duel-autres"><span class="mo-pastille" '
+                          f'style="background:{DUEL_COULEUR_AUTRES}"></span>'
+                          f'<span class="mo-duel-nom">Autres scénarios · {sur_100(reste)}</span></li>')
+        return f'''<div class="mo-seconds-tours mo-seconds-accueil">
+    <div class="mo-duels">
+      {grille_100(parts)}
+      <ul class="mo-duels-liste">{"".join(lignes)}</ul>
+    </div>
+  </div>'''
 
     details = ""
     if autres:
@@ -579,6 +626,13 @@ CSS = '''
   .mo-duel-chance { white-space: nowrap; font-variant-numeric: tabular-nums; text-align: right; }
   .mo-duel-evo { grid-column: 2 / 4; font-size: 13px; color: var(--gris); margin-top: 1px; }
   .mo-duels-autres li { font-size: 13.5px; }
+  #bloc-modele .mo-phrase { font-size: 16.5px; font-weight: 400; line-height: 1.5; margin: 0 0 18px; max-width: 46em; }
+  .mo-seconds-accueil .mo-duels-liste li { grid-template-columns: 19px 1fr 7.5em 10em; }
+  .mo-duel-var { font-size: 13.5px; color: var(--gris); white-space: nowrap;
+    text-align: right; font-variant-numeric: tabular-nums; }
+  .mo-seconds-accueil .mo-duel-autres .mo-duel-nom { font-weight: 400; color: var(--gris); grid-column: 2 / 5; }
+  .mo-lien-accueil { margin: 18px 0 0; }
+  .mo-lien-accueil a { color: var(--bleu-vif); font-weight: 500; font-size: 15px; }
   .mo-duels-autres .mo-duel-nom { font-weight: 400; }
   .mo-grille { display: grid; grid-template-columns: repeat(10, 1fr); gap: 3px; }
   .mo-grille span { aspect-ratio: 1; border-radius: 3px; }
@@ -615,6 +669,9 @@ CSS = '''
     #bloc-modele { padding: 18px 16px 14px; }
     #bloc-modele h2 { font-size: 22px; }
     #bloc-modele .mo-accroche { font-size: 15px; }
+    #bloc-modele .mo-phrase { font-size: 15px; margin-bottom: 14px; }
+    .mo-seconds-accueil .mo-duels-liste li { grid-template-columns: 19px 1fr auto; }
+    .mo-duel-var { grid-column: 3; font-size: 12.5px; margin-top: 1px; }
     #bloc-modele .mo-seconds-tours .subtitle { font-size: 12.5px; }
     #bloc-modele .subtitle { margin-bottom: 12px; }
     #bloc-modele .mo-accroche { margin-bottom: 14px; }
@@ -641,7 +698,10 @@ def texte_visible(fragment):
 
 
 def verifier_vocabulaire(fragment, nom_bloc):
-    texte = texte_visible(fragment).lower()
+    texte = texte_visible(fragment)
+    for exception in EXCEPTIONS_VOCABULAIRE:
+        texte = texte.replace(exception, "")
+    texte = texte.lower()
     trouves = sorted({m for m in MOTS_INTERDITS if re.search(r"\b" + m, texte)})
     if trouves:
         sys.exit(f"build_modele : mot(s) réservé(s) à la page Méthode dans {nom_bloc} : "
@@ -837,7 +897,7 @@ def main_veille():
     avis = f'<p class="mo-accroche">{VEILLE_TEXTE}</p>'
     bloc = f'''<div class="bloc" id="bloc-modele">
   <div class="section-label">Modèle Sondax</div>
-  <h2>Et si on votait dimanche&nbsp;?</h2>
+  <h2>Qui serait au second tour si on votait dimanche prochain&nbsp;?</h2>
   {avis}
 </div>'''
     corps = f'''<main class="page-modele"><div class="fil">Modèle Sondax</div>
@@ -866,7 +926,7 @@ def main():
     index = charger_index_sondages()
     INDEX.update(index)
 
-    bloc = bloc_accueil(modele, candidats)
+    bloc = bloc_accueil(modele, candidats, historique)
     partage = json.loads(PARTAGE_PATH.read_text()) if PARTAGE_PATH.exists() else None
     corps = page_modele(modele, candidats, pages, historique, index, partage)
     verifier_vocabulaire(bloc, "le bloc d'accueil")

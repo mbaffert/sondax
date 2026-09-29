@@ -1,0 +1,33 @@
+/* Bloc Rétro-Sondax de la home (#retro-sondax), rendu par build_retro.py.
+   Cellules calquées sur le bloc « Dernier sondage » (.ds-cand). */
+.rs-grille { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  padding-top: 14px; border-top: 1px solid #EDEEEA; }
+.rs-col { padding: 0 16px; min-width: 0; }
+.rs-col:first-child { padding-left: 0; }
+.rs-col:last-child { padding-right: 0; }
+.rs-col:not(:last-child) { border-right: 1px solid #EDEEEA; }
+.rs-annee { font-family: var(--titre); font-size: 20px; font-weight: 600; color: #0B2E6F; margin-bottom: 6px; }
+.rs-cell { padding: 6px 0 0; }
+.rs-nom { font-family: var(--titre); font-size: 15px; font-weight: 600; color: var(--texte);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.rs-score { font-family: var(--corps); font-size: 20px; font-weight: 700;
+  font-variant-numeric: tabular-nums; line-height: 1.15; color: var(--texte); }
+.rs-score .pct { font-size: 12px; font-weight: 600; }
+.rs-bar-wrap { height: 4px; background: #F2F3F0; border-radius: 2px; margin: 5px 0 3px; }
+.rs-bar { height: 100%; border-radius: 2px; }
+/* Candidat non désigné (type: parti) : en gris, personne testée dessous. */
+.rs-parti .rs-nom, .rs-parti .rs-score { color: var(--gris); }
+.rs-parti .rs-bar { background: #B8BDC4; }
+/* Hauteur réservée dans toutes les cellules : les lignes restent alignées. */
+.rs-note { font-size: 12px; line-height: 16px; height: 16px; color: var(--gris);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+@media (max-width: 600px) {
+  .rs-grille { grid-template-columns: repeat(2, 1fr); row-gap: 16px; }
+  .rs-col, .rs-col:first-child, .rs-col:last-child { padding: 0 12px; }
+  .rs-col:nth-child(odd) { padding-left: 0; border-right: 1px solid #EDEEEA; }
+  .rs-col:nth-child(even) { padding-right: 0; border-right: none; }
+  .rs-annee { font-size: 17px; }
+  .rs-nom { font-size: 14px; }
+  .rs-score { font-size: 17px; }
+}

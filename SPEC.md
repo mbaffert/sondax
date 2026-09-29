@@ -777,6 +777,7 @@ de requête n'est transmis.
   import_europeennes.py          import unique des européennes (§14.16)
   calibration.py                 erreurs historiques, N_eff → /derived (§14.5)
   modele.py                      moteur du modèle Sondax → /derived/modele.json (§14.6)
+  build_retro.py                 bloc Rétro-Sondax de l'accueil → /derived/retro.json (§15)
   test_modele.py                 tests du moteur, lancés par validation.py (§14.18)
   backtest.py                    backtest leave-one-out → /derived (§14.17)
   build_modele.py                page Modèle, bloc d'accueil, blocs candidat et duel
@@ -1931,3 +1932,100 @@ wording sur les chiffres réels ; tests de compréhension (§14.21).
 | B8 | Partage (§14.15) |
 | B9 | Section Méthode (§14.19), chiffres tirés de `calibration.json` et `backtest.json` |
 | B10 | Production (§14.22) |
+
+---
+
+## 15. Rétro-Sondax
+
+**Objet.** Un bloc de la page d'accueil répond chaque jour à la question « À J-x de la
+présidentielle, qui était en tête des sondages ? » pour 2022, 2017, 2012 et 2007. x est
+recalculé à chaque build à partir de la date du premier tour 2027
+(`series_historique.TOUR1_2027`, 18 avril 2027). Hors de J-365 à J-1, le bloc n'est pas
+rendu.
+
+Pas de résultats électoraux, pas de mention « qualifié » ou « élu ». Uniquement ce que
+disaient les sondages à cette date.
+
+**Données.** Aucune extraction propre : le calcul lit `data/historique.json` (§12,
+en.wikipedia, figé par revid) et, pour les couleurs et les noms courts,
+`data/derived/historique.json` (`series_historique.py`). Premier tour uniquement.
+Identifiants propres à chaque élection : « Le Pen 2017 » et « Le Pen 2027 » ne partagent
+rien.
+
+**Hypothèse principale.** Une seule hypothèse T1 par sondage, désignée par la règle de
+`principale.py` (§4) : aucun `declare_le` pour ces élections, donc repli sur l'hypothèse
+comptant le plus de candidats, puis la première dans l'ordre de la page. Les autres
+hypothèses T1 sont écartées du calcul : un candidat absent de l'hypothèse principale n'a
+pas de score dans ce sondage (sans quoi Juppé et Fillon, testés en 2011 à la place de
+Sarkozy, entreraient dans le classement 2012).
+
+**Candidats non désignés** (même règle que le site, §3.1 et §4). Tant que le parti n'a
+pas désigné son candidat, la personne qu'il présente dans une hypothèse est remplacée
+par une entrée `type: parti` (« Candidat LR », « Candidat PS », « Candidat UMP »), qui
+garde la personne testée (`teste`). Désignation exclue, comparée au `terrain_fin` :
+
+| Élection | Parti | Désigné le | Personnes rattachées |
+|---|---|---|---|
+| 2022 | LR | 4 décembre 2021 | Bertrand, Pécresse, Barnier, Baroin, Ciotti, Juvin, Payre, Retailleau, Wauquiez |
+| 2017 | LR | 27 novembre 2016 | Juppé, Sarkozy, Fillon, Le Maire, Kosciusko-Morizet, Copé |
+| 2017 | PS | 29 janvier 2017 | Hollande, Valls, Montebourg, Hamon, Peillon |
+| 2012 | PS | 16 octobre 2011 | Hollande, Aubry, Strauss-Kahn, Royal, Delanoë, Fabius |
+| 2007 | PS | 16 novembre 2006 | Royal, Strauss-Kahn, Fabius, Jospin, Lang, Hollande |
+| 2007 | UMP | 14 janvier 2007 | Sarkozy, Villepin, Alliot-Marie, Chirac |
+
+Une hypothèse qui teste plusieurs de ces personnes (Sarkozy et Villepin en 2006,
+Hollande et Montebourg en 2016) : la première de la liste occupe la place du parti, les
+autres restent des candidats à part entière. Guaino (2017) et Mélenchon (2007), testés
+en dissidents, ne sont pas rattachés. L'entrée de parti s'efface au premier sondage
+postérieur à la désignation : la fenêtre glissante ne la fait pas survivre à côté du
+candidat désigné.
+
+**Calcul.** Même fonction que la courbe de la home (`series.calculer_series`, §4),
+prolongée jusqu'à la veille du scrutin. Au build, pour chaque élection et chaque J-x de
+365 à 1, les quatre premiers et leur valeur. Si la fenêtre de 30 jours contient moins de
+2 sondages, on prend l'hypothèse principale du sondage le plus proche de la date (le
+plus ancien à égalité) et on marque `approx: true`. `teste` d'une entrée de parti : la
+personne de l'hypothèse principale la plus récente à cette date.
+
+Contrôle de somme (§8, règle 1) sur les hypothèses principales de la période, signalé à
+l'exécution, non bloquant (données figées, §12).
+
+**Sortie.** `data/derived/retro.json` :
+
+```json
+{
+  "premier_tour_2027": "2027-04-18",
+  "elections": {
+    "2017": {
+      "premier_tour": "2017-04-23",
+      "source": {"url": "https://en.wikipedia.org/w/index.php?oldid=1213598918", "revid": 1213598918},
+      "non_designes": [{"id": "candidat-lr", "designation": "2016-11-27"}],
+      "candidats": {"candidat-lr": {"nom": "Candidat LR", "nom_court": "Candidat LR",
+                                    "couleur": "#2F80ED", "type": "parti"}},
+      "jours": {"201": {"date": "2016-10-04", "approx": false,
+                        "top": [{"id": "candidat-lr", "v": 22.0, "teste": "juppe"}]}}
+    }
+  }
+}
+```
+
+**Rendu.** `scripts/build_retro.py`, entre `<!-- BEGIN:bloc-retro -->` et
+`<!-- END:bloc-retro -->` de `site/index.html`, juste après le bloc de la courbe du
+premier tour et avant la galerie des candidats. Ancre `#retro-sondax`. CSS :
+`site/assets/bloc-retro.css`.
+
+Bloc `.bloc` standard :
+- titre h2 en Space Grotesk : « Rétro-Sondax » ;
+- sous-titre gris : « À J-201 de la présidentielle, qui était en tête des sondages ? »
+  (x dynamique) ;
+- grille 4 colonnes (2022, 2017, 2012, 2007), 4 lignes. Chaque cellule : nom court en
+  Space Grotesk 600, score en gras `tabular-nums`, barre fine de 4 px à la couleur du
+  candidat (largeur relative au premier de la colonne), comme dans le bloc « Dernier
+  sondage ». Un candidat de `type: parti` s'affiche en gris avec la note « <Nom>
+  testé(e) » sous la barre. La hauteur de la note est réservée dans toutes les cellules
+  pour que les quatre lignes restent alignées d'une colonne à l'autre ;
+- pas de surtitre mono, pas de date sous l'année, pas de note de bas de bloc ;
+- mobile : 2 colonnes × 2 (2022 / 2017 puis 2012 / 2007).
+
+Page Méthode : paragraphe `#retro-sondax` (source, règle des candidats non désignés,
+fenêtre de 30 jours).

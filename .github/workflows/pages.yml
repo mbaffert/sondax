@@ -39,6 +39,7 @@ jobs:
           python scripts/pages_second_tour.py
           python scripts/build_index_second_tour.py
           python scripts/build_index_premier_tour.py
+          python scripts/build_retro.py
           python scripts/build_sondages_page.py
           python scripts/build_elections_chapeaux.py
           python scripts/build_pages_candidats.py

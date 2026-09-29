@@ -221,18 +221,39 @@ def bloc_second_tour(slug, nom, duels, noms, genre="m", pages=None):
     return corps, intro
 
 # ---------- barres ----------
-def barres_ecart(rows, national, couleur):
-    amp = max(4, max(abs(v - national) for _, v in rows))
-    out = ""
+# Tranches d'âge regroupées quand la source en donne plus de cinq : moyenne
+# pondérée par la population de chaque tranche (Insee, 1er janvier 2025, en millions).
+AGES_MAX = 5
+REGROUPEMENT_AGES = {"18-24 ans": ("18-34 ans", 5.6), "25-34 ans": ("18-34 ans", 7.8)}
+
+def ages_affiches(ages):
+    if len(ages) <= AGES_MAX:
+        return list(ages.items())
+    groupes = {}
+    for lab, v in ages.items():
+        g, poids = REGROUPEMENT_AGES.get(lab, (lab, 1))
+        groupes.setdefault(g, []).append((v, poids))
+    return [(g, sum(v * w for v, w in vs) / sum(w for _, w in vs)) for g, vs in groupes.items()]
+
+def barres_mini(titre, rows, national, amp):
+    lignes = ""
     for lab, v in rows:
         e = v - national; w = abs(e) / amp * 48
+        if round(v) == round(national):   # même score affiché : pas de barre
+            w = 0
         cote = f"left:50%;width:{w:.1f}%" if e > 0 else f"right:50%;width:{w:.1f}%"
         cls = "pos" if e > 0 else "neg"
-        out += (f'<div class="ligne"><div class="lab">{JOLI.get(lab, lab)}</div>'
-                f'<div class="piste"><span class="axe"></span>'
-                f'<span class="barre {cls}" style="{cote}"></span></div>'
-                f'<div class="val">{fr(v,0)}&nbsp;%<em>{"+" if e>0 else ""}{fr(e,0)}</em></div></div>')
-    return out
+        lignes += (f'<div class="lab">{JOLI.get(lab, lab)}</div>'
+                   f'<div class="piste"><span class="barre {cls}" style="{cote}"></span></div>'
+                   f'<div class="val">{fr(v,0)}&nbsp;%</div>')
+    return f'<div class="mini"><h3>{titre}</h3><div class="mini-lignes">{lignes}</div></div>'
+
+def graphiques_electorat(dims, national):
+    dims = [(t, rows) for t, rows in dims if rows]
+    amp = max([4] + [abs(v - national) for _, rows in dims for _, v in rows])
+    return (f'<div class="minis">{"".join(barres_mini(t, rows, national, amp) for t, rows in dims)}</div>'
+            f'<div class="minis-legende">Écart au score national ({fr(national,0)}&nbsp;%)&nbsp;: '
+            f'en bleu au-dessus, en rouge en dessous.</div>')
 
 def barres_simple(rows):
     mx = max(v for _, v in rows) or 1
@@ -277,15 +298,14 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
     blocs = []
     bloc2t, _ = bloc_second_tour(slug, nom, duels or {}, noms or {}, fiche.get("genre","m"), pages)
     if bloc2t: blocs.append(bloc2t)
-    if pcs and nat is not None:
-        rows = [(k, pcs[k]) for k in ORDRE_PCS if k in pcs]
-        rows.sort(key=lambda x: -x[1])
+    if (pcs or sexe or ages) and nat is not None:
+        rows_pcs = sorted(((k, pcs[k]) for k in ORDRE_PCS if k in pcs), key=lambda x: -x[1])
+        rows_sexe = [(k, sexe[k]) for k in ("Hommes", "Femmes") if k in sexe]
+        texte = texte_electorat(nom, nat, pcs, sexe, ages, fiche.get("genre","m"))
         blocs.append(f'''<section class="carte"><div class="pad">
   <div class="label">Électorat</div><h2>Qui vote pour {nom}&nbsp;?</h2>
-  <div class="sous">Écart à son score national, par profession</div>
-  <div class="txt"><p>{texte_electorat(nom, nat, pcs, sexe, ages, fiche.get("genre","m"))}</p></div>
-  <div class="ref">Score national : {fr(nat,0)}&nbsp;%</div>
-  {barres_ecart(rows, nat, coul)}
+  {f'<div class="txt"><p>{texte}</p></div>' if texte else ''}
+  {graphiques_electorat([("Sexe", rows_sexe), ("Âge", ages_affiches(ages)), ("Profession", rows_pcs)], nat)}
 </div></section>''')
     if rep:
         blocs.append(f'''<section class="carte"><div class="pad">

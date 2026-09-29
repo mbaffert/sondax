@@ -391,6 +391,12 @@
   .mo-rangs:not([open]) > summary::after { content: ' ▸'; }
   .mo-petit { font-size: 13px; color: var(--gris); margin-top: 10px; }
   .mo-lien-methode a { font-weight: 600; }
+  .mo-explication p { max-width: 46em; margin: 0 0 12px; line-height: 1.6; }
+  .mo-explication h2 { scroll-margin-top: 68px; }
+  .mo-plus summary { cursor: pointer; list-style: none; color: var(--bleu-vif); font-weight: 500;
+    font-size: 15px; margin: 4px 0 12px; }
+  .mo-plus summary::-webkit-details-marker { display: none; }
+  .mo-plus summary:hover { text-decoration: underline; }
   @media (max-width: 599px) {
     /* Téléphone : carrés au-dessus de la liste, en 5 rangées de 20 */
     .mo-duels { grid-template-columns: 1fr; gap: 10px; }
@@ -434,7 +440,7 @@
       <ul class="mo-duels-liste"><li><span class="mo-pastille" style="background:#CC2443"></span><span class="mo-duel-nom">Le Pen – Mélenchon</span><span class="mo-duel-chance">71&nbsp;chances sur&nbsp;100</span><span class="mo-duel-var">+13 depuis le 21/9</span></li><li><span class="mo-pastille" style="background:#00B7FF"></span><span class="mo-duel-nom">Le Pen – Philippe</span><span class="mo-duel-chance">26&nbsp;chances sur&nbsp;100</span><span class="mo-duel-var">−12 depuis le 21/9</span></li><li><span class="mo-pastille" style="background:#FF7043"></span><span class="mo-duel-nom">Le Pen – Glucksmann</span><span class="mo-duel-chance">2&nbsp;chances sur&nbsp;100</span><span class="mo-duel-var">stable</span></li><li class="mo-duel-autres"><span class="mo-pastille" style="background:#D5D9DE"></span><span class="mo-duel-nom">Autres scénarios · 1&nbsp;chance sur&nbsp;100</span></li></ul>
     </div>
   </div>
-  <p class="mo-lien-accueil"><a href="methodologie.html#modele">Comment ces probabilités sont-elles calculées&nbsp;? →</a></p>
+  <p class="mo-lien-accueil"><a href="modele-sondax.html#comment-fonctionne">Comment ces probabilités sont-elles calculées&nbsp;? →</a></p>
 </div>
 <!-- END:bloc-modele -->
 

@@ -1613,53 +1613,33 @@ calculée : elle sert à la page Modèle, à la meta description et au partage.
 
 #### 14.14.2 Page « Le modèle Sondax » (`/modele-sondax`)
 
-- `<h1>` : « Le modèle Sondax » ; sous-titre : « Et si on votait dimanche ? »
-- Introduction : « À partir des sondages disponibles aujourd'hui, Sondax mesure à quel
-  point chaque candidat a réellement ses chances d'accéder au second tour. Ce n'est pas
-  une prévision d'avril 2027 : c'est une photographie de la course aujourd'hui. »
-- `<title>` : « Qui serait au second tour si on votait dimanche ? — Modèle Sondax » ;
-  meta description générée à partir de l'accroche ; balises OG avec l'image du jour
-  (§14.15).
+Structure (décision du 29 septembre 2026), dans cet ordre et rien d'autre :
 
-Sections, dans l'ordre :
+1. **Titre** : « Le modèle Sondax ».
+2. **« Comment fonctionne le modèle Sondax »** (ancre `#comment-fonctionne`, cible du
+   lien « Comment ces probabilités sont-elles calculées ? » de l'accueil). Texte fourni
+   tel quel (`EXPLICATION` dans `build_modele.py`), quatre paragraphes. Le nombre de
+   tirages vient de `modele.json` ; le nombre de l'exemple (« 30 000 simulations sur
+   50 000 ») en est 60 %, pour rester juste. Les deux premiers paragraphes sont
+   visibles, les deux derniers repliés sous « Ce que le modèle mesure, et ce qu'il ne
+   mesure pas → » (`<details>` natif). Ce texte est exclu du contrôle des mots
+   réservés (§14.3), le reste de la page y reste soumis.
+3. **« Chances d'être au second tour »** : tous les candidats de la configuration,
+   par chances décroissantes. Par ligne : photo, nom, barre, « {n} sur 100 »,
+   verdict, évolution 7 jours (§14.9), point de bascule s'il est affichable, et la
+   note sur le basculement.
+4. **« Évolution des chances d'être au second tour »** : sélecteur 7 jours | 30 jours
+   | Depuis le début, une courbe par candidat, les quatre premiers cochés par défaut.
+   Les candidats remplacés (`succede_a` dans `candidats.json` : Bardella) ne sont pas
+   proposés ; l'historique n'est pas modifié. Titre et axe disent « chances sur
+   100 », jamais « % ».
 
-1. **Accroche du jour**, version développée (accroche + `changement` + point de
-   bascule le plus pertinent).
-2. **Chances d'être au second tour** : tous les candidats de la configuration, par
-   chances décroissantes. Par ligne : photo, nom, barre, « {n} sur 100 », verdict,
-   évolution 7 jours, point de bascule s'il est affichable.
-3. **Ce qui a changé** (phase B) : aujourd'hui / dernière mise à jour / J−7, texte de
-   §14.10.
-4. **Les seconds tours possibles** (`composant_duels`, partagé avec l'accueil) : les
-   trois duels les plus fréquents, puis « Autres scénarios » (somme du reste) dans un
-   `<details>` natif listant chaque duel. Grille de 100 carrés, répartis par la méthode
-   du plus fort reste pour totaliser exactement 100. Liste en lignes à deux niveaux
-   (duel et chances, puis évolution 7 jours attribuée, §14.9).
-
-   **Couleurs des duels** (`couleurs_duels`) : chaque duel prend la couleur de son
-   challenger, le moins bien placé des deux (rouge Mélenchon pour Le Pen – Mélenchon) ;
-   si cette couleur est déjà prise par un duel mieux classé, celle de l'autre
-   candidat. Gris (`DUEL_COULEUR_AUTRES`) pour les autres scénarios. Décision du
-   28 septembre 2026 : des palettes propres aux duels, sans couleur de candidat (vert /
-   bleu-vert / doré, gris-bleus, gamme de rouges), ont été essayées et jugées moins
-   lisibles.
-5. **Historique** (phase B) : « Chances d'être au second tour », sélecteur 7 jours |
-   30 jours | Depuis le début, une courbe par candidat, les quatre premiers cochés par
-   défaut, les autres ajoutables (même composant de cases à cocher que la courbe du
-   premier tour). Titre et axe disent « chances sur 100 », jamais « % », pour ne pas
-   confondre avec la courbe des intentions de vote.
-6. **Qui finit où ?** : tableau 1er / 2e / 3e ou moins, secondaire. Une note rappelle
-   que 1er + 2e = chances d'être au second tour. Seuls les candidats à 1 sur 100 ou
-   plus y figurent ; une phrase compte les autres. Valeurs courtes dans les cellules
-   (« < 1 », « > 99 ») pour tenir sur mobile.
-7. **Explication courte** : « Les sondages se trompent toujours un peu. Sondax regarde
-   donc les écarts réellement observés lors des élections précédentes et refait le
-   premier tour 50 000 fois. Nous comptons ensuite combien de fois chaque candidat
-   termine dans les deux premiers. Un point d'écart dans les sondages ne signifie donc
-   pas nécessairement une grande différence de chances d'être au second tour. » Puis
-   « Comprendre la méthode → » vers `/methodologie.html#modele`.
-
-8. Ligne de contexte identique à l'accueil, et bouton Partager (§14.15).
+Retirés de la page (le code reste, pour l'accueil ou un usage ultérieur) : sous-titre
+et introduction, « Aujourd'hui », « Ce qui a changé », « Les seconds tours
+possibles » (composant partagé avec l'accueil, §14.14.1), « Qui finit où ? »,
+« Comment lire ces chiffres », bouton Partager. Métadonnées : `<title>` « Qui serait
+au second tour si on votait dimanche ? — Modèle Sondax », meta description générée à
+partir de l'accroche, `og:image` du jour (§14.15).
 
 #### 14.14.3 Fiches candidat (§13.1)
 

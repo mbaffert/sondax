@@ -125,6 +125,7 @@ def ligne_contexte(modele):
 
 # ------------------------------------------------------------------- blocs
 
+CANDIDATS_REF = {}   # candidats.json, renseigné par main()
 INDEX = {}   # index des sondages, renseigné par main() (attribution des évolutions)
 
 
@@ -195,7 +196,7 @@ def bloc_accueil(modele, candidats, historique):
   <h2>Qui serait au second tour si on votait dimanche prochain&nbsp;?</h2>
   <p class="mo-phrase">{phrase_duel_principal(modele, candidats, historique)}</p>
   {composant_duels(modele, candidats, historique=historique, variante="accueil")}
-  <p class="mo-lien-accueil"><a href="methodologie.html#modele">Comment ces probabilités sont-elles calculées&nbsp;? →</a></p>
+  <p class="mo-lien-accueil"><a href="modele-sondax.html#{ANCRE_EXPLICATION}">Comment ces probabilités sont-elles calculées&nbsp;? →</a></p>
 </div>'''
 
 
@@ -417,6 +418,10 @@ def candidats_courbes(modele, historique):
             maxi[c] = max(maxi.get(c, 0), q)
     proposes = [c for c in ordre if maxi.get(c, 0) >= COURBES_SEUIL]
     proposes += sorted(c for c in maxi if maxi[c] >= COURBES_SEUIL and c not in proposes)
+    # Candidats remplacés (Bardella, remplacé par Le Pen) : masqués à l'affichage,
+    # l'historique n'est pas modifié.
+    remplaces = {v.get("succede_a") for v in CANDIDATS_REF.values() if v.get("succede_a")}
+    proposes = [c for c in proposes if c not in remplaces]
     return proposes, set(ordre[:COURBES_DEFAUT])
 
 
@@ -532,20 +537,62 @@ def bouton_partage(partage):
 </script>'''
 
 
-def page_modele(modele, candidats, pages, historique, index, partage=None):
+EXPLICATION = [
+    # Texte fourni tel quel (29 septembre 2026). {n} : nombre de tirages de
+    # modele.json ; {n60} : 60 % de ce nombre, pour que l'exemple reste juste.
+    "Le modèle Sondax part de la moyenne actuelle des sondages. Il simule ensuite {n} élections fictives selon la méthode dite de Monte-Carlo.\n"
+    "Dans chacune de ces simulations, le score de chaque candidat peut être un peu supérieur ou inférieur à celui donné par les derniers sondages. L’ampleur de ces variations est calibrée à partir des écarts observés entre les sondages et les résultats des précédentes élections présidentielles.\n"
+    "On obtient ainsi {n} scénarios différents, tous compatibles avec les sondages actuels et avec le niveau d’incertitude observé historiquement.",
+
+    "Pour chaque simulation, Sondax observe quels candidats arrivent en tête et lesquels se qualifient pour le second tour. Imaginons qu’un duel Le Pen – Philippe apparaisse dans {n60} simulations sur {n}. Le modèle affichera alors 60 chances sur 100. Cela signifie que dans 60 % des scénarios simulés à partir des sondages actuels, Le Pen et Philippe arrivent aux deux premières places.",
+
+    "Sondax ne cherche donc pas à prédire qui sera qualifié au second tour dans plusieurs mois.\n"
+    "Il répond à une question plus précise : si le rapport de forces mesuré aujourd’hui dans les sondages était celui du jour du vote, quels seraient les classements possibles compte tenu de l’incertitude habituelle des sondages ?\n"
+    "Le modèle mesure donc surtout la solidité du classement actuel. Deux candidats peuvent sembler « dans un mouchoir de poche » mais, en réalité, les chances de l’un d’atteindre le second tour à la date du dernier sondage sont statistiquement beaucoup plus élevées.",
+
+    "Le modèle ne prend pas en compte l’avenir, il ne peut pas anticiper les débats, les événements de campagne, les nouvelles candidatures, les retraits ou les déplacements de l’opinion dans les prochains mois.\n"
+    "Il ne prétend donc surtout pas prédire le résultat de l’élection.\n"
+    "Il transforme simplement les sondages disponibles aujourd’hui et leur marge d’incertitude en une estimation de la solidité des différents scénarios de premier tour.",
+]
+EXPLICATION_VISIBLES = 2       # paragraphes visibles ; les suivants sont repliés
+ANCRE_EXPLICATION = "comment-fonctionne"
+
+
+def milliers(n):
+    """« 50 000 » avec une espace insécable."""
+    return f"{n:,}".replace(",", "\u00a0")
+
+
+def paragraphe(texte, n):
+    t = texte.format(n=milliers(n), n60=milliers(round(n * 0.6)))
+    t = e(t).replace("\n", "<br>")
+    return re.sub(r" ([?:!;»])", "\u00a0\\1", t).replace("« ", "«\u00a0")
+
+
+def section_explication(modele):
+    n = modele["tirages"]
+    visibles = "\n    ".join(f"<p>{paragraphe(t, n)}</p>" for t in EXPLICATION[:EXPLICATION_VISIBLES])
+    replies = "\n      ".join(f"<p>{paragraphe(t, n)}</p>" for t in EXPLICATION[EXPLICATION_VISIBLES:])
+    return f'''<section class="bloc mo-explication">
+    <h2 id="{ANCRE_EXPLICATION}">Comment fonctionne le modèle Sondax</h2>
+    {visibles}
+    <details class="mo-plus">
+      <summary>Ce que le modèle mesure, et ce qu’il ne mesure pas →</summary>
+      {replies}
+    </details>
+  </section>'''
+
+
+def page_modele(modele, candidats, pages, historique):
+    """Page Modèle (décision du 29 septembre 2026) : titre, explication,
+    chances d'être au second tour, évolution de ces chances. Rien d'autre."""
     lignes = "\n      ".join(ligne_candidat(candidats, pages, c, v, modele)
                              for c, v in modele["candidats"].items())
     return f'''<main class="page-modele">
   <div class="fil">Modèle Sondax</div>
   <h1>Le modèle Sondax</h1>
-  <p class="mo-sous-titre">Et si on votait dimanche&nbsp;?</p>
-  <p class="mo-intro">À partir des sondages disponibles aujourd’hui, Sondax mesure à quel point chaque candidat a réellement ses chances d’accéder au second tour. Ce n’est pas une prévision d’avril 2027&nbsp;: c’est une photographie de la course aujourd’hui.</p>
 
-  <section class="bloc mo-une">
-    <div class="section-label">Aujourd’hui</div>
-    {accroche_html(modele, candidats=candidats)}
-    <p class="bloc-note">{ligne_contexte(modele)}</p>
-  </section>
+  {section_explication(modele)}
 
   <section class="bloc" id="chances">
     <h2>Chances d’être au second tour</h2>
@@ -556,22 +603,7 @@ def page_modele(modele, candidats, pages, historique, index, partage=None):
     {notes_bascule(modele, candidats)}
   </section>
 
-  {section_changement(modele, candidats, historique, index)}
-
-  {section_duels(modele, candidats)}
-
   {section_courbes(modele, candidats, historique)}
-
-  {section_rangs(modele, candidats)}
-
-  <section class="bloc" id="comment">
-    <h2>Comment lire ces chiffres</h2>
-    <p>Les sondages se trompent toujours un peu. Sondax regarde donc les écarts réellement observés lors des élections précédentes et refait le premier tour 50&nbsp;000 fois. Nous comptons ensuite combien de fois chaque candidat termine dans les deux premiers.</p>
-    <p>Un point d’écart dans les sondages ne signifie donc pas nécessairement une grande différence de chances d’être au second tour.</p>
-    <p class="mo-lien-methode"><a href="methodologie.html#modele">Comprendre la méthode →</a></p>
-    <p class="bloc-note">{ligne_contexte(modele)}<br>Ne prédit pas ce qui se passera d’ici avril.</p>
-  </section>
-  {bouton_partage(partage)}
 </main>
 {JS_COURBES}'''
 
@@ -671,6 +703,12 @@ CSS = '''
   .mo-rangs:not([open]) > summary::after { content: ' ▸'; }
   .mo-petit { font-size: 13px; color: var(--gris); margin-top: 10px; }
   .mo-lien-methode a { font-weight: 600; }
+  .mo-explication p { max-width: 46em; margin: 0 0 12px; line-height: 1.6; }
+  .mo-explication h2 { scroll-margin-top: 68px; }
+  .mo-plus summary { cursor: pointer; list-style: none; color: var(--bleu-vif); font-weight: 500;
+    font-size: 15px; margin: 4px 0 12px; }
+  .mo-plus summary::-webkit-details-marker { display: none; }
+  .mo-plus summary:hover { text-decoration: underline; }
   @media (max-width: 599px) {
     /* Téléphone : carrés au-dessus de la liste, en 5 rangées de 20 */
     .mo-duels { grid-template-columns: 1fr; gap: 10px; }
@@ -944,10 +982,12 @@ def main():
     INDEX.update(index)
 
     bloc = bloc_accueil(modele, candidats, historique)
+    CANDIDATS_REF.update(candidats)
     partage = json.loads(PARTAGE_PATH.read_text()) if PARTAGE_PATH.exists() else None
-    corps = page_modele(modele, candidats, pages, historique, index, partage)
+    corps = page_modele(modele, candidats, pages, historique)
     verifier_vocabulaire(bloc, "le bloc d'accueil")
-    verifier_vocabulaire(corps, "la page Modèle")
+    # L'explication est un texte fourni tel quel : hors du contrôle de vocabulaire.
+    verifier_vocabulaire(corps.replace(section_explication(modele), ""), "la page Modèle")
 
     a = modele["accroche"]
     description = f"{a['titre']} {a['detail']} Chances d’être au second tour si on votait dimanche."

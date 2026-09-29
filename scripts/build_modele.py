@@ -4,7 +4,7 @@
 Lit data/derived/modele.json (scripts/modele.py) et data/modele_history.json,
 et écrit :
 - site/modele-sondax.html ;
-- le bloc #bloc-modele de site/index.html, entre <!-- BEGIN:bloc-modele --> et
+- le bloc #modele-sondax de site/index.html, entre <!-- BEGIN:bloc-modele --> et
   <!-- END:bloc-modele --> ;
 - le bloc « Et si on votait dimanche ? » des fiches candidat (site/<slug>.html) ;
 - le bloc du modèle des pages duel (site/second-tour/<a>-<b>.html).
@@ -190,7 +190,7 @@ def bloc_accueil(modele, candidats, historique):
     """Bloc d'accueil (§14.14.1) : surtitre, titre, phrase du duel principal,
     gaufre et liste des duels (variante « accueil » du composant de la page
     Modèle), lien vers la méthode."""
-    return f'''<div class="bloc" id="bloc-modele">
+    return f'''<div class="bloc" id="modele-sondax">
   <div class="section-label">Modèle Sondax</div>
   <h2>Qui serait au second tour si on votait dimanche prochain&nbsp;?</h2>
   <p class="mo-phrase">{phrase_duel_principal(modele, candidats, historique)}</p>
@@ -643,7 +643,7 @@ CSS = '''
   .mo-duel-chance { white-space: nowrap; font-variant-numeric: tabular-nums; text-align: right; }
   .mo-duel-evo { grid-column: 2 / 4; font-size: 13px; color: var(--gris); margin-top: 1px; }
   .mo-duels-autres li { font-size: 13.5px; }
-  #bloc-modele .mo-phrase { font-size: 16.5px; font-weight: 400; line-height: 1.5; margin: 0 0 18px; max-width: 46em; }
+  #modele-sondax .mo-phrase { font-size: 16.5px; font-weight: 400; line-height: 1.5; margin: 0 0 18px; max-width: 46em; }
   .mo-seconds-accueil .mo-duels-liste li { grid-template-columns: 19px 1fr 11em 10em; }
   .mo-duel-var { font-size: 13.5px; color: var(--gris); white-space: nowrap;
     text-align: right; font-variant-numeric: tabular-nums; }
@@ -683,20 +683,20 @@ CSS = '''
     .mo-duel-evo { font-size: 12px; letter-spacing: -0.01em; grid-column: 1 / 4; }
     .mo-table-rangs { font-size: 13px; }
     .mo-table-rangs th { white-space: normal; letter-spacing: 0; }
-    #bloc-modele { padding: 18px 16px 14px; }
-    #bloc-modele h2 { font-size: 22px; }
-    #bloc-modele .mo-accroche { font-size: 15px; }
-    #bloc-modele .mo-phrase { font-size: 15px; margin-bottom: 14px; }
+    #modele-sondax { padding: 18px 16px 14px; }
+    #modele-sondax h2 { font-size: 22px; }
+    #modele-sondax .mo-accroche { font-size: 15px; }
+    #modele-sondax .mo-phrase { font-size: 15px; margin-bottom: 14px; }
     .mo-seconds-accueil .mo-duels-liste li { grid-template-columns: 19px 1fr auto; }
     .mo-duel-var { grid-column: 3; font-size: 12.5px; margin-top: 1px; }
-    #bloc-modele .mo-seconds-tours .subtitle { font-size: 12.5px; }
-    #bloc-modele .subtitle { margin-bottom: 12px; }
-    #bloc-modele .mo-accroche { margin-bottom: 14px; }
-    #bloc-modele .mo-cta { margin-top: 14px; }
-    #bloc-modele .mo-cta span { display: none; }
-    #bloc-modele .bloc-note { margin-top: 12px; padding-top: 8px; font-size: 11.5px; }
-    #bloc-modele .mo-repli { margin-top: 4px; }
-    #bloc-modele .mo-repli summary { padding: 4px 0; }
+    #modele-sondax .mo-seconds-tours .subtitle { font-size: 12.5px; }
+    #modele-sondax .subtitle { margin-bottom: 12px; }
+    #modele-sondax .mo-accroche { margin-bottom: 14px; }
+    #modele-sondax .mo-cta { margin-top: 14px; }
+    #modele-sondax .mo-cta span { display: none; }
+    #modele-sondax .bloc-note { margin-top: 12px; padding-top: 8px; font-size: 11.5px; }
+    #modele-sondax .mo-repli { margin-top: 4px; }
+    #modele-sondax .mo-repli summary { padding: 4px 0; }
   }
   @media (max-width: 640px) {
     .page-modele .bloc { padding: 20px 16px 16px; }
@@ -912,7 +912,7 @@ def main_veille():
     """Veille électorale : le bloc d'accueil et la page Modèle ne montrent qu'un
     avis ; les blocs des fiches candidat et des pages duel sont vidés."""
     avis = f'<p class="mo-accroche">{VEILLE_TEXTE}</p>'
-    bloc = f'''<div class="bloc" id="bloc-modele">
+    bloc = f'''<div class="bloc" id="modele-sondax">
   <div class="section-label">Modèle Sondax</div>
   <h2>Qui serait au second tour si on votait dimanche prochain&nbsp;?</h2>
   {avis}
@@ -964,7 +964,7 @@ def main():
     injecter(f"<style>{CSS}</style>\n{bloc}")
     n_c = injecter_candidats(modele, candidats, pages, historique)
     n_d = injecter_duels(modele, candidats, historique)
-    print(f"Écrit {PAGE_PATH.relative_to(ROOT)}, le bloc #bloc-modele de l'accueil, "
+    print(f"Écrit {PAGE_PATH.relative_to(ROOT)}, le bloc #modele-sondax de l'accueil, "
           f"{n_c} fiches candidat et {n_d} pages duel")
 
 

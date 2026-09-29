@@ -103,6 +103,8 @@
     border-top: 1px solid #EDEEEA; border-bottom: 1px solid #EDEEEA; font-weight: 500; }
   .sondages-table td { font-variant-numeric: tabular-nums; }
   .voir-tous { display: inline-block; margin-top: 12px; font-size: 13px; font-weight: 500; }
+  .voir-tous-sondages { margin: -6px 0 18px 4px; font-size: 14px; font-weight: 500; }
+  .duels-repli .duels-libelle { font-size: 13.5px; font-weight: 600; margin: 14px 0 4px; }
 
   .t2-duels { table-layout: auto; }
   .t2-score-col { width: 5.5em; }
@@ -205,8 +207,8 @@
 
 <nav class="sub-nav" id="sub-nav" aria-label="Sections de la page">
   <a href="#bloc-sondages">Premier tour</a>
+  <a href="#modele-sondax">Modèle</a>
   <a href="#second-tour">Second tour</a>
-  <a href="#bloc-modele">Modèle</a>
   <a href="#bloc-polymarket">Prédictions</a>
 </nav>
 
@@ -216,49 +218,49 @@
 <div class="bloc" id="dernier-sondage" style="padding:22px 28px 20px;">
   <div class="ds-header">
     <div class="section-label">Dernier sondage</div>
-    <span class="ds-institut">Harris</span>
-    <span class="ds-meta">8–10 septembre 2026 · 2 052 personnes</span>
-    <a href="sondages/harris-2026-09-10.html" class="ds-fiche">Voir la fiche →</a>
+    <span class="ds-institut"><a href="instituts/toluna-harris-interactive.html">Harris</a></span>
+    <span class="ds-meta">22–24 septembre 2026 · 1 974 personnes</span>
+    <a href="sondages/harris-2026-09-24.html" class="ds-fiche">Voir la fiche →</a>
   </div>
   <div class="ds-top4">
     <div class="ds-cand">
       <div class="ds-cand-name">Le Pen</div>
-      <div class="ds-cand-score">33.0<span class="pct"> %</span></div>
+      <div class="ds-cand-score">36.0<span class="pct"> %</span></div>
       <div class="ds-bar-wrap"><div class="ds-bar" style="width:100%;background:#0D378A"></div></div>
     </div>
     <div class="ds-cand">
       <div class="ds-cand-name">Mélenchon</div>
-      <div class="ds-cand-score">16.0<span class="pct"> %</span></div>
-      <div class="ds-bar-wrap"><div class="ds-bar" style="width:48%;background:#CC2443"></div></div>
+      <div class="ds-cand-score">17.0<span class="pct"> %</span></div>
+      <div class="ds-bar-wrap"><div class="ds-bar" style="width:47%;background:#CC2443"></div></div>
     </div>
     <div class="ds-cand">
-      <div class="ds-cand-name">Philippe</div>
-      <div class="ds-cand-score">14.0<span class="pct"> %</span></div>
-      <div class="ds-bar-wrap"><div class="ds-bar" style="width:42%;background:#00B7FF"></div></div>
+      <div class="ds-cand-name">Attal</div>
+      <div class="ds-cand-score">13.0<span class="pct"> %</span></div>
+      <div class="ds-bar-wrap"><div class="ds-bar" style="width:36%;background:#7E57C2"></div></div>
     </div>
     <div class="ds-cand">
-      <div class="ds-cand-name">Glucksmann</div>
-      <div class="ds-cand-score">9.0<span class="pct"> %</span></div>
-      <div class="ds-bar-wrap"><div class="ds-bar" style="width:27%;background:#FF7043"></div></div>
+      <div class="ds-cand-name">Retailleau</div>
+      <div class="ds-cand-score">10.0<span class="pct"> %</span></div>
+      <div class="ds-bar-wrap"><div class="ds-bar" style="width:28%;background:#0066CC"></div></div>
     </div>
   </div>
   <div class="ds-others">
-    <span><span class="ds-other-dot" style="background:#7E57C2"></span>Attal <b>8.0 %</b></span>
-    <span><span class="ds-other-dot" style="background:#0066CC"></span>Retailleau <b>7.0 %</b></span>
+    <span><span class="ds-other-dot" style="background:#FF8080"></span>Hollande <b>8.0 %</b></span>
+    <span><span class="ds-other-dot" style="background:#00C853"></span>Tondelier <b>5.0 %</b></span>
     <span><span class="ds-other-dot" style="background:#1A1A2E"></span>Zemmour <b>5.0 %</b></span>
-    <span><span class="ds-other-dot" style="background:#00C853"></span>Tondelier <b>3.0 %</b></span>
-    <span><span class="ds-other-dot" style="background:#DD1111"></span>Roussel <b>2.0 %</b></span>
+    <span><span class="ds-other-dot" style="background:#DD1111"></span>Roussel <b>3.0 %</b></span>
     <span><span class="ds-other-dot" style="background:#0055A4"></span>Dupont-Aignan <b>2.0 %</b></span>
     <span><span class="ds-other-dot" style="background:#8B0000"></span>Arthaud <b>1.0 %</b></span>
   </div>
 </div>
 <!-- END:bloc-dernier-sondage -->
+  <p class="voir-tous-sondages"><a href="sondages.html">Voir tous les sondages</a></p>
   <!-- Bloc 1 : Sondages -->
   <div class="bloc" id="bloc-sondages">
     <div class="section-label">Agrégation</div>
     <h2>Sondages du premier tour de la présidentielle 2027</h2>
     <!-- BEGIN:premier-tour -->
-    <p class="subtitle">Marine Le Pen arrive en tête des sondages du premier tour de la présidentielle 2027 avec 33,5 % des intentions de vote, devant Jean-Luc Mélenchon (16,0 %) et Édouard Philippe (14,8 %). Cette moyenne pondère les 11 sondages publiés depuis le 11 août 2026 par 6 instituts : Cluster17, Elabe, Harris, Ifop, Ipsos et OpinionWay. Le Pen gagne 1,6 point en trois mois.</p>
+    <p class="subtitle">Marine Le Pen arrive en tête des sondages du premier tour de la présidentielle 2027 avec 33,6 % des intentions de vote, devant Jean-Luc Mélenchon (16,8 %) et Édouard Philippe (14,9 %). Cette moyenne pondère les 12 sondages publiés depuis le 25 août 2026 par 6 instituts : Cluster17, Elabe, Harris, Ifop, Ipsos et OpinionWay. Le Pen gagne 1,6 point en trois mois.</p>
     <p class="subtitle">Le premier tour de l’élection présidentielle se tient le dimanche 18 avril 2027. Les deux candidats arrivés en tête s’affrontent au second tour, sauf si l’un obtient la majorité absolue des suffrages exprimés dès le premier tour — ce qui n’est jamais arrivé sous la Vᵉ République. La liste officielle des candidats ne sera connue qu’après la clôture des parrainages, le 12 mars 2027 : les instituts testent d’ici là des hypothèses de candidatures, qui varient d’un sondage à l’autre.</p>
     <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Élection présidentielle française 2027 — premier tour", "startDate": "2027-04-18", "location": {"@type": "Country", "name": "France"}}</script>
 <!-- END:premier-tour -->
@@ -292,53 +294,6 @@
       <a href="roussel.html" class="galerie-item" style="--cand-col:#DD1111"><img src="photos/roussel.jpg" alt="Roussel" width="120" height="120" loading="lazy"><span>Roussel</span></a>
     </div>
   </div>
-
-  <!-- BEGIN:second-tour -->
-  <div class="bloc" id="second-tour">
-    <div class="section-label">Second tour</div>
-    <h2>Second tour de l’élection présidentielle 2027</h2>
-    <p class="subtitle">Le second tour se tient le dimanche 2 mai 2027. Est élu le candidat qui obtient le plus de voix parmi les suffrages exprimés, les votes blancs et nuls étant décomptés à part et sans effet sur le résultat.</p>
-    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Élection présidentielle française 2027 — second tour", "startDate": "2027-05-02", "location": {"@type": "Country", "name": "France"}}</script>
-    <p class="subtitle">6 duels de second tour testés dans 12 sondages, pour un total de 42 mesures. Le Pen l’emporte dans les six duels où elle est testée. Philippe menait le duel Le Pen – Philippe en mars ; Le Pen l’emporte dans toutes les mesures depuis mai.</p>
-    <table class="t2-table t2-duels">
-      <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Sondages</th><th scope="col">Dernière mesure</th></tr>
-      <tr><td>Le Pen</td><td class="t2-score-cell">55,0 %</td><td>Philippe</td><td class="t2-score-cell">45,0 %</td><td>12</td><td>10/09/2026 (OpinionWay)</td></tr>
-    </table>
-    <details class="duels-repli">
-      <summary>Les cinq autres duels testés</summary>
-      <table class="t2-table t2-duels">
-        <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Sondages</th><th scope="col">Dernière mesure</th></tr>
-      <tr><td>Le Pen</td><td class="t2-score-cell">56,0 %</td><td>Attal</td><td class="t2-score-cell">44,0 %</td><td>11</td><td>10/09/2026 (Harris)</td></tr>
-      <tr><td>Le Pen</td><td class="t2-score-cell">67,0 %</td><td>Mélenchon</td><td class="t2-score-cell">33,0 %</td><td>11</td><td>10/09/2026 (OpinionWay)</td></tr>
-      <tr><td>Le Pen</td><td class="t2-score-cell">57,0 %</td><td>Glucksmann</td><td class="t2-score-cell">43,0 %</td><td>4</td><td>28/08/2026 (Elabe)</td></tr>
-      <tr><td>Le Pen</td><td class="t2-score-cell">58,0 %</td><td>Retailleau</td><td class="t2-score-cell">42,0 %</td><td>3</td><td>25/08/2026 (Ifop)</td></tr>
-      <tr><td>Le Pen</td><td class="t2-score-cell">54,0 %</td><td>Hollande</td><td class="t2-score-cell">46,0 %</td><td>1</td><td>25/08/2026 (Ifop)</td></tr>
-      </table>
-    </details>
-    <details class="duels-repli">
-      <summary>Duels testés avec Jordan Bardella (mars – mai 2026)</summary>
-      <p class="subtitle" style="font-size:13px;margin:8px 0 6px;">Les instituts testaient alors Bardella comme candidat du RN. Marine Le Pen l’a remplacé à partir de juillet 2026.</p>
-      <table class="t2-table t2-duels">
-        <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Sondages</th><th scope="col">Dernière mesure</th></tr>
-      <tr><td>Bardella</td><td class="t2-score-cell">54,0 %</td><td>Philippe</td><td class="t2-score-cell">46,0 %</td><td>4</td><td>27/05/2026 (Harris)</td></tr>
-      <tr><td>Bardella</td><td class="t2-score-cell">68,0 %</td><td>Mélenchon</td><td class="t2-score-cell">32,0 %</td><td>2</td><td>27/05/2026 (Harris)</td></tr>
-      <tr><td>Bardella</td><td class="t2-score-cell">57,0 %</td><td>Attal</td><td class="t2-score-cell">43,0 %</td><td>1</td><td>27/05/2026 (Harris)</td></tr>
-      <tr><td>Bardella</td><td class="t2-score-cell">58,5 %</td><td>Glucksmann</td><td class="t2-score-cell">41,5 %</td><td>1</td><td>27/03/2026 (Elabe)</td></tr>
-      <tr><td>Bardella</td><td class="t2-score-cell">58,0 %</td><td>Retailleau</td><td class="t2-score-cell">42,0 %</td><td>1</td><td>27/03/2026 (Elabe)</td></tr>
-      </table>
-    </details>
-    <div class="t2-selector" style="margin-top:18px;">
-      <h3 style="font-family:var(--titre);font-size:18px;font-weight:600;margin-bottom:12px;">Explorer un duel</h3>
-      <div class="duel-select">
-        <span style="color:var(--gris);">Candidat :</span>
-        <select id="duel-cand1"></select>
-        <span style="color:var(--gris);">contre :</span>
-        <select id="duel-cand2"></select>
-      </div>
-      <div id="t2-content"></div>
-    </div>
-  </div>
-<!-- END:second-tour -->
 
   <!-- BEGIN:bloc-modele -->
 <style>
@@ -408,7 +363,7 @@
   .mo-duel-chance { white-space: nowrap; font-variant-numeric: tabular-nums; text-align: right; }
   .mo-duel-evo { grid-column: 2 / 4; font-size: 13px; color: var(--gris); margin-top: 1px; }
   .mo-duels-autres li { font-size: 13.5px; }
-  #bloc-modele .mo-phrase { font-size: 16.5px; font-weight: 400; line-height: 1.5; margin: 0 0 18px; max-width: 46em; }
+  #modele-sondax .mo-phrase { font-size: 16.5px; font-weight: 400; line-height: 1.5; margin: 0 0 18px; max-width: 46em; }
   .mo-seconds-accueil .mo-duels-liste li { grid-template-columns: 19px 1fr 11em 10em; }
   .mo-duel-var { font-size: 13.5px; color: var(--gris); white-space: nowrap;
     text-align: right; font-variant-numeric: tabular-nums; }
@@ -448,20 +403,20 @@
     .mo-duel-evo { font-size: 12px; letter-spacing: -0.01em; grid-column: 1 / 4; }
     .mo-table-rangs { font-size: 13px; }
     .mo-table-rangs th { white-space: normal; letter-spacing: 0; }
-    #bloc-modele { padding: 18px 16px 14px; }
-    #bloc-modele h2 { font-size: 22px; }
-    #bloc-modele .mo-accroche { font-size: 15px; }
-    #bloc-modele .mo-phrase { font-size: 15px; margin-bottom: 14px; }
+    #modele-sondax { padding: 18px 16px 14px; }
+    #modele-sondax h2 { font-size: 22px; }
+    #modele-sondax .mo-accroche { font-size: 15px; }
+    #modele-sondax .mo-phrase { font-size: 15px; margin-bottom: 14px; }
     .mo-seconds-accueil .mo-duels-liste li { grid-template-columns: 19px 1fr auto; }
     .mo-duel-var { grid-column: 3; font-size: 12.5px; margin-top: 1px; }
-    #bloc-modele .mo-seconds-tours .subtitle { font-size: 12.5px; }
-    #bloc-modele .subtitle { margin-bottom: 12px; }
-    #bloc-modele .mo-accroche { margin-bottom: 14px; }
-    #bloc-modele .mo-cta { margin-top: 14px; }
-    #bloc-modele .mo-cta span { display: none; }
-    #bloc-modele .bloc-note { margin-top: 12px; padding-top: 8px; font-size: 11.5px; }
-    #bloc-modele .mo-repli { margin-top: 4px; }
-    #bloc-modele .mo-repli summary { padding: 4px 0; }
+    #modele-sondax .mo-seconds-tours .subtitle { font-size: 12.5px; }
+    #modele-sondax .subtitle { margin-bottom: 12px; }
+    #modele-sondax .mo-accroche { margin-bottom: 14px; }
+    #modele-sondax .mo-cta { margin-top: 14px; }
+    #modele-sondax .mo-cta span { display: none; }
+    #modele-sondax .bloc-note { margin-top: 12px; padding-top: 8px; font-size: 11.5px; }
+    #modele-sondax .mo-repli { margin-top: 4px; }
+    #modele-sondax .mo-repli summary { padding: 4px 0; }
   }
   @media (max-width: 640px) {
     .page-modele .bloc { padding: 20px 16px 16px; }
@@ -469,7 +424,7 @@
     .mo-chance { font-size: 15px; }
   }
 </style>
-<div class="bloc" id="bloc-modele">
+<div class="bloc" id="modele-sondax">
   <div class="section-label">Modèle Sondax</div>
   <h2>Qui serait au second tour si on votait dimanche prochain&nbsp;?</h2>
   <p class="mo-phrase">Le Pen – Mélenchon reste, au vu des sondages les plus récents, le second tour le plus plausible.</p>
@@ -482,6 +437,54 @@
   <p class="mo-lien-accueil"><a href="methodologie.html#modele">Comment ces probabilités sont-elles calculées&nbsp;? →</a></p>
 </div>
 <!-- END:bloc-modele -->
+
+  <!-- BEGIN:second-tour -->
+  <div class="bloc" id="second-tour">
+    <div class="section-label">Second tour</div>
+    <h2>Second tour de l’élection présidentielle 2027</h2>
+    <p class="subtitle">Le second tour se tient le dimanche 2 mai 2027. Est élu le candidat qui obtient le plus de voix parmi les suffrages exprimés, les votes blancs et nuls étant décomptés à part et sans effet sur le résultat.</p>
+    <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Event", "name": "Élection présidentielle française 2027 — second tour", "startDate": "2027-05-02", "location": {"@type": "Country", "name": "France"}}</script>
+    <p class="subtitle">6 duels de second tour testés dans 13 sondages, pour un total de 44 mesures. Le Pen l’emporte dans les six duels où elle est testée. Philippe menait le duel Le Pen – Philippe en mars ; Le Pen l’emporte dans toutes les mesures depuis mai.</p>
+    <table class="t2-table t2-duels">
+      <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Sondages</th><th scope="col">Dernière mesure</th></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">57,0 %</td><td>Philippe</td><td class="t2-score-cell">43,0 %</td><td>13</td><td>24/09/2026 (<a href="instituts/toluna-harris-interactive.html">Harris</a>)</td></tr>
+    </table>
+    <details class="duels-repli">
+      <summary>Voir les autres duels</summary>
+      <p class="duels-libelle">Les cinq autres duels testés</p>
+      <table class="t2-table t2-duels">
+        <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Sondages</th><th scope="col">Dernière mesure</th></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">69,0 %</td><td>Mélenchon</td><td class="t2-score-cell">31,0 %</td><td>12</td><td>24/09/2026 (<a href="instituts/toluna-harris-interactive.html">Harris</a>)</td></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">56,0 %</td><td>Attal</td><td class="t2-score-cell">44,0 %</td><td>11</td><td>10/09/2026 (<a href="instituts/toluna-harris-interactive.html">Harris</a>)</td></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">57,0 %</td><td>Glucksmann</td><td class="t2-score-cell">43,0 %</td><td>4</td><td>28/08/2026 (<a href="instituts/elabe.html">Elabe</a>)</td></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">58,0 %</td><td>Retailleau</td><td class="t2-score-cell">42,0 %</td><td>3</td><td>25/08/2026 (<a href="instituts/ifop.html">Ifop</a>)</td></tr>
+      <tr><td>Le Pen</td><td class="t2-score-cell">54,0 %</td><td>Hollande</td><td class="t2-score-cell">46,0 %</td><td>1</td><td>25/08/2026 (<a href="instituts/ifop.html">Ifop</a>)</td></tr>
+      </table>
+      <p class="duels-libelle">Duels testés avec Jordan Bardella (mars – mai 2026)</p>
+      <p class="subtitle" style="font-size:13px;margin:0 0 6px;">Les instituts testaient alors Bardella comme candidat du RN. Marine Le Pen l’a remplacé à partir de juillet 2026.</p>
+      <table class="t2-table t2-duels">
+        <tr><th scope="col">En tête</th><th scope="col" class="t2-score-col" aria-label="Score du candidat en tête">Score</th><th scope="col">Face à</th><th scope="col" class="t2-score-col" aria-label="Score du candidat adverse">Score</th><th scope="col">Sondages</th><th scope="col">Dernière mesure</th></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">54,0 %</td><td>Philippe</td><td class="t2-score-cell">46,0 %</td><td>4</td><td>27/05/2026 (<a href="instituts/toluna-harris-interactive.html">Harris</a>)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">68,0 %</td><td>Mélenchon</td><td class="t2-score-cell">32,0 %</td><td>2</td><td>27/05/2026 (<a href="instituts/toluna-harris-interactive.html">Harris</a>)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">57,0 %</td><td>Attal</td><td class="t2-score-cell">43,0 %</td><td>1</td><td>27/05/2026 (<a href="instituts/toluna-harris-interactive.html">Harris</a>)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">58,5 %</td><td>Glucksmann</td><td class="t2-score-cell">41,5 %</td><td>1</td><td>27/03/2026 (<a href="instituts/elabe.html">Elabe</a>)</td></tr>
+      <tr><td>Bardella</td><td class="t2-score-cell">58,0 %</td><td>Retailleau</td><td class="t2-score-cell">42,0 %</td><td>1</td><td>27/03/2026 (<a href="instituts/elabe.html">Elabe</a>)</td></tr>
+      </table>
+    </details>
+    <div class="t2-selector" style="margin-top:18px;">
+      <h3 style="font-family:var(--titre);font-size:18px;font-weight:600;margin-bottom:12px;">Explorer un duel</h3>
+      <div class="duel-select">
+        <span style="color:var(--gris);">Candidat :</span>
+        <select id="duel-cand1"></select>
+        <span style="color:var(--gris);">contre :</span>
+        <select id="duel-cand2"></select>
+      </div>
+      <div id="t2-content"></div>
+    </div>
+  </div>
+<!-- END:second-tour -->
+
+
 
   <!-- Bloc 2 : Polymarket -->
   <div class="bloc" id="bloc-polymarket">
@@ -516,21 +519,6 @@
     <a href="methodologie.html" style="color:var(--bleu-vif);">En savoir plus.</a></p>
   </div>
 
-  <!-- BEGIN:derniers-sondages -->
-  <div class="bloc" id="bloc-derniers">
-    <div class="section-label">Traçabilité</div>
-    <h2>Derniers sondages agrégés</h2>
-    <table class="sondages-table" id="table-derniers">
-    <tr><th>Institut</th><th>Date</th><th>Échantillon</th><th>Source</th></tr>
-    <tr><td>OpinionWay</td><td>10/09/2026</td><td>1 001</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10260-pres-iv-opinionway-cnews-11-septembre.pdf" target="_blank">Notice</a></td></tr>
-    <tr><td>Harris</td><td>10/09/2026</td><td>2 052</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10263-pres-iv-toluna-harris-interactive-rtl-14-septembre.pdf" target="_blank">Notice</a></td></tr>
-    <tr><td>OpinionWay</td><td>09/09/2026</td><td>1 001</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10259-pres-presitrack-v2-opinionway-les-echos-10-septembre.pdf" target="_blank">Notice</a></td></tr>
-    <tr><td>Ipsos</td><td>09/09/2026</td><td>13 060</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10262-pres-enquete-electorale-ipsos-bva-le-monde-13-septembre.pdf" target="_blank">Notice</a></td></tr>
-    <tr><td>OpinionWay</td><td>04/09/2026</td><td>1 034</td><td><a href="https://www.commission-des-sondages.fr/notices/files/notices/2026/septembre/10264-pres-opinionway-facebook-15-septembre.pdf" target="_blank">Notice</a></td></tr>
-    </table>
-    <a href="sondages.html" class="voir-tous">Voir tous les sondages</a>
-  </div>
-<!-- END:derniers-sondages -->
 </main>
 
 <footer>
@@ -813,21 +801,6 @@ function lienInstitut(nom) {
 }
 
 // =========================================================================
-// Tableau de sondages (partagé entre page principale et page dédiée)
-// =========================================================================
-function renderSondagesTable(table, sondages) {
-  let html = '<tr><th>Institut</th><th>Date</th><th>Échantillon</th><th>Hypothèses</th><th>Source</th></tr>';
-  for (const s of sondages) {
-    const ech = s.echantillon ? Math.round(s.echantillon).toLocaleString('fr-FR') : '—';
-    const nhyp = s.hypotheses.length;
-    const source = s.url_source
-      ? `<a href="${s.url_source}" target="_blank">Notice</a>` : '—';
-    html += `<tr><td>${lienInstitut(s.institut)}</td><td>${fmtDate(s.terrain_fin)}</td><td>${ech}</td><td>${nhyp}</td><td>${source}</td></tr>`;
-  }
-  table.innerHTML = html;
-}
-
-// =========================================================================
 // Initialization
 // =========================================================================
 async function init() {
@@ -978,12 +951,6 @@ async function init() {
 
   // --- Bloc second tour (sélecteur de duel dans #second-tour) ---
   const t2 = new SecondTour(sondagesData);
-
-  // Bloc derniers sondages (5 plus récents)
-  renderSondagesTable(
-    document.getElementById('table-derniers'),
-    sondagesData.slice().sort((a, b) => b.terrain_fin.localeCompare(a.terrain_fin)).slice(0, 5)
-  );
 
   // Pied de page : date du dernier run et revid
   const revid = sondagesData.length > 0 ? sondagesData[0].revid : null;

@@ -17,26 +17,36 @@ des instituts, pages par duel de second tour, pages d'élections passées, page 
 données, page de méthodologie, tableau complet des sondages et page du modèle Sondax
 (`/modele-sondax`, §14).
 
-Page d'accueil à sections nommées et ancrées :
+Page d'accueil à sections nommées et ancrées, dans cet ordre (décision du
+29 septembre 2026) :
 
 1. **Bandeau d'en-tête.** Dernier sondage, compte à rebours, navigation (voir
    `scripts/build_header.py`).
-2. **Sondages du premier tour** (`#bloc-sondages`). Titre : « Sondages du premier
+2. **Dernier sondage publié** (`#dernier-sondage`), carte compacte avec l'hypothèse
+   sélectionnée. En cas d'égalité de `terrain_fin`, le sondage avec le plus grand
+   échantillon est retenu. Juste dessous, un simple lien « Voir tous les sondages »
+   vers `sondages.html`, sans titre ni texte (écrit dans le gabarit). Le tableau des
+   derniers sondages agrégés a été retiré de l'accueil.
+3. **Sondages du premier tour** (`#bloc-sondages`). Titre : « Sondages du premier
    tour de la présidentielle 2027 ». Chapeau généré au build (leader, volume,
-   delta 3 mois), bloc « Dernier sondage publié » (`#dernier-sondage`) avec
-   l'hypothèse sélectionnée, courbe de tendance par candidat, tableau des derniers
-   sondages agrégés. Généré par `scripts/build_index_premier_tour.py`.
-   En cas d'égalité de `terrain_fin`, le sondage avec le plus grand échantillon
-   est retenu.
-3. **Second tour** (`#second-tour`). Repères factuels, chapeau généré au build,
-   tableau de tous les duels mesurés, sélecteur de détail par duel (voir §7).
-4. **Modèle Sondax** (`#bloc-modele`). « Et si on votait dimanche ? » : chances
-   d'être au second tour des principaux candidats, version condensée de la page
-   `/modele-sondax`. Généré par `scripts/build_modele.py` (§14.14.1).
-5. **Cotes des marchés de prédiction** (`#bloc-polymarket`). Évolution des
+   delta 3 mois), sélecteur de période, courbe de tendance par candidat. Généré par
+   `scripts/build_index_premier_tour.py` (qui produit aussi la carte du point 2).
+4. **Sondages par candidat** (`#bloc-candidats`) : vignettes vers les fiches.
+5. **Modèle Sondax** (`#modele-sondax`). Généré par `scripts/build_modele.py`
+   (§14.14.1).
+6. **Second tour** (`#second-tour`). Repères factuels, chapeau généré au build, duel
+   principal seul (le plus récemment mesuré, règle inchangée), puis un lien « Voir les
+   autres duels » (`<details>` natif, replié par défaut, contenu présent dans le HTML
+   servi) qui déplie le tableau des autres duels testés et celui des duels testés avec
+   Jordan Bardella avec sa phrase d'explication. Sélecteur « Explorer un duel » en fin
+   de bloc (voir §7).
+7. **Cotes des marchés de prédiction** (`#bloc-polymarket`). Évolution des
    probabilités implicites par candidat, deux onglets : accession au second tour
    et victoire. Les titres ne nomment pas Polymarket, la source est citée dans
    le corps du bloc et en pied de page.
+
+La sous-navigation de l'accueil suit le même ordre : Premier tour, Modèle, Second
+tour, Prédictions.
 
 La page `sondages.html` (« Explorer les sondages de la présidentielle 2027 ») porte
 en tête le module **« Explorer les sondages »** (`#bloc-fiche`) : sélection d'un

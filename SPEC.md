@@ -1582,12 +1582,16 @@ Rendu au build (contrainte générale du §1) par `scripts/build_modele.py`
    à la référence de 7 jours.
 4. **Gaufre de 100 carrés et liste des duels** : variante « accueil » du composant de
    la page Modèle (`composant_duels(…, variante="accueil")`, une seule fonction). Ni
-   titre ni phrase d'explication. Chaque ligne : pastille, duel, « {n} sur 100 »,
-   variation datée « +13 depuis le 16/9 » / « −12 depuis le 16/9 » / « stable » si
-   l'écart arrondi est nul. La date est celle de l'entrée d'historique de référence
-   des évolutions à 7 jours (la dernière datée de J−7 ou avant, §14.9), au format
-   j/m sans zéro initial. « Autres scénarios · {n} sur 100 » en ligne grisée, sans
-   variation. Sous 600 px : gaufre au-dessus de la liste, variation sous les chances.
+   titre ni phrase d'explication. Chaque ligne : pastille, duel, « {n} chances sur
+   100 » (« 1 chance sur 100 » au singulier), variation datée « +13 depuis le 21/9 » /
+   « −12 depuis le 21/9 » / « stable » si l'écart arrondi est nul. La date affichée
+   est J−7 par rapport à la mise à jour, à l'heure de Paris (21/9 pour une mise à
+   jour du 28/9), au format j/m sans zéro initial ; la valeur comparée est celle en
+   vigueur ce jour-là, c'est-à-dire la dernière entrée d'historique datée de J−7 ou
+   avant (§14.9), qui peut être plus ancienne quand aucun sondage n'est entré entre
+   les deux. Pas de variation s'il n'existe aucune entrée à J−7. « Autres scénarios ·
+   {n} chances sur 100 » en ligne grisée, sans variation. Sous 600 px : gaufre
+   au-dessus de la liste, variation sous les chances.
 5. **Lien texte** : « Comment ces probabilités sont-elles calculées ? → » vers
    `methodologie.html#modele`. Seule exception à la liste des mots interdits (§14.3),
    déclarée dans `EXCEPTIONS_VOCABULAIRE`.

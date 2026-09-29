@@ -227,27 +227,41 @@ def couleurs_duels(candidats, duels, ordre):
     return couleurs
 
 
-def date_courte(iso):
-    """« 21/9 » : jour/mois sans zéro initial."""
-    d = datetime.date.fromisoformat(iso[:10])
-    return f"{d.day}/{d.month}"
+def date_reference_7j(modele):
+    """Date de référence de la variation : J−7 par rapport à la mise à jour, à
+    l'heure de Paris (21/9 pour une mise à jour du 28/9). La valeur comparée est
+    celle en vigueur ce jour-là : la dernière entrée d'historique datée de J−7 ou
+    avant (§14.9), qui peut être plus ancienne quand aucun sondage n'est entré."""
+    d = datetime.datetime.fromisoformat(modele["date"].replace("Z", "+00:00"))
+    return d.astimezone(ZoneInfo("Europe/Paris")).date() - datetime.timedelta(days=7)
 
 
-def evolution_depuis(valeur, reference):
+def evolution_depuis(valeur, date_ref):
     """Variante accueil : « +13 depuis le 21/9 », « stable » si l'écart est nul."""
-    if valeur is None or reference is None:
+    if valeur is None or date_ref is None:
         return None
     if valeur == 0:
         return "stable"
-    return f"{T.signe(valeur)} depuis le {date_courte(reference['date'])}"
+    return f"{T.signe(valeur)} depuis le {date_ref.day}/{date_ref.month}"
 
 
-def ligne_duel(modele, candidats, d, couleur, ordre, reference=None, variante="page"):
+def chances_sur_100(v):
+    """« 71 chances sur 100 », « 1 chance sur 100 », « moins de 1 chance sur
+    100 », « plus de 99 chances sur 100 »."""
+    if v < 0.5:
+        return "moins de 1&nbsp;chance sur&nbsp;100"
+    if v > 99.5:
+        return "plus de 99&nbsp;chances sur&nbsp;100"
+    n = round(v)
+    return f"{n}&nbsp;chance{'s' if n > 1 else ''} sur&nbsp;100"
+
+
+def ligne_duel(modele, candidats, d, couleur, ordre, date_ref=None, variante="page"):
     if variante == "accueil":
-        evo = evolution_depuis(d.get("evolution_7j"), reference)
+        evo = evolution_depuis(d.get("evolution_7j"), date_ref)
         return (f'<li><span class="mo-pastille" style="background:{couleur}"></span>'
                 f'<span class="mo-duel-nom">{e(libelle_duel(candidats, d["candidats"], ordre))}</span>'
-                f'<span class="mo-duel-chance">{sur_100(d["chance_exacte"])}</span>'
+                f'<span class="mo-duel-chance">{chances_sur_100(d["chance_exacte"])}</span>'
                 + (f'<span class="mo-duel-var">{evo}</span>' if evo else '<span></span>') + '</li>')
     evo = evolution_ligne(modele, d.get("evolution_7j"), d["chance_exacte"])
     return (f'<li><span class="mo-pastille" style="background:{couleur}"></span>'
@@ -268,17 +282,20 @@ def composant_duels(modele, candidats, titre="h2", historique=None, variante="pa
     reste = max(0.0, 100 - sum(d["chance_exacte"] for d in principaux))
 
     lignes, parts = [], []
-    reference = entree_avant(historique or [], _instant(modele), 7) if variante == "accueil" else None
+    # Variation datée seulement s'il existe un état en vigueur à J−7
+    date_ref = None
+    if variante == "accueil" and entree_avant(historique or [], _instant(modele), 7) is not None:
+        date_ref = date_reference_7j(modele)
     for d, couleur in zip(principaux, couleurs_duels(candidats, principaux, ordre)):
         parts.append((d["candidats"], d["chance_exacte"], couleur))
-        lignes.append(ligne_duel(modele, candidats, d, couleur, ordre, reference, variante))
+        lignes.append(ligne_duel(modele, candidats, d, couleur, ordre, date_ref, variante))
     parts.append(("autres", reste, DUEL_COULEUR_AUTRES))
 
     if variante == "accueil":
         if autres or reste >= 0.5:
             lignes.append(f'<li class="mo-duel-autres"><span class="mo-pastille" '
                           f'style="background:{DUEL_COULEUR_AUTRES}"></span>'
-                          f'<span class="mo-duel-nom">Autres scénarios · {sur_100(reste)}</span></li>')
+                          f'<span class="mo-duel-nom">Autres scénarios · {chances_sur_100(reste)}</span></li>')
         return f'''<div class="mo-seconds-tours mo-seconds-accueil">
     <div class="mo-duels">
       {grille_100(parts)}
@@ -627,7 +644,7 @@ CSS = '''
   .mo-duel-evo { grid-column: 2 / 4; font-size: 13px; color: var(--gris); margin-top: 1px; }
   .mo-duels-autres li { font-size: 13.5px; }
   #bloc-modele .mo-phrase { font-size: 16.5px; font-weight: 400; line-height: 1.5; margin: 0 0 18px; max-width: 46em; }
-  .mo-seconds-accueil .mo-duels-liste li { grid-template-columns: 19px 1fr 7.5em 10em; }
+  .mo-seconds-accueil .mo-duels-liste li { grid-template-columns: 19px 1fr 11em 10em; }
   .mo-duel-var { font-size: 13.5px; color: var(--gris); white-space: nowrap;
     text-align: right; font-variant-numeric: tabular-nums; }
   .mo-seconds-accueil .mo-duel-autres .mo-duel-nom { font-weight: 400; color: var(--gris); grid-column: 2 / 5; }

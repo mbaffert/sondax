@@ -20,11 +20,11 @@
   "date": "2026-09-29"
  },
  "index.html": {
-  "hash": "76e28a8ce0d5d7af812477c34d27b7b9a7b3d86ed844691d4aabba3d82fecd0d",
+  "hash": "e83c286bf444217ab89c2832040fb0c39e1973d65310f2a1a78b49a9b15bf65e",
   "date": "2026-09-29"
  },
  "instituts.html": {
-  "hash": "630f08f7959b4a3bb71277237f879137757e3e6331dd0558bd0f56d53046655c",
+  "hash": "4bd563a96fc4fba1fcab24124e5d0c3bd6e673963455307f39cb6baf1063d8e9",
   "date": "2026-09-29"
  },
  "instituts/cluster17.html": {
@@ -57,6 +57,10 @@
  },
  "instituts/verian.html": {
   "hash": "6d2e3d093a5364dd752be11e33eafc6c4c9a2ee78e299b81ad569dcdb424b273",
+  "date": "2026-09-29"
+ },
+ "instituts/yougov.html": {
+  "hash": "2256fe289c5a040f00a6833e617ec71382de0d9c2b0bdad0d53ac8a0289b9ba6",
   "date": "2026-09-29"
  },
  "le-pen.html": {
@@ -116,7 +120,7 @@
   "date": "2026-09-28"
  },
  "second-tour/attal-le-pen.html": {
-  "hash": "baffb43f7a7408d583f7013c6c24b0c307c6b9e6551f003f6f80b09ff8915db0",
+  "hash": "04f899062366058194c3870976f37ac77844315d31c2e75e6aa6896ae9ee8b43",
   "date": "2026-09-29"
  },
  "second-tour/bardella-glucksmann.html": {
@@ -136,23 +140,23 @@
   "date": "2026-09-28"
  },
  "second-tour/glucksmann-le-pen.html": {
-  "hash": "a1524cef6fbba33d8d38f642287f3675aae5512d05300549eb87aa30bdaa74e7",
+  "hash": "233ff599c2ff8a2a5eed95d2ca02bff0e78aa7de4b269f71932155c90df5f5cc",
   "date": "2026-09-29"
  },
  "second-tour/hollande-le-pen.html": {
-  "hash": "a861e0b5bc20591aec0f4d4c9e2b0a77054d57cbd680a0377f038d9f34757cea",
+  "hash": "54c559849c70fe6f75ba81ffa6ef15bad8e975e5b890fa3e064064bad749fa5e",
   "date": "2026-09-29"
  },
  "second-tour/index.html": {
-  "hash": "90683319c2e5ebc3924985a8c3215e82dbcbf82f0a8900748a529cfd55c957a6",
+  "hash": "bf04113bab70706083c8a5cead205de83a724ca7c5bd6ceaf47d3081f2b50d86",
   "date": "2026-09-29"
  },
  "second-tour/le-pen-melenchon.html": {
-  "hash": "ad7176fa4b60ab30ed0123418058c3d32cab6a455654223171b5c109c824babe",
+  "hash": "4bcc2a85260b12e629deb5cde871196d511dedda261b1e1f7fb886db81d438c6",
   "date": "2026-09-29"
  },
  "second-tour/le-pen-philippe.html": {
-  "hash": "dbc22be1643dea66d230a292065541cd8e89403ddf114c57f2da3a431754cec4",
+  "hash": "de21d4c0a9f9107116d3df0e05d959acf2fec002261171fe9aa75f75ec41aaab",
   "date": "2026-09-29"
  },
  "second-tour/le-pen-retailleau.html": {
@@ -160,11 +164,11 @@
   "date": "2026-09-29"
  },
  "second-tour/melenchon-philippe.html": {
-  "hash": "a8101dcd8280780fa7cfdef47148fafc5b6bc8e666e9c3877e2b1d9553bf29c0",
+  "hash": "8977c533939b4a55246d277d9653ad53f45c33bea975e0c15def5bc8f08fc71f",
   "date": "2026-09-29"
  },
  "sondages.html": {
-  "hash": "0d4900fa067161f7c757c28cfb9715516a1666a1011d82c156b6d1e1097bcb7f",
+  "hash": "05f70ed5da211275a617612e1e88b07ad438210c7b0b7f38b5b21b73530fa504",
   "date": "2026-09-29"
  },
  "sondages/cluster17-2026-07-24.html": {
@@ -292,7 +296,7 @@
   "date": "2026-09-29"
  },
  "sondages/yougov-2026-09-21.html": {
-  "hash": "b05f47a3ef7dcc7ba8b00d8a5c03f68812f11c3f53a73e38abd8f1b1b815c8fe",
+  "hash": "a89db5152eb1930e7321941ee3354eafdd050afc8666e3175fc9d28f13ba8e02",
   "date": "2026-09-29"
  },
  "tondelier.html": {

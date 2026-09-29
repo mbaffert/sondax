@@ -78,5 +78,15 @@
     "site": "https://www.veriangroup.com/fr",
     "logo": "logos/verian.svg",
     "logo_source": null
+  },
+  "yougov": {
+    "nom": "YouGov",
+    "nom_complet": "YouGov",
+    "alias": ["YouGov", "Yougov"],
+    "notice": ["yougov"],
+    "mode_recueil": "en ligne",
+    "site": "https://fr.yougov.com/",
+    "logo": "logos/yougov.svg",
+    "logo_source": "commons:YouGov-2019.svg"
   }
 }

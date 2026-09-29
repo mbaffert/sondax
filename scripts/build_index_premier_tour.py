@@ -1,8 +1,9 @@
 """Injecte le contenu statique du premier tour dans site/index.html.
 
 Lit data/derived/series-t1.json, data/sondages.json et data/candidats.json.
-Génère le chapeau, le bloc « Dernier sondage » et le tableau des derniers
-sondages agrégés, et les remplace entre leurs marqueurs respectifs.
+Génère le chapeau et le bloc « Dernier sondage », et les remplace entre leurs
+marqueurs respectifs. Le tableau des derniers sondages agrégés a été retiré de
+l'accueil (lien « Voir tous les sondages » sous la carte, dans le gabarit).
 
 Tout le contenu est rendu au build et présent dans le HTML servi.
 """
@@ -30,8 +31,6 @@ MOIS = [
 
 PT_BEGIN = "<!-- BEGIN:premier-tour -->"
 PT_END = "<!-- END:premier-tour -->"
-DS_BEGIN = "<!-- BEGIN:derniers-sondages -->"
-DS_END = "<!-- END:derniers-sondages -->"
 BLOC_DS_BEGIN = "<!-- BEGIN:bloc-dernier-sondage -->"
 BLOC_DS_END = "<!-- END:bloc-dernier-sondage -->"
 
@@ -297,39 +296,6 @@ def generate_bloc_dernier_sondage(sondages, candidats, series_data):
 
 
 # ---------------------------------------------------------------------------
-# Tableau des derniers sondages agrégés
-# ---------------------------------------------------------------------------
-
-def generate_derniers_sondages(sondages):
-    """Table HTML des 5 derniers sondages."""
-    sorted_s = sorted(sondages, key=lambda s: s["terrain_fin"], reverse=True)[:5]
-
-    referentiel = charger_referentiel()
-    rows = ['    <tr><th>Institut</th><th>Date</th><th>Échantillon</th><th>Source</th></tr>']
-    for s in sorted_s:
-        institut = lien_institut(s["institut"], referentiel)
-        d = s["terrain_fin"].split("-")
-        date_str = f"{d[2]}/{d[1]}/{d[0]}"
-        ech = fmt_ech(s["echantillon"]) if s.get("echantillon") else "\u2014"
-        source = (
-            f'<a href="{html_mod.escape(s["url_source"])}" target="_blank">Notice</a>'
-            if s.get("url_source") else "\u2014"
-        )
-        rows.append(f'    <tr><td>{institut}</td><td>{date_str}</td><td>{ech}</td><td>{source}</td></tr>')
-
-    return (
-        '  <div class="bloc" id="bloc-derniers">\n'
-        '    <div class="section-label">Traçabilité</div>\n'
-        '    <h2>Derniers sondages agrégés</h2>\n'
-        '    <table class="sondages-table" id="table-derniers">\n'
-        + "\n".join(rows) + "\n"
-        '    </table>\n'
-        '    <a href="sondages.html" class="voir-tous">Voir tous les sondages</a>\n'
-        '  </div>'
-    )
-
-
-# ---------------------------------------------------------------------------
 # Injection
 # ---------------------------------------------------------------------------
 
@@ -362,10 +328,6 @@ def main():
     # 2. Bloc « Dernier sondage » (nouveau bloc compact)
     bloc_ds = generate_bloc_dernier_sondage(sondages, candidats, series_data)
     content = inject(content, BLOC_DS_BEGIN, BLOC_DS_END, bloc_ds)
-
-    # 3. Derniers sondages agrégés
-    ds_html = generate_derniers_sondages(sondages)
-    content = inject(content, DS_BEGIN, DS_END, ds_html)
 
     INDEX_PATH.write_text(content, encoding="utf-8")
     print("Premier tour injecté dans index.html")

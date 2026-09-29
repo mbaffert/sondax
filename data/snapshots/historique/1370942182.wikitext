@@ -1,0 +1,6740 @@
+{{short description|none}}
+{{Use dmy dates|date=June 2024}}
+{{Infobox election
+| election_name = 2024 European Parliament election in France
+| country = France
+| type = parliamentary
+| ongoing = no
+| previous_election = 2019 European Parliament election in France
+| previous_year = 2019
+| next_election = 2029 European Parliament election in France
+| next_year = 2029
+| seats_for_election = All 81 French seats in the [[European Parliament]]
+| opinion_polls = Opinion polling and seat projections for the 2024 European Parliament election#France
+| turnout = 51.85% {{increase}}1.73 [[Percentage point|pp]]
+| election_date = 9 June 2024
+
+| image1 = MEP Jordan Bardella.jpg
+| leader1 = [[Jordan Bardella]]
+| party1 = [[National Rally|RN]] 
+| alliance1 = [[Patriots for Europe|Patriots]] 
+| last_election1 = 23 seats, 23.34%
+| seats_before1 = 18
+| seats1 = '''30'''
+| seat_change1 = {{increase}}7
+| popular_vote1 = '''7,765,939'''
+| percentage1 = '''31.37%'''
+| swing1 = {{increase}}8.03 pp
+
+| image2 = Valérie Hayer at a Renew Europe meeting in European Parliament - 2024 (P064202-298895) (cropped).jpg
+| leader2 = [[Valérie Hayer]]
+| party2 = [[Ensemble (political coalition)|Ensemble]]{{efn|name=E|[[Renaissance (French political party)|RE]]–[[Democratic Movement (France)|MoDem]]–[[Horizons (political party)|HOR]]-[[Radical Party (France)|PR]]-[[Union of Democrats and Independents|UDI]]}}
+| alliance2 = [[Renew Europe|Renew]]
+| last_election2 = 23 seats, 22.42%
+| seats_before2 = 23
+| seats2 = 13
+| seat_change2 = {{decrease}}10
+| popular_vote2 = 3,614,646
+| percentage2 = 14.6%
+| swing2 = {{decrease}}7.82 pp
+
+| image3 = 1720448398743 20240708 GLUCKSMANN Raphael FR 006.jpg
+| leader3 = [[Raphaël Glucksmann]]
+| party3 = [[Socialist Party (France)|PS]]-[[Place Publique|PP]]
+| alliance3 = [[Progressive Alliance of Socialists and Democrats|S&D]]
+| last_election3 = 6 seats, 6.19%
+| seats_before3 = 5
+| seats3 = 13
+| seat_change3 = {{increase}}7
+| popular_vote3 = 3,424,216
+| percentage3 = 13.83%
+| swing3 = {{increase}}7.64 pp
+
+| image4 = 1720623827463 20190528 AUBRY Manon FR 9.jpg
+| leader4 = [[Manon Aubry]]
+| party4 = [[La France Insoumise|LFI]]
+| alliance4 = [[The Left in the European Parliament|The Left]]
+| last_election4 = 6 seats, 6.31%
+| seats_before4 = 5
+| seats4 = 9
+| seat_change4 = {{increase}}3
+| popular_vote4 = 2,448,703
+| percentage4 = 9.89%
+| swing4 = {{increase}}3.58 pp
+
+| image5 = 1718895492232 20240620 BELLAMY Francois-Xavier FR 012.jpg
+| leader5 = [[François-Xavier Bellamy]]
+| party5 = [[The Republicans (France)|LR]]-[[The Centrists|LC]]
+| alliance5 = [[European People's Party Group|EPP]]
+| last_election5 = 8 seats, 8.48%
+| seats_before5 = 8
+| seats5 = 6
+| seat_change5 = {{decrease}}2
+| popular_vote5 = 1,794,171
+| percentage5 = 7.25%
+| swing5 = {{decrease}}1.23 pp
+
+| image6 = 1720621117032 20240710 TOUSSAINT Marie FR 011.jpg
+| leader6 = [[Marie Toussaint]]
+| party6 = [[The Ecologists|LE]]
+| alliance6 = [[Greens–European Free Alliance|Greens/EFA]]
+| color6 = {{party color|The Ecologists (France)}}
+| last_election6 = 13 seats, 13.48%
+| seats_before6 = 9
+| seats6 = 5
+| seat_change6 = {{decrease}}8
+| popular_vote6 = 1,361,883
+| percentage6 = 5.50%
+| swing6 = {{decrease}}7.98 pp
+
+| image7 = Marion Maréchal MEP (2024).jpg
+| leader7 = [[Marion Maréchal]]
+| party7 = [[Reconquête|REC]]
+| alliance7 = [[Europe of Sovereign Nations Group|ESN]]{{efn|name=F|After the elections, [[Marion Maréchal]] and three other MEPs were expelled from Reconquest. [[Sarah Knafo]], who was the only MEP to remain in the party, joined the [[Europe of Sovereign Nations Group|ESN]], while the four others joined the [[Identity–Liberties|IDL]] and the [[European Conservatives and Reformists Group|ECR]].}}
+| last_election7 = ''New''
+| seats_before7 = 1
+| seats7 = 5
+| seat_change7 = {{increase}}5
+| popular_vote7 = 1,353,127
+| percentage7 = 5.47%
+| swing7 = {{increase}}5.47 pp
+| map_image = {{Switcher
+|[[File:2024 European Parliamentary Election in France.svg|300px]]
+|Results by [[Departments of France|department]]
+|[[File:2024 European elections in France by commune.svg|300px]]
+|Results by [[Communes of France|commune]]
+}}
+| outgoing_members = [[List of members of the European Parliament for France, 2019–2024|outgoing members]]
+| elected_members = [[List of members of the European Parliament for France, 2024–2029|elected members]]
+}}
+
+The '''2024 European Parliament elections''' in France were held on 9 June 2024, as part of the [[2024 European Parliament election]].<ref>{{Cite web |title=European elections 2024 |url=https://multimedia.europarl.europa.eu/package/european-elections-2024_23001 |access-date=2023-10-15 |website=European Parliament Multimedia Centre |language=en}}</ref>
+
+== Background ==
+The [[Borne government]] lost its majority in the [[2022 French legislative election]].<ref>{{Cite news |date=2022-06-19 |title=French elections: Macron loses majority as French vote fragments |language=en-GB |work=[[BBC News]] |url=https://www.bbc.com/news/world-europe-61859881 |access-date=2023-10-15}}</ref>
+
+== Electoral system ==
+A bill creating a [[France (European Parliament constituency)|single national constituency]] was approved by the [[National Assembly (France)|National Assembly]] in a vote on the first reading on 20 February 2018,<ref name="scrutin-AN">{{cite web |date=20 February 2018 |title=Analyse du scrutin n° 407 - Deuxième séance du 20/02/2018 |url=http://www2.assemblee-nationale.fr/scrutins/detail/(legislature)/15/(num)/407 |access-date=1 June 2018 |publisher=[[Assemblée nationale]]}}</ref> and the Senate officially adopted the bill on 23 May 2018,<ref name="scrutin-Senat">{{cite web |date=23 May 2018 |title=Scrutin n° 104 - séance du 23 mai 2018 |url=https://www.senat.fr/scrutin-public/2017/scr2017-104.html |access-date=1 June 2018 |publisher=[[Sénat]]}}</ref> which was promulgated on 25 June after its validation by the [[Constitutional Council (France)|Constitutional Council]].<ref>{{cite web |date=25 June 2018 |title=LOI n° 2018-509 du 25 juin 2018 relative à l'élection des représentants au Parlement européen (1) |url=https://www.legifrance.gouv.fr/affichTexte.do?cidTexte=JORFTEXT000037102048 |access-date=25 July 2018 |publisher=[[Légifrance]]}}</ref>
+
+French members of the [[European Parliament]] are elected through a [[Closed list|closed list proportional representation]] system.
+
+=== Apportionment ===
+{{See also|Apportionment in the European Parliament}}
+When the [[Brexit withdrawal agreement|United Kingdom left the European Union]] in January 2020, 46 of Britain's 73 seats were abolished and 27 seats were reapportioned to other countries.<ref>{{Cite web |date=2017-04-26 |title=Italian proposal for who gets British MEP seats |url=https://www.politico.eu/article/italian-proposal-for-who-gets-british-mep-seats/ |access-date=2022-09-09 |website=[[POLITICO]] |language=en-US}}</ref> As a result, the total number of MEPs decreased from 751 seats to 705.<ref>{{Cite web |date=2017-09-07 |title=MEPs propose cut in their ranks after Brexit |url=https://www.politico.eu/article/the-incredible-shrinking-european-parliament/ |access-date=2022-09-09 |website=[[POLITICO]] |language=en-US}}</ref> 
+
+For the 2024 election, the [[European Parliament]] was increased to 720 MEPs with France receiving two new seats.<ref>{{Cite web |date=2023-07-28 |title=European Parliament set to grow by 15 MEPs in 2024 |url=https://www.politico.eu/article/eu-parliament-mep-election-2024/ |access-date=2024-01-25 |website=[[POLITICO]] |language=en}}</ref>
+
+== Outgoing delegation ==
+The table shows the detailed composition of the French seats at the European Parliament as of 13 February 2024.
+{|class="wikitable"
+!colspan=2|EP Group
+!Seats
+!colspan=2|Party
+!Seats
+!MEPs
+
+|-
+|bgcolor="{{party color|Renew Europe}}" rowspan="5"|
+|rowspan="5"|[[Renew Europe]]
+|rowspan="5"|{{composition bar|23|79|hex={{party color|Renew Europe}}}}
+| style="background:{{party color|Renaissance (French political party)}};"|
+|[[Renaissance (French political party)|Renaissance]]
+|align=center|12
+| {{collapsible list|title=&nbsp;| [[Stéphane Bijoux]]|[[Pascal Canfin]]|[[Ilana Cicurel]]|[[Sandro Gozi]]|[[Bernard Guetta]]|[[Valérie Hayer]]|[[Pierre Karleskind]]|[[Fabienne Keller]]|[[Guy Lavocat]]|[[Irène Tolleret]]|[[Salima Yenbou]]|[[Stéphanie Yon-Courtin]]}}
+|-
+| style="background:{{party color|Democratic Movement (France)}};"|
+|[[Democratic Movement (France)|Democratic Movement]]
+|align=center|6
+| {{collapsible list|title=&nbsp;|[[Sylvie Brunet (politician)|Sylvie Brunet]]|[[Catherine Chabaud]]|[[Laurence Farreng]]|[[Christophe Grudler]]|[[Max Orville]]|[[Marie-Pierre Vedrenne]]}}
+|-
+| style="background:{{party color|Radical Party (France)}};"|
+|[[Radical Party (France)|Radical Party]]
+|align=center|2
+| {{collapsible list|title=&nbsp;|[[Catherine Amalric]]|[[Dominique Riquet]]}}
+|-
+| style="background:{{party color|Horizons (political party)}};"|
+|[[Horizons (political party)|Horizons]]
+|align=center|2
+| {{collapsible list|title=&nbsp;|[[Gilles Boyer]]|[[Nathalie Loiseau]]}}
+|-
+| style="background:{{party color|Independent}};"|
+|[[Independent politician|Independent]]
+|align=center|1
+| {{collapsible list|title=&nbsp;||[[Jérémy Decerle]]}}
+
+|-
+|bgcolor="{{party color|Identity and Democracy}}"|
+|[[Identity and Democracy]]
+|{{composition bar|18|79|hex={{party color|Identity and Democracy}}}}
+| style="background:{{party color|National Rally}};"|
+|[[National Rally]] 
+|align=center|18
+| {{collapsible list|title=&nbsp;|[[Mathilde Androuët]]|[[Jordan Bardella]]|[[Aurélia Beigneux]]|[[Dominique Bilde]]|[[Annika Bruna]]|[[Patricia Chagnon]]|[[Marie Dauchy]]|[[Jean-Paul Garraud]]|[[Catherine Griset]]|[[Jean-François Jalkh]]|[[France Jamet]]|[[Virginie Joron]]|[[Jean-Lin Lacapelle]]|[[Gilles Lebreton]]|[[Thierry Mariani]]|[[Éric Minardi]]|[[Philippe Olivier]]|[[André Rougé]]}}
+
+|-
+|bgcolor="{{party color|European Green Party}}" rowspan="2"|
+|rowspan="2"|[[Greens–European Free Alliance]]
+|rowspan="2"|{{composition bar|12|79|hex={{party color|European Green Party}}}}
+| style="background:{{party color|The Ecologists (France)}};"|
+|[[The Ecologists (France)|The Ecologists]]
+|align=center|10
+| {{collapsible list|title=&nbsp;|[[Benoît Biteau]]|[[Damien Carême]]|[[David Cormand]]|[[Gwendoline Delbos-Corfield]]|[[Karima Delli]]|[[Claude Gruffat]]|[[Caroline Roose]]|[[Mounir Satouri]]|[[François Thiollet]]|[[Marie Toussaint]]}}
+|-
+| style="background:#ffcc33;"|
+|[[Régions et Peuples Solidaires|Regions and People with Solidarity]]
+|align=center|2
+| {{collapsible list|title=&nbsp;|[[François Alfonsi]]|[[Lydie Massard]]}}
+
+|-
+|bgcolor="{{party color|European People's Party}}" rowspan="2"|
+|rowspan="2"|[[European People's Party group|European People's Party]]
+|rowspan="2"|{{composition bar|8|79|hex={{party color|European People's Party}}}}
+| style="background:{{party color|The Republicans (France)}};"|
+|[[The Republicans (France)|The Republicans]] 
+|align=center|7
+| {{collapsible list|title=&nbsp;|[[François-Xavier Bellamy]]|[[Arnaud Danjean]]|[[Geoffroy Didier]]|[[Brice Hortefeux]]|[[Nadine Morano]]|[[Laurence Sailliet]]|[[Anne Sander (politician)|Anne Sander]]}}
+|-
+| style="background:{{party color|The Centrists}};"|
+|[[The Centrists]]  
+|align=center|1
+| {{collapsible list|title=&nbsp;|[[Nathalie Colin-Oesterlé]]}}
+
+|-
+|bgcolor="{{party color|Progressive Alliance of Socialists and Democrats}}" rowspan="4"|
+|rowspan="4"|[[Progressive Alliance of Socialists and Democrats]]
+|rowspan="4"|{{composition bar|7|79|hex={{party color|Progressive Alliance of Socialists and Democrats}}}}
+| style="background:{{party color|Socialist Party (France)}};"|
+|[[Socialist Party (France)|Socialist Party]]
+|align=center|3
+| {{collapsible list|title=&nbsp;|[[Christophe Clergeau]]|[[Sylvie Guillaume]]|[[Nora Mebarek]]}}
+|-
+| style="background:{{party color|Place Publique}};"|
+|[[Place Publique]]
+|align=center|2
+| {{collapsible list|title=&nbsp;|[[Raphaël Glucksmann]]|[[Aurore Lalucq]]}}
+|-
+| style="background:{{party color|Renaissance (French political party)}};"|
+|[[Renaissance (French political party)|Renaissance]]
+|align=center|1
+| {{collapsible list|title=&nbsp;|[[Pascal Durand]]}}
+|-
+| style="background:{{party color|New Deal (France)}};"|
+|[[New Deal (France)|New Deal]]
+|align=center|1
+| {{collapsible list|title=&nbsp;|[[Pierre Larrouturou]]}}
+
+|- 
+|bgcolor="{{party color|The Left in the European Parliament – GUE/NGL}}" rowspan="2"|
+|rowspan="2"|[[The Left in the European Parliament – GUE/NGL]]
+|rowspan="2"|{{composition bar|6|79|hex={{party color|The Left in the European Parliament – GUE/NGL}}}}
+| style="background:{{party color|La France Insoumise}};"|
+|[[La France Insoumise]]
+|align=center|5
+| {{collapsible list|title=&nbsp;|[[Manon Aubry]]|[[Leïla Chaibi]]|[[Marina Mesure]]|[[Younous Omarjee]]|[[Anne-Sophie Pelletier]]}}
+|-
+| style="background:{{party color|Republican and Socialist Left}};"|
+|[[Republican and Socialist Left]]
+|align=center|1
+| {{collapsible list|title=&nbsp;|[[Emmanuel Maurel]]}}
+
+|-
+|bgcolor="{{party color|European Conservatives and Reformists}}"|
+|[[European Conservatives and Reformists Group|European Conservatives and Reformists]]
+|{{composition bar|1|79|hex={{party color|European Conservatives and Reformists}}}}
+| style="background:{{party color|Reconquête}};"|
+|[[Reconquête]]
+|align=center|1
+| {{collapsible list|title=&nbsp;|[[Nicolas Bay]]}}
+|-
+|bgcolor="{{party color|Non-Inscrits}}"|
+|[[Non-Inscrits]]
+|{{composition bar|4|79|hex={{party color|Non-Inscrits}}}}
+| style="background:{{party color|Independent}};"|
+|[[Independent politician|Independents]]
+|align=center|4
+| {{collapsible list|title=&nbsp;|[[Gilbert Collard]]|[[Hervé Juvin]]|[[Maxette Grisoni-Pirbakas]]|[[Jérôme Rivière]]}}
+
+|-
+|- bgcolor="EFEFEF"
+|colspan=5 align=left |'''Total'''
+|align=center|79
+|
+|-
+| colspan="7" | Source: European Parliament<ref>{{Cite web |title=Members of the European Parliament |url=https://www.europarl.europa.eu/meps/en/home |access-date=23 January 2024 |website=European Parliament}}</ref>
+|}
+
+== Running parties ==
+{{Main|Party lists in the 2024 European election in France}}
+{{incomplete list|date=May 2024}}
+{| class="wikitable sortable"
+|+
+!colspan="2" style="width: 300pt;" |List name
+!Parties
+!European Party
+!Group
+!2019 result<ref>{{cite web | url=https://www.lemonde.fr/les-decodeurs/article/2019/05/26/elections-europeennes-les-resultats-dans-l-ue-pays-par-pays_5467557_4355770.html | title=Elections européennes 2019 : les résultats en sièges, pays par pays, et la future composition du Parlement |date=29 May 2019 |access-date=11 June 2024 |work=[[Le Monde]]}}</ref>
+!2024 result<ref>{{cite web | url=https://www.publicsenat.fr/actualites/politique/europeennes-2024-suivez-tous-les-resultats-en-temps-reel | title=Européennes 2024 : suivez tous les résultats en temps réel |date=10 June 2024 |access-date=11 June 2024 |work=[[Public Sénat]]}}</ref>
+!change
+!lead candidate
+|-
+| style="background:{{party color|National Rally}};" |
+|'''France comes back!'''<br>''{{small|La France revient !}}''
+|[[National Rally]]–[[French Future]]
+|[[Identity and Democracy Party|ID]]
+|[[Identity and Democracy|ID]]
+|23.31
+|31.37
+| +8.06
+|[[Jordan Bardella]]<ref name="lead_candidates">{{cite web |last1=Palacin |first1=Hugo |last2=Ledroit |first2=Valentin |url=https://www.touteleurope.eu/institutions/elections-europeennes-2024-voici-les-candidats-tetes-de-liste-en-france/ |title=Elections européennes 2024 : les candidats têtes de liste en France |date=11 March 2024 |access-date=2 April 2024 |work=Toute l'Europe}}</ref>
+|-
+| style="background:{{party color|Renew Europe}};" |
+|'''Need for Europe'''<ref>{{Cite web |date=2024-02-29 |title=Élections européennes : Valerie Hayer désignée tête de liste de la majorité présidentielle |url=https://www.rtl.fr/actu/politique/elections-europeennes-valerie-hayer-designee-tete-de-liste-de-la-majorite-presidentielle-7900358455 |access-date=2024-05-01 |website=[[RTL (French radio)|RTL]] |language=fr-FR}}</ref><br>''{{small|Besoin d’Europe}}''
+|{{Collapsible list
+| title = {{nowrap|{{Nobold|[[Together (coalition)|Ensemble !]]}}}}
+| bullets = on|{{small|[[Renaissance (French political party)|Renaissance]] (RE)}}|{{small|[[Union of Democrats and Independents]] (UDI)}}|{{small|[[Democratic Movement (France)|Democratic Movement]] (MoDem)}}|{{small|[[Horizons (political party)|Horizons]] (H)}}|{{small|[[Radical Party (France)|Radical Party]] (PR)}}|{{small|[[En Commun]] (EC)}}|{{small|[[François Rebsamen|Progressive Federation]] (FP)}}|{{small|[[Jean-Pierre Chevènement|Republican Refoundation]] (RR)}}
+}}
+|[[Alliance of Liberals and Democrats for Europe Party|ALDE]] / [[European Democratic Party|EDP]]
+|[[Renew Europe|RE]]
+|22.41
+|14.60
+| -7.81
+|[[Valérie Hayer]]<ref name="lead_candidates"/>
+|-
+| style="background:{{party color|The Ecologists (France)}};" |
+|'''Europe Ecology'''<br>''{{small|Europe Ecologie}}''
+|[[The Ecologists (France)|The Ecologists – EELV]]
+|[[European Green Party|EGP]]
+|[[Greens–European Free Alliance|Greens-EFA]]
+|13.47
+|5.50
+| -8.03
+|[[Marie Toussaint]]<ref name="lead_candidates"/>
+|-
+| style="background:{{party color|The Republicans (France)}};" |
+|'''The right to make the voice of France heard in Europe'''<br>''{{small|La droite pour faire entendre la voix de la France en Europe}}''
+|[[The Republicans (France)|The Republicans]]–[[The Centrists]]
+|[[European People's Party|EPP]]
+|[[European People's Party Group|EPP]]
+|8.48
+|7.25
+| -1.23
+|[[François-Xavier Bellamy]]<ref name="lead_candidates"/>
+|-
+| style="background:{{party color|La France Insoumise}};" |
+|'''La France Insoumise - Popular union'''<br>''{{small|La France insoumise - Union populaire}}''
+|{{Collapsible list
+|title = {{nowrap|{{Nobold|[[La France Insoumise]]}}}}
+|bullets = on|{{small|[[Independent Workers' Party]] (POI)}}|{{small|[[Ecological Revolution for the Living]] (REV)}}|{{small|[[Péyi-A]] (Péyi-A)}}|{{small|[[For Réunion (political party)|For Réunion]] (PLR)}}|{{small|[[Ecosocialist Left]] (GES)}}
+}}
+|[[Now the People|MLP]]
+|[[The Left in the European Parliament – GUE/NGL|The Left]]
+|6.31
+|9.89
+| +3.58
+|[[Manon Aubry]]<ref name="lead_candidates"/>
+|-
+| style="background:{{party color|Socialist Party (France)}};" |
+|'''Wake Up Europe'''<ref>{{Cite web |date=2024-03-24 |title=Européennes: Glucksmann veut "réveiller l'Europe" pour son premier meeting près de Toulouse |url=https://www.lexpress.fr/societe/europeennes-glucksmann-veut-reveiller-leurope-pour-son-premier-meeting-pres-de-toulouse-GGQHLSF54FCNRFPTUDXM3DXB2Y/ |access-date=2024-05-01 |website=[[L'Express]] |language=fr}}</ref><br>''{{small|Réveiller l'Europe}}''
+|[[Socialist Party (France)|Socialist Party]]–[[Place Publique]]
+|[[Party of European Socialists|PES]]
+|[[Progressive Alliance of Socialists and Democrats|S&D]]
+|6.19
+|13.83
+| +7.64
+|[[Raphaël Glucksmann]]<ref name="lead_candidates"/>
+|-
+| style="background:{{party color|French Communist Party}};" |
+|'''The Left United for the labor world'''<ref>{{Cite web |title=La gauche unie pour le monde du travail |url=https://www.pcf.fr/reprendre_la_main_en_france_et_en_europe |access-date=2024-05-01 |website=Site Internet du PCF |language=fr}}</ref><br>''{{small|La gauche unie pour le monde du travail}}''
+|{{Collapsible list
+|title = {{nowrap|{{Nobold|[[French Communist Party]]}}}}
+|bullets = on|{{small|[[Federation of the Republican Left]] (FGR)<br/>{{bullet}}[[Republican and Socialist Left]] (GRS)<br/>{{bullet}}[[Arnaud Montebourg|The Engagement]] (L'E)<br/>{{bullet}}The Radicals of the Left (LRDG)}}|{{small|[[Communist Party of Réunion]] (PCR)}}
+}}
+|[[Party of the European Left|PEL]]
+|[[The Left in the European Parliament – GUE/NGL|The Left]]
+|2.49
+|2.36
+| -0.13
+|[[Léon Deffontaines]]<ref name="lead_candidates"/>
+|-
+| style="background:{{party color|Animalist Party}};" |
+|'''Animalist Party - Animals matter, so does your voice'''<br>''{{small|Parti animaliste - Les animaux comptent, votre voix aussi}}''
+|[[Animalist Party]]
+| [[Animal Politics EU|APEU]]
+| −
+| 2.2
+| 2.0
+| -0.2
+|[[Hélène Thouy]]<ref name="lead_candidates"/>
+|-
+| style="background:{{party color|Popular Republican Union}};" |
+|'''Asselineau List - Frexit, for purchasing power and for peace'''<br>''{{small|Liste Asselineau - Frexit, pour le pouvoir d'achat et pour la paix}}''
+|[[Popular Republican Union (2007)|Popular Republican Union]]
+| −
+| −
+| 1.2
+|1.02
+| -0.18
+|[[François Asselineau]]<ref name="lead_candidates" />
+|-
+| style="background:{{party color|Lutte Ouvrière}};" |
+|'''Workers' struggle the workers' camp'''<br>''{{small|Lutte ouvrière le camp des travailleurs}}''
+|[[Lutte Ouvrière]]
+| −
+| −
+| 0.8
+|0.49
+| -0.31
+|[[Nathalie Arthaud]]<ref name="lead_candidates" />
+|-
+| style="background:{{party color|The Patriots (France)}};" |
+|'''Europe that's enough!'''<br>''{{small|L'Europe ça suffit !}}''
+|[[The Patriots (France)|The Patriots]]–[[VIA, the Way of the People|VIA]]
+|[[European Christian Political Movement|ECPM]]
+| −
+| 0.7
+|0.93
+| +0.23
+|[[Florian Philippot]]<ref name="lead_candidates" />
+|-
+| style="background:{{party color|Pirate Party (France)}};" |
+|'''Pirate Party'''<br>''{{small|Parti pirate}}''
+|[[Pirate Party (France)|Pirate Party]]
+|[[European Pirate Party|PPEU]]
+| −
+| 0.1
+|0.11
+| +0.01
+|Caroline Zorn<ref name="lead_candidates" />
+|-
+|
+|'''Free Palestine'''<br>''{{small|Free Palestine}}''
+|[[Union of French Muslim Democrats]]
+|[[Free Palestine Party|FPP]]
+|−
+|0.1
+|0.06
+| -0.04
+|Nagib Azergui
+|-
+| style="background:{{party color|Europe–Democracy–Esperanto}};" |
+|'''Esperanto Common Language'''<br>''{{small|Espéranto langue commune}}''
+|[[Europe–Democracy–Esperanto]]
+|[[Europe–Democracy–Esperanto|EDE]]
+| −
+| 0.1
+|0.04
+| -0.06
+|Laure Patas d'Illiers<ref name="lead_candidates"/>
+|-
+| style="background:#47ac5c;" |
+|'''Peace and Degrowth'''<br>''{{small|Paix et Décroissance}}''
+|Political ecology, pacifism, and the growth objection–Wheelbarrow
+|−
+|−
+|0.1
+|0.02
+| -0.08
+|Michel Simonin
+|-
+| style="background:#ffd1dc;" |
+|'''Change Europe'''<br>''{{small|Changer l'Europe}}''
+|[[New Deal (France)|New Deal]]−Let's Go Children
+|−
+|[[Progressive Alliance of Socialists and Democrats|S&D]]
+|0.0 {{efn|ND run with the [[Socialist Party (France)|Socialist Party]] list}}
+|0.05
+| -
+|[[Pierre Larrouturou]]
+|-
+|
+|'''PACE - Party of European Citizens, for the European army, for social Europe, for the planet!'''<br>''{{small|PACE - Parti des citoyens européens, pour l'armée européenne, pour l'Europe sociale, pour la planète !}}''
+|Party of European Citizens
+| −
+| −
+|0.0
+|0.03
+| +0.03
+|Audric Alexandre
+|-
+| style="background:#bb0000;" |
+|'''Representative democracy'''<br>''{{small|Démocratie représentative}}''
+|Representative democracy
+| −
+| −
+|0.0
+|0.0
+| -
+|[[:fr:Hadama Traoré|Hadama Traoré]]
+|-
+| style="background:#bb0000;" |
+|'''Communist Revolutionary Party'''<br>''{{small|Parti révolutionnaire Communistes}}''
+|[[Communist Revolutionary Party (France)|Communist Revolutionary Party]]
+| −
+| −
+|0.0
+|0.01
+| +0.01
+|Olivier Terrien
+|-
+| style="background:#ffd1dc;" |
+|'''Europe Territories Ecology'''<ref>{{Cite web |last=CAZENAVE |first=Fabien |date=2024-03-15 |title=Européennes. Le PRG, l'UDB et Volt annoncent les cinq premiers noms de leur liste commune |url=https://www.ouest-france.fr/elections/europeennes/europeennes-le-prg-ludb-et-volt-annoncent-les-cinq-premiers-noms-de-leur-liste-commune-022ea198-e2b3-11ee-b685-1479f5265e87 |access-date=2024-05-01 |website=Ouest-France.fr |language=fr}}</ref><br>''{{small|Europe Territoires Écologie}}''
+|{{Collapsible list
+|title = {{nowrap|{{Nobold|Europe Territories Ecology}}}}
+|bullets = on|{{small|[[Radical Party of the Left]] (PRG)}}|{{small|[[Régions et Peuples Solidaires]] (RPS)}}|{{small|[[Volt France]] (Volt)}}|{{small|[[Movement of Progressives]] (MDP)}}|{{small|[[:fr:Mouvement des citoyens (France)|Citizens' Movement]] (MDC)}}|{{small|Collective of Reformist Social Democrats (CSDR)}}
+}}
+|[[European Free Alliance|EFA]] / [[Volt Europa|Volt]]
+|[[Greens–European Free Alliance|Greens-EFA]]
+| − {{efn|PRG run with the [[Socialist Party (France)|Socialist Party]] list, RPS with [[The Ecologists (France)|The Ecologists − EELV]] list and MDP with the Urgence Écologie list.}}
+|0.26
+| -
+|[[Guillaume Lacroix]]<ref name="lead_candidates"/>
+|-
+| style="background:{{party color|Reconquête}};" |
+|'''Proud France'''<br>''{{small|La France fière}}''
+|{{Collapsible list
+| title = {{nowrap|{{Nobold|[[Reconquête]]}}}}
+| bullets = on|{{small|[[Conservative Movement (France)|Conservative Movement]] (MC)}}|{{small|[[Party of France]] (PDF)}}
+}}
+|[[European Conservatives and Reformists Party|ECR]]
+|[[European Conservatives and Reformists Group|ECR]]
+| −
+|5.47
+| +5.47
+|[[Marion Maréchal]]<ref name="lead_candidates" />
+|-
+| style="background:{{party color|New Anticapitalist Party}};" |
+|'''For a World Without Borders or Bosses, Urgent Revolution!'''<ref>{{Cite web |title=Élections européennes 2024 : le Nouveau Parti anticapitaliste (NPA) présente la liste « Pour un monde sans frontières ni patrons, urgence révolution ! », conduite par Selma Labib, 28 ans, conductrice de bus et Gaël Quirante, 48 ans, syndicaliste à La Poste [Communiqué du NPA] |url=https://nouveaupartianticapitaliste.fr/elections-europeennes-2024-le-nouveau-parti-anticapitaliste-npa-presente-la-liste-pour-un-monde-sans-patrons-ni-frontieres-urgence-revolution-conduite-par-sel/ |access-date=2024-05-01 |website=[[Nouveau Parti anticapitaliste]] |language=fr-FR}}</ref><br>''{{small|Pour un monde sans frontières ni patrons, urgence révolution !}}''
+|[[New Anticapitalist Party|New Anticapitalist Party - Revolutionary]]
+|[[European Anti-Capitalist Left|EACL]]
+| −
+| −
+| 0.15
+| +0.15
+|Selma Labib<ref>{{cite web |title=Revolutionaries number 12, April 2024 |url=https://nouveaupartianticapitaliste.fr/revolutionnaires-numero-12-avril-2024/ |access-date=10 April 2024 |work=[[Nouveau Parti Anticapitaliste|NPA]]}}</ref>
+|-
+| style="background:#47ac5c;" |
+|'''Ecology at the Centre'''<ref>{{Cite web |date=2024-04-14 |title=Encore épinglée pour ses photos retouchées, cette candidate aux européennes assume |url=https://www.huffingtonpost.fr/politique/article/elections-europeennes-l-affiche-retouchee-de-juliette-de-causans-epinglee-la-candidate-assume_232636.html |access-date=2024-05-01 |website=[[Le HuffPost]] |language=fr}}</ref><br>''{{small|Écologie au centre}}''
+||{{Collapsible list
+| title = {{nowrap|{{Nobold|[[Ecology at the Center]]}}}}
+| bullets = on|{{small|Equality Europe Ecology}}|{{small|United European Regions<br/>{{bullet}} [[:fr:Occitanie País Nòstre|Bastir Occitanie]] (BO)<br/>{{bullet}} [[Breton Party]] (PB)<br/>{{bullet}} Lorraine Party (PL)<br/>{{bullet}} Provence Nation (PN)<br/>{{bullet}} [[Partit de la Nacion Occitana]] (PNO)}}|{{small|Animal Generation}}|{{small|Young Ecqo}}|{{small|France differently}}
+}}
+| −
+| −
+| −
+|1.28
+| -
+|{{Interlanguage link|Jean-Marc Governatori|lt=Jean-Marc Governatori|fr|Jean-Marc Governatori}}<ref name="lead_candidates" />
+|-
+| style="background:#47ac5c;" |
+|'''Equinox: practical ecology and democratic renewal'''<br>''{{small|Liste Équinoxe : écologie pratique et renouveau démocratique}}''
+|Équinoxe
+| −
+| −
+| −
+|0.29
+| -
+|Marine Cholley<ref name="lead_candidates" />
+|-
+| style="background:#47ac5c;" |
+|'''Positive Ecology and Territories'''<br>''{{small|Écologie positive et Territoires}}''
+|{{Collapsible list
+| title = {{nowrap|{{Nobold|Positive Ecology and Territories}}}}
+| bullets = on|{{small|[[Yann Wehrling|Positive Ecology]] (EP)}}|{{small|[[Cap21]] (Cap21)}}|{{small|France Ecology (FÉ)}}|{{small|[[:fr:Le Trèfle - Les nouveaux écologistes|The Clover - The New Ecologists]] (Le Trèfle)}}|{{small|[[:fr:Les Universalistes|The Universalists]] (LU)}}|{{small|100% Citizens (100%C)}}|{{small|[[Basque Nationalist Party]] (EAJ)}}|{{small|The Movement for the animals (LMPA)}}
+}}
+| [[European Democratic Party|EDP]]
+| −
+| −
+|0.42
+| -
+|[[Yann Wehrling]]<ref name="lead_candidates"/>
+|-
+| style="background:#404040;" |
+|'''Free France'''<br>''{{small|France libre}}''
+|{{Collapsible list
+| title = {{nowrap|{{Nobold|Free France}}}}
+|bullets = on|{{small|Resistance Union}}|{{small|Revolutionary Alliance}}|{{small|Counter-Attack}}|{{small|Peace Movement}}|{{small|Citizen Reflections Questions}}|{{small|Life Policy}}
+}}
+| −
+| −
+| −
+|0.02
+| -
+|[[Francis Lalanne]]<ref>{{cite web |url=https://www.liberation.fr/politique/europeennes-vers-une-liste-lalanne-dieudonne-20240214_6VIZEITQ7FFFPIOZSEDGDAOF6A/ |title=Européennes : vers une liste Lalanne-Dieudonné |date=14 February 2024 |access-date=3 April 2024 |work=[[Libération]]}}</ref>
+|-
+| style="background:#164194;" |
+|'''The [[Rural Alliance]]'''<ref>{{Cite web |date=2024-03-06 |title=Elections européennes 2024 : Jean Lassalle conduira la liste de l'Alliance rurale aux côtés du patron des chasseurs Willy Schraen |url=https://www.francetvinfo.fr/elections/europeennes/elections-europeennes-2024-jean-lassalle-et-le-patron-des-chasseurs-willy-schraen-tetes-de-liste-de-l-alliance-rurale_6407677.html |access-date=2024-05-01 |website=[[Franceinfo]] |language=fr-FR}}</ref><br>''{{small|L'Alliance rurale}}''
+|[[Résistons!]]−[[:fr:Fédération nationale des chasseurs|National Hunters Federation]]
+| −
+| −
+| −
+|2.35
+| -
+|[[Jean Lassalle]]<ref>{{cite web |url=https://www.francetvinfo.fr/elections/europeennes/elections-europeennes-2024-jean-lassalle-et-le-patron-des-chasseurs-willy-schraen-tetes-de-liste-de-l-alliance-rurale_6407677.html |title=Elections européennes 2024 : Jean Lassalle conduira la liste de l'Alliance rurale aux côtés du patron des chasseurs Willy Schraen |date=6 March 2024 |access-date=3 April 2024 |work=[[Franceinfo]]}}</ref>
+|-
+| style="background:#9b2b2e;" |
+|'''We the People'''<ref>{{Cite web |last=Kuzmanovic |first=Georges |date=2024-03-12 |title=Georges Kuzmanovic : "Nous présentons une liste citoyenne aux européennes, pour dire non... 3 fois non" |url=https://www.marianne.net/agora/tribunes-libres/georges-kuzmanovic-nous-presentons-une-liste-citoyenne-aux-europeennes-pour-dire-non-3-fois-non |access-date=2024-05-01 |website=[[Marianne (magazine)|Marianne]] |language=fr}}</ref><br>''{{small|Nous le Peuple}}''
+|[[:fr:République souveraine|Sovereign Republic]]−The call to the People
+| −
+| −
+| −
+|0.06
+| -
+|[[:fr:Georges Kuzmanovic|Georges Kuzmanovic]]
+|-
+| style="background:#bb0000;" |
+|'''For Bread, Peace and Liberty!'''<ref>{{Cite web |last=SARAFIAN |first=Lucas |date=2024-03-15 |title=Européennes : les extrêmes gauches jouent à chacune pour soi |url=https://www.politis.fr/articles/2024/03/europeennes-les-extremes-gauches-jouent-a-chacune-pour-soi/ |access-date=2024-05-01 |website=[[Politis (magazine)|POLITIS]] |language=fr-FR}}</ref><br>''{{small|Pour le pain, la paix, et la liberté !}}''
+|[[Workers' Party (France, 2015)|Workers' Party]]
+| −
+| −
+| −
+|0.02
+| -
+|Camille Adoue<ref name="lead_candidates"/>
+|-
+| style="background:#bb0000;" |
+|'''No to the EU and NATO, communists for peace and social progress'''<br>''{{small|Non à l'UE et à l'OTAN, communistes pour la paix et le progrès social}}''
+|National Association of Communists
+| −
+| −
+| −
+|0.01
+| -
+|Charles Hoareau
+|-
+| style="background:#404040;" |
+|'''Fortress Europe — Nationalist Unity List'''<br>''{{small|Forteresse Europe — Liste d'unité nationaliste}}''
+|[[The Nationalists (France)|The Nationalists]]
+|[[Alliance for Peace and Freedom|APF]]
+| −
+| −
+|0.02
+| -
+|Pierre-Marie Bonneau
+|-
+| style="background:{{party color|Miscellaneous Right}};" |
+|'''For another Europe'''<br>''{{small|Pour une autre Europe}}''
+|[[Nous Citoyens|We Citizens]]−Citizen Federation
+| −
+| −
+| −
+|0.02
+| -
+|Jean-Marc Fortané
+|-
+|
+|'''For real democracy: Let's decide for ourselves!'''<br>''{{small|Pour une démocratie réelle : Décidons nous-mêmes !}}''
+|{{Collapsible list
+| title = {{nowrap|{{Nobold|Let's Decide for Ourselves}}}}
+| bullets = on|{{small|Decidemos}}|{{small|Popular Constituent Movement}}|{{small|All by the People}}}}
+| −
+| −
+| −
+|0.01
+| -
+|Philippe Ponge
+|-
+| style="background:#404040;" |
+|'''No! Let's take ourselves in hand'''<br>''{{small|Non ! Prenons-nous en main}}''
+|Stay Free
+| −
+| −
+| −
+|0.01
+| -
+|[[Édouard Husson|Edouard Husson]]
+|-
+|
+|'''The citizen hive'''<br>''{{small|La ruche citoyenne}}''
+|The citizen hive
+| −
+| −
+| −
+|0.02
+| -
+|Lorys Elmayan
+|-
+|
+|'''Defend the Children'''<br>''{{small|Défendre les enfants}}''
+|− {{efn|Supported by many associations: Rights of the parent and the child, Root of Children, Grandmas Grandpas Grief, Parental Equity, We want to see our grandchildren, I love my 2 parents, Dynamic Parents, Father-Child Mother and 24 hours of Le Mans for Parental Equality}}
+| −
+| −
+| −
+|0.02
+| -
+|Gaël Coste-Meunier
+|-
+|
+|'''For a sovereign humanity'''<br>''{{small|Pour une humanité souveraine}}''
+|Citizen Change
+| −
+| −
+| −
+|0.00
+| -
+|Fidèl' {{efn|His real name being Léopold-Edouard Deher-Lesaint}}
+|}
+
+== Voting advice applications ==
+{{See also|2024 European Parliament election#Voting advice applications}}
+In France, ''candidator.fr'' allows users to find the list leader who best matches their convictions through 16 questions that position the respondent and candidates on 4 axes: environmental progressivism vs environmental conservatism, migration protectionism vs migration altruism, European federalism vs nationalism, egalitarianism vs capitalism.<ref>{{Cite web |last=Lasserre |first=Maxime |title=Candidator vous aide à bien choisir votre candidat |url=https://www.candidator.fr/ |access-date=2024-03-23 |website=Candidator |language=fr}}</ref>
+
+== Opinion polling ==
+{{see also|Opinion polling for the 2024 European Parliament election}}
+
+=== Graphical summary ===
+{{wide image|Opinion polls French European 2024.svg|1000px|[[Local regression]] of polls conducted}}
+
+<onlyinclude>
+{| class="wikitable sortable" style="text-align:center;font-size:90%;line-height:14px;"
+! rowspan="4" |Polling firm
+! rowspan="4" |Fieldwork date
+! rowspan="4" |Sample<br>size
+! rowspan="3"style="width:50px;" |[[Lutte Ouvrière|LO]]<br />{{small|[[Non-Inscrits|NI]]}}
+! rowspan="3"style="width:50px;" |[[New Anticapitalist Party|NPA]]<br />{{small|[[The Left in the European Parliament – GUE/NGL|Left]]}}
+! rowspan="3"style="width:50px;" |[[French Communist Party|PCF]]<br />{{small|[[The Left in the European Parliament – GUE/NGL|Left]]}}
+! rowspan="3"style="width:50px;" |[[La France Insoumise|LFI]]<br />{{small|[[The Left in the European Parliament – GUE/NGL|Left]]}}
+! rowspan="3"style="width:50px;" |[[New Deal (France)|ND]]<br />{{small|[[Progressive Alliance of Socialists and Democrats|S&D]]}}
+! rowspan="3"style="width:50px;" |[[Socialist Party (France)|PS]]–[[Place Publique|PP]]<br />{{small|[[Progressive Alliance of Socialists and Democrats|S&D]]}}
+! rowspan="3"style="width:50px;" |[[Europe Ecology – The Greens|EELV]]<br>{{small|[[Greens–European Free Alliance|G/EFA]]}}
+! rowspan="3"style="width:50px;" |[[Ecology Generation|GE]]<br />{{small|[[Non-Inscrits|NI]]}}
+! rowspan="3"style="width:50px;" |[[Radical Party of the Left|PRG]]<br />{{small|[[Greens–European Free Alliance|G/EFA]]{{efn|Alliance with [[Régions et Peuples Solidaires|R&PS]] and [[Volt France]]}}}}
+! rowspan="3"style="width:50px;" |[[Socialist Party (France)|PS]]<br />{{small|{{abbreviation|diss.|dissident}}}}
+! rowspan="3"style="width:50px;" |[[Union of French Muslim Democrats|UDMF]]<br />{{small|[[Non-Inscrits|NI]]}}
+! rowspan="3"style="width:50px;" |[[Independent Ecological Alliance|EAC]]<br>{{small|[[Greens–European Free Alliance|G/EFA]]}}
+! rowspan="3"style="width:50px;" |{{tooltip|2=Écologie positive et Territoires|ÉPT}}<br>{{small|[[Renew Europe|Renew]]}}
+! rowspan="3"style="width:50px;" |[[Pirate Party (France)|PP]]<br>{{small|[[Greens–European Free Alliance|G/EFA]]}}
+! rowspan="3"style="width:50px;" |[[Animalist Party|PA]]<br />{{small|[[The Left in the European Parliament – GUE/NGL|Left]]}}
+! rowspan="3"style="width:50px;" |[[Together (coalition)|Ens.]]<br>{{small|[[Renew Europe|Renew]]}}
+! colspan="2" |{{tooltip|2=L’Alliance rurale|AR}}
+! rowspan="3"style="width:50px;" |[[Territories in Movement|NE]]<br>{{small|[[European People's Party Group|EPP]]}}
+! rowspan="3"style="width:50px;" |[[The Republicans (France)|LR]]<br>{{small|[[European People's Party Group|EPP]]}}
+! rowspan="3"style="width:50px;" |[[Debout la France|DLF]]<br>{{small|[[European Conservatives and Reformists Group|ECR]]}}
+! rowspan="3"style="width:50px;" |[[Popular Republican Union (2007)|UPR]]<br />{{small|[[Non-Inscrits|NI]]}}
+! rowspan="3"style="width:50px;" |[[The Patriots (France)|LP]]–[[VIA, the Way of the People|VIA]]<br>{{small|[[European Conservatives and Reformists Group|ECR]]}}
+! rowspan="3"style="width:50px;" |[[National Rally|RN]]<br>{{small|[[Identity and Democracy|ID]]}}
+! rowspan="3"style="width:50px;" |[[Reconquête|REC]]<br />{{small|[[European Conservatives and Reformists Group|ECR]]}}
+! rowspan="4"style="width:50px;" |Others
+! rowspan="4"style="width:50px;" |Lead
+|-
+! style="background:#61ae3c;" colspan="2" |
+|- style="height:40px;"
+! class="unsortable" style="width:50px;" | {{ill|National Hunters Federation|fr|Fédération nationale des chasseurs|lt=FNC}}<br />{{small|[[Non-Inscrits|NI]]}}
+! class="unsortable" style="width:50px;" | [[Résistons!|R!]]<br>{{small|[[Non-Inscrits|NI]]}}
+|-
+! style="background:{{party color|Lutte Ouvrière}};" |
+! style="background:{{party color|New Anticapitalist Party}};" |
+! style="background:{{party color|French Communist Party}};" |
+! style="background:{{party color|La France Insoumise}};" |
+! style="background:{{party color|New Deal (France)}};" |
+! style="background:{{party color|Socialist Party (France)}};" |
+! style="background:{{party color|Europe Ecology – The Greens}};" |
+! style="background:{{party color|Ecology Generation}};" |
+! style="background:{{party color|Radical Party of the Left}};" |
+! style="background:{{party color|Miscellaneous Left}};" |
+! style="background:#B18904;" |
+! style="background:#6EBE42;" |
+! style="background:{{party color|Ecologists}};" |
+! style="background:{{party color|Pirate Party (France)}};" |
+! style="background:{{party color|Animalist Party}};" |
+! style="background:{{party color|Together (coalition)}};" |
+! style="background:#7e6b5c;" |
+! style="background:#164194;" |
+! style="background:{{party color|Miscellaneous Right}};" |
+! style="background:{{party color|The Republicans (France)}};" |
+! style="background:{{party color|Debout la France}};" |
+! style="background:{{party color|Popular Republican Union (2007)}};" |
+! style="background:{{party color|The Patriots (France)}};" |
+! style="background:{{party color|National Rally}};" |
+! style="background:{{party color|Reconquête}};" |
+|-
+| style="background:#04FBF4;"|[https://www.ipsos.com/sites/default/files/ct/news/documents/2024-06/ipsos-intentions-vote-europeennes-2024-7-juin-2024-rapport-complet-WEB.pdf Ipsos]
+| {{Opdrts|06|07|Jun|2024|year}}
+| 8,923
+|0.5
+|0.5
+|2.5
+|9.5
+|0.5
+|14.5
+|5
+|–
+|0.5
+|–
+|<0.5
+|0.5
+|0.5
+|<0.5
+|2.5
+|15
+|colspan=2|1.5
+|–
+|7
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5.5
+|1{{efn|[[Communist Revolutionary Party (France)|PRC]] <0.5%, France Libre–Union de la Résistance <0.5%, Défendre les enfants <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, République souveraine–L'appel au peuple <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Association nationale des communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/06/JTYRVZQEBZNSRHUJN.pdf Harris Interactive]{{failed verification|date=June 2024}}
+| {{Opdrts|05|07|Jun|2024|year}}
+| 2,200
+|0.5
+|0.5
+|3
+|9.5
+|<0.5
+|13
+|5
+|–
+|<0.5
+|–
+|0.5
+|0.5
+|0.5
+|<0.5
+|2
+|14
+|colspan=2|1
+|–
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5
+|{{efn|République souveraine–L'appel au peuple <0.5%, France Libre–Union de la Résistance <0.5%, Défendre les enfants <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Association nationale des communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |18
+|-
+|style="background:#CAD5F7;"|[https://elabe.fr/elections-europeennes-vague-9/ Elabe]
+|{{Opdrts|05|07|Jun|2024|year}}
+|2,001
+|1
+|0.5
+|2.5
+|9.5
+|<0.5
+|14.5
+|5.5
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|0.5
+|<0.5
+|2.5
+|16
+|colspan=2|1.5
+|–
+|6
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5.5
+|1.5{{efn|France Libre–Union de la Résistance <0.5%, Décidons nous-mêmes <0.5%,  Parti des citoyens européens <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Changement citoyen <0.5%,  [[Communist Revolutionary Party (France)|PRC]] <0.5%, Équinoxe <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, République souveraine–L'appel au peuple <0.5%, Rester libre <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, Association nationale des communiste <0.5%, La Ruche citoyenne <0.5%, Défendre les enfants <0.5%, Démocratie représentative <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/06/ROL24_20240607.pdf Ifop]
+| {{Opdrts|04|07|Jun|2024|year}}
+| 2,710
+|0.5
+|0.5
+|2.5
+|9
+|<0.5
+|13.5
+|5.5
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|<0.5
+|–
+|2.5
+|14.5
+|colspan=2|1.5
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|6
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |18.5
+|-
+|style="background:#FFCCFF;"|[https://www.odoxa.fr/sondage/bardella-est-toujours-largement-en-tete-avec-32-devant-hayer-15-et-glucksmann-14-au-coude-a-coude/ Odoxa]
+|{{Opdrts|05|06|Jun|2024|year}}
+|1.008
+|1.5
+|0.5
+|2
+|7
+|0.5
+|14
+|5
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|<0.5
+|<0.5
+|3.5
+|15
+|colspan=2|2
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|6
+|{{efn|République souveraine–L'appel au peuple <0.5%, France Libre–Union de la Résistance <0.5%, Défendre les enfants <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Association nationale des communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17
+|-
+| style="background:#04FBF4;"|[http://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9835-eur-ipsos-radio-france-le-parisien-vague-3-6-juin-24.pdf Ipsos]
+| {{Opdrts|05|06|Jun|2024|year}}
+| 1,738
+|0.5
+|0.5
+|2.5
+|9
+|<0.5
+|13.5
+|6
+|–
+|0.5
+|–
+|<0.5
+|1.5
+|<0.5
+|<0.5
+|1.5
+|15.5
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5.5
+|1.5{{efn|République souveraine–L'appel au peuple <0.5%, Parti des citoyens européens <0.5%, Liberté Démocratique Française <0.5%, Association nationale des communistes <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Démocratie représentative <0.5%, Défendre les enfants <0.5%, France Libre–Union de la Résistance <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, Équinoxe <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16.5
+|-
+|style="background:#80fcd4;"|[https://f.dviz.factoviz.com/Pdfs/3/e/8/Eurotrack%20OpinionWay%20Vae%20Solis%20pour%20Les%20Echos%20-%20Radio%20Classique%20-%20Vague%2012%20-%204%20juin%202024.pdf OpinionWay]
+|{{Opdrts|04|06|Jun|2024|year}}
+|2,182
+|1
+|1
+|2
+|8
+|<1
+|14
+|5
+|–
+|<1
+|–
+|<1
+|<1
+|<1
+|<1
+|3
+|15
+|colspan=2|1
+|–
+|6
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|6
+|3{{efn|[[Workers' Party (France, 2015)|PT]] <1%, Association nationale des communiste <1%, [[Communist Revolutionary Party (France)|PRC]] <1%, [[The Nationalists (France)|The Nationalists]] <1%, Équinoxe <1%, France Libre–Union de la Résistance <1%, [[Europe–Democracy–Esperanto|EDE]] <1%, Démocratie représentative <1%, Défendre les enfants <1%, République souveraine–L'appel au peuple <1%, Rester libre <1%, Fédération citoyenne–[[Nous Citoyens]] <1%, Parti des citoyens européens <1%, Décidons nous-mêmes <1%, Changement citoyen <1%, La Ruche citoyenne <1%, Écologie politique et de pacifisme et objection de croissanc <1%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |18
+|-
+| style="background:#d9fff6"|[https://cluster17.com/wp-content/uploads/2024/06/Notice-CLUSTER17-LE-POINT-EUROPEENNES-7-JUIN-3.pdf Cluster17]
+| {{Opdrts|04|06|Jun|2024|year}}
+|1,165
+|1
+|0.5
+|2
+|9
+|0.5
+|13
+|5
+|–
+|0.5
+|–
+|<0.5
+|0.5
+|<0.5
+|<0.5
+|2.5
+|15
+|colspan=2|1.5
+|–
+|7
+|–
+|1.5
+|1.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|5.5
+|<3{{efn|République souveraine–L'appel au peuple 0.5%, Parti des citoyens européens 0.5%, Liberté Démocratique Française <0.5%, Association nationale des communistes <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Démocratie représentative <0.5%, Défendre les enfants <0.5%, France Libre–Union de la Résistance <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, Équinoxe <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16
+|-
+|style="background:#80fcd4;"|[http://www.commission-des-sondages.fr/notices/files/notices/2024/juin/9839-eur-ow-cnews-europe-1-le-jdd-7-juin.pdf OpinionWay]
+|{{Opdrts|04|06|Jun|2024|year}}
+|1,027
+|1
+|1
+|3
+|7
+|–
+|13
+|6
+|–
+|<1
+|–
+|<1
+|<1
+|<1
+|<1
+|2
+|15
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|6
+|4{{efn|[[Workers' Party (France, 2015)|PT]] <1%, Association nationale des communiste <1%, [[Communist Revolutionary Party (France)|PRC]] <1%, [[The Nationalists (France)|The Nationalists]] <1%, Équinoxe <1%, France Libre–Union de la Résistance <1%, [[Europe–Democracy–Esperanto|EDE]] <1%, Démocratie représentative <1%, Défendre les enfants <1%, République souveraine–L'appel au peuple <1%, Rester libre <1%, Fédération citoyenne–[[Nous Citoyens]] <1%, Parti des citoyens européens <1%, Décidons nous-mêmes <1%, Changement citoyen <1%, La Ruche citoyenne <1%, Écologie politique et de pacifisme et objection de croissanc <1%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |18
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/06/JTYRVZQEBZNSRHUJN.pdf Harris Interactive]{{failed verification|date=June 2024}}
+| {{Opdrts|04|06|Jun|2024|year}}
+| 2,200
+|0.5
+|0.5
+|3.5
+|8.5
+|<0.5
+|13
+|5.5
+|–
+|<0.5
+|–
+|0.5
+|0.5
+|0.5
+|<0.5
+|2
+|14.5
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5
+|{{efn|République souveraine–L'appel au peuple <0.5%, France Libre–Union de la Résistance <0.5%, Défendre les enfants <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Association nationale des communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17.5
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/06/ROL24_20240606.pdf Ifop]
+| {{Opdrts|03|06|Jun|2024|year}}
+| 2,710
+|0.5
+|0.5
+|2
+|8.5
+|<0.5
+|13.5
+|5.5
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|<0.5
+|–
+|2.5
+|15
+|colspan=2|1.5
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|6
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |18
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/06/JTYRVZQEBZNSRHUJN.pdf Harris Interactive]{{failed verification|date=June 2024}}
+| {{Opdrts|04|05|Jun|2024|year}}
+| 2,130
+|0.5
+|0.5
+|3
+|9
+|<0.5
+|13
+|6
+|–
+|<0.5
+|–
+|0.5
+|0.5
+|0.5
+|<0.5
+|2
+|14
+|colspan=2|1
+|–
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5
+|{{efn|, [[Workers' Party (France, 2015)|PT]]<0.5%, République souveraine–L'appel au peuple 0.5%, France Libre–Union de la Résistance <0.5%, Défendre les enfants <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%Association nationale des communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17.5
+|-
+|style="background:#FFDFCC;"|[https://www.bva-xsight.com/wp-content/uploads/2024/06/BVA-Xsight-Intentions-de-vote-aux-elections-europeennes-vague-5.pdf BVA]
+|{{Opdrts|03|05|Jun|2024|year}}
+|1,500
+|1
+|<0.5
+|2.5
+|7.5
+|0.5
+|14
+|5.5
+|–
+|0.5
+|–
+|<0.5
+|1
+|<0.5
+|<0.5
+|2.5
+|16
+|colspan=2|1
+|–
+|6.5
+|–
+|1.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|5
+|3{{efn|République souveraine–L'appel au peuple 0.5%, [[Workers' Party (France, 2015)|PT]] 0.5%, France Libre–Union de la Résistance <0.5%, Défendre les enfants <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, Association nationale des communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/06/ROL24_20240605.pdf Ifop]
+| {{Opdrts|01|05|Jun|2024|year}}
+| 2,724
+|0.5
+|0.5
+|2.5
+|8
+|<0.5
+|13.5
+|5
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|<0.5
+|–
+|2.5
+|15
+|colspan=2|1
+|–
+|7.5
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|6
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |18
+|-
+| style="background:#fff89c;" |[https://ygo-assets-websites-editorial-emea.yougov.net/documents/R%C3%A9sultats_YouGov_pour_le_HuffPost_IV_%C3%A9lections_europ%C3%A9ennes_2024_V6_As_Sent_6.0_F4nCdrB.pdf YouGov]
+|{{Opdrts|31|5|Jun|2024|year}}
+|1,035
+|1
+|<1
+|3
+|6
+|1
+|12
+|4
+|–
+|1
+|–
+|1
+|–
+|–
+|–
+|3
+|15
+|colspan=2|1
+|–
+|6
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|6
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/06/JTYRVZQEBZNSRHUJN.pdf Harris Interactive]{{failed verification|date=June 2024}}
+| {{Opdrts|03|04|Jun|2024|year}}
+| 2,130
+|0.5
+|0.5
+|3
+|9
+|<0.5
+|13
+|6
+|–
+|<0.5
+|–
+|0.5
+|0.5
+|0.5
+|<0.5
+|2
+|14.5
+|colspan=2|1
+|–
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5
+|{{efn|République souveraine–L'appel au peuple 0.5%, France Libre–Union de la Résistance <0.5%, Défendre les enfants <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Association nationale des communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17.5
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/06/ROL24_20240604.pdf Ifop]
+| {{Opdrts|31|04|Jun|2024|year}}
+| 2,734
+|0.5
+|0.5
+|2.5
+|7.5
+|<0.5
+|14
+|5.5
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|<0.5
+|–
+|2
+|15
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|6
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |18
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/06/JTYRVZQEBZNSRHUJN.pdf Harris Interactive]
+| {{Opdrts|02|03|Jun|2024|year}}
+| 2,130
+|0.5
+|0.5
+|3
+|9
+|<0.5
+|13
+|6
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|0.5
+|<0.5
+|2
+|14.5
+|colspan=2|1
+|–
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5
+|{{efn|République souveraine–L'appel au peuple 0.5%, France Libre–Union de la Résistance <0.5%, Défendre les enfants <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Association nationale des communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17.5
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/06/ROL24_20240603.pdf Ifop]
+| {{Opdrts|30|03|Jun|2024|year}}
+| 2,751
+|0.5
+|0.5
+|2.5
+|7.5
+|<0.5
+|14
+|6
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|<0.5
+|–
+|2
+|15.5
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33.5'''
+|6
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |18
+|-
+|style="background:#CAD5F7;"|[https://elabe.fr/wp-content/uploads/2024/06/les-francais-et-les-elections-europeennes-8eme-vague.pdf Elabe]
+|{{Opdrts|29|31|May|2024|year}}
+|1,688
+|1
+|0.5
+|3
+|8.5
+|<0.5
+|13
+|7
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|0.5
+|<0.5
+|2
+|16
+|colspan=2|1
+|–
+|6.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32.5'''
+|5
+|1.5{{efn|France Libre–Union de la Résistance 0.5%, Décidons nous-mêmes <0.5%,  Parti des citoyens européens <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Changement citoyen <0.5%,  [[Communist Revolutionary Party (France)|PRC]] <0.5%, Équinoxe <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, République souveraine–L'appel au peuple <0.5%, Rester libre <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, Association nationale des communiste <0.5%, La Ruche citoyenne <0.5%, Défendre les enfants <0.5%, Démocratie représentative <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16.5
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/05/ENFBDFGTERFDV.pdf Harris Interactive]
+| {{Opdrts|30|31|May|2024|year}}
+| 2,178
+|0.5
+|0.5
+|3
+|8.5
+|<0.5
+|13.5
+|5.5
+|–
+|<0.5
+|–
+|0.5
+|0.5
+|0.5
+|<0.5
+|2
+|14.5
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5.5
+|{{efn|République souveraine–L'appel au peuple 0.5%, France Libre–Union de la Résistance <0.5%, Défendre les enfants <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Association nationale des communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17.5
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/05/ROL24_20240531.pdf Ifop]
+| {{Opdrts|28|31|May|2024|year}}
+| 2,713
+|0.5
+|0.5
+|3
+|7
+|<0.5
+|14
+|6.5
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|<0.5
+|–
+|2
+|15.5
+|colspan=2|1
+|–
+|7
+|–
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33.5'''
+|6.5
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |18
+|-
+|style="background:#80fcd4;"|[https://f.dviz.factoviz.com/Pdfs/3/e/8/Eurotrack%20OpinionWay%20Vae%20Solis%20pour%20Les%20Echos%20-%20Radio%20Classique%20-%20Vague%2012%20-%204%20juin%202024.pdf OpinionWay]
+|{{Opdrts|28|30|May|2024|year}}
+|2,149
+|1
+|2
+|2
+|6
+|<1
+|14
+|5
+|–
+|<1
+|–
+|<1
+|<1
+|<1
+|<1
+|2
+|15
+|colspan=2|1
+|–
+|7
+|–
+|<1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|6
+|4{{efn|[[Workers' Party (France, 2015)|PT]] <1%, Association nationale des communiste <1%, [[Communist Revolutionary Party (France)|PRC]] <1%, [[The Nationalists (France)|The Nationalists]] <1%, Équinoxe <1%, France Libre–Union de la Résistance <1%, [[Europe–Democracy–Esperanto|EDE]] <1%, Démocratie représentative <1%, Défendre les enfants <1%, République souveraine–L'appel au peuple <1%, Rester libre <1%, Fédération citoyenne–[[Nous Citoyens]] <1%, Parti des citoyens européens <1%, Décidons nous-mêmes <1%, Changement citoyen <1%, La Ruche citoyenne <1%, Écologie politique et de pacifisme et objection de croissanc <1%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17
+|-
+| style="background:#d9fff6"|[https://cluster17.com/wp-content/uploads/2024/06/Notice-Sondage-Cluster17-Le-Point-Eur-30-mai-2.pdf Cluster17]
+| {{Opdrts|28|30|May|2024|year}}
+|1,165
+|1
+|0.5
+|2
+|8
+|0.5
+|13.5
+|5
+|–
+|0.5
+|–
+|<0.5
+|0.5
+|<0.5
+|<0.5
+|2.5
+|15.5
+|colspan=2|1.5
+|–
+|7
+|–
+|1.5
+|1.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|6
+|<3{{efn|République souveraine–L'appel au peuple 0.5%, Parti des citoyens européens 0.5%, Liberté Démocratique Française <0.5%, Association nationale des communistes <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Démocratie représentative <0.5%, Défendre les enfants <0.5%, France Libre–Union de la Résistance <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, Équinoxe <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14.5
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/05/HTRECREBHTRFSR.pdf Harris Interactive]
+| {{Opdrts|29|30|May|2024|year}}
+| 2,200
+|0.5
+|0.5
+|3
+|8
+|<0.5
+|13.5
+|5.5
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|0.5
+|<0.5
+|1.5
+|14.5
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|5.5
+|{{efn|[[Communist Revolutionary Party (France)|PRC]] 0.5%, France Libre–Union de la Résistance 0.5%, Défendre les enfants 0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, République souveraine–L'appel au peuple <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Association nationale des communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |18.5
+|-
+| style="background:#04FBF4;"|[https://www.ipsos.com/sites/default/files/ct/news/documents/2024-06/ipsos-enquete-electorale-europeennes-2024-vague-5-rapport-complet-WEB.pdf Ipsos]
+| {{Opdrts|27|30|May|2024|year}}
+| 11,430
+|0.5
+|0.5
+|2
+|8
+|0.5
+|14.5
+|6
+|–
+|0.5
+|–
+|<0.5
+|0.5
+|0.5
+|<0.5
+|1.5
+|16
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|5
+|{{efn|[[Communist Revolutionary Party (France)|PRC]] <0.5%, France Libre–Union de la Résistance <0.5%, Défendre les enfants <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, République souveraine–L'appel au peuple <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Association nationale des communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/05/ROL24_20240530.pdf Ifop]
+| {{Opdrts|26|30|May|2024|year}}
+| 2,700
+|0.5
+|0.5
+|3
+|7
+|<0.5
+|14
+|6.5
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|<0.5
+|–
+|1.5
+|16
+|colspan=2|1
+|–
+|7
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33.5'''
+|6.5
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17.5
+|-
+|style="background:#80fcd4;"|[https://www.cnews.fr/france/2024-05-30/sondage-le-ps-et-la-majorite-presidentielle-au-coude-coude-pour-les-europeennes-le OpinionWay]
+|{{Opdrts|28|29|May|2024|year}}
+|1,008
+|1
+|3
+|2
+|6
+|–
+|14
+|5
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|2
+|15
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|7
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/05/Rapport-Harris-Intentions-de-vote-Europeennes-2024-Vague-14-29-mai.pdf Harris Interactive]
+| {{Opdrts|28|29|May|2024|year}}
+| 2,016
+|0.5
+|0.5
+|3
+|8
+|0.5
+|14
+|5.5
+|–
+|0.5
+|–
+|0.5
+|0.5
+|0.5
+|<0.5
+|1
+|14.5
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32.5'''
+|5
+|4{{efn|République souveraine–L'appel au peuple 0.5%, [[Workers' Party (France, 2015)|PT]] 0.5%, Parti des citoyens européens 0.5%, Défendre les enfants 0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, Association nationale des communistes <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, France Libre–Union de la Résistance <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17.5
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/05/ROL24_20240529.pdf Ifop]
+| {{Opdrts|25|29|May|2024|year}}
+| 2,250
+|0.5
+|<0.5
+|3
+|7
+|<0.5
+|14
+|6.5
+|–
+|0.5
+|–
+|<0.5
+|0.5
+|<0.5
+|–
+|1.5
+|16
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33.5'''
+|6.5
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17.5
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/05/Rapport-Harris-Intentions-de-vote-Europeennes-2024-Vague-13-28-mai.pdf Harris Interactive]
+| {{Opdrts|27|28|May|2024|year}}
+| 2,016
+|0.5
+|0.5
+|3
+|8.5
+|0.5
+|14
+|5
+|–
+|0.5
+|–
+|<0.5
+|0.5
+|0.5
+|<0.5
+|1
+|15
+|colspan=2|1
+|–
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5
+|4{{efn|[[The Nationalists (France)|The Nationalists]] <0.5%, République souveraine–L'appel au peuple <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Association nationale des
+communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, France Libre–Union de la Résistance <0.5%, Défendre les enfants <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/05/ROL24_20240528.pdf Ifop]
+| {{Opdrts|24|28|May|2024|year}}
+| 1,809
+|0.5
+|<0.5
+|2.5
+|7.5
+|<0.5
+|14
+|6
+|–
+|0.5
+|–
+|0.5
+|0.5
+|<0.5
+|–
+|1
+|15.5
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''34'''
+|6
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |18.5
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/05/Rapport-Harris-Intentions-de-vote-Europeennes-2024-Vague-12-27-mai.pdf Harris Interactive]
+| {{Opdrts|24|27|May|2024|year}}
+| 2,016
+|0.5
+|0.5
+|3
+|8.5
+|0.5
+|14
+|5
+|–
+|0.5
+|–
+|<0.5
+|0.5
+|0.5
+|<0.5
+|1
+|14.5
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5
+|4{{efn|[[The Nationalists (France)|The Nationalists]] <0.5%, République souveraine–L'appel au peuple <0.5%, [[Communist Revolutionary Party (France)|PRC]] <0.5%, [[Workers' Party (France, 2015)|PT]] <0.5%, Association nationale des
+communistes <0.5%, Parti des citoyens européens <0.5%, Équinoxe <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Rester libre <0.5%, La Ruche citoyenne <0.5%, Écologie politique et de pacifisme et objection de croissanc <0.5%, Décidons nous-mêmes <0.5%, Démocratie représentative <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, France Libre–Union de la Résistance <0.5%, Défendre les enfants <0.5%, Changement citoyen <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17.5
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/05/ROL24_20240527.pdf Ifop]
+| {{Opdrts|23|27|May|2024|year}}
+| 1,362
+|0.5
+|0.5
+|2
+|7.5
+|<0.5
+|14.5
+|5.5
+|–
+|0.5
+|–
+|0.5
+|0.5
+|0.5
+|–
+|1
+|16
+|colspan=2|1
+|–
+|7.5
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33.5'''
+|6
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17.5
+|-
+|style="background:#CAD5F7;"|[https://elabe.fr/wp-content/uploads/2024/05/25052024_elabe_bfmtv_la-tribune-dimanche_les-francais-et-les-elections-europeennes.pdf Elabe]
+|{{Opdrts|24|25|May|2024|year}}
+|1,688
+|1
+|<0.5
+|2
+|8
+|<0.5
+|13
+|6
+|–
+|<0.5
+|–
+|<0.5
+|1
+|0.5
+|0.5
+|2
+|15.5
+|colspan=2|1.5
+|–
+|7
+|–
+|1
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|5.5
+|2{{efn|Décidons nous-mêmes 0.5%,  Parti des citoyens européens 0.5%, Écologie politique et de pacifisme et objection de croissanc 0.5%, [[Workers' Party (France, 2015)|PT]] 0.5%, Changement citoyen <0.5%,  [[Communist Revolutionary Party (France)|PRC]] <0.5%, Équinoxe <0.5%, Fédération citoyenne–[[Nous Citoyens]] <0.5%, République souveraine–L'appel au peuple <0.5%, Rester libre <0.5%, [[The Nationalists (France)|The Nationalists]] <0.5%, Association nationale des communiste <0.5%, France Libre–Union de la Résistance <0.5%, La Ruche citoyenne <0.5%, Défendre les enfants <0.5%, Démocratie représentative <0.5%, [[Europe–Democracy–Esperanto|EDE]] <0.5%, Liberté Démocratique Française <0.5%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17.5
+|-
+|style="background:#FFCCFF;"|[https://www.odoxa.fr/sondage/bardella-et-glucksmann-senvolent-hayer-senfonce-ne-profitant-nullement-de-lallocution-presidentielle-de-jeudi/ Odoxa]
+|{{Opdrts|23|24|May|2024|year}}
+|991
+|2
+|1
+|2.5
+|7
+|<0.5
+|13.5
+|6
+|–
+|0.5
+|–
+|–
+|0.5
+|–
+|–
+|1.5
+|15
+|colspan=2|1
+|–
+|7
+|–
+|0.5
+|1.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''34'''
+|4
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16.5
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/05/ROL24_20240524.pdf Ifop]
+| {{Opdrts|21|24|May|2024|year}}
+| 1,362
+|0.5
+|0.5
+|2
+|7.5
+|<0.5
+|14.5
+|5
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|0.5
+|–
+|1.5
+|16
+|colspan=2|1
+|–
+|7.5
+|–
+|0.5
+|1.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|6.5
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17
+|-
+|style="background:#80fcd4;"|[https://www.opinion-way.com/fr/component/edocman/opinionway-vae-solis-pour-les-echos-radio-classique-eurotrack-vague-11-mai-2024/viewdocument/3383.html?Itemid=0 OpinionWay]
+|{{Opdrts|21|24|May|2024|year}}
+|2,024
+|2
+|2
+|2
+|7
+|<1
+|13
+|5
+|–
+|<1
+|–
+|<1
+|<1
+|<1
+|<1
+|1
+|15
+|colspan=2|<1
+|–
+|8
+|–
+|<1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|7
+|5{{efn|, [[Workers' Party (France, 2015)|PT]] <1%, Association nationale des communiste <1%, [[Communist Revolutionary Party (France)|PRC]] <1%, [[The Nationalists (France)|The Nationalists]] <1%, Équinoxe <1%, France Libre–Union de la Résistance <1%, [[Europe–Democracy–Esperanto|EDE]] <1%, Démocratie représentative <1%, Défendre les enfants <1%, République souveraine–L'appel au peuple <1%, Rester libre <1%, Fédération citoyenne–[[Nous Citoyens]] <1%, Parti des citoyens européens <1%, Décidons nous-mêmes <1%, Changement citoyen <1%, La Ruche citoyenne <1%, Écologie politique et de pacifisme et objection de croissanc <1%}}
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/sondage-politique-exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-enquete-rolling-ifop-fiducial-du-23-mai-2024-2300623.html Ifop]
+| {{Opdrts|20|23|May|2024|year}}
+| 1,356
+|1
+|0.5
+|2
+|7
+|<0.5
+|15
+|5
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|0.5
+|–
+|2
+|16
+|colspan=2|1
+|–
+|7.5
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|6
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |17
+|-
+| style="background:#d9fff6"|[https://cluster17.com/wp-content/uploads/2024/05/Sondage-Le-Point-Cluster17-23-mai-4.pdf Cluster17]
+|{{Opdrts|21|22|May|2024|year}}
+|1,043
+|1
+|0.5
+|2
+|8
+|0.5
+|14
+|5
+|–
+|1
+|–
+|–
+|0.5
+|0.5
+|–
+|2
+|16
+|colspan=2|1.5
+|–
+|6.5
+|–
+|1.5
+|1.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|6
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13
+|-
+|style="background:#80fcd4;"|[https://www.opinion-way.com/fr/component/edocman/opinionway-pour-cnews-europe-1-le-jdd-barometre-europeennes-2024-vague-21-mai-2024/viewdocument/3380.html?Itemid=0 OpinionWay]
+|{{Opdrts|21|22|May|2024|year}}
+|1,067
+|1
+|2
+|2
+|7
+|–
+|13
+|5
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|1
+|16
+|colspan=2|1
+|–
+|8
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|7
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-22-mai-2024-2300435.html Ifop]
+| {{Opdrts|20|22|May|2024|year}}
+| 1,344
+|1
+|0.5
+|2
+|7.5
+|0.5
+|15
+|5.5
+|–
+|<0.5
+|–
+|<0.5
+|0.5
+|0.5
+|–
+|1.5
+|16
+|colspan=2|1
+|–
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32.5'''
+|6
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16.5
+|-
+| style="background:#DDEEFF;"|[https://www.institut-viavoice.com/wp-content/uploads/Barometre-politique-Mai2024-elections.pdf Vivavoice]
+| {{Opdrts|20|21|May|2024|year}}
+| 1,059
+|0.5
+|0.5
+|1
+|6.5
+|<0.5
+|14
+|7
+|–
+|<0.5
+|–
+|0.5
+|1
+|–
+|–
+|1.5
+|17
+|colspan=2|1.5
+|–
+|6.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|6
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/sondage-politique-exclusif-elections-europeennes-2024-decouvrez-les-resultats-de-notre-enquete-ifop-fiducial-rolling-quotidien-du-21-mai-2300189.html Ifop]
+| {{Opdrts|19|21|May|2024|year}}
+| 1,344
+|1
+|<0.5
+|2
+|7.5
+|0.5
+|15
+|5.5
+|–
+|0.5
+|–
+|<0.5
+|0.5
+|0.5
+|–
+|1.5
+|16.5
+|colspan=2|1
+|–
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|6
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15.5
+|-
+|style="background:#CAD5F7;"|[https://elabe.fr/wp-content/uploads/2024/05/18052024_elabe_bfmtv_la-tribune-dimanche_les-francais-et-les-elections-europeennes.pdf Elabe]
+|{{Opdrts|15|17|May|2024|year}}
+|1,398
+|1
+|0.5
+|1.5
+|7.5
+|<0.5
+|13
+|7.5
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|1
+|15.5
+|colspan=2|1
+|–
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5.5
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16.5
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-17-mai-2299714.html Ifop]
+| {{Opdrts|15|17|May|2024|year}}
+| 1,334
+|0.5
+|0.5
+|2.5
+|7
+|1
+|14.5
+|5.5
+|–
+|0.5
+|–
+|0.5
+|1
+|0.5
+|–
+|1.5
+|16.5
+|colspan=2|1
+|–
+|8
+|–
+|<0.5
+|<0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|6
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15.5
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/05/JYBVHFBKFDBVDG-.pdf Harris Interactive]
+| {{Opdrts|15|17|May|2024|year}}
+| 2,014
+|0.5
+|0.5
+|2.5
+|8
+|0.5
+|14.5
+|5
+|–
+|0.5
+|–
+|–
+|0.5
+|0.5
+|–
+|1
+|15
+|colspan=2|1
+|–
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|5.5
+|3.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16.5
+|-
+|style="background:#FFDFCC;"|[https://www.bva-xsight.com/wp-content/uploads/2024/05/BVA-Xsight-pour-RTL-Intentions-de-vote-aux-elections-europeennes-vague-4.pdf BVA]
+|{{Opdrts|15|16|May|2024|year}}
+|1,500
+|1.5
+|1
+|2.5
+|8
+|<0.5
+|13
+|6.5
+|–
+|<0.5
+|–
+|–
+|1
+|–
+|–
+|2
+|17
+|colspan=2|1
+|<0.5{{efn|name=LC}}
+|6
+|1{{efn|name=DLF}}
+|1
+|<0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|6
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14
+|-
+|style="background:#80fcd4;"|[https://f.dviz.factoviz.com/Pdfs/3/e/8/Eurotrack%20OpinionWay%20Vae%20Solis%20pour%20Les%20Echos%20-%20Radio%20Classique%20-%20Vague%2010%20-%2020%20mai%202024-3.pdf OpinionWay]
+|{{Opdrts|14|16|May|2024|year}}
+|2,025
+|1
+|<1
+|2
+|7
+|<1
+|14
+|6
+|–
+|<1
+|–
+|–
+|1
+|–
+|–
+|1
+|16
+|colspan=2|2
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|8
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-2024-decouvrez-les-resultats-de-notre-sondage-quotidien-du-16-mai-2299593.html Ifop]
+| {{Opdrts|13|16|May|2024|year}}
+| 1,338
+|0.5
+|0.5
+|2.5
+|7
+|1
+|14.5
+|5.5
+|–
+|<0.5
+|–
+|0.5
+|1
+|–
+|–
+|2
+|16.5
+|colspan=2|1.5
+|–
+|8
+|–
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15.5
+|-
+|style="background:#80fcd4;"|[https://www.opinion-way.com/fr/component/edocman/?task=document.viewdoc&id=3366&Itemid=0 OpinionWay]
+|{{Opdrts|14|15|May|2024|year}}
+|1,006
+|1
+|<1
+|2
+|8
+|<1
+|14
+|6
+|–
+|<1
+|–
+|–
+|<1
+|–
+|–
+|1
+|16
+|colspan=2|2
+|–
+|7
+|–
+|<1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|8
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+| style="background:#d9fff6"|[https://cluster17.com/wp-content/uploads/2024/05/Sondage-Cluster17-Le-Point-18-mai.pdf Cluster17]
+|{{Opdrts|13|15|May|2024|year}}
+|1,285
+|0.5
+|0.5
+|2.5
+|8
+|1
+|14
+|5.5
+|–
+|0.5
+|–
+|–
+|1
+|0.5
+|–
+|1.5
+|15.5
+|colspan=2|1.5
+|–
+|6
+|–
+|1.5
+|1.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29.5'''
+|6
+|2.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/05/ROL24_20240515.pdf Ifop]
+| {{Opdrts|11|15|May|2024|year}}
+| 1,348
+|0.5
+|0.5
+|2.5
+|7.5
+|0.5
+|14
+|5.5
+|–
+|0.5
+|–
+|–
+|0.5
+|–
+|–
+|2
+|16.5
+|colspan=2|1.5
+|–
+|8
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32.5'''
+|5.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16
+|-
+| style="background:#fff89c;" |[https://ygo-assets-websites-editorial-emea.yougov.net/documents/R%C3%A9sultats_YouGov_pour_le_HuffPost_IV_%C3%A9lections_europ%C3%A9ennes_2024_V5_As_Sent_16.05.2024.pdf YouGov]
+|{{Opdrts|6|15|May|2024|year}}
+|1,028
+|1
+|<1
+|2
+|6
+|1
+|13
+|5
+|–
+|colspan=2|<1{{efn|name=Convention}}
+|–
+|2
+|–
+|–
+|1
+|17
+|colspan=2|2
+|<1{{efn|name=LC|Mentré retires as of May 2}}
+|6
+|–
+|2
+|2
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|6
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+| style="background:#04FBF4;"|[https://www.ipsos.com/sites/default/files/ct/news/documents/2024-05/ipsos-intentions-vote-europeennes-2024-mai-2024-rapport-complet-WEB_0.pdf Ipsos]
+| {{Opdrts|13|14|May|2024|year}}
+| 1,530
+|0.5
+|0.5
+|2
+|8
+|<0.5
+|14.5
+|6.5
+|–
+|0.5
+|–
+|–
+|1.5
+|–
+|–
+|1
+|16
+|colspan=2|1.5
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|6
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-14-mai-2299347.html Ifop]
+| {{Opdrts|10|14|May|2024|year}}
+| 1,348
+|0.5
+|<0.5
+|2.5
+|7.5
+|<0.5
+|14
+|6
+|–
+|<0.5
+|–
+|–
+|0.5
+|–
+|–
+|1.5
+|17
+|colspan=2|1.5
+|–
+|8
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32.5'''
+|6
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15.5
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/05/NUJYBHCGRFX.pdf Harris Interactive]
+| {{Opdrts|10|13|May|2024|year}}
+| 2,294
+|0.5
+|0.5
+|3
+|8
+|0.5
+|14
+|5.5
+|–
+|0.5
+|–
+|–
+|1
+|0.5
+|–
+|1
+|15
+|colspan=2|2
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|5
+|2.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16.5
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/05/ROL24_20240513.pdf Ifop]
+| {{Opdrts|9|13|May|2024|year}}
+| 1,348
+|0.5
+|0.5
+|2.5
+|8
+|<0.5
+|14
+|6
+|–
+|<0.5
+|–
+|–
+|0.5
+|–
+|–
+|1
+|17
+|colspan=2|1
+|–
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32.5'''
+|6
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15.5
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-10-mai-2298491.html Ifop]
+| {{Opdrts|6|10|May|2024|year}}
+| 1,325
+|0.5
+|0.5
+|2.5
+|8.5
+|0.5
+|13.5
+|6.5
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|1
+|17
+|colspan=2|1.5
+|–
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|6.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+| style="background:#d9fff6"|[https://cluster17.com/wp-content/uploads/2024/05/Notice-Technique-Sondage-Le-Point-Cluster17-10-mai-2.pdf Cluster17]
+|{{Opdrts|6|9|May|2024|year}}
+|1,208
+|0.5
+|0.5
+|2
+|8.5
+|0.5
+|13
+|6
+|–
+|0.5
+|–
+|–
+|1
+|0.5
+|–
+|2
+|15.5
+|colspan=2|1.5
+|–
+|6.5
+|–
+|1.5
+|1.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29.5'''
+|6
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-9-mai-2298491.html Ifop]
+| {{Opdrts|5|9|May|2024|year}}
+| 1,325
+|0.5
+|0.5
+|2.5
+|8.5
+|0.5
+|13
+|6.5
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|1
+|17
+|colspan=2|1.5
+|–
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|6.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14.5
+|-
+|style="background:#80fcd4;"|[https://www.lesechos.fr/elections/europeennes/sondage-exclusif-europeennes-2024-la-mobilisation-du-camp-macron-ne-paie-pas-2094373 OpinionWay]
+|{{Opdrts|6|7|May|2024|year}}
+|1,029
+|1
+|<1
+|3
+|6
+|<1
+|14
+|6
+|–
+|<1
+|–
+|–
+|1
+|–
+|–
+|1
+|17
+|colspan=2|2
+|–
+|6
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|8
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-7-mai-2298491.html Ifop]
+| {{Opdrts|3|7|May|2024|year}}
+| 1,325
+|0.5
+|0.5
+|2.5
+|8.5
+|0.5
+|13
+|6.5
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|1
+|16.5
+|colspan=2|1.5
+|–
+|8
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|6
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+|style="background:#80fcd4;"|[https://www.opinion-way.com/fr/component/edocman/opinionway-pour-cnews-europe-1-le-jdd-barometre-europeennes-2024-vague-5-mai-2024/viewdocument/3359.html?Itemid=0 OpinionWay]
+|{{Opdrts|5|6|May|2024|year}}
+|1,026
+|1
+|<1
+|3
+|7
+|<1
+|14
+|7
+|–
+|<1
+|–
+|–
+|1
+|–
+|–
+|<1
+|16
+|colspan=2|1
+|–
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|7
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-6-mai-2298491.html Ifop]
+| {{Opdrts|2|6|May|2024|year}}
+| 1,325
+|0.5
+|0.5
+|3
+|8
+|0.5
+|13
+|6.5
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|1.5
+|16
+|colspan=2|1
+|–
+|8
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|6
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16
+|-
+|style="background:#CAD5F7;"|[https://elabe.fr/wp-content/uploads/2024/05/04052024_elabe_bfmtv_la-tribune-dimanche_les-francais-et-les-elections-europeennes.pdf Elabe]
+|{{Opdrts|30|3|May|2024|year}}
+|1,375
+|1
+|0.5
+|2
+|8.5
+|0.5
+|12
+|8
+|–
+|<0.5
+|–
+|–
+|1.5
+|–
+|–
+|1
+|16.5
+|colspan=2|1
+|<0.5
+|6.5
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5
+|2.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15.5
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/05/YTGRFDEGTRHUY.pdf Harris Interactive]
+| {{Opdrts|30|3|May|2024|year}}
+| 2,043
+|0.5
+|0.5
+|2.5
+|8.5
+|0.5
+|14
+|5.5
+|–
+|0.5
+|–
+|–
+|1
+|0.5
+|–
+|1
+|15
+|colspan=2|2
+|<0.5
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|5.5
+|2.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-3-mai-2298238.html Ifop]
+| {{Opdrts|30|3|May|2024|year}}
+| 1,345
+|0.5
+|0.5
+|3
+|7.5
+|0.5
+|13.5
+|6.5
+|–
+|<0.5
+|–
+|–
+|1
+|–
+|–
+|2
+|16.5
+|colspan=2|1
+|<0.5
+|7.5
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|6.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+|style="background:#80fcd4;"|[https://f.dviz.factoviz.com/Pdfs/3/e/8/Eurotrack%20OpinionWay%20Vae%20Solis%20pour%20Les%20Echos%20-%20Radio%20Classique%20-%20Vague%208%20-%206%20mai%202024.pdf OpinionWay]
+|{{Opdrts|29|30|Apr|2024|year}}
+|1,075
+|<1
+|–
+|2
+|6
+|<1
+|14
+|7
+|–
+|<1
+|–
+|–
+|1
+|–
+|–
+|1
+|17
+|colspan=2|2
+|<1
+|7
+|–
+|1
+|2
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|7
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-2-mai-2024-2298123.html Ifop]
+| {{Opdrts|29|2|May|2024|year}}
+| 1,375
+|<0.5
+|0.5
+|3
+|7.5
+|0.5
+|13.5
+|7
+|–
+|<0.5
+|–
+|–
+|1
+|–
+|–
+|1.5
+|16.5
+|colspan=2|1.5
+|<0.5
+|7.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|6.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14.5
+|-
+| style="background:#d9fff6"|[https://cluster17.com/wp-content/uploads/2024/05/Sondage-Cluster17-Le-Point-Europeennes-Mai-2.pdf Cluster17]
+|{{Opdrts|29|1|May|2024|year}}
+|1,337
+|1
+|0.5
+|2.5
+|8
+|0.5
+|13
+|6
+|–
+|0.5
+|–
+|–
+|0.5
+|0.5
+|–
+|2
+|15.5
+|colspan=2|1.5
+|0.5
+|6
+|–
+|1
+|2
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29.5'''
+|5.5
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14
+|-
+|style="background:#80fcd4;"|[https://www.opinion-way.com/fr/component/edocman/opinionway-pour-cnews-europe-1-le-jdd-barometre-europeennes-2024-vague-4-mai-2024/viewdocument/3354.html?Itemid=0 OpinionWay]
+|{{Opdrts|29|30|Apr|2024|year}}
+|1,009
+|1
+|–
+|4
+|7
+|<1
+|14
+|7
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|0.5
+|17
+|colspan=2|1
+|0.5
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|8
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |12
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-30-avril-2297852.html Ifop]
+| {{Opdrts|26|30|Apr|2024|year}}
+| 1,360
+|<0.5
+|0.5
+|3
+|7
+|0.5
+|14
+|7
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|1
+|16
+|colspan=2|1.5
+|0.5
+|7.5
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|6.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15.5
+|-
+| style="background:GreenYellow"| [https://www.commission-des-sondages.fr/notices/files/notices/2024/avril/9768-eur-hi-challenges-vague-8-le-30-avril.pdf Harris Interactive]
+| {{Opdrts|24|26|Apr|2024|year}}
+| 2,319
+|0.5
+|0.5
+|2
+|9
+|<0.5
+|13
+|6
+|–
+|0.5
+|–
+|–
+|0.5
+|0.5
+|–
+|1
+|16
+|colspan=2|2
+|<0.5
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|6
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/04/ROL24_20240429.pdf Ifop]
+| {{Opdrts|25|29|Apr|2024|year}}
+| 1,345
+|<0.5
+|0.5
+|2.5
+|7
+|<0.5
+|14.5
+|7.5
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|1.5
+|16
+|colspan=2|1.5
+|0.5
+|8
+|–
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|6
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15.5
+|-
+|style="background:#FFCCFF;"|[https://www.odoxa.fr/sondage/bardella-et-glucksmann-senvolent-hayer-senfonce-ne-profitant-nullement-de-lallocution-presidentielle-de-jeudi/ Odoxa]
+|{{Opdrts|25|26|Apr|2024|year}}
+|1,005
+|1.5
+|1
+|2.5
+|7
+|<0.5
+|12
+|7
+|–
+|0.5
+|–
+|–
+|1.5
+|–
+|–
+|1.5
+|15.5
+|colspan=2|1.5
+|<0.5
+|8
+|–
+|1
+|1.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16.5
+|-
+|style="background:#FFDFCC;"|[https://www.bva-xsight.com/wp-content/uploads/2024/04/BVA-Xsight-pour-RTL-Intentions-de-vote-aux-elections-europeennes-vague-3.pdf BVA]
+|{{Opdrts|25|26|Apr|2024|year}}
+|1,434
+|1
+|1
+|1.5
+|6.5
+|–
+|13
+|8
+|–
+|<0.5
+|–
+|–
+|1.5
+|–
+|–
+|3
+|17
+|colspan=2|1
+|<0.5
+|6
+|1{{efn|name=DLF}}
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|5.5
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/04/ROL24_20240426.pdf Ifop]
+| {{Opdrts|23|26|Apr|2024|year}}
+| 1,345
+|0.5
+|0.5
+|2
+|7.5
+|<0.5
+|14
+|8
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|1.5
+|16.5
+|colspan=2|1
+|0.5
+|8
+|–
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|5.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+|style="background:#80fcd4;"|[https://f.dviz.factoviz.com/Pdfs/3/e/8/Eurotrack%20OpinionWay%20Vae%20Solis%20pour%20Les%20Echos%20-%20Radio%20Classique%20-%20Vague%207%20-%2029%20avril%202024.pdf OpinionWay]
+|{{Opdrts|24|25|Apr|2024|year}}
+|1,011
+|1
+|–
+|3
+|6
+|<1
+|14
+|6
+|–
+|<1
+|–
+|–
+|1
+|–
+|–
+|1
+|18
+|colspan=2|1
+|<1
+|7
+|–
+|1
+|2
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|8
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |11
+|-
+| style="background:#d9fff6"|[https://cluster17.com/wp-content/uploads/2024/04/Sondage-Le-Point-Europeennes-2604-notice-technique-5.pdf Cluster17]
+|{{Opdrts|23|25|Apr|2024|year}}
+|1,164
+|0.5
+|0.5
+|3
+|8
+|1
+|12.5
+|6.5
+|–
+|1
+|–
+|–
+|0.5
+|1
+|–
+|2
+|16
+|colspan=2|2
+|0.5
+|6
+|–
+|1
+|1.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29.5'''
+|6
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13.5
+|-
+| style="background:#FFCCCC"|[https://www.commission-des-sondages.fr/notices/files/notices/2024/avril/9760-ifop-roll-le-figaro-sud-radio.pdf Ifop]
+| {{Opdrts|22|25|Apr|2024|year}}
+| 1,350
+|0.5
+|0.5
+|2.5
+|7.5
+|0.5
+|13
+|8
+|–
+|<0.5
+|–
+|–
+|1.5
+|–
+|–
+|1
+|17.5
+|colspan=2|1
+|0.5
+|8
+|–
+|0.5
+|<0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|5.5
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13.5
+|-
+|style="background:#80fcd4;"|[https://www.opinion-way.com/fr/component/edocman/opinionway-pour-cnews-barometre-europeennes-2024-vague-3-avril-2024/viewdocument/3345.html?Itemid=0 OpinionWay]
+|{{Opdrts|23|24|Apr|2024|year}}
+|1,007
+|1
+|–
+|3
+|8
+|<1
+|13
+|7
+|–
+|<1
+|–
+|–
+|1
+|–
+|–
+|2
+|18
+|colspan=2|2
+|<1
+|6
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|6
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |12
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-2024-decouvrez-les-resultats-de-notre-sondage-quotidien-du-24-avril-2297211.html Ifop]
+| {{Opdrts|20|24|Apr|2024|year}}
+| 1,335
+|0.5
+|0.5
+|2.5
+|7
+|0.5
+|12.5
+|7.5
+|–
+|<0.5
+|–
+|–
+|1.5
+|–
+|–
+|1.5
+|17.5
+|colspan=2|1.5
+|0.5
+|8.5
+|–
+|<0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|5.5
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13.5
+|-
+| style="background:#04FBF4;"|[https://www.ipsos.com/fr-fr/europeennes-2024-le-rassemblement-national-en-tete-a-deux-mois-du-scrutin Ipsos]
+| {{Opdrts|19|24|Apr|2024|year}}
+| 10,651
+|0.5
+|1
+|2.5
+|7
+|0.5
+|14
+|6.5
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|1
+|17
+|colspan=2|1
+|<0.5
+|6.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5.5
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/sondage-exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-rolling-quotidien-du-23-avril-2297078.html Ifop]
+| {{Opdrts|19|23|Apr|2024|year}}
+| 1,335
+|0.5
+|0.5
+|2.5
+|7
+|0.5
+|12
+|7.5
+|–
+|0.5
+|–
+|–
+|2
+|–
+|–
+|1.5
+|17
+|colspan=2|1
+|0.5
+|8
+|–
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|5.5
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14.5
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/04/GEQIRSHKRJBTQEZB.pdf Harris Interactive]
+| {{Opdrts|19|22|Apr|2024|year}}
+| 2,319
+|0.5
+|0.5
+|3
+|8
+|<0.5
+|13
+|6
+|–
+|0.5
+|–
+|–
+|0.5
+|0.5
+|–
+|1
+|16
+|colspan=2|2
+|0.5
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|6
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-22-avril-2296412.html Ifop]
+| {{Opdrts|18|22|Apr|2024|year}}
+| 1,339
+|0.5
+|0.5
+|2
+|7
+|0.5
+|12
+|7.5
+|–
+|0.5
+|–
+|–
+|2
+|–
+|–
+|2
+|17
+|colspan=2|1
+|1
+|8
+|–
+|<0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|5.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14.5
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/sondage-exclusif-elections-europeennes-2024-rn-bardella-renaissance-hayer-glucksmann-resultats-enquete-rolling-ifop-vendredi-19-avril-2296101.html Ifop]
+| {{Opdrts|16|19|Apr|2024|year}}
+| 1,371
+|0.5
+|0.5
+|2
+|8
+|0.5
+|11.5
+|7.5
+|–
+|0.5
+|–
+|–
+|1.5
+|–
+|–
+|2
+|17.5
+|colspan=2|1
+|0.5
+|8
+|–
+|<0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|5.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14
+|-
+|style="background:#80fcd4;"|[https://www.opinion-way.com/fr/component/edocman/opinionway-et-vae-solis-pour-les-echos-radio-classique-eurotrack-vague-6-avril-2024-2/viewdocument/3339.html?Itemid=0 OpinionWay]
+|{{Opdrts|17|18|Apr|2024|year}}
+|1,021
+|<1
+|–
+|3
+|7
+|<1
+|13
+|7
+|–
+|<1
+|–
+|–
+|2
+|–
+|–
+|1
+|19
+|colspan=2|1
+|<1
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|7
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-18-avril-2024-2295992.html Ifop]
+| {{Opdrts|15|18|Apr|2024|year}}
+| 1,376
+|1
+|0.5
+|2.5
+|8
+|<0.5
+|11.5
+|7.5
+|–
+|0.5
+|–
+|–
+|1.5
+|–
+|–
+|1.5
+|17.5
+|colspan=2|0.5
+|0.5
+|8
+|–
+|<0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|5.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14.5
+|-
+|style="background:#80fcd4;"|[https://www.opinion-way.com/fr/component/edocman/opinionway-pour-cnews-barome-tre-europe-ennes-2024-avril-2024/viewdocument/3337.html?Itemid=0 OpinionWay]
+|{{Opdrts|16|17|Apr|2024|year}}
+|1,002
+|1
+|–
+|4
+|8
+|<1
+|12
+|6
+|–
+|<1
+|–
+|–
+|1
+|–
+|–
+|1
+|19
+|colspan=2|2
+|<1
+|7
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|6
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-17-avril-2024-2295864.html Ifop]
+| {{Opdrts|13|17|Apr|2024|year}}
+| 1,364
+|0.5
+|0.5
+|2.5
+|7.5
+|0.5
+|11.5
+|7.5
+|–
+|<0.5
+|–
+|–
+|2
+|–
+|–
+|1.5
+|17.5
+|colspan=2|0.5
+|0.5
+|8
+|–
+|<0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32.5'''
+|5.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-sondage-quotidien-du-16-avril-2024-2295732.html Ifop]
+| {{Opdrts|12|16|Apr|2024|year}}
+| 1,349
+|0.5
+|<0.5
+|3
+|7
+|<0.5
+|12
+|7.5
+|–
+|<0.5
+|–
+|–
+|1.5
+|–
+|–
+|1.5
+|18
+|colspan=2|1
+|0.5
+|8
+|–
+|<0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32.5'''
+|6
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14.5
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/04/Rapport-Harris-Intentions-de-vote-Europeennes-2024-Vague-6-semaine-du-15-avril.pdf Harris Interactive]
+| {{Opdrts|12|15|Apr|2024|year}}
+| 2,005
+|0.5
+|0.5
+|3
+|8
+|<0.5
+|14
+|6
+|–
+|0.5
+|–
+|–
+|0.5
+|0.5
+|–
+|1
+|16
+|colspan=2|2
+|0.5
+|7
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|6
+|2.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/exclusif-elections-europeennes-2024-decouvrez-les-resultats-de-notre-sondage-quotidien-du-lundi-15-avril-2295597.html Ifop]
+| {{Opdrts|11|15|Apr|2024|year}}
+| 1,326
+|0.5
+|<0.5
+|3
+|7.5
+|<0.5
+|12
+|7
+|–
+|<0.5
+|–
+|–
+|1
+|–
+|–
+|1.5
+|18
+|colspan=2|1
+|0.5
+|8
+|–
+|<0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32.5'''
+|6
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14.5
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/04/ROL24_2024012.pdf Ifop]
+| {{Opdrts|9|12|Apr|2024|year}}
+| 1,347
+|0.5
+|0.5
+|3
+|8
+|<0.5
+|12.5
+|6.5
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|1
+|18
+|colspan=2|1
+|<0.5
+|8.5
+|–
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|6
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13.5
+|-
+| style="background:#04FBF4;"|[https://www.ipsos.com/fr-fr/europeennes-2024-le-rassemblement-national-en-tete-a-deux-mois-du-scrutin Ipsos]
+| {{Opdrts|10|11|Apr|2024|year}}
+| 1,500
+|1
+|0.5
+|3
+|7
+|0.5
+|13
+|7
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|1.5
+|16
+|colspan=2|0.5
+|0.2
+|6.5
+|–
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|6.5
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16
+|-
+| style="background:#d9fff6"|[https://cluster17.com/wp-content/uploads/2024/04/Sondage-Le-Point-Cluster17-140424-4.pdf Cluster17]
+|{{Opdrts|9|11|Apr|2024|year}}
+|1,164
+|0.5
+|0.5
+|2.5
+|8.5
+|1
+|12
+|6
+|–
+|1
+|–
+|–
+|0.5
+|1
+|–
+|1.5
+|17
+|colspan=2|1
+|0.5
+|6
+|–
+|1.5
+|1.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|6
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |12
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/04/ROL24_2024011.pdf Ifop]
+| {{Opdrts|8|11|Apr|2024|year}}
+| 1,355
+|0.5
+|0.5
+|3
+|8
+|0.5
+|12.5
+|6
+|–
+|0.5
+|–
+|–
+|1
+|–
+|–
+|1.5
+|18
+|colspan=2|0.5
+|<0.5
+|8.5
+|–
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|6.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/sondage-exclusif-lci-elections-europeennes-decouvrez-les-resultats-de-notre-enquete-quotidienne-du-10-avril-2024-2295096.html Ifop]
+| {{Opdrts|6|10|Apr|2024|year}}
+| 1,343
+|0.5
+|0.5
+|2.5
+|8
+|0.5
+|12
+|5.5
+|–
+|0.5
+|–
+|–
+|1.5
+|–
+|–
+|1
+|18.5
+|colspan=2|1
+|<0.5
+|8.5
+|–
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|6.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/sondage-exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-enquete-quotidienne-du-9-avril-2294973.html Ifop]
+| {{Opdrts|5|9|Apr|2024|year}}
+| 1,335
+|1
+|0.5
+|3
+|7.5
+|<0.5
+|12
+|5.5
+|–
+|0.5
+|–
+|–
+|1.5
+|–
+|–
+|1
+|18.5
+|colspan=2|0.5
+|<0.5
+|8
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|6.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13.5
+|-
+| style="background:#fff89c;" |[https://ygo-assets-websites-editorial-emea.yougov.net/documents/R%C3%A9sultats_YouGov_pour_le_HuffPost_IV_%C3%A9lections_europ%C3%A9ennes_2024_-_Avril_As_Sen_TmZ5Fki.pdf YouGov]
+|{{Opdrts|3|9|Apr|2024|year}}
+|1,028
+|2
+|–
+|2
+|5
+|–
+|12
+|6
+|–
+|colspan=2|1{{efn|name=Convention}}
+|–
+|1
+|–
+|–
+|1
+|19
+|<1
+|–
+|–
+|7
+|2{{efn|name=DLF}}
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|9
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/04/Rapport-Harris-Intentions-de-vote-Europeennes-2024-Vague-5-semaine-du-8-avril.pdf Harris Interactive]
+| {{Opdrts|5|8|Apr|2024|year}}
+| 2,018
+|1
+|–
+|3
+|9
+|–
+|12
+|6
+|–
+|0.5
+|–
+|–
+|1
+|1
+|–
+|1
+|17
+|colspan=2|1
+|0.5
+|7
+|–
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|6
+|3.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13
+|-
+| style="background:#FFCCCC"|[https://www.tf1info.fr/elections/sondage-exclusif-elections-europeennes-decouvrez-les-resultats-de-notre-enquete-quotidienne-du-8-avril-2294813.html Ifop]
+| {{Opdrts|4|8|Apr|2024|year}}
+| 1,343
+|1
+|0.5
+|3
+|7.5
+|0.5
+|11
+|6.5
+|–
+|<0.5
+|–
+|–
+|1
+|–
+|–
+|2
+|19
+|colspan=2|<0.5
+|<0.5
+|7.5
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|6
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13
+|-
+|style="background:#80fcd4;"|[https://www.opinion-way.com/fr/component/edocman/opinionway-pour-cnews-barometre-europeennes-2024-avril-2024/viewdocument/3333.html?Itemid=0 OpinionWay]
+|{{Opdrts|3|5|Apr|2024|year}}
+|1,509
+|1
+|–
+|2
+|7
+|–
+|12
+|7
+|–
+|colspan=2|<1{{efn|name=Convention}}
+|–
+|1
+|–
+|–
+|2
+|19
+|colspan=2|2
+|<1
+|8
+|–
+|1
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|7
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+|style="background:#CAD5F7;"|[https://elabe.fr/wp-content/uploads/2024/04/06042024_elabe_bfmtv_la-tribune-dimanche_les-francais-et-les-elections-europeennes-002.pdf Elabe]
+|{{Opdrts|2|4|Apr|2024|year}}
+|1,504
+|1.5
+|–
+|2.5
+|7.5
+|–
+|12
+|8.5
+|–
+|0.5
+|–
+|–
+|2
+|–
+|–
+|1
+|16.5
+|colspan=2|1
+|<0.5
+|7
+|–
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|5.5
+|3.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13.5
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/04/Rapport-Harris-Intentions-de-vote-Europeennes-2024-Vague-4-semaine-du-1er-avril.pdf Harris Interactive]
+| {{Opdrts|28|29|Mar|2024|year}}
+| 2,220
+|1
+|–
+|3
+|8
+|–
+|13
+|6
+|–
+|0.5
+|–
+|–
+|0.5
+|0.5
+|–
+|1
+|17
+|colspan=2|1
+|0.5
+|7
+|–
+|0.5
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|6
+|2.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |14
+|-
+|style="background:#FFDFCC;"|[https://www.bva-xsight.com/wp-content/uploads/2024/02/BVA-Xsight-pour-RTL-Intentions-de-vote-aux-elections-europeennes.pdf BVA]
+|{{Opdrts|27|28|Mar|2024|year}}
+|1,518
+|1
+|0.5
+|2.5
+|7
+|–
+|11
+|6
+|–
+|<0.5
+|–
+|–
+|0.5
+|–
+|<0.5
+|1
+|20
+|colspan=2|1
+|<0.5
+|8
+|3{{efn|name=DLF|Dupont-Aignan retires as of March 26}}
+|1
+|1
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|5.5
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/03/Rapport-Harris-Intentions-de-vote-Europeennes-2024-Vague-3-semaine-du-25-mars.pdf Harris Interactive]
+| {{Opdrts|22|25|Mar|2024|year}}
+| 2,027
+|1
+|–
+|3
+|7
+|–
+|12
+|7
+|–
+|0.5
+|–
+|–
+|0.5
+|0.5
+|–
+|1
+|18
+|colspan=2|1
+|0.5
+|7
+|2
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|6
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |12
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/03/120726-Resultats.pdf Ifop]
+| {{Opdrts|19|20|Mar|2024|year}}
+| 1,112
+|0.5
+|–
+|3
+|6
+|–
+|11
+|7
+|–
+|0.5
+|–
+|–
+|1.5
+|–
+|–
+|1.5
+|21
+|colspan=2|1
+|0.5
+|7
+|2
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|6
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |9
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/03/Rapport-Harris-Intentions-de-vote-Europeennes-2024-Vague-2-semaine-du-18-mars.pdf Harris Interactive]
+| {{Opdrts|15|18|Mar|2024|year}}
+| 2,124
+|1
+|–
+|2
+|8
+|–
+|13
+|7
+|–
+|0.5
+|–
+|–
+|0.5
+|1
+|0.5
+|1
+|18
+|colspan=2|1
+|0.5
+|7
+|2
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|6
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |12
+|-
+|style="background:#80fcd4;"|[https://www.opinion-way.com/fr/component/edocman/opinionway-pour-vae-solis-avec-les-echos-radio-classique-eurotrack-vague-5-mars-2024/viewdocument/3309.html?Itemid=0 OpinionWay]
+|{{Opdrts|13|14|Mar|2024|year}}
+|1,008
+|1
+|–
+|2
+|6
+|–
+|11
+|8
+|–
+|colspan=2|1{{efn|name=Convention}}
+|–
+|1
+|–
+|–
+|1
+|20
+|1
+|–
+|<1
+|8
+|3
+|1
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''27'''
+|6
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |7
+|-
+| style="background:#d9fff6"|[https://cluster17.com/wp-content/uploads/2024/03/Notice-Sondage-Europeennes-Le-Point-Cluster17-Mars-2024.pdf Cluster17]
+|{{Opdrts|8|9|Mar|2024|year}}
+|1,016
+|0.5
+|–
+|3
+|8
+|–
+|10
+|8
+|–
+|0.5
+|–
+|–
+|1.5
+|–
+|–
+|1
+|17
+|colspan=2|2
+|0.5
+|7
+|3
+|1
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|6
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |12
+|-
+|style="background:#CAD5F7;"|[https://elabe.fr/wp-content/uploads/2024/03/09032024_elabe_bfmtv_la-tribune-dimanche_les-francais-les-elections-europeennes-et-la-guerre-en-ukraine.pdf Elabe]
+|{{Opdrts|5|7|Mar|2024|year}}
+|1,504
+|2
+|–
+|3
+|7.5
+|–
+|8.5
+|9.5
+|–
+|<0.5
+|–
+|–
+|1.5
+|–
+|–
+|1.5
+|17
+|1
+|–
+|–
+|7
+|3
+|0.5
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29.5'''
+|4.5
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |12.5
+|-
+| style="background:#fff89c;" |[https://ygo-assets-websites-editorial-emea.yougov.net/documents/R%C3%A9sultats_YouGov_pour_le_HuffPost_IV_%C3%A9lections_europ%C3%A9ennes_2024_-_V2_As_Sent_1_xAujfMD.pdf YouGov]
+|{{Opdrts|26|7|Mar|2024|year}}
+|1,008
+|1
+|–
+|2
+|6
+|–
+|10
+|7
+|–
+|colspan=2|<1{{efn|name=Convention}}
+|–
+|1
+|–
+|–
+|2
+|20
+|1
+|–
+|–
+|6
+|3
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|5
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13
+|-
+| style="background:#04FBF4;"|[https://www.ipsos.com/fr-fr/europeennes-2024-le-rassemblement-national-creuse-lecart Ipsos]
+| {{Opdrts|1|6|Mar|2024|year}}
+| 11,700
+|colspan=2|1
+|3.5
+|7
+|–
+|11.5
+|8.5
+|–
+|0.5
+|–
+|–
+|–
+|–
+|–
+|1.5
+|18
+|0.5
+|–
+|–
+|7
+|2.5
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|5
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13
+|-
+| style="background:#04FBF4;"|[https://www.ipsos.com/fr-fr/europeennes-vers-une-progression-de-la-droite-radicale-au-parlement-europeen Ipsos]
+| {{Opdrts|23|5|Mar|2024|year}}
+| 2,000
+|–
+|–
+|3.0
+|7
+|–
+|12.2
+|8.1
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|18.1
+|–
+|–
+|–
+|7.6
+|2.5
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30.7'''
+|5.5
+|5.4
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |12.6
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/03/120683-Rapport.pdf Ifop]
+| {{Opdrts|29|1|Mar|2024|year}}
+| 1,348
+|colspan=2|1
+|3.5
+|8
+|–
+|9
+|8
+|–
+|colspan=2|1{{efn|name=Convention}}
+|–
+|1
+|–
+|–
+|2
+|19
+|<0.5
+|1.5
+|<0.5
+|8
+|1.5
+|0.5
+|<0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|6
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+|style="background:#FFDFCC;"|[https://www.bva-xsight.com/wp-content/uploads/2024/02/BVA-Xsight-pour-RTL-Intentions-de-vote-aux-elections-europeennes.pdf BVA]
+|{{Opdrts|27|28|Feb|2024|year}}
+|1,344
+|2
+|–
+|3
+|7
+|–
+|11
+|7
+|–
+|<0.5
+|–
+|–
+|1.5
+|–
+|<0.5
+|1.5
+|18{{efn|name=Hayer}}
+|0.5
+|0.5
+|<0.5
+|8
+|2
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|6
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |12
+|-
+|style="background:#FFCCFF;"|[https://www.odoxa.fr/sondage/attal-recule-bardella-au-pinacle-glucksmann-emerge/ Odoxa]
+|{{Opdrts|21|22|Feb|2024|year}}
+|1,005
+|1.5
+|–
+|1.5
+|6
+|–
+|11
+|8.5
+|–
+|<0.5
+|–
+|–
+|–
+|–
+|–
+|–
+|19{{efn|name=Beaune}}
+|1
+|–
+|–
+|8.5
+|4
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|7
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |11
+|-
+|style="background:#FF8000;"|[https://www.stackdatastrategy.com/s/Crossbreaks-France.xlsx Stack Data Strategy]
+|{{Opdrts|17|22|Feb|2024|year}}
+|799
+|colspan=2|0.5
+|3.1
+|9.9
+|–
+|9.9
+|5.6
+|–
+|colspan=2|2.8{{efn|name=Convention}}
+|–
+|2.6
+|–
+|–
+|1.4
+|14.5{{efn|name=Denormandie}}
+|–
+|1.3
+|–
+|4.7
+|3.1
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31.5'''
+|6.5
+|3.2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |16.0
+|-
+|style="background:#80fcd4;"|[https://www.opinion-way.com/fr/component/edocman/opinionway-pour-vae-solis-avec-les-echos-radio-classique-eurotrack-vague-4-fevrier-2024/viewdocument/3277.html?Itemid=0 OpinionWay]
+|{{Opdrts|14|15|Feb|2024|year}}
+|1,009
+|<1
+|–
+|3
+|7
+|–
+|10
+|8
+|–
+|colspan=2|2{{efn|name=Convention}}
+|–
+|1
+|–
+|–
+|<1
+|19
+|1
+|–
+|<1
+|8
+|2
+|1
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''27'''
+|8
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |8
+|-
+|style="background:#CAD5F7;"|[https://www.youscribe.com/BookReader/IframeEmbed?productId=3619070 Elabe]
+|{{Opdrts|7|9|Feb|2024|year}}
+|1,426
+|1.5
+|–
+|2.5
+|9
+|–
+|9
+|9.5
+|–
+|<0.5
+|–
+|–
+|2
+|–
+|–
+|2
+|16.5
+|1
+|–
+|–
+|8
+|3
+|0.5
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''27.5'''
+|5
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |11
+|-
+| rowspan=3 style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/02/120539-Rapport-10-fevrier.pdf Ifop]
+| rowspan=3 {{Opdrts|7|8|Feb|2024|year}}
+| rowspan=3|1,356
+| colspan=2|1.5
+| 3.5
+| 7
+| –
+| 9.5
+| 8
+| –
+| colspan=2|1.5{{efn|name=Convention}}
+| –
+| 1.5
+| –
+| –
+| 1.5
+| 19{{efn|name=Beaune|RE list led by [[Clément Beaune]]}}
+| 0.5
+| 0.5
+| <0.5
+| 7
+| 1
+| 0.5
+| 0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+| 6.5
+| 1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+| colspan=2|1
+| 3
+| 7.5
+| –
+| 10.5
+| 8.5
+| –
+| colspan=2|1{{efn|name=Convention}}
+| –
+| 1
+| –
+| –
+| 1
+| 19{{efn|name=Denormandie|RE list led by [[Julien Denormandie]]}}
+| 1
+| 1
+| <0.5
+| 7.5
+| 1.5
+| 1
+| <0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28.5'''
+| 6
+| 1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |9.5
+|-
+| colspan=2|1
+| 3.5
+| 8
+| –
+| 10.5
+| 8
+| –
+| colspan=2|1.5{{efn|name=Convention}}
+| –
+| 1.5
+| –
+| –
+| 1.5
+| 18{{efn|name=Hayer|RE list led by [[Valérie Hayer]], confirmed as candidate on February 29th}}
+| 0.5
+| 0.5
+| <0.5
+| 7.5
+| 1.5
+| 0.5
+| 0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28'''
+| 6
+| 1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+| style="background:#fff89c;" |[https://ygo-assets-websites-editorial-emea.yougov.net/documents/R%C3%A9sultats_YouGov_pour_le_HuffPost_IV_%C3%A9lections_europ%C3%A9ennes_2024_-_V2_As_Sent_0_mEvUHOt.pdf YouGov]
+|{{Opdrts|29|7|Feb|2024|year}}
+|1,001
+|1
+|–
+|2
+|8
+|–
+|8
+|8
+|–
+|colspan=2|1{{efn|name=Convention}}
+|–
+|1
+|–
+|–
+|1
+|19{{efn|name=Veran}}
+|1
+|–
+|–
+|6
+|2
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''32'''
+|8
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13
+|-
+|style="background:#CCFFCC;"|[https://portland-communications.com/wp-content/uploads/2024/02/EUPoll-Total-Data-Tables-for-Media.xlsx Portland]
+|{{Opdrts|24|31|Jan|2024|year}}
+|469
+|2
+|–
+|3
+|6
+|–
+|9
+|9
+|–
+|1
+|–
+|–
+|–
+|–
+|–
+|–
+|14
+|1
+|–
+|–
+|8
+|3
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''33'''
+|6
+|5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |19
+|-
+|style="background:#80fcd4;"|[https://www.lesechos.fr/politique-societe/politique/sondage-exclusif-europeennes-2024-le-pouvoir-dachat-revient-en-force-dans-les-motivations-de-vote-2070628 OpinionWay]
+|{{Opdrts|17|18|Jan|2024|year}}
+|1,019
+|1
+|–
+|4
+|8
+|–
+|10
+|6
+|–
+|colspan=2|2{{efn|name=Convention|PRG and [[Bernard Cazeneuve]]'s The Convention}}
+|–
+|1
+|–
+|–
+|1
+|20
+|<1
+|–
+|<1
+|8
+|2
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''27'''
+|7
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |7
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/01/120579-Rapport-23-janvier.pdf Ifop]
+| {{Opdrts|16|17|Jan|2024|year}}
+| 1,348
+|colspan=2|0.5
+|4
+|7.5
+|–
+|9.5
+|7
+|–
+|colspan=2|1.5{{efn|name=Convention}}
+|–
+|1.5
+|–
+|–
+|1
+|19{{efn|name=Veran}}
+|<0.5
+|0.5
+|<0.5
+|6.5
+|2
+|<0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|7
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |12
+|-
+| style="background:GreenYellow"| [https://harris-interactive.fr/wp-content/uploads/sites/6/2024/01/Rapport-Toluna-Harris-IV-Europeennes-2024-Challenges.pdf Harris Interactive]
+| {{Opdrts|12|15|Jan|2024|year}}
+| 1,217
+|1
+|–
+|3
+|7
+|–
+|11
+|8
+|–
+|1
+|–
+|–
+|2
+|–
+|–
+|1
+|19{{efn|name=Veran}}
+|1
+|–
+|–
+|8
+|2.5
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28'''
+|6
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |9
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/01/120543-Resultats-16-janvier.pdf Ifop]
+| {{Opdrts|12|15|Jan|2024|year}}
+| 875
+|colspan=2|1
+|4
+|6.5
+|–
+|9
+|9
+|–
+|–
+|–
+|–
+|1
+|–
+|–
+|–
+|20{{efn|name=Veran|RE list led by [[Olivier Véran]]}}
+|1
+|–
+|–
+|7.5
+|3
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|6
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+| style="background:#fff89c;" |[https://ygo-assets-websites-editorial-emea.yougov.net/documents/R%C3%A9sultats_YouGov_pour_le_HuffPost_IV_%C3%A9lections_europ%C3%A9ennes_2024_As_Sent_18.01.2024.pdf YouGov]
+|{{Opdrts|8|15|Jan|2024|year}}
+|1,004
+|2
+|2
+|2
+|7
+|–
+|8
+|9
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|20{{efn|name=Sejourne}}
+|–
+|–
+|–
+|6
+|4
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|7
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+| style="background:#d9fff6"|[https://twitter.com/Cluster_17/status/1746809952222445884 Cluster17]
+|{{Opdrts|13|14|Jan|2024|year}}
+|1,209
+|1
+|–
+|3
+|7.5
+|–
+|11
+|8
+|–
+|0.5
+|–
+|–
+|1.5
+|–
+|–
+|1
+|18{{efn|name=Veran}}
+|1
+|–
+|–
+|7
+|3
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28.5'''
+|7
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10.5
+|-
+|style="background:#CAD5F7;"|[https://elabe.fr/wp-content/uploads/2024/01/les-francais-et-les-elections-europeennes-2024-1.pdf Elabe]
+|{{Opdrts|10|12|Jan|2024|year}}
+|1,400
+|1.5
+|–
+|3
+|7.5
+|–
+|9.5
+|8.5
+|–
+|0.5
+|–
+|–
+|1.5
+|–
+|–
+|1
+|18{{efn|name=Sejourne}}
+|1
+|–
+|–
+|8.5
+|2.5
+|0.5
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28.5'''
+|5
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10.5
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/01/120543-Resultats-16-janvier.pdf Ifop]
+| {{Opdrts|3|5|Jan|2024|year}}
+| 1,090
+|colspan=2|0.5
+|3
+|6
+|–
+|10
+|9
+|–
+|colspan=2|3{{efn|name=Convention}}
+|–
+|2.5
+|–
+|–
+|1.5
+|17{{efn|name=Sejourne}}
+|0.5
+|0.5
+|0.5
+|8
+|2
+|0.5
+|0.5
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28'''
+|6.5
+|0.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |11
+|-
+|style="background:#FFCCFF;"|[https://www.odoxa.fr/sondage/coup-de-tonnerre-si-les-elections-europeennes-avaient-lieu-dimanche-prochain-le-rn-depasserait-les-30-et-devancerait-de-10-pts-la-liste-renaissance-modem/ Odoxa]
+|{{Opdrts|13|14|Dec|2023|year}}
+|1,004
+|2.5
+|–
+|3
+|6.5
+|–
+|9
+|6
+|–
+|0.5
+|–
+|–
+|–
+|–
+|–
+|–
+|21{{efn|name=Sejourne}}
+|0.5
+|–
+|–
+|9
+|2
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''31'''
+|6
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+|style="background:#80fcd4;"|[https://twitter.com/EchosPolitique/status/1736776044047126818 OpinionWay]
+|{{Opdrts|13|14|Dec|2023|year}}
+|–
+|1
+|–
+|3
+|6
+|–
+|10
+|8
+|–
+|colspan=2|2{{efn|name=Convention}}
+|–
+|<1
+|–
+|–
+|1
+|19
+|<1
+|–
+|<1
+|9
+|3
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''27'''
+|8
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |8
+|-
+| style="background:#04FBF4;"|[https://www.ipsos.com/fr-fr/europeennes-2024-le-rassemblement-national-sinstalle-largement-en-tete-des-intentions-de-vote Ipsos]
+| {{Opdrts|29|12|Dec|2023|year}}
+| 11,691
+|colspan=2|1.5
+|3
+|7.5
+|–
+|10.5
+|9.5
+|–
+|0.5
+|–
+|–
+|–
+|–
+|–
+|–
+|20{{efn|name=Sejourne}}
+|0.5
+|–
+|–
+|8
+|2.5
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28'''
+|6.5
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |8
+|-
+|style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2023/12/119689-Rapport-SR-N50.pdf Ifop]
+| {{Opdrts|8|11|Dec|2023|year}}
+| 1,062
+|colspan=2|1.5
+|4.5
+|7
+|–
+|10
+|8
+|–
+|–
+|–
+|–
+|1.5
+|–
+|–
+|–
+|18{{efn|name=Sejourne}}
+|1
+|–
+|–
+|7.5
+|2.5
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|7.5
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |12
+|-
+|style="background:#80fcd4;"|[https://www.lesechos.fr/politique-societe/politique/sondage-exclusif-europeennes-2024-le-rn-caracole-en-tete-des-intentions-de-vote-2030224 OpinionWay]
+|{{Opdrts|15|16|Nov|2023|year}}
+|–
+|2
+|–
+|3
+|7
+|–
+|9
+|8
+|–
+|colspan=2|3{{efn|name=Convention}}
+|–
+|<1
+|–
+|–
+|1
+|19
+|<1
+|–
+|–
+|8
+|2
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28'''
+|7
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |9
+|-
+| rowspan="2" style="background:#04FBF4;" |[https://www.ipsos.com/fr-fr/europeennes-2024-intentions-de-vote-novembre-2023 Ipsos]
+| rowspan="2" {{Opdrts|9|10|Nov|2023|year}}
+| rowspan="2" |1,412
+|colspan=2|2
+|2
+|8.5
+|–
+|10
+|10
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|22{{efn|RE list led by [[Bruno Le Maire]]}}
+|–
+|–
+|–
+|6
+|2
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|6
+|2.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |7
+|-
+|colspan=2|2
+|2
+|8.5
+|–
+|10.5
+|10.5
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|20{{efn|name=Sejourne}}
+|–
+|–
+|–
+|6.5
+|2
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|6
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |9
+|-
+| rowspan="2" style="background:#FFCCCC" |[https://www.lefigaro.fr/politique/europeennes-le-rn-creuse-l-ecart-avec-la-majorite-presidentielle-20231017 Ifop]
+| rowspan="2" {{Opdrts|12|13|Oct|2023|year}}
+| rowspan="2" |1,515
+|colspan=2|1
+|5
+|9
+|–
+|9
+|8
+|–
+|–
+|–
+|–
+|2
+|–
+|–
+|–
+|20{{efn|name=Sejourne|RE list led by [[Stéphane Séjourné]]}}
+|–
+|–
+|–
+|8
+|2
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28'''
+|6
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |8
+|-
+|colspan=2|1
+|5
+|9
+|–
+|9
+|9
+|–
+|–
+|–
+|–
+|1.5
+|–
+|–
+|–
+|20{{efn|RE list led by [[Thierry Breton]]}}
+|–
+|–
+|–
+|8.5
+|2.5
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28'''
+|5
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |8
+|-
+|rowspan="3" style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2023/09/120279-Resultats.pdf Ifop]
+|rowspan="3" {{Opdrts|30|31|Aug|2023|year}}
+|rowspan="3" |1,126
+|colspan=2|1
+|5
+|10
+|–
+|9
+|8
+|–
+|–
+|–
+|–
+|2
+|–
+|–
+|–
+|21{{efn|name=Sejourne}}
+|–
+|–
+|–
+|8
+|3
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''25'''
+|6.5
+|1.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 4
+|-
+|colspan=2|2
+|6
+|colspan="3"| 12{{efn|name=lfi-ps-royal|group=PollsFrance|LFI–PS list led by [[Segolène Royal]]}}
+|10
+|–
+|–
+|–
+|–
+|2
+|–
+|–
+|–
+|23{{efn|name=Sejourne}}
+|–
+|–
+|–
+|9
+|3
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''25'''
+|7
+|2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 2
+|-
+|colspan=2|1
+|5
+|9{{efn|name=lfi-royal|group=PollsFrance|LFI list led by [[Segolène Royal]]}}
+|–
+|10
+|8
+|–
+|–
+|–
+|–
+|1.5
+|–
+|–
+|–
+|21{{efn|name=Sejourne}}
+|–
+|–
+|–
+|9
+|3
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''25'''
+|6.5
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 4
+|-
+| rowspan="6" style="background:#d9fff6"|[https://lafranceinsoumise.fr/wp-content/uploads/2023/08/Sondage-LFI-Europe%CC%81ennes-C17.pdf Cluster17]
+| rowspan="6" {{Opdrts|16|19|Aug|2023|year}}
+| rowspan="6" |983
+| 1.5
+| –
+| 3
+| colspan="4"| 22.5
+| –
+| 2.5
+| –
+| –
+| 5
+| –
+| –
+| 2.5
+| 20.5{{efn|name=Sejourne}}
+| –
+| –
+| –
+| 7
+| 3
+| –
+| –
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''23'''
+| 7
+| 2.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 0.5
+|-
+| 1.5
+| –
+| colspan="4"| 20.5
+| 7.5
+| –
+| 2.5
+| –
+| –
+| 3
+| –
+| –
+| 2.5
+| 20{{efn|name=Sejourne}}
+| –
+| –
+| –
+| 7
+| 3
+| –
+| –
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''23.5'''
+| 7
+| 2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 3
+|-
+| 1.5
+| –
+| style="background-color:#{{HexShade|{{Party color|NUPES}}|0.8}}" colspan="5"| '''25'''{{efn|name=nupes-toussaint|group=PollsFrance|NUPES list led by [[Marie Toussaint]] (EELV)}}
+| –
+| 2.5
+| –
+| –
+| 4
+| –
+| –
+| 2.5
+| 20{{efn|name=Sejourne}}
+| –
+| –
+| –
+| 7.5
+| 4
+| –
+| –
+| 24
+| 7
+| 2
+| style="background-color:{{party color|NUPES}};color:#FFFFFF;" | 1
+|-
+| 1
+| –
+| style="background-color:#{{HexShade|{{Party color|NUPES}}|0.8}}" colspan="5"| '''25'''{{efn|name=nupes-aubry|group=PollsFrance|NUPES list led by [[Manon Aubry]] (LFI)}}
+| –
+| 3
+| –
+| –
+| 4
+| –
+| –
+| 3
+| 20{{efn|name=Sejourne}}
+| –
+| –
+| –
+| 7.5
+| 3.5
+| –
+| –
+| 24
+| 7
+| 1.5
+| style="background-color:{{party color|NUPES}};color:#FFFFFF;" | 1
+|-
+| 2
+| –
+| colspan="5"| 23{{efn|name=nupes-deffontaines|group=PollsFrance|NUPES list led by [[Léon Deffontaines]] (PCF)}}
+| –
+| 3
+| –
+| –
+| 4.5
+| –
+| –
+| 3
+| 21{{efn|name=Sejourne}}
+| –
+| –
+| –
+| 7.5
+| 3
+| –
+| –
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''24'''
+| 7
+| 2
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 1
+|-
+| 2
+| –
+| style="background-color:#{{HexShade|{{Party color|NUPES}}|0.8}}" colspan="5"| '''25'''{{efn|name=nupes-faure|group=PollsFrance|NUPES list led by [[Olivier Faure]] (PS)}}
+| –
+| 2.5
+| –
+| –
+| 4.5
+| –
+| –
+| 2.5
+| 20{{efn|name=Sejourne}}
+| –
+| –
+| –
+| 7
+| 4
+| –
+| –
+| 24
+| 7
+| 1.5
+| style="background-color:{{party color|NUPES}};color:#FFFFFF;" | 1
+|-
+|style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2023/07/119689-Rapport-SR-N232.pdf Ifop]
+|{{Opdrts|4|5|Jul|2023|year}}
+|1,008
+|colspan=2|1
+|4
+|8
+|–
+|9
+|9
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|20{{efn|name=Sejourne}}
+|–
+|–
+|–
+|11
+|4
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''26'''
+|7
+|1
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 6
+|-
+| rowspan="3" style="background:#04FBF4;"|[http://www.commission-des-sondages.fr/notices/files/notices/2023/juillet/9694-ipsos-le-monde-cevipof-panel-electora-l-vague-1-le-1er-juillet.pdf Ipsos]
+| rowspan="3" {{Opdrts|16|26|Jun|2023|year}}
+| rowspan="3" |10,631
+|colspan=2|1.5
+|4
+|8.5
+|–
+|10
+|10
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|21{{efn|name=Sejourne}}
+|–
+|–
+|–
+|9
+|2.5
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''24'''
+|6.5
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 3
+|-
+|colspan=2|2
+| colspan="5" |24
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|24{{efn|name=Sejourne}}
+|–
+|–
+|–
+|10
+|3
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''25'''
+|7
+|5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 1
+|-
+|colspan=2|1.5
+|5
+|9.5
+|–
+| colspan="2" |15
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|–
+|23{{efn|name=Sejourne}}
+|–
+|–
+|–
+|9
+|2.5
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''25'''
+|6.5
+|3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 2
+|-
+| rowspan="2" style="background:#CAD5F7;"|[https://elabe.fr/election-europeenne-2024/ Elabe]
+| rowspan="2" {{Opdrts|19|21|Jun|2023|year}}
+| rowspan="2" |1,397
+|colspan=2|1.5
+|2
+|8.5
+|–
+|9.5
+|11
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+|22.5
+| –
+| –
+| –
+|8.5
+|2.5
+| –
+| –
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''26'''
+|5.5
+|2.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 3.5
+|-
+| colspan="2" | 1.5
+| colspan="5" | 24.5
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| 26
+| –
+| –
+| –
+| 9
+| 2.5
+| –
+| –
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''27'''
+| 5.5
+| 4
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 1
+|-
+| rowspan="2" style="background:#d9fff6"|[https://cluster17.com/wp-content/uploads/2023/05/Sondage-Europeennes.pdf Cluster17]
+| rowspan="2" {{Opdrts|17|19|May|2023|year}}
+| rowspan="2" |1,760
+| colspan="2" |2
+| 4
+| 11
+| –
+| 9
+| 11
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| 19.5{{efn|name=Sejourne}}
+| –
+| –
+| –
+| 7.5
+| 3
+|–
+|–
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''24'''
+| 6.5
+| 3.5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 4.5
+|-
+| colspan="2" | 2
+| colspan="5" style="background-color:#{{HexShade|{{Party color|NUPES}}|0.8}}" | '''27'''
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| 23{{efn|name=Sejourne}}
+| –
+| –
+| –
+| 8.5
+| 4
+| –
+| –
+| 25.5
+| 7
+| 3
+| style="background-color:{{party color|NUPES}};color:#FFFFFF;" | 1.5
+|-
+| rowspan="2" style="background:#FFCCCC"| [https://www.lejdd.fr/politique/sondage-europeennes-le-rn-confirme-sa-premiere-place-unie-la-gauche-arrive-ex-aequo-135739 Ifop]
+| rowspan="2" {{Opdrts|10|11|May|2023|year}}
+| rowspan="2"| 1,310
+| colspan="2"| 1
+| 5
+| 10
+| –
+| 10
+| 10
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| 19{{efn|name=Sejourne}}
+| –
+| –
+| –
+| 8
+| 3
+| –
+| –
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''25'''
+| 6
+| 3
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;"| 6
+|-
+| colspan="2"| 2
+| colspan="5" style="background-color:#{{HexShade|{{Party color|NUPÉS}}|0.8}}" | '''26'''{{efn|name=nupés-lfi-eélv|group=PollsFrance|NUPES list led by LFI and EELV}}
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| 22{{efn|name=Sejourne}}
+| –
+| –
+| –
+| 11
+| 3
+| –
+| –
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''26'''
+| 6
+| 4
+| style="background-color:#ffffff;" | Tie
+|-
+| rowspan="3" style="background:GreenYellow"| [http://www.commission-des-sondages.fr/notices/files/notices/2023/mai/9691-eur-hi-eelv.pdf Harris Interactive]
+| rowspan=3 {{Opdrts|5|9|May|2023|year}}
+| rowspan="3" | 1,262
+| colspan="2" | 2
+| colspan="5" | 23{{efn|name=nupés-eélv|group=PollsFrance|NUPES list led by EELV}}
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| 3
+| style="background-color:#{{HexShade|{{Party color|Together (coalition)}}|0.8}}" | '''26'''
+| –
+| –
+| –
+| 13
+| 2
+| –
+| –
+| 21
+| 5
+| 5
+| style="background-color:{{Party color|Together (coalition)}};color:#FFFFFF;" | 3
+|-
+| colspan="2" | 1
+| colspan="5" | 19{{efn|name=nupés-eélv}}
+| 5
+| –
+| 6
+| –
+| –
+| –
+| –
+| 3
+| style="background-color:#{{HexShade|{{Party color|Together (coalition)}}|0.8}}" | '''24'''
+| –
+| –
+| –
+| 12
+| 2
+| –
+| –
+| 20
+| 5
+| 3
+| style="background-color:{{Party color|Together (coalition)}};color:#FFFFFF;" | 4
+|-
+|colspan=2| 1
+| 3
+| 9
+| –
+| 10
+| 11
+| –
+| –
+| –
+| –
+| –
+| –
+| –
+| 1
+| style="background-color:#{{HexShade|{{Party color|Together (coalition)}}|0.8}}" | '''23'''
+| –
+| –
+| –
+| 12
+| 2
+| –
+| –
+| 20
+| 5
+| 3
+| style="background-color:{{Party color|Together (coalition)}};color:#FFFFFF;" | 3
+|- style="background:#E9E9E9;"
+| [[2019 European Parliament election in France#Results|2019 European election]]
+| {{Opdrts||26|May|2019|year}}
+| –
+| 0.8
+| {{efn|endorsed LO}}
+| 2.5
+| 6.3
+| colspan=2|6.2
+| 13.5
+| 1.8{{efn|with [[Independent Ecological Movement|MEI]] and [[Movement of Progressives|MdP]]}}
+| {{efn|name=prg|group=PollsFrance|with PS}}
+| –
+| 0.1
+| {{efn|with EELV}}
+| –
+| 0.1
+| 2.2
+| 24.9{{efn|incl. [[Union of Democrats and Independents|UDI]] with 2.50%}}
+| –
+| –
+| –
+| 8.5
+| 3.5
+| 1.2
+| 0.6
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''23.3'''
+| –
+| 7.0
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" | 0.9
+|}
+</onlyinclude>
+
+=== Projection of seats in the European Parliament ===
+{{expand section|with=[[Europe Elects]] projections|date=December 2023}}
+{| class="wikitable sortable" style="text-align:center;font-size:90%;line-height:14px;"
+! rowspan="4" |Polling firm
+! rowspan="4" |Date
+! colspan="4" |[[New Ecological and Social People's Union|NUPES]]
+! rowspan="3"style="width:50px;" |[[Renaissance (French political party)|RE]]–<br/>[[Democratic Movement (France)|MoDem]]–<br/>[[Horizons (political party)|Horizons]]<br>{{small|[[Renew Europe|Renew]]}}
+! rowspan="3"style="width:50px;" |[[The Republicans (France)|LR]]<br>{{small|[[European People's Party Group|EPP]]}}
+! rowspan="3"style="width:50px;" |[[National Rally|RN]]<br>{{small|[[Identity and Democracy|ID]]}}
+! rowspan="3"style="width:50px;" |[[Reconquête|REC]]<br />{{small|[[Non-Inscrits|NI]]–[[European Conservatives and Reformists Group|ECR]]}}
+! rowspan="4"style="width:50px;" |Lead
+|-
+! style="background:{{party color|NUPES}};" colspan="4" |
+|- style="height:40px;"
+! class="unsortable" style="width:50px;" | [[French Communist Party|PCF]]<br />{{small|[[The Left in the European Parliament – GUE/NGL|Left]]}}
+! class="unsortable" style="width:50px;" | [[La France Insoumise|LFI]]<br />{{small|[[The Left in the European Parliament – GUE/NGL|Left]]}}
+! class="unsortable" style="width:50px;" | [[Socialist Party (France)|PS]]–[[Place Publique|PP]]<br />{{small|[[Progressive Alliance of Socialists and Democrats|S&D]]}}
+! class="unsortable" style="width:50px;" | [[Europe Ecology – The Greens|EELV]]<br>{{small|[[Greens–European Free Alliance|G/EFA]]}}
+|-
+! style="background:{{party color|French Communist Party}};" |
+! style="background:{{party color|La France Insoumise}};" |
+! style="background:{{party color|Socialist Party (France)}};" |
+! style="background:{{party color|Europe Ecology – The Greens}};" |
+! style="background:{{Party color|Together (coalition)}};" |
+! style="background:{{party color|The Republicans (France)}};" |
+! style="background:{{party color|National Rally}};" |
+! style="background:{{party color|Reconquête}};" |
+|-
+|style="background:#ffcc00;"|[https://europeelects.eu/2024/05/31/may-2024/ Europe Elects]
+|{{Opdrts||31|May|2024|year}}
+|–
+|7
+|13
+|5
+|15
+|6
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''30'''
+|5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+|-
+|style="background:#CAD5F7;"|[https://elabe.fr/wp-content/uploads/2024/05/18052024_elabe_bfmtv_la-tribune-dimanche_les-francais-et-les-elections-europeennes.pdf Elabe]
+|{{Opdrts||18|May|2024|year}}
+|–
+|6–9
+|11–14
+|6–9
+|13–18
+|6–9
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28–34'''
+|0–6
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10–16
+|-
+|style="background:#ffcc00;"|[https://europeelects.eu/2024/05/03/april-2024/ Europe Elects]
+|{{Opdrts||3|May|2024|year}}
+|–
+|7
+|11
+|6
+|17
+|7
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''27'''
+|6
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+|style="background:#CAD5F7;"|[https://elabe.fr/wp-content/uploads/2024/05/04052024_elabe_bfmtv_la-tribune-dimanche_les-francais-et-les-elections-europeennes.pdf Elabe]
+|{{Opdrts||3|May|2024|year}}
+|–
+|7–10
+|10–14
+|6–9
+|14–19
+|5–8
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28–34'''
+|0–6
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |9–15
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/04/ROL24_20240429.pdf Ifop]
+| {{Opdrts||29|Apr|2024|year}}
+|–
+|6
+|13
+|7
+|14
+|7
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |15
+|-
+|style="background:#FFCCFF;"|[https://www.odoxa.fr/sondage/attal-recule-bardella-au-pinacle-glucksmann-emerge/ Odoxa]
+|{{Opdrts||28|Apr|2024|year}}
+|–
+|5
+|10
+|7–8
+|17
+|7–8
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28'''
+|6
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |11
+|-
+| style="background:#FFCCCC"|[https://www.ifop.com/wp-content/uploads/2024/04/ROL24_2024011.pdf Ifop]
+| {{Opdrts||11|Apr|2024|year}}
+|–
+|7
+|11
+|5
+|16
+|7
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|6
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |13
+|-
+|style="background:#ffcc00;"|[https://europeelects.eu/2024/03/31/march-2024/ Europe Elects]
+|{{Opdrts||3|May|2024|year}}
+|–
+|7
+|10
+|8
+|17
+|7
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''27'''
+|5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |10
+|-
+|style="background:#CAD5F7;"|[https://elabe.fr/wp-content/uploads/2024/03/09032024_elabe_bfmtv_la-tribune-dimanche_les-francais-les-elections-europeennes-et-la-guerre-en-ukraine.pdf Elabe]
+|{{Opdrts||7|Mar|2024|year}}
+|–
+|6–9
+|7–11
+|7–12
+|15–20
+|6–9
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''27-33'''
+|0–6
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |7–13
+|-
+| style="background:#04FBF4;"|[https://www.ipsos.com/fr-fr/europeennes-vers-une-progression-de-la-droite-radicale-au-parlement-europeen Ipsos]
+| {{Opdrts||5|Mar|2024|year}}
+|–
+|6
+|11
+|7
+|17
+|7
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28'''
+|5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |11
+|-
+|style="background:#FFCCFF;"|[https://www.odoxa.fr/sondage/attal-recule-bardella-au-pinacle-glucksmann-emerge/ Odoxa]
+|{{Opdrts||22|Feb|2024|year}}
+|–
+|5
+|10
+|7–8
+|17
+|7–8
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''28'''
+|6
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |11
+|-
+|style="background:#FFCCFF;"|[https://www.odoxa.fr/sondage/coup-de-tonnerre-si-les-elections-europeennes-avaient-lieu-dimanche-prochain-le-rn-depasserait-les-30-et-devancerait-de-10-pts-la-liste-renaissance-modem/ Odoxa]
+|{{Opdrts||14|Dec|2023|year}}
+|–
+|6
+|8
+|5
+|20
+|8
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" |'''29'''
+|5
+| style="background-color:{{party color|National Rally}};color:#FFFFFF;" |9
+|- style="background:#E9E9E9;"
+| [[2019 European Parliament election in France#Results|2019 European election]]
+| {{Opdrts||26|May|2019|year}}
+| –
+| 6
+| 6
+| 13
+| style="background-color:#{{HexShade|{{Party color|Together (coalition)}}|0.8}}" | '''23'''
+| 8
+| style="background-color:#{{HexShade|{{Party color|National Rally}}|0.8}}" | '''23'''
+| –
+| style="background-color:#ffffff;" | Tie
+|}
+
+==Results==
+{{Election results
+|image=[[File:2024 European Parliament election in France result.svg]]
+|party1=[[National Rally]]–[[French Future|LAF]]–[[The Popular Right|LDP]]|votes1=7765936|seats1=30|sc1=+7
+|party2=[[Renaissance (French political party)|Renaissance]]–[[Democratic Movement (France)|MoDem]]–[[Horizons (political party)|Horizons]]–[[Radical Party (France)|RAD]]–[[Union of Democrats and Independents|UDI]]–{{ill|Progressive Federation (France)|fr|Fédération progressiste|lt=FP}}–[[Democratic European Force|FED]]–[[Democratic Convention (France)|CD]]–[[Republican Ecological Channel|CÉR]]|votes2=3614646|seats2=13|sc2=−10|color2={{Party color|L'Europe Ensemble}}
+|party3=[[Socialist Party (France)|Socialist Party]]–[[Place Publique]]|votes3=3424216|seats3=13|sc3=+7
+|party4=[[La France Insoumise]]–[[Left Party (France)|PG]]–{{ill|Eco-socialist Left|fr|Gauche écosocialiste|lt=GES}}–[[Ecological Revolution for the Living|REV]]–[[Péyi-A]]–[[For Réunion (political party)|PLR]]|votes4=2448703|seats4=9|sc4=+3
+|party5=[[The Republicans (France)|The Republicans]]–[[The Centrists]]|votes5=1794171|seats5=6|sc5=−2
+|party6=[[The Ecologists (France)|The Ecologists]]–[[Alsatian Alternative|AA]]|votes6=1361883|seats6=5|sc6=−8
+|party7=[[Reconquête]]–{{ill|Conservative Movement (France)|fr|Mouvement conservateur (mouvement politique)|lt=MC}}|votes7=1353127|seats7=5|sc7=New
+|party8=[[French Communist Party]]–[[Federation of the Republican Left|FGR]]–[[Communist Party of Réunion|PCR]]–[[Martinican Communist Party|PCM]]–[[Muriel Ressiguier|HeD]]|votes8=584067|seats8=0|sc8=0
+|party9=[[Rural Alliance]]|votes9=582901|seats9=0|sc9=0
+|party10=[[Animalist Party]]|votes10=495936|seats10=0|sc10=0
+|party11=[[Independent Ecological Alliance|Ecology at the Centre]]–[[Europe Equality Ecology|EÉÉ]]–[[United Regions of Europe|RUE]]–[[Animal Generation|GA]]–[[Jeunes Ecqo|Ecqo]]–[[The France Differently|LaFRA]]|votes11=316136|seats11=0|sc11=New
+|party12=[[Popular Republican Union (2007)|Popular Republican Union]]|votes12=253036|seats12=0|sc12=0
+|party13=[[The Patriots (France)|The Patriots]]–[[VIA, the Way of the People|VIA]]|votes13=229190|seats13=0|sc13=0
+|party14=[[Lutte Ouvrière]] – {{ill|Combat Ouvrier|fr|Combat ouvrier}}|votes14=121281|seats14=0|sc14=0
+|party15={{ill|Positive Ecology|fr|Yann Wehrling}}–[[Cap21]]–[[France Ecology|FÉ]]–[[The Clover – The New Ecologists|Le Trèfle]]–[[The Universalists|LU]]–[[100% Citizens|100%C]]–[[Movement for Animals|MPA]]–[[Basque Nationalist Party|BNP]]|votes15=104954|seats15=0|sc15=New|color15=#15B10F
+|party16=[[Équinoxe (political party)|Équinoxe]]|votes16=73002|seats16=0|sc16=New|color16=#FFD412
+|party17=[[Radical Party of the Left]]–[[Régions et Peuples Solidaires|R&PS]]–[[Volt France|Volt]]–[[Movement of Progressives|MdP]]–{{ill|Citizens' Movement (France, 2018)|fr|Mouvement des citoyens (France)|lt=MDC}}–[[Collective of Reformist Social Democrats|CSDR]]|votes17=63482|seats17=0|sc17=0
+|party18=[[New Anticapitalist Party|New Anticapitalist Party – Revolutionaries]]|votes18=37434|seats18=0|sc18=0
+|party19=[[Pirate Party (France)|Pirate Party]]|votes19=28119|seats19=0|sc19=0
+|party20=[[Union of French Muslim Democrats]]|votes20=14986|seats20=0|sc20=0
+|party21={{ill|Sovereign Republic|fr|République souveraine}}–{{ill|L'Appel au peuple|fr|Appel au peuple (France)#Héritage}}|votes21=13886|seats21=0|sc21=New
+|party22=[[New Deal (France)|New Deal]]–[[Allons Enfants]]|votes22=13068|seats22=0|sc22=0
+|party23=[[Europe–Democracy–Esperanto]]|votes23=10349|seats23=0|sc23=0
+|party24=[[Party of European Citizens]]–[[La France a des Elles|ELLES]]|votes24=7397|seats24=0|sc24=New|color24=#0058A4
+|party25=[[Francis Lalanne|Free France]]–[[Union of the Resistance]]|votes25=5474|seats25=0|sc25=New|color25=#103645
+|party26=[[Defend the Children]]|votes26=5214|seats26=0|sc26=New|color26=#213B89
+|party27=[[The Nationalists (France)|The Nationalists]]|votes27=5096|seats27=0|sc27=New
+|party28=[[Workers' Party (France, 2015)|Workers' Party]]|votes28=4120|seats28=0|sc28=New
+|party29=[[La Ruche Citoyenne]]|votes29=4038|seats29=0|sc29=New|color29=#F9DF70
+|party30=[[Political Ecology, Pacifism and the Objection to Growth|EPPOC]]–[[Brouette]]–[[Décroissance Elections|Décroissance]]|votes30=3726|seats30=0|sc30=New|color30=#52A32B
+|party31=[[Citizens' Federation]]|votes31=3688|seats31=0|sc31=New|color31=#001A4C
+|party32=[[National Association of Communists]]|votes32=3078|seats32=0|sc32=New|color32=#CF3324
+|party33=[[Édouard Husson|Stay Free]]|votes33=1507|seats33=0|sc33=New|color33=#000000
+|party34=[[Communist Revolutionary Party (France)|Communist Revolutionary Party]]|votes34=1497|seats34=0|sc34=0
+|party35=[[Let's Decide Ourselves!]]|votes35=1443|seats35=0|sc35=New|color35=#FFF600
+|party36=[[For a Sovereign Humanity]]|votes36=1230|seats36=0|sc36=New|color36=#C34841
+|party37=[[French Democratic Freedom]]–[[New Patriotic Emergence]]|votes37=1007|seats37=0|sc37=New|color37=#292265
+|party38={{ill|Representative Democracy (France)|fr|Hadama Traoré|lt=Representative Democracy}}|votes38=749|seats38=0|sc38=New|color38=#D50100
+|total_sc=+2
+|invalid=370459
+|blank=346240
+|electorate=49462981
+|source=[https://www.archives-resultats-elections.interieur.gouv.fr/resultats/europeennes2024/ensemble_geographique/index.php resultats-elections.interieur.gouv.fr]
+}}
+
+=== Results by commune ===
+{{Switcher
+|[[File:2024 European elections in France by commune.svg|centre|thumb|400px]]
+|Results by [[Communes of France|commune]] in [[Metropolitan France]]
+|[[File:2024 European Parliament election in French Guiana.svg|centre|thumb|400px]]
+|Results by [[Communes of French Guiana|commune]] in [[French Guiana]]
+}}
+
+=== Electorate ===
+{| class="wikitable sortable" style="text-align:center; font-size:90%; line-height:14px"
+|- style="height:40px;" 
+! rowspan="2" colspan="2"| Demographic
+! class="unsortable" style="width:40px;"| [[La France Insoumise|LFI]]
+! class="unsortable" style="width:40px;"| [[French Communist Party|PCF]]
+! class="unsortable" style="width:40px;"| [[Europe Ecology – The Greens|LE]]
+! class="unsortable" style="width:40px;"| [[Socialist Party (France)|PS]]/<br/>[[Place Publique|PP]]
+! class="unsortable" style="width:40px;"| [[La République En Marche!|RE]]/<br/>[[Democratic Movement (France)|MoDem]]
+! class="unsortable" style="width:40px;"| [[The Republicans (France)|LR]]
+! class="unsortable" style="width:40px;"| [[National Rally (France)|RN]]
+! class="unsortable" style="width:40px;"| [[Reconquête|REC]]
+! class="unsortable" style="width:40px;"| Other
+|-
+! data-sort-type="number" style="background:{{party color|La France Insoumise}};"|
+! data-sort-type="number" style="background:{{party color|French Communist Party}};"|
+! data-sort-type="number" style="background:{{party color|Europe Ecology – The Greens}};"|
+! data-sort-type="number" style="background:{{party color|Socialist Party (France)}};"|
+! data-sort-type="number" style="background:{{party color|La République En Marche!}};"|
+! data-sort-type="number" style="background:{{party color|Union of Democrats and Independents}};"|
+! data-sort-type="number" style="background:{{party color|The Republicans (France)}};"|
+! data-sort-type="number" style="background:{{party color|National Rally (France)}};"|
+! data-sort-type="number" style="background:{{party color|Reconquest (France)}};"|
+|-
+! colspan="2"| Total vote
+| 9.9%
+| 2.4%
+| 5.5%
+| 13.8%
+| 14.6%
+| 7.2%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''31.4%'''
+| 5.5%
+| style= | '''9.7%'''
+|-
+! colspan="11" | Sex
+|-
+! colspan="2"| Men
+| 10%
+| 3%
+| 4%
+| 14%
+| 15%
+| 7%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''32%'''
+| 7%
+| style= | '''8%'''
+|-
+! colspan="2"| Women
+| 10%
+| 2%
+| 7%
+| 14%
+| 14%
+| 7%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''30%'''
+| 5%
+| 11%
+|-
+! colspan="11" | Age
+|-
+! colspan="2"| 18–24 years old
+| style="background-color:#{{HexShade|{{party color|La France Insoumise}}|0.8}}"|'''33%'''
+| 3%
+| 10%
+| 5%
+| 8%
+| 6%
+| 25%
+| 2%
+| 8%
+|-
+! colspan="2"| 25-34 years old
+| 20%
+| 3%
+| 9%
+| 12%
+| 7%
+| 3%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''30%'''
+| 4%
+| 12%
+|-
+! colspan="2"| 34-49 years old
+| 11%
+| 2%
+| 9%
+| 12%
+| 10%
+| 5%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''34%'''
+| 4%
+| 13%
+|-
+! colspan="2"| 50-59 years old
+| 7%
+| 2%
+| 4%
+| 14%
+| 11%
+| 5%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''40%'''
+| 7%
+| 10%
+|-
+! colspan="2"| 60-69 years old
+| 6%
+| 3%
+| 4%
+| 16%
+| 16%
+| 7%
+| style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''34%'''
+| 5%
+| 9%
+|-
+! colspan="2"| 70+ years old
+| 3%
+| 2%
+| 2%
+| 16%
+| 24%
+| 12%
+| style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''26%'''
+| 8%
+| 7%
+|-
+! colspan="11" | First-round vote in the [[2022 French presidential election|2022 presidential election]]
+|-
+! {{party color cell|La France Insoumise}}
+! [[Jean-Luc Mélenchon]]
+|style="background-color:#{{HexShade|{{party color|La France Insoumise}}|0.8}}"|'''42%'''
+| 5%
+| 9%
+| 24%
+| 1%
+| 1%
+| 8%
+| 0%
+| 10%
+|-
+! {{party color cell|French Communist Party}}
+! [[Fabien Roussel]]
+| 2%
+|style="background-color:#{{HexShade|{{party color|French Communist Party}}|0.8}}"|'''37%'''
+| 3%
+| 31%
+| 3%
+| 4%
+| 9%
+| 1%
+| 10%
+|-
+! {{party color cell|Europe Ecology – The Greens}}
+! [[Yannick Jadot]]
+| 1%
+| 2%
+|style="background-color:#{{HexShade|{{party color|Europe Ecology – The Greens}}|0.8}}"|'''42%'''
+| 32%
+| 3%
+| 1%
+| 2%
+| 0%
+| 17%
+|-
+! {{party color cell|Socialist Party (France)}}
+! [[Anne Hidalgo]]
+| 2%
+| 3%
+| 10%
+|style="background-color:#{{HexShade|{{party color|Socialist Party (France)}}|0.8}}"|'''79%'''
+| 1%
+| 0%
+| 0%
+| 0%
+| 5%
+|-
+! {{party color cell|En Marche!}}
+! [[Emmanuel Macron]]
+| 2%
+| 1%
+| 3%
+| 17%
+|style="background-color:#{{HexShade|{{party color|Renaissance (French political party)}}|0.8}}"|'''53%'''
+| 9%
+| 7%
+| 1%
+| 7%
+|-
+! {{party color cell|The Republicans (France)}}
+! [[Valérie Pécresse]]
+| 1%
+| 0%
+| 2%
+| 2%
+| 8%
+|style="background-color:#{{HexShade|{{party color|The Republicans (France)}}|0.8}}"|'''62%'''
+| 18%
+| 3%
+| 4%
+|-
+! {{party color cell|National Front (France)}}
+! [[Marine Le Pen]]
+| 0%
+| 0%
+| 0%
+| 2%
+| 0%
+| 1%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''89%'''
+| 4%
+| 4%
+|-
+! {{party color cell|Reconquête}}
+! [[Eric Zemmour]]
+| 0%
+| 0%
+| 0%
+| 1%
+| 1%
+| 6%
+| 43%
+| 43%
+| 6%
+|-
+! {{party color cell|Debout la France}}
+! [[Nicolas Dupont-Aignan]]
+| 0%
+| 0%
+| 1%
+| 1%
+| 2%
+| 9%
+| 36%
+| 7%
+|style="background-color:#{{HexShade|{{party color|Debout la France}}|0.8}}"|'''44%'''
+|-
+! {{party color cell|Résistons}}
+! [[Jean Lassalle]]
+| 2%
+| 1%
+| 1%
+| 9%
+| 3%
+| 10%
+| 23%
+| 5%
+|style="background-color:#{{HexShade|{{party color|Résistons}}|0.8}}"|'''45%'''
+|-
+! colspan="11" | Vote in the [[2019 European Parliament election in France|2019 European Parliament election]]
+|-
+! {{party color cell|La France Insoumise}}
+! [[La France Insoumise|FI]]
+|style="background-color:#{{HexShade|{{party color|La France Insoumise}}|0.8}}"|'''62%'''
+| 6%
+| 2%
+| 13%
+| 1%
+| 0%
+| 10%
+| 1%
+| 5%
+|-
+! {{party color cell|Génération.s}}
+! [[Génération.s]]
+| 11%
+| 5%
+| 12%
+|style="background-color:#{{HexShade|{{party color|Génération.s}}|0.8}}"|'''47%'''
+| 4%
+| 5%
+| 5%
+| 0%
+| 11%
+|-
+! {{party color cell|Europe Ecology – The Greens}}
+! [[The Ecologists|LE]]
+| 8%
+| 2%
+|style="background-color:#{{HexShade|{{party color|Europe Ecology – The Greens}}|0.8}}"|'''34%'''
+| 27%
+| 6%
+| 3%
+| 5%
+| 1%
+| 14%
+|-
+! {{party color cell|Socialist Party (France)}}
+! [[Socialist Party (France)|PS]]/ [[Place Publique|PP]]
+| 6%
+| 2%
+| 2%
+|style="background-color:#{{HexShade|{{party color|Génération.s}}|0.8}}"|'''73%'''
+| 4%
+| 1%
+| 6%
+| 0%
+| 6%
+|-
+! {{party color cell|La République En Marche!}}
+! [[Renaissance (French political party)|RE]]
+| 2%
+| 1%
+| 1%
+| 11%
+|style="background-color:#{{HexShade|{{party color|Renaissance (French political party)}}|0.8}}"|'''65%'''
+| 6%
+| 6%
+| 2%
+| 6%
+|-
+! {{party color cell|The Republicans (France)}}
+! [[The Republicans (France)|LR]]
+| 1%
+| 1%
+| 1%
+| 1%
+| 8%
+|style="background-color:#{{HexShade|{{party color|The Republicans (France)}}|0.8}}"|'''44%'''
+| 26%
+| 14%
+| 4%
+|-
+! {{party color cell|Debout la France}}
+! [[Debout la France|DLF]]
+| 0%
+| 0%
+| 0%
+| 1%
+| 2%
+| 6%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''48%'''
+| 26%
+| 17%
+|-
+! {{party color cell|National Rally}}
+! [[National Rally|RN]]
+| 0%
+| 0%
+| 0%
+| 1%
+| 0%
+| 1%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''85%'''
+| 10%
+| 3%
+|-
+! colspan="11" | Political party
+|-
+! {{party color cell|La France Insoumise}}
+! [[La France Insoumise|LFI]]
+|style="background-color:#{{HexShade|{{party color|La France Insoumise}}|0.8}}"|'''90%'''
+| 0%
+| 2%
+| 3%
+| 1%
+| 0%
+| 2%
+| 0%
+| 2%
+|-
+! {{party color cell|French Communist Party}}
+! [[French Communist Party|PCF]]
+| 8%
+|style="background-color:#{{HexShade|{{party color|French Communist Party}}|0.8}}"|'''72%'''
+| 1%
+| 10%
+| 1%
+| 0%
+| 3%
+| 0%
+| 5%
+|-
+! {{party color cell|Europe Ecology – The Greens}}
+! [[The Ecologists|LE]]
+| 1%
+| 1%
+|style="background-color:#{{HexShade|{{party color|Europe Ecology – The Greens}}|0.8}}"|'''63%'''
+| 16%
+| 1%
+| 0%
+| 2%
+| 0%
+| 16%
+|-
+! {{party color cell|Socialist Party (France)}}
+! [[Socialist Party (France)|PS]]
+| 2%
+| 2%
+| 2%
+|style="background-color:#{{HexShade|{{party color|Socialist Party (France)}}|0.8}}"|'''83%'''
+| 5%
+| 0%
+| 2%
+| 0%
+| 4%
+|-
+! {{party color cell|La République En Marche!}}
+! [[Renaissance (French political party)|RE]]/ [[Democratic Movement (France)|MoDem]]/ [[Horizons (political party)|HZ]]
+| 0%
+| 0%
+| 2%
+| 6%
+|style="background-color:#{{HexShade|{{party color|Renaissance (French political party)}}|0.8}}"|'''80%'''
+| 4%
+| 2%
+| 1%
+| 5%
+|-
+! {{party color cell|The Republicans (France)}}
+! [[The Republicans (France)|LR]]
+| 0%
+| 1%
+| 1%
+| 0%
+| 4%
+|style="background-color:#{{HexShade|{{party color|The Republicans (France)}}|0.8}}"|'''64%'''
+| 20%
+| 5%
+| 5%
+|-
+! {{party color cell|National Rally}}
+! [[National Rally|RN]]
+| 0%
+| 0%
+| 0%
+| 0%
+| 0%
+| 1%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''96%'''
+| 2%
+| 1%
+|-
+! {{party color cell|Reconquête}}
+! [[Reconquête|REC]]
+| 0%
+| 0%
+| 0%
+| 0%
+| 0%
+| 1%
+| 7%
+|style="background-color:#{{HexShade|{{party color|Reconquest}}|0.8}}"|'''88%'''
+| 4%
+|-
+! colspan="2"| No party
+| 6%
+| 2%
+| 6%
+| 12%
+| 12%
+| 7%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''29%'''
+| 3%
+| 23%
+|-
+! colspan="11" | Religion
+|-
+! colspan="2"| Catholic
+| 4%
+| 2%
+| 3%
+| 11%
+| 17%
+| 10%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''37%'''
+| 7%
+| 9%
+|-
+! colspan="2"| Regular practitioner
+| 4%
+| 3%
+| 2%
+| 7%
+| 21%
+| 16%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''26%'''
+| 12%
+| 9%
+|-
+! colspan="2"| Occasional practitioner
+| 3%
+| 1%
+| 6%
+| 9%
+| 16%
+| 12%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''35%'''
+| 7%
+| 11%
+|-
+! colspan="2"| Non-practitioner
+| 4%
+| 2%
+| 3%
+| 12%
+| 18%
+| 9%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''38%'''
+| 6%
+| 8%
+|-
+! colspan="2"| None
+| 14%
+| 4%
+| 8%
+| 18%
+| 12%
+| 4%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''27%'''
+| 4%
+| 9%
+|-
+! colspan="11" | Socio-occupational classification
+|-
+! colspan="2"| Manager/professional
+| 12%
+| 2%
+| 8%
+| 20%
+| 14%
+| 9%
+| 20%
+| 5%
+| 10%
+|-
+! colspan="2"| Intermediate occupation
+| 10%
+| 2%
+| 8%
+| 15%
+| 12%
+| 6%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''29%'''
+| 5%
+| 12%
+|-
+! colspan="2"| White-collar worker
+| 17%
+| 1%
+| 7%
+| 11%
+| 6%
+| 3%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''39%'''
+| 5%
+| 11%
+|-
+! colspan="2"| Blue-collar worker
+| 8%
+| 3%
+| 5%
+| 7%
+| 5%
+| 3%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''53%'''
+| 5%
+| 11%
+|-
+! colspan="2"| Retired
+| 4%
+| 3%
+| 3%
+| 16%
+| 22%
+| 10%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''29%'''
+| 6%
+| 7%
+|-
+! colspan="11" | Employment status
+|-
+! colspan="2"| Employee
+| 12%
+| 2%
+| 7%
+| 13%
+| 10%
+| 5%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''36%'''
+| 4%
+| 11%
+|-
+! colspan="2"| ''Private employee''
+| 11%
+| 2%
+| 7%
+| 12%
+| 11%
+| 6%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''36%'''
+| 5%
+| 10%
+|-
+! colspan="2"| ''Public employee''
+| 12%
+| 2%
+| 8%
+| 16%
+| 8%
+| 4%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''34%'''
+| 4%
+| 12%
+|-
+! colspan="2"| Self-employed
+| 10%
+| 2%
+| 7%
+| 12%
+| 13%
+| 7%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''26%'''
+| 10%
+| 13%
+|-
+! colspan="2"| Unemployed
+| 18%
+| 2%
+| 8%
+| 9%
+| 5%
+| 5%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''33%'''
+| 9%
+| 11%
+|-
+! colspan="11" | Education
+|-
+! colspan="2"| Less than baccalauréat
+| 4%
+| 3%
+| 2%
+| 10%
+| 13%
+| 7%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''47%'''
+| 5%
+| 10%
+|-
+! colspan="2"| Baccalauréat
+| 8%
+| 2%
+| 4%
+| 12%
+| 14%
+| 7%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''38%'''
+| 4%
+| 11%
+|-
+! colspan="2"| Bac +2
+| 12%
+| 2%
+| 6%
+| 13%
+| 14%
+| 7%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''29%'''
+| 6%
+| 11%
+|-
+! colspan="2"| Bac +3 and higher
+| 15%
+| 3%
+| 9%
+|style="background-color:#{{HexShade|{{party color|Socialist Party (France)}}|0.8}}"|'''18%'''
+| 16%
+| 7%
+| 16%
+| 7%
+| 9%
+|-
+! colspan="11" | Monthly household income
+|-
+! colspan="2"| Less than €1,250
+| 19%
+| 2%
+| 5%
+| 12%
+| 7%
+| 4%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''32%'''
+| 4%
+| 15%
+|-
+! colspan="2"| €1,250 to €2,000
+| 12%
+| 2%
+| 5%
+| 14%
+| 11%
+| 5%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''35%'''
+| 4%
+| 12%
+|-
+! colspan="2"| €2,000 to €3,000
+| 10%
+| 3%
+| 5%
+| 13%
+| 16%
+| 7%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''31%'''
+| 6%
+| 9%
+|-
+! colspan="2"| More than €3,000
+| 8%
+| 2%
+| 6%
+| 16%
+| 16%
+| 8%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''30%'''
+| 6%
+| 9%
+|-
+! colspan="11" | Agglomeration
+|-
+! colspan="2"| Less than 2,000 inhabitants
+| 8%
+| 1%
+| 4%
+| 13%
+| 13%
+| 7%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''37%'''
+| 5%
+| 12%
+|-
+! colspan="2"| 2,000 to 9,999 inhabitants
+| 6%
+| 2%
+| 5%
+| 13%
+| 15%
+| 6%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''38%'''
+| 6%
+| 9%
+|-
+! colspan="2"| 10,000 to 49,999 inhabitants
+| 6%
+| 3%
+| 6%
+| 16%
+| 14%
+| 7%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''33%'''
+| 6%
+| 9%
+|-
+! colspan="2"| 50,000 to 199,999 inhabitants
+| 7%
+| 3%
+| 5%
+| 14%
+| 15%
+| 8%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''32%'''
+| 4%
+| 11%
+|-
+! colspan="2"| More than 200,000 inhabitants
+| 14%
+| 3%
+| 6%
+| 14%
+| 15%
+| 8%
+|style="background-color:#{{HexShade|{{party color|National Rally}}|0.8}}"|'''25%'''
+| 6%
+| 9%
+|-
+! colspan="11" | Source: [[Ipsos]]<ref>{{Cite web|url=https://www.ipsos.com/sites/default/files/ct/news/documents/2024-06/Ipsos-Sociologie-des-e%CC%81lectorats-9-Juin-20h30.pdf |title=Sociologie des Électorats et profil des abstentionnistes |access-date=October 9, 2024|date=June 9, 2024 |website=Ipsos}}</ref>
+|}
+
+==Aftermath==
+{{See also|2024 French legislative election}}
+About one hour after results for the European Parliament election showed that his Renaissance party would place a distant second to National Rally, [[Emmanuel Macron]] called for the [[2024 dissolution of the National Assembly|dissolution of parliament]] and [[2024 French legislative election|snap legislative elections]] occurring in two rounds on 30 June and 7 July. He decried the results of the election as indicating the rise of nationalists and far-right political firebrands that would threaten France and Europe, who represented the "impoverishment of the French people and the downfall of our country".<ref>{{Cite web |last=Tidey |first=Alice |date=2024-06-09 |title=French President Macron dissolves parliament, calls snap elections |url=https://www.euronews.com/my-europe/2024/06/09/french-president-emmanuel-macron-announces-anticipated-elections-after-stinging-eu-electio |access-date=2024-06-09 |website=[[euronews]] |language=en}}</ref>
+
+==See also==
+*[[2024 French protests against the far-right]]
+
+==Notes==
+{{notelist|group=PollsFrance}}
+
+==References==
+{{Reflist}}
+
+{{European Parliament elections}}
+{{French elections}}
+
+[[Category:2024 elections in France|European Parliament]]
+[[Category:2024 European Parliament election|France]]
+[[Category:June 2024 in France|European Parliament election]]
+[[Category:European Parliament elections in France]]
+[[Category:Opinion polling in France]]

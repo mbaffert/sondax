@@ -14,25 +14,39 @@ décide explicitement et se répercute ici.
 Un site statique multi-pages : page d'accueil à sections ancrées, pages par
 candidat, pages par sondage, pages par institut de sondage et page de référence
 des instituts, pages par duel de second tour, pages d'élections passées, page de
-données, page de méthodologie et tableau complet des sondages.
+données, page de méthodologie, tableau complet des sondages et page du modèle Sondax
+(`/modele-sondax`, §14).
 
-Page d'accueil à sections nommées et ancrées :
+Page d'accueil à sections nommées et ancrées, dans cet ordre (décision du
+29 septembre 2026) :
 
 1. **Bandeau d'en-tête.** Dernier sondage, compte à rebours, navigation (voir
    `scripts/build_header.py`).
-2. **Sondages du premier tour** (`#bloc-sondages`). Titre : « Sondages du premier
+2. **Dernier sondage publié** (`#dernier-sondage`), carte compacte avec l'hypothèse
+   sélectionnée. En cas d'égalité de `terrain_fin`, le sondage avec le plus grand
+   échantillon est retenu. Juste dessous, un simple lien « Voir tous les sondages »
+   vers `sondages.html`, sans titre ni texte (écrit dans le gabarit). Le tableau des
+   derniers sondages agrégés a été retiré de l'accueil.
+3. **Sondages du premier tour** (`#bloc-sondages`). Titre : « Sondages du premier
    tour de la présidentielle 2027 ». Chapeau généré au build (leader, volume,
-   delta 3 mois), bloc « Dernier sondage publié » (`#dernier-sondage`) avec
-   l'hypothèse sélectionnée, courbe de tendance par candidat, tableau des derniers
-   sondages agrégés. Généré par `scripts/build_index_premier_tour.py`.
-   En cas d'égalité de `terrain_fin`, le sondage avec le plus grand échantillon
-   est retenu.
-3. **Second tour** (`#second-tour`). Repères factuels, chapeau généré au build,
-   tableau de tous les duels mesurés, sélecteur de détail par duel (voir §7).
-4. **Cotes des marchés de prédiction** (`#bloc-polymarket`). Évolution des
+   delta 3 mois), sélecteur de période, courbe de tendance par candidat. Généré par
+   `scripts/build_index_premier_tour.py` (qui produit aussi la carte du point 2).
+4. **Sondages par candidat** (`#bloc-candidats`) : vignettes vers les fiches.
+5. **Modèle Sondax** (`#modele-sondax`). Généré par `scripts/build_modele.py`
+   (§14.14.1).
+6. **Second tour** (`#second-tour`). Repères factuels, chapeau généré au build, duel
+   principal seul (le plus récemment mesuré, règle inchangée), puis un lien « Voir les
+   autres duels » (`<details>` natif, replié par défaut, contenu présent dans le HTML
+   servi) qui déplie le tableau des autres duels testés et celui des duels testés avec
+   Jordan Bardella avec sa phrase d'explication. Sélecteur « Explorer un duel » en fin
+   de bloc (voir §7).
+7. **Cotes des marchés de prédiction** (`#bloc-polymarket`). Évolution des
    probabilités implicites par candidat, deux onglets : accession au second tour
    et victoire. Les titres ne nomment pas Polymarket, la source est citée dans
    le corps du bloc et en pied de page.
+
+La sous-navigation de l'accueil suit le même ordre : Premier tour, Modèle, Second
+tour, Prédictions.
 
 La page `sondages.html` (« Explorer les sondages de la présidentielle 2027 ») porte
 en tête le module **« Explorer les sondages »** (`#bloc-fiche`) : sélection d'un
@@ -678,7 +692,8 @@ Le script de collecte **ne commite rien** si un contrôle échoue. Il s'arrête 
 3. Le nombre total de sondages n'a pas diminué par rapport au run précédent.
 4. Aucun `conditionId` de `candidats.json` n'apparaît deux fois, et chaque
    `conditionId` renseigné existe dans l'événement correspondant côté API Polymarket.
-5. **Non bloquant**, signalé sur la page de revue uniquement : pour un même candidat,
+5. `data/derived/modele.json` existe et les contrôles du moteur passent (§14.18).
+6. **Non bloquant**, signalé sur la page de revue uniquement : pour un même candidat,
    P(victoire) ≤ P(second tour). Violation fréquente sur les marchés à faible volume
    (inefficience de marché, pas erreur de collecte).
 
@@ -731,7 +746,8 @@ de requête n'est transmis.
   d'historique de données.
 - Front : site statique, lecture des JSON au build.
 - `/data/derived` est entièrement reconstructible depuis les sources et peut être
-  supprimé sans perte.
+  supprimé sans perte. `modele_history.json` n'y est donc pas : il enregistre ce que
+  le site a affiché et ne se reconstruit pas (§14.13).
 
 ```
 /data
@@ -741,6 +757,8 @@ de requête n'est transmis.
   commanditaires.json             slug de notice → nom affiché (§3.5)
   polymarket.json                 deux marchés : victoire + second tour
   historique.json                 2002-2022, produit une fois (§12)
+  historique_europeennes.json     européennes 2019 et 2024, produit une fois (§14.16)
+  modele_history.json             historique du modèle Sondax, versionné (§14.13)
   /snapshots                     wikitexte brut, immuable
   /snapshots/historique           wikitexte anglais, immuable
   /derived                       séries précalculées, jetable
@@ -756,9 +774,18 @@ de requête n'est transmis.
   series_historique.py           séries 2002-2022 pour le front
   import_historique.py           import unique depuis les snapshots anglais
   wikitable.py                   parseur de wikitables (pages anglaises)
+  import_europeennes.py          import unique des européennes (§14.16)
+  calibration.py                 erreurs historiques, N_eff → /derived (§14.5)
+  modele.py                      moteur du modèle Sondax → /derived/modele.json (§14.6)
+  test_modele.py                 tests du moteur, lancés par validation.py (§14.18)
+  backtest.py                    backtest leave-one-out → /derived (§14.17)
+  build_modele.py                page Modèle, bloc d'accueil, blocs candidat et duel
+  partage_modele.py              images de partage (§14.15)
 /site
   index.html
   sondages.html
+  modele-sondax.html             page du modèle Sondax, générée (§14)
+  /partage                       images de partage du modèle, générées (.gitignore)
   methodologie.html
   a-propos.html                  à propos, contact et mentions légales
   donnees.html                   généré par build_donnees.py
@@ -788,7 +815,7 @@ Développement et prévisualisation en local jusque-là.
 - Affichage en pied de page de la date du dernier run réussi et du `revid` utilisé.
 - **Loi du 19 juillet 1977** : interdiction de publier ou commenter des sondages la
   veille et le jour du scrutin. Le site doit pouvoir se mettre en veille automatiquement
-  sur ces dates en avril 2027.
+  sur ces dates en avril 2027. La veille couvre le modèle Sondax (§14.22).
 
 ---
 
@@ -1049,3 +1076,858 @@ jamais de logo dans ces tableaux.
 sur fond transparent ; marges recadrées ; monochrome gris foncé `#33383F`. La hauteur
 d'affichage est fixée par la CSS ; en thème sombre, la CSS inverse le gris. Un logo
 absent n'empêche pas la génération : la page s'affiche sans.
+
+### 13.8 Page du modèle Sondax
+
+URL : `/modele-sondax` (`site/modele-sondax.html`). Script : `scripts/build_modele.py`,
+après `scripts/modele.py`. Contenu et règles : §14.14.2.
+
+---
+
+## 14. Modèle Sondax
+
+### 14.1 Objet
+
+Les sondages donnent des scores et un classement ; ils disent mal si ce classement est
+solide. Deux candidats séparés d'un point peuvent avoir des chances très proches
+d'accéder au second tour ; un écart apparemment faible peut aussi correspondre à une
+situation stable. Le modèle Sondax répond à une seule question :
+
+> **Et si on votait dimanche ?** Avec les sondages disponibles aujourd'hui, qui a
+> réellement ses chances d'être au second tour, et à quel point ?
+
+Il **ne prévoit pas** le résultat d'avril 2027 : il mesure la solidité du rapport de
+forces observé aujourd'hui. Trois produits restent distincts, sur le site comme dans le
+code :
+
+| Produit | Ce qu'il dit |
+|---|---|
+| Sondages | ce que mesurent les enquêtes |
+| Modèle Sondax | ce que ces sondages permettent de dire aujourd'hui de la course au second tour |
+| Marchés | ce qu'anticipent les participants des marchés prédictifs |
+
+Jamais sur un même graphe, jamais additionnés (même règle qu'au §11 pour sondages et
+cotes).
+
+Quatre questions auxquelles le produit doit répondre :
+
+1. Qui a aujourd'hui ses chances d'être au second tour ?
+2. Quels seconds tours restent réellement possibles ?
+3. Qui gagne ou perd des chances de qualification ?
+4. À quelle distance la situation se trouve-t-elle d'un basculement ? (calculé, non
+   affiché depuis le 29 septembre 2026, §14.7)
+
+### 14.2 Architecture et navigation
+
+Trois niveaux de lecture ; la complexité d'un niveau ne remonte jamais au niveau
+au-dessus.
+
+| Niveau | Page | Promesse |
+|---|---|---|
+| 1 | Accueil, bloc `#bloc-modele` | comprendre la situation en moins de dix secondes |
+| 2 | `/modele-sondax.html` | explorer et comprendre la course |
+| 3 | `/methodologie.html#modele` | vérifier la construction statistique |
+
+- URL de la page produit : `/modele-sondax` ; canonique
+  `https://sondax.fr/modele-sondax.html` (fichier `site/modele-sondax.html`), même
+  convention que les autres pages, vérifiée par `validate_urls.py`.
+- Architecture principale affichée : **Sondages | Modèle Sondax | Marchés | Méthode**.
+  Élections passées, Instituts, Tous les sondages et Explorer un sondage restent là où
+  ils sont (bandeau et pied de page).
+- Seule la sous-navigation de l'accueil change : elle gagne une entrée **« Modèle »**
+  vers `#bloc-modele`, entre « Second tour » et « Prédictions ». Le bloc lui-même est
+  placé dans la page au même rang, entre `#second-tour` et `#bloc-polymarket`.
+- Le bandeau d'en-tête et le pied de page gagnent un lien « Modèle Sondax ».
+- La page Méthode reste une seule page : le modèle y est une section ancrée
+  (`#modele`), après la méthode de la moyenne.
+
+### 14.3 Règles de ton
+
+Le lecteur regarde les sondages comme il regarde la météo. Aucune connaissance
+statistique ne doit être nécessaire.
+
+**Sur l'accueil et la page Modèle, mots interdits** : simulation, probabilité, tirage,
+configuration, échantillon, calibration, Dirichlet, variance, distribution.
+
+**Vocabulaire à utiliser** : chances, sur 100, une chance sur trois, dimanche, duel,
+second tour, y être, basculer, se rapprocher, s'éloigner, gagner des chances, perdre
+des chances.
+
+« Modèle Sondax » est le nom du produit et peut s'employer partout. Les termes qui
+décrivent son fonctionnement sont réservés à la page Méthode.
+
+**Contrôle au build.** `build_modele.py` échoue si un mot interdit apparaît dans le
+texte rendu du bloc d'accueil ou de `modele-sondax.html`, hors lien vers la Méthode
+et hors attributs HTML. La liste des mots est une constante du script, pas un fichier
+éditable.
+
+Formats de nombres :
+
+- chances : entier, « 38 sur 100 » ; sous 1 → « moins de 1 sur 100 » ; au-dessus de 99
+  → « plus de 99 sur 100 » ;
+- évolutions : « +11 en 7 jours », « −5 en 7 jours » (vrai signe moins U+2212),
+  « stable » ;
+
+### 14.4 Moyenne d'entrée et configuration du modèle
+
+**La moyenne est celle de la page Méthode, sans exception** : valeur du jour de la
+courbe de tendance du §4 (`data/derived/series-t1.json`), c'est-à-dire, par candidat,
+l'hypothèse de référence « Attal + Philippe » ou à défaut celle qui compte le plus de
+candidats, fenêtre glissante extensible, demi-vie adaptative, **pas de pondération par
+échantillon**. Le modèle ne recalcule aucune moyenne à sa façon : il lit la série.
+
+**Configuration du modèle.** Les hypothèses de référence ne portent pas toutes les
+mêmes candidats (Glucksmann, Faure ou Hollande à gauche selon l'institut et la date).
+La liste des candidats retenus est donc calculée ainsi :
+
+1. prendre les sondages entrant dans la fenêtre de base de 30 jours du jour du calcul ;
+2. dans chacun, les hypothèses de tour 1 qui contiennent Attal **et** Philippe ;
+3. retenir l'ensemble de candidats le plus fréquent parmi ces hypothèses (« Autre »
+   exclu) ; en cas d'égalité, celui de l'hypothèse la plus récente ;
+4. retirer tout candidat dont la valeur du jour dans la série est `null` (courbe
+   interrompue), et le signaler sur la page de revue.
+
+Sur les données de septembre 2026, cela donne onze candidats : Arthaud, Attal,
+Dupont-Aignan, Glucksmann, Le Pen, Mélenchon, Philippe, Retailleau, Roussel, Tondelier,
+Zemmour. La liste est écrite dans `modele.json` (`configuration`) ; elle n'est **jamais**
+écrite en dur. Si aucune hypothèse de référence n'existe dans la fenêtre, le modèle
+n'est pas calculé et le run échoue (§14.18).
+
+**Renormalisation.** Les moyennes des candidats retenus sont ramenées à 100 %
+proportionnellement. « Autre » n'entre pas dans le calcul. Un candidat hors
+configuration n'a **pas** de chiffre de qualification : ni zéro, ni tiret, rien.
+
+Conséquence à écrire sur la page Méthode : la moyenne affichée sur les courbes
+(non normalisée, §4) et le point de départ du modèle (normalisé) diffèrent de quelques
+dixièmes. C'est attendu.
+
+### 14.5 Calibration historique — `scripts/calibration.py`
+
+**Question :** de combien la moyenne des sondages de la dernière semaine s'est-elle
+trompée, historiquement ?
+
+Pour chaque élection et chaque candidat ayant obtenu un résultat officiel au premier
+tour :
+
+- **moyenne** : moyenne simple, sans pondération, des sondages dont le `terrain_fin`
+  tombe dans les sept jours précédant le scrutin (J−7 à J−1 inclus) ; un sondage compte
+  pour une valeur ; hypothèse retenue : celle qui contient tous les candidats
+  officiels, à défaut celle qui en contient le plus ; **rollings compris**, comme au §12
+  tant qu'aucune règle n'est décidée ;
+- **erreur** : moyenne − résultat officiel, en points.
+
+Élections : présidentielles 2002, 2007, 2012, 2017, 2022 (`data/historique.json`),
+européennes 2019 et 2024 (`data/historique_europeennes.json`, §14.16).
+
+Sortie `data/derived/calibration.json`, reconstructible :
+
+```json
+{
+  "genere_le": "2026-09-28T06:12:00Z",
+  "fenetre_jours": 7,
+  "jeux": {
+    "presidentielles": {
+      "elections": ["2002", "2007", "2012", "2017", "2022"],
+      "n_comparaisons": 61,
+      "erreur_absolue_moyenne": 0.90,
+      "ecart_type": 1.40,
+      "N_eff": 345.2,
+      "par_tranche": {
+        "plus_20": { "n": 0, "erreur_absolue_moyenne": 0, "ecart_type": 0 },
+        "10_20":   { "n": 0, "erreur_absolue_moyenne": 0, "ecart_type": 0 },
+        "moins_10": { "n": 0, "erreur_absolue_moyenne": 0, "ecart_type": 0 }
+      },
+      "histogramme": [{ "de": -5.0, "a": -4.5, "n": 0 }],
+      "principales_erreurs": [
+        { "election": "2002", "candidat": "jospin", "moyenne": 0, "resultat": 16.18, "erreur": 0 }
+      ],
+      "qualifies_annonces_justes": { "2002": false, "2007": true }
+    },
+    "europeennes": {},
+    "ensemble": {}
+  }
+}
+```
+
+(Valeurs nulles de l'exemple : illustratives.) `principales_erreurs` : les dix plus
+grandes erreurs absolues. `qualifies_annonces_justes` : les deux premiers de la moyenne
+sont-ils les deux qualifiés réels.
+
+**Estimateur de `N_eff`** (méthode des moments, sur les parts normalisées `p`, en
+proportion) :
+
+```
+N_eff = Σ p(1−p) / Σ erreur² − 1
+```
+
+En effet, pour une loi de Dirichlet de paramètre `N_eff · p`,
+`Var(Xᵢ) = pᵢ(1−pᵢ)/(N_eff + 1)`.
+
+**Résultat de référence**, reproduit sur `data/historique.json` avec les règles
+ci-dessus : 61 comparaisons, erreur absolue moyenne 0,90 point, écart-type 1,40,
+`N_eff` ≈ 345. 2002 est la seule année où les deux qualifiés annoncés ne sont pas les
+bons. Sans les rollings, on obtient 0,89 / 1,37 / 356 : le choix est documenté, l'écart
+est négligeable.
+
+**Deuxième estimation : la moyenne Sondax à J−7** (décision du 28 septembre 2026).
+Le moteur part de la moyenne Sondax (§4), pondérée par la récence, pas de la moyenne
+simple de la dernière semaine. `calibration.py` estime donc aussi `N_eff` sur les
+erreurs de **cette** moyenne, calculée avec les seuls sondages connus sept jours avant
+le scrutin (`moyenne_sondax_j7` dans `calibration.json`). C'est cette estimation qui
+règle le moteur : on calibre sur ce qu'on publie, à l'horizon de « si on votait
+dimanche ». Référence : écart-type 1,86 (présidentielles), 1,56 (européennes), 1,75
+(ensemble) ; `N_eff` ≈ 195, 192 et 194. La première version (moyenne simple,
+`N_eff` 350) était trop sûre d'elle : voir la comparaison du backtest (§14.17).
+
+**Valeur retenue.** Le script **propose**, il ne décide pas. La valeur utilisée par le
+moteur est écrite à la main dans `data/config.json` :
+
+```json
+"modele": {
+  "N_eff": 190,
+  "N_eff_source": "ensemble_sondax_j7",
+  "k_melange": 2,
+  "tirages": 50000,
+  "graine": 20270418
+}
+```
+
+`N_eff_source` : nom du jeu (`presidentielles`, `europeennes`, `ensemble`), suffixé
+`_sondax_j7` quand l'estimation est celle de la moyenne Sondax.
+
+`N_eff` y est arrondi à la dizaine. La page de revue signale (sans bloquer) tout écart
+de plus de 20 % entre la valeur retenue et l'estimation du jeu déclaré dans
+`N_eff_source`. On ne change de source (`ensemble` après l'import des européennes)
+qu'après avoir regardé le backtest (§14.17).
+
+### 14.6 Moteur — `scripts/modele.py`
+
+**Loi.** Chaque premier tour simulé est un vecteur tiré d'une loi de Dirichlet de
+paramètre `α = N_eff · p`, où `p` est le vecteur des moyennes normalisées (§14.4). Deux
+propriétés justifient ce choix : chaque tirage totalise 100 %, et l'ampleur possible de
+l'erreur dépend du niveau du candidat (écart-type ≈ 2,3 points à 25 %, ≈ 0,75 point à
+2 % avec `N_eff` = 350).
+
+**Tirages.** 50 000 (`config.json`, `modele.tirages`). Tirage par variables gamma
+(`Xᵢ = Gᵢ / ΣG`, `Gᵢ ~ Gamma(αᵢ, 1)`).
+
+**Mélange** (`k_melange`, décision du 28 septembre 2026). Certaines élections, les
+sondages se trompent plus que d'autres (2002, 2022). Pour chaque premier tour tiré, le
+paramètre n de la Dirichlet est lui-même tiré selon une loi gamma de forme `k` et
+d'échelle `N_eff / (k − 1)`, de sorte que `E[1/n] = 1/N_eff` : l'ampleur **moyenne**
+des erreurs reste celle qui a été calibrée, seules les queues s'épaississent. `k` = 2,
+choisi par leave-one-out sur les présidentielles (perte logarithmique). `null`
+désactive le mélange.
+
+**Graine fixe**, la même à chaque run (`config.json`, `modele.graine`) : deux runs sur
+les mêmes données donnent exactement le même résultat, et d'un jour à l'autre les
+écarts ne viennent que des données, pas du hasard des tirages. Le bruit résiduel de
+50 000 tirages est d'environ 0,2 point de chance à 50 sur 100.
+
+**Dépendance.** `numpy` (générateur `numpy.random.default_rng(graine)`). C'est la
+première dépendance hors bibliothèque standard ; elle est installée dans les deux
+workflows et figée dans un `requirements.txt`. En pur Python, le point de bascule
+(plusieurs dizaines de millions de tirages gamma) prendrait plusieurs minutes.
+
+**Comptage**, pour chaque tirage : classer les candidats par part décroissante (égalité
+exacte : ordre de la configuration, cas de probabilité nulle en pratique).
+
+- qualification d'un candidat : rang 1 ou 2 ; chance = qualifications / tirages ;
+- rangs : 1er, 2e, 3e ou moins ;
+- duel : paire non ordonnée des deux premiers, identifiée par les deux slugs dans
+  l'ordre alphabétique (même convention que les pages de duel, §7.1).
+
+Toutes les fréquences sont gardées **exactes** (deux décimales) pour les calculs
+d'évolution et les tests, et **arrondies à l'entier** pour l'affichage. Une évolution
+se calcule sur les valeurs exactes, puis s'arrondit.
+
+### 14.7 Point de bascule
+
+**Calculé, non affiché** (décision du 29 septembre 2026). Le calcul ci-dessous est
+conservé : `seuil_bascule` et `delta_bascule` restent dans `modele.json` et
+l'historique, et l'événement `bascule_change` reste détecté (§14.10). Mais la notion
+n'apparaît plus nulle part sur le site : ni sur la page Modèle, ni sur les fiches
+candidat, ni sur la page Méthode, ni dans les textes générés. Les règles d'affichage
+qui suivent sont donc en sommeil.
+
+Pour chaque candidat dont la chance de qualification est **inférieure à 50 sur 100**
+et qui figure parmi les **quatre premiers** en chances de qualification :
+
+1. faire varier sa part `x` (échelle normalisée) ;
+2. rendre ou prendre la différence **proportionnellement à tous les autres** :
+   `pⱼ' = pⱼ · (100 − x) / (100 − pᵢ)` — le choix le plus neutre ;
+3. relancer le moteur (même graine, donc fonction lisse de `x`) ;
+4. chercher par dichotomie le `x` qui donne 50 sur 100, entre `pᵢ` et `pᵢ + 10`,
+   tolérance 0,05 point, 20 itérations au plus.
+
+Stocker `seuil_bascule` (= `x`, une décimale) et `delta_bascule` (= `x − pᵢ`, une
+décimale). Si 50 sur 100 n'est pas atteint à `pᵢ + 10`, `seuil_bascule` et
+`delta_bascule` valent `null`.
+
+**Affichage** : arrondi au demi-point le plus proche, 0,5 minimum (« à environ 1 point »
+pour 0,8 ou 1,2 ; jamais « +1,27 point »). Affiché seulement si `delta_bascule` ≤ 4. Jamais
+calculé pour un candidat déjà à 50 sur 100 ou plus. Le chiffre public est un ordre de
+grandeur, présenté comme tel.
+
+Texte associé : « Avec environ un point de plus dans les sondages actuels, ses chances
+d'être au second tour seraient proches d'une sur deux. »
+
+### 14.8 Verdicts
+
+Calculés sur la chance **arrondie affichée**, pour que le mot et le nombre ne se
+contredisent jamais :
+
+| Chances | Verdict |
+|---|---|
+| plus de 90 | Quasi sûr(e) d'y être |
+| 60 à 90 | Bien placé(e) |
+| 25 à 59 | Rien n'est joué |
+| 8 à 24 | Il faudrait une surprise |
+| moins de 8 | Très improbable aujourd'hui |
+
+Accord selon `genre` (`candidats.json`) ; entrée `type: parti` au masculin (« le
+candidat PS »). **« Hors course » est proscrit** : un événement à 5 ou 7 chances sur 100
+reste possible. Les seuils sont des constantes du générateur, ajustables après la
+revue de la phase A (§14.21).
+
+### 14.9 Évolutions
+
+Stockées : `evolution_1j`, `evolution_7j`, `evolution_30j`, pour chaque candidat
+(qualification) et chaque duel. Définition : valeur exacte du jour − valeur exacte de
+la dernière entrée de l'historique datée de J−1, J−7, J−30 ou avant (§14.13). Pas
+d'entrée assez ancienne → `null`.
+
+**Affichage** (7 jours par défaut) :
+
+- `« +11 en 7 jours »` / `« −5 en 7 jours »` si |évolution arrondie| ≥ 2 ;
+- `« stable »` si |évolution arrondie| ≤ 1.
+
+**Règle unique : l'attribution** (décision du 28 septembre 2026, brief §5.11). Quand un
+**seul** sondage est entré dans le calcul depuis 7 jours, l'évolution le nomme :
+« +13 en 7 jours, après le sondage Harris du 24 septembre ». Avec deux sondages ou
+plus, formulation générale. Un sondage « entré » est un identifiant présent dans
+`sondages_utilises` (§14.13) du jour et absent de celui de l'entrée de J−7.
+L'ancienne règle des trois sondages (« peu de changement » sous ce seuil) est
+supprimée : elle affichait « peu de changement » pour un candidat qui venait de perdre
+13 chances à cause d'un seul sondage ; nommer ce sondage est plus honnête.
+
+L'évolution porte sur les **chances**, jamais sur le score dans les sondages : le
+libellé le dit (« chances »), et les deux chiffres ne sont jamais juxtaposés sans ce
+mot.
+
+### 14.10 Événement du jour — « Ce qui a changé »
+
+Détection déterministe, sans modèle de langue, dans `modele.py`. Deux horizons, dans
+l'ordre :
+
+1. **depuis la dernière mise à jour** (`horizon: "maj"`), si au moins un sondage est
+   entré depuis ;
+2. **sur 7 jours** (`horizon: "7j"`), si au moins un sondage est entré.
+
+Pour chaque horizon, première règle vérifiée dans cet ordre de priorité :
+
+| Priorité | `type` | Condition |
+|---|---|---|
+| 1 | `duel_principal_change` | le duel le plus fréquent n'est plus le même |
+| 2 | `deuxieme_change` | le deuxième candidat en chances de qualification n'est plus le même |
+| 3 | `candidate_gain` / `candidate_loss` | variation d'au moins 5 chances pour un candidat (le plus grand écart absolu l'emporte) |
+| 4 | `verdict_change` | un candidat change de verdict (§14.8) |
+| 5 | `bascule_change` | `delta_bascule` affiché varie d'au moins 1 point |
+| 6 | `peu_de_changement` | sinon |
+
+Si aucun sondage n'est entré depuis la dernière mise à jour ni dans les 7 jours :
+`type: "aucun_sondage"`.
+
+```json
+"changement": {
+  "type": "candidate_gain",
+  "horizon": "maj",
+  "candidate": "philippe",
+  "avant": 31.2,
+  "apres": 38.4,
+  "delta": 7,
+  "sondages_declencheurs": ["ifop-2026-09-25"]
+}
+```
+
+`sondages_declencheurs` : sondages entrés sur l'horizon retenu. Le front choisit la
+formulation : **attribuée** si la liste a un élément (« Le sondage Ifop du
+25 septembre rapproche Philippe : +7 chances sur 100. »), **générale** sinon
+(« Philippe se rapproche. Ses chances d'être au second tour passent de 31 à 38 sur
+100. »). L'attribution est plus honnête qu'un « Philippe se rapproche » fondé sur une
+seule enquête.
+
+Gabarits (une phrase de titre, une phrase de détail, pas plus) :
+
+| `type` | Titre | Détail |
+|---|---|---|
+| `duel_principal_change` | « {A} – {B} devient le second tour le plus fréquent. » | chances avant → après |
+| `deuxieme_change` | « {X} repasse devant {Y}. » | chances des deux |
+| `candidate_gain` | « {X} se rapproche. » | « Ses chances passent de {a} à {b} sur 100. » + conséquence sur les duels si le rang d'un duel change |
+| `candidate_loss` | « {X} s'éloigne. » | idem |
+| `verdict_change` | « {X} : {verdict}. » | chances avant → après |
+| `bascule_change` | aucun texte : événement détecté mais non affiché (§14.7) | — |
+| `peu_de_changement` | « Peu de changement aujourd'hui. » | « Le dernier sondage reste proche de la moyenne actuelle et modifie peu la course au second tour. » |
+| `aucun_sondage` | « Pas de nouveau sondage depuis la dernière mise à jour. » | — |
+
+« Se rapproche » / « s'éloigne » s'entendent du second tour : ne pas les employer pour
+un candidat déjà à plus de 90.
+
+### 14.11 Accroche
+
+Générée à chaque mise à jour, deux phrases au plus, à partir de `modele.json`. Règles
+dans l'ordre (`q1 ≥ q2 ≥ q3` : chances de qualification des trois premiers) :
+
+1. **second tour dessiné** — `q2 ≥ 80` et `q3 < 20` : « Le second tour semble se
+   dessiner. Les deux premiers ont aujourd'hui une nette avance sur leurs
+   poursuivants. » (Phase B : « Le second tour se stabilise. » si, en plus, la règle
+   était déjà vérifiée à J−7.)
+2. **course serrée** — `q2 − q3 < 15` : « La course à la deuxième place est serrée.
+   {X} et {Y} ont des chances très proches d'être au second tour. »
+3. **cas général** — « {A} – {B} est aujourd'hui le second tour le plus plausible.
+   {C} a {q} chances sur 100 d'y être. » ({C} : le troisième.)
+
+Avec historique (phase B), les formulations de mouvement deviennent possibles, et
+**seulement** avec lui : « se resserre » exige que `q2 − q3` ait diminué d'au moins
+5 sur 7 jours ; « reste » exige que le duel principal soit le même qu'à J−7 ;
+« contre {n} il y a une semaine » exige une entrée d'historique à J−7. Sans
+historique, aucun mot ne suppose un changement (« désormais », « reste », « se
+resserre » sont exclus en phase A).
+
+### 14.12 Structure de `modele.json`
+
+`data/derived/modele.json`, reconstructible à partir des données et de l'historique.
+
+```json
+{
+  "date": "2026-09-28T06:12:00Z",
+  "revid": 239883627,
+  "configuration": ["arthaud", "attal", "dupont-aignan", "glucksmann", "le-pen",
+                    "melenchon", "philippe", "retailleau", "roussel", "tondelier", "zemmour"],
+  "n_sondages": 12,
+  "sondages_utilises": ["harris-2026-09-24", "ipsos-2026-09-09"],
+  "N_eff": 350,
+  "N_eff_source": "presidentielles",
+  "tirages": 50000,
+  "graine": 20270418,
+
+  "candidats": {
+    "philippe": {
+      "moyenne": 17.9,
+      "moyenne_normalisee": 18.1,
+      "qualification": 38,
+      "qualification_exacte": 38.41,
+      "verdict": "rien_nest_joue",
+      "evolution_1j": 2,
+      "evolution_7j": 11,
+      "evolution_30j": 15,
+      "sondages_entres_7j": 3,
+      "rang": { "1": 5, "2": 33, "3plus": 62 },
+      "seuil_bascule": 18.5,
+      "delta_bascule": 1.0
+    }
+  },
+
+  "duels": [
+    { "candidats": ["le-pen", "melenchon"], "chance": 44, "chance_exacte": 43.87,
+      "evolution_1j": -1, "evolution_7j": -6, "evolution_30j": null }
+  ],
+
+  "changement": { "type": "candidate_gain", "horizon": "maj", "candidate": "philippe",
+                  "avant": 31.2, "apres": 38.4, "delta": 7,
+                  "sondages_declencheurs": ["ifop-2026-09-25"] },
+
+  "accroche": { "regle": "general", "titre": "…", "detail": "…" }
+}
+```
+
+- `n_sondages` : nombre de sondages distincts portant la moyenne du jour ;
+  `sondages_utilises` : leurs identifiants (sert à l'attribution, §14.10).
+- `duels` : **tous** les duels observés au moins une fois, triés par chance
+  décroissante.
+- `rang` : entiers arrondis pour l'affichage ; le test de somme (§14.18) porte sur les
+  comptes exacts.
+- Champs d'évolution et de bascule : absents ou `null` en phase A ; le front les ignore
+  alors sans message.
+
+### 14.13 Historisation — `data/modele_history.json`
+
+À chaque run de collecte, une entrée est **ajoutée** :
+
+```json
+{
+  "date": "2026-09-28T06:12:00Z",
+  "reconstitue": false,
+  "configuration": ["…"],
+  "sondages_utilises": ["…"],
+  "moyennes": { "philippe": 18.1 },
+  "qualification": { "philippe": 38.41 },
+  "rangs": { "philippe": { "1": 5.02, "2": 33.39, "3plus": 61.59 } },
+  "duels": { "le-pen+melenchon": 43.87 },
+  "delta_bascule": { "philippe": 1.0 }
+}
+```
+
+**Écart assumé avec la demande initiale** : le fichier est versionné dans `data/`, pas
+dans `data/derived/`. `data/derived/` est ignoré par git et supprimable sans perte
+(§9) ; un historique de ce que le site a affiché, lui, ne se reconstruit pas. Il est
+commité avec les données dans la pull request de collecte. Une PR non fusionnée perd
+son entrée : l'historique a alors un trou, et les évolutions prennent la dernière
+entrée disponible avant la date cible.
+
+**Amorçage** : une exécution unique (`modele.py --reconstituer`) calcule une entrée
+par jour depuis le premier sondage de référence (fin mai 2026), avec les sondages dont
+`terrain_fin` ≤ jour, marquées `reconstitue: true`. Elles alimentent la courbe
+« Depuis le début » ; la page Méthode signale qu'elles sont recalculées après coup.
+
+Usages : évolutions 1 j / 7 j / 30 j, courbes (§14.14.5), contenus partagés (§14.15),
+événement du jour (§14.10).
+
+### 14.14 Pages et blocs
+
+#### 14.14.1 Bloc d'accueil (`#bloc-modele`)
+
+Rendu au build (contrainte générale du §1) par `scripts/build_modele.py`
+(`bloc_accueil`). Version simplifiée (décision du 29 septembre 2026), de haut en bas :
+
+1. **Surtitre** « Modèle Sondax ».
+2. **Titre** : « Qui serait au second tour si on votait dimanche prochain ? »
+3. **Une phrase**, sans gras, générée (`phrase_duel_principal`) : « {duel le plus
+   fréquent} reste, au vu des sondages les plus récents, le second tour le plus
+   plausible. » ; « est » au lieu de « reste » si ce duel n'était pas le plus fréquent
+   à la référence de 7 jours.
+4. **Gaufre de 100 carrés et liste des duels** : variante « accueil » du composant de
+   la page Modèle (`composant_duels(…, variante="accueil")`, une seule fonction). Ni
+   titre ni phrase d'explication. Chaque ligne : pastille, duel, « {n} chances sur
+   100 » (« 1 chance sur 100 » au singulier), variation datée « +13 depuis le 21/9 » /
+   « −12 depuis le 21/9 » / « stable » si l'écart arrondi est nul. La date affichée
+   est J−7 par rapport à la mise à jour, à l'heure de Paris (21/9 pour une mise à
+   jour du 28/9), au format j/m sans zéro initial ; la valeur comparée est celle en
+   vigueur ce jour-là, c'est-à-dire la dernière entrée d'historique datée de J−7 ou
+   avant (§14.9), qui peut être plus ancienne quand aucun sondage n'est entré entre
+   les deux. Pas de variation s'il n'existe aucune entrée à J−7. « Autres scénarios ·
+   {n} chances sur 100 » en ligne grisée, sans variation. Sous 600 px : gaufre
+   au-dessus de la liste, variation sous les chances.
+5. **Lien texte** : « Comment ces probabilités sont-elles calculées ? → » vers
+   `methodologie.html#modele`. Seule exception à la liste des mots interdits (§14.3),
+   déclarée dans `EXCEPTIONS_VOCABULAIRE`.
+
+Plus de bouton, de ligne de contexte, d'accroche développée ni de barres par
+candidat sur l'accueil. Le nombre de sondages et la date de mise à jour restent
+affichés sur la page Modèle (ligne de contexte). L'accroche du jour (§14.11) reste
+calculée : elle sert à la page Modèle, à la meta description et au partage.
+
+#### 14.14.2 Page « Le modèle Sondax » (`/modele-sondax`)
+
+Structure (décision du 29 septembre 2026), dans cet ordre et rien d'autre :
+
+1. **Titre** : « Le modèle Sondax », sans surtitre.
+2. **« Comment fonctionne ce modèle ? »** (ancre `#comment-fonctionne`, cible du
+   lien « Comment ces probabilités sont-elles calculées ? » de l'accueil). Texte fourni
+   tel quel (`EXPLICATION` dans `build_modele.py`), quatre paragraphes. Le nombre de
+   tirages vient de `modele.json` ; le nombre de l'exemple (« 30 000 simulations sur
+   50 000 ») en est 60 %, pour rester juste. Les deux premiers paragraphes sont
+   visibles, les deux derniers repliés sous « Lire la suite » (`<details>` natif ; le
+   lien disparaît une fois le texte déplié). Ce texte est exclu du contrôle des mots
+   réservés (§14.3), le reste de la page y reste soumis.
+3. **« Chances d'être au second tour »** : tous les candidats de la configuration,
+   par chances décroissantes. Par ligne : photo, nom, barre, « {n} sur 100 »,
+   verdict, évolution 7 jours (§14.9). Pas de point de bascule (§14.7).
+4. **« Évolution des chances d'être au second tour »** : sélecteur 7 jours | 30 jours
+   | Depuis le début, une courbe par candidat, les quatre premiers cochés par défaut.
+   Les candidats remplacés (`succede_a` dans `candidats.json` : Bardella) ne sont pas
+   proposés ; l'historique n'est pas modifié. Titre et axe disent « chances sur
+   100 », jamais « % ».
+
+Retirés de la page (le code reste, pour l'accueil ou un usage ultérieur) : sous-titre
+et introduction, « Aujourd'hui », « Ce qui a changé », « Les seconds tours
+possibles » (composant partagé avec l'accueil, §14.14.1), « Qui finit où ? »,
+« Comment lire ces chiffres », bouton Partager. Métadonnées : `<title>` « Qui serait
+au second tour si on votait dimanche ? — Modèle Sondax », meta description générée à
+partir de l'accroche, `og:image` du jour (§14.15).
+
+#### 14.14.3 Fiches candidat (§13.1)
+
+Sous le score moyen, bloc « Et si on votait dimanche ? » :
+
+- « {n} chances sur 100 d'être au second tour » ;
+- verdict ;
+- évolution 7 jours (phase B) ;
+- « Son second tour le plus fréquent : face à {X}. » — le duel le plus fréquent qui
+  contient le candidat ; affiché seulement si ses chances sont d'au moins 8 ;
+- petite courbe « Évolution de ses chances de qualification », 7 jours / 30 jours
+  (phase B).
+
+Bloc **absent** si le candidat n'est pas dans la configuration.
+
+#### 14.14.4 Pages duel (§7.1, §13.4)
+
+Sur chaque page de duel existante dont le duel figure dans `modele.json` :
+
+```text
+Le Pen – Philippe
+31 fois sur 100 aujourd'hui
+22 il y a une semaine
++9 en 7 jours
+```
+
+avec un libellé de rang : 1er → « Le second tour le plus fréquent aujourd'hui » ;
+2e → « Le deuxième second tour le plus fréquent », complété de « près d'un second tour
+sur {k} » quand `100/k` est à moins de 3 de la valeur pour `k` ∈ {2, 3, 4, 5} ;
+moins de 5 → « Peu fréquent aujourd'hui ». Un duel du modèle sans page (moins de
+5 sondages, §7) n'en reçoit pas pour autant : il reste listé sur la page Modèle.
+
+Le bloc est visuellement séparé des intentions de vote de second tour : il ne dit rien
+du vainqueur du duel (§14.20).
+
+#### 14.14.5 Courbes
+
+Données lues dans `modele_history.json`. Courbes en **SVG rendu au build**
+(`scripts/courbes_modele.py`), pas en Chart.js : elles sont présentes dans le HTML
+servi (contrainte du §1) et le JavaScript ne fait que changer de période et masquer
+ou afficher un candidat. Tracé en marches, sans interpolation : les chances ne
+changent qu'à l'entrée d'un sondage. Points reconstitués (§14.13) sans distinction
+visuelle, mais signalés sous la courbe et sur la page Méthode.
+
+### 14.15 Partage
+
+Images générées au build par `scripts/partage_modele.py` (Pillow ; polices du site,
+Space Grotesk et IBM Plex Sans, embarquées dans `scripts/fonts/` sous licence OFL),
+dans `site/partage/` (ignoré par git), nom daté pour contourner les caches
+(`modele-2026-09-28-og.png`). `site/partage/modele.json` donne au bouton le gabarit,
+la phrase et les chemins ; l'`og:image` de la page Modèle pointe vers l'image du
+jour (`render_page(og_image=…)`).
+
+| Format | Taille | Usage |
+|---|---|---|
+| `og` | 1200 × 630 | OpenGraph, LinkedIn, X (carte large) |
+| `carre` | 1080 × 1080 | messageries, réseaux mobiles |
+
+Trois gabarits, choisis par le type d'événement du jour :
+
+1. **duel principal** (défaut) : « Et si on votait dimanche ? » / « Le Pen – Mélenchon »
+   / « Le second tour le plus fréquent aujourd'hui. » ;
+2. **mouvement** (`candidate_gain`/`candidate_loss` sur 7 jours) : « Philippe gagne
+   11 chances d'être au second tour en une semaine. » ;
+3. **course serrée** (`deuxieme_change`, ou accroche « course serrée ») : « La course à
+   la deuxième place devient indécise. »
+
+Chaque image porte « sondax.fr », la date et « Ne prédit pas avril 2027 ».
+
+**Bouton « Partager »** : `navigator.share` (avec l'image quand
+`navigator.canShare({files})` l'accepte) ; sinon menu avec « Copier la phrase »,
+« Copier le lien », « Télécharger l'image ». La phrase copiée est le titre de
+l'accroche suivi du lien. Aucun bouton tiers ni script de réseau social. Événement
+GoatCounter `partage/<gabarit>/<methode>` ajouté à la liste fermée du §8.
+
+### 14.16 Import des européennes — `scripts/import_europeennes.py`
+
+Même démarche que `import_historique.py` (§12) : pages Wikipédia anglaises figées par
+`revid`, snapshots dans `data/snapshots/historique/`, sortie unique
+`data/historique_europeennes.json` au même schéma que `historique.json` (listes
+plutôt que candidats : l'identifiant est le slug du sigle de la colonne,
+`type: "liste"`). Élections : 2019, 2024. Uniquement les sondages nationaux.
+
+- **2019** : « Opinion polling for the 2019 European Parliament election in France »
+  (revid 1306346350) ; le résultat officiel est la ligne de l'élection en tête du
+  tableau.
+- **2024** : pas de page de sondages en anglais ; tableau de la section « Opinion
+  polling » de « 2024 European Parliament election in France » (revid 1370942182).
+  Résultat : voix du modèle `{{Election results}}` du même article, rapportées au
+  total des exprimés, avec une correspondance liste → colonne écrite à la main
+  (`RESULTATS_2024`). Les listes sondées sans liste correspondante au scrutin (GE,
+  PS dissident, NE, DLF) n'ont pas de résultat et n'entrent pas dans les
+  comparaisons.
+- Une ligne dont le nombre de cellules ne correspond pas à l'en-tête est écartée et
+  comptée (18 en 2024, toutes de 2023 : hypothèses de listes d'union) ; une cellule
+  fusionnée sur plusieurs listes va dans `scores_groupes`, « <0,5 » dans
+  `scores_inferieurs_a`.
+
+Référence au 28 septembre 2026 : européennes seules, 34 comparaisons, erreur absolue
+moyenne 0,83, écart-type 1,44, `N_eff` ≈ 227 ; ensemble, 95 comparaisons, 0,88, 1,41,
+`N_eff` ≈ 300. Le défaut de la loi entre 10 et 20 % se retrouve (LR 2019 : +4,5 ;
+EELV 2019 : −5,7). `N_eff_source` reste `presidentielles` en attendant une
+décision.
+
+Précaution : les européennes comptent beaucoup de listes (plus de 30 en 2024) ; les
+petites listes non sondées n'entrent pas dans les comparaisons (même règle que la
+présidentielle : un candidat non sondé n'a pas de moyenne).
+
+### 14.17 Backtest — `scripts/backtest.py`
+
+**Question :** qu'aurait affiché Sondax avant les présidentielles précédentes ?
+
+Pour chaque présidentielle 2002-2022, **en leave-one-out** : calibrer `N_eff` sur toutes
+les autres élections (présidentielles et européennes), avec l'estimateur du moteur
+(moyenne Sondax à J−7), puis, pour l'élection testée :
+
+1. ne garder que les sondages dont `terrain_fin` ≤ J−7 ;
+2. calculer la moyenne **avec le code de la courbe** (`series_historique.py`, même
+   méthode qu'en 2027, §12), valeur à J−7 ;
+3. configuration : candidats officiels ayant une moyenne ;
+4. appliquer exactement le moteur actuel (même nombre de tirages, même graine) ;
+5. chances de qualification, rangs, duels ;
+6. comparer au résultat réel.
+
+Sortie `data/derived/backtest.json` et deux tableaux :
+
+```text
+Élection | candidat | moyenne | chances de qualification | qualifié ?
+Élection | duel principal Sondax | chances | duel réel | chances du duel réel
+```
+
+Plus, sur l'ensemble des cinq runs : **score de Brier** et **table de fiabilité** par
+tranche de chances (0-10, 10-25, 25-60, 60-90, 90-100 : nombre de cas, moyenne annoncée,
+fréquence observée). Un résultat donné à 10 sur 100 doit correspondre à un événement
+rare mais possible.
+
+À regarder en priorité : 2002 (chances annoncées pour Le Pen) et 2022.
+
+`backtest.json` contient aussi une **comparaison** avec la méthode de la phase A
+(moyenne simple, présidentielles, sans mélange) : Brier, perte logarithmique et
+chances données au qualifié le moins attendu de chaque élection. Au 28 septembre
+2026 : perte logarithmique 0,159 → 0,125 ; Le Pen 2002 : 1,3 → 4 sur 100.
+
+Deux réserves à écrire telles quelles sur la page Méthode : cinq élections, c'est peu,
+toute conclusion reste prudente ; et l'horizon du backtest (sondages à J−7) est plus
+dur que celui de la calibration (sondages de la dernière semaine), ce qui pénalise un
+peu le modèle.
+
+### 14.18 Tests et validation
+
+`scripts/validation.py` échoue (exit 1, pas de PR) si `modele.json` manque ou si l'un
+des contrôles suivants échoue. Tests unitaires dans `scripts/test_modele.py`, lancés par
+`validation.py` :
+
+- chaque tirage totalise 1 (tolérance 1e-9) ;
+- somme des comptes de qualification = 2 × tirages exactement ;
+- pour chaque candidat, somme des comptes de rangs = tirages ;
+- somme des comptes de duels = tirages ;
+- aucune chance < 0 ni > 100 ;
+- deux runs avec la même graine donnent un `modele.json` identique (hors `date`) ;
+- vecteur test `[40, 20, 15, 10, 8, 7]`, `N_eff` = 350 : chances du candidat à 40 ≥ 99 ;
+- vecteur test `[30, 20, 20, 15, 15]` : les deux candidats à 20 ont des chances égales
+  à 1 point près (symétrie) ;
+- point de bascule : `seuil_bascule` donne bien 50 ± 1 sur 100 quand on relance le
+  moteur avec ce seuil ;
+- `configuration` non vide et contenant au moins trois candidats ;
+- mélange : chaque tirage totalise 100, même graine même résultat, et la variance de
+  chaque part reste celle de `N_eff` à 5 % près.
+
+Pas de test sur les sommes des chiffres **arrondis** : 200 et 100 n'y sont pas garantis,
+et ce n'est pas une erreur.
+
+### 14.19 Page Méthode — section `#modele`
+
+Destinée au lecteur qui veut vérifier. Titre de section : « Comment fonctionne le
+modèle Sondax ? ». Tous les chiffres viennent de `calibration.json`, `backtest.json` et
+`config.json`, injectés au build entre marqueurs (`<!-- BEGIN:methode-modele -->`),
+**jamais codés en dur**.
+
+1. **Point de départ** : moyenne du jour, configuration de référence, renormalisation,
+   « Autre » exclu, candidats hors configuration sans chiffre (§14.4).
+2. **Erreurs historiques** : élections, nombre de comparaisons, erreur absolue moyenne,
+   écart-type, histogramme, erreurs par tranche, dix plus grandes erreurs (§14.5).
+3. **50 000 premiers tours** : loi de Dirichlet centrée sur les intentions de vote ;
+   total de 100 % ; ampleur des erreurs selon le niveau du candidat.
+4. **Calibration** : formule de `N_eff`, valeurs par jeu (présidentielles,
+   européennes, ensemble), valeur retenue et pourquoi.
+5. **Comptage** : qualification, rang, duel ; arrondis.
+6. **Backtest** : tableaux et table de fiabilité, réserves (§14.17).
+7. **Limites de la loi** (§14.20).
+8. **Ce que le modèle ne fait pas** (§14.20), et la phrase centrale : « Le modèle Sondax
+   mesure la solidité du classement observé aujourd'hui. Il ne prédit pas le résultat
+   de l'élection d'avril 2027. »
+
+### 14.20 Validation de la loi, limites, hors périmètre
+
+**Validation** (dans `backtest.py`, sortie dans `backtest.json`) : comparer, sur les
+erreurs historiques, la loi de Dirichlet calibrée à ce qu'on observe :
+
+- variance globale ;
+- queues : part des erreurs au-delà de 2 et 3 écarts-types attendus ;
+- erreurs selon le niveau : plus de 20 %, 10 à 20 %, moins de 10 % ;
+- corrélations entre erreurs des candidats d'une même élection. La Dirichlet n'impose
+  que des corrélations **négatives** et faibles ; une sous-estimation commune à deux
+  candidats proches (même électorat) ne peut pas y être reproduite.
+
+Les limites constatées sont **documentées** sur la page Méthode. Le moteur n'est pas
+complexifié en conséquence sans décision explicite : modèle simple, backtest,
+transparence.
+
+**Le modèle ne fait pas** : correction de biais supposés (petits candidats, dynamique,
+instituts) ; pondération par institut ; prévision de l'évolution des intentions de
+vote ; prise en compte de campagnes, débats, retraits ou événements futurs.
+
+**Hors périmètre v1** : chances de gagner l'élection ; résultat du second tour ;
+prédiction d'avril 2027 ; scénarios de retrait ; candidatures hypothétiques ; correction
+manuelle des biais ; pondération par institut ; modèle d'événements futurs ; prévision
+des intentions de vote.
+
+### 14.21 Tests de compréhension
+
+Avant publication, sur la version de la phase A, faire répondre quelques lecteurs non
+spécialistes :
+
+- Que signifie « 38 chances sur 100 » ?
+- Sondax dit-il que Philippe fera 38 % ?
+- Sondax prédit-il avril 2027 ?
+- Que signifie « +11 en une semaine » ?
+- Quelle différence entre la courbe des sondages et la courbe du modèle ?
+
+Une confusion importante impose de revoir le wording avant publication. Les réponses
+et les changements décidés sont consignés dans la PR correspondante.
+
+### 14.22 Production
+
+- `collecte.yml` : après `series.py`, `modele.py --historiser` (calcul + ajout d'une
+  entrée à `modele_history.json`), puis `validation.py --modele` (modele.json présent,
+  tests du §14.18) ; `modele_history.json` est ajouté au commit de collecte.
+- `pages.yml` : `calibration.py`, `backtest.py`, `modele.py` (sans historiser),
+  `partage_modele.py`, `build_modele.py` (après les fiches candidat et les pages duel,
+  dans lesquelles il injecte ses blocs), `build_methode_modele.py`, avant
+  `build_sitemap.py`. Dépendances : `requirements.txt` (numpy, Pillow).
+- `modele.py` recalcule la série en mémoire avec les hypothèses principales
+  (`principale.py`), comme au déploiement : la collecte, qui ne lance pas
+  `principale.py`, obtient ainsi les mêmes chiffres que le site.
+- **Loi du 19 juillet 1977** (§10) : `scripts/veille.py` (dates de `config.json`,
+  heure de Paris). En veille, le bloc d'accueil et la page Modèle n'affichent qu'un
+  avis, les blocs des fiches candidat et duel sont vidés, aucune image de partage
+  n'est produite et aucune entrée n'est ajoutée à l'historique. Le module ne couvre
+  encore que le modèle : le reste du site (courbes, derniers sondages) n'a pas de
+  veille à ce jour.
+- **Point juridique à trancher avant mise en ligne** : un chiffre dérivé de sondages
+  est vraisemblablement un « commentaire de sondage » au sens de la loi de 1977 ; les
+  mentions obligatoires (§10) doivent être accessibles depuis la page Modèle (lien vers
+  la liste des sondages utilisés, avec leurs notices).
+- Mise en ligne après accord explicite (§9).
+
+### 14.23 Ordre de développement
+
+**Phase A — voir le produit** (en local, deux sessions ; c'est sur elle que se règlent
+le wording et les seuils).
+
+| Étape | Contenu | Critère de fin |
+|---|---|---|
+| A1 | `calibration.py` sur les présidentielles | 61 comparaisons, 0,90, 1,40, `N_eff` ≈ 345 ; 2002 seule année aux qualifiés faux |
+| A2 | `modele.py` → `modele.json` (chances, rangs, duels) ; tests §14.18 hors bascule | tests verts |
+| A3 | Page Modèle : §14.14.2 sections 1, 2, 4, 6, 7 ; sans évolution, bascule ni historique | rendu statique, mots interdits contrôlés |
+| A4 | Bloc d'accueil : titre, accroche (règles 1 à 3 de §14.11, sans mots de changement), candidats, bouton, ligne de contexte | idem |
+
+Puis revue en local, mobile et desktop ; ajustement des seuils de verdict et du
+wording sur les chiffres réels ; tests de compréhension (§14.21).
+
+**Phase B — compléter.**
+
+| Étape | Contenu |
+|---|---|
+| B1 | Import européennes, recalibration, `N_eff_source` mis à jour si le jeu `ensemble` est retenu |
+| B2 | `backtest.py` leave-one-out, `backtest.json`, validation de la loi (§14.20) |
+| B3 | `modele_history.json` à chaque run, amorçage ; évolutions 1 j / 7 j / 30 j avec la règle de §14.9 |
+| B4 | « Ce qui a changé » (§14.10) avec attribution ; accroches et mouvement de l'accueil |
+| B5 | Point de bascule (§14.7), affichage borné |
+| B6 | Courbes de la page Modèle |
+| B7 | Fiches candidat et pages duel (§14.14.3, §14.14.4) |
+| B8 | Partage (§14.15) |
+| B9 | Section Méthode (§14.19), chiffres tirés de `calibration.json` et `backtest.json` |
+| B10 | Production (§14.22) |

@@ -177,6 +177,130 @@ interrompue plutôt que publiée.</p>
 
 <p>Si vous constatez une erreur, le plus simple est de la corriger sur la page Wikipédia
 source&nbsp;: la correction profite à tout le monde et se répercute ici en quelques heures.</p>
+<!-- BEGIN:methode-modele -->
+<section id="modele" class="methode-modele">
+<h2>Comment fonctionne le modèle Sondax&nbsp;?</h2>
+
+<p>Le modèle Sondax répond à une question&nbsp;: <em>si on votait dimanche</em>, avec les
+sondages d'aujourd'hui, qui a réellement ses chances d'être au second tour&nbsp;? Il mesure
+la solidité du classement observé aujourd'hui. <strong>Il ne prédit pas le résultat de
+l'élection d'avril 2027.</strong></p>
+
+<h3>1. Point de départ</h3>
+<p>Le calcul part de la moyenne Sondax du jour, celle de la courbe de tendance décrite plus
+haut, pour chaque candidat de la configuration de référence (celle qui contient à la fois
+Gabriel Attal et Édouard Philippe&nbsp;; quand les instituts testent plusieurs variantes, la
+liste de candidats la plus fréquente sur 30 jours). Ces moyennes sont ramenées à 100&nbsp;%
+proportionnellement&nbsp;; la colonne «&nbsp;Autre&nbsp;» n'entre pas dans le calcul. Un
+candidat absent de cette configuration n'a pas de chiffre de qualification. Le point de
+départ diffère donc de quelques dixièmes de la moyenne affichée sur les courbes.</p>
+
+<h3>2. Les erreurs historiques des sondages</h3>
+<p>Pour chaque élection passée, nous comparons la moyenne simple des sondages dont le
+terrain s'achève dans les sept jours précédant le scrutin au résultat officiel.
+Sur les présidentielles de 2002 à 2022&nbsp;:
+<strong>61 comparaisons</strong>, erreur absolue moyenne de
+<strong>0,90 point</strong>, écart-type de
+<strong>1,40 point</strong>.
+En 2002, les deux premiers des sondages n'étaient pas les deux qualifiés ; c'est la seule fois.</p>
+<table class="mm"><tr><th rowspan="2">Jeu</th><th rowspan="2">Élections</th><th colspan="4">Moyenne simple, dernière semaine</th><th colspan="2">Moyenne Sondax à J−7</th></tr><tr><th class="n">Comparaisons</th><th class="n">Erreur absolue moyenne</th><th class="n">Écart-type</th><th class="n">N<sub>eff</sub></th><th class="n">Écart-type</th><th class="n">N<sub>eff</sub></th></tr><tr><td>Présidentielles</td><td>2002, 2007, 2012, 2017, 2022</td><td class="n">61</td><td class="n">0,90</td><td class="n">1,40</td><td class="n">345</td><td class="n">1,86</td><td class="n">195</td></tr><tr><td>Européennes</td><td>2019, 2024</td><td class="n">34</td><td class="n">0,83</td><td class="n">1,44</td><td class="n">227</td><td class="n">1,56</td><td class="n">192</td></tr><tr><td>Ensemble</td><td>europeennes-2019, europeennes-2024, presidentielles-2002, presidentielles-2007, presidentielles-2012, presidentielles-2017, presidentielles-2022</td><td class="n">95</td><td class="n">0,88</td><td class="n">1,41</td><td class="n">300</td><td class="n">1,75</td><td class="n">194</td></tr></table>
+<p class="mm-legende">Répartition des erreurs (moyenne des sondages − résultat), par tranche de 0,5 point, de -5,5 à 4,0 point&nbsp;:</p>
+<div class="mm-histo" aria-hidden="true"><div class="h" title="-5,5 à -5,0 point : 1"><span style="height:7%"></span></div><div class="h" title="-4,0 à -3,5 point : 1"><span style="height:7%"></span></div><div class="h" title="-3,0 à -2,5 point : 1"><span style="height:7%"></span></div><div class="h" title="-2,0 à -1,5 point : 2"><span style="height:13%"></span></div><div class="h" title="-1,5 à -1,0 point : 2"><span style="height:13%"></span></div><div class="h" title="-1,0 à -0,5 point : 10"><span style="height:67%"></span></div><div class="h" title="-0,5 à 0,0 point : 13"><span style="height:87%"></span></div><div class="h" title="0,0 à 0,5 point : 15"><span style="height:100%"></span></div><div class="h" title="0,5 à 1,0 point : 6"><span style="height:40%"></span></div><div class="h" title="1,0 à 1,5 point : 3"><span style="height:20%"></span></div><div class="h" title="1,5 à 2,0 point : 3"><span style="height:20%"></span></div><div class="h" title="2,0 à 2,5 point : 1"><span style="height:7%"></span></div><div class="h" title="2,5 à 3,0 point : 1"><span style="height:7%"></span></div><div class="h" title="3,0 à 3,5 point : 1"><span style="height:7%"></span></div><div class="h" title="3,5 à 4,0 point : 1"><span style="height:7%"></span></div></div>
+<table class="mm"><tr><th>Niveau du candidat</th><th class="n">Cas</th><th class="n">Erreur absolue moyenne</th><th class="n">Écart-type</th></tr><tr><td>plus de 20 %</td><td class="n">9</td><td class="n">0,98</td><td class="n">1,23</td></tr><tr><td>10 à 20 %</td><td class="n">10</td><td class="n">2,15</td><td class="n">2,63</td></tr><tr><td>moins de 10 %</td><td class="n">42</td><td class="n">0,59</td><td class="n">0,93</td></tr></table>
+<table class="mm"><tr><th>Élection</th><th>Candidat</th><th class="n">Moyenne</th><th class="n">Résultat</th><th class="n">Erreur</th></tr><tr><td>2022</td><td>Jean-Luc Mélenchon</td><td class="n">16,6</td><td class="n">21,9</td><td class="n">−5,4</td></tr><tr><td>2022</td><td>Valérie Pécresse</td><td class="n">8,5</td><td class="n">4,8</td><td class="n">+3,8</td></tr><tr><td>2002</td><td>Jean-Marie Le Pen</td><td class="n">13,4</td><td class="n">16,9</td><td class="n">−3,5</td></tr><tr><td>2007</td><td>Jean-Marie Le Pen</td><td class="n">13,8</td><td class="n">10,4</td><td class="n">+3,4</td></tr><tr><td>2007</td><td>Nicolas Sarkozy</td><td class="n">28,5</td><td class="n">31,2</td><td class="n">−2,7</td></tr><tr><td>2012</td><td>Jean-Luc Mélenchon</td><td class="n">13,6</td><td class="n">11,1</td><td class="n">+2,5</td></tr></table>
+
+<h3>3. 50 000 premiers tours</h3>
+<p>À partir de la moyenne du jour, nous tirons 50 000 premiers tours selon une loi de
+Dirichlet centrée sur les intentions de vote. Cette loi a deux propriétés utiles&nbsp;:
+chaque premier tour tiré totalise 100&nbsp;%, et l'ampleur possible de l'erreur dépend du
+niveau du candidat (plus large à 25&nbsp;% qu'à 2&nbsp;%). Son paramètre, N<sub>eff</sub>,
+règle l'ampleur des erreurs&nbsp;; il est calibré sur les erreurs historiques.
+Certaines élections, les sondages se trompent plus que d'autres (2002, 2022) : l'ampleur des erreurs varie donc d'un premier tour tiré à l'autre (N<sub>eff</sub> tiré selon une loi gamma de forme 2), en gardant en moyenne l'ampleur calibrée. Les surprises deviennent plus plausibles sans élargir l'incertitude moyenne.
+La graine du tirage est fixe&nbsp;: d'un jour à l'autre, les écarts ne viennent que des
+sondages.</p>
+
+<h3>4. Calibration</h3>
+<p>Pour une loi de Dirichlet de paramètre N<sub>eff</sub>·p, la variance de la part d'un
+candidat vaut p(1−p)/(N<sub>eff</sub>+1). D'où l'estimateur, par la méthode des
+moments&nbsp;: <code>N_eff = Σ p(1−p) / Σ erreur² − 1</code>.</p>
+<p>Le moteur part de la moyenne Sondax, pondérée par la récence et fondée sur les
+sondages disponibles&nbsp;: c'est donc sur les erreurs de <em>cette</em> moyenne qu'il est
+calibré, mesurée sept jours avant le scrutin, l'horizon de «&nbsp;si on votait
+dimanche&nbsp;». Elle se trompe davantage que la moyenne simple des derniers sondages
+(tableau ci-dessus), d'où un N<sub>eff</sub> plus bas, c'est-à-dire des erreurs plus
+larges. Estimation sur le jeu retenu (Ensemble, moyenne
+Sondax à J−7)&nbsp;: 194,5. <strong>Valeur utilisée&nbsp;:
+190</strong>, arrondie à la dizaine.</p>
+
+<h3>5. Comptage</h3>
+<p>Dans chaque premier tour tiré, les candidats sont classés. Un candidat est qualifié
+s'il finit premier ou deuxième&nbsp;; ses chances de qualification sont le nombre de
+qualifications divisé par 50 000. Même comptage pour les rangs et pour les duels
+(les deux premiers de chaque tirage). Les chiffres sont arrondis à l'entier&nbsp;; sous 1, nous
+écrivons «&nbsp;moins de 1 sur 100&nbsp;», au-dessus de 99, «&nbsp;plus de 99 sur 100&nbsp;».</p>
+
+<h3>6. Backtest&nbsp;: qu'aurait affiché Sondax avant les présidentielles passées&nbsp;?</h3>
+<p>Pour chaque présidentielle, nous calibrons N<sub>eff</sub> sur toutes les autres
+élections (<em>leave-one-out</em>), calculons la moyenne Sondax avec les seuls sondages
+disponibles 7 jours avant le scrutin, puis appliquons exactement le
+moteur actuel.</p>
+<table class="mm"><tr><th>Élection</th><th>Candidat</th><th class="n">Moyenne</th><th class="n">Chances de qualification</th><th class="n">Résultat</th><th></th></tr><tr><td>2002</td><td>Jacques Chirac</td><td class="n">20,6</td><td class="n">98,3</td><td class="n">19,9</td><td>qualifié</td></tr><tr><td>2002</td><td>Lionel Jospin</td><td class="n">18,4</td><td class="n">96,0</td><td class="n">16,2</td><td></td></tr><tr><td>2002</td><td>Jean-Marie Le Pen</td><td class="n">11,8</td><td class="n">4,0</td><td class="n">16,9</td><td>qualifié</td></tr><tr><td>2002</td><td>Arlette Laguiller</td><td class="n">8,6</td><td class="n">0,7</td><td class="n">5,7</td><td></td></tr><tr><td>2007</td><td>Nicolas Sarkozy</td><td class="n">28,9</td><td class="n">98,4</td><td class="n">31,2</td><td>qualifié</td></tr><tr><td>2007</td><td>Ségolène Royal</td><td class="n">24,1</td><td class="n">90,4</td><td class="n">25,9</td><td>qualifié</td></tr><tr><td>2007</td><td>François Bayrou</td><td class="n">18,7</td><td class="n">9,9</td><td class="n">18,6</td><td></td></tr><tr><td>2007</td><td>Jean-Marie Le Pen</td><td class="n">13,6</td><td class="n">1,1</td><td class="n">10,4</td><td></td></tr><tr><td>2012</td><td>Nicolas Sarkozy</td><td class="n">27,6</td><td class="n">98,5</td><td class="n">27,2</td><td>qualifié</td></tr><tr><td>2012</td><td>François Hollande</td><td class="n">27,6</td><td class="n">98,4</td><td class="n">28,6</td><td>qualifié</td></tr><tr><td>2012</td><td>Marine Le Pen</td><td class="n">15,7</td><td class="n">1,9</td><td class="n">17,9</td><td></td></tr><tr><td>2012</td><td>Jean-Luc Mélenchon</td><td class="n">13,9</td><td class="n">1,0</td><td class="n">11,1</td><td></td></tr><tr><td>2017</td><td>Emmanuel Macron</td><td class="n">23,3</td><td class="n">84,0</td><td class="n">24,0</td><td>qualifié</td></tr><tr><td>2017</td><td>Marine Le Pen</td><td class="n">23,2</td><td class="n">83,4</td><td class="n">21,3</td><td>qualifié</td></tr><tr><td>2017</td><td>François Fillon</td><td class="n">19,1</td><td class="n">19,5</td><td class="n">20,0</td><td></td></tr><tr><td>2017</td><td>Jean-Luc Mélenchon</td><td class="n">18,2</td><td class="n">12,9</td><td class="n">19,6</td><td></td></tr><tr><td>2022</td><td>Emmanuel Macron</td><td class="n">27,8</td><td class="n">99,6</td><td class="n">27,9</td><td>qualifié</td></tr><tr><td>2022</td><td>Marine Le Pen</td><td class="n">20,2</td><td class="n">94,5</td><td class="n">23,1</td><td>qualifié</td></tr><tr><td>2022</td><td>Jean-Luc Mélenchon</td><td class="n">14,6</td><td class="n">4,9</td><td class="n">21,9</td><td></td></tr><tr><td>2022</td><td>Éric Zemmour</td><td class="n">10,6</td><td class="n">0,6</td><td class="n">7,1</td><td></td></tr></table>
+<table class="mm"><tr><th>Élection</th><th>Duel principal Sondax</th><th class="n">Chances</th><th>Duel réel</th><th class="n">Chances du duel réel</th></tr><tr><td>2002</td><td>Jacques Chirac – Lionel Jospin</td><td class="n">94,5</td><td>Jacques Chirac – Jean-Marie Le Pen</td><td class="n">2,8</td></tr><tr><td>2007</td><td>Ségolène Royal – Nicolas Sarkozy</td><td class="n">89,0</td><td>Ségolène Royal – Nicolas Sarkozy</td><td class="n">89,0</td></tr><tr><td>2012</td><td>François Hollande – Nicolas Sarkozy</td><td class="n">97,0</td><td>François Hollande – Nicolas Sarkozy</td><td class="n">97,0</td></tr><tr><td>2017</td><td>Marine Le Pen – Emmanuel Macron</td><td class="n">68,6</td><td>Marine Le Pen – Emmanuel Macron</td><td class="n">68,6</td></tr><tr><td>2022</td><td>Marine Le Pen – Emmanuel Macron</td><td class="n">94,2</td><td>Marine Le Pen – Emmanuel Macron</td><td class="n">94,2</td></tr></table>
+<p>Fiabilité&nbsp;: dans chaque tranche de chances annoncées, la part de candidats
+effectivement qualifiés (score de Brier&nbsp;: 0,032 sur 61 cas).</p>
+<table class="mm"><tr><th>Chances annoncées</th><th class="n">Cas</th><th class="n">Moyenne annoncée</th><th class="n">Qualifiés observés (%)</th></tr><tr><td>0 à 10</td><td class="n">49</td><td class="n">0,5</td><td class="n">2,0</td></tr><tr><td>10 à 25</td><td class="n">2</td><td class="n">16,2</td><td class="n">0,0</td></tr><tr><td>25 à 60</td><td class="n">0</td><td class="n">—</td><td class="n">—</td></tr><tr><td>60 à 90</td><td class="n">2</td><td class="n">83,7</td><td class="n">100,0</td></tr><tr><td>90 à 100</td><td class="n">8</td><td class="n">96,8</td><td class="n">87,5</td></tr></table>
+<p><strong>Correction de la méthode.</strong> Une première version calibrait le
+moteur sur la moyenne simple des sondages de la dernière semaine, sans variation de
+l'ampleur des erreurs. Elle était trop sûre d'elle&nbsp;: perte logarithmique de
+0,159 contre 0,125 aujourd'hui (plus bas = mieux),
+score de Brier de 0,0338 contre 0,0324. Chances données, par
+élection, au qualifié le moins attendu&nbsp;:</p>
+<table class="mm"><tr><th>Élection</th><th class="n">Première version</th><th class="n">Version actuelle</th></tr><tr><td>2002</td><td class="n">1,3</td><td class="n">4,0</td></tr><tr><td>2007</td><td class="n">93,6</td><td class="n">90,4</td></tr><tr><td>2012</td><td class="n">99,9</td><td class="n">98,4</td></tr><tr><td>2017</td><td class="n">84,1</td><td class="n">83,4</td></tr><tr><td>2022</td><td class="n">98,1</td><td class="n">94,5</td></tr></table>
+<p><strong>Une réserve.</strong> Cinq élections, c'est peu&nbsp;: toute conclusion reste
+prudente.</p>
+
+<h3>7. Limites de la loi utilisée</h3>
+<p>Nous avons confronté la loi calibrée (190) aux erreurs historiques. Au global,
+l'écart-type observé (1,85) est celui de la loi
+(1,88). Les grandes erreurs ne sont pas plus
+fréquentes que prévu&nbsp;: 4 au-delà de deux écarts-types pour 2,8
+attendues, 0 au-delà de trois pour 0,2.</p>
+<table class="mm"><tr><th>Niveau du candidat</th><th class="n">Cas</th><th class="n">Écart-type observé</th><th class="n">Écart-type de la loi</th><th class="n">Rapport des variances</th></tr><tr><td>plus de 20 %</td><td class="n">9</td><td class="n">1,60</td><td class="n">3,12</td><td class="n">0,28</td></tr><tr><td>10 à 20 %</td><td class="n">11</td><td class="n">3,36</td><td class="n">2,57</td><td class="n">1,85</td></tr><tr><td>moins de 10 %</td><td class="n">41</td><td class="n">1,24</td><td class="n">1,17</td><td class="n">0,63</td></tr></table>
+<p><strong>La loi se trompe selon le niveau du candidat.</strong> Pour les candidats entre 10
+et 20&nbsp;%, les erreurs réelles ont été 1,9 fois plus dispersées (en
+variance) que ce que la loi prévoit&nbsp;; au-dessus de 20&nbsp;%, 0,28 fois
+seulement. Le modèle est donc probablement <strong>trop sûr de lui pour les candidats
+situés entre 10 et 20&nbsp;%</strong>, souvent ceux qui se disputent la deuxième place,
+et trop prudent pour les premiers. Le constat tient en ajoutant les européennes de 2019 et 2024 (97 comparaisons)&nbsp;: rapport des variances de 1,7 entre 10 et 20&nbsp;%, 0,22 au-dessus de 20&nbsp;%. Le backtest le montre&nbsp;: les qualifications
+surprises de 2002 et la remontée de 2022 y étaient jugées très improbables. Côté
+corrélations, la loi n'impose que des corrélations négatives et faibles entre candidats&nbsp;;
+sur 30 paires de candidats de tête, 13 erreurs vont dans le même
+sens, et la covariance moyenne observée (-1,76) est proche
+de celle de la loi (-1,93).</p>
+<p>Nous documentons ces limites sans complexifier le moteur&nbsp;: modèle simple, backtest,
+transparence. Un changement de loi serait une décision explicite, annoncée ici.</p>
+
+<h3>8. Ce que le modèle ne fait pas</h3>
+<p>Aucune correction discrétionnaire (biais supposés des petits candidats, dynamique
+supposée, biais par institut)&nbsp;; aucune pondération par institut&nbsp;; aucune prévision de
+l'évolution des intentions de vote&nbsp;; aucune prise en compte des campagnes, débats,
+retraits ou événements futurs. <strong>Le modèle Sondax mesure la solidité du classement
+observé aujourd'hui. Il ne prédit pas le résultat de l'élection d'avril 2027.</strong></p>
+<p>Historique&nbsp;: les chances publiées sont enregistrées à chaque mise à jour. Les points
+antérieurs à la mise en ligne du modèle ont été recalculés après coup, avec les sondages
+publiés à chaque date.</p>
+</section>
+<style>
+.methode-modele h2 { margin-top: 40px; }
+.methode-modele table.mm { margin: 12px 0 18px; font-size: 13.5px; }
+.methode-modele table.mm .n { text-align: right; white-space: nowrap; }
+.methode-modele code { font-family: var(--mono, monospace); font-size: 13px; background: #F2F3F0; padding: 1px 5px; border-radius: 4px; }
+.methode-modele .mm-legende { font-size: 13px; color: var(--gris); margin-bottom: 4px; }
+.methode-modele .mm-histo { display: flex; align-items: flex-end; gap: 2px; height: 90px; margin-bottom: 16px; max-width: 520px; }
+.methode-modele .mm-histo .h { flex: 1; height: 100%; display: flex; align-items: flex-end; }
+.methode-modele .mm-histo span { display: block; width: 100%; background: #0C6CF2; border-radius: 2px 2px 0 0; }
+</style>
+<!-- END:methode-modele -->
 </main>
 
 <footer class="site-footer">

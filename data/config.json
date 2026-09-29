@@ -3,5 +3,12 @@
     "premier_tour": "2027-04-18",
     "second_tour": "2027-05-02",
     "officielles": false
+  },
+  "modele": {
+    "N_eff": 190,
+    "N_eff_source": "ensemble_sondax_j7",
+    "tirages": 50000,
+    "graine": 20270418,
+    "k_melange": 2
   }
 }

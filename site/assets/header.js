@@ -67,6 +67,7 @@
     { label: 'Accueil', href: 'index.html', match: ['index.html', ''] },
     { label: 'Candidats', href: '#', match: candidatsPages.map(function(c) { return c.slug + '.html'; }), dropdown: true },
     { label: 'Explorer les sondages', href: 'sondages.html', match: ['sondages.html'] },
+    { label: 'Modèle Sondax', href: 'modele-sondax.html', match: ['modele-sondax.html'] },
     { label: 'Instituts', href: 'instituts.html', match: ['instituts.html'] },
     { label: 'Élections passées', href: 'precedentes-elections.html', match: ['precedentes-elections.html'], prefixe: 'presidentielle-' },
     { label: 'Méthode', href: 'methodologie.html', match: ['methodologie.html'] },

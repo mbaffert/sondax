@@ -287,9 +287,11 @@ def sorted_duel_slugs(duels):
 
 
 def generate_table_section(duels, candidats):
-    """Génère le duel le plus récent en aperçu + le reste dans un <details>."""
+    """Génère le duel principal (le plus récemment mesuré) en aperçu, et le
+    tableau des autres duels, sans repli : generate_bloc les place sous
+    « Voir les autres duels ». Renvoie (aperçu, autres)."""
     if not duels:
-        return ""
+        return "", ""
 
     slugs = sorted_duel_slugs(duels)
     n_total = len(slugs)
@@ -307,7 +309,7 @@ def generate_table_section(duels, candidats):
 
     # Pli : les autres duels
     if n_total <= 1:
-        return preview_table
+        return preview_table, ""
 
     rest_rows = []
     for slug in slugs[1:]:
@@ -326,14 +328,12 @@ def generate_table_section(duels, candidats):
         '      </table>'
     )
 
-    details = (
-        f'    <details class="duels-repli">\n'
-        f'      <summary>{summary_text}</summary>\n'
-        f'{fold_table}\n'
-        f'    </details>'
+    autres = (
+        f'      <p class="duels-libelle">{summary_text}</p>\n'
+        f'{fold_table}'
     )
 
-    return f'{preview_table}\n{details}'
+    return preview_table, autres
 
 
 # ---------------------------------------------------------------------------
@@ -381,7 +381,8 @@ def split_bardella_duels(duels, candidats):
 
 
 def generate_bardella_section(bardella_duels, candidats):
-    """Génère un bloc repliable pour les duels Bardella."""
+    """Tableau des duels Bardella et sa phrase d'explication, placés par
+    generate_bloc sous « Voir les autres duels »."""
     if not bardella_duels:
         return ""
 
@@ -408,12 +409,10 @@ def generate_bardella_section(bardella_duels, candidats):
     )
 
     return (
-        f'    <details class="duels-repli">\n'
-        f'      <summary>Duels testés avec Jordan Bardella ({first_mois}\u00a0\u2013\u00a0{last_mois} {first_annee})</summary>\n'
-        f'      <p class="subtitle" style="font-size:13px;margin:8px 0 6px;">Les instituts testaient alors Bardella comme candidat du RN. '
+        f'      <p class="duels-libelle">Duels testés avec Jordan Bardella ({first_mois}\u00a0\u2013\u00a0{last_mois} {first_annee})</p>\n'
+        f'      <p class="subtitle" style="font-size:13px;margin:0 0 6px;">Les instituts testaient alors Bardella comme candidat du RN. '
         f'Marine Le Pen l\u2019a remplacé à partir de juillet 2026.</p>\n'
-        f'{table}\n'
-        f'    </details>'
+        f'{table}'
     )
 
 
@@ -423,10 +422,21 @@ def generate_bloc(duels, candidats):
 
     factual = generate_factual_text()
     chapeau = generate_chapeau(current_duels, candidats)
-    table_section = generate_table_section(current_duels, candidats)
+    apercu, autres = generate_table_section(current_duels, candidats)
     bardella_section = generate_bardella_section(bardella_duels, candidats)
     selector = generate_selector_html()
 
+    # Duel principal visible ; tous les autres duels repliés sous un seul lien,
+    # présents dans le HTML servi (référencement).
+    replie = "\n".join(x for x in (autres, bardella_section) if x)
+    if replie:
+        replie = (
+            '    <details class="duels-repli">\n'
+            '      <summary>Voir les autres duels</summary>\n'
+            f'{replie}\n'
+            '    </details>'
+        )
+    table_section = apercu
     return (
         '  <div class="bloc" id="second-tour">\n'
         '    <div class="section-label">Second tour</div>\n'
@@ -434,7 +444,7 @@ def generate_bloc(duels, candidats):
         f'    {factual}\n'
         f'    {chapeau}\n'
         f'{table_section}\n'
-        f'{bardella_section}\n'
+        f'{replie}\n'
         f'{selector}\n'
         '  </div>'
     )

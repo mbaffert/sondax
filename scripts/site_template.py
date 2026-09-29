@@ -24,7 +24,8 @@ def _prefix(depth):
 
 
 def render_page(*, title, meta_description, canonical, body_content,
-                extra_head="", depth=0, og_type="website"):
+                extra_head="", depth=0, og_type="website",
+                og_image="https://sondax.fr/assets/og-default.png"):
     p = _prefix(depth)
     return f'''<!DOCTYPE html>
 <html lang="fr">
@@ -39,7 +40,7 @@ def render_page(*, title, meta_description, canonical, body_content,
 <meta property="og:url" content="{canonical}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{meta_description}">
-<meta property="og:image" content="https://sondax.fr/assets/og-default.png">
+<meta property="og:image" content="{og_image}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -126,6 +127,7 @@ def render_page(*, title, meta_description, canonical, body_content,
     <div>
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
+        <a href="{p}modele-sondax.html">Modèle Sondax</a>
         <a href="{p}methodologie.html">Méthode</a>
         <a href="{p}sondages.html">Explorer les sondages</a>
         <a href="{p}donnees.html">Données</a>

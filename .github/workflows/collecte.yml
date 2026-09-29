@@ -35,10 +35,16 @@ jobs:
       - name: Calcul des séries
         run: python scripts/series.py
 
+      - name: Modèle Sondax
+        run: |
+          pip install -r requirements.txt
+          python scripts/modele.py --historiser
+          python scripts/validation.py --modele
+
       - name: Vérifier les changements
         id: changes
         run: |
-          if git diff --quiet data/sondages.json data/polymarket.json data/snapshots/; then
+          if git diff --quiet data/sondages.json data/polymarket.json data/snapshots/ data/modele_history.json; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -59,7 +65,7 @@ jobs:
           # Créer ou réinitialiser la branche depuis HEAD (main + sorties scripts)
           git checkout -B "$BRANCH"
 
-          git add data/sondages.json data/polymarket.json data/snapshots/
+          git add data/sondages.json data/polymarket.json data/snapshots/ data/modele_history.json
           git diff --cached --quiet && echo "Rien de nouveau à commiter" && exit 0
           git commit -m "Collecte du ${DATE}"
 

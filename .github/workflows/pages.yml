@@ -27,6 +27,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt
+
       - name: Générer les données dérivées
         run: |
           python scripts/principale.py
@@ -43,6 +46,12 @@ jobs:
           python scripts/build_sondage_pages.py
           python scripts/instituts.py
           python scripts/build_pages_instituts.py
+          python scripts/calibration.py
+          python scripts/backtest.py
+          python scripts/modele.py
+          python scripts/partage_modele.py
+          python scripts/build_modele.py
+          python scripts/build_methode_modele.py
           python scripts/build_donnees.py
           python scripts/build_jsonld_dataset.py
           python scripts/build_dates.py
@@ -56,6 +65,7 @@ jobs:
           cp -r data/*.json _site/data/
           cp -r data/derived/*.json _site/data/derived/
           rm -f _site/data/historique.json
+          rm -f _site/data/historique_europeennes.json
 
       - uses: actions/upload-pages-artifact@v3
         with:

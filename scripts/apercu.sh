@@ -5,13 +5,18 @@
 # que .github/workflows/pages.yml, assemble le site comme au déploiement et le
 # sert sur http://localhost:8000 (port modifiable : scripts/apercu.sh 8080).
 #
-# Prérequis : Python 3.10+. Aucune dépendance à installer.
+# Prérequis : Python 3.10+ et pip install -r requirements.txt (numpy, Pillow).
 set -euo pipefail
 
 PORT="${1:-8000}"
 RACINE="$(cd "$(dirname "$0")/.." && pwd)"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
+
+if ! python3 -c "import numpy, PIL" 2>/dev/null; then
+  echo "Dépendances manquantes : pip install -r requirements.txt" >&2
+  exit 1
+fi
 
 echo "Copie du dépôt dans $TMP"
 tar -C "$RACINE" --exclude=.git --exclude=_site -cf - . | tar -C "$TMP" -xf -
@@ -29,6 +34,7 @@ cp -r site/* _site/
 cp data/*.json _site/data/
 cp data/derived/*.json _site/data/derived/
 rm -f _site/data/historique.json
+rm -f _site/data/historique_europeennes.json
 
 echo
 echo "Site servi sur http://localhost:$PORT/instituts.html  (Ctrl+C pour arrêter)"

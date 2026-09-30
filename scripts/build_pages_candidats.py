@@ -35,6 +35,14 @@ croisements_raw = json.loads((ROOT / "data" / "croisements.json").read_text())
 photos_meta = json.loads((ROOT / "data" / "photos.json").read_text())
 duels = json.loads((ROOT / "data" / "duels.json").read_text())
 
+# Duels face à Jordan Bardella (testé par les instituts de mars à mai 2026,
+# avant que Marine Le Pen ne redevienne la candidate du RN) : écartés des pages
+# candidat, où ils côtoieraient des mesures bien plus récentes. Ils restent sur
+# la home et sur les pages /second-tour/.
+ADVERSAIRES_EXCLUS = {"bardella"}
+duels = {cle: v for cle, v in duels.items()
+         if not ADVERSAIRES_EXCLUS & set(cle.split("|"))}
+
 # ---------- noms et pages ----------
 noms = {slug: c.get("nom", slug) for slug, c in candidats.items()}
 pages = {slug: fiche["nom"] for slug, fiche in bios.items()}

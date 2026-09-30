@@ -23,7 +23,7 @@ def compute_dataset():
         "description": "Agr\u00e9gation des sondages d\u2019intention de vote pour la pr\u00e9sidentielle 2027, "
                         "premier et second tour, collect\u00e9s automatiquement depuis Wikip\u00e9dia.",
         "url": "https://sondax.fr/donnees.html",
-        "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+        "license": "https://creativecommons.org/licenses/by-sa/4.0/deed.fr",
         "isBasedOn": {
             "@type": "CreativeWork",
             "name": "Liste de sondages sur l\u2019\u00e9lection pr\u00e9sidentielle fran\u00e7aise de 2027",

@@ -381,5 +381,31 @@
     "declare_le": null,
     "prenom": "Xavier",
     "genre": "m"
+  },
+  "guedj": {
+    "nom": "Guedj",
+    "parti": "PS",
+    "type": "personne",
+    "couleur": "#D9608F",
+    "alias_wikipedia": [
+      "guedj"
+    ],
+    "condition_polymarket": null,
+    "declare_le": null,
+    "prenom": "Jérôme",
+    "genre": "m"
+  },
+  "maurel": {
+    "nom": "Maurel",
+    "parti": "GRS",
+    "type": "personne",
+    "couleur": "#B5443C",
+    "alias_wikipedia": [
+      "maurel"
+    ],
+    "condition_polymarket": null,
+    "declare_le": null,
+    "prenom": "Emmanuel",
+    "genre": "m"
   }
 }

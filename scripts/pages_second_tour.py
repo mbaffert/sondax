@@ -20,6 +20,7 @@ BASE_URL = "https://sondax.fr"
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from instituts import charger_referentiel, lien_institut
+from balise_time import time_tag
 
 # ---------------------------------------------------------------------------
 # Données
@@ -70,6 +71,61 @@ def fmt_date(iso):
 
 def fmt_pct(v):
     return f"{v:.1f}".replace(".", ",") + "\u00a0%"
+
+
+MOIS = [
+    "janvier", "février", "mars", "avril", "mai", "juin",
+    "juillet", "août", "septembre", "octobre", "novembre", "décembre",
+]
+
+
+def jour_mois(iso, annee=True):
+    """'2026-09-01' → '1er septembre 2026'"""
+    y, m, d = iso.split("-")
+    jour = "1er" if int(d) == 1 else str(int(d))
+    return f"{jour} {MOIS[int(m) - 1]}" + (f" {y}" if annee else "")
+
+
+def terrain_court(debut, fin):
+    """'22–24 septembre 2026', '28 août–3 septembre 2026', '24 septembre 2026',
+    chaque borne dans une balise <time>."""
+    fin_t = time_tag(fin, jour_mois(fin))
+    if not debut or debut == fin:
+        return fin_t
+    if debut[:4] != fin[:4]:
+        texte_debut = jour_mois(debut)
+    elif debut[:7] != fin[:7]:
+        texte_debut = jour_mois(debut, annee=False)
+    else:
+        texte_debut = jour_mois(debut).split(" ")[0]
+    return f"{time_tag(debut, texte_debut)}\u2013{fin_t}"
+
+
+def fmt_score(v):
+    """57.0 → '57 %', 57.5 → '57,5 %'"""
+    v = round(v, 1)
+    txt = str(int(v)) if v == int(v) else f"{v:.1f}".replace(".", ",")
+    return f"{txt}\u00a0%"
+
+
+def phrase_dernier_sondage(entries, cid_a, cid_b, candidats):
+    """« Dans le dernier sondage (Harris, 22–24 septembre 2026), Le Pen obtient
+    57 % contre 43 % pour Philippe. » — vainqueur en premier ; « le seul
+    sondage » quand le duel n'a été mesuré qu'une fois."""
+    e = entries[0]
+    sa, sb = e["scores"][cid_a], e["scores"][cid_b]
+    if sb > sa:
+        cid_a, cid_b, sa, sb = cid_b, cid_a, sb, sa
+    nom_a = html_mod.escape(nom_court(cid_a, candidats))
+    nom_b = html_mod.escape(nom_court(cid_b, candidats))
+    quel = "le dernier sondage" if len(entries) > 1 else "le seul sondage publié"
+    source = f"{html_mod.escape(e['institut'])}, {terrain_court(e['terrain_debut'], e['terrain_fin'])}"
+    if sa == sb:
+        feminin = all(candidats.get(c, {}).get("genre") == "f" for c in (cid_a, cid_b))
+        resultat = f"{nom_a} et {nom_b} obtiennent {'chacune' if feminin else 'chacun'} {fmt_score(sa)}"
+    else:
+        resultat = f"{nom_a} obtient {fmt_score(sa)} contre {fmt_score(sb)} pour {nom_b}"
+    return f"Dans {quel} ({source}), {resultat}."
 
 
 # ---------------------------------------------------------------------------
@@ -151,6 +207,7 @@ CSS = """\
   h1 { font-family: var(--titre); font-size: 1.8em; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.3em; }
   h2 { font-family: var(--titre); font-size: 1.3em; font-weight: 700; margin: 1.5em 0 0.5em; }
   .subtitle { font-size: 14px; color: var(--gris); margin-bottom: 1.5em; }
+  .phrase-duel { margin: -1em 0 1.5em; }
 
   .chart-wrap { position: relative; width: 100%; height: 420px; margin-bottom: 1.5em; }
 
@@ -196,7 +253,8 @@ def render_table_html(entries, cid_a, cid_b, candidats):
         source = f'<a href="{html_mod.escape(e["url_source"])}" target="_blank">Notice</a>' if e["url_source"] else "—"
         rows.append(
             f"<tr><td>{lien_institut(e['institut'], referentiel, '../')}</td>"
-            f"<td>{fmt_date(e['terrain_debut'])} → {fmt_date(e['terrain_fin'])}</td>"
+            f"<td>{time_tag(e['terrain_debut'], fmt_date(e['terrain_debut']))} → "
+            f"{time_tag(e['terrain_fin'], fmt_date(e['terrain_fin']))}</td>"
             f"<td>{ech}</td>"
             f"<td>{fmt_pct(e['scores'][cid_a])}</td>"
             f"<td>{fmt_pct(e['scores'][cid_b])}</td>"
@@ -357,11 +415,12 @@ def generate_duel_page(slug, entries, candidats, out_dir):
 {header("Second tour 2027", depth=1)}
 
 <main>
-  <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);padding:0 0 18px;">
+  <div class="fil" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);padding:0 0 18px;">
     <a href="../" style="color:inherit">Sondax</a> › <a href="./" style="color:inherit">Second tour</a> › {html_mod.escape(nom_a)} – {html_mod.escape(nom_b)}
   </div>
   <h1>{html_mod.escape(title)}</h1>
-  <p class="subtitle">{len(entries)} sondage{"s" if len(entries) > 1 else ""} · Dernier : {fmt_date(entries[0]["terrain_fin"])}</p>
+  <p class="subtitle">{len(entries)} sondage{"s" if len(entries) > 1 else ""} · Dernier : {time_tag(entries[0]["terrain_fin"], fmt_date(entries[0]["terrain_fin"]))}</p>
+  <p class="phrase-duel">{phrase_dernier_sondage(entries, cid_a, cid_b, candidats)}</p>
 
 {chart_section}
   {render_table_html(entries, cid_a, cid_b, candidats)}
@@ -436,7 +495,7 @@ def generate_index_page(duels, candidats, out_dir):
             f'  <a class="duel-card" href="{slug}.html">\n'
             f'    <div class="duel-noms">{nom_a} – {nom_b}</div>\n'
             f'    <div class="duel-count">{n} sondage{"s" if n > 1 else ""} · '
-            f'Dernier : {fmt_date(entries[0]["terrain_fin"])}</div>\n'
+            f'Dernier : {time_tag(entries[0]["terrain_fin"], fmt_date(entries[0]["terrain_fin"]))}</div>\n'
             f'  </a>\n'
         )
 

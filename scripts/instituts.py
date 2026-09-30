@@ -75,6 +75,11 @@ def lien_institut(nom, referentiel, prefix=""):
     return f'<a href="{prefix}instituts/{slug}.html">{esc}</a>'
 
 
+def est_notice(url):
+    """L'URL source est une notice de la commission des sondages."""
+    return bool(url) and "commission-des-sondages.fr" in url
+
+
 def logo_disponible(inst):
     """Chemin du logo relatif à site/, ou None si le fichier n'existe pas."""
     chemin = inst.get("logo")

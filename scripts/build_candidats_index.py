@@ -15,6 +15,7 @@ SITE = ROOT / "site"
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from site_template import render_page
+from balise_time import time_tag
 
 # ---------- chargement ----------
 
@@ -119,7 +120,7 @@ def make_row(r):
     slug = r["slug"]
     name_cell = f'<a href="../{slug}.html">{r["display_name"]}</a>' if r["has_page"] else r["display_name"]
     score_cell = fmt_pct(r["score"])
-    date_cell = date_lettres(r["date"])
+    date_cell = time_tag(r["date"], date_lettres(r["date"]))
     return (
         f'      <tr><td>{name_cell}</td><td>{r["parti"]}</td>'
         f'<td style="text-align:right;font-variant-numeric:tabular-nums;">{score_cell}</td>'

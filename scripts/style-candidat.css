@@ -85,4 +85,13 @@
 .page-candidat .autres{font-size:12.5px;color:var(--gris);padding:14px 6px 4px;line-height:1.8}
 .page-candidat .autres span{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase}
 .page-candidat .autres a{color:var(--gris);text-decoration:none;border-bottom:1px solid var(--bord)}
-.page-candidat .autres a:hover{color:var(--texte)}
+.page-candidat .autres a:hover{color:var(--texte)}.page-candidat .derniers{padding:0 30px 26px}
+.page-candidat .derniers-scroll{overflow-x:auto}
+.page-candidat .derniers table{border-collapse:collapse;width:100%;font-size:13.5px}
+.page-candidat .derniers th,.page-candidat .derniers td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--bord);white-space:nowrap}
+.page-candidat .derniers th{font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--gris)}
+.page-candidat .derniers th:first-child,.page-candidat .derniers td:first-child{padding-left:0}
+.page-candidat .derniers .num{text-align:right;font-variant-numeric:tabular-nums}
+.page-candidat .derniers .dates{font-variant-numeric:tabular-nums}
+.page-candidat .derniers-tous{margin-top:12px;font-size:13.5px}
+@media(max-width:620px){.page-candidat .derniers{padding:0 20px 22px}.page-candidat .derniers table{font-size:12.5px}.page-candidat .derniers th,.page-candidat .derniers td{padding:7px 5px}.page-candidat .derniers th{letter-spacing:.04em}.page-candidat .derniers td.dates{white-space:normal;min-width:78px}}

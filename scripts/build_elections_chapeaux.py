@@ -1,18 +1,40 @@
-"""Injecte un chapeau statique dans chaque page presidentielle-XXXX.html.
+"""Injecte un chapeau et un tableau statiques dans chaque page presidentielle-XXXX.html.
 
-Lit data/derived/historique.json et génère deux ou trois phrases :
+Chapeau, lu dans data/derived/historique.json, deux ou trois phrases :
 - candidats en tête dans les derniers sondages, avec leurs scores moyens
 - résultat réel du premier tour, écart avec la moyenne
 - résultat du second tour
+
+Tableau, sous les graphiques : moyenne mensuelle des sondages de premier tour
+des principaux candidats (score de chaque sondage retenu comme pour la courbe,
+series.score_candidat), résultat du premier tour en dernière ligne.
 """
 
-import json, pathlib
+import json, pathlib, sys
+from collections import defaultdict
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 HISTORIQUE_PATH = ROOT / "data" / "derived" / "historique.json"
+HISTORIQUE_BRUT_PATH = ROOT / "data" / "historique.json"
+
+sys.path.insert(0, str(ROOT / "scripts"))
+from series import score_candidat
+from balise_time import time_tag
 
 BEGIN = "<!-- BEGIN:chapeau-election -->"
 END = "<!-- END:chapeau-election -->"
+BEGIN_MOY = "<!-- BEGIN:moyennes-election -->"
+END_MOY = "<!-- END:moyennes-election -->"
+
+# Principaux candidats : présents au premier tour, et 5 % des suffrages
+# exprimés ou 10 % de moyenne mensuelle au moins une fois.
+SEUIL_RESULTAT = 5
+SEUIL_MOYENNE = 10
+
+MOIS = [
+    "janvier", "février", "mars", "avril", "mai", "juin",
+    "juillet", "août", "septembre", "octobre", "novembre", "décembre",
+]
 
 
 def fmt_pct(v):
@@ -110,24 +132,95 @@ def generate_chapeau(year, election):
     return f'    <p class="subtitle">{" ".join(phrases)}</p>'
 
 
-def inject(path, chapeau_html):
+def moyennes_mensuelles(election_brute, election):
+    """{candidat: {"AAAA-MM": moyenne}} des sondages de premier tour du
+    périmètre affiché (début de terrain à partir de la borne, fin de terrain
+    avant le premier tour)."""
+    borne, tour1 = election["borne"], election["tour1"]
+    valeurs = defaultdict(lambda: defaultdict(list))
+    for s in election_brute["sondages"]:
+        if s["terrain_debut"] < borne or s["terrain_fin"] >= tour1:
+            continue
+        mois = s["terrain_fin"][:7]
+        for cid in election["candidats"]:
+            score, _ = score_candidat(s, cid)
+            if score is not None:
+                valeurs[cid][mois].append(score)
+    return {cid: {m: sum(v) / len(v) for m, v in par_mois.items()}
+            for cid, par_mois in valeurs.items()}
+
+
+def generate_moyennes(election_brute, election):
+    """Tableau HTML : une ligne par mois, une colonne par principal candidat,
+    le résultat du premier tour en dernière ligne."""
+    moyennes = moyennes_mensuelles(election_brute, election)
+    cands = election["candidats"]
+    principaux = [
+        c for c, info in cands.items()
+        if info.get("resultat") is not None and c in moyennes
+        and (info["resultat"] >= SEUIL_RESULTAT
+             or max(moyennes[c].values()) >= SEUIL_MOYENNE)
+    ]
+    principaux.sort(key=lambda c: -cands[c]["resultat"])
+    mois = sorted({m for c in principaux for m in moyennes[c]})
+    if not principaux or not mois:
+        return ""
+
+    tete = "".join(f'<th scope="col" class="num">{cands[c]["nom"]}</th>' for c in principaux)
+    lignes = []
+    for m in mois:
+        y, mm = m.split("-")
+        cellules = "".join(
+            f'<td class="num">{fmt_pct1(moyennes[c][m]) if m in moyennes[c] else "—"}</td>'
+            for c in principaux)
+        lignes.append(f'<tr><th scope="row">{time_tag(m, f"{MOIS[int(mm) - 1]} {y}")}</th>{cellules}</tr>')
+    resultats = "".join(f'<td class="num">{fmt_pct(cands[c]["resultat"])}</td>' for c in principaux)
+    lignes.append(f'<tr class="resultat"><th scope="row">Résultat du premier tour</th>{resultats}</tr>')
+
+    return f"""    <style>
+      .moyennes-scroll {{ overflow-x: auto; margin-top: 22px; }}
+      .moyennes {{ border-collapse: collapse; width: 100%; font-size: 13px; }}
+      .moyennes th, .moyennes td {{ padding: 6px 10px; border-bottom: 1px solid #EDEEEA;
+        text-align: left; white-space: nowrap; }}
+      .moyennes thead th {{ font-weight: 600; color: var(--gris); border-bottom-color: #DDDFDA; }}
+      .moyennes tbody th {{ font-weight: 400; color: var(--gris); }}
+      .moyennes .num {{ text-align: right; font-variant-numeric: tabular-nums; }}
+      .moyennes .resultat th, .moyennes .resultat td {{ font-weight: 600; color: var(--texte);
+        border-top: 1px solid #DDDFDA; border-bottom: 0; }}
+      .moyennes th:first-child {{ position: sticky; left: 0; background: #fff; }}
+      @media (max-width: 600px) {{
+        .moyennes .resultat th {{ white-space: normal; min-width: 7.5em; }}
+      }}
+    </style>
+    <div class="moyennes-scroll">
+      <table class="moyennes">
+        <thead><tr><th scope="col">Mois</th>{tete}</tr></thead>
+        <tbody>
+          {(chr(10) + "          ").join(lignes)}
+        </tbody>
+      </table>
+    </div>"""
+
+
+def inject(path, chapeau_html, begin=BEGIN, end=END):
     content = path.read_text(encoding="utf-8")
     try:
-        i_begin = content.index(BEGIN)
-        i_end = content.index(END) + len(END)
+        i_begin = content.index(begin)
+        i_end = content.index(end) + len(end)
     except ValueError:
         print(f"  Marqueurs introuvables dans {path.name}, ignoré")
         return
     new_content = (
-        content[:i_begin] + BEGIN + "\n"
+        content[:i_begin] + begin + "\n"
         + chapeau_html + "\n"
-        + END + content[i_end:]
+        + end + content[i_end:]
     )
     path.write_text(new_content, encoding="utf-8")
 
 
 def main():
     historique = json.loads(HISTORIQUE_PATH.read_text(encoding="utf-8"))
+    historique_brut = json.loads(HISTORIQUE_BRUT_PATH.read_text(encoding="utf-8"))["elections"]
 
     for year in ["2002", "2007", "2012", "2017", "2022"]:
         if year not in historique:
@@ -144,6 +237,10 @@ def main():
             print(f"  {year} : chapeau injecté")
         else:
             print(f"  {year} : pas de données suffisantes")
+
+        moyennes = generate_moyennes(historique_brut[year], historique[year])
+        inject(page_path, moyennes, BEGIN_MOY, END_MOY)
+        print(f"  {year} : moyennes mensuelles {'injectées' if moyennes else 'absentes'}")
 
 
 if __name__ == "__main__":

@@ -32,17 +32,17 @@ def load_json(path):
 
 REPERES_T1 = (
     'Le premier tour de l\u2019élection présidentielle se tient le dimanche '
-    '18\u00a0avril\u00a02027. Les deux candidats arrivés en tête s\u2019affrontent '
+    '<time datetime="2027-04-18">18\u00a0avril\u00a02027</time>. Les deux candidats arrivés en tête s\u2019affrontent '
     'au second tour, sauf si l\u2019un obtient la majorité absolue des suffrages '
     'exprimés dès le premier tour \u2014 ce qui n\u2019est jamais arrivé sous la '
     'V\u1d49\u00a0République. La liste officielle des candidats ne sera connue '
-    'qu\u2019après la clôture des parrainages, le 12\u00a0mars\u00a02027\u00a0: '
+    'qu\u2019après la clôture des parrainages, le <time datetime="2027-03-12">12\u00a0mars\u00a02027</time>\u00a0: '
     'les instituts testent d\u2019ici là des hypothèses de candidatures, qui '
     'varient d\u2019un sondage à l\u2019autre.'
 )
 
 REPERES_T2 = (
-    'Le second tour se tient le dimanche 2\u00a0mai\u00a02027. Est élu le '
+    'Le second tour se tient le dimanche <time datetime="2027-05-02">2\u00a0mai\u00a02027</time>. Est élu le '
     'candidat qui obtient le plus de voix parmi les suffrages exprimés, les '
     'votes blancs et nuls étant décomptés à part et sans effet sur le résultat.'
 )

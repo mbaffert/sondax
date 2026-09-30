@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Génère une page par candidat : identité, courbe, évolution, électorat, origine des voix."""
 import json, math, datetime as dt, unicodedata, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from balise_time import time_tag, baliser_dates
 
 HYP_CROIS = "R. Glucksmann, G. Attal, E. Philippe"
 AUJ = dt.date(2026, 9, 19)
@@ -101,7 +103,7 @@ def texte_evolution(nom, serie, n_sondages, rangs, ecart_devant, genre="m", succ
     if r:
         actuel = r[-1]
         depuis = dt.date.fromisoformat(rangs[0][0])
-        quand = f"{MOIS_LONG[depuis.month-1]} {depuis.year}"
+        quand = time_tag(depuis.isoformat()[:7], f"{MOIS_LONG[depuis.month-1]} {depuis.year}")
         art = "la" if F else "le"
         if len(set(r)) == 1 and actuel == 1:
             p.append(f"{nom} arrive <b>en tête</b> du premier tour dans tous les sondages "
@@ -133,7 +135,7 @@ def texte_evolution(nom, serie, n_sondages, rangs, ecart_devant, genre="m", succ
         dsucc, avant, apres = succession
         d = dt.date.fromisoformat(dsucc)
         p.append(f"La courbe couvre la candidature de son parti : jusqu'au "
-                 f"{d.day} {MOIS_LONG[d.month-1]} {d.year}, les instituts testaient {avant}, "
+                 f"{time_tag(dsucc, f'{d.day} {MOIS_LONG[d.month-1]} {d.year}')}, les instituts testaient {avant}, "
                  f"que {apres} a remplacé. Les deux n'ont jamais été proposés ensemble.")
     return " ".join(p)
 
@@ -191,7 +193,8 @@ def bloc_second_tour(slug, nom, duels, noms, genre="m", pages=None):
         detail = ""
         if len(v) >= 5:
             xs = [x["s"][slug] for x in v]
-            detail = (f"{len(v)} mesures depuis {dt.date.fromisoformat(v[0]['d']).strftime('%m/%Y')}, "
+            detail = (f"{len(v)} mesures depuis "
+                      f"{time_tag(v[0]['d'][:7], dt.date.fromisoformat(v[0]['d']).strftime('%m/%Y'))}, "
                       f"entre {fr(min(xs),0)} et {fr(max(xs),0)} %")
         else:
             detail = f"{len(v)} mesure{'s' if len(v) > 1 else ''} seulement"
@@ -285,7 +288,7 @@ def liens_autres(slug, noms):
                       for s, n in noms.items() if s != slug)
 
 def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant,
-         duels=None, noms=None, pages=None, succession=None):
+         duels=None, noms=None, pages=None, succession=None, derniers=""):
     nom = fiche["nom"]; coul = fiche["couleur"]
     pcs = {k: v[slug] for k, v in crois.get("pcs", {}).items()
            if slug in v and k in ORDRE_PCS}
@@ -315,7 +318,7 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
   {barres_simple(rep)}
 </div></section>''')
 
-    bio = "".join(f"<li>{x}</li>" for x in fiche["bio"])
+    bio = "".join(f"<li>{baliser_dates(x)}</li>" for x in fiche["bio"])
     return f'''<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{nom} — sondages présidentielle 2027 : intentions de vote et électorat | Sondax</title>
@@ -344,6 +347,7 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
   <div class="sous">Moyenne pondérée sur 30 jours · premier tour · hypothèse principale de chaque sondage</div></div>
   <div class="chart">{svg(serie, bruts, coul, succession)}</div>
   <div class="txt" style="padding-bottom:26px"><p>{texte_evolution(nom, serie, n_sondages, rangs, ecart_devant, fiche.get("genre","m"), succession)}</p></div>
+  {derniers}
 </section>
 {''.join(blocs)}
 <nav class="autres"><span>Autres candidats :</span> {liens_autres(slug, pages or {})}</nav>

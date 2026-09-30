@@ -9,6 +9,9 @@ Injecte la section dans site/methodologie.html entre
 
 import html, json, pathlib, sys
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+from balise_time import baliser_dates
+
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 CALIBRATION_PATH = ROOT / "data" / "derived" / "calibration.json"
 BACKTEST_PATH = ROOT / "data" / "derived" / "backtest.json"
@@ -268,7 +271,7 @@ def main():
     cal = json.loads(CALIBRATION_PATH.read_text())
     bt = json.loads(BACKTEST_PATH.read_text())
     reglages = json.loads(CONFIG_PATH.read_text())["modele"]
-    bloc = section(cal, bt, reglages, noms_candidats())
+    bloc = baliser_dates(section(cal, bt, reglages, noms_candidats()))
 
     contenu = PAGE_PATH.read_text(encoding="utf-8")
     if BEGIN not in contenu:

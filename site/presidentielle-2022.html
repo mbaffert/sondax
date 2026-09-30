@@ -134,7 +134,7 @@
 
     <div class="controles">
       <div class="groupe" id="periode-group">
-        <button data-months="0" class="active">Depuis janvier 2021</button>
+        <button data-months="0" class="active">Depuis <time datetime="2021-01">janvier 2021</time></button>
         <button data-months="12">1 an</button>
         <button data-months="6">6 mois</button>
         <button data-months="3">3 mois</button>
@@ -156,12 +156,55 @@
       </div>
       <div id="t2-content"></div>
     </div>
+
+    <!-- BEGIN:moyennes-election -->
+    <style>
+      .moyennes-scroll { overflow-x: auto; margin-top: 22px; }
+      .moyennes { border-collapse: collapse; width: 100%; font-size: 13px; }
+      .moyennes th, .moyennes td { padding: 6px 10px; border-bottom: 1px solid #EDEEEA;
+        text-align: left; white-space: nowrap; }
+      .moyennes thead th { font-weight: 600; color: var(--gris); border-bottom-color: #DDDFDA; }
+      .moyennes tbody th { font-weight: 400; color: var(--gris); }
+      .moyennes .num { text-align: right; font-variant-numeric: tabular-nums; }
+      .moyennes .resultat th, .moyennes .resultat td { font-weight: 600; color: var(--texte);
+        border-top: 1px solid #DDDFDA; border-bottom: 0; }
+      .moyennes th:first-child { position: sticky; left: 0; background: #fff; }
+      @media (max-width: 600px) {
+        .moyennes .resultat th { white-space: normal; min-width: 7.5em; }
+      }
+    </style>
+    <div class="moyennes-scroll">
+      <table class="moyennes">
+        <thead><tr><th scope="col">Mois</th><th scope="col" class="num">Macron</th><th scope="col" class="num">Le Pen</th><th scope="col" class="num">Mélenchon</th><th scope="col" class="num">Zemmour</th><th scope="col" class="num">Pécresse</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><time datetime="2021-01">janvier 2021</time></th><td class="num">23,9 %</td><td class="num">25,6 %</td><td class="num">9,9 %</td><td class="num">—</td><td class="num">14,0 %</td></tr>
+          <tr><th scope="row"><time datetime="2021-02">février 2021</time></th><td class="num">31,0 %</td><td class="num">—</td><td class="num">12,0 %</td><td class="num">17,0 %</td><td class="num">—</td></tr>
+          <tr><th scope="row"><time datetime="2021-03">mars 2021</time></th><td class="num">24,8 %</td><td class="num">26,5 %</td><td class="num">10,5 %</td><td class="num">—</td><td class="num">12,0 %</td></tr>
+          <tr><th scope="row"><time datetime="2021-04">avril 2021</time></th><td class="num">25,0 %</td><td class="num">25,8 %</td><td class="num">11,4 %</td><td class="num">—</td><td class="num">9,2 %</td></tr>
+          <tr><th scope="row"><time datetime="2021-05">mai 2021</time></th><td class="num">26,4 %</td><td class="num">27,9 %</td><td class="num">12,5 %</td><td class="num">—</td><td class="num">10,0 %</td></tr>
+          <tr><th scope="row"><time datetime="2021-06">juin 2021</time></th><td class="num">27,3 %</td><td class="num">26,2 %</td><td class="num">9,6 %</td><td class="num">5,5 %</td><td class="num">11,4 %</td></tr>
+          <tr><th scope="row"><time datetime="2021-07">juillet 2021</time></th><td class="num">25,0 %</td><td class="num">24,0 %</td><td class="num">8,7 %</td><td class="num">5,0 %</td><td class="num">13,0 %</td></tr>
+          <tr><th scope="row"><time datetime="2021-08">août 2021</time></th><td class="num">24,5 %</td><td class="num">23,3 %</td><td class="num">10,6 %</td><td class="num">7,0 %</td><td class="num">11,0 %</td></tr>
+          <tr><th scope="row"><time datetime="2021-09">septembre 2021</time></th><td class="num">24,8 %</td><td class="num">19,8 %</td><td class="num">9,4 %</td><td class="num">10,2 %</td><td class="num">13,1 %</td></tr>
+          <tr><th scope="row"><time datetime="2021-10">octobre 2021</time></th><td class="num">25,3 %</td><td class="num">17,6 %</td><td class="num">8,7 %</td><td class="num">15,6 %</td><td class="num">10,1 %</td></tr>
+          <tr><th scope="row"><time datetime="2021-11">novembre 2021</time></th><td class="num">25,3 %</td><td class="num">18,0 %</td><td class="num">9,2 %</td><td class="num">15,1 %</td><td class="num">10,1 %</td></tr>
+          <tr><th scope="row"><time datetime="2021-12">décembre 2021</time></th><td class="num">23,9 %</td><td class="num">15,8 %</td><td class="num">10,1 %</td><td class="num">13,6 %</td><td class="num">16,9 %</td></tr>
+          <tr><th scope="row"><time datetime="2022-01">janvier 2022</time></th><td class="num">24,6 %</td><td class="num">16,9 %</td><td class="num">9,6 %</td><td class="num">12,9 %</td><td class="num">16,3 %</td></tr>
+          <tr><th scope="row"><time datetime="2022-02">février 2022</time></th><td class="num">24,7 %</td><td class="num">16,6 %</td><td class="num">10,6 %</td><td class="num">14,6 %</td><td class="num">14,7 %</td></tr>
+          <tr><th scope="row"><time datetime="2022-03">mars 2022</time></th><td class="num">28,9 %</td><td class="num">18,3 %</td><td class="num">13,0 %</td><td class="num">11,5 %</td><td class="num">11,2 %</td></tr>
+          <tr><th scope="row"><time datetime="2022-04">avril 2022</time></th><td class="num">26,8 %</td><td class="num">22,3 %</td><td class="num">16,3 %</td><td class="num">9,7 %</td><td class="num">8,6 %</td></tr>
+          <tr class="resultat"><th scope="row">Résultat du premier tour</th><td class="num">27,85 %</td><td class="num">23,15 %</td><td class="num">21,95 %</td><td class="num">7,07 %</td><td class="num">4,78 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+<!-- END:moyennes-election -->
   </div>
 </main>
 
 <footer>
   <div class="footer-inner">
     <p id="attribution"></p>
+    <div id="footer-run"></div>
     <p><a href="mailto:contact@sondax.fr">Contact</a> · <a href="a-propos.html">À propos</a> · Hébergeur : <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
   </div>
 </footer>

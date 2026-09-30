@@ -22,9 +22,9 @@ VOLATILES = [
     # Pied de page : « N sondages agrégés · Dernier sondage intégré … · Données vérifiées le … · revid … »
     (re.compile(r'<div id="footer-run">.*?</div>', re.S), '<div id="footer-run"></div>'),
     # Accueil, sous le H1 : « N sondages · M instituts · mis à jour le 29 septembre 2026 »
-    (re.compile(r" · mis à jour le [^<]*"), ""),
+    (re.compile(r" · mis à jour le (?:<time[^>]*>[^<]*</time>)?[^<]*"), ""),
     # donnees.html : « … · généré le 28 septembre 2026 »
-    (re.compile(r" · généré le [^<]*"), ""),
+    (re.compile(r" · généré le (?:<time[^>]*>[^<]*</time>)?[^<]*"), ""),
     # donnees.html : JSON-LD Dataset des sondages, dateModified = date du build
     (re.compile(r'(<script type="application/ld\+json" id="jsonld-dataset-sondages">'
                 r'[^<]*?"dateModified": )"\d{4}-\d{2}-\d{2}"'),

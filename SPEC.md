@@ -2014,6 +2014,13 @@ l'exécution, non bloquant (données figées, §12).
 premier tour et avant la galerie des candidats. Ancre `#retro-sondax`. CSS :
 `site/assets/bloc-retro.css`.
 
+Mise à jour quotidienne. Le bloc statique porte le J-x du jour du build ; `pages.yml`
+se relance chaque jour (cron `5 0 * * *`, UTC). En complément, `site/assets/bloc-retro.js`
+recalcule au chargement le J-x du compte à rebours du header (`window._joursAvantT1_2027`) ;
+s'il diffère de celui du bloc, il charge `data/derived/retro.json` et régénère sous-titre
+et grille avec le même HTML que `rendre_bloc()`. Hors de 1 à 365, ou si le JSON ne se
+charge pas, le bloc statique reste en place.
+
 Bloc `.bloc` standard :
 - titre h2 en Space Grotesk : « Rétro-Sondax » ;
 - sous-titre gris : « À J-201 de la présidentielle, qui était en tête des sondages ? »

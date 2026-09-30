@@ -19,6 +19,7 @@ CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from instituts import charger_referentiel, lien_institut
+from balise_time import time_tag, time_periode
 from build_header import (
     select_hypothesis, select_latest_sondage, candidate_full_name, load_all_sondages,
     REPERES_T1, JSONLD_T1,
@@ -141,7 +142,7 @@ def generate_chapeau(series_data, sondages, candidats):
     n_sondages = len(sondages_fenetre)
     instituts = sorted(set(s["institut"] for s in sondages_fenetre))
 
-    debut_date_lettres = date_lettres(debut_fenetre)
+    debut_date_lettres = time_tag(debut_fenetre, date_lettres(debut_fenetre))
     if n_sondages == 1:
         phrase2 = (
             f"Cette moyenne repose sur un seul sondage publié "
@@ -233,14 +234,13 @@ def generate_bloc_dernier_sondage(sondages, candidats, series_data):
     td_y, td_m, td_d = td.split("-")
     tf_y, tf_m, tf_d = tf.split("-")
     if td == tf:
-        dates_str = f"{int(tf_d)} {MOIS[int(tf_m) - 1]} {tf_y}"
+        dates_str = time_tag(tf, f"{int(tf_d)} {MOIS[int(tf_m) - 1]} {tf_y}")
     elif td_m == tf_m and td_y == tf_y:
-        dates_str = f"{int(td_d)}\u2013{int(tf_d)} {MOIS[int(tf_m) - 1]} {tf_y}"
+        dates_str = time_periode(td, tf, f"{int(td_d)}", f"{int(tf_d)} {MOIS[int(tf_m) - 1]} {tf_y}",
+                                 "\u2013")
     else:
-        dates_str = (
-            f"{int(td_d)} {MOIS_ABBREV[int(td_m) - 1]} \u2013 "
-            f"{int(tf_d)} {MOIS_ABBREV[int(tf_m) - 1]} {tf_y}"
-        )
+        dates_str = time_periode(td, tf, f"{int(td_d)} {MOIS_ABBREV[int(td_m) - 1]}",
+                                 f"{int(tf_d)} {MOIS_ABBREV[int(tf_m) - 1]} {tf_y}", " \u2013 ")
 
     # Échantillon
     ech = latest.get("echantillon")

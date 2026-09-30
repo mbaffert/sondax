@@ -27,6 +27,7 @@ import sys
 sys.path.insert(0, str(SCRIPTS))
 from site_template import render_page
 from instituts import charger_referentiel, lien_institut
+from balise_time import time_tag
 from pages_second_tour import load_duels
 
 referentiel = charger_referentiel()
@@ -190,14 +191,16 @@ def jour_mois(iso, annee=True):
 
 
 def terrain_lettres(debut, fin):
-    """Période de terrain : 'du 24 au 25 août 2026', 'le 10 juillet 2026'."""
+    """Période de terrain : 'du 24 au 25 août 2026', 'le 10 juillet 2026',
+    chaque borne dans une balise <time>."""
+    fin_t = time_tag(fin, jour_mois(fin))
     if not debut or debut == fin:
-        return f"le {jour_mois(fin)}"
+        return f"le {fin_t}"
     if debut[:4] != fin[:4]:
-        return f"du {jour_mois(debut)} au {jour_mois(fin)}"
+        return f"du {time_tag(debut, jour_mois(debut))} au {fin_t}"
     if debut[:7] == fin[:7]:
-        return f"du {jour_mois(debut).split(' ')[0]} au {jour_mois(fin)}"
-    return f"du {jour_mois(debut, annee=False)} au {jour_mois(fin)}"
+        return f"du {time_tag(debut, jour_mois(debut).split(' ')[0])} au {fin_t}"
+    return f"du {time_tag(debut, jour_mois(debut, annee=False))} au {fin_t}"
 
 
 def nom_court(cid):
@@ -235,10 +238,6 @@ def duels(sondage):
         h for h in sondage.get("hypotheses", [])
         if h.get("tour") == 2 and len(candidats_hyp(h)) == 2
     ]
-
-
-def lien_sondage(s, texte):
-    return f'<a href="{html_mod.escape(s["id"])}.html">{html_mod.escape(texte)}</a>'
 
 
 def phrase_podium(principale):
@@ -310,8 +309,10 @@ def phrase_evolution(sondage, principale):
         texte = f"{texte}\u00a0; {absence}" if texte else absence
 
     meme_annee = prec["terrain_fin"][:4] == sondage["terrain_fin"][:4]
-    ref = f"l\u2019enquête {institut} du {jour_mois(prec['terrain_fin'], annee=not meme_annee)}"
-    return f"Par rapport à {lien_sondage(prec, ref)}, {html_mod.escape(texte)}."
+    ref = (f"l\u2019enquête {html_mod.escape(institut)} du "
+           f"{time_tag(prec['terrain_fin'], jour_mois(prec['terrain_fin'], annee=not meme_annee))}")
+    lien = f'<a href="{html_mod.escape(prec["id"])}.html">{ref}</a>'
+    return f"Par rapport à {lien}, {html_mod.escape(texte)}."
 
 
 def phrase_hypotheses(t1, principale):
@@ -644,7 +645,7 @@ def build_page(sondage):
     canonical = f"https://sondax.fr/sondages/{html_mod.escape(sid)}.html"
     phrases = chapo_phrases(sondage)
     meta_desc = meta_description_chapo(phrases)
-    h1 = f"Sondage {institut} du {jour_mois(terrain_fin)}"
+    h1 = f"Sondage {html_mod.escape(institut)} du {time_tag(terrain_fin, jour_mois(terrain_fin))}"
 
     # Breadcrumb
     breadcrumb = (
@@ -696,7 +697,7 @@ def build_page(sondage):
         nav_parts.append(
             f'<a href="{html_mod.escape(prev_s["id"])}.html" class="nav-prev" rel="prev">'
             f'<span class="nav-sens">\u2190 Sondage précédent</span>'
-            f'{html_mod.escape(prev_s["institut"])} du {jour_mois(prev_s["terrain_fin"])}</a>'
+            f'{html_mod.escape(prev_s["institut"])} du {time_tag(prev_s["terrain_fin"], jour_mois(prev_s["terrain_fin"]))}</a>'
         )
     else:
         nav_parts.append('<span></span>')
@@ -704,7 +705,7 @@ def build_page(sondage):
         nav_parts.append(
             f'<a href="{html_mod.escape(next_s["id"])}.html" class="nav-next" rel="next">'
             f'<span class="nav-sens">Sondage suivant \u2192</span>'
-            f'{html_mod.escape(next_s["institut"])} du {jour_mois(next_s["terrain_fin"])}</a>'
+            f'{html_mod.escape(next_s["institut"])} du {time_tag(next_s["terrain_fin"], jour_mois(next_s["terrain_fin"]))}</a>'
         )
     else:
         nav_parts.append('<span></span>')
@@ -730,7 +731,7 @@ def build_page(sondage):
     body = f"""<main class="sondage-page">
   <div class="sondage-inner">
     {breadcrumb}
-    <h1>{html_mod.escape(h1)}</h1>
+    <h1>{h1}</h1>
     <p class="sondage-meta-line">{meta_line}</p>
 {chapo_html}
     <div class="section-sep"></div>

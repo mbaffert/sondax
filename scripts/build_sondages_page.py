@@ -13,6 +13,7 @@ import json, math, pathlib, sys, html as html_mod
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 from instituts import charger_referentiel, lien_institut
+from balise_time import time_tag
 from build_header import select_hypothesis, select_latest_sondage
 
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
@@ -124,8 +125,8 @@ def generate_fiche(sondages, candidats, referentiel):
         source_label += f" pour {html_mod.escape(commanditaire)}"
 
     # Dates en toutes lettres
-    td = date_lettres(latest["terrain_debut"])
-    tf = date_lettres(latest["terrain_fin"])
+    td = time_tag(latest["terrain_debut"], date_lettres(latest["terrain_debut"]))
+    tf = time_tag(latest["terrain_fin"], date_lettres(latest["terrain_fin"]))
     if latest["terrain_debut"] == latest["terrain_fin"]:
         dates_str = f"le {tf}"
     else:
@@ -180,7 +181,7 @@ def main():
     ]
     for s in sondages:
         sid = s.get("id", "")
-        date_str = fmt_date(s["terrain_fin"])
+        date_str = time_tag(s["terrain_fin"], fmt_date(s["terrain_fin"]))
         ech = fmt_ech(s["echantillon"]) if s.get("echantillon") else "\u2014"
         nhyp = len(s.get("hypotheses", []))
         # Institut → page de l'institut ; date → fiche du sondage

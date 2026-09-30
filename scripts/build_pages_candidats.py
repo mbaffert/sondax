@@ -20,9 +20,11 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SCRIPTS = ROOT / "scripts"
 SITE = ROOT / "site"
 
-import sys
+import sys, html as html_mod
 sys.path.insert(0, str(SCRIPTS))
 import generer
+from balise_time import time_tag
+from instituts import charger_referentiel, lien_institut, est_notice
 
 # ---------- chargement ----------
 
@@ -153,6 +155,66 @@ def rangs_et_ecart(cid):
             break  # On a trouvé le dernier sondage avec ce candidat
 
     return rangs, ecart_devant
+
+
+# ---------- derniers sondages ----------
+
+N_DERNIERS = 5
+sondages_t1 = json.loads((ROOT / "data" / "sondages.json").read_text())
+referentiel = charger_referentiel()
+
+
+def fmt_date(iso):
+    y, m, d = iso.split("-")
+    return f"{d}/{m}/{y}"
+
+
+def derniers_sondages(cid):
+    """Les N_DERNIERS sondages dont l'hypothèse principale du premier tour
+    teste le candidat, du plus récent au plus ancien, avec son score."""
+    liste = []
+    for s in sondages_t1:
+        h = next((h for h in s["hypotheses"] if h.get("tour") == 1 and h.get("principale")), None)
+        if h and cid in h["scores"]:
+            liste.append((s, h["scores"][cid]))
+    liste.sort(key=lambda x: (x[0]["terrain_fin"], x[0].get("terrain_debut") or "",
+                              x[0].get("echantillon") or 0), reverse=True)
+    return liste[:N_DERNIERS]
+
+
+def tableau_derniers(cid):
+    """Tableau HTML des derniers sondages du candidat, puis le lien vers
+    tous les sondages. Chaîne vide si le candidat n'est dans aucune
+    hypothèse principale."""
+    rows = []
+    for s, score in derniers_sondages(cid):
+        debut, fin = s.get("terrain_debut"), s["terrain_fin"]
+        if debut and debut != fin:
+            dates = f"{time_tag(debut, fmt_date(debut))} → {time_tag(fin, fmt_date(fin))}"
+        else:
+            dates = time_tag(fin, fmt_date(fin))
+        url = s.get("url_source")
+        if url:
+            lib = "Notice" if est_notice(url) else "Publication"
+            notice = f'<a href="{html_mod.escape(url)}" target="_blank" rel="noopener">{lib}</a>'
+        else:
+            notice = "—"
+        rows.append(
+            f'<tr><td>{lien_institut(s["institut"], referentiel, "/")}</td>'
+            f'<td class="dates">{dates}</td>'
+            f'<td class="num">{generer.fr(score)}&nbsp;%</td>'
+            f'<td><a href="/sondages/{html_mod.escape(s["id"])}.html">Voir la fiche</a></td>'
+            f'<td>{notice}</td></tr>'
+        )
+    if not rows:
+        return ""
+    return (
+        '<div class="derniers"><div class="derniers-scroll"><table>'
+        '<thead><tr><th>Institut</th><th>Terrain</th><th class="num">Score</th>'
+        '<th>Fiche</th><th>Notice</th></tr></thead>'
+        f'<tbody>{"".join(rows)}</tbody></table></div>'
+        '<p class="derniers-tous"><a href="/sondages.html">Voir tous les sondages</a></p></div>'
+    )
 
 
 # ---------- extraction du HTML de generer.py ----------
@@ -304,6 +366,7 @@ def wrap_in_site_template(slug, fiche, raw_html):
       </div>
     </div>
     <div>
+      <div id="footer-run"></div>
       <div><a href="mailto:contact@sondax.fr">Contact</a></div>
       <div>Hébergeur · <a href="https://pages.github.com" target="_blank">GitHub Pages</a></div>
     </div>
@@ -349,6 +412,7 @@ for slug, fiche in bios.items():
         noms=noms,
         pages=pages,
         succession=succession,
+        derniers=tableau_derniers(slug),
     )
 
     final_html = wrap_in_site_template(slug, fiche, raw_html)

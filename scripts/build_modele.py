@@ -18,6 +18,7 @@ import datetime, html, json, pathlib, re, sys
 from zoneinfo import ZoneInfo
 
 from site_template import render_page
+from balise_time import time_tag
 import courbes_modele as C
 import textes_modele as T
 
@@ -84,6 +85,13 @@ def date_longue(iso_utc):
     return f"{jour} {MOIS[d.month - 1]} {d.year}"
 
 
+def time_longue(iso_utc):
+    """date_longue dans une balise <time> (date du jour à Paris)."""
+    d = datetime.datetime.fromisoformat(iso_utc.replace("Z", "+00:00"))
+    d = d.astimezone(ZoneInfo("Europe/Paris"))
+    return time_tag(d.date().isoformat(), date_longue(iso_utc))
+
+
 def nom(candidats, slug):
     return candidats[slug]["nom"]
 
@@ -120,7 +128,7 @@ def portrait(candidats, slug, p=""):
 def ligne_contexte(modele):
     n = modele["n_sondages"]
     return (f'Si on votait dimanche · Calculé sur {n} sondage{"s" if n > 1 else ""} · '
-            f'Mis à jour le {date_longue(modele["date"])}.')
+            f'Mis à jour le {time_longue(modele["date"])}.')
 
 
 # ------------------------------------------------------------------- blocs
@@ -438,7 +446,7 @@ def note_reconstitue(historique):
     reels = [h for h in historique if not h.get("reconstitue")]
     if not reels:
         return "Les points sont recalculés après coup, avec les sondages publiés à chaque date."
-    return (f"Avant le {date_longue(reels[0]['date'])}, les points sont recalculés après coup, "
+    return (f"Avant le {time_longue(reels[0]['date'])}, les points sont recalculés après coup, "
             f"avec les sondages publiés à chaque date.")
 
 
@@ -562,8 +570,10 @@ def page_modele(modele, candidats, pages, historique):
     chances d'être au second tour, évolution de ces chances. Rien d'autre."""
     lignes = "\n      ".join(ligne_candidat(candidats, pages, c, v, modele)
                              for c, v in modele["candidats"].items())
+    n = modele["n_sondages"]
     return f'''<main class="page-modele">
   <h1>Le modèle Sondax</h1>
+  <p class="mo-calcul">Calculé le {time_longue(modele["date"])} à partir de {n}&nbsp;sondage{"s" if n > 1 else ""}</p>
 
   {section_explication(modele)}
 
@@ -673,6 +683,7 @@ CSS = '''
   .mo-rangs > summary::after { content: ' ▾'; color: var(--gris); font-size: 14px; }
   .mo-rangs:not([open]) > summary::after { content: ' ▸'; }
   .mo-petit { font-size: 13px; color: var(--gris); margin-top: 10px; }
+  .page-modele .mo-calcul { font-size: 12.5px; color: var(--gris); margin: -12px 0 18px; }
   .mo-lien-methode a { font-weight: 600; }
   .mo-explication p { max-width: 46em; margin: 0 0 12px; line-height: 1.6; }
   .mo-explication h2 { scroll-margin-top: 68px; }
@@ -882,8 +893,11 @@ def injecter_duels(modele, candidats, historique):
         if "Redirection" in contenu and len(contenu) < 500:
             continue
         if BEGIN_DUEL not in contenu:
+            # Après la ligne « N sondages · Dernier : … » et la phrase qui la suit
             i = contenu.index("</h1>")
             j = contenu.index("</p>", i) + len("</p>")
+            if contenu[j:].lstrip().startswith('<p class="phrase-duel">'):
+                j = contenu.index("</p>", j) + len("</p>")
             contenu = contenu[:j] + f"\n{BEGIN_DUEL}\n{END_DUEL}" + contenu[j:]
         bloc = bloc_duel(modele, candidats, d["candidats"], historique)
         verifier_vocabulaire(bloc, f"la page duel {chemin.name}")

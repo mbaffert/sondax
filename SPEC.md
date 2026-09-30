@@ -904,6 +904,17 @@ qu'au §7. Rollings compris tant qu'aucune règle n'est décidée.
 repère du jour équivalent pour 2027 et nombre de jours dans l'info-bulle.
 Résultats officiels ; points bruts au premier tour.
 
+**Tableau des moyennes mensuelles** (décision du 30 septembre 2026). Sous les
+graphiques, tableau HTML statique injecté par `scripts/build_elections_chapeaux.py`
+(marqueurs `moyennes-election`) : une ligne par mois (mois de fin de terrain), une
+colonne par principal candidat, puis le résultat du premier tour en dernière ligne.
+Pas de colonne d'écart. Moyenne simple, sur le mois, du score de chaque sondage de
+premier tour du périmètre affiché (début de terrain à partir de la borne, fin de
+terrain avant le premier tour), score retenu comme pour la courbe
+(`series.score_candidat`) ; « — » quand le candidat n'est pas testé ce mois-là.
+Principaux candidats : présents au premier tour, avec 5 % des suffrages exprimés ou
+10 % de moyenne mensuelle au moins une fois ; colonnes par résultat décroissant.
+
 **Hors périmètre.** Traitement des rollings, regroupement par famille politique ou par
 rang, superposition de plusieurs élections sur un même graphe, élections de 1965 à 1995.
 
@@ -918,7 +929,15 @@ URL : `/<slug>.html` (9 candidats définis dans `scripts/bios.json`).
 Script : `scripts/build_pages_candidats.py`, qui appelle `scripts/generer.py`.
 Contenu : identité, courbe d'évolution, duels de second tour, profil de
 l'électorat (croisements Ipsos), liens vers les autres candidats.
-CSS scopé sous `.page-candidat` (`site/style-candidat.css`).
+CSS scopé sous `.page-candidat` (`site/style-candidat.css`, copie identique de
+`scripts/style-candidat.css`).
+
+Sous la courbe de tendance et son texte (décision du 30 septembre 2026) : tableau
+HTML des 5 derniers sondages dont l'hypothèse principale du premier tour teste le
+candidat (fin de terrain décroissante) — institut (lien vers sa page), dates de
+terrain, score, lien vers la fiche Sondax, lien vers la notice — puis un lien
+« Voir tous les sondages » vers `sondages.html`. Un prédécesseur (`succede_a`)
+n'y est pas repris.
 
 ### 13.2 Index des candidats
 
@@ -986,6 +1005,12 @@ Contenu : tableau des sondages pour le duel. Graphique Chart.js si ≥ 5 mesures
 (SEUIL défini dans le script), tableau seul en dessous. Redirection HTML depuis
 le slug inversé.
 
+Sous la ligne « N sondages · Dernier : … », une phrase générée (décision du
+30 septembre 2026) : « Dans le dernier sondage (Harris, 22–24 septembre 2026),
+Le Pen obtient 57 % contre 43 % pour Philippe. » Vainqueur en premier ; « le seul
+sondage publié » quand le duel n'a qu'une mesure ; en cas d'égalité, « X et Y
+obtiennent chacun 50 % ». Le bloc du modèle (§14.14.4) vient après cette phrase.
+
 ### 13.5 Balisage et SEO
 
 **Canonicals.** Chaque page déclare un `<link rel="canonical">` pointant vers
@@ -1008,7 +1033,16 @@ Jamais fusionnés en un seul jeu de données.
 
 **Dates de build.** Injectées en HTML statique par `scripts/build_dates.py` :
 dernier sondage intégré, date de vérification, revid Wikipédia. Affichées en
-haut de la page d'accueil et dans le pied de page de toutes les pages.
+haut de la page d'accueil et dans le pied de page de toutes les pages (élément
+`#footer-run`, présent aussi dans les fiches candidat et les pages
+`presidentielle-20XX.html`).
+
+**Balises `<time>`.** Toute date visible rendue au build est placée dans une
+balise `<time datetime>` (date ISO, ou `AAAA-MM` pour un mois), sans changement
+d'apparence : `scripts/balise_time.py` (`time_tag`, et `baliser_dates` pour les
+textes rédigés comme `bios.json`). Une période de terrain porte une balise par
+borne. Les dates écrites en JavaScript et les étiquettes des graphiques n'en ont
+pas.
 
 **Validation.** `scripts/validate_urls.py` vérifie que chaque canonical et
 chaque URL du sitemap correspond à un fichier généré. Le build échoue (exit 1)
@@ -1019,7 +1053,12 @@ en cas d'écart.
 `logo` si le fichier existe, `subjectOf` vers la page), sur le modèle de l'objet
 `Person` des fiches candidat.
 
-**Hors périmètre.** BreadcrumbList.
+**JSON-LD de navigation.** Injecté par `scripts/build_jsonld_navigation.py`, après
+la génération de toutes les pages : `WebSite` sur `index.html` ; `BreadcrumbList`
+sur chaque page qui affiche un fil d'Ariane (élément de classe `fil`), avec les
+mêmes étapes que le fil visible. La dernière étape non liée est la page elle-même ;
+une étape intermédiaire affichée sans lien (« Candidats ») prend l'URL de la page
+correspondante. Un fil d'une seule étape n'est pas balisé.
 
 ### 13.6 Jeu de données public
 
@@ -1622,7 +1661,9 @@ calculée : elle sert à la page Modèle, à la meta description et au partage.
 
 Structure (décision du 29 septembre 2026), dans cet ordre et rien d'autre :
 
-1. **Titre** : « Le modèle Sondax », sans surtitre.
+1. **Titre** : « Le modèle Sondax », sans surtitre, suivi d'une ligne discrète
+   « Calculé le {date} à partir de {N} sondages » (`date` et `n_sondages` de
+   `modele.json`, date du jour à Paris ; décision du 30 septembre 2026).
 2. **« Comment fonctionne ce modèle ? »** (ancre `#comment-fonctionne`, cible du
    lien « Comment ces probabilités sont-elles calculées ? » de l'accueil). Texte fourni
    tel quel (`EXPLICATION` dans `build_modele.py`), quatre paragraphes. Le nombre de

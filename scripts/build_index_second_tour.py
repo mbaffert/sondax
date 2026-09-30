@@ -19,6 +19,7 @@ from pages_second_tour import (
     load_duels, nom_court, fmt_date, fmt_pct, find_pair_from_slug, SEUIL,
 )
 from build_header import REPERES_T2, JSONLD_T2
+from balise_time import time_tag
 from instituts import charger_referentiel, lien_institut
 
 BEGIN_MARKER = "<!-- BEGIN:second-tour -->"
@@ -192,7 +193,7 @@ def generate_chapeau(duels, candidats):
         last_leader = nom_a if last.get(cid_a, 0) >= last.get(cid_b, 0) else nom_b
         # Mois de la première et de la dernière mesure
         first_date = duels[reversals[0]][-1]["terrain_fin"]
-        first_mois = MOIS[int(first_date.split("-")[1]) - 1]
+        first_mois = time_tag(first_date[:7], MOIS[int(first_date.split("-")[1]) - 1])
         # Depuis quand le leader actuel mène-t-il sans interruption ?
         entries = duels[reversals[0]]
         streak_start = entries[0]["terrain_fin"]
@@ -203,7 +204,7 @@ def generate_chapeau(duels, candidats):
                 streak_start = e["terrain_fin"]
             else:
                 break
-        streak_mois = MOIS[int(streak_start.split("-")[1]) - 1]
+        streak_mois = time_tag(streak_start[:7], MOIS[int(streak_start.split("-")[1]) - 1])
         phrases.append(
             f"{first_leader} menait le duel {nom_a}\u00a0\u2013\u00a0{nom_b} "
             f"en {first_mois}\u00a0; {last_leader} l\u2019emporte dans toutes "
@@ -259,7 +260,7 @@ def format_duel_row(slug, entries, candidats):
     nom_2 = html_mod.escape(nom_court(cid_2, candidats))
 
     n = len(entries)
-    date_str = fmt_date(latest["terrain_fin"])
+    date_str = time_tag(latest["terrain_fin"], fmt_date(latest["terrain_fin"]))
     institut = lien_institut(latest["institut"], charger_referentiel())
 
     return (
@@ -392,9 +393,10 @@ def generate_bardella_section(bardella_duels, candidats):
         for e in entries:
             all_dates.append(e["terrain_fin"])
     all_dates.sort()
-    first_mois = MOIS[int(all_dates[0].split("-")[1]) - 1]
+    first_mois = time_tag(all_dates[0][:7], MOIS[int(all_dates[0].split("-")[1]) - 1])
     last_mois = MOIS[int(all_dates[-1].split("-")[1]) - 1]
     first_annee = all_dates[0].split("-")[0]
+    last_mois = time_tag(all_dates[-1][:7], f"{last_mois} {first_annee}")
 
     slugs = sorted_duel_slugs(bardella_duels)
     rows = []
@@ -409,9 +411,9 @@ def generate_bardella_section(bardella_duels, candidats):
     )
 
     return (
-        f'      <p class="duels-libelle">Duels testés avec Jordan Bardella ({first_mois}\u00a0\u2013\u00a0{last_mois} {first_annee})</p>\n'
+        f'      <p class="duels-libelle">Duels testés avec Jordan Bardella ({first_mois}\u00a0\u2013\u00a0{last_mois})</p>\n'
         f'      <p class="subtitle" style="font-size:13px;margin:0 0 6px;">Les instituts testaient alors Bardella comme candidat du RN. '
-        f'Marine Le Pen l\u2019a remplacé à partir de juillet 2026.</p>\n'
+        f'Marine Le Pen l\u2019a remplacé à partir de <time datetime="2026-07">juillet 2026</time>.</p>\n'
         f'{table}'
     )
 

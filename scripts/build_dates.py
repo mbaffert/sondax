@@ -16,6 +16,7 @@ Données :
 import json, pathlib, datetime, re
 
 from instituts import charger_referentiel, compter_instituts
+from balise_time import time_tag
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
@@ -57,13 +58,13 @@ def compute_dates():
 def compteur_html(n_sondages, n_instituts, build_date, **_):
     date = date_lettres(build_date).replace(" ", "\u00a0")  # pas de « 2026 » seul à la ligne
     return (f"{n_sondages}\u00a0sondages · {n_instituts}\u00a0instituts · "
-            f"mis à jour le {date}")
+            f"mis à jour le {time_tag(build_date, date)}")
 
 
 def footer_html(n_sondages, last_date, last_revid, build_date, **_):
     parts = [f"{n_sondages}\u00a0sondages agrégés"]
-    parts.append(f"Dernier sondage intégré\u00a0: {date_lettres(last_date)}")
-    parts.append(f"Données vérifiées le {date_lettres(build_date)}")
+    parts.append(f"Dernier sondage intégré\u00a0: {time_tag(last_date, date_lettres(last_date))}")
+    parts.append(f"Données vérifiées le {time_tag(build_date, date_lettres(build_date))}")
     if last_revid:
         parts.append(
             f'revid\u00a0: <a href="https://fr.wikipedia.org/w/index.php?oldid={last_revid}" '

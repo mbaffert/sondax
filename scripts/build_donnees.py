@@ -14,6 +14,7 @@ d'une configuration n'a pas de ligne (jamais de score à 0).
 import csv, json, pathlib, datetime, html
 
 from site_template import render_page
+from balise_time import time_tag
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -122,8 +123,8 @@ qui teste plusieurs listes de candidats ou plusieurs duels occupe autant de bloc
 lignes. Chaque sondage renvoie vers sa notice.</p>
 
 <p class="telechargement"><a href="donnees/{NOM_CSV}" download>{NOM_CSV}</a><br>
-<span>{nb_sondages} sondages du {date_fr(premier)} au {date_fr(dernier)} · {nb_lignes}
-lignes · {poids_ko}&nbsp;Ko · généré le {date_fr(aujourdhui)}</span></p>
+<span>{nb_sondages} sondages du {time_tag(premier, date_fr(premier))} au {time_tag(dernier, date_fr(dernier))} · {nb_lignes}
+lignes · {poids_ko}&nbsp;Ko · généré le {time_tag(aujourdhui, date_fr(aujourdhui))}</span></p>
 
 <p>Aussi publié sur <a href="https://www.data.gouv.fr/datasets/sondages-dintentions-de-vote-election-presidentielle-2027">data.gouv.fr</a>.</p>
 

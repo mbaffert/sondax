@@ -28,7 +28,8 @@ DATA = ROOT / "data"
 
 sys.path.insert(0, str(SCRIPTS))
 from site_template import render_page
-from instituts import charger_referentiel, slug_institut, logo_disponible
+from instituts import charger_referentiel, slug_institut, logo_disponible, est_notice
+from balise_time import time_tag, time_periode
 
 BASE = "https://sondax.fr"
 SEUIL_GRAPHIQUE = 5   # sondages de 1er tour, en deçà : pas de graphique
@@ -77,14 +78,16 @@ def fmt_ech(n):
     return f"{round(n):,}".replace(",", "\u202f")
 
 
-def periode(debut, fin):
-    """Période « du 22 mars au 10 septembre 2026 » (année omise si identique)."""
+def periode(debut, fin, balise=False):
+    """Période « du 22 mars au 10 septembre 2026 » (année omise si identique).
+    balise=True : dates dans des balises <time> (texte affiché, pas les métadonnées)."""
+    t = time_tag if balise else (lambda iso, texte: texte)
     if debut == fin:
-        return f"le {date_lettres(fin)}"
+        return f"le {t(fin, date_lettres(fin))}"
     d = date_lettres(debut)
     if debut[:4] == fin[:4]:
         d = d.rsplit(" ", 1)[0]
-    return f"du {d} au {date_lettres(fin)}"
+    return f"du {t(debut, d)} au {t(fin, date_lettres(fin))}"
 
 
 def hypothese_principale(sondage):
@@ -92,10 +95,6 @@ def hypothese_principale(sondage):
         if h.get("tour") == 1 and h.get("principale"):
             return h
     return None
-
-
-def est_notice(url):
-    return bool(url) and "commission-des-sondages.fr" in url
 
 
 def nom_commanditaire(sondage):
@@ -124,14 +123,14 @@ def chapeau(inst, liste):
 
     if n == 1:
         phrases = [f"Sondax recense un sondage {nom} sur la présidentielle 2027, "
-                   f"dont le terrain s’est achevé le {date_lettres(fin)}."]
+                   f"dont le terrain s’est achevé le {time_tag(fin, date_lettres(fin))}."]
     else:
         jours = (datetime.date.fromisoformat(fin) - datetime.date.fromisoformat(debut)).days
         intervalle = round(jours / (n - 1))
         frequence = (f", soit en moyenne un sondage tous les {intervalle}\u00a0jours"
                      if intervalle >= 1 else "")
         phrases = [f"Sondax recense {n}\u00a0sondages {nom} sur la présidentielle 2027, "
-                   f"dont les terrains se sont achevés {periode(debut, fin)}{frequence}."]
+                   f"dont les terrains se sont achevés {periode(debut, fin, balise=True)}{frequence}."]
 
     comm = Counter(c for c in (nom_commanditaire(s) for s in liste) if c)
     if comm:
@@ -325,9 +324,10 @@ def table_sondages(liste, prefix):
     rows = []
     for s in liste:
         if s["terrain_debut"] and s["terrain_debut"] != s["terrain_fin"]:
-            dates = f'{fmt_date(s["terrain_debut"])} → {fmt_date(s["terrain_fin"])}'
+            dates = time_periode(s["terrain_debut"], s["terrain_fin"], fmt_date(s["terrain_debut"]),
+                                 fmt_date(s["terrain_fin"]), " → ")
         else:
-            dates = fmt_date(s["terrain_fin"])
+            dates = time_tag(s["terrain_fin"], fmt_date(s["terrain_fin"]))
         comm = nom_commanditaire(s)
         comm_html = ESC(comm) if comm else "—"
         ech = fmt_ech(s["echantillon"]) if s.get("echantillon") else "—"
@@ -410,7 +410,7 @@ def build_page_index(slugs):
 
     intro = (f"Sondax recense {total}\u00a0sondages d’intentions de vote pour la "
              f"présidentielle 2027, publiés par {len(slugs)}\u00a0instituts. "
-             f"Leurs terrains se sont achevés {periode(debut, fin)}.")
+             f"Leurs terrains se sont achevés {periode(debut, fin, balise=True)}.")
 
     rows = []
     for slug in slugs:
@@ -420,7 +420,7 @@ def build_page_index(slugs):
             f'<tr><td class="logo-cell">{logo_html(inst, "", "")}</td>'
             f'<td class="inst-nom"><a href="instituts/{slug}.html">{ESC(inst["nom_complet"])}</a></td>'
             f'<td class="num">{len(liste)}</td>'
-            f'<td class="num">{fmt_date(liste[0]["terrain_fin"])}</td></tr>'
+            f'<td class="num">{time_tag(liste[0]["terrain_fin"], fmt_date(liste[0]["terrain_fin"]))}</td></tr>'
         )
 
     body = f"""<main class="institut-page">

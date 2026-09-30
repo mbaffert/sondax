@@ -134,7 +134,7 @@
 
     <div class="controles">
       <div class="groupe" id="periode-group">
-        <button data-months="0" class="active">Depuis janvier 2011</button>
+        <button data-months="0" class="active">Depuis <time datetime="2011-01">janvier 2011</time></button>
         <button data-months="12">1 an</button>
         <button data-months="6">6 mois</button>
         <button data-months="3">3 mois</button>
@@ -156,12 +156,55 @@
       </div>
       <div id="t2-content"></div>
     </div>
+
+    <!-- BEGIN:moyennes-election -->
+    <style>
+      .moyennes-scroll { overflow-x: auto; margin-top: 22px; }
+      .moyennes { border-collapse: collapse; width: 100%; font-size: 13px; }
+      .moyennes th, .moyennes td { padding: 6px 10px; border-bottom: 1px solid #EDEEEA;
+        text-align: left; white-space: nowrap; }
+      .moyennes thead th { font-weight: 600; color: var(--gris); border-bottom-color: #DDDFDA; }
+      .moyennes tbody th { font-weight: 400; color: var(--gris); }
+      .moyennes .num { text-align: right; font-variant-numeric: tabular-nums; }
+      .moyennes .resultat th, .moyennes .resultat td { font-weight: 600; color: var(--texte);
+        border-top: 1px solid #DDDFDA; border-bottom: 0; }
+      .moyennes th:first-child { position: sticky; left: 0; background: #fff; }
+      @media (max-width: 600px) {
+        .moyennes .resultat th { white-space: normal; min-width: 7.5em; }
+      }
+    </style>
+    <div class="moyennes-scroll">
+      <table class="moyennes">
+        <thead><tr><th scope="col">Mois</th><th scope="col" class="num">Hollande</th><th scope="col" class="num">Sarkozy</th><th scope="col" class="num">Le Pen</th><th scope="col" class="num">Mélenchon</th><th scope="col" class="num">Bayrou</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><time datetime="2011-01">janvier 2011</time></th><td class="num">20,0 %</td><td class="num">26,2 %</td><td class="num">17,2 %</td><td class="num">5,8 %</td><td class="num">7,2 %</td></tr>
+          <tr><th scope="row"><time datetime="2011-02">février 2011</time></th><td class="num">21,0 %</td><td class="num">23,5 %</td><td class="num">18,2 %</td><td class="num">6,5 %</td><td class="num">6,8 %</td></tr>
+          <tr><th scope="row"><time datetime="2011-03">mars 2011</time></th><td class="num">21,8 %</td><td class="num">20,8 %</td><td class="num">21,4 %</td><td class="num">5,0 %</td><td class="num">6,9 %</td></tr>
+          <tr><th scope="row"><time datetime="2011-04">avril 2011</time></th><td class="num">21,5 %</td><td class="num">20,1 %</td><td class="num">20,6 %</td><td class="num">4,8 %</td><td class="num">6,2 %</td></tr>
+          <tr><th scope="row"><time datetime="2011-05">mai 2011</time></th><td class="num">25,6 %</td><td class="num">21,2 %</td><td class="num">19,1 %</td><td class="num">5,4 %</td><td class="num">6,3 %</td></tr>
+          <tr><th scope="row"><time datetime="2011-06">juin 2011</time></th><td class="num">27,6 %</td><td class="num">21,9 %</td><td class="num">19,5 %</td><td class="num">7,2 %</td><td class="num">6,5 %</td></tr>
+          <tr><th scope="row"><time datetime="2011-07">juillet 2011</time></th><td class="num">28,6 %</td><td class="num">23,8 %</td><td class="num">17,1 %</td><td class="num">5,5 %</td><td class="num">7,4 %</td></tr>
+          <tr><th scope="row"><time datetime="2011-08">août 2011</time></th><td class="num">27,0 %</td><td class="num">26,0 %</td><td class="num">15,0 %</td><td class="num">7,5 %</td><td class="num">7,7 %</td></tr>
+          <tr><th scope="row"><time datetime="2011-09">septembre 2011</time></th><td class="num">30,1 %</td><td class="num">24,7 %</td><td class="num">17,3 %</td><td class="num">5,8 %</td><td class="num">6,9 %</td></tr>
+          <tr><th scope="row"><time datetime="2011-10">octobre 2011</time></th><td class="num">35,0 %</td><td class="num">23,4 %</td><td class="num">16,6 %</td><td class="num">6,6 %</td><td class="num">7,3 %</td></tr>
+          <tr><th scope="row"><time datetime="2011-11">novembre 2011</time></th><td class="num">31,9 %</td><td class="num">26,6 %</td><td class="num">17,7 %</td><td class="num">6,4 %</td><td class="num">6,9 %</td></tr>
+          <tr><th scope="row"><time datetime="2011-12">décembre 2011</time></th><td class="num">30,2 %</td><td class="num">25,0 %</td><td class="num">16,9 %</td><td class="num">6,6 %</td><td class="num">10,9 %</td></tr>
+          <tr><th scope="row"><time datetime="2012-01">janvier 2012</time></th><td class="num">28,7 %</td><td class="num">24,0 %</td><td class="num">19,0 %</td><td class="num">7,6 %</td><td class="num">12,9 %</td></tr>
+          <tr><th scope="row"><time datetime="2012-02">février 2012</time></th><td class="num">30,0 %</td><td class="num">25,8 %</td><td class="num">17,6 %</td><td class="num">8,2 %</td><td class="num">12,0 %</td></tr>
+          <tr><th scope="row"><time datetime="2012-03">mars 2012</time></th><td class="num">28,1 %</td><td class="num">27,4 %</td><td class="num">16,2 %</td><td class="num">11,0 %</td><td class="num">12,2 %</td></tr>
+          <tr><th scope="row"><time datetime="2012-04">avril 2012</time></th><td class="num">27,5 %</td><td class="num">27,5 %</td><td class="num">15,8 %</td><td class="num">13,7 %</td><td class="num">10,3 %</td></tr>
+          <tr class="resultat"><th scope="row">Résultat du premier tour</th><td class="num">28,63 %</td><td class="num">27,18 %</td><td class="num">17,90 %</td><td class="num">11,10 %</td><td class="num">9,13 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+<!-- END:moyennes-election -->
   </div>
 </main>
 
 <footer>
   <div class="footer-inner">
     <p id="attribution"></p>
+    <div id="footer-run"></div>
     <p><a href="mailto:contact@sondax.fr">Contact</a> · <a href="a-propos.html">À propos</a> · Hébergeur : <a href="https://pages.github.com" target="_blank">GitHub Pages</a></p>
   </div>
 </footer>

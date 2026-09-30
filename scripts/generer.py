@@ -148,12 +148,12 @@ def texte_electorat(nom, national, pcs, sexe, ages, genre="m"):
     ecarts = [abs(v - national) for v in pcs.values()]
     if max(ecarts) < 3:
         t = (f"Le profil de l'électorat de {nom} est remarquablement uniforme : aucune catégorie "
-             f"socioprofessionnelle ne s'écarte de plus de trois points de son score national "
+             f"socioprofessionnelle ne s'écarte de plus de trois points de son score d'ensemble "
              f"de {nat_txt(national)}&nbsp;%.")
     else:
         t = (f"Son électorat est d'abord social : <b>{fr(hi[1], 0)}&nbsp;%</b> chez "
              f"{ART.get(hi[0], hi[0].lower())}, contre <b>{fr(lo[1], 0)}&nbsp;%</b> chez "
-             f"{ART.get(lo[0], lo[0].lower())}, pour un score national de {nat_txt(national)}&nbsp;%.")
+             f"{ART.get(lo[0], lo[0].lower())}, pour un score d'ensemble de {nat_txt(national)}&nbsp;%.")
     if ages:
         jeune = ages.get("18-24 ans"); vieux = ages.get("70 ans et plus")
         if jeune is not None and vieux is not None and abs(jeune - vieux) >= 3:
@@ -244,8 +244,8 @@ def barres_mini(titre, rows, national, amp):
         e = v - national; w = abs(e) / amp * 48
         cote = f"left:50%;width:{w:.1f}%" if e > 0 else f"right:50%;width:{w:.1f}%"
         cls = "pos" if e > 0 else "neg"
-        # Même score affiché que le score national : petit trait neutre au centre
-        marque = ('<span class="egal"></span>' if round(v) == round(national)
+        # Score strictement égal à la référence : petit trait neutre au centre
+        marque = ('<span class="egal"></span>' if v == national
                   else f'<span class="barre {cls}" style="{cote}"></span>')
         lignes += (f'<div class="lab">{JOLI.get(lab, lab)}</div>'
                    f'<div class="piste">{marque}</div>'
@@ -255,7 +255,7 @@ def barres_mini(titre, rows, national, amp):
 def graphiques_electorat(dims, national):
     dims = [(t, rows) for t, rows in dims if rows]
     amp = max([4] + [abs(v - national) for _, rows in dims for _, v in rows])
-    return (f'<div class="minis-titre">Écart au score national ({fr(national,0)}&nbsp;%)&nbsp;: '
+    return (f'<div class="minis-titre">Écart à son score dans ce sondage ({nat_txt(national)}&nbsp;%)&nbsp;: '
             f'en bleu au-dessus, en rouge en dessous</div>'
             f'<div class="minis">{"".join(barres_mini(t, rows, national, amp) for t, rows in dims)}</div>')
 

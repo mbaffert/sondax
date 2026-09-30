@@ -61,15 +61,26 @@ for slug, info in photos_meta.items():
 # generer.py attend l'hypothèse correspondant à HYP_CROIS
 crois = croisements_raw.get(generer.HYP_CROIS, {})
 
-# Calcul du score national (moyenne pondérée globale depuis les séries)
 date_fin = series_data["date_fin"]
-national = {}
-for cid, pts in series_data["series"].items():
-    for p in reversed(pts):
-        if p["v"] is not None:
-            national[cid] = p["v"]
-            break
-crois["_national"] = national
+
+# Score de référence : scores d'ensemble du sondage dont viennent les
+# croisements (et non la moyenne Sondax, qui mélange d'autres instituts).
+source_id = croisements_raw.get("_source")
+if not source_id:
+    sys.exit("croisements.json : clé \"_source\" absente (identifiant du sondage des croisements)")
+sondages = json.loads((ROOT / "data" / "sondages.json").read_text())
+sondage = next((s for s in sondages if s["id"] == source_id), None)
+if sondage is None:
+    sys.exit(f"croisements.json : sondage source « {source_id} » introuvable dans data/sondages.json")
+cands_crois = {cid for dim, groupes in crois.items() if not dim.startswith("_")
+               for scores in groupes.values() for cid in scores}
+hyps = [h for h in sondage["hypotheses"]
+        if h.get("tour") == 1 and cands_crois <= set(h["candidats"])]
+if len(hyps) != 1:
+    sys.exit(f"sondage « {source_id} » : {len(hyps)} hypothèse(s) de premier tour contenant "
+             f"les candidats des croisements « {generer.HYP_CROIS} » "
+             f"({', '.join(sorted(cands_crois))}), une seule attendue")
+crois["_national"] = dict(hyps[0]["scores"])
 
 # ---------- séries et bruts par candidat ----------
 

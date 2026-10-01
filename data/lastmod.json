@@ -4,23 +4,23 @@
   "date": "2026-09-28"
  },
  "attal.html": {
-  "hash": "1b62bad4439399a2b184484322ffaa05237268a2162ef8774e59c4cf28a66786",
+  "hash": "8ae47130f6f7a2f5c9db9bbc675a3e5698298f6311b44f314f8600db3abd82fc",
   "date": "2026-10-01"
  },
  "candidats/index.html": {
-  "hash": "26a4454871ffa4cf2b062c84761e4a5287d9a8e6009456a83baf751fd2a306e7",
-  "date": "2026-09-30"
+  "hash": "5b608b395fa838bf6f479e293619c1138a588d66b5cc5c9c00aaf1335c42a21b",
+  "date": "2026-10-01"
  },
  "donnees.html": {
-  "hash": "934e87931802077862c0f5430ec941d35f1da139a2acda2a4759521ee11ea395",
-  "date": "2026-09-30"
+  "hash": "99a352ec84983a4d51686d2b2de213b24b25a4e8f3ab8466c257c339a85a1132",
+  "date": "2026-10-01"
  },
  "glucksmann.html": {
-  "hash": "805ad8de42e3d07a47105de5a0c6fd151ffbad62dc2ebc385e39d3e5f8ddfb6f",
+  "hash": "8eb2c03ad1567503e9116e3c77cf8c0f9a7bb3097ec77376fd6cd8ccd10f5626",
   "date": "2026-10-01"
  },
  "index.html": {
-  "hash": "d2ed4e32d428ec3ba6414604db197f017442d607d56de27c104125ce0bf6cea1",
+  "hash": "a8d9d2ad4b71bad371fc03f26cf921113e9906fba39a37e9629624fb4fa543d3",
   "date": "2026-10-01"
  },
  "instituts.html": {
@@ -36,8 +36,8 @@
   "date": "2026-09-30"
  },
  "instituts/ifop.html": {
-  "hash": "4c700255f9073621b80a5908f3dde49afe0a51b5b0e9acc3b8821db99fc7895f",
-  "date": "2026-09-30"
+  "hash": "79b20ab8c481249abaaf3f889a6d600392a1bdb5f1a5b6db335f016e217bd310",
+  "date": "2026-10-01"
  },
  "instituts/ipsos-bva.html": {
   "hash": "8714cd4fd90594d74cc6276bff58836d92ad6e920c5b5c11ce685eef218729cf",
@@ -64,11 +64,11 @@
   "date": "2026-09-30"
  },
  "le-pen.html": {
-  "hash": "9cc18a0bf94b78fb521288fa0169846f4f1a9aa8501537323aca7716b0ad7359",
+  "hash": "b3329ff22769ad8feecd653a6203d7578a8dfe7bf6e99741dbbe9df4c1dff027",
   "date": "2026-10-01"
  },
  "melenchon.html": {
-  "hash": "47a4ebd9fb08be0c74e85342d94acd04be7858be9a39b13fa3adb0600e53b54a",
+  "hash": "2967aac04d203c6f3267d96c6052cb16bb86b722d3e4c07ad56fc7df78cc4fea",
   "date": "2026-10-01"
  },
  "methodologie.html": {
@@ -76,11 +76,11 @@
   "date": "2026-09-30"
  },
  "modele-sondax.html": {
-  "hash": "cf4b39d057f8be889317e5e11ff7b9b326260ba21d68e387aeca277a65a15093",
+  "hash": "6552ebd2dd4cf1ee2de2a45e5ed14db134c558a9919050a3365288bba2ac4060",
   "date": "2026-10-01"
  },
  "philippe.html": {
-  "hash": "bfa65c419edc6705f50f264b3363e98f03d1abe0c8cccb4647e2f5e0bb9b9131",
+  "hash": "acd34730ced20914b3010ab8c9e0b43d68e9c2f0ef5230adffbb8ffcd3bedd5c",
   "date": "2026-10-01"
  },
  "precedentes-elections.html": {
@@ -108,11 +108,11 @@
   "date": "2026-09-30"
  },
  "retailleau.html": {
-  "hash": "ce1d0ab58221cdfa17845aea467e0041fe45d102b38d31fa0b1ac83828df3f99",
+  "hash": "eaba4601a09070d32e1fd4aa73a5624efa6d73f044d54558ff1abc5d1ced5046",
   "date": "2026-10-01"
  },
  "roussel.html": {
-  "hash": "171b67f465384d04b404e801c3937fadc6ec9e8437e7f6b8c4732fc123ea8ec4",
+  "hash": "40c247dcffa34530d8789afc977649c56de267a2418ee73e7ea9e0abb3f8ff43",
   "date": "2026-10-01"
  },
  "second-tour/attal-bardella.html": {
@@ -168,8 +168,8 @@
   "date": "2026-09-30"
  },
  "sondages.html": {
-  "hash": "fbec918fd7fcad23c67b48be288618837ce940e9c31050704e1ed544d3a28f6c",
-  "date": "2026-09-30"
+  "hash": "61059972eb11ea485ecd4eafff63ca330adf998d6a3f92796e8efefebf742df7",
+  "date": "2026-10-01"
  },
  "sondages/cluster17-2026-07-24.html": {
   "hash": "9369986931586be0af579b9662ca85031de71493cf50efd68315d3cf37abf598",
@@ -244,8 +244,8 @@
   "date": "2026-09-30"
  },
  "sondages/ifop-2026-09-29.html": {
-  "hash": "7340ff3cf62d633659496d4badb984fd16ad76020b1e9084b49932d38c87db51",
-  "date": "2026-09-30"
+  "hash": "b6ef5d6ae5a25c7c696634af8d0a4662f29fced3e176bb2c32341f7390214b3a",
+  "date": "2026-10-01"
  },
  "sondages/ipsos-2026-05-28.html": {
   "hash": "65f4304a169e0e8024d83869bdc185679d6eec953e7cb7ddd947b2df33c49355",
@@ -304,11 +304,11 @@
   "date": "2026-09-30"
  },
  "tondelier.html": {
-  "hash": "66684cc60c4ceda4039b97ee51b6ee32ed5776db7f0e8404e2fa86869ca8763e",
+  "hash": "98dfe512769d0fd0e949cc2b725e8c9217381e4bf09e8557664ceaa8b050bdd3",
   "date": "2026-10-01"
  },
  "zemmour.html": {
-  "hash": "3c7c9852e622ab84f454d31b44433c1ff556370b00fa5dfbb2e7dc12bdffed0d",
+  "hash": "5ce388fb6f5f50eb4a298003aa735aff0cb4dddd0d864fbe19f77d5140702deb",
   "date": "2026-10-01"
  }
 }

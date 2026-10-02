@@ -21,7 +21,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUTPUT_DIR = ROOT / "data" / "gsc"
 
 # Identifiant de la propriété, tel que renvoyé par sites.list.
-SITE_URL = None
+SITE_URL = "sc-domain:sondax.fr"
 
 SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly"]
 API = "https://www.googleapis.com/webmasters/v3"

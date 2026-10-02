@@ -1,0 +1,23 @@
+# TEMPORAIRE — vérification de l'accès Search Console, à supprimer.
+name: Vérification GSC (temporaire)
+
+on:
+  push:
+    branches: [claude/optimistic-euler-cijbqf]
+
+permissions:
+  contents: read
+
+jobs:
+  verif:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install -r requirements-gsc.txt
+      - name: sites.list
+        env:
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+        run: python scripts/collecte_gsc.py --sites

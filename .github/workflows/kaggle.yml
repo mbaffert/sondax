@@ -1,0 +1,52 @@
+name: Synchronisation Kaggle
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/sondages.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kaggle-dataset
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Générer le CSV public
+        run: |
+          python scripts/build_donnees.py
+          test -s site/donnees/sondages-presidentielle-2027.csv
+
+      - name: Installer le client Kaggle
+        run: python -m pip install --disable-pip-version-check kaggle==2.2.4
+
+      - name: Publier une nouvelle version du dataset
+        env:
+          KAGGLE_API_TOKEN: ${{ secrets.KAGGLE_API_TOKEN }}
+        run: |
+          if [ -z "$KAGGLE_API_TOKEN" ]; then
+            echo "::error::Le secret KAGGLE_API_TOKEN est absent ou vide."
+            exit 1
+          fi
+
+          UPLOAD_DIR="$RUNNER_TEMP/kaggle-dataset"
+          mkdir -p "$UPLOAD_DIR"
+          cp kaggle/dataset-metadata.json "$UPLOAD_DIR/"
+          cp site/donnees/sondages-presidentielle-2027.csv "$UPLOAD_DIR/"
+
+          kaggle datasets version \
+            --path "$UPLOAD_DIR" \
+            --message "Mise à jour automatique depuis Sondax (${GITHUB_SHA::7})" \
+            --keep-tabular \
+            --dir-mode skip

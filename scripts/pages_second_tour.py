@@ -24,6 +24,17 @@ from balise_time import time_tag
 # Données
 # ---------------------------------------------------------------------------
 
+def duel_slug(cid_a, cid_b):
+    """Slug canonique d'un duel : les deux identifiants triés, joints par « - »."""
+    return "-".join(sorted((cid_a, cid_b)))
+
+
+def page_duel(cid_a, cid_b, out_dir=DEFAULT_OUT):
+    """Slug du duel si sa page existe (≥ SEUIL mesures, déjà générée), sinon None."""
+    slug = duel_slug(cid_a, cid_b)
+    return slug if (out_dir / f"{slug}.html").exists() else None
+
+
 def load_duels():
     sondages = json.loads(SONDAGES_PATH.read_text())
     candidats = json.loads(CANDIDATS_PATH.read_text())
@@ -33,8 +44,7 @@ def load_duels():
         for h in s["hypotheses"]:
             if h["tour"] != 2 or len(h["scores"]) != 2:
                 continue
-            pair = sorted(h["scores"].keys())
-            slug = "-".join(pair)
+            slug = duel_slug(*h["scores"].keys())
             entry = {
                 "institut": s["institut"],
                 "terrain_debut": s["terrain_debut"],
@@ -160,6 +170,7 @@ def footer(depth=1):
       <div style="display:flex;flex-direction:column;gap:5px;">
         <a href="{prefix}methodologie.html">Méthode</a>
         <a href="{prefix}sondages.html">Tous les sondages</a>
+        <a href="{prefix}second-tour/">Second tour</a>
         <a href="{prefix}donnees.html">Données</a>
         <a href="{prefix}a-propos.html">À propos</a>
       </div>

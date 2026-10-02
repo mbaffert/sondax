@@ -95,3 +95,5 @@
 .page-candidat .derniers .dates{font-variant-numeric:tabular-nums}
 .page-candidat .derniers-tous{margin-top:12px;font-size:13.5px}
 @media(max-width:620px){.page-candidat .derniers{padding:0 20px 22px}.page-candidat .derniers table{font-size:12.5px}.page-candidat .derniers th,.page-candidat .derniers td{padding:7px 5px}.page-candidat .derniers th{letter-spacing:.04em}.page-candidat .derniers td.dates{white-space:normal;min-width:78px}}
+.page-candidat .duel-note a{color:inherit;text-decoration:none;border-bottom:1px solid var(--bord)}
+.page-candidat .duel-note a:hover{border-color:var(--cand);color:var(--texte)}

@@ -3,6 +3,7 @@
 import json, math, datetime as dt, unicodedata, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from balise_time import time_tag, baliser_dates
+from pages_second_tour import page_duel
 
 HYP_CROIS = "R. Glucksmann, G. Attal, E. Philippe"
 AUJ = dt.date(2026, 9, 19)
@@ -198,6 +199,9 @@ def bloc_second_tour(slug, nom, duels, noms, genre="m", pages=None):
                       f"entre {fr(min(xs),0)} et {fr(max(xs),0)} %")
         else:
             detail = f"{len(v)} mesure{'s' if len(v) > 1 else ''} seulement"
+        page = page_duel(slug, adv)
+        if page:
+            detail = f'<a href="/second-tour/{page}.html">{detail}</a>'
         gagnant = moi > lui
         lignes += (f'<div class="duel{" gagne" if gagnant else ""}">'
                    f'<div class="duel-adv">face à {lien_adv(adv, noms, pages)}</div>'

@@ -41,10 +41,22 @@ jobs:
           python scripts/modele.py --historiser
           python scripts/validation.py --modele
 
+      # Search Console : un échec ne bloque pas la collecte des sondages, mais
+      # fait échouer le run (étape « Échec GSC ») et aucun CSV GSC n'est écrit.
+      - name: Collecte Google Search Console
+        id: gsc
+        continue-on-error: true
+        env:
+          GSC_SERVICE_ACCOUNT: ${{ secrets.GSC_SERVICE_ACCOUNT }}
+        run: |
+          pip install -r requirements-gsc.txt
+          python scripts/collecte_gsc.py
+
       - name: Vérifier les changements
         id: changes
         run: |
-          if git diff --quiet data/sondages.json data/polymarket.json data/snapshots/ data/modele_history.json; then
+          if git diff --quiet data/sondages.json data/polymarket.json data/snapshots/ data/modele_history.json \
+             && [ -z "$(git status --porcelain -- data/gsc/)" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -66,6 +78,9 @@ jobs:
           git checkout -B "$BRANCH"
 
           git add data/sondages.json data/polymarket.json data/snapshots/ data/modele_history.json
+          if [ "${{ steps.gsc.outcome }}" = "success" ]; then
+            git add data/gsc/
+          fi
           git diff --cached --quiet && echo "Rien de nouveau à commiter" && exit 0
           git commit -m "Collecte du ${DATE}"
 
@@ -99,6 +114,12 @@ jobs:
 
           echo "url=${PR_URL}" >> "$GITHUB_OUTPUT"
 
+      - name: Échec GSC
+        if: steps.gsc.outcome == 'failure'
+        run: |
+          echo "::error::Collecte Google Search Console en échec : aucun fichier data/gsc/ commité."
+          exit 1
+
       - name: Préparer le corps du mail
         id: mail
         if: always()
@@ -111,6 +132,9 @@ jobs:
           {
             if [ "$STATUS" = "failure" ]; then
               echo "⚠ Le run de collecte a échoué."
+              if [ "${{ steps.gsc.outcome }}" = "failure" ]; then
+                echo "  (collecte Google Search Console en échec, voir les logs)"
+              fi
               echo ""
             fi
 

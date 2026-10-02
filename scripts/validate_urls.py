@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
-"""Valide que chaque canonical, URL du sitemap et lien interne correspond à un fichier.
+"""Valide que chaque canonical, URL du sitemap et lien interne correspond à un fichier,
+et que le sitemap couvre exactement les pages HTML publiables présentes dans site/.
 
-Fait échouer le build (exit 1) si une URL n'a pas de fichier correspondant.
+Fait échouer le build (exit 1) si une URL n'a pas de fichier correspondant, si
+une page publiable manque au sitemap ou s'il en contient une en trop, ou si un
+lastmod est absent ou mal formé.
 """
 
-import pathlib, re, sys, xml.etree.ElementTree as ET
+import datetime, pathlib, re, sys, xml.etree.ElementTree as ET
+
+from build_sitemap import enumerer_pages, url_de, ErreurSitemap
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
@@ -76,14 +81,42 @@ def collect_canonicals():
     return canonicals
 
 
-def collect_sitemap_urls():
-    """Collecte toutes les URLs du sitemap."""
+def collect_sitemap():
+    """Collecte les entrées du sitemap : liste de (loc, lastmod)."""
     sitemap_path = SITE / "sitemap.xml"
     if not sitemap_path.exists():
         return []
     tree = ET.parse(sitemap_path)
     ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
-    return [loc.text for loc in tree.findall(".//sm:loc", ns)]
+    return [(u.findtext("sm:loc", namespaces=ns), u.findtext("sm:lastmod", namespaces=ns))
+            for u in tree.findall("sm:url", ns)]
+
+
+def check_sitemap_complet(sitemap):
+    """Le sitemap contient exactement les pages HTML publiables de site/."""
+    errors = []
+    try:
+        publiables, _ = enumerer_pages()
+    except ErreurSitemap as e:
+        return [f"SITEMAP    {e}"], 0
+    attendues = {url_de(rel) for rel in publiables}
+    urls = [loc for loc, _ in sitemap]
+    presentes = set(urls)
+    for url in sorted(attendues - presentes):
+        errors.append(f"SITEMAP    {url} : page publiable absente du sitemap")
+    for url in sorted(presentes - attendues):
+        errors.append(f"SITEMAP    {url} : dans le sitemap mais pas une page publiable")
+    for url in sorted({u for u in urls if urls.count(u) > 1}):
+        errors.append(f"SITEMAP    {url} : en double")
+    if len(urls) != len(attendues):
+        errors.append(f"SITEMAP    {len(urls)} URLs pour {len(attendues)} pages publiables")
+    today = datetime.date.today().isoformat()
+    for loc, lastmod in sitemap:
+        if not lastmod or not re.fullmatch(r"\d{4}-\d{2}-\d{2}", lastmod):
+            errors.append(f"SITEMAP    {loc} : lastmod absent ou mal formé ({lastmod})")
+        elif lastmod > today:
+            errors.append(f"SITEMAP    {loc} : lastmod {lastmod} dans le futur")
+    return errors, len(attendues)
 
 
 def strip_scripts(html):
@@ -118,7 +151,10 @@ def main():
             errors.append(f"CANONICAL  {url}  (dans {source}) : fichier manquant")
 
     # Vérifier le sitemap
-    sitemap_urls = collect_sitemap_urls()
+    sitemap = collect_sitemap()
+    sitemap_urls = [loc for loc, _ in sitemap]
+    erreurs_sitemap, n_publiables = check_sitemap_complet(sitemap)
+    errors += erreurs_sitemap
     for url in sitemap_urls:
         target = url_to_path(url)
         if target is None:
@@ -153,7 +189,8 @@ def main():
     else:
         n_can = len(canonicals)
         n_sit = len(sitemap_urls)
-        print(f"Validation OK : {n_can} canonicals, {n_sit} URLs sitemap, {n_links} liens internes")
+        print(f"Validation OK : {n_can} canonicals, {n_sit} URLs sitemap "
+              f"pour {n_publiables} pages publiables, {n_links} liens internes")
 
 
 if __name__ == "__main__":

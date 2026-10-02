@@ -1,10 +1,9 @@
-"""Génère les pages statiques de second tour et le sitemap.
+"""Génère les pages statiques de second tour.
 
 Lit data/sondages.json et data/candidats.json, produit :
 - site/second-tour/index.html         page d'entrée listant tous les duels
 - site/second-tour/{slug}.html        une page par duel ≥ 5 mesures
 - site/second-tour/{slug-inv}.html    redirection vers le slug canonique
-- site/sitemap.xml                    sitemap couvrant tout le site
 """
 
 import json, pathlib, sys, html as html_mod
@@ -13,7 +12,6 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 DEFAULT_OUT = ROOT / "site" / "second-tour"
-SITEMAP_PATH = ROOT / "site" / "sitemap.xml"
 
 SEUIL = 5
 BASE_URL = "https://sondax.fr"
@@ -542,39 +540,6 @@ def generate_index_page(duels, candidats, out_dir):
 </html>
 """
     (out_dir / "index.html").write_text(page, encoding="utf-8")
-
-
-# ---------------------------------------------------------------------------
-# Sitemap
-# ---------------------------------------------------------------------------
-
-STATIC_PAGES = [
-    "",
-    "sondages.html",
-    "methodologie.html",
-    "precedentes-elections.html",
-    "presidentielle-2002.html",
-    "presidentielle-2007.html",
-    "presidentielle-2012.html",
-    "presidentielle-2017.html",
-    "presidentielle-2022.html",
-    "second-tour/",
-]
-
-
-def generate_sitemap():
-    urls = []
-    for page in STATIC_PAGES:
-        urls.append(f"  <url><loc>{BASE_URL}/{page}</loc></url>")
-
-    sitemap = (
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
-        + "\n".join(urls)
-        + "\n</urlset>\n"
-    )
-    SITEMAP_PATH.write_text(sitemap, encoding="utf-8")
-    print(f"Sitemap écrit : {SITEMAP_PATH.name} ({len(urls)} URLs)")
 
 
 # ---------------------------------------------------------------------------

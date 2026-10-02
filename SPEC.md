@@ -654,7 +654,7 @@ dessous apparaissent sous forme de tableau des sondages directement dans la page
 
 **Génération** : `scripts/pages_second_tour.py` lit `data/sondages.json` et
 `data/candidats.json`, écrit dans `site/second-tour/` (répertoire entièrement
-reconstructible, ajouté au `.gitignore`). Le script génère aussi `site/sitemap.xml`.
+reconstructible, ajouté au `.gitignore`).
 
 **Navigation** : le sélecteur de duel de `site/index.html` pointe vers les pages
 dédiées, et le header gagne un lien « Second tour ».
@@ -672,7 +672,7 @@ Toute page publiée porte :
   l'indexation.
 
 `robots.txt` et `sitemap.xml` font partie de la sortie du build. Le `sitemap.xml`
-est généré par `scripts/pages_second_tour.py`.
+est généré par `scripts/build_sitemap.py` (§13.5).
 
 Les pages des élections passées (2002-2022) portent un chapeau rendu au build
 (`scripts/build_elections_chapeaux.py`) et la page `sondages.html` contient l'état
@@ -765,7 +765,7 @@ de requête n'est transmis.
 /scripts
   collecte_wikipedia.py          dérivé du prototype parse_wikipedia.py
   collecte_polymarket.py         deux événements (victoire + second tour)
-  pages_second_tour.py          pages de duel + sitemap, reconstructible
+  pages_second_tour.py          pages de duel, reconstructible
   validation.py
   instituts.py                   référentiel instituts, commanditaires → /derived
   build_pages_instituts.py       pages institut + instituts.html
@@ -1017,8 +1017,31 @@ obtiennent chacun 50 % ». Le bloc du modèle (§14.14.4) vient après cette phr
 son URL réelle (`https://sondax.fr/<chemin>`). Vérifié au build par
 `scripts/validate_urls.py`.
 
-**Sitemap.** Généré par `scripts/build_sitemap.py`, couvre toutes les pages
-publiques. Les pages de redirection en sont exclues. Vérifié au build.
+**Sitemap.** Généré par `scripts/build_sitemap.py` à chaque build, après la
+génération de toutes les pages, par énumération des fichiers HTML de `site/` :
+aucune liste d'URLs ni de slugs. En sont exclues les pages de redirection
+(`<meta http-equiv="refresh">`), les pages `noindex` et celles dont le canonical
+pointe vers une autre URL ; une page sans canonical fait échouer le build.
+`/second-tour/` et `/candidats/` sont des pages à contenu propre (liste des duels
+et tableaux des duels sous le seuil ; tableau des candidats) et y figurent.
+
+`lastmod` est la date du dernier changement des données affichées, jamais la
+date du build (une page qui ne relève d'aucune règle fait échouer le build) :
+
+| Page | lastmod |
+|---|---|
+| `sondages/<id>.html` | fin de terrain du sondage (`saisi_le` si postérieure) |
+| `instituts/<slug>.html` | dernier sondage de l'institut |
+| fiche candidat | dernier sondage où figure le candidat ; dernier sondage du modèle (`jour_moyenne`) si la fiche porte son bloc ; dernier commit de `scripts/bios.json` |
+| page duel | dernier sondage testant le duel ; `jour_moyenne` du modèle si la page porte son bloc |
+| `second-tour/`, `candidats/` | dernier sondage de second tour / de premier tour |
+| `sondages.html`, `instituts.html`, `donnees.html` | dernier sondage |
+| `modele-sondax.html` | `jour_moyenne` du modèle |
+| accueil | dernier sondage, modèle, dernière collecte Polymarket (`maj`) |
+| pages rédigées à la main (Méthode, À propos, élections passées) | dernier commit du fichier et des données affichées (`historique*.json`, `config.json`) |
+
+Les dates git exigent un clone complet (`fetch-depth: 0` dans `pages.yml`) ;
+`build_sitemap.py` échoue sur un clone superficiel.
 
 **JSON-LD Dataset.** Deux jeux de données distincts, injectés par
 `scripts/build_jsonld_dataset.py`, chacun sur la page où il est présenté :
@@ -1045,8 +1068,10 @@ borne. Les dates écrites en JavaScript et les étiquettes des graphiques n'en o
 pas.
 
 **Validation.** `scripts/validate_urls.py` vérifie que chaque canonical et
-chaque URL du sitemap correspond à un fichier généré. Le build échoue (exit 1)
-en cas d'écart.
+chaque URL du sitemap correspond à un fichier généré, et que le sitemap contient
+exactement les pages HTML publiables de `site/` (même nombre, liste des pages
+manquantes ou en trop, lastmod présent et pas dans le futur). Le build échoue
+(exit 1) en cas d'écart : rien n'est déployé.
 
 **JSON-LD Organization.** Chaque page institut porte un objet `Organization`
 (nom complet, `alternateName` si le nom court diffère, `url` du site de l'institut,

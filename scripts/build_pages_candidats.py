@@ -378,6 +378,7 @@ def wrap_in_site_template(slug, fiche, raw_html):
     <div>
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
+        <a href="modele-sondax.html">Modèle Sondax</a>
         <a href="methodologie.html">Méthode</a>
         <a href="sondages.html">Tous les sondages</a>
         <a href="second-tour/">Second tour</a>

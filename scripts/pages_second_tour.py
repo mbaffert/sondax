@@ -168,6 +168,7 @@ def footer(depth=1):
     <div>
       <div class="footer-col-title">Le site</div>
       <div style="display:flex;flex-direction:column;gap:5px;">
+        <a href="{prefix}modele-sondax.html">Modèle Sondax</a>
         <a href="{prefix}methodologie.html">Méthode</a>
         <a href="{prefix}sondages.html">Tous les sondages</a>
         <a href="{prefix}second-tour/">Second tour</a>

@@ -1,0 +1,62 @@
+name: Synchronisation Hugging Face
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - data/sondages.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: huggingface-dataset
+  cancel-in-progress: false
+
+jobs:
+  publier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Générer le CSV public
+        run: |
+          python scripts/build_donnees.py
+          test -s site/donnees/sondages-presidentielle-2027.csv
+
+      - name: Installer le client Hugging Face
+        run: python -m pip install --disable-pip-version-check huggingface_hub==2.1.1
+
+      - name: Comparer et publier le dataset
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          if [ -z "$HF_TOKEN" ]; then
+            echo "::error::Le secret HF_TOKEN est absent ou vide."
+            exit 1
+          fi
+
+          REPO_ID="maxbaf/french-presidential-election-2027-polls-sondax"
+          CSV_NAME="sondages-presidentielle-2027.csv"
+          CSV_PATH="site/donnees/$CSV_NAME"
+          REMOTE_DIR="$RUNNER_TEMP/huggingface-current"
+
+          if REMOTE_CSV=$(hf download "$REPO_ID" "$CSV_NAME" \
+            --repo-type dataset \
+            --local-dir "$REMOTE_DIR" \
+            --quiet); then
+            if cmp -s "$CSV_PATH" "$REMOTE_CSV"; then
+              echo "Le CSV Hugging Face est déjà à jour : aucune publication."
+              exit 0
+            fi
+          else
+            echo "Aucun CSV distant trouvé : première publication."
+          fi
+
+          hf upload "$REPO_ID" "$CSV_PATH" "$CSV_NAME" \
+            --repo-type dataset \
+            --commit-message "Mise à jour automatique depuis Sondax (${GITHUB_SHA::7})"

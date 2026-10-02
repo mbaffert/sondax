@@ -1,13 +1,23 @@
-"""Génère site/assets/header-data.js à partir des données de sondages.
+"""Génère site/assets/header-data.js et le balisage statique du bandeau.
 
-Utilisé au build pour fournir au bandeau d'en-tête les données du dernier
-sondage, de l'hypothèse sélectionnée et des statistiques agrégées.
+Sans argument : écrit site/assets/header-data.js (dates de l'élection,
+statistiques agrégées), lu par assets/header.js.
+
+Avec --injecter (en fin de build, une fois toutes les pages générées) :
+écrit le bandeau complet dans le <div id="site-header" class="sh"> de chaque
+page HTML de site/, comme build_dates.py le fait pour le pied de page. Le
+balisage reproduit celui que header.js produisait côté client, pour que la
+navigation soit présente dans le HTML servi. header.js ne fait plus
+qu'améliorer ce bandeau (compte à rebours recalculé, barre compacte, menu).
 """
 
+import datetime
 import json
 import os
+import re
 import sys
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -164,7 +174,168 @@ def load_all_sondages():
     return load_json(DATA / "sondages.json")
 
 
+# ---------------------------------------------------------------------------
+# Bandeau statique — reproduit à l'identique le rendu de assets/header.js
+# (mêmes classes, même ordre, mêmes libellés). Toute modification de la
+# navigation se fait ici ; header.js ne la reconstruit qu'en filet de sécurité.
+# ---------------------------------------------------------------------------
+
+SITE = ROOT / "site"
+
+LOGO_SVG = (
+    '<svg viewBox="0 0 44 24" aria-hidden="true">'
+    '<path d="M4 7 C 12 7, 14 17, 22 17 C 30 17, 32 7, 40 7" fill="none" stroke="#0C6CF2" stroke-width="5.5" stroke-linecap="round"/>'
+    '<path d="M4 17 C 12 17, 14 7, 22 7 C 30 7, 32 17, 40 17" fill="none" stroke="#F23D5B" stroke-width="5.5" stroke-linecap="round"/>'
+    '</svg>'
+)
+
+CANDIDATS_PAGES = [
+    ("le-pen", "Marine Le Pen"),
+    ("philippe", "Édouard Philippe"),
+    ("melenchon", "Jean-Luc Mélenchon"),
+    ("glucksmann", "Raphaël Glucksmann"),
+    ("attal", "Gabriel Attal"),
+    ("retailleau", "Bruno Retailleau"),
+    ("tondelier", "Marine Tondelier"),
+    ("zemmour", "Éric Zemmour"),
+    ("roussel", "Fabien Roussel"),
+]
+
+# (libellé, href, pages qui l'activent, préfixe qui l'active) ;
+# None à la place du href : menu déroulant des candidats.
+NAV_ITEMS = [
+    ("Accueil", "index.html", ["index.html", ""], None),
+    ("Candidats", None, [], None),
+    ("Tous les sondages", "sondages.html", ["sondages.html"], None),
+    ("Modèle Sondax", "modele-sondax.html", ["modele-sondax.html"], None),
+    ("Instituts", "instituts.html", ["instituts.html"], None),
+    ("Élections passées", "precedentes-elections.html", ["precedentes-elections.html"], "presidentielle-"),
+    ("Méthode", "methodologie.html", ["methodologie.html"], None),
+    ("Données", "donnees.html", ["donnees.html"], None),
+]
+
+SOUS_DOSSIERS = ("second-tour", "sondages", "instituts", "candidats")
+RUBRIQUES = {"sondages": "Tous les sondages", "instituts": "Instituts"}
+
+
+def compte_a_rebours(premier_tour, second_tour, aujourd_hui):
+    """(gros chiffre, date longue, date courte), ou None après le second tour.
+
+    Même calcul que header.js, qui le refait au chargement de la page.
+    """
+    d1 = (datetime.date.fromisoformat(premier_tour) - aujourd_hui).days
+    d2 = (datetime.date.fromisoformat(second_tour) - aujourd_hui).days
+    if d1 > 0:
+        return f"J\u2212{d1}", "1<sup>er</sup> tour · 18 avril 2027", "18 avril"
+    if d1 == 0:
+        return "J0", "1<sup>er</sup> tour · aujourd\u2019hui", "aujourd\u2019hui"
+    if d2 > 0:
+        return f"J\u2212{d2}", "2<sup>d</sup> tour · 2 mai 2027", "2 mai"
+    if d2 == 0:
+        return "J0", "2<sup>d</sup> tour · aujourd\u2019hui", "aujourd\u2019hui"
+    return None
+
+
+def header_html(rel_path, cd):
+    """Contenu de <div id="site-header"> pour la page site/<rel_path>."""
+    parts = rel_path.split("/")
+    page = parts[-1]
+    sous_dossier = parts[0] if len(parts) > 1 and parts[0] in SOUS_DOSSIERS else None
+    base = "../" if sous_dossier else ""
+
+    def actif(label, match, prefixe):
+        if sous_dossier:
+            return RUBRIQUES.get(sous_dossier) == label
+        return page in match or bool(prefixe and page.startswith(prefixe))
+
+    def liens():
+        h = ""
+        for label, href, match, prefixe in NAV_ITEMS:
+            if href is None:
+                h += (f'<div class="menu-candidats">'
+                      f'<a href="{base}candidats/" class="menu-candidats-label">Candidats</a>'
+                      f'<div class="menu-panneau">')
+                h += "".join(f'<a href="{base}{slug}.html">{nom}</a>' for slug, nom in CANDIDATS_PAGES)
+                h += "</div></div>"
+            elif actif(label, match, prefixe):
+                h += f'<a href="{base}{href}" class="is-active" aria-current="page">{label}</a>'
+            else:
+                h += f'<a href="{base}{href}">{label}</a>'
+        return h
+
+    cd_html = ""
+    if cd:
+        big, longue, courte = cd
+        cd_html = ('<div class="sh-cd">'
+                   f'<span class="sh-cd-big">{big}</span>'
+                   f'<span class="sh-cd-date sh-cd-date-longue">{longue}</span>'
+                   f'<span class="sh-cd-date sh-cd-date-courte">{courte}</span>'
+                   '</div>')
+
+    return ('<div class="sh-inner">'
+            f'<a class="sh-logo" href="{base}index.html" aria-label="Sondax — accueil">'
+            + LOGO_SVG
+            + '<span class="sh-wordmark">sondax</span>'
+            '</a>'
+            f'<nav class="sh-nav" aria-label="Navigation principale">{liens()}</nav>'
+            '<div class="sh-sub-slot"></div>'
+            + cd_html
+            + '<button type="button" class="sh-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="sh-panel">'
+            '<span class="sh-menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>'
+            '<span class="sh-menu-txt" aria-hidden="true">Menu</span>'
+            '</button>'
+            '</div>'
+            f'<nav class="sh-panel" id="sh-panel" aria-label="Navigation principale">{liens()}</nav>')
+
+
+OUVRANT = '<div id="site-header" class="sh">'
+BALISE_DIV = re.compile(r"<div\b|</div>")
+
+
+def inject_header(content, inner):
+    """Remplace le contenu du div#site-header (vide ou déjà rempli).
+
+    La fin du div est trouvée en comptant les <div> imbriqués, pour que
+    l'injection soit idempotente d'un build à l'autre.
+    """
+    debut = content.find(OUVRANT)
+    if debut < 0:
+        return content
+    i = debut + len(OUVRANT)
+    profondeur = 1
+    for m in BALISE_DIV.finditer(content, i):
+        profondeur += 1 if m.group() != "</div>" else -1
+        if profondeur == 0:
+            return content[:i] + inner + content[m.start():]
+    raise ValueError("div#site-header non fermé")
+
+
+def injecter():
+    config_path = DATA / "config.json"
+    config = load_json(config_path) if config_path.exists() else {}
+    election = config.get("election", {})
+    # Jour courant à Paris, comme header.js (le build tourne chaque jour)
+    aujourd_hui = datetime.datetime.now(ZoneInfo("Europe/Paris")).date()
+    cd = compte_a_rebours(election.get("premier_tour", "2027-04-18"),
+                          election.get("second_tour", "2027-05-02"), aujourd_hui)
+
+    count = 0
+    for html_path in sorted(SITE.rglob("*.html")):
+        content = html_path.read_text(encoding="utf-8")
+        if OUVRANT not in content:
+            continue
+        new_content = inject_header(content, header_html(html_path.relative_to(SITE).as_posix(), cd))
+        if new_content != content:
+            html_path.write_text(new_content, encoding="utf-8")
+        count += 1
+    print(f"Bandeau statique injecté dans {count} pages ({cd[0] if cd else 'sans compte à rebours'})")
+
+
 def main():
+    if "--injecter" in sys.argv[1:]:
+        injecter()
+        return
+
     sondages = load_all_sondages()
 
     if not sondages:

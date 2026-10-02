@@ -1,4 +1,10 @@
-// Bandeau d'en-tête Sondax — rendu client depuis HEADER_DATA
+// Bandeau d'en-tête Sondax — amélioration du bandeau statique
+// Le balisage du bandeau est écrit au build dans <div id="site-header"> par
+// scripts/build_header.py --injecter. Ce script ne fait que l'améliorer :
+// compte à rebours recalculé (page servie depuis un cache), bascule en barre
+// compacte, sous-navigation de l'accueil, bouton Menu. Si le bandeau statique
+// est absent, il le rend comme avant (filet de sécurité). Idempotent : jamais
+// de remplacement ni de doublon d'un bandeau déjà présent.
 // Le fichier header-data.js (généré au build) doit être chargé avant ce script.
 //
 // Une seule ligne collante : logo, navigation principale, compte à rebours.
@@ -7,8 +13,13 @@
 // bandeau passe alors en barre compacte (logo réduit, sections, bouton Menu).
 
 (function () {
+  var el = document.getElementById('site-header');
+  if (!el || el._shInit) return;
+  var statique = !!el.querySelector('.sh-inner');
   var D = window.HEADER_DATA;
-  if (!D) return;
+  if (!D && !statique) return;
+  el._shInit = true;
+  D = D || {};
 
   // --- Compte à rebours (dates depuis config.json via HEADER_DATA) ---
   var ed = D.electionDates || {};
@@ -41,105 +52,132 @@
     cdDateCourte = 'aujourd’hui';
   }
 
-  // --- Logo SVG (icône seule, deux courbes entrelacées) ---
-  var logoSVG = '<svg viewBox="0 0 44 24" aria-hidden="true">' +
-    '<path d="M4 7 C 12 7, 14 17, 22 17 C 30 17, 32 7, 40 7" fill="none" stroke="#0C6CF2" stroke-width="5.5" stroke-linecap="round"/>' +
-    '<path d="M4 17 C 12 17, 14 7, 22 7 C 30 7, 32 17, 40 17" fill="none" stroke="#F23D5B" stroke-width="5.5" stroke-linecap="round"/>' +
-    '</svg>';
-
-  // --- Navigation ---
-  var pathname = window.location.pathname;
-  var page = pathname.split('/').pop() || 'index.html';
-
-  var candidatsPages = [
-    { slug: 'le-pen', nom: 'Marine Le Pen' },
-    { slug: 'philippe', nom: 'Édouard Philippe' },
-    { slug: 'melenchon', nom: 'Jean-Luc Mélenchon' },
-    { slug: 'glucksmann', nom: 'Raphaël Glucksmann' },
-    { slug: 'attal', nom: 'Gabriel Attal' },
-    { slug: 'retailleau', nom: 'Bruno Retailleau' },
-    { slug: 'tondelier', nom: 'Marine Tondelier' },
-    { slug: 'zemmour', nom: 'Éric Zemmour' },
-    { slug: 'roussel', nom: 'Fabien Roussel' }
-  ];
-
-  var navItems = [
-    { label: 'Accueil', href: 'index.html', match: ['index.html', ''] },
-    { label: 'Candidats', href: '#', match: candidatsPages.map(function(c) { return c.slug + '.html'; }), dropdown: true },
-    { label: 'Tous les sondages', href: 'sondages.html', match: ['sondages.html'] },
-    { label: 'Modèle Sondax', href: 'modele-sondax.html', match: ['modele-sondax.html'] },
-    { label: 'Instituts', href: 'instituts.html', match: ['instituts.html'] },
-    { label: 'Élections passées', href: 'precedentes-elections.html', match: ['precedentes-elections.html'], prefixe: 'presidentielle-' },
-    { label: 'Méthode', href: 'methodologie.html', match: ['methodologie.html'] },
-    { label: 'Données', href: 'donnees.html', match: ['donnees.html'] }
-  ];
-
-  // Pages situées dans un sous-dossier : liens relatifs remontés d'un niveau
-  var sousDossier = pathname.match(/\/(second-tour|sondages|instituts|candidats)\//);
-  var baseHref = sousDossier ? '../' : '';
-
-  // Rubrique d'une page de sous-dossier (fiches sondage, pages institut)
-  var rubriques = { sondages: 'Tous les sondages', instituts: 'Instituts' };
-
-  function isActive(item) {
-    if (sousDossier) {
-      return rubriques[sousDossier[1]] === item.label;
-    }
-    for (var i = 0; i < item.match.length; i++) {
-      if (page === item.match[i]) return true;
-    }
-    return !!(item.prefixe && page.indexOf(item.prefixe) === 0);
+  if (statique) {
+    majCompteARebours();
+  } else {
+    el.innerHTML = rendreBandeau();
   }
 
-  function candidatsMenuHTML() {
-    var h = '<div class="menu-candidats">' +
-      '<a href="' + baseHref + 'candidats/" class="menu-candidats-label">Candidats</a>' +
-      '<div class="menu-panneau">';
-    for (var k = 0; k < candidatsPages.length; k++) {
-      var cp = candidatsPages[k];
-      h += '<a href="' + baseHref + cp.slug + '.html">' + cp.nom + '</a>';
+  // Le bandeau statique a été écrit au build : le jour a pu changer depuis.
+  function majCompteARebours() {
+    var cdEl = el.querySelector('.sh-cd');
+    if (hideCountdown) {
+      if (cdEl) cdEl.parentNode.removeChild(cdEl);
+      return;
     }
-    return h + '</div></div>';
+    if (!cdEl) {
+      cdEl = document.createElement('div');
+      cdEl.className = 'sh-cd';
+      cdEl.innerHTML = '<span class="sh-cd-big"></span>' +
+        '<span class="sh-cd-date sh-cd-date-longue"></span>' +
+        '<span class="sh-cd-date sh-cd-date-courte"></span>';
+      var btnEl = el.querySelector('.sh-menu-btn');
+      btnEl.parentNode.insertBefore(cdEl, btnEl);
+    }
+    cdEl.querySelector('.sh-cd-big').textContent = cdBig;
+    cdEl.querySelector('.sh-cd-date-longue').innerHTML = cdDate;
+    cdEl.querySelector('.sh-cd-date-courte').innerHTML = cdDateCourte;
   }
 
-  function navLinksHTML() {
-    var h = '';
-    for (var i = 0; i < navItems.length; i++) {
-      var it = navItems[i];
-      if (it.dropdown) {
-        h += candidatsMenuHTML();
-      } else if (isActive(it)) {
-        h += '<a href="' + baseHref + it.href + '" class="is-active" aria-current="page">' + it.label + '</a>';
-      } else {
-        h += '<a href="' + baseHref + it.href + '">' + it.label + '</a>';
+  // Filet de sécurité : même balisage que scripts/build_header.py (header_html)
+  function rendreBandeau() {
+    // --- Logo SVG (icône seule, deux courbes entrelacées) ---
+    var logoSVG = '<svg viewBox="0 0 44 24" aria-hidden="true">' +
+      '<path d="M4 7 C 12 7, 14 17, 22 17 C 30 17, 32 7, 40 7" fill="none" stroke="#0C6CF2" stroke-width="5.5" stroke-linecap="round"/>' +
+      '<path d="M4 17 C 12 17, 14 7, 22 7 C 30 7, 32 17, 40 17" fill="none" stroke="#F23D5B" stroke-width="5.5" stroke-linecap="round"/>' +
+      '</svg>';
+
+    // --- Navigation ---
+    var pathname = window.location.pathname;
+    var page = pathname.split('/').pop() || 'index.html';
+
+    var candidatsPages = [
+      { slug: 'le-pen', nom: 'Marine Le Pen' },
+      { slug: 'philippe', nom: 'Édouard Philippe' },
+      { slug: 'melenchon', nom: 'Jean-Luc Mélenchon' },
+      { slug: 'glucksmann', nom: 'Raphaël Glucksmann' },
+      { slug: 'attal', nom: 'Gabriel Attal' },
+      { slug: 'retailleau', nom: 'Bruno Retailleau' },
+      { slug: 'tondelier', nom: 'Marine Tondelier' },
+      { slug: 'zemmour', nom: 'Éric Zemmour' },
+      { slug: 'roussel', nom: 'Fabien Roussel' }
+    ];
+
+    var navItems = [
+      { label: 'Accueil', href: 'index.html', match: ['index.html', ''] },
+      { label: 'Candidats', href: '#', match: candidatsPages.map(function(c) { return c.slug + '.html'; }), dropdown: true },
+      { label: 'Tous les sondages', href: 'sondages.html', match: ['sondages.html'] },
+      { label: 'Modèle Sondax', href: 'modele-sondax.html', match: ['modele-sondax.html'] },
+      { label: 'Instituts', href: 'instituts.html', match: ['instituts.html'] },
+      { label: 'Élections passées', href: 'precedentes-elections.html', match: ['precedentes-elections.html'], prefixe: 'presidentielle-' },
+      { label: 'Méthode', href: 'methodologie.html', match: ['methodologie.html'] },
+      { label: 'Données', href: 'donnees.html', match: ['donnees.html'] }
+    ];
+
+    // Pages situées dans un sous-dossier : liens relatifs remontés d'un niveau
+    var sousDossier = pathname.match(/\/(second-tour|sondages|instituts|candidats)\//);
+    var baseHref = sousDossier ? '../' : '';
+
+    // Rubrique d'une page de sous-dossier (fiches sondage, pages institut)
+    var rubriques = { sondages: 'Tous les sondages', instituts: 'Instituts' };
+
+    function isActive(item) {
+      if (sousDossier) {
+        return rubriques[sousDossier[1]] === item.label;
       }
+      for (var i = 0; i < item.match.length; i++) {
+        if (page === item.match[i]) return true;
+      }
+      return !!(item.prefixe && page.indexOf(item.prefixe) === 0);
     }
-    return h;
+
+    function candidatsMenuHTML() {
+      var h = '<div class="menu-candidats">' +
+        '<a href="' + baseHref + 'candidats/" class="menu-candidats-label">Candidats</a>' +
+        '<div class="menu-panneau">';
+      for (var k = 0; k < candidatsPages.length; k++) {
+        var cp = candidatsPages[k];
+        h += '<a href="' + baseHref + cp.slug + '.html">' + cp.nom + '</a>';
+      }
+      return h + '</div></div>';
+    }
+
+    function navLinksHTML() {
+      var h = '';
+      for (var i = 0; i < navItems.length; i++) {
+        var it = navItems[i];
+        if (it.dropdown) {
+          h += candidatsMenuHTML();
+        } else if (isActive(it)) {
+          h += '<a href="' + baseHref + it.href + '" class="is-active" aria-current="page">' + it.label + '</a>';
+        } else {
+          h += '<a href="' + baseHref + it.href + '">' + it.label + '</a>';
+        }
+      }
+      return h;
+    }
+
+    var html = '<div class="sh-inner">' +
+        '<a class="sh-logo" href="' + baseHref + 'index.html" aria-label="Sondax — accueil">' +
+          logoSVG +
+          '<span class="sh-wordmark">sondax</span>' +
+        '</a>' +
+        '<nav class="sh-nav" aria-label="Navigation principale">' + navLinksHTML() + '</nav>' +
+        '<div class="sh-sub-slot"></div>' +
+        (hideCountdown ? '' :
+        '<div class="sh-cd">' +
+          '<span class="sh-cd-big">' + cdBig + '</span>' +
+          '<span class="sh-cd-date sh-cd-date-longue">' + cdDate + '</span>' +
+          '<span class="sh-cd-date sh-cd-date-courte">' + cdDateCourte + '</span>' +
+        '</div>') +
+        '<button type="button" class="sh-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="sh-panel">' +
+          '<span class="sh-menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>' +
+          '<span class="sh-menu-txt" aria-hidden="true">Menu</span>' +
+        '</button>' +
+      '</div>' +
+      '<nav class="sh-panel" id="sh-panel" aria-label="Navigation principale">' + navLinksHTML() + '</nav>';
+    return html;
   }
-
-  var html = '<div class="sh-inner">' +
-      '<a class="sh-logo" href="' + baseHref + 'index.html" aria-label="Sondax — accueil">' +
-        logoSVG +
-        '<span class="sh-wordmark">sondax</span>' +
-      '</a>' +
-      '<nav class="sh-nav" aria-label="Navigation principale">' + navLinksHTML() + '</nav>' +
-      '<div class="sh-sub-slot"></div>' +
-      (hideCountdown ? '' :
-      '<div class="sh-cd">' +
-        '<span class="sh-cd-big">' + cdBig + '</span>' +
-        '<span class="sh-cd-date sh-cd-date-longue">' + cdDate + '</span>' +
-        '<span class="sh-cd-date sh-cd-date-courte">' + cdDateCourte + '</span>' +
-      '</div>') +
-      '<button type="button" class="sh-menu-btn" aria-label="Menu" aria-expanded="false" aria-controls="sh-panel">' +
-        '<span class="sh-menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>' +
-        '<span class="sh-menu-txt" aria-hidden="true">Menu</span>' +
-      '</button>' +
-    '</div>' +
-    '<nav class="sh-panel" id="sh-panel" aria-label="Navigation principale">' + navLinksHTML() + '</nav>';
-
-  var el = document.getElementById('site-header');
-  if (!el) return;
-  el.innerHTML = html;
 
   var inner = el.querySelector('.sh-inner');
   var logo = el.querySelector('.sh-logo');

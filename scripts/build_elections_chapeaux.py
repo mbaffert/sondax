@@ -1,4 +1,5 @@
-"""Injecte un chapeau et un tableau statiques dans chaque page presidentielle-XXXX.html.
+"""Injecte un chapeau et un tableau statiques dans chaque page presidentielle-XXXX.html,
+et le contenu statique de precedentes-elections.html.
 
 Chapeau, lu dans data/derived/historique.json, deux ou trois phrases :
 - candidats en tête dans les derniers sondages, avec leurs scores moyens
@@ -8,6 +9,11 @@ Chapeau, lu dans data/derived/historique.json, deux ou trois phrases :
 Tableau, sous les graphiques : moyenne mensuelle des sondages de premier tour
 des principaux candidats (score de chaque sondage retenu comme pour la courbe,
 series.score_candidat), résultat du premier tour en dernière ligne.
+
+precedentes-elections.html : un paragraphe d'introduction (nombre de sondages
+et période couverte par élection) et une carte par élection, liée à sa page
+presidentielle-XXXX.html. Les cartes étaient rendues en JavaScript ; elles
+sont écrites au build pour que les liens figurent dans le HTML servi.
 """
 
 import json, pathlib, sys
@@ -25,6 +31,11 @@ BEGIN = "<!-- BEGIN:chapeau-election -->"
 END = "<!-- END:chapeau-election -->"
 BEGIN_MOY = "<!-- BEGIN:moyennes-election -->"
 END_MOY = "<!-- END:moyennes-election -->"
+BEGIN_INTRO = "<!-- BEGIN:intro-elections -->"
+END_INTRO = "<!-- END:intro-elections -->"
+BEGIN_CARTES = "<!-- BEGIN:cartes-elections -->"
+END_CARTES = "<!-- END:cartes-elections -->"
+ANNEES = ["2002", "2007", "2012", "2017", "2022"]
 
 # Principaux candidats : présents au premier tour, et 5 % des suffrages
 # exprimés ou 10 % de moyenne mensuelle au moins une fois.
@@ -202,6 +213,80 @@ def generate_moyennes(election_brute, election):
     </div>"""
 
 
+def date_fr(iso, premier=False):
+    """'2002-04-21' → '21 avril 2002' ; '1er' pour le premier du mois si premier."""
+    y, m, d = (int(x) for x in iso.split("-"))
+    jour = "1er" if premier and d == 1 else str(d)
+    return f"{jour} {MOIS[m - 1]} {y}"
+
+
+def sondages_perimetre(election_brute, election):
+    """Sondages de la série affichée : terrain commencé à partir de la borne."""
+    return [s for s in election_brute["sondages"] if s["terrain_debut"] >= election["borne"]]
+
+
+def generate_intro(historique, historique_brut):
+    """Paragraphe d'introduction : sondages et période couverte par élection."""
+    parts, total = [], 0
+    for year in ANNEES:
+        if year not in historique:
+            continue
+        sondages = sondages_perimetre(historique_brut[year], historique[year])
+        if not sondages:
+            continue
+        debut = min(s["terrain_debut"] for s in sondages)
+        fin = max(s["terrain_fin"] for s in sondages)
+        total += len(sondages)
+        parts.append(f"{len(sondages)} pour {year} (du {time_tag(debut, date_fr(debut, True))} "
+                     f"au {time_tag(fin, date_fr(fin, True))})")
+    if not parts:
+        return ""
+    total_txt = f"{total:,}".replace(",", "\u00a0")
+    enum = ", ".join(parts[:-1]) + " et " + parts[-1] if len(parts) > 1 else parts[0]
+    return (f'  <p class="intro">{total_txt} sondages sur {len(parts)} élections présidentielles, '
+            f"premier et second tours confondus. Pour chaque élection, la série commence au "
+            f"1er janvier de l\u2019année précédant le scrutin et s\u2019arrête au dernier "
+            f"sondage réalisé avant le second tour\u00a0: {enum}.</p>")
+
+
+def generate_carte(year, e):
+    """Carte d'une élection, liée à presidentielle-XXXX.html (rendu de l'ancien script client)."""
+    res_t2 = e.get("resultats_t2") or {}
+    pair = e["duel_final"].split("|") if e.get("duel_final") else []
+    duel = ""
+    if len(pair) == 2:
+        noms = [e["candidats"][c]["nom"] if c in e["candidats"] else c for c in pair]
+        scores = [f"{res_t2[c]:.1f}".replace(".", ",") if res_t2.get(c) is not None else "?"
+                  for c in pair]
+        duel = f"{noms[0]} – {noms[1]} · {scores[0]} / {scores[1]}"
+    nb = e.get("nb_sondages_perimetre") or e.get("nb_sondages_t1")
+    lignes = [
+        f'<a class="carte" href="presidentielle-{year}.html">',
+        f'  <div class="annee">Présidentielle {year}</div>',
+        f'  <div class="dates">{time_tag(e["tour1"], date_fr(e["tour1"]))} – '
+        f'{time_tag(e["tour2"], date_fr(e["tour2"]))}</div>',
+    ]
+    if duel:
+        lignes.append(f'  <div class="duel">{duel}</div>')
+    lignes += [
+        f'  <div class="stats">{nb} sondages depuis janvier {e["borne"][:4]}</div>',
+        '  <span class="fleche">→</span>',
+        '</a>',
+    ]
+    return "\n".join(lignes)
+
+
+def inject_precedentes(historique, historique_brut):
+    page_path = ROOT / "site" / "precedentes-elections.html"
+    if not page_path.exists():
+        print("  precedentes-elections.html introuvable")
+        return
+    inject(page_path, generate_intro(historique, historique_brut), BEGIN_INTRO, END_INTRO)
+    cartes = [generate_carte(y, historique[y]) for y in sorted(historique, reverse=True)]
+    inject(page_path, "\n".join(cartes), BEGIN_CARTES, END_CARTES)
+    print(f"  precedentes-elections : introduction et {len(cartes)} cartes injectées")
+
+
 def inject(path, chapeau_html, begin=BEGIN, end=END):
     content = path.read_text(encoding="utf-8")
     try:
@@ -222,7 +307,7 @@ def main():
     historique = json.loads(HISTORIQUE_PATH.read_text(encoding="utf-8"))
     historique_brut = json.loads(HISTORIQUE_BRUT_PATH.read_text(encoding="utf-8"))["elections"]
 
-    for year in ["2002", "2007", "2012", "2017", "2022"]:
+    for year in ANNEES:
         if year not in historique:
             print(f"  {year} : pas de données")
             continue
@@ -241,6 +326,8 @@ def main():
         moyennes = generate_moyennes(historique_brut[year], historique[year])
         inject(page_path, moyennes, BEGIN_MOY, END_MOY)
         print(f"  {year} : moyennes mensuelles {'injectées' if moyennes else 'absentes'}")
+
+    inject_precedentes(historique, historique_brut)
 
 
 if __name__ == "__main__":

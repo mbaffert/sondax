@@ -48,7 +48,7 @@ Page d'accueil à sections nommées et ancrées, dans cet ordre (décision du
 La sous-navigation de l'accueil suit le même ordre : Premier tour, Modèle, Second
 tour, Prédictions.
 
-La page `sondages.html` (« Explorer les sondages de la présidentielle 2027 ») porte
+La page `sondages.html` (titre : « Les N sondages de la présidentielle 2027, un par un », N injecté au build) porte
 en tête le module **« Explorer les sondages »** (`#bloc-fiche`) : sélection d'un
 sondage puis d'une configuration, et affichage de ses scores et de ses marges
 d'erreur (voir §5). Viennent ensuite le filtre par institut et le tableau de tous
@@ -1131,7 +1131,7 @@ Page institut :
 Page de référence : chapeau généré (nombre d'instituts, de sondages, période), puis
 une ligne par institut avec son logo, le nombre de sondages et la date du dernier.
 
-Maillage : « Instituts » dans le bandeau d'en-tête, après « Explorer les sondages ». Le nom de
+Maillage : « Instituts » dans le bandeau d'en-tête, après « Tous les sondages ». Le nom de
 l'institut est un lien vers sa page dans les tableaux de l'accueil, `sondages.html`
 (la date y mène à la fiche), les fiches sondage et les tableaux de second tour ;
 jamais de logo dans ces tableaux.

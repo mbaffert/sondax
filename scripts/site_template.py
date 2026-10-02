@@ -106,7 +106,7 @@ def render_page(*, title, meta_description, canonical, body_content,
 
 <div id="site-header" class="sh"></div>
 <script src="{p}assets/header-data.js?v=3"></script>
-<script src="{p}assets/header.js?v=7"></script>
+<script src="{p}assets/header.js?v=8"></script>
 
 {body_content}
 
@@ -129,7 +129,7 @@ def render_page(*, title, meta_description, canonical, body_content,
       <div style="display:flex;flex-direction:column;gap:5px;">
         <a href="{p}modele-sondax.html">Modèle Sondax</a>
         <a href="{p}methodologie.html">Méthode</a>
-        <a href="{p}sondages.html">Explorer les sondages</a>
+        <a href="{p}sondages.html">Tous les sondages</a>
         <a href="{p}donnees.html">Données</a>
         <a href="{p}a-propos.html">À propos</a>
       </div>

@@ -4,6 +4,8 @@
 Remplace :
 - le contenu de <div id="footer-run"> dans le footer de toutes les pages
 - le contenu de <p id="compteur-sondages"> sous le H1 de l'accueil
+- dans sondages.html : <title>, meta description, og:title, og:description et
+  h1#titre-sondages, qui portent le nombre de sondages
 
 Données :
 - Nombre de sondages : entrées de sondages.json
@@ -73,6 +75,30 @@ def footer_html(n_sondages, last_date, last_revid, build_date, **_):
     return " · ".join(parts)
 
 
+def sondages_page_textes(n_sondages, **_):
+    """Textes de sondages.html qui portent le nombre de sondages."""
+    titre = f"Les {n_sondages} sondages de la présidentielle 2027, par institut et par date"
+    description = (f"Les {n_sondages} sondages de la présidentielle 2027, listés par institut "
+                   f"et par date, avec le détail de chaque sondage : scores, marges "
+                   f"d’erreur et configurations testées.")
+    return {
+        r'<title>.*?</title>': f'<title>{titre} — Sondax</title>',
+        r'<meta name="description" content="[^"]*">': f'<meta name="description" content="{description}">',
+        r'<meta property="og:title" content="[^"]*">': f'<meta property="og:title" content="{titre}">',
+        r'<meta property="og:description" content="[^"]*">': f'<meta property="og:description" content="{description}">',
+        r'<h1 id="titre-sondages">.*?</h1>': (f'<h1 id="titre-sondages">Les {n_sondages}\u00a0sondages '
+                                              f'de la présidentielle 2027, un par un</h1>'),
+    }
+
+
+def inject_sondages_page(html_content, textes):
+    for motif, remplacement in textes.items():
+        html_content, n = re.subn(motif, lambda _: remplacement, html_content)
+        if n != 1:
+            raise ValueError(f"sondages.html : {motif} trouvé {n} fois (1 attendu)")
+    return html_content
+
+
 def inject_into_footer(html_content, footer_text):
     """Injecte les dates dans le div#footer-run de chaque page."""
     replacement = f'<div id="footer-run">{footer_text}</div>'
@@ -90,12 +116,15 @@ def main():
     stats = compute_dates()
     footer_text = footer_html(**stats)
     compteur_text = compteur_html(**stats)
+    textes_sondages = sondages_page_textes(**stats)
 
     # Injecter dans toutes les pages HTML du site
     count = 0
     for html_path in sorted(SITE.rglob("*.html")):
         content = html_path.read_text(encoding="utf-8")
         new_content = inject_compteur(inject_into_footer(content, footer_text), compteur_text)
+        if html_path == SITE / "sondages.html":
+            new_content = inject_sondages_page(new_content, textes_sondages)
         if new_content != content:
             html_path.write_text(new_content, encoding="utf-8")
             count += 1

@@ -6,11 +6,9 @@
   sélection.
 - Tableau complet des sondages. Le JavaScript garde le filtrage ; le HTML
   statique contient toutes les données pour l'indexation.
-- H1 (h1#titre-sondages) : nombre de sondages agrégés, compté comme le
-  compteur de l'accueil et le footer (entrées de sondages.json).
 """
 
-import json, math, pathlib, re, sys, html as html_mod
+import json, math, pathlib, sys, html as html_mod
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -154,18 +152,6 @@ def generate_fiche(sondages, candidats, referentiel):
     return meta_html, render_hypothese(hyp, latest, candidats)
 
 
-def h1_html(n_sondages):
-    return (f'<h1 id="titre-sondages">Les {n_sondages}\u00a0sondages de la '
-            f'présidentielle 2027, un par un</h1>')
-
-
-def inject_h1(content, n_sondages):
-    content, n = re.subn(r'<h1 id="titre-sondages">.*?</h1>', h1_html(n_sondages), content)
-    if n != 1:
-        raise ValueError("h1#titre-sondages introuvable dans sondages.html")
-    return content
-
-
 def inject(content, begin, end, html_bloc):
     try:
         i_begin = content.index(begin)
@@ -217,7 +203,6 @@ def main():
     content = inject(content, META_BEGIN, META_END, meta_html)
     content = inject(content, SCORES_BEGIN, SCORES_END, scores_html)
     content = inject(content, BEGIN, END, table_html)
-    content = inject_h1(content, len(sondages))
     SONDAGES_HTML.write_text(content, encoding="utf-8")
     print(f"Module « Explorer les sondages » et table injectés : {len(sondages)} sondages")
 

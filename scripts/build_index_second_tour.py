@@ -16,7 +16,7 @@ CONFIG_PATH = ROOT / "data" / "config.json"
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from pages_second_tour import (
-    load_duels, nom_court, fmt_date, fmt_pct, find_pair_from_slug, SEUIL,
+    load_duels, nom_court, fmt_date, fmt_pct, find_pair_from_slug, page_duel, SEUIL,
 )
 from build_header import REPERES_T2, JSONLD_T2
 from balise_time import time_tag
@@ -258,6 +258,12 @@ def format_duel_row(slug, entries, candidats):
 
     nom_1 = html_mod.escape(nom_court(cid_1, candidats))
     nom_2 = html_mod.escape(nom_court(cid_2, candidats))
+    # Nom du duel cliquable vers sa page, si elle existe (≥ SEUIL mesures)
+    slug_page = page_duel(cid_a, cid_b)
+    if slug_page:
+        href = f"second-tour/{slug_page}.html"
+        nom_1 = f'<a href="{href}">{nom_1}</a>'
+        nom_2 = f'<a href="{href}">{nom_2}</a>'
 
     n = len(entries)
     date_str = time_tag(latest["terrain_fin"], fmt_date(latest["terrain_fin"]))
@@ -448,6 +454,8 @@ def generate_bloc(duels, candidats):
         f'{table_section}\n'
         f'{replie}\n'
         f'{selector}\n'
+        '    <p class="voir-tous-sondages" style="margin:18px 0 0;">'
+        '<a href="second-tour/">Tous les duels de second tour \u2192</a></p>\n'
         '  </div>'
     )
 

@@ -98,6 +98,13 @@ def parse_dates(txt, annee):
         except ValueError: pass
     return deb, fin
 
+def colspan_entete(ligne):
+    """Nombre de colonnes occupées par une cellule d'en-tête ('! ... | contenu')."""
+    attrs, _ = split_cell('|' + ligne.lstrip('!'))
+    m = re.search(r'colspan\s*=\s*"?(\d+)', attrs or '')
+    return int(m.group(1)) if m else 1
+
+
 def parse_table(txt, annee, tour):
     lines = [l.rstrip() for l in txt.split('\n')]
     # --- en-tête : la ligne d'en-têtes contenant les noms liés
@@ -117,10 +124,15 @@ def parse_table(txt, annee, tour):
         tete = l.split('<br')[0]
         m = re.search(r'\[\[[^|\]]+\|([^\]]+)\]\]', tete)
         if m:
-            cands.append(m.group(1).strip())
+            nom = m.group(1).strip()
         else:  # colonne générique type 'Candidat RN' : le candidat est dans la cellule
-            nom = re.sub(r'^!.*?\|', '', l).strip()
-            cands.append(re.sub(r'\[\[|\]\]|<[^>]+>', ' ', nom).strip() or 'Indetermine')
+            brut = re.sub(r'^!.*?\|', '', l).strip()
+            nom = re.sub(r'\[\[|\]\]|<[^>]+>', ' ', brut).strip() or 'Indetermine'
+        # Un en-tête peut porter un colspan (colonne double PS-PP d'octobre 2026) :
+        # il occupe alors plusieurs colonnes, que les cellules de données
+        # fusionnent elles aussi. Sans cette répétition, tout ce qui suit la
+        # colonne est décalé d'un cran (§9).
+        cands.extend([nom] * colspan_entete(l))
     for i, l in enumerate(lines):
         if 'couleurs|' in l:
             header_end = i

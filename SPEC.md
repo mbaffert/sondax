@@ -836,6 +836,11 @@ données fausses avant correction. À traiter comme une liste de tests de non-r�
 2. **`colspan` sur une cellule de données.** Un candidat de substitution occupe parfois
    plusieurs colonnes fusionnées. Ne pas confondre avec les lignes d'annonce de
    candidature, qui portent un `colspan` couvrant tout le tableau.
+   **`colspan` sur une cellule d'en-tête** aussi : en octobre 2026, la colonne
+   Glucksmann est passée en colonne double PS-PP, en-tête et cellules de données
+   portant `colspan=2`. Compter les colonnes d'en-tête sans tenir compte du
+   `colspan` décale d'un cran tout ce qui suit la colonne et fait sortir la
+   dernière colonne (« Autre ») du tableau.
 3. **Le gras est placé indifféremment dedans ou dehors** : `'''{{blanc|36}}'''` et
    `{{blanc|'''36'''}}` coexistent. Découper sur le `<br>` avant tout nettoyage.
 4. **Colonne générique** : le tableau du premier semestre 2026 a une colonne

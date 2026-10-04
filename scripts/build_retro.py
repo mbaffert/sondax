@@ -298,7 +298,7 @@ def rendre_bloc_page(retro, x, aujourd_hui=None):
     repere = ""
     if J_MIN_PAGE <= j_auj <= J_MAX:    # repère « Aujourd'hui » sur la frise
         repere = (f'        <span class="rs-auj" style="--p:{position_curseur(j_auj)}">'
-                  f'<span class="rs-auj-label">Aujourd\u2019hui\u00a0: J-{j_auj}</span></span>\n')
+                  f'Aujourd\u2019hui\u00a0: J-{j_auj}</span>\n')
     colonnes = []
     for annee in ANNEES_PAGE:
         el = retro["elections"][annee]

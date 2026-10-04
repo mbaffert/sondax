@@ -1,0 +1,209 @@
+/* Pages « Élections passées » : precedentes-elections.html et presidentielle-XXXX.html.
+   Feuille commune, générée en HTML par scripts/build_pages_elections.py.
+   Les cellules du Rétro-Sondax viennent de bloc-retro.css (chargé avant). */
+
+:root {
+  --bleu-vif: #0C6CF2;
+  --bleu-nuit: #0B2E6F;
+  --fond: #F7F8F5;
+  --texte: #202632;
+  --gris: #66707D;
+  --bordure: #E3E5E0;
+  --titre: 'Space Grotesk', system-ui, sans-serif;
+  --corps: 'IBM Plex Sans', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--corps); background: var(--fond); color: var(--texte); font-size: 15px; line-height: 1.5; }
+a { color: var(--bleu-vif); text-decoration: none; }
+a:hover { color: var(--bleu-nuit); text-decoration: underline; }
+
+main { max-width: 1180px; margin: 0 auto; padding: 26px 28px 48px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* --- En-tête de page --- */
+.retour { font-size: 13.5px; margin-bottom: 14px; }
+.hero { margin: 4px 0 26px; }
+.surtitre { font-size: 12px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
+  color: var(--bleu-vif); margin-bottom: 6px; }
+.hero h1 { font-family: var(--titre); font-size: 38px; font-weight: 700; line-height: 1.12;
+  letter-spacing: -0.025em; max-width: 840px; }
+.hero-texte { font-size: 16.5px; line-height: 1.55; color: var(--gris); max-width: 660px; margin-top: 12px; }
+.hero-dates { font-size: 15px; color: var(--gris); margin-top: 10px; }
+
+/* --- Cartes blanches --- */
+.carte { background: #fff; border: 1px solid var(--bordure); border-radius: 16px;
+  padding: 26px 28px 24px; margin-bottom: 18px; box-shadow: 0 1px 2px rgba(32,38,50,0.04); }
+.carte h2 { font-family: var(--titre); font-size: 25px; font-weight: 600; line-height: 1.2;
+  letter-spacing: -0.02em; margin-bottom: 5px; }
+.carte .subtitle { font-size: 13.5px; color: var(--gris); margin-bottom: 18px; }
+.carte h3 { font-family: var(--titre); font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+
+/* --- Synthèse : deux colonnes de barres --- */
+.synthese-grille { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 20px; }
+.synthese-col { padding: 0 32px; min-width: 0; }
+.synthese-col:first-child { padding-left: 0; border-right: 1px solid #EDEEEA; }
+.synthese-col:last-child { padding-right: 0; }
+.synthese-col .date { font-size: 13px; color: var(--gris); margin: 2px 0 16px; }
+.barres { list-style: none; }
+.barres li { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 4px 12px;
+  margin-bottom: 14px; }
+.b-nom { font-weight: 500; min-width: 0; overflow-wrap: anywhere; }
+.b-val { font-weight: 700; font-variant-numeric: tabular-nums; }
+.b-piste { grid-column: 1 / -1; height: 8px; background: #F2F3F0; border-radius: 4px; overflow: hidden; }
+.b-barre { display: block; height: 100%; border-radius: 4px; }
+.barres-t2 li { margin-bottom: 18px; }
+.barres-t2 .b-nom { font-size: 17px; }
+.barres-t2 .b-val { font-size: 19px; }
+.barres-t2 .b-piste { height: 14px; border-radius: 7px; }
+.barres-t2 .b-barre { border-radius: 7px; }
+.participation { font-size: 14px; color: var(--gris); margin-top: 4px; }
+.participation strong { color: var(--texte); font-variant-numeric: tabular-nums; }
+
+/* --- Contrôles et graphiques --- */
+.controles { display: flex; gap: 14px 18px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+.groupe { display: flex; background: #F2F3F0; border-radius: 9px; padding: 3px; max-width: 100%; }
+.groupe button { border: 0; cursor: pointer; font-family: var(--corps); font-size: 13px; font-weight: 500;
+  padding: 6px 13px; border-radius: 7px; white-space: nowrap; background: transparent;
+  color: var(--gris); transition: all 0.15s; }
+.groupe button:hover { color: var(--texte); }
+.groupe button.active { background: #fff; color: var(--texte); box-shadow: 0 1px 2px rgba(32,38,50,0.08); }
+.chart-wrap { position: relative; width: 100%; height: 460px; }
+.resume { font-size: 13px; color: var(--gris); margin: 10px 0 4px; }
+
+.candidats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px 18px; margin-top: 14px; font-size: 13px; }
+.cand { display: grid; grid-template-columns: auto 10px 1fr auto; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+.cand .pastille { width: 10px; height: 10px; border-radius: 50%; }
+.cand .nom { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cand .res { color: var(--gris); font-variant-numeric: tabular-nums; }
+.cand.masque .nom { color: var(--gris); }
+.extra { display: contents; }
+.extra.collapsed { display: none; }
+.plus { grid-column: 1 / -1; background: none; border: 0; color: var(--bleu-vif); font: inherit; font-size: 13px;
+  text-align: left; padding: 6px 0 0; cursor: pointer; }
+
+.duel-select { display: flex; gap: 10px 14px; align-items: center; flex-wrap: wrap; font-size: 13px; color: var(--gris); }
+.duel-select select { font-family: var(--corps); padding: 7px 10px; border: 1px solid #DDDFDA;
+  border-radius: 8px; font-size: 13.5px; font-weight: 500; color: var(--texte); background: #fff; max-width: 100%; }
+.duel-select[hidden] { display: none; }
+.vide { color: var(--gris); font-size: 13.5px; }
+.t2-scroll { overflow-x: auto; }
+.t2-table { border-collapse: collapse; width: 100%; font-size: 13.5px; margin-top: 4px; }
+.t2-table th, .t2-table td { border-bottom: 1px solid #EDEEEA; padding: 6px 10px; text-align: left; white-space: nowrap; }
+.t2-table th { color: var(--gris); font-weight: 600; font-size: 13px; }
+
+/* --- Moyennes mensuelles (sous le graphique du premier tour) --- */
+.moyennes-details { margin-top: 18px; border-top: 1px solid #EDEEEA; padding-top: 12px; }
+.moyennes-details summary { cursor: pointer; font-size: 13.5px; font-weight: 500; color: var(--bleu-vif); }
+.moyennes-scroll { overflow-x: auto; margin-top: 12px; }
+.moyennes { border-collapse: collapse; width: 100%; font-size: 13px; }
+.moyennes th, .moyennes td { padding: 6px 10px; border-bottom: 1px solid #EDEEEA; text-align: left; white-space: nowrap; }
+.moyennes thead th { font-weight: 600; color: var(--gris); border-bottom-color: #DDDFDA; }
+.moyennes tbody th { font-weight: 400; color: var(--gris); }
+.moyennes .num { text-align: right; font-variant-numeric: tabular-nums; }
+.moyennes .resultat th, .moyennes .resultat td { font-weight: 600; color: var(--texte);
+  border-top: 1px solid #DDDFDA; border-bottom: 0; }
+.moyennes th:first-child { position: sticky; left: 0; background: #fff; }
+
+/* --- Résultats définitifs --- */
+.res-scroll { overflow-x: auto; margin-top: 4px; }
+.res-table { border-collapse: collapse; width: 100%; min-width: 520px; table-layout: fixed; font-size: 14px; }
+.res-table col.c-nom { width: 32%; } .res-table col.c-voix { width: 18%; }
+.res-table col.c-exp { width: 32%; } .res-table col.c-ins { width: 18%; }
+.res-table th, .res-table td { padding: 7px 10px; border-bottom: 1px solid #EDEEEA; text-align: left; white-space: nowrap; }
+.res-table thead th { font-size: 13px; font-weight: 600; color: var(--gris); border-bottom-color: #DDDFDA; }
+.res-table tbody th { font-weight: 500; }
+.res-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+.res-table th:first-child { position: sticky; left: 0; background: #fff; z-index: 1; }
+.res-table .barre { position: relative; }
+.res-table .barre-fond { position: absolute; left: 10px; top: 7px; bottom: 7px; border-radius: 3px;
+  opacity: 0.85; width: calc((100% - 6.5em) * var(--w)); }
+.res-table .barre-val { position: relative; font-weight: 600; }
+.scrutin-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-top: 18px; }
+.scrutin-stats div { background: #F7F8F5; border-radius: 10px; padding: 10px 14px; }
+.scrutin-stats dt { font-size: 12px; color: var(--gris); }
+.scrutin-stats dd { font-size: 16px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+/* --- Navigation entre millésimes --- */
+.nav-millesimes { display: grid; grid-template-columns: 1fr auto 1fr; gap: 12px; align-items: center;
+  margin: 26px 0 8px; font-size: 14.5px; font-weight: 500; }
+.nav-millesimes .precedent { justify-self: start; }
+.nav-millesimes .suivant { justify-self: end; text-align: right; }
+.nav-millesimes .toutes { grid-column: 2; }
+.nav-millesimes .precedent:only-child { grid-column: 1; }
+.voir-aussi { text-align: center; font-size: 13px; color: var(--gris); margin-top: 6px; }
+
+/* --- precedentes-elections.html --- */
+.rs-texte { font-size: 14px; color: var(--gris); margin: -10px 0 4px; }
+.rs-curseur { margin: 16px 0 20px; }
+.rs-curseur label { display: block; font-size: 13px; color: var(--gris); margin-bottom: 4px; }
+.rs-curseur input[type=range] { width: 100%; height: 28px; accent-color: var(--bleu-vif); cursor: pointer; }
+.rs-bornes { display: flex; justify-content: space-between; font-size: 12px; color: var(--gris); }
+.rs-grille.rs-grille-page { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; padding-top: 0; border-top: 0; }
+.rs-grille.rs-grille-page .rs-col,
+.rs-grille.rs-grille-page .rs-col:first-child,
+.rs-grille.rs-grille-page .rs-col:last-child,
+.rs-grille.rs-grille-page .rs-col:nth-child(odd),
+.rs-grille.rs-grille-page .rs-col:nth-child(even) { padding: 12px 14px 8px; border: 1px solid #EDEEEA;
+  border-radius: 12px; background: #FCFCFB; }
+.rs-grille.rs-grille-page .rs-col-2027 { border-color: var(--bleu-vif); background: #F5F9FF; }
+.rs-vide { font-size: 13px; color: var(--gris); padding-top: 6px; }
+
+.section-titre { font-family: var(--titre); font-size: 25px; font-weight: 600; letter-spacing: -0.02em;
+  margin: 34px 0 16px; }
+.elections-grille { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.election-carte { display: flex; flex-direction: column; background: #fff; border: 1px solid var(--bordure);
+  border-radius: 16px; padding: 24px 28px 26px; box-shadow: 0 1px 2px rgba(32,38,50,0.04); }
+.election-carte .annee { font-family: var(--titre); font-size: 36px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.1; }
+.election-carte .dates { font-size: 14px; color: var(--gris); margin: 2px 0 20px; }
+.election-carte .barres { margin-bottom: 8px; }
+.election-carte .btn { margin-top: auto; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; background: var(--bleu-vif);
+  color: #fff; font-family: var(--corps); font-size: 15px; font-weight: 600; padding: 12px 22px;
+  border-radius: 10px; border: 0; cursor: pointer; align-self: flex-start; }
+.btn:hover { background: var(--bleu-nuit); color: #fff; text-decoration: none; }
+.btn:focus-visible, .nav-millesimes a:focus-visible { outline: 3px solid rgba(12,108,242,0.4); outline-offset: 2px; }
+
+footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
+footer .footer-inner { max-width: 1180px; margin: 0 auto; }
+footer a { color: rgba(255,255,255,0.72); }
+footer a:hover { color: #fff; text-decoration: none; }
+footer p + p, footer p + div { margin-top: 6px; }
+
+@media (max-width: 1000px) {
+  .rs-grille.rs-grille-page { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 760px) {
+  .synthese-grille { grid-template-columns: 1fr; }
+  .synthese-col, .synthese-col:first-child, .synthese-col:last-child { padding: 0; border-right: 0; }
+  .synthese-col:first-child { padding-bottom: 22px; margin-bottom: 22px; border-bottom: 1px solid #EDEEEA; }
+  .elections-grille { grid-template-columns: 1fr; }
+  .candidats { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  main { padding: 14px 16px 36px; }
+  .hero h1 { font-size: 28px; }
+  .hero-texte { font-size: 15.5px; }
+  .carte { padding: 20px 16px 18px; border-radius: 12px; }
+  .carte h2, .section-titre { font-size: 21px; }
+  .election-carte { padding: 20px 18px 22px; border-radius: 12px; }
+  .election-carte .annee { font-size: 30px; }
+  .btn { width: 100%; align-self: stretch; }
+  .chart-wrap { height: 340px; }
+  .groupe { overflow-x: auto; }
+  .groupe button { padding: 6px 9px; }
+  .duel-select { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .duel-select select { width: 100%; }
+  .rs-grille.rs-grille-page { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .res-table { min-width: 0; font-size: 12.5px; }
+  .res-table col.c-nom { width: 36%; } .res-table col.c-voix { width: 25%; }
+  .res-table col.c-exp { width: 22%; } .res-table col.c-ins { width: 17%; }
+  .res-table th, .res-table td { padding: 6px 4px; white-space: normal; }
+  .res-table td.num { white-space: nowrap; }
+  .res-table thead th { font-size: 11.5px; vertical-align: bottom; }
+  .res-table .barre-fond { left: 0; top: 3px; bottom: 3px; opacity: 0.28; width: calc(100% * var(--w)); }
+  .scrutin-stats { grid-template-columns: repeat(2, 1fr); }
+  .nav-millesimes { grid-template-columns: 1fr; justify-items: center; gap: 10px; }
+  .nav-millesimes .precedent, .nav-millesimes .suivant, .nav-millesimes .toutes { justify-self: center; grid-column: 1; text-align: center; }
+  footer { padding: 24px 16px; }
+}

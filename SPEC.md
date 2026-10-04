@@ -674,8 +674,9 @@ Toute page publiée porte :
 `robots.txt` et `sitemap.xml` font partie de la sortie du build. Le `sitemap.xml`
 est généré par `scripts/build_sitemap.py` (§13.5).
 
-Les pages des élections passées (2002-2022) portent un chapeau rendu au build
-(`scripts/build_elections_chapeaux.py`) et la page `sondages.html` contient l'état
+Les pages des élections passées (`precedentes-elections.html` et les cinq
+`presidentielle-AAAA.html`) sont entièrement générées au build par
+`scripts/build_pages_elections.py` (styles communs : `assets/historique.css`) ; la page `sondages.html` contient l'état
 initial du module « Explorer les sondages » et le tableau complet des sondages en
 HTML statique (`scripts/build_sondages_page.py`).
 
@@ -777,7 +778,9 @@ de requête n'est transmis.
   import_europeennes.py          import unique des européennes (§14.16)
   calibration.py                 erreurs historiques, N_eff → /derived (§14.5)
   modele.py                      moteur du modèle Sondax → /derived/modele.json (§14.6)
-  build_retro.py                 bloc Rétro-Sondax de l'accueil → /derived/retro.json (§15)
+  build_retro.py                 bloc Rétro-Sondax de l'accueil → /derived/retro.json (§15) ;
+                                 retro.json couvre aussi 2002 et 2027 (page precedentes-elections.html)
+  build_pages_elections.py       pages precedentes-elections.html et presidentielle-AAAA.html
   test_modele.py                 tests du moteur, lancés par validation.py (§14.18)
   backtest.py                    backtest leave-one-out → /derived (§14.17)
   build_modele.py                page Modèle, bloc d'accueil, blocs candidat et duel
@@ -905,8 +908,8 @@ repère du jour équivalent pour 2027 et nombre de jours dans l'info-bulle.
 Résultats officiels ; points bruts au premier tour.
 
 **Tableau des moyennes mensuelles** (décision du 30 septembre 2026). Sous les
-graphiques, tableau HTML statique injecté par `scripts/build_elections_chapeaux.py`
-(marqueurs `moyennes-election`) : une ligne par mois (mois de fin de terrain), une
+graphique du premier tour, tableau HTML statique écrit par `scripts/build_pages_elections.py`
+(dans un bloc replié « Moyennes mensuelles des sondages ») : une ligne par mois (mois de fin de terrain), une
 colonne par principal candidat, puis le résultat du premier tour en dernière ligne.
 Pas de colonne d'écart. Moyenne simple, sur le mois, du score de chaque sondage de
 premier tour du périmètre affiché (début de terrain à partir de la borne, fin de
@@ -2011,6 +2014,15 @@ rendu.
 
 Pas de résultats électoraux, pas de mention « qualifié » ou « élu ». Uniquement ce que
 disaient les sondages à cette date.
+
+**Variante de `precedentes-elections.html`.** Le même calcul sert la page des
+présidentielles passées, avec un curseur de J-365 à J-30 et six colonnes : 2027 (point
+de comparaison), 2022, 2017, 2012, 2007 et 2002. `retro.json` contient donc aussi 2002 et
+2027. Pour 2027, les sondages sont ceux de `data/sondages.json` (hypothèse principale
+selon `declare_le`, comme pour la tendance de la home) et seuls les jours déjà écoulés
+ont une valeur : au-delà, la colonne affiche « Date à venir ». Le bloc est rendu au
+build par `build_retro.rendre_bloc_page()`, puis `assets/bloc-retro.js` le recalcule au
+déplacement du curseur.
 
 **Données.** Aucune extraction propre : le calcul lit `data/historique.json` (§12,
 en.wikipedia, figé par revid) et, pour les couleurs et les noms courts,

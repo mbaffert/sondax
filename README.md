@@ -24,7 +24,8 @@ changer sans préavis. L'historique git de `data/sondages.json` donne l'état de
   `data/snapshots/`.
 - Résultats officiels des présidentielles 2002 à 2022 : Ministère de l'Intérieur via
   data.gouv.fr ([Données des élections agrégées](https://www.data.gouv.fr/datasets/6481e741d4cf002ec0efec9d),
-  Licence Ouverte). Agrégés une fois pour toutes par `scripts/collecte_resultats.py`
+  Licence Ouverte), complétés pour 2002 et 2007 (Français de l'étranger, collectivités
+  d'outre-mer) par les fichiers par commune du ministère sur data.gouv.fr. Agrégés une fois pour toutes par `scripts/collecte_resultats.py`
   (exécution manuelle) dans `data/resultats.json` et `data/resultats-departements.json`.
 - Cotes des marchés de prédiction : Polymarket (affichées sur le site, non incluses dans
   le jeu de données).

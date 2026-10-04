@@ -124,7 +124,7 @@
   <div class="bloc">
     <h1>Sondages de la présidentielle 2022</h1>
     <!-- BEGIN:chapeau-election -->
-    <p class="subtitle">Dans les derniers sondages avant le scrutin, Macron (26,9 %) arrivait en tête, devant Le Pen (22,0 %). Au premier tour, Macron a obtenu 27,85 % et Le Pen a obtenu 23,15 %. Au second tour, Macron l’a emporté avec 58,55 % contre 41,45 %.</p>
+    <p class="subtitle">Au premier tour, le <time datetime="2022-04-10">10 avril 2022</time>, Emmanuel Macron a recueilli 27,85 % des suffrages exprimés, devant Marine Le Pen (23,15 %) et Jean-Luc Mélenchon (21,95 %). Au second tour, le <time datetime="2022-04-24">24 avril</time>, Emmanuel Macron l’a emporté avec 58,55 % des voix, contre 41,45 % pour Marine Le Pen.</p>
 <!-- END:chapeau-election -->
     <p class="retour"><a href="/">Sondages de la présidentielle 2027</a> · <a href="precedentes-elections.html">Toutes les présidentielles</a></p>
     <p class="subtitle">Intentions de vote au premier et au second tour.</p>
@@ -202,7 +202,72 @@
 <!-- END:moyennes-election -->
   </div>
   <!-- BEGIN:resultats-election -->
-
+  <style>
+    .res-scroll { overflow-x: auto; margin-top: 14px; }
+    .res-table { border-collapse: collapse; width: 100%; min-width: 540px; table-layout: fixed; font-size: 13.5px; }
+    .res-table col.c-nom { width: 32%; } .res-table col.c-voix { width: 18%; }
+    .res-table col.c-exp { width: 32%; } .res-table col.c-ins { width: 18%; }
+    .res-table caption { text-align: left; font-family: var(--titre); font-size: 17px; font-weight: 600;
+      color: var(--texte); padding-bottom: 8px; }
+    .res-table th, .res-table td { padding: 6px 10px; border-bottom: 1px solid #EDEEEA;
+      text-align: left; white-space: nowrap; }
+    .res-table thead th { font-size: 13px; font-weight: 600; color: var(--gris); border-bottom-color: #DDDFDA; }
+    .res-table tbody th { font-weight: 500; }
+    .res-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .res-table th:first-child { position: sticky; left: 0; background: #fff; z-index: 1; }
+    .res-table .barre { position: relative; }
+    .res-table .barre-fond { position: absolute; left: 10px; top: 6px; bottom: 6px; border-radius: 3px;
+      opacity: 0.85; width: calc((100% - 6.5em) * var(--w)); }
+    .res-table .barre-val { position: relative; font-weight: 600; }
+    .res-participation { font-size: 13px; color: var(--gris); margin: 8px 0 18px; }
+    .res-participation:last-child { margin-bottom: 0; }
+    @media (max-width: 600px) {
+      .res-table { min-width: 0; font-size: 12.5px; }
+      .res-table col.c-nom { width: 36%; } .res-table col.c-voix { width: 25%; }
+      .res-table col.c-exp { width: 22%; } .res-table col.c-ins { width: 17%; }
+      .res-table th, .res-table td { padding: 6px 4px; white-space: normal; }
+      .res-table td.num { white-space: nowrap; }
+      .res-table thead th { font-size: 11.5px; vertical-align: bottom; }
+      .res-table .barre-fond { left: 0; top: 3px; bottom: 3px; opacity: 0.28; width: calc(100% * var(--w)); }
+    }
+  </style>
+  <div class="bloc" id="resultats">
+    <h2>Les résultats du scrutin</h2>
+    <div class="res-scroll">
+      <table class="res-table">
+        <caption>Premier tour, <time datetime="2022-04-10">10 avril 2022</time></caption>
+        <colgroup><col class="c-nom"><col class="c-voix"><col class="c-exp"><col class="c-ins"></colgroup>
+        <thead><tr><th scope="col">Candidat</th><th scope="col" class="num">Voix</th><th scope="col" class="num">% des exprimés</th><th scope="col" class="num">% des inscrits</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Emmanuel Macron</th><td class="num">9 783 058</td><td class="num barre"><span class="barre-fond" style="--w:1.0;background:#7E57C2"></span><span class="barre-val">27,85 %</span></td><td class="num">20,07 %</td></tr>
+          <tr><th scope="row">Marine Le Pen</th><td class="num">8 133 828</td><td class="num barre"><span class="barre-fond" style="--w:0.8314;background:#0D378A"></span><span class="barre-val">23,15 %</span></td><td class="num">16,69 %</td></tr>
+          <tr><th scope="row">Jean-Luc Mélenchon</th><td class="num">7 712 520</td><td class="num barre"><span class="barre-fond" style="--w:0.7884;background:#CC2443"></span><span class="barre-val">21,95 %</span></td><td class="num">15,82 %</td></tr>
+          <tr><th scope="row">Éric Zemmour</th><td class="num">2 485 226</td><td class="num barre"><span class="barre-fond" style="--w:0.254;background:#1A1A2E"></span><span class="barre-val">7,07 %</span></td><td class="num">5,10 %</td></tr>
+          <tr><th scope="row">Valérie Pécresse</th><td class="num">1 679 001</td><td class="num barre"><span class="barre-fond" style="--w:0.1716;background:#2F80ED"></span><span class="barre-val">4,78 %</span></td><td class="num">3,44 %</td></tr>
+          <tr><th scope="row">Yannick Jadot</th><td class="num">1 627 853</td><td class="num barre"><span class="barre-fond" style="--w:0.1664;background:#2E9E4F"></span><span class="barre-val">4,63 %</span></td><td class="num">3,34 %</td></tr>
+          <tr><th scope="row">Jean Lassalle</th><td class="num">1 101 387</td><td class="num barre"><span class="barre-fond" style="--w:0.1126;background:#A1887F"></span><span class="barre-val">3,13 %</span></td><td class="num">2,26 %</td></tr>
+          <tr><th scope="row">Fabien Roussel</th><td class="num">802 422</td><td class="num barre"><span class="barre-fond" style="--w:0.082;background:#DD1111"></span><span class="barre-val">2,28 %</span></td><td class="num">1,65 %</td></tr>
+          <tr><th scope="row">Nicolas Dupont-Aignan</th><td class="num">725 176</td><td class="num barre"><span class="barre-fond" style="--w:0.0741;background:#1E9BB0"></span><span class="barre-val">2,06 %</span></td><td class="num">1,49 %</td></tr>
+          <tr><th scope="row">Anne Hidalgo</th><td class="num">616 478</td><td class="num barre"><span class="barre-fond" style="--w:0.063;background:#FF8080"></span><span class="barre-val">1,75 %</span></td><td class="num">1,26 %</td></tr>
+          <tr><th scope="row">Philippe Poutou</th><td class="num">268 904</td><td class="num barre"><span class="barre-fond" style="--w:0.0275;background:#F4511E"></span><span class="barre-val">0,77 %</span></td><td class="num">0,55 %</td></tr>
+          <tr><th scope="row">Nathalie Arthaud</th><td class="num">197 094</td><td class="num barre"><span class="barre-fond" style="--w:0.0201;background:#8B0000"></span><span class="barre-val">0,56 %</span></td><td class="num">0,40 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="res-participation">Inscrits 48 747 876 · Votants 35 923 707 (73,69 %) · Abstention 26,31 % · Blancs 543 609 · Nuls 247 151</p>
+    <div class="res-scroll">
+      <table class="res-table">
+        <caption>Second tour, <time datetime="2022-04-24">24 avril 2022</time></caption>
+        <colgroup><col class="c-nom"><col class="c-voix"><col class="c-exp"><col class="c-ins"></colgroup>
+        <thead><tr><th scope="col">Candidat</th><th scope="col" class="num">Voix</th><th scope="col" class="num">% des exprimés</th><th scope="col" class="num">% des inscrits</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Emmanuel Macron</th><td class="num">18 768 639</td><td class="num barre"><span class="barre-fond" style="--w:1.0;background:#7E57C2"></span><span class="barre-val">58,55 %</span></td><td class="num">38,50 %</td></tr>
+          <tr><th scope="row">Marine Le Pen</th><td class="num">13 288 686</td><td class="num barre"><span class="barre-fond" style="--w:0.708;background:#0D378A"></span><span class="barre-val">41,45 %</span></td><td class="num">27,26 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="res-participation">Inscrits 48 752 339 · Votants 35 096 478 (71,99 %) · Abstention 28,01 % · Blancs 2 233 904 · Nuls 805 249</p>
+  </div>
 <!-- END:resultats-election -->
 </main>
 

@@ -124,7 +124,7 @@
   <div class="bloc">
     <h1>Sondages de la présidentielle 2012</h1>
     <!-- BEGIN:chapeau-election -->
-    <p class="subtitle">Dans les derniers sondages avant le scrutin, Hollande (27,6 %) arrivait en tête, devant Sarkozy (26,9 %). Au premier tour, Hollande a obtenu 28,63 % et Sarkozy a obtenu 27,18 %. Au second tour, Hollande l’a emporté avec 51,64 % contre 48,36 %.</p>
+    <p class="subtitle">Au premier tour, le <time datetime="2012-04-22">22 avril 2012</time>, François Hollande a recueilli 28,63 % des suffrages exprimés, devant Nicolas Sarkozy (27,18 %) et Marine Le Pen (17,90 %). Au second tour, le <time datetime="2012-05-06">6 mai</time>, François Hollande l’a emporté avec 51,64 % des voix, contre 48,36 % pour Nicolas Sarkozy.</p>
 <!-- END:chapeau-election -->
     <p class="retour"><a href="/">Sondages de la présidentielle 2027</a> · <a href="precedentes-elections.html">Toutes les présidentielles</a></p>
     <p class="subtitle">Intentions de vote au premier et au second tour.</p>
@@ -202,7 +202,70 @@
 <!-- END:moyennes-election -->
   </div>
   <!-- BEGIN:resultats-election -->
-
+  <style>
+    .res-scroll { overflow-x: auto; margin-top: 14px; }
+    .res-table { border-collapse: collapse; width: 100%; min-width: 540px; table-layout: fixed; font-size: 13.5px; }
+    .res-table col.c-nom { width: 32%; } .res-table col.c-voix { width: 18%; }
+    .res-table col.c-exp { width: 32%; } .res-table col.c-ins { width: 18%; }
+    .res-table caption { text-align: left; font-family: var(--titre); font-size: 17px; font-weight: 600;
+      color: var(--texte); padding-bottom: 8px; }
+    .res-table th, .res-table td { padding: 6px 10px; border-bottom: 1px solid #EDEEEA;
+      text-align: left; white-space: nowrap; }
+    .res-table thead th { font-size: 13px; font-weight: 600; color: var(--gris); border-bottom-color: #DDDFDA; }
+    .res-table tbody th { font-weight: 500; }
+    .res-table .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .res-table th:first-child { position: sticky; left: 0; background: #fff; z-index: 1; }
+    .res-table .barre { position: relative; }
+    .res-table .barre-fond { position: absolute; left: 10px; top: 6px; bottom: 6px; border-radius: 3px;
+      opacity: 0.85; width: calc((100% - 6.5em) * var(--w)); }
+    .res-table .barre-val { position: relative; font-weight: 600; }
+    .res-participation { font-size: 13px; color: var(--gris); margin: 8px 0 18px; }
+    .res-participation:last-child { margin-bottom: 0; }
+    @media (max-width: 600px) {
+      .res-table { min-width: 0; font-size: 12.5px; }
+      .res-table col.c-nom { width: 36%; } .res-table col.c-voix { width: 25%; }
+      .res-table col.c-exp { width: 22%; } .res-table col.c-ins { width: 17%; }
+      .res-table th, .res-table td { padding: 6px 4px; white-space: normal; }
+      .res-table td.num { white-space: nowrap; }
+      .res-table thead th { font-size: 11.5px; vertical-align: bottom; }
+      .res-table .barre-fond { left: 0; top: 3px; bottom: 3px; opacity: 0.28; width: calc(100% * var(--w)); }
+    }
+  </style>
+  <div class="bloc" id="resultats">
+    <h2>Les résultats du scrutin</h2>
+    <div class="res-scroll">
+      <table class="res-table">
+        <caption>Premier tour, <time datetime="2012-04-22">22 avril 2012</time></caption>
+        <colgroup><col class="c-nom"><col class="c-voix"><col class="c-exp"><col class="c-ins"></colgroup>
+        <thead><tr><th scope="col">Candidat</th><th scope="col" class="num">Voix</th><th scope="col" class="num">% des exprimés</th><th scope="col" class="num">% des inscrits</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">François Hollande</th><td class="num">10 272 705</td><td class="num barre"><span class="barre-fond" style="--w:1.0;background:#FF8080"></span><span class="barre-val">28,63 %</span></td><td class="num">22,32 %</td></tr>
+          <tr><th scope="row">Nicolas Sarkozy</th><td class="num">9 753 629</td><td class="num barre"><span class="barre-fond" style="--w:0.9495;background:#2F80ED"></span><span class="barre-val">27,18 %</span></td><td class="num">21,19 %</td></tr>
+          <tr><th scope="row">Marine Le Pen</th><td class="num">6 421 426</td><td class="num barre"><span class="barre-fond" style="--w:0.6251;background:#0D378A"></span><span class="barre-val">17,90 %</span></td><td class="num">13,95 %</td></tr>
+          <tr><th scope="row">Jean-Luc Mélenchon</th><td class="num">3 984 822</td><td class="num barre"><span class="barre-fond" style="--w:0.3879;background:#CC2443"></span><span class="barre-val">11,10 %</span></td><td class="num">8,66 %</td></tr>
+          <tr><th scope="row">François Bayrou</th><td class="num">3 275 122</td><td class="num barre"><span class="barre-fond" style="--w:0.3188;background:#F9A825"></span><span class="barre-val">9,13 %</span></td><td class="num">7,12 %</td></tr>
+          <tr><th scope="row">Eva Joly</th><td class="num">828 345</td><td class="num barre"><span class="barre-fond" style="--w:0.0806;background:#2E9E4F"></span><span class="barre-val">2,31 %</span></td><td class="num">1,80 %</td></tr>
+          <tr><th scope="row">Nicolas Dupont-Aignan</th><td class="num">643 907</td><td class="num barre"><span class="barre-fond" style="--w:0.0627;background:#1E9BB0"></span><span class="barre-val">1,79 %</span></td><td class="num">1,40 %</td></tr>
+          <tr><th scope="row">Philippe Poutou</th><td class="num">411 160</td><td class="num barre"><span class="barre-fond" style="--w:0.04;background:#F4511E"></span><span class="barre-val">1,15 %</span></td><td class="num">0,89 %</td></tr>
+          <tr><th scope="row">Nathalie Arthaud</th><td class="num">202 548</td><td class="num barre"><span class="barre-fond" style="--w:0.0197;background:#8B0000"></span><span class="barre-val">0,56 %</span></td><td class="num">0,44 %</td></tr>
+          <tr><th scope="row">Jacques Cheminade</th><td class="num">89 545</td><td class="num barre"><span class="barre-fond" style="--w:0.0087;background:#9E9E9E"></span><span class="barre-val">0,25 %</span></td><td class="num">0,19 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="res-participation">Inscrits 46 028 571 · Votants 36 584 399 (79,48 %) · Abstention 20,52 % · Blancs et nuls 701 190</p>
+    <div class="res-scroll">
+      <table class="res-table">
+        <caption>Second tour, <time datetime="2012-05-06">6 mai 2012</time></caption>
+        <colgroup><col class="c-nom"><col class="c-voix"><col class="c-exp"><col class="c-ins"></colgroup>
+        <thead><tr><th scope="col">Candidat</th><th scope="col" class="num">Voix</th><th scope="col" class="num">% des exprimés</th><th scope="col" class="num">% des inscrits</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">François Hollande</th><td class="num">18 000 668</td><td class="num barre"><span class="barre-fond" style="--w:1.0;background:#FF8080"></span><span class="barre-val">51,64 %</span></td><td class="num">39,08 %</td></tr>
+          <tr><th scope="row">Nicolas Sarkozy</th><td class="num">16 860 685</td><td class="num barre"><span class="barre-fond" style="--w:0.9367;background:#2F80ED"></span><span class="barre-val">48,36 %</span></td><td class="num">36,60 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="res-participation">Inscrits 46 066 215 · Votants 37 016 309 (80,35 %) · Abstention 19,65 % · Blancs et nuls 2 154 956</p>
+  </div>
 <!-- END:resultats-election -->
 </main>
 

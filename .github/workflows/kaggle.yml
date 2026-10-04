@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - data/sondages.json
+  workflow_dispatch: {}
 
 permissions:
   contents: read
@@ -39,6 +40,16 @@ jobs:
             echo "::error::Le secret KAGGLE_API_TOKEN est absent ou vide."
             exit 1
           fi
+
+          # Le client Kaggle ne lit pas KAGGLE_API_TOKEN : il attend
+          # KAGGLE_USERNAME/KAGGLE_KEY ou un fichier kaggle.json. Le secret
+          # contient le kaggle.json téléchargé depuis le compte Kaggle.
+          mkdir -p "$HOME/.kaggle"
+          printf '%s' "$KAGGLE_API_TOKEN" > "$HOME/.kaggle/kaggle.json"
+          chmod 600 "$HOME/.kaggle/kaggle.json"
+          python -c "import json,sys; json.load(open(sys.argv[1]))['key']" \
+            "$HOME/.kaggle/kaggle.json" \
+            || { echo "::error::Le secret KAGGLE_API_TOKEN n'est pas un kaggle.json valide."; exit 1; }
 
           UPLOAD_DIR="$RUNNER_TEMP/kaggle-dataset"
           mkdir -p "$UPLOAD_DIR"

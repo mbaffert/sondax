@@ -96,7 +96,13 @@
     var auj = joursAvant2027();
     var retro = null;
 
+    var bulle = bloc.querySelector('.rs-bulle');
+
     function rendre(x) {
+      if (bulle) {
+        bulle.textContent = 'J-' + x;
+        bulle.style.setProperty('--p', (100 * (jmax - x) / (jmax - jmin)).toFixed(2));
+      }
       grille.innerHTML = '\n' + annees.map(function (a) { return colonne(a, retro, x, auj); }).join('\n') + '\n    ';
       sous.textContent = '\u00c0 J-' + x + ', o\u00f9 en \u00e9tait-on\u00a0?';
       range.setAttribute('aria-valuetext', 'J-' + x);

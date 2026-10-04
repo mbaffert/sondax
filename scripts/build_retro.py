@@ -284,12 +284,21 @@ def j_du_jour(aujourd_hui=None):
     return max(J_MIN_PAGE, min(J_MAX, x))
 
 
+def position_curseur(x):
+    """Position (0 à 100) de J-x sur le curseur, de J-J_MAX (0) à J-J_MIN_PAGE (100)."""
+    return round(100 * (J_MAX - x) / (J_MAX - J_MIN_PAGE), 2)
+
+
 def rendre_bloc_page(retro, x, aujourd_hui=None):
     """Rétro-Sondax de precedentes-elections.html : 2027 puis les cinq élections,
     au J-x du curseur. Même cellules que la home (cellule()) ; 2027 n'a pas de
     valeur pour les jours à venir. assets/bloc-retro.js recalcule la grille au
     déplacement du curseur, avec le même HTML (colonne())."""
     j_auj = (TOUR1_2027 - (aujourd_hui or datetime.date.today())).days
+    repere = ""
+    if J_MIN_PAGE <= j_auj <= J_MAX:    # repère « Aujourd'hui » sur la frise
+        repere = (f'        <span class="rs-auj" style="--p:{position_curseur(j_auj)}">'
+                  f'<span class="rs-auj-label">Aujourd\u2019hui\u00a0: J-{j_auj}</span></span>\n')
     colonnes = []
     for annee in ANNEES_PAGE:
         el = retro["elections"][annee]
@@ -310,8 +319,12 @@ def rendre_bloc_page(retro, x, aujourd_hui=None):
             f'    <p class="rs-texte">Comparez les rapports de force au même moment de chaque campagne.</p>\n'
             f'    <div class="rs-curseur">\n'
             f'      <label for="rs-range">Jours avant le premier tour</label>\n'
-            f'      <input type="range" id="rs-range" min="-{J_MAX}" max="-{J_MIN_PAGE}" step="1" value="-{x}" '
+            f'      <div class="rs-piste">\n'
+            f'        <output class="rs-bulle" for="rs-range" style="--p:{position_curseur(x)}">J-{x}</output>\n'
+            f'        <input type="range" id="rs-range" min="-{J_MAX}" max="-{J_MIN_PAGE}" step="1" value="-{x}" '
             f'aria-describedby="rs-bornes">\n'
+            f'{repere}'
+            f'      </div>\n'
             f'      <div class="rs-bornes" id="rs-bornes"><span>J-{J_MAX}</span><span>J-{J_MIN_PAGE}</span></div>\n'
             f'    </div>\n'
             f'    <div class="rs-grille rs-grille-page">\n' + "\n".join(colonnes) + '\n    </div>\n'

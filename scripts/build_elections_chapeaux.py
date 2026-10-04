@@ -1,10 +1,14 @@
-"""Injecte un chapeau et un tableau statiques dans chaque page presidentielle-XXXX.html,
-et le contenu statique de precedentes-elections.html.
+"""Injecte un chapeau, un tableau et le bloc des résultats dans chaque page
+presidentielle-XXXX.html, et le contenu statique de precedentes-elections.html.
 
-Chapeau, lu dans data/derived/historique.json, deux ou trois phrases :
-- candidats en tête dans les derniers sondages, avec leurs scores moyens
-- résultat réel du premier tour, écart avec la moyenne
-- résultat du second tour
+Chapeau, deux phrases : résultat du premier tour (trois premiers) et du second,
+lus dans data/resultats.json (scripts/collecte_resultats.py). Sans ce fichier,
+ancien chapeau tiré de data/derived/historique.json (derniers sondages,
+résultats des deux tours).
+
+Bloc « Les résultats du scrutin », sous le bloc des sondages : un tableau par
+tour (voix, % des exprimés avec barre, % des inscrits) et une ligne de
+participation. Absent tant que data/resultats.json n'existe pas.
 
 Tableau, sous les graphiques : moyenne mensuelle des sondages de premier tour
 des principaux candidats (score de chaque sondage retenu comme pour la courbe,
@@ -16,12 +20,14 @@ presidentielle-XXXX.html. Les cartes étaient rendues en JavaScript ; elles
 sont écrites au build pour que les liens figurent dans le HTML servi.
 """
 
-import json, pathlib, sys
+import html, json, pathlib, sys
+from decimal import Decimal, ROUND_HALF_UP
 from collections import defaultdict
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 HISTORIQUE_PATH = ROOT / "data" / "derived" / "historique.json"
 HISTORIQUE_BRUT_PATH = ROOT / "data" / "historique.json"
+RESULTATS_PATH = ROOT / "data" / "resultats.json"
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from series import score_candidat
@@ -35,6 +41,8 @@ BEGIN_INTRO = "<!-- BEGIN:intro-elections -->"
 END_INTRO = "<!-- END:intro-elections -->"
 BEGIN_CARTES = "<!-- BEGIN:cartes-elections -->"
 END_CARTES = "<!-- END:cartes-elections -->"
+BEGIN_RES = "<!-- BEGIN:resultats-election -->"
+END_RES = "<!-- END:resultats-election -->"
 ANNEES = ["2002", "2007", "2012", "2017", "2022"]
 
 # Principaux candidats : présents au premier tour, et 5 % des suffrages
@@ -141,6 +149,115 @@ def generate_chapeau(year, election):
         return ""
 
     return f'    <p class="subtitle">{" ".join(phrases)}</p>'
+
+
+def fmt_entier(n):
+    """48747876 → '48 747 876', espace fine insécable entre les milliers."""
+    return f"{n:,}".replace(",", " ")
+
+
+def pct_exact(n, base):
+    """Pourcentage au centième, arrondi demi vers le haut (comme collecte_resultats.py)."""
+    q = Decimal(n) * 100 / Decimal(base)
+    return float(q.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
+
+
+def generate_chapeau_resultats(res):
+    """Deux phrases : trois premiers du premier tour, issue du second."""
+    t1, t2 = res["t1"]["candidats"], res["t2"]["candidats"]
+    d1, d2 = res["date_t1"], res["date_t2"]
+    y, m, d = (int(x) for x in d2.split("-"))
+    date2 = time_tag(d2, f"{d} {MOIS[m - 1]}")
+    suivants = [f"{c['nom']} ({fmt_pct(c['pct_exprimes'])})" for c in t1[1:3]]
+    p1 = (f"Au premier tour, le {time_tag(d1, date_fr(d1, True))}, {t1[0]['nom']} a recueilli "
+          f"{fmt_pct(t1[0]['pct_exprimes'])} des suffrages exprimés, devant "
+          f"{' et '.join(suivants)}.")
+    p2 = (f"Au second tour, le {date2}, {t2[0]['nom']} l’a emporté avec "
+          f"{fmt_pct(t2[0]['pct_exprimes'])} des voix, contre "
+          f"{fmt_pct(t2[1]['pct_exprimes'])} pour {t2[1]['nom']}.")
+    return f'    <p class="subtitle">{p1} {p2}</p>'
+
+
+def couleurs_par_nom(election_brute, election):
+    """{nom complet: couleur} : nom de data/historique.json, couleur du dérivé."""
+    derives = election.get("candidats", {})
+    return {info["nom"]: derives[cid]["couleur"]
+            for cid, info in election_brute["candidats"].items()
+            if derives.get(cid, {}).get("couleur")}
+
+
+def tableau_tour(tour, legende, couleurs):
+    """Tableau d'un tour, barre colorée sous le % des exprimés, ligne de participation."""
+    tete = tour["candidats"][0]["voix"] or 1
+    lignes = []
+    for c in tour["candidats"]:
+        w = round(c["voix"] / tete, 4)
+        coul = couleurs.get(c["nom"], "#8A8F98")
+        lignes.append(
+            f'<tr><th scope="row">{html.escape(c["nom"])}</th>'
+            f'<td class="num">{fmt_entier(c["voix"])}</td>'
+            f'<td class="num barre"><span class="barre-fond" style="--w:{w};background:{coul}"></span>'
+            f'<span class="barre-val">{fmt_pct(c["pct_exprimes"])}</span></td>'
+            f'<td class="num">{fmt_pct(c["pct_inscrits"])}</td></tr>')
+    ins = tour["inscrits"]
+    part = [f"Inscrits {fmt_entier(ins)}",
+            f"Votants {fmt_entier(tour['votants'])} ({fmt_pct(pct_exact(tour['votants'], ins))})",
+            f"Abstention {fmt_pct(pct_exact(tour['abstentions'], ins))}"]
+    if tour.get("blancs_et_nuls") is not None:
+        part.append(f"Blancs et nuls {fmt_entier(tour['blancs_et_nuls'])}")
+    else:
+        part += [f"Blancs {fmt_entier(tour['blancs'])}", f"Nuls {fmt_entier(tour['nuls'])}"]
+    return f"""    <div class="res-scroll">
+      <table class="res-table">
+        <caption>{legende}</caption>
+        <colgroup><col class="c-nom"><col class="c-voix"><col class="c-exp"><col class="c-ins"></colgroup>
+        <thead><tr><th scope="col">Candidat</th><th scope="col" class="num">Voix</th><th scope="col" class="num">% des exprimés</th><th scope="col" class="num">% des inscrits</th></tr></thead>
+        <tbody>
+          {(chr(10) + "          ").join(lignes)}
+        </tbody>
+      </table>
+    </div>
+    <p class="res-participation">{" · ".join(part)}</p>"""
+
+
+def generate_resultats(res, couleurs):
+    """Bloc « Les résultats du scrutin » : premier tour puis second tour."""
+    t1 = tableau_tour(res["t1"], f"Premier tour, {time_tag(res['date_t1'], date_fr(res['date_t1'], True))}", couleurs)
+    t2 = tableau_tour(res["t2"], f"Second tour, {time_tag(res['date_t2'], date_fr(res['date_t2'], True))}", couleurs)
+    return f"""  <style>
+    .res-scroll {{ overflow-x: auto; margin-top: 14px; }}
+    .res-table {{ border-collapse: collapse; width: 100%; min-width: 540px; table-layout: fixed; font-size: 13.5px; }}
+    .res-table col.c-nom {{ width: 32%; }} .res-table col.c-voix {{ width: 18%; }}
+    .res-table col.c-exp {{ width: 32%; }} .res-table col.c-ins {{ width: 18%; }}
+    .res-table caption {{ text-align: left; font-family: var(--titre); font-size: 17px; font-weight: 600;
+      color: var(--texte); padding-bottom: 8px; }}
+    .res-table th, .res-table td {{ padding: 6px 10px; border-bottom: 1px solid #EDEEEA;
+      text-align: left; white-space: nowrap; }}
+    .res-table thead th {{ font-size: 13px; font-weight: 600; color: var(--gris); border-bottom-color: #DDDFDA; }}
+    .res-table tbody th {{ font-weight: 500; }}
+    .res-table .num {{ text-align: right; font-variant-numeric: tabular-nums; }}
+    .res-table th:first-child {{ position: sticky; left: 0; background: #fff; z-index: 1; }}
+    .res-table .barre {{ position: relative; }}
+    .res-table .barre-fond {{ position: absolute; left: 10px; top: 6px; bottom: 6px; border-radius: 3px;
+      opacity: 0.85; width: calc((100% - 6.5em) * var(--w)); }}
+    .res-table .barre-val {{ position: relative; font-weight: 600; }}
+    .res-participation {{ font-size: 13px; color: var(--gris); margin: 8px 0 18px; }}
+    .res-participation:last-child {{ margin-bottom: 0; }}
+    @media (max-width: 600px) {{
+      .res-table {{ min-width: 0; font-size: 12.5px; }}
+      .res-table col.c-nom {{ width: 36%; }} .res-table col.c-voix {{ width: 25%; }}
+      .res-table col.c-exp {{ width: 22%; }} .res-table col.c-ins {{ width: 17%; }}
+      .res-table th, .res-table td {{ padding: 6px 4px; white-space: normal; }}
+      .res-table td.num {{ white-space: nowrap; }}
+      .res-table thead th {{ font-size: 11.5px; vertical-align: bottom; }}
+      .res-table .barre-fond {{ left: 0; top: 3px; bottom: 3px; opacity: 0.28; width: calc(100% * var(--w)); }}
+    }}
+  </style>
+  <div class="bloc" id="resultats">
+    <h2>Les résultats du scrutin</h2>
+{t1}
+{t2}
+  </div>"""
 
 
 def moyennes_mensuelles(election_brute, election):
@@ -306,6 +423,8 @@ def inject(path, chapeau_html, begin=BEGIN, end=END):
 def main():
     historique = json.loads(HISTORIQUE_PATH.read_text(encoding="utf-8"))
     historique_brut = json.loads(HISTORIQUE_BRUT_PATH.read_text(encoding="utf-8"))["elections"]
+    resultats = (json.loads(RESULTATS_PATH.read_text(encoding="utf-8"))
+                 if RESULTATS_PATH.exists() else {})
 
     for year in ANNEES:
         if year not in historique:
@@ -316,7 +435,9 @@ def main():
             print(f"  {year} : page introuvable")
             continue
 
-        chapeau = generate_chapeau(year, historique[year])
+        res = resultats.get(year)
+        chapeau = (generate_chapeau_resultats(res) if res
+                   else generate_chapeau(year, historique[year]))
         if chapeau:
             inject(page_path, chapeau)
             print(f"  {year} : chapeau injecté")
@@ -326,6 +447,11 @@ def main():
         moyennes = generate_moyennes(historique_brut[year], historique[year])
         inject(page_path, moyennes, BEGIN_MOY, END_MOY)
         print(f"  {year} : moyennes mensuelles {'injectées' if moyennes else 'absentes'}")
+
+        bloc = (generate_resultats(res, couleurs_par_nom(historique_brut[year], historique[year]))
+                if res else "")
+        inject(page_path, bloc, BEGIN_RES, END_RES)
+        print(f"  {year} : résultats {'injectés' if bloc else 'absents (data/resultats.json manquant)'}")
 
     inject_precedentes(historique, historique_brut)
 

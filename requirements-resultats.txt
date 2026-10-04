@@ -1,1 +1,2 @@
 pyarrow>=14
+xlrd>=2

@@ -5,11 +5,21 @@ pas dans la collecte quotidienne.
 
     pip install -r requirements-resultats.txt
     python scripts/collecte_resultats.py
-    python scripts/collecte_resultats.py --cache /tmp/elections   # garde les Parquet
+    python scripts/collecte_resultats.py --cache /tmp/elections   # garde les fichiers téléchargés
 
 Source : « Données des élections agrégées », data.gouv.fr (jeu
 6481e741d4cf002ec0efec9d), Ministère de l'Intérieur, Licence Ouverte. Deux
 fichiers Parquet au bureau de vote, ~220 Mo à eux deux.
+
+Complément 2002 et 2007 : le jeu agrégé n'a, pour ces deux années, que la
+métropole et les quatre DOM. Les Français de l'étranger et les collectivités
+d'outre-mer (Mayotte, Saint-Pierre-et-Miquelon, Nouvelle-Calédonie,
+Polynésie, Wallis-et-Futuna) sont repris des fichiers par commune du
+Ministère de l'Intérieur publiés sur data.gouv.fr (« Election présidentielle
+2002 - Résultats », « Election présidentielle 2007 - Résultats », un XLS par
+tour), pour les seuls départements absents du jeu agrégé. Sans eux, les
+totaux s'écartent des résultats officiels (82,14 % au lieu de 82,21 % pour
+Jacques Chirac en 2002).
 
 Écrit :
 - data/resultats.json              : national, une entrée par année
@@ -59,6 +69,19 @@ ELECTIONS = [f"{a}_pres_t{t}" for a in ANNEES for t in (1, 2)]
 PREMIERE_ANNEE_BLANCS = 2017
 # Écart toléré avec les scores de second tour déjà publiés (arrondis au centième).
 TOLERANCE_T2 = 0.015
+
+# Fichiers par commune du Ministère de l'Intérieur (data.gouv.fr), un par tour ;
+# le tour se reconnaît au nombre de candidats (2 au second).
+COMPLEMENTS = {
+    "2002": [
+        "https://static.data.gouv.fr/a4/27cbe1705dd8003e1783251be7b4da3a6a83763a2078a46b282742bf4685d9.xls",
+        "https://static.data.gouv.fr/1e/01293a8816a82e7a9ed972f638f9793eb3f1cd8a7bffbf76667013482770a4.xls",
+    ],
+    "2007": [
+        "https://static.data.gouv.fr/fb/b5de8c5118fab4c029f7289c6a46fcf3ebfa0936d93d43805a734479294899.xls",
+        "https://static.data.gouv.fr/88/523001571e33cd204af5959a5387961121f2a1f765d2ea9197190fcdf02778.xls",
+    ],
+}
 
 COLS_GENERAL = ["id_election", "code_departement", "libelle_departement",
                 "inscrits", "abstentions", "votants", "blancs", "nuls", "exprimes"]
@@ -150,22 +173,97 @@ def pct(voix, base):
     return float(q.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
 
 
+def telecharger_un(url, chemin):
+    nom = chemin.name
+    if chemin.exists() and chemin.stat().st_size > 0:
+        print(f"  {nom} : déjà présent ({chemin.stat().st_size / 1e6:.1f} Mo)")
+        return chemin
+    print(f"  {nom} : téléchargement…", flush=True)
+    tmp = chemin.with_suffix(".part")
+    with urllib.request.urlopen(url, timeout=120) as r, open(tmp, "wb") as f:
+        while bloc := r.read(1 << 20):
+            f.write(bloc)
+    tmp.rename(chemin)
+    print(f"  {nom} : {chemin.stat().st_size / 1e6:.1f} Mo")
+    return chemin
+
+
 def telecharger(dossier):
-    chemins = {}
-    for nom in FICHIERS:
-        chemin = dossier / nom
-        if chemin.exists() and chemin.stat().st_size > 0:
-            print(f"  {nom} : déjà présent ({chemin.stat().st_size / 1e6:.0f} Mo)")
-        else:
-            print(f"  {nom} : téléchargement…", flush=True)
-            tmp = chemin.with_suffix(".part")
-            with urllib.request.urlopen(BASE_URL + nom, timeout=120) as r, open(tmp, "wb") as f:
-                while bloc := r.read(1 << 20):
-                    f.write(bloc)
-            tmp.rename(chemin)
-            print(f"  {nom} : {chemin.stat().st_size / 1e6:.0f} Mo")
-        chemins[nom] = chemin
+    chemins = {nom: telecharger_un(BASE_URL + nom, dossier / nom) for nom in FICHIERS}
+    for annee, urls in COMPLEMENTS.items():
+        for i, url in enumerate(urls):
+            chemins[(annee, i)] = telecharger_un(url, dossier / f"complement_{annee}_{i}.xls")
     return chemins
+
+
+def lire_complement(chemin):
+    """XLS par commune du ministère → {code_dep: (libellé, effectifs, {clé nom: voix})}.
+
+    Colonnes : Code du département, Libellé du département, …, Inscrits,
+    Abstentions, Votants, Blancs et nuls, Exprimés, puis par candidat
+    Sexe, Nom, Prénom, Voix (avec des colonnes de pourcentage intercalées,
+    ignorées)."""
+    import xlrd
+    feuille = xlrd.open_workbook(str(chemin)).sheet_by_index(0)
+    entete = None
+    for r in range(min(feuille.nrows, 20)):
+        ligne = [str(v).strip() for v in feuille.row_values(r)]
+        if "Code du département" in ligne:
+            entete, debut = ligne, r + 1
+            break
+    if entete is None:
+        raise ControleEchoue(f"{chemin.name} : ligne d'en-tête introuvable")
+    col = {nom: entete.index(nom) for nom in
+           ("Code du département", "Libellé du département", "Inscrits",
+            "Abstentions", "Votants", "Blancs et nuls", "Exprimés")}
+    noms = [i for i, v in enumerate(entete) if v == "Nom"]
+
+    deps = {}
+    for r in range(debut, feuille.nrows):
+        v = feuille.row_values(r)
+        code = v[col["Code du département"]]
+        if code in ("", None):
+            continue
+        if isinstance(code, float):
+            code = str(int(code))
+        code = str(code).strip()
+        code = code.zfill(2) if code.isdigit() else code
+        lib, eff, voix = deps.setdefault(code, (str(v[col["Libellé du département"]]).strip(),
+                                                defaultdict(int), defaultdict(int)))
+        for cle_x, cle_j in (("Inscrits", "inscrits"), ("Abstentions", "abstentions"),
+                             ("Votants", "votants"), ("Blancs et nuls", "nuls"),
+                             ("Exprimés", "exprimes")):
+            eff[cle_j] += entier(v[col[cle_x]]) or 0
+        for i in noms:
+            if v[i] in ("", None):
+                continue
+            voix[cle(str(v[i]), str(v[i + 1]))] += entier(v[i + 2]) or 0
+    return deps, len(noms)
+
+
+def completer(annee, chemins, tot_gen, tot_voix, libelles):
+    """Ajoute, pour 2002 et 2007, les départements absents du jeu agrégé.
+    Avant 2017 : la colonne nuls du jeu agrégé porte blancs + nuls, idem ici."""
+    for i in range(len(COMPLEMENTS[annee])):
+        deps, nb_candidats = lire_complement(chemins[(annee, i)])
+        eid = f"{annee}_pres_t{2 if nb_candidats == 2 else 1}"
+        presents = {d for (e, d) in tot_gen if e == eid}
+        ajoutes = []
+        for code, (lib, eff, voix) in sorted(deps.items()):
+            if code in presents:
+                continue
+            inconnus = [k for k in voix if k not in NOMS]
+            if inconnus:
+                raise ControleEchoue(f"{eid} complément {code} : noms absents de NOMS : {inconnus}")
+            tot_gen[(eid, code)] = {"inscrits": eff["inscrits"], "abstentions": eff["abstentions"],
+                                    "votants": eff["votants"], "blancs": None,
+                                    "nuls": eff["nuls"], "exprimes": eff["exprimes"]}
+            tot_voix[(eid, code)] = defaultdict(int)
+            for k, n in voix.items():
+                tot_voix[(eid, code)][NOMS[k]] += n
+            libelles.setdefault(code, lib.title())
+            ajoutes.append(f"{code} {lib.title()} ({eff['inscrits']:,} inscrits)")
+        print(f"  {eid} : complété par {', '.join(ajoutes) or 'rien'}")
 
 
 def lire(chemin, colonnes):
@@ -280,9 +378,11 @@ def scrutin(annee, gen, voix, contexte):
     }
 
 
-def construire(general, candidats, historique):
+def construire(general, candidats, historique, chemins):
     tot_gen, libelles = agreger_general(general)
     tot_voix = agreger_candidats(candidats)
+    for annee in COMPLEMENTS:
+        completer(annee, chemins, tot_gen, tot_voix, libelles)
 
     # National : somme de tous les départements, sans exception.
     nat_gen = defaultdict(lambda: {k: None for k in EFFECTIFS})
@@ -335,6 +435,19 @@ def construire(general, candidats, historique):
     return national, departements
 
 
+def comparer_premier_tour(national, historique):
+    """Écarts avec les scores de premier tour du site (Wikipédia, résultats
+    proclamés), pour information : le seul contrôle bloquant sur les scores
+    porte sur le second tour."""
+    for annee, e in national.items():
+        publies = historique[annee]["resultats"]["tour1"]
+        noms = {info["nom"]: cid for cid, info in historique[annee]["candidats"].items()}
+        for c in e["t1"]["candidats"]:
+            ref = publies.get(noms.get(c["nom"]))
+            if ref is not None and abs(c["pct_exprimes"] - ref) > TOLERANCE_T2:
+                print(f"  écart {annee} t1 : {c['nom']} {c['pct_exprimes']} % (site {ref} %)")
+
+
 def resume(national):
     for annee, e in national.items():
         for t in ("t1", "t2"):
@@ -352,7 +465,7 @@ def ecrire(chemin, donnees):
 def main():
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("--cache", type=pathlib.Path,
-                        help="dossier où garder les Parquet entre deux exécutions")
+                        help="dossier où garder les fichiers téléchargés entre deux exécutions")
     args = parser.parse_args()
 
     historique = json.loads(HISTORIQUE.read_text(encoding="utf-8"))["elections"]
@@ -367,15 +480,15 @@ def main():
         candidats = lire(chemins["candidats_results.parquet"], COLS_CANDIDATS)
         print(f"  {len(general['id_election']):,} bureaux, "
               f"{len(candidats['id_election']):,} lignes candidat")
-
-    try:
-        national, departements = construire(general, candidats, historique)
-    except ControleEchoue as e:
-        print(f"\nContrôle échoué, rien n'est écrit : {e}", file=sys.stderr)
-        sys.exit(1)
+        try:
+            national, departements = construire(general, candidats, historique, chemins)
+        except ControleEchoue as e:
+            print(f"\nContrôle échoué, rien n'est écrit : {e}", file=sys.stderr)
+            sys.exit(1)
 
     print("Contrôles passés")
     resume(national)
+    comparer_premier_tour(national, historique)
     ecrire(SORTIE_NATIONAL, national)
     ecrire(SORTIE_DEPARTEMENTS, departements)
 

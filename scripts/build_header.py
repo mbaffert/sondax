@@ -204,7 +204,7 @@ CANDIDATS_PAGES = [
 # (libellé, href, pages qui l'activent, préfixe qui l'active) ;
 # None à la place du href : menu déroulant des candidats.
 NAV_ITEMS = [
-    ("Accueil", "index.html", ["index.html", ""], None),
+    ("Accueil", "/", ["index.html", ""], None),
     ("Candidats", None, [], None),
     ("Tous les sondages", "sondages.html", ["sondages.html"], None),
     ("Modèle Sondax", "modele-sondax.html", ["modele-sondax.html"], None),
@@ -251,6 +251,8 @@ def header_html(rel_path, cd):
     def liens():
         h = ""
         for label, href, match, prefixe in NAV_ITEMS:
+            if href is not None and not href.startswith("/"):
+                href = base + href
             if href is None:
                 h += (f'<div class="menu-candidats">'
                       f'<a href="{base}candidats/" class="menu-candidats-label">Candidats</a>'
@@ -258,9 +260,9 @@ def header_html(rel_path, cd):
                 h += "".join(f'<a href="{base}{slug}.html">{nom}</a>' for slug, nom in CANDIDATS_PAGES)
                 h += "</div></div>"
             elif actif(label, match, prefixe):
-                h += f'<a href="{base}{href}" class="is-active" aria-current="page">{label}</a>'
+                h += f'<a href="{href}" class="is-active" aria-current="page">{label}</a>'
             else:
-                h += f'<a href="{base}{href}">{label}</a>'
+                h += f'<a href="{href}">{label}</a>'
         return h
 
     cd_html = ""
@@ -273,7 +275,7 @@ def header_html(rel_path, cd):
                    '</div>')
 
     return ('<div class="sh-inner">'
-            f'<a class="sh-logo" href="{base}index.html" aria-label="Sondax — accueil">'
+            '<a class="sh-logo" href="/" aria-label="Sondax — accueil">'
             + LOGO_SVG
             + '<span class="sh-wordmark">sondax</span>'
             '</a>'

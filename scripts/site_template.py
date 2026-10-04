@@ -47,7 +47,9 @@ def render_page(*, title, meta_description, canonical, body_content,
 <link rel="canonical" href="{canonical}">
 <script data-goatcounter="https://sondax.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-<link rel="icon" type="image/svg+xml" href="{p}assets/logo-sondax.svg">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">

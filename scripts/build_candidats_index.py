@@ -141,7 +141,7 @@ table_html = (
 )
 
 body_content = f"""<main>
-  <p class="fil"><a href="../">Sondax</a> › Candidats</p>
+  <p class="fil"><a href="/">Sondax</a> › Candidats</p>
   <h1>Candidats</h1>
 {table_html}
 </main>"""

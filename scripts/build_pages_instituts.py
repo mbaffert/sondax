@@ -379,7 +379,7 @@ def build_page_institut(slug, inst, liste):
 
     body = f"""<main class="institut-page">
   <div class="institut-inner">
-    <nav class="fil" aria-label="Fil d’Ariane"><a href="../">Sondax</a> › <a href="../instituts.html">Instituts</a></nav>
+    <nav class="fil" aria-label="Fil d’Ariane"><a href="/">Sondax</a> › <a href="../instituts.html">Instituts</a></nav>
     {logo_html(inst, "inst-logo", prefix)}
     <h1>Sondages {ESC(nom)} — présidentielle 2027</h1>
     {site_html}
@@ -425,7 +425,7 @@ def build_page_index(slugs):
 
     body = f"""<main class="institut-page">
   <div class="institut-inner">
-    <nav class="fil" aria-label="Fil d’Ariane"><a href="./">Sondax</a></nav>
+    <nav class="fil" aria-label="Fil d’Ariane"><a href="/">Sondax</a></nav>
     <h1>Instituts de sondage de la présidentielle 2027</h1>
     <p class="inst-chapeau">{intro}</p>
     <div class="section-sep"></div>

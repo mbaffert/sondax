@@ -104,7 +104,7 @@
     ];
 
     var navItems = [
-      { label: 'Accueil', href: 'index.html', match: ['index.html', ''] },
+      { label: 'Accueil', href: '/', match: ['index.html', ''] },
       { label: 'Candidats', href: '#', match: candidatsPages.map(function(c) { return c.slug + '.html'; }), dropdown: true },
       { label: 'Tous les sondages', href: 'sondages.html', match: ['sondages.html'] },
       { label: 'Modèle Sondax', href: 'modele-sondax.html', match: ['modele-sondax.html'] },
@@ -146,19 +146,20 @@
       var h = '';
       for (var i = 0; i < navItems.length; i++) {
         var it = navItems[i];
+        var href = it.href.charAt(0) === '/' ? it.href : baseHref + it.href;
         if (it.dropdown) {
           h += candidatsMenuHTML();
         } else if (isActive(it)) {
-          h += '<a href="' + baseHref + it.href + '" class="is-active" aria-current="page">' + it.label + '</a>';
+          h += '<a href="' + href + '" class="is-active" aria-current="page">' + it.label + '</a>';
         } else {
-          h += '<a href="' + baseHref + it.href + '">' + it.label + '</a>';
+          h += '<a href="' + href + '">' + it.label + '</a>';
         }
       }
       return h;
     }
 
     var html = '<div class="sh-inner">' +
-        '<a class="sh-logo" href="' + baseHref + 'index.html" aria-label="Sondax — accueil">' +
+        '<a class="sh-logo" href="/" aria-label="Sondax — accueil">' +
           logoSVG +
           '<span class="sh-wordmark">sondax</span>' +
         '</a>' +

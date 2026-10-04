@@ -650,7 +650,7 @@ def build_page(sondage):
     # Breadcrumb
     breadcrumb = (
         '<nav class="fil" aria-label="Fil d\u2019Ariane">'
-        '<a href="../">Sondax</a> \u203a '
+        '<a href="/">Sondax</a> \u203a '
         '<a href="../sondages.html">Sondages</a>'
         '</nav>'
     )

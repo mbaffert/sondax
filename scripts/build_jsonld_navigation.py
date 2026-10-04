@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Injecte le balisage JSON-LD de navigation (SPEC §13.5).
 
-- WebSite sur index.html (invisible).
+- WebSite et Organization sur index.html (invisible).
 - BreadcrumbList sur chaque page qui affiche un fil d'Ariane (élément de
   classe « fil ») : mêmes étapes que le fil visible, dans le même ordre. Une
   étape liée prend l'URL absolue de son lien ; la dernière étape, non liée, est
@@ -31,10 +31,25 @@ CANONICAL = re.compile(r'<link rel="canonical" href="([^"]+)">')
 
 WEBSITE = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Sondax",
-    "url": BASE,
-    "inLanguage": "fr-FR",
+    "@graph": [
+        {
+            "@type": "WebSite",
+            "name": "Sondax",
+            "alternateName": "Sondax — sondages présidentielle 2027",
+            "url": BASE,
+            "inLanguage": "fr-FR",
+        },
+        {
+            "@type": "Organization",
+            "name": "Sondax",
+            "url": BASE,
+            "logo": urljoin(BASE, "assets/logo-sondax.svg"),
+            "sameAs": [
+                "https://www.data.gouv.fr/organizations/sondax/",
+                "https://github.com/mbaffert/sondax",
+            ],
+        },
+    ],
 }
 
 

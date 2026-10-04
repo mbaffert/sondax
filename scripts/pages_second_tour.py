@@ -241,7 +241,9 @@ CSS = """\
 HEAD_COMMON = """\
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" type="image/svg+xml" href="{prefix}assets/logo-sondax.svg">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
@@ -425,7 +427,7 @@ def generate_duel_page(slug, entries, candidats, out_dir):
 
 <main>
   <div class="fil" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);padding:0 0 18px;">
-    <a href="../" style="color:inherit">Sondax</a> › <a href="./" style="color:inherit">Second tour</a> › {html_mod.escape(nom_a)} – {html_mod.escape(nom_b)}
+    <a href="/" style="color:inherit">Sondax</a> › <a href="./" style="color:inherit">Second tour</a> › {html_mod.escape(nom_a)} – {html_mod.escape(nom_b)}
   </div>
   <h1>{html_mod.escape(title)}</h1>
   <p class="subtitle">{len(entries)} sondage{"s" if len(entries) > 1 else ""} · Dernier : {time_tag(entries[0]["terrain_fin"], fmt_date(entries[0]["terrain_fin"]))}</p>

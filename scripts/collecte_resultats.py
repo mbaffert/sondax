@@ -70,17 +70,16 @@ PREMIERE_ANNEE_BLANCS = 2017
 # Écart toléré avec les scores de second tour déjà publiés (arrondis au centième).
 TOLERANCE_T2 = 0.015
 
-# Fichiers par commune du Ministère de l'Intérieur (data.gouv.fr), un par tour ;
-# le tour se reconnaît au nombre de candidats (2 au second).
+# Fichiers par commune du Ministère de l'Intérieur (data.gouv.fr) : (URL, onglet).
+# 2002 : un fichier par tour ; 2007 : un fichier, un onglet par tour. Le tour se
+# reconnaît au nombre de candidats (2 au second).
+URL_2007 = "https://static.data.gouv.fr/88/523001571e33cd204af5959a5387961121f2a1f765d2ea9197190fcdf02778.xls"
 COMPLEMENTS = {
     "2002": [
-        "https://static.data.gouv.fr/a4/27cbe1705dd8003e1783251be7b4da3a6a83763a2078a46b282742bf4685d9.xls",
-        "https://static.data.gouv.fr/1e/01293a8816a82e7a9ed972f638f9793eb3f1cd8a7bffbf76667013482770a4.xls",
+        ("https://static.data.gouv.fr/a4/27cbe1705dd8003e1783251be7b4da3a6a83763a2078a46b282742bf4685d9.xls", 0),
+        ("https://static.data.gouv.fr/1e/01293a8816a82e7a9ed972f638f9793eb3f1cd8a7bffbf76667013482770a4.xls", 0),
     ],
-    "2007": [
-        "https://static.data.gouv.fr/fb/b5de8c5118fab4c029f7289c6a46fcf3ebfa0936d93d43805a734479294899.xls",
-        "https://static.data.gouv.fr/88/523001571e33cd204af5959a5387961121f2a1f765d2ea9197190fcdf02778.xls",
-    ],
+    "2007": [(URL_2007, "Tour 1"), (URL_2007, "Tour 2")],
 }
 
 COLS_GENERAL = ["id_election", "code_departement", "libelle_departement",
@@ -190,13 +189,14 @@ def telecharger_un(url, chemin):
 
 def telecharger(dossier):
     chemins = {nom: telecharger_un(BASE_URL + nom, dossier / nom) for nom in FICHIERS}
-    for annee, urls in COMPLEMENTS.items():
-        for i, url in enumerate(urls):
-            chemins[(annee, i)] = telecharger_un(url, dossier / f"complement_{annee}_{i}.xls")
+    for annee, sources in COMPLEMENTS.items():
+        for url, _ in sources:
+            if url not in chemins:
+                chemins[url] = telecharger_un(url, dossier / f"complement_{annee}_{url.rsplit('/', 1)[1][:8]}.xls")
     return chemins
 
 
-def lire_complement(chemin):
+def lire_complement(chemin, onglet):
     """XLS par commune du ministère → {code_dep: (libellé, effectifs, {clé nom: voix})}.
 
     Colonnes : Code du département, Libellé du département, …, Inscrits,
@@ -204,7 +204,9 @@ def lire_complement(chemin):
     Sexe, Nom, Prénom, Voix (avec des colonnes de pourcentage intercalées,
     ignorées)."""
     import xlrd
-    feuille = xlrd.open_workbook(str(chemin)).sheet_by_index(0)
+    classeur = xlrd.open_workbook(str(chemin))
+    feuille = (classeur.sheet_by_index(onglet) if isinstance(onglet, int)
+               else classeur.sheet_by_name(onglet))
     entete = None
     for r in range(min(feuille.nrows, 20)):
         ligne = [str(v).strip() for v in feuille.row_values(r)]
@@ -212,7 +214,7 @@ def lire_complement(chemin):
             entete, debut = ligne, r + 1
             break
     if entete is None:
-        raise ControleEchoue(f"{chemin.name} : ligne d'en-tête introuvable")
+        raise ControleEchoue(f"{chemin.name} [{onglet}] : ligne d'en-tête introuvable")
     col = {nom: entete.index(nom) for nom in
            ("Code du département", "Libellé du département", "Inscrits",
             "Abstentions", "Votants", "Blancs et nuls", "Exprimés")}
@@ -244,8 +246,8 @@ def lire_complement(chemin):
 def completer(annee, chemins, tot_gen, tot_voix, libelles):
     """Ajoute, pour 2002 et 2007, les départements absents du jeu agrégé.
     Avant 2017 : la colonne nuls du jeu agrégé porte blancs + nuls, idem ici."""
-    for i in range(len(COMPLEMENTS[annee])):
-        deps, nb_candidats = lire_complement(chemins[(annee, i)])
+    for url, onglet in COMPLEMENTS[annee]:
+        deps, nb_candidats = lire_complement(chemins[url], onglet)
         eid = f"{annee}_pres_t{2 if nb_candidats == 2 else 1}"
         presents = {d for (e, d) in tot_gen if e == eid}
         ajoutes = []

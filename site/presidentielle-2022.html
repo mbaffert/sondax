@@ -26,92 +26,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/header.css?v=5">
-<style>
-  :root {
-    --bleu-vif: #0C6CF2;
-    --bleu-nuit: #0B2E6F;
-    --fond: #F7F8F5;
-    --texte: #202632;
-    --gris: #66707D;
-    --titre: 'Space Grotesk', system-ui, sans-serif;
-    --corps: 'IBM Plex Sans', system-ui, sans-serif;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: var(--corps); background: var(--fond); color: var(--texte); font-size: 15px; line-height: 1.5; }
-  a { color: var(--bleu-vif); text-decoration: none; }
-  a:hover { color: var(--bleu-nuit); text-decoration: underline; }
-
-
-
-  main { max-width: 1180px; margin: 0 auto; padding: 26px 28px 0; }
-
-  .retour { font-size: 13px; margin-bottom: 12px; }
-  .retour a { color: var(--bleu-vif); }
-
-  .bloc { background: #fff; border: 1px solid #E3E5E0; border-radius: 16px;
-    padding: 26px 28px 22px; margin-bottom: 18px;
-    box-shadow: 0 1px 2px rgba(32,38,50,0.04); }
-  .bloc h2 { font-family: var(--titre); font-size: 25px; font-weight: 600;
-    letter-spacing: -0.02em; margin: 0 0 5px; color: var(--texte); }
-  .bloc .subtitle { font-size: 13.5px; color: var(--gris); margin-bottom: 18px; }
-
-  .tabs { display: flex; background: #F2F3F0; border-radius: 9px; padding: 3px;
-    margin-bottom: 18px; width: fit-content; }
-  .tab { font-family: var(--corps); font-size: 13.5px; font-weight: 500; padding: 7px 15px;
-    cursor: pointer; border: none; background: transparent; color: var(--gris);
-    border-radius: 7px; transition: all 0.15s; }
-  .tab:hover { color: var(--texte); }
-  .tab.active { background: #fff; color: var(--texte); box-shadow: 0 1px 2px rgba(32,38,50,0.08); }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-
-  .controles { display: flex; gap: 14px 18px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
-  .groupe { display: flex; background: #F2F3F0; border-radius: 9px; padding: 3px; }
-  .groupe button { border: 0; cursor: pointer; font-family: var(--corps); font-size: 13px; font-weight: 500;
-    padding: 6px 13px; border-radius: 7px; white-space: nowrap; background: transparent;
-    color: var(--gris); transition: all 0.15s; }
-  .groupe button:hover { color: var(--texte); }
-  .groupe button.active { background: #fff; color: var(--texte);
-    box-shadow: 0 1px 2px rgba(32,38,50,0.08); }
-  .opt { font-size: 13px; color: var(--gris); display: flex; align-items: center; gap: 6px; cursor: pointer; }
-
-  .chart-wrap { position: relative; width: 100%; height: 500px; }
-  .resume { font-size: 13px; color: var(--gris); margin: 10px 0 4px; }
-
-  .candidats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px 18px; margin-top: 14px; font-size: 13px; }
-  .cand { display: grid; grid-template-columns: auto 10px 1fr auto; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
-  .cand .pastille { width: 10px; height: 10px; border-radius: 50%; }
-  .cand .nom { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .cand .res { color: var(--gris); font-variant-numeric: tabular-nums; }
-  .cand.masque .nom { color: var(--gris); }
-  .extra { display: contents; }
-  .extra.collapsed { display: none; }
-  .plus { grid-column: 1 / -1; background: none; border: 0; color: var(--bleu-vif); font: inherit; font-size: 13px;
-    text-align: left; padding: 6px 0 0; cursor: pointer; }
-
-  .duel-select { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 1em; font-size: 13px; }
-  .duel-select select { font-family: var(--corps); padding: 7px 10px; border: 1px solid #DDDFDA;
-    border-radius: 8px; font-size: 13.5px; font-weight: 500; color: var(--texte); background: #fff; }
-  .t2-table { border-collapse: collapse; width: 100%; font-size: 0.85em; margin-top: 0.5em; }
-  .t2-table th, .t2-table td { border: 1px solid #e2e4e0; padding: 0.4em 0.6em; text-align: left; }
-  .t2-table th { background: #f5f5f3; }
-
-  footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
-  footer .footer-inner { max-width: 1180px; margin: 0 auto; }
-  footer a { color: rgba(255,255,255,0.72); }
-  footer a:hover { color: #fff; text-decoration: none; }
-  footer .disclaimer { font-size: 12.5px; line-height: 1.6; margin-top: 8px; }
-
-  @media (max-width: 600px) {
-    main { padding: 14px 12px 0; }
-    .bloc { padding: 18px 16px 16px; border-radius: 12px; }
-    .chart-wrap { height: 320px; }
-    .candidats { grid-template-columns: repeat(2, 1fr); }
-    .duel-select { flex-direction: column; align-items: flex-start; gap: 6px; }
-    .duel-select select { width: 100%; }
-    footer { padding: 24px 16px; }
-  }
-</style>
+<link rel="stylesheet" href="assets/historique.css?v=1">
 </head>
 <body>
 
@@ -120,155 +35,142 @@
 <script src="assets/header.js?v=8"></script>
 
 <main>
-  <p class="retour"><a href="precedentes-elections.html">← Élections passées</a></p>
-  <div class="bloc">
-    <h1>Sondages de la présidentielle 2022</h1>
-    <!-- BEGIN:chapeau-election -->
-    <p class="subtitle">Au premier tour, le <time datetime="2022-04-10">10 avril 2022</time>, Emmanuel Macron a recueilli 27,85 % des suffrages exprimés, devant Marine Le Pen (23,15 %) et Jean-Luc Mélenchon (21,95 %). Au second tour, le <time datetime="2022-04-24">24 avril</time>, Emmanuel Macron l’a emporté avec 58,55 % des voix, contre 41,45 % pour Marine Le Pen.</p>
-<!-- END:chapeau-election -->
-    <p class="retour"><a href="/">Sondages de la présidentielle 2027</a> · <a href="precedentes-elections.html">Toutes les présidentielles</a></p>
-    <p class="subtitle">Intentions de vote au premier et au second tour.</p>
+  <p class="retour"><a href="precedentes-elections.html">← Toutes les présidentielles</a></p>
+  <header class="hero">
+    <p class="surtitre">Présidentielle 2022</p>
+    <h1>Sondages et résultats de la présidentielle 2022</h1>
+    <p class="hero-dates">Premier tour : <time datetime="2022-04-10">10 avril 2022</time> · Second tour : <time datetime="2022-04-24">24 avril 2022</time></p>
+  </header>
 
-    <div class="tabs">
-      <button class="tab active" data-tab="t1">Premier tour</button>
-      <button class="tab" data-tab="t2">Second tour</button>
-    </div>
-
-    <div class="controles">
-      <div class="groupe" id="periode-group">
-        <button data-months="0" class="active">Depuis <time datetime="2021-01">janvier 2021</time></button>
-        <button data-months="12">1 an</button>
-        <button data-months="6">6 mois</button>
-        <button data-months="3">3 mois</button>
+  <section class="carte" id="synthese" aria-labelledby="h-synthese">
+    <p class="surtitre">L’élection en un coup d’œil</p>
+    <h2 id="h-synthese">Emmanuel Macron réélu avec 58,55 % des suffrages exprimés</h2>
+    <div class="synthese-grille">
+      <div class="synthese-col">
+        <h3>Premier tour</h3>
+        <p class="date"><time datetime="2022-04-10">10 avril 2022</time></p>
+        <ul class="barres"><li><span class="b-nom">Macron</span><span class="b-val">27,85 %</span><span class="b-piste"><span class="b-barre" style="width:100.0%;background:#7E57C2"></span></span></li><li><span class="b-nom">Le Pen</span><span class="b-val">23,15 %</span><span class="b-piste"><span class="b-barre" style="width:83.1%;background:#0D378A"></span></span></li><li><span class="b-nom">Mélenchon</span><span class="b-val">21,95 %</span><span class="b-piste"><span class="b-barre" style="width:78.8%;background:#CC2443"></span></span></li></ul>
+      </div>
+      <div class="synthese-col">
+        <h3>Second tour</h3>
+        <p class="date"><time datetime="2022-04-24">24 avril 2022</time></p>
+        <ul class="barres barres-t2"><li><span class="b-nom">Macron</span><span class="b-val">58,55 %</span><span class="b-piste"><span class="b-barre" style="width:58.5%;background:#7E57C2"></span></span></li><li><span class="b-nom">Le Pen</span><span class="b-val">41,45 %</span><span class="b-piste"><span class="b-barre" style="width:41.5%;background:#0D378A"></span></span></li></ul>
+        <p class="participation">Participation : <strong>71,99 %</strong></p>
       </div>
     </div>
+  </section>
 
-    <div class="tab-panel active" id="panel-t1">
-      <div class="chart-wrap"><canvas id="chart-t1"></canvas></div>
-      <p class="resume" id="resume"></p>
-      <div class="candidats" id="candidats-t1"></div>
+  <section class="carte" id="sondages-premier-tour" aria-labelledby="h-sondages-t1">
+    <p class="surtitre">Sondages · Premier tour</p>
+    <h2 id="h-sondages-t1"><span class="sr-only">Sondages du premier tour de la présidentielle 2022 : </span>Évolution des intentions de vote</h2>
+    <p class="subtitle">L’évolution des principales candidatures jusqu’au premier tour.</p>
+    <div class="controles">
+      <div class="groupe" id="periode-t1" role="group" aria-label="Période affichée">
+        <button type="button" data-months="0" class="active">Depuis <time datetime="2021-01">janvier 2021</time></button>
+        <button type="button" data-months="12">1 an</button>
+        <button type="button" data-months="6">6 mois</button>
+        <button type="button" data-months="3">3 mois</button>
+      </div>
     </div>
+    <div class="chart-wrap"><canvas id="chart-t1" role="img" aria-label="Graphique de l’évolution des intentions de vote au premier tour de la présidentielle 2022"></canvas></div>
+    <p class="resume" id="resume">323 sondages depuis janvier 2021 dont 170 vagues de rolling.</p>
+    <div class="candidats" id="candidats-t1"></div>
+    <details class="moyennes-details">
+      <summary>Moyennes mensuelles des sondages</summary>
+      <div class="moyennes-scroll">
+        <table class="moyennes">
+          <thead><tr><th scope="col">Mois</th><th scope="col" class="num">Macron</th><th scope="col" class="num">Le Pen</th><th scope="col" class="num">Mélenchon</th><th scope="col" class="num">Zemmour</th><th scope="col" class="num">Pécresse</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><time datetime="2021-01">janvier 2021</time></th><td class="num">23,9 %</td><td class="num">25,6 %</td><td class="num">9,9 %</td><td class="num">—</td><td class="num">14,0 %</td></tr>
+            <tr><th scope="row"><time datetime="2021-02">février 2021</time></th><td class="num">31,0 %</td><td class="num">—</td><td class="num">12,0 %</td><td class="num">17,0 %</td><td class="num">—</td></tr>
+            <tr><th scope="row"><time datetime="2021-03">mars 2021</time></th><td class="num">24,8 %</td><td class="num">26,5 %</td><td class="num">10,5 %</td><td class="num">—</td><td class="num">12,0 %</td></tr>
+            <tr><th scope="row"><time datetime="2021-04">avril 2021</time></th><td class="num">25,0 %</td><td class="num">25,8 %</td><td class="num">11,4 %</td><td class="num">—</td><td class="num">9,2 %</td></tr>
+            <tr><th scope="row"><time datetime="2021-05">mai 2021</time></th><td class="num">26,4 %</td><td class="num">27,9 %</td><td class="num">12,5 %</td><td class="num">—</td><td class="num">10,0 %</td></tr>
+            <tr><th scope="row"><time datetime="2021-06">juin 2021</time></th><td class="num">27,3 %</td><td class="num">26,2 %</td><td class="num">9,6 %</td><td class="num">5,5 %</td><td class="num">11,4 %</td></tr>
+            <tr><th scope="row"><time datetime="2021-07">juillet 2021</time></th><td class="num">25,0 %</td><td class="num">24,0 %</td><td class="num">8,7 %</td><td class="num">5,0 %</td><td class="num">13,0 %</td></tr>
+            <tr><th scope="row"><time datetime="2021-08">août 2021</time></th><td class="num">24,5 %</td><td class="num">23,3 %</td><td class="num">10,6 %</td><td class="num">7,0 %</td><td class="num">11,0 %</td></tr>
+            <tr><th scope="row"><time datetime="2021-09">septembre 2021</time></th><td class="num">24,8 %</td><td class="num">19,8 %</td><td class="num">9,4 %</td><td class="num">10,2 %</td><td class="num">13,1 %</td></tr>
+            <tr><th scope="row"><time datetime="2021-10">octobre 2021</time></th><td class="num">25,3 %</td><td class="num">17,6 %</td><td class="num">8,7 %</td><td class="num">15,6 %</td><td class="num">10,1 %</td></tr>
+            <tr><th scope="row"><time datetime="2021-11">novembre 2021</time></th><td class="num">25,3 %</td><td class="num">18,0 %</td><td class="num">9,2 %</td><td class="num">15,1 %</td><td class="num">10,1 %</td></tr>
+            <tr><th scope="row"><time datetime="2021-12">décembre 2021</time></th><td class="num">23,9 %</td><td class="num">15,8 %</td><td class="num">10,1 %</td><td class="num">13,6 %</td><td class="num">16,9 %</td></tr>
+            <tr><th scope="row"><time datetime="2022-01">janvier 2022</time></th><td class="num">24,6 %</td><td class="num">16,9 %</td><td class="num">9,6 %</td><td class="num">12,9 %</td><td class="num">16,3 %</td></tr>
+            <tr><th scope="row"><time datetime="2022-02">février 2022</time></th><td class="num">24,7 %</td><td class="num">16,6 %</td><td class="num">10,6 %</td><td class="num">14,6 %</td><td class="num">14,7 %</td></tr>
+            <tr><th scope="row"><time datetime="2022-03">mars 2022</time></th><td class="num">28,9 %</td><td class="num">18,3 %</td><td class="num">13,0 %</td><td class="num">11,5 %</td><td class="num">11,2 %</td></tr>
+            <tr><th scope="row"><time datetime="2022-04">avril 2022</time></th><td class="num">26,8 %</td><td class="num">22,3 %</td><td class="num">16,3 %</td><td class="num">9,7 %</td><td class="num">8,6 %</td></tr>
+            <tr class="resultat"><th scope="row">Résultat du premier tour</th><td class="num">27,85 %</td><td class="num">23,15 %</td><td class="num">21,95 %</td><td class="num">7,07 %</td><td class="num">4,78 %</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </details>
+  </section>
 
-    <div class="tab-panel" id="panel-t2">
-      <div class="duel-select">
-        <span style="color:var(--gris);">Candidat :</span>
+  <section class="carte" id="resultats-premier-tour" aria-labelledby="h-res-t1">
+    <p class="surtitre">Résultats définitifs</p>
+    <h2 id="h-res-t1"><span class="sr-only">Résultats du premier tour de la présidentielle 2022 : </span>Premier tour — <time datetime="2022-04-10">10 avril 2022</time></h2>
+    <p class="subtitle">Nombre de voix, part des suffrages exprimés et part des inscrits.</p>
+    <div class="res-scroll">
+      <table class="res-table">
+        <colgroup><col class="c-nom"><col class="c-voix"><col class="c-exp"><col class="c-ins"></colgroup>
+        <thead><tr><th scope="col">Candidat</th><th scope="col" class="num">Voix</th><th scope="col" class="num">% exprimés</th><th scope="col" class="num">% inscrits</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Emmanuel Macron</th><td class="num">9 783 058</td><td class="num barre"><span class="barre-fond" style="--w:1.0;background:#7E57C2"></span><span class="barre-val">27,85 %</span></td><td class="num">20,07 %</td></tr>
+          <tr><th scope="row">Marine Le Pen</th><td class="num">8 133 828</td><td class="num barre"><span class="barre-fond" style="--w:0.8314;background:#0D378A"></span><span class="barre-val">23,15 %</span></td><td class="num">16,69 %</td></tr>
+          <tr><th scope="row">Jean-Luc Mélenchon</th><td class="num">7 712 520</td><td class="num barre"><span class="barre-fond" style="--w:0.7884;background:#CC2443"></span><span class="barre-val">21,95 %</span></td><td class="num">15,82 %</td></tr>
+          <tr><th scope="row">Éric Zemmour</th><td class="num">2 485 226</td><td class="num barre"><span class="barre-fond" style="--w:0.254;background:#1A1A2E"></span><span class="barre-val">7,07 %</span></td><td class="num">5,10 %</td></tr>
+          <tr><th scope="row">Valérie Pécresse</th><td class="num">1 679 001</td><td class="num barre"><span class="barre-fond" style="--w:0.1716;background:#2F80ED"></span><span class="barre-val">4,78 %</span></td><td class="num">3,44 %</td></tr>
+          <tr><th scope="row">Yannick Jadot</th><td class="num">1 627 853</td><td class="num barre"><span class="barre-fond" style="--w:0.1664;background:#2E9E4F"></span><span class="barre-val">4,63 %</span></td><td class="num">3,34 %</td></tr>
+          <tr><th scope="row">Jean Lassalle</th><td class="num">1 101 387</td><td class="num barre"><span class="barre-fond" style="--w:0.1126;background:#A1887F"></span><span class="barre-val">3,13 %</span></td><td class="num">2,26 %</td></tr>
+          <tr><th scope="row">Fabien Roussel</th><td class="num">802 422</td><td class="num barre"><span class="barre-fond" style="--w:0.082;background:#DD1111"></span><span class="barre-val">2,28 %</span></td><td class="num">1,65 %</td></tr>
+          <tr><th scope="row">Nicolas Dupont-Aignan</th><td class="num">725 176</td><td class="num barre"><span class="barre-fond" style="--w:0.0741;background:#1E9BB0"></span><span class="barre-val">2,06 %</span></td><td class="num">1,49 %</td></tr>
+          <tr><th scope="row">Anne Hidalgo</th><td class="num">616 478</td><td class="num barre"><span class="barre-fond" style="--w:0.063;background:#FF8080"></span><span class="barre-val">1,75 %</span></td><td class="num">1,26 %</td></tr>
+          <tr><th scope="row">Philippe Poutou</th><td class="num">268 904</td><td class="num barre"><span class="barre-fond" style="--w:0.0275;background:#F4511E"></span><span class="barre-val">0,77 %</span></td><td class="num">0,55 %</td></tr>
+          <tr><th scope="row">Nathalie Arthaud</th><td class="num">197 094</td><td class="num barre"><span class="barre-fond" style="--w:0.0201;background:#8B0000"></span><span class="barre-val">0,56 %</span></td><td class="num">0,40 %</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <dl class="scrutin-stats"><div><dt>Inscrits</dt><dd>48 747 876</dd></div><div><dt>Votants</dt><dd>35 923 707</dd></div><div><dt>Participation</dt><dd>73,69 %</dd></div><div><dt>Abstention</dt><dd>26,31 %</dd></div><div><dt>Blancs</dt><dd>543 609</dd></div><div><dt>Nuls</dt><dd>247 151</dd></div></dl>
+  </section>
+
+  <section class="carte" id="sondages-second-tour" aria-labelledby="h-sondages-t2">
+    <p class="surtitre">Sondages · Second tour</p>
+    <h2 id="h-sondages-t2"><span class="sr-only">Sondages du second tour de la présidentielle 2022 : </span><span id="t2-titre">Macron – Le Pen</span> : évolution des intentions de vote</h2>
+    <p class="subtitle">L’évolution des enquêtes de second tour jusqu’au vote.</p>
+    <div class="controles">
+      <div class="duel-select" id="duel-select">
+        <label for="duel-cand1">Candidat :</label>
         <select id="duel-cand1"></select>
-        <span style="color:var(--gris);">contre :</span>
+        <label for="duel-cand2">contre :</label>
         <select id="duel-cand2"></select>
       </div>
-      <div id="t2-content"></div>
+      <div class="groupe" id="periode-t2" role="group" aria-label="Période affichée">
+        <button type="button" data-months="0" class="active">Depuis <time datetime="2021-01">janvier 2021</time></button>
+        <button type="button" data-months="12">1 an</button>
+        <button type="button" data-months="6">6 mois</button>
+        <button type="button" data-months="3">3 mois</button>
+      </div>
     </div>
+    <div id="t2-content"></div>
+  </section>
 
-    <!-- BEGIN:moyennes-election -->
-    <style>
-      .moyennes-scroll { overflow-x: auto; margin-top: 22px; }
-      .moyennes { border-collapse: collapse; width: 100%; font-size: 13px; }
-      .moyennes th, .moyennes td { padding: 6px 10px; border-bottom: 1px solid #EDEEEA;
-        text-align: left; white-space: nowrap; }
-      .moyennes thead th { font-weight: 600; color: var(--gris); border-bottom-color: #DDDFDA; }
-      .moyennes tbody th { font-weight: 400; color: var(--gris); }
-      .moyennes .num { text-align: right; font-variant-numeric: tabular-nums; }
-      .moyennes .resultat th, .moyennes .resultat td { font-weight: 600; color: var(--texte);
-        border-top: 1px solid #DDDFDA; border-bottom: 0; }
-      .moyennes th:first-child { position: sticky; left: 0; background: #fff; }
-      @media (max-width: 600px) {
-        .moyennes .resultat th { white-space: normal; min-width: 7.5em; }
-      }
-    </style>
-    <div class="moyennes-scroll">
-      <table class="moyennes">
-        <thead><tr><th scope="col">Mois</th><th scope="col" class="num">Macron</th><th scope="col" class="num">Le Pen</th><th scope="col" class="num">Mélenchon</th><th scope="col" class="num">Zemmour</th><th scope="col" class="num">Pécresse</th></tr></thead>
-        <tbody>
-          <tr><th scope="row"><time datetime="2021-01">janvier 2021</time></th><td class="num">23,9 %</td><td class="num">25,6 %</td><td class="num">9,9 %</td><td class="num">—</td><td class="num">14,0 %</td></tr>
-          <tr><th scope="row"><time datetime="2021-02">février 2021</time></th><td class="num">31,0 %</td><td class="num">—</td><td class="num">12,0 %</td><td class="num">17,0 %</td><td class="num">—</td></tr>
-          <tr><th scope="row"><time datetime="2021-03">mars 2021</time></th><td class="num">24,8 %</td><td class="num">26,5 %</td><td class="num">10,5 %</td><td class="num">—</td><td class="num">12,0 %</td></tr>
-          <tr><th scope="row"><time datetime="2021-04">avril 2021</time></th><td class="num">25,0 %</td><td class="num">25,8 %</td><td class="num">11,4 %</td><td class="num">—</td><td class="num">9,2 %</td></tr>
-          <tr><th scope="row"><time datetime="2021-05">mai 2021</time></th><td class="num">26,4 %</td><td class="num">27,9 %</td><td class="num">12,5 %</td><td class="num">—</td><td class="num">10,0 %</td></tr>
-          <tr><th scope="row"><time datetime="2021-06">juin 2021</time></th><td class="num">27,3 %</td><td class="num">26,2 %</td><td class="num">9,6 %</td><td class="num">5,5 %</td><td class="num">11,4 %</td></tr>
-          <tr><th scope="row"><time datetime="2021-07">juillet 2021</time></th><td class="num">25,0 %</td><td class="num">24,0 %</td><td class="num">8,7 %</td><td class="num">5,0 %</td><td class="num">13,0 %</td></tr>
-          <tr><th scope="row"><time datetime="2021-08">août 2021</time></th><td class="num">24,5 %</td><td class="num">23,3 %</td><td class="num">10,6 %</td><td class="num">7,0 %</td><td class="num">11,0 %</td></tr>
-          <tr><th scope="row"><time datetime="2021-09">septembre 2021</time></th><td class="num">24,8 %</td><td class="num">19,8 %</td><td class="num">9,4 %</td><td class="num">10,2 %</td><td class="num">13,1 %</td></tr>
-          <tr><th scope="row"><time datetime="2021-10">octobre 2021</time></th><td class="num">25,3 %</td><td class="num">17,6 %</td><td class="num">8,7 %</td><td class="num">15,6 %</td><td class="num">10,1 %</td></tr>
-          <tr><th scope="row"><time datetime="2021-11">novembre 2021</time></th><td class="num">25,3 %</td><td class="num">18,0 %</td><td class="num">9,2 %</td><td class="num">15,1 %</td><td class="num">10,1 %</td></tr>
-          <tr><th scope="row"><time datetime="2021-12">décembre 2021</time></th><td class="num">23,9 %</td><td class="num">15,8 %</td><td class="num">10,1 %</td><td class="num">13,6 %</td><td class="num">16,9 %</td></tr>
-          <tr><th scope="row"><time datetime="2022-01">janvier 2022</time></th><td class="num">24,6 %</td><td class="num">16,9 %</td><td class="num">9,6 %</td><td class="num">12,9 %</td><td class="num">16,3 %</td></tr>
-          <tr><th scope="row"><time datetime="2022-02">février 2022</time></th><td class="num">24,7 %</td><td class="num">16,6 %</td><td class="num">10,6 %</td><td class="num">14,6 %</td><td class="num">14,7 %</td></tr>
-          <tr><th scope="row"><time datetime="2022-03">mars 2022</time></th><td class="num">28,9 %</td><td class="num">18,3 %</td><td class="num">13,0 %</td><td class="num">11,5 %</td><td class="num">11,2 %</td></tr>
-          <tr><th scope="row"><time datetime="2022-04">avril 2022</time></th><td class="num">26,8 %</td><td class="num">22,3 %</td><td class="num">16,3 %</td><td class="num">9,7 %</td><td class="num">8,6 %</td></tr>
-          <tr class="resultat"><th scope="row">Résultat du premier tour</th><td class="num">27,85 %</td><td class="num">23,15 %</td><td class="num">21,95 %</td><td class="num">7,07 %</td><td class="num">4,78 %</td></tr>
-        </tbody>
-      </table>
-    </div>
-<!-- END:moyennes-election -->
-  </div>
-  <!-- BEGIN:resultats-election -->
-  <style>
-    .res-scroll { overflow-x: auto; margin-top: 14px; }
-    .res-table { border-collapse: collapse; width: 100%; min-width: 540px; table-layout: fixed; font-size: 13.5px; }
-    .res-table col.c-nom { width: 32%; } .res-table col.c-voix { width: 18%; }
-    .res-table col.c-exp { width: 32%; } .res-table col.c-ins { width: 18%; }
-    .res-table caption { text-align: left; font-family: var(--titre); font-size: 17px; font-weight: 600;
-      color: var(--texte); padding-bottom: 8px; }
-    .res-table th, .res-table td { padding: 6px 10px; border-bottom: 1px solid #EDEEEA;
-      text-align: left; white-space: nowrap; }
-    .res-table thead th { font-size: 13px; font-weight: 600; color: var(--gris); border-bottom-color: #DDDFDA; }
-    .res-table tbody th { font-weight: 500; }
-    .res-table .num { text-align: right; font-variant-numeric: tabular-nums; }
-    .res-table th:first-child { position: sticky; left: 0; background: #fff; z-index: 1; }
-    .res-table .barre { position: relative; }
-    .res-table .barre-fond { position: absolute; left: 10px; top: 6px; bottom: 6px; border-radius: 3px;
-      opacity: 0.85; width: calc((100% - 6.5em) * var(--w)); }
-    .res-table .barre-val { position: relative; font-weight: 600; }
-    .res-participation { font-size: 13px; color: var(--gris); margin: 8px 0 18px; }
-    .res-participation:last-child { margin-bottom: 0; }
-    @media (max-width: 600px) {
-      .res-table { min-width: 0; font-size: 12.5px; }
-      .res-table col.c-nom { width: 36%; } .res-table col.c-voix { width: 25%; }
-      .res-table col.c-exp { width: 22%; } .res-table col.c-ins { width: 17%; }
-      .res-table th, .res-table td { padding: 6px 4px; white-space: normal; }
-      .res-table td.num { white-space: nowrap; }
-      .res-table thead th { font-size: 11.5px; vertical-align: bottom; }
-      .res-table .barre-fond { left: 0; top: 3px; bottom: 3px; opacity: 0.28; width: calc(100% * var(--w)); }
-    }
-  </style>
-  <div class="bloc" id="resultats">
-    <h2>Les résultats du scrutin</h2>
+  <section class="carte" id="resultats-second-tour" aria-labelledby="h-res-t2">
+    <p class="surtitre">Résultats définitifs</p>
+    <h2 id="h-res-t2"><span class="sr-only">Résultats du second tour de la présidentielle 2022 : </span>Second tour — <time datetime="2022-04-24">24 avril 2022</time></h2>
+    <p class="subtitle">Nombre de voix, part des suffrages exprimés et part des inscrits.</p>
     <div class="res-scroll">
       <table class="res-table">
-        <caption>Premier tour, <time datetime="2022-04-10">10 avril 2022</time></caption>
         <colgroup><col class="c-nom"><col class="c-voix"><col class="c-exp"><col class="c-ins"></colgroup>
-        <thead><tr><th scope="col">Candidat</th><th scope="col" class="num">Voix</th><th scope="col" class="num">% des exprimés</th><th scope="col" class="num">% des inscrits</th></tr></thead>
+        <thead><tr><th scope="col">Candidat</th><th scope="col" class="num">Voix</th><th scope="col" class="num">% exprimés</th><th scope="col" class="num">% inscrits</th></tr></thead>
         <tbody>
-          <tr><th scope="row">Emmanuel Macron</th><td class="num">9 783 058</td><td class="num barre"><span class="barre-fond" style="--w:1.0;background:#7E57C2"></span><span class="barre-val">27,85 %</span></td><td class="num">20,07 %</td></tr>
-          <tr><th scope="row">Marine Le Pen</th><td class="num">8 133 828</td><td class="num barre"><span class="barre-fond" style="--w:0.8314;background:#0D378A"></span><span class="barre-val">23,15 %</span></td><td class="num">16,69 %</td></tr>
-          <tr><th scope="row">Jean-Luc Mélenchon</th><td class="num">7 712 520</td><td class="num barre"><span class="barre-fond" style="--w:0.7884;background:#CC2443"></span><span class="barre-val">21,95 %</span></td><td class="num">15,82 %</td></tr>
-          <tr><th scope="row">Éric Zemmour</th><td class="num">2 485 226</td><td class="num barre"><span class="barre-fond" style="--w:0.254;background:#1A1A2E"></span><span class="barre-val">7,07 %</span></td><td class="num">5,10 %</td></tr>
-          <tr><th scope="row">Valérie Pécresse</th><td class="num">1 679 001</td><td class="num barre"><span class="barre-fond" style="--w:0.1716;background:#2F80ED"></span><span class="barre-val">4,78 %</span></td><td class="num">3,44 %</td></tr>
-          <tr><th scope="row">Yannick Jadot</th><td class="num">1 627 853</td><td class="num barre"><span class="barre-fond" style="--w:0.1664;background:#2E9E4F"></span><span class="barre-val">4,63 %</span></td><td class="num">3,34 %</td></tr>
-          <tr><th scope="row">Jean Lassalle</th><td class="num">1 101 387</td><td class="num barre"><span class="barre-fond" style="--w:0.1126;background:#A1887F"></span><span class="barre-val">3,13 %</span></td><td class="num">2,26 %</td></tr>
-          <tr><th scope="row">Fabien Roussel</th><td class="num">802 422</td><td class="num barre"><span class="barre-fond" style="--w:0.082;background:#DD1111"></span><span class="barre-val">2,28 %</span></td><td class="num">1,65 %</td></tr>
-          <tr><th scope="row">Nicolas Dupont-Aignan</th><td class="num">725 176</td><td class="num barre"><span class="barre-fond" style="--w:0.0741;background:#1E9BB0"></span><span class="barre-val">2,06 %</span></td><td class="num">1,49 %</td></tr>
-          <tr><th scope="row">Anne Hidalgo</th><td class="num">616 478</td><td class="num barre"><span class="barre-fond" style="--w:0.063;background:#FF8080"></span><span class="barre-val">1,75 %</span></td><td class="num">1,26 %</td></tr>
-          <tr><th scope="row">Philippe Poutou</th><td class="num">268 904</td><td class="num barre"><span class="barre-fond" style="--w:0.0275;background:#F4511E"></span><span class="barre-val">0,77 %</span></td><td class="num">0,55 %</td></tr>
-          <tr><th scope="row">Nathalie Arthaud</th><td class="num">197 094</td><td class="num barre"><span class="barre-fond" style="--w:0.0201;background:#8B0000"></span><span class="barre-val">0,56 %</span></td><td class="num">0,40 %</td></tr>
+          <tr><th scope="row">Emmanuel Macron</th><td class="num">18 768 639</td><td class="num barre"><span class="barre-fond" style="--w:1.0;background:#7E57C2"></span><span class="barre-val">58,55 %</span></td><td class="num">38,50 %</td></tr>
+          <tr><th scope="row">Marine Le Pen</th><td class="num">13 288 686</td><td class="num barre"><span class="barre-fond" style="--w:0.708;background:#0D378A"></span><span class="barre-val">41,45 %</span></td><td class="num">27,26 %</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="res-participation">Inscrits 48 747 876 · Votants 35 923 707 (73,69 %) · Abstention 26,31 % · Blancs 543 609 · Nuls 247 151</p>
-    <div class="res-scroll">
-      <table class="res-table">
-        <caption>Second tour, <time datetime="2022-04-24">24 avril 2022</time></caption>
-        <colgroup><col class="c-nom"><col class="c-voix"><col class="c-exp"><col class="c-ins"></colgroup>
-        <thead><tr><th scope="col">Candidat</th><th scope="col" class="num">Voix</th><th scope="col" class="num">% des exprimés</th><th scope="col" class="num">% des inscrits</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Emmanuel Macron</th><td class="num">18 768 639</td><td class="num barre"><span class="barre-fond" style="--w:1.0;background:#7E57C2"></span><span class="barre-val">58,55 %</span></td><td class="num">38,50 %</td></tr>
-          <tr><th scope="row">Marine Le Pen</th><td class="num">13 288 686</td><td class="num barre"><span class="barre-fond" style="--w:0.708;background:#0D378A"></span><span class="barre-val">41,45 %</span></td><td class="num">27,26 %</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="res-participation">Inscrits 48 752 339 · Votants 35 096 478 (71,99 %) · Abstention 28,01 % · Blancs 2 233 904 · Nuls 805 249</p>
-  </div>
-<!-- END:resultats-election -->
+    <dl class="scrutin-stats"><div><dt>Inscrits</dt><dd>48 752 339</dd></div><div><dt>Votants</dt><dd>35 096 478</dd></div><div><dt>Participation</dt><dd>71,99 %</dd></div><div><dt>Abstention</dt><dd>28,01 %</dd></div><div><dt>Blancs</dt><dd>2 233 904</dd></div><div><dt>Nuls</dt><dd>805 249</dd></div></dl>
+  </section>
+
+  <nav class="nav-millesimes" aria-label="Autres présidentielles"><a class="precedent" href="presidentielle-2017.html" rel="prev">← Présidentielle 2017</a><a class="toutes" href="precedentes-elections.html">Toutes les présidentielles</a></nav>
+  <p class="voir-aussi"><a href="/">Sondages de la présidentielle 2027</a></p>
 </main>
 
 <footer>
@@ -282,7 +184,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script src="assets/end-labels.js?v=1"></script>
-<script src="assets/historique.js?v=2"></script>
+<script src="assets/historique.js?v=3"></script>
 <script>initHistorique('2022');</script>
 
 </body>

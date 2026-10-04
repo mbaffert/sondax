@@ -7,6 +7,12 @@ du premier tour avec la fonction de tendance de la home (series.calculer_series)
 écrit data/derived/retro.json et injecte le bloc #retro-sondax dans
 site/index.html, pour le J-x du jour du build. SPEC §15.
 
+retro.json contient aussi 2002 (même calcul) et 2027 (sondages de data/
+sondages.json, jours déjà écoulés seulement), pour le Rétro-Sondax à curseur de
+precedentes-elections.html (rendu par scripts/build_pages_elections.py, qui
+appelle rendre_bloc_page()). Le bloc de la home ne lit que les quatre élections
+de ANNEES.
+
 Candidats non désignés : tant qu'un parti n'a pas désigné son candidat, la
 personne qu'il présente dans une hypothèse est remplacée par une entrée
 `type: parti` (« Candidat LR »), qui garde la personne testée (`teste`).
@@ -24,12 +30,18 @@ HISTORIQUE_PATH = ROOT / "data" / "historique.json"
 DERIVED_HISTORIQUE_PATH = ROOT / "data" / "derived" / "historique.json"
 OUTPUT_PATH = ROOT / "data" / "derived" / "retro.json"
 INDEX_PATH = ROOT / "site" / "index.html"
+SONDAGES_PATH = ROOT / "data" / "sondages.json"
+CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 
 BEGIN = "<!-- BEGIN:bloc-retro -->"
 END = "<!-- END:bloc-retro -->"
 
 ANNEES = ["2022", "2017", "2012", "2007"]
+# Page precedentes-elections.html : 2027 (point de comparaison) puis les cinq
+# élections, de la plus récente à la plus ancienne.
+ANNEES_PAGE = ["2027", "2022", "2017", "2012", "2007", "2002"]
 J_MAX = 365
+J_MIN_PAGE = 30   # borne basse du curseur de la page
 TOP = 4
 SEUIL_APPROX = 2   # sondages dans la fenêtre de 30 jours en deçà duquel on prend le plus proche
 
@@ -89,7 +101,10 @@ def somme_hors_bornes(h):
     return not (95 <= t <= 105), round(t, 1)
 
 
-def calculer_election(annee, election, derived):
+def calculer_election(annee, election, derived, jusqu_au=None, declares=None):
+    """Top TOP de chaque J-x. `jusqu_au` : dernier jour calculé (2027, scrutin
+    à venir) ; `declares` : candidats.json, pour choisir l'hypothèse principale
+    d'après les déclarations de candidature (aucune pour les élections passées)."""
     t1 = datetime.date.fromisoformat(election["tour1"])
     info = election["candidats"]
     couleurs = derived.get("candidats", {})
@@ -97,13 +112,16 @@ def calculer_election(annee, election, derived):
 
     sondages = json.loads(json.dumps(election["sondages"]))   # copie profonde
     multiples = rattacher_partis(sondages, regles)
-    calculer_principale(sondages, {})     # aucun declare_le : plus de candidats, puis ordre de la page
+    calculer_principale(sondages, declares or {})     # sans declare_le : plus de candidats, puis ordre de la page
     # Hypothèse principale seule : un candidat qui n'y figure pas n'a pas de
     # score dans ce sondage (pas de repli sur une autre hypothèse, qui mêlerait
     # des candidatures alternatives, Juppé ou Fillon à la place de Sarkozy en 2012).
     for s in sondages:
         s["hypotheses"] = [h for h in s["hypotheses"] if h["tour"] != 1 or h["principale"]]
-    S = calculer_series(sondages, jusqu_au=t1 - datetime.timedelta(days=1))
+    dernier = t1 - datetime.timedelta(days=1)
+    if jusqu_au:
+        dernier = min(dernier, jusqu_au)
+    S = calculer_series(sondages, jusqu_au=dernier)
 
     principale = {s["id"]: next((h for h in s["hypotheses"] if h.get("principale")), None)
                   for s in sondages}
@@ -148,6 +166,8 @@ def calculer_election(annee, election, derived):
     jours, anomalies_somme = {}, set()
     for x in range(J_MAX, 0, -1):
         jour = t1 - datetime.timedelta(days=x)
+        if jour > dernier:
+            continue      # jour à venir (2027)
         d = jour.isoformat()
         n = n_fenetre.get(d, 0)
         if n >= SEUIL_APPROX:
@@ -159,6 +179,8 @@ def calculer_election(annee, election, derived):
             # Moins de 2 sondages dans la fenêtre : sondage le plus proche
             # (le plus ancien en cas d'égalité), hypothèse principale.
             _, sid = min(dates_t1, key=lambda di: (abs((di[0] - jour).days), di[0]))
+            if jour < dates_t1[0][0]:
+                continue  # avant le premier sondage (2027) : pas de valeur
             h = principale[sid]
             valeurs = list(h["scores"].items())
             teste = dict(h.get("teste", {}))
@@ -198,6 +220,19 @@ def calculer_election(annee, election, derived):
         "candidats": candidats_out,
         "jours": jours,
     }, multiples, sorted(anomalies_somme)
+
+
+def election_2027():
+    """Pseudo-élection 2027 (sondages et candidats de data/), pour calculer_election."""
+    declares = json.loads(CANDIDATS_PATH.read_text())
+    candidats, derived = {}, {}
+    for cid, c in declares.items():
+        nom = f"{c['prenom']} {c['nom']}" if c.get("prenom") else c["nom"]
+        candidats[cid] = {"nom": nom, "type": c.get("type", "personne"), "partis": [c["parti"]]}
+        derived[cid] = {"couleur": c.get("couleur")}
+    election = {"tour1": TOUR1_2027.isoformat(), "url": "", "revid": None, "candidats": candidats,
+                "sondages": json.loads(SONDAGES_PATH.read_text())}
+    return election, {"candidats": derived}, declares
 
 
 # ---------------------------------------------------------------------------
@@ -243,6 +278,46 @@ def rendre_bloc(retro, x):
             f'  <div class="rs-grille">\n' + "\n".join(colonnes) + '\n  </div>\n</div>')
 
 
+def j_du_jour(aujourd_hui=None):
+    """J-x du jour, borné au curseur de la page (J_MIN_PAGE à J_MAX)."""
+    x = (TOUR1_2027 - (aujourd_hui or datetime.date.today())).days
+    return max(J_MIN_PAGE, min(J_MAX, x))
+
+
+def rendre_bloc_page(retro, x, aujourd_hui=None):
+    """Rétro-Sondax de precedentes-elections.html : 2027 puis les cinq élections,
+    au J-x du curseur. Même cellules que la home (cellule()) ; 2027 n'a pas de
+    valeur pour les jours à venir. assets/bloc-retro.js recalcule la grille au
+    déplacement du curseur, avec le même HTML (colonne())."""
+    j_auj = (TOUR1_2027 - (aujourd_hui or datetime.date.today())).days
+    colonnes = []
+    for annee in ANNEES_PAGE:
+        el = retro["elections"][annee]
+        jour = el["jours"].get(str(x))
+        if jour is None:
+            msg = "Date à venir." if x < j_auj else "Aucun sondage à cette date."
+            cells = f'<p class="rs-vide">{msg}</p>'
+        else:
+            tete = jour["top"][0]["v"] if jour["top"] else 1
+            cells = "".join(cellule(e, el["candidats"]).replace("{w}", str(round(100 * e["v"] / tete)))
+                            for e in jour["top"])
+        classe = "rs-col rs-col-2027" if annee == "2027" else "rs-col"
+        colonnes.append(f'    <div class="{classe}"><div class="rs-annee">{annee}</div>{cells}</div>')
+    return (f'  <section class="carte" id="retro-sondax" data-slider data-annees="{",".join(ANNEES_PAGE)}" '
+            f'data-jmin="{J_MIN_PAGE}" data-jmax="{J_MAX}">\n'
+            f'    <h2>Rétro-Sondax</h2>\n'
+            f'    <p class="subtitle rs-sous-titre">À J-{x}, où en était-on\u00a0?</p>\n'
+            f'    <p class="rs-texte">Comparez les rapports de force au même moment de chaque campagne.</p>\n'
+            f'    <div class="rs-curseur">\n'
+            f'      <label for="rs-range">Jours avant le premier tour</label>\n'
+            f'      <input type="range" id="rs-range" min="-{J_MAX}" max="-{J_MIN_PAGE}" step="1" value="-{x}" '
+            f'aria-describedby="rs-bornes">\n'
+            f'      <div class="rs-bornes" id="rs-bornes"><span>J-{J_MAX}</span><span>J-{J_MIN_PAGE}</span></div>\n'
+            f'    </div>\n'
+            f'    <div class="rs-grille rs-grille-page">\n' + "\n".join(colonnes) + '\n    </div>\n'
+            f'  </section>')
+
+
 def inject(content, html_bloc):
     i_begin = content.index(BEGIN)
     i_end = content.index(END) + len(END)
@@ -254,8 +329,13 @@ def main():
     derived = json.loads(DERIVED_HISTORIQUE_PATH.read_text())
 
     retro = {"premier_tour_2027": TOUR1_2027.isoformat(), "elections": {}}
-    for annee in ANNEES:
-        el, multiples, sommes = calculer_election(annee, historique[annee], derived.get(annee, {}))
+    for annee in ANNEES_PAGE:
+        if annee == "2027":
+            elec, derive27, declares = election_2027()
+            el, multiples, sommes = calculer_election(annee, elec, derive27,
+                                                      jusqu_au=datetime.date.today(), declares=declares)
+        else:
+            el, multiples, sommes = calculer_election(annee, historique[annee], derived.get(annee, {}))
         retro["elections"][annee] = el
         nb_approx = sum(1 for j in el["jours"].values() if j["approx"])
         print(f"{annee} : {len(el['jours'])} jours, {nb_approx} approx, "

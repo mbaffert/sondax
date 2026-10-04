@@ -1,4 +1,6 @@
-/* Précédentes élections — script partagé par les 5 pages presidentielle-XXXX.html */
+/* Précédentes élections — script partagé par les 5 pages presidentielle-XXXX.html
+   (pages générées par scripts/build_pages_elections.py). Deux graphiques, chacun avec
+   son sélecteur de période : #periode-t1 (premier tour) et #periode-t2 (second tour). */
 
 const TOUR1_2027 = new Date(2027, 3, 18);
 const IS_MOBILE = window.innerWidth < 600;
@@ -123,14 +125,14 @@ let checkedT1 = new Set();
 function borneJour() {
   return Math.round((new Date(ELECTION.borne) - new Date(ELECTION.tour1)) / 86400000);
 }
-function periodeMinJour() {
-  const active = document.querySelector('#periode-group button.active');
+function periodeMinJour(groupId) {
+  const active = document.querySelector(`#${groupId} button.active`);
   if (!active) return borneJour();
   const months = parseInt(active.dataset.months);
   return months === 0 ? borneJour() : -Math.round(months * 30.44);
 }
-function tickStep() {
-  const active = document.querySelector('#periode-group button.active');
+function tickStep(groupId) {
+  const active = document.querySelector(`#${groupId} button.active`);
   if (!active) return 2;
   const m = parseInt(active.dataset.months);
   return (m === 3 || m === 6) ? 1 : 2;
@@ -153,8 +155,8 @@ function buildGhostSegments(points, minJ) {
   return segs;
 }
 
-function xAxisConfig(minJ, maxJ) {
-  const ticks = monthTicks(minJ, maxJ, tickStep());
+function xAxisConfig(minJ, maxJ, groupId) {
+  const ticks = monthTicks(minJ, maxJ, tickStep(groupId));
   return {
     type: 'linear', min: minJ, max: maxJ,
     afterBuildTicks(axis) { axis.ticks = ticks.map(t => ({value: t.value})); },
@@ -171,7 +173,7 @@ function xAxisConfig(minJ, maxJ) {
 
 function renderT1() {
   const cands = ELECTION.candidats;
-  const minJ = periodeMinJour(), maxJ = 4;
+  const minJ = periodeMinJour('periode-t1'), maxJ = 4;
   const datasets = [];
   const jAuj = -joursAvant2027();
 
@@ -220,7 +222,7 @@ function renderT1() {
       layout: { padding: SondaxEndLabels.padding({ top: LABEL_PAD_TOP }) },
       interaction: { mode:'nearest', axis:'x', intersect:false },
       scales: {
-        x: xAxisConfig(minJ, maxJ),
+        x: xAxisConfig(minJ, maxJ, 'periode-t1'),
         y: { min:0, max:yMax, ticks:{callback:v=>v+'\u00a0%'}, grid:{color:'#edeee9'} },
       },
       plugins: {
@@ -309,10 +311,13 @@ function populateDuelSelects() {
     const o = document.createElement('option'); o.value = cid; o.textContent = candNom(cid);
     sel1.appendChild(o);
   }
-  if (ELECTION.duel_final) sel1.value = ELECTION.duel_final.split('|')[0];
+  const final = duelFinal();
+  if (final) sel1.value = final[0];
   populateDuelCand2();
-  sel1.addEventListener('change', () => { populateDuelCand2(); renderT2(); });
-  sel2.addEventListener('change', () => renderT2());
+  sel1.addEventListener('change', () => { populateDuelCand2(); majTitreT2(); renderT2(); });
+  sel2.addEventListener('change', () => { majTitreT2(); renderT2(); });
+  // Un seul duel testé : rien à choisir
+  document.getElementById('duel-select').hidden = Object.keys(getAllDuels()).length < 2;
 }
 
 function populateDuelCand2() {
@@ -333,10 +338,22 @@ function populateDuelCand2() {
     if (cid===prev) o.selected = true;
     sel2.appendChild(o);
   }
-  if (ELECTION.duel_final && !prev) {
-    const pair = ELECTION.duel_final.split('|');
-    sel2.value = pair[0]===cid1 ? pair[1] : pair[0];
-  }
+  const final = duelFinal();
+  if (final && !prev && final[0] === cid1) sel2.value = final[1];
+}
+
+// Duel du second tour [vainqueur, battu] : le duel qui a eu lieu, vainqueur en premier
+function duelFinal() {
+  if (!ELECTION.duel_final) return null;
+  const res = ELECTION.resultats_t2 || {};
+  const pair = ELECTION.duel_final.split('|');
+  return (res[pair[1]] ?? 0) > (res[pair[0]] ?? 0) ? [pair[1], pair[0]] : pair;
+}
+
+function majTitreT2() {
+  const el = document.getElementById('t2-titre');
+  const a = document.getElementById('duel-cand1').value, b = document.getElementById('duel-cand2').value;
+  if (el && a && b) el.textContent = `${candNom(a)} – ${candNom(b)}`;
 }
 
 function getDuelKey() {
@@ -349,7 +366,7 @@ function renderT2() {
   const key = getDuelKey();
   const content = document.getElementById('t2-content');
   const duels = getAllDuels();
-  const empty = '<p style="color:var(--gris);font-size:0.85em;">Aucune mesure pour ce duel.</p>';
+  const empty = '<p class="vide">Aucune mesure pour ce duel.</p>';
   if (!key || !duels[key]) {
     content.innerHTML = empty;
     if (chartT2) { chartT2.destroy(); chartT2 = null; }
@@ -357,10 +374,10 @@ function renderT2() {
   }
   const duel = duels[key];
   const mesures = (duel.mesures || duel);
-  const minJ = periodeMinJour();
+  const minJ = periodeMinJour('periode-t2');
   const filtered = mesures.filter(m => m.jour >= minJ);
   if (!filtered.length) {
-    content.innerHTML = '<p style="color:var(--gris);font-size:0.85em;">Aucune mesure pour cette période.</p>';
+    content.innerHTML = '<p class="vide">Aucune mesure pour cette période.</p>';
     if (chartT2) { chartT2.destroy(); chartT2 = null; }
     return;
   }
@@ -377,10 +394,10 @@ function renderT2() {
 function renderT2Table(mesures, cidA, cidB, content) {
   if (chartT2) { chartT2.destroy(); chartT2 = null; }
   const sorted = mesures.slice().sort((a,b)=>b.jour-a.jour);
-  let html = `<table class="t2-table"><tr><th>Institut</th><th>Date</th><th>${candNom(cidA)}</th><th>${candNom(cidB)}</th></tr>`;
+  let html = `<div class="t2-scroll"><table class="t2-table"><tr><th>Institut</th><th>Date</th><th>${candNom(cidA)}</th><th>${candNom(cidB)}</th></tr>`;
   for (const m of sorted)
     html += `<tr><td>${m.institut}</td><td>${fmtDate(m.terrain_fin)}</td><td>${fmtPct(m.scores[cidA])}</td><td>${fmtPct(m.scores[cidB])}</td></tr>`;
-  html += '</table>';
+  html += '</table></div>';
   content.innerHTML = html;
 }
 
@@ -388,7 +405,7 @@ function renderT2Chart(duel, mesures, cidA, cidB, content, key) {
   const pair = key.split('|');
   const resT2 = ELECTION.resultats_t2 || {};
   const t2Jour = Math.round((new Date(ELECTION.tour2) - new Date(ELECTION.tour1)) / 86400000);
-  const minJ = periodeMinJour(), maxJ = t2Jour + 4;
+  const minJ = periodeMinJour('periode-t2'), maxJ = t2Jour + 4;
   const jAuj = -joursAvant2027();
 
   const datasets = [];
@@ -469,7 +486,7 @@ function renderT2Chart(duel, mesures, cidA, cidB, content, key) {
       layout: { padding: SondaxEndLabels.padding({ top: LABEL_PAD_TOP }) },
       interaction: { mode:'nearest', axis:'x', intersect:false },
       scales: {
-        x: xAxisConfig(minJ, maxJ),
+        x: xAxisConfig(minJ, maxJ, 'periode-t2'),
         y: { min:yMin, max:yMax, ticks:{callback:v=>v+'\u00a0%'}, grid:{color:'#edeee9'} },
       },
       plugins: {
@@ -487,17 +504,22 @@ function renderT2Chart(duel, mesures, cidA, cidB, content, key) {
 }
 
 // --- Initialisation ---
+function initPeriode(groupId, rendre) {
+  const group = document.getElementById(groupId);
+  group.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      group.querySelectorAll('button').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      rendre();
+    });
+  });
+}
+
 async function initHistorique(annee) {
   await loadData(annee);
 
-  document.getElementById('periode-group').querySelectorAll('button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.getElementById('periode-group').querySelectorAll('button').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      renderT1();
-      if (document.querySelector('#panel-t2.active')) renderT2();
-    });
-  });
+  initPeriode('periode-t1', renderT1);
+  initPeriode('periode-t2', renderT2);
 
   checkedT1.clear();
   for (const [cid, info] of Object.entries(ELECTION.candidats))
@@ -505,21 +527,9 @@ async function initHistorique(annee) {
   renderCheckboxesT1();
   renderT1();
 
-  const tabs = document.querySelectorAll('.tab');
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById('panel-t1').classList.toggle('active', tab.dataset.tab === 't1');
-      document.getElementById('panel-t2').classList.toggle('active', tab.dataset.tab === 't2');
-      if (tab.dataset.tab === 't2') {
-        if (!document.getElementById('duel-cand1').options.length) populateDuelSelects();
-        renderT2();
-      }
-    });
-  });
-
   populateDuelSelects();
+  majTitreT2();
+  renderT2();
 
   const resume = document.getElementById('resume');
   if (resume) {

@@ -16,13 +16,14 @@ INDEX_PATH = ROOT / "site" / "index.html"
 SERIES_PATH = ROOT / "data" / "derived" / "series-t1.json"
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
+PHOTOS_PATH = ROOT / "data" / "photos.json"
 
 sys.path.insert(0, str(ROOT / "scripts"))
 from instituts import charger_referentiel, lien_institut
 from balise_time import time_tag, time_periode
 from build_header import (
     select_hypothesis, select_latest_sondage, candidate_full_name, load_all_sondages,
-    REPERES_T1, JSONLD_T1,
+    REPERES_T1, JSONLD_T1, CANDIDATS_PAGES,
 )
 
 MOIS = [
@@ -207,6 +208,24 @@ MOIS_ABBREV = [
 ]
 
 
+def initiales(nom):
+    """Première lettre de chaque mot du nom, deux au maximum : « Le Pen » → « LP »."""
+    return "".join(m[0] for m in nom.split())[:2].upper()
+
+
+def portrait(cid, nom, couleur, photos):
+    """Portrait rond de 46 px cerclé de la couleur du candidat : photo de
+    photos.json, à défaut monogramme."""
+    c = f"--c:{couleur}"
+    if cid in photos:
+        fichier = html_mod.escape(photos[cid]["fichier"], quote=True)
+        img = (f'<img class="ds-photo" style="{c}" src="{fichier}" alt="" '
+               f'width="46" height="46" loading="lazy">')
+    else:
+        img = f'<span class="ds-photo ds-mono" style="{c}">{html_mod.escape(initiales(nom))}</span>'
+    return f'<div class="ds-ph">{img}</div>'
+
+
 def generate_bloc_dernier_sondage(sondages, candidats, series_data):
     """Génère le bloc compact « Dernier sondage » affiché en haut de page."""
     latest = select_latest_sondage(sondages)
@@ -225,6 +244,9 @@ def generate_bloc_dernier_sondage(sondages, candidats, series_data):
     )
     top4 = scores[:4]
     others = scores[4:]
+    photos = json.loads(PHOTOS_PATH.read_text(encoding="utf-8"))
+    # Pages candidat : liste de build_header, pas le disque (elles sont générées après ce script)
+    pages = {slug for slug, _ in CANDIDATS_PAGES}
 
     institut = lien_institut(latest["institut"], charger_referentiel())
 
@@ -270,8 +292,15 @@ def generate_bloc_dernier_sondage(sondages, candidats, series_data):
         couleur = c.get("couleur", "#888")
         pct = v / max_score * 100
         lines.append('    <div class="ds-cand">')
-        lines.append(f'      <div class="ds-cand-name">{nom}</div>')
-        lines.append(f'      <div class="ds-cand-score">{v:.1f}<span class="pct"> %</span></div>')
+        corps = [portrait(cid, c.get("nom", cid), couleur, photos),
+                 f'<div class="ds-cand-name">{nom}</div>',
+                 f'<div class="ds-cand-score">{v:.1f}<span class="pct"> %</span></div>']
+        if cid in pages:
+            lines.append(f'      <a class="ds-lien" href="{cid}.html">')
+            lines.extend(f"        {x}" for x in corps)
+            lines.append("      </a>")
+        else:
+            lines.extend(f"      {x}" for x in corps)
         lines.append(
             f'      <div class="ds-bar-wrap"><div class="ds-bar" style="width:{pct:.0f}%;background:{couleur}"></div></div>'
         )
@@ -285,10 +314,11 @@ def generate_bloc_dernier_sondage(sondages, candidats, series_data):
             c = candidats.get(cid, {})
             nom = html_mod.escape(c.get("nom", cid))
             couleur = c.get("couleur", "#888")
-            lines.append(
-                f'    <span><span class="ds-other-dot" style="background:{couleur}"></span>'
-                f'{nom} <b>{v:.1f}\u00a0%</b></span>'
-            )
+            contenu = (f'<span class="ds-other-dot" style="background:{couleur}"></span>'
+                       f'{nom} <b>{v:.1f}\u00a0%</b>')
+            if cid in pages:
+                contenu = f'<a class="ds-lien" href="{cid}.html">{contenu}</a>'
+            lines.append(f"    <span>{contenu}</span>")
         lines.append("  </div>")
 
     lines.append("</div>")

@@ -167,6 +167,18 @@
   .ds-others { display: flex; flex-wrap: wrap; gap: 6px 16px;
     padding-top: 12px; border-top: 1px solid #EDEEEA; margin-top: 14px; font-size: 13.5px; color: var(--gris); }
   .ds-other-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; vertical-align: middle; margin-right: 4px; }
+  /* Portraits du bloc « Dernier sondage » (build_index_premier_tour.py) */
+  .ds-photo { --s: 46px; width: var(--s); height: var(--s); border-radius: 50%; object-fit: cover;
+    display: block; background: #EDEEEA;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--c); }
+  .ds-mono { display: flex; align-items: center; justify-content: center; font-family: var(--titre);
+    font-weight: 600; font-size: calc(var(--s) * 0.36); color: #fff; background: var(--c); box-shadow: none; }
+  .ds-ph { margin-bottom: 9px; }
+  .ds-lien, .ds-lien:hover { text-decoration: none; }
+  .ds-lien { color: inherit; display: block; }
+  .ds-lien:hover .ds-cand-name { color: var(--bleu-vif); }
+  .ds-others .ds-lien { display: inline; }
+  .ds-others .ds-lien:hover { color: var(--bleu-vif); }
 
   /* Mobile */
   @media (max-width: 600px) {
@@ -190,8 +202,12 @@
     .ds-header .section-label { margin-bottom: 0; }
     .ds-fiche { margin-left: 0; }
     .ds-top4 { grid-template-columns: 1fr; gap: 0; }
-    .ds-cand { display: grid; grid-template-columns: 1fr auto; align-items: baseline;
+    .ds-cand { display: grid; grid-template-columns: 30px 1fr auto; align-items: center;
       gap: 0 10px; padding: 6px 0; border-right: none !important; border-bottom: 1px solid #EDEEEA; }
+    .ds-cand .ds-lien { display: contents; }
+    .ds-photo { --s: 30px; box-shadow: 0 0 0 1.5px #fff, 0 0 0 2.5px var(--c); }
+    .ds-mono { box-shadow: none; }
+    .ds-ph { margin-bottom: 0; }
     .ds-cand:last-child { border-bottom: none; }
     .ds-cand-name { font-size: 15px; }
     .ds-cand-score { font-size: 16px; text-align: right; }

@@ -22,6 +22,10 @@ changer sans préavis. L'historique git de `data/sondages.json` donne l'état de
   [Liste de sondages sur l'élection présidentielle française de 2027](https://fr.wikipedia.org/wiki/Liste_de_sondages_sur_l%27%C3%A9lection_pr%C3%A9sidentielle_fran%C3%A7aise_de_2027),
   et, pour quelques sondages, notices déposées à la Commission des sondages. Le wikitexte brut de chaque version utilisée est conservé dans
   `data/snapshots/`.
+- Résultats officiels des présidentielles 2002 à 2022 : Ministère de l'Intérieur via
+  data.gouv.fr ([Données des élections agrégées](https://www.data.gouv.fr/datasets/6481e741d4cf002ec0efec9d),
+  Licence Ouverte). Agrégés une fois pour toutes par `scripts/collecte_resultats.py`
+  (exécution manuelle) dans `data/resultats.json` et `data/resultats-departements.json`.
 - Cotes des marchés de prédiction : Polymarket (affichées sur le site, non incluses dans
   le jeu de données).
 

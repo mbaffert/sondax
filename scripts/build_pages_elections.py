@@ -421,7 +421,7 @@ def page_election(e, elections):
                    f"et évolution des sondages.")
     tete = tete_page(f"Résultats et sondages de la présidentielle {a}, premier et second tour — Sondax",
                      description, f"Résultats et sondages de la présidentielle {a}",
-                     f"presidentielle-{a}.html", ["historique.css?v=1"])
+                     f"presidentielle-{a}.html", ["historique.css?v=2"])
     corps = f"""<main>
   <p class="retour"><a href="precedentes-elections.html">← Toutes les présidentielles</a></p>
   <header class="hero">
@@ -481,7 +481,7 @@ def page_precedentes(elections, retro):
         "Sondages des présidentielles de 2002 à 2022 — Sondax",
         "Sondages des présidentielles de 2002 à 2022 comparés à 2027, au même nombre de jours avant le scrutin.",
         "Sondages des présidentielles de 2002 à 2022", "precedentes-elections.html",
-        ["bloc-retro.css?v=1", "historique.css?v=1"])
+        ["bloc-retro.css?v=1", "historique.css?v=2"])
     cartes = "\n".join(carte_election(elections[a]) for a in reversed(ANNEES))
     x = j_du_jour()
     corps = f"""<main>
@@ -509,7 +509,7 @@ def page_precedentes(elections, retro):
   </div>
 </footer>
 
-<script src="assets/bloc-retro.js?v=2" defer></script>
+<script src="assets/bloc-retro.js?v=3" defer></script>
 
 </body>
 </html>

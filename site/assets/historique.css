@@ -138,7 +138,18 @@ main { max-width: 1180px; margin: 0 auto; padding: 26px 28px 48px; }
 .rs-curseur { margin: 16px 0 20px; }
 .rs-curseur label { display: block; font-size: 13px; color: var(--gris); margin-bottom: 4px; }
 .rs-curseur input[type=range] { width: 100%; height: 28px; accent-color: var(--bleu-vif); cursor: pointer; }
-.rs-bornes { display: flex; justify-content: space-between; font-size: 12px; color: var(--gris); }
+.rs-piste { position: relative; padding-top: 34px; }
+.rs-bulle, .rs-auj { position: absolute; left: calc(var(--p) * 1% + (8px - var(--p) * 0.16px));
+  transform: translateX(-50%); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.rs-bulle { top: 0; background: var(--bleu-vif); color: #fff; font-weight: 700; font-size: 14px;
+  padding: 3px 11px; border-radius: 8px; }
+.rs-bulle::after { content: ""; position: absolute; left: 50%; bottom: -5px; margin-left: -5px;
+  border: 5px solid transparent; border-bottom: 0; border-top-color: var(--bleu-vif); }
+/* Repère du jour : petite bulle posée sur l'axe */
+.rs-auj { top: 48px; transform: translate(-50%, -50%); z-index: 2; pointer-events: none; background: #fff;
+  color: var(--bleu-nuit); border: 1.5px solid var(--bleu-nuit); font-size: 11.5px; font-weight: 600;
+  line-height: 1; padding: 4px 8px; border-radius: 999px; }
+.rs-bornes { display: flex; margin-top: 4px; justify-content: space-between; font-size: 12px; color: var(--gris); }
 .rs-grille.rs-grille-page { grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; padding-top: 0; border-top: 0; }
 .rs-grille.rs-grille-page .rs-col,
 .rs-grille.rs-grille-page .rs-col:first-child,

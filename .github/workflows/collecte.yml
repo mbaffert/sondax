@@ -60,7 +60,12 @@ jobs:
             git config user.email "github-actions[bot]@users.noreply.github.com"
             git add data/gsc/
             git commit -m "Données Search Console du $(date -u +%Y-%m-%d)"
-            git pull --rebase origin main
+            # --autostash : les sorties de collecte (sondages, polymarket,
+            # modele_history) sont encore non commitées à ce stade et sont
+            # commitées plus loin par l'étape « pull request ». Sans cela, le
+            # rebase refuse de tourner (« cannot pull with rebase: You have
+            # unstaged changes », code 128).
+            git pull --rebase --autostash origin main
             git push origin HEAD:main
           fi
 

@@ -61,6 +61,7 @@ jobs:
           python scripts/build_modele.py
           python scripts/build_methode_modele.py
           python scripts/build_donnees.py
+          python scripts/build_gsc_public.py
           python scripts/build_jsonld_dataset.py
           python scripts/build_jsonld_navigation.py
           python scripts/build_dates.py

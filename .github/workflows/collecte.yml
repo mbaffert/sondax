@@ -52,6 +52,18 @@ jobs:
           pip install -r requirements-gsc.txt
           python scripts/collecte_gsc.py
 
+      - name: Publier les données Search Console
+        if: steps.gsc.outcome == 'success'
+        run: |
+          if [ -n "$(git status --porcelain -- data/gsc/)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/gsc/
+            git commit -m "Données Search Console du $(date -u +%Y-%m-%d)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
       - name: Vérifier les changements
         id: changes
         run: |

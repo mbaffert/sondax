@@ -3,7 +3,10 @@
 
 Hypothese principale = celle du tour 1 qui contient le plus de candidats
 DECLARES A LA DATE DU TERRAIN. Egalite : la premiere de la liste (ordre de
-publication par l'institut). Si aucun candidat n'est declare a cette date,
+publication par l'institut). Une hypothese avec vote blanc (champ `vote_blanc`)
+est une variante d'une autre configuration : ses scores sont recalcules en
+presence du blanc, donc elle n'est jamais principale tant qu'une hypothese sans
+blanc existe. Si aucun candidat n'est declare a cette date,
 repli sur le nombre total de candidats.
 """
 import json, sys, collections
@@ -20,6 +23,9 @@ def calculer(sondages, candidats):
             h["principale"] = False
         if not t1:
             continue
+        sans_blanc = [h for h in t1 if not h.get("vote_blanc")]
+        if sans_blanc:
+            t1 = sans_blanc
         date = p["terrain_fin"]
         scores = [sum(1 for k in h["scores"]
                       if k in candidats and est_declare(candidats[k], date))

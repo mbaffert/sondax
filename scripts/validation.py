@@ -1,7 +1,8 @@
 """Validation des données collectées (spec §8).
 
 Trois contrôles, tous bloquants :
-1. Somme des scores par hypothèse dans [95, 105] (T1) ou [99, 101] (T2).
+1. Somme des scores par hypothèse (vote blanc compris, s'il est proposé) dans
+   [95, 105] (T1) ou [99, 101] (T2).
 2. Tous les candidats existent dans candidats.json.
 3. Le nombre total de sondages n'a pas diminué par rapport au run précédent.
 
@@ -37,6 +38,12 @@ def load_previous_sondages():
         return []
 
 
+def somme_hypothese(h):
+    """Total d'une hypothèse : candidats + vote blanc quand l'institut le propose
+    comme une option de réponse (champ `vote_blanc`)."""
+    return sum(h["scores"].values()) + (h.get("vote_blanc") or 0)
+
+
 def validate(sondages, candidats):
     """Exécute les trois contrôles. Retourne (ok, erreurs)."""
     errors = []
@@ -45,7 +52,7 @@ def validate(sondages, candidats):
     # Contrôle 1 : sommes des scores
     for s in sondages:
         for i, h in enumerate(s["hypotheses"]):
-            total = sum(h["scores"].values())
+            total = somme_hypothese(h)
             lo, hi = (95, 105) if h["tour"] == 1 else (99, 101)
             if not lo <= total <= hi:
                 errors.append(
@@ -135,7 +142,7 @@ def generate_revue(sondages, candidats, added, modified, poly_warnings=None,
                 f"</tr>"
             )
             for i, h in enumerate(s["hypotheses"]):
-                total = sum(h["scores"].values())
+                total = somme_hypothese(h)
                 cls = _somme_class(total, h["tour"])
                 td_cls = f' class="{cls}"' if cls else ""
                 blocks.append(
@@ -242,7 +249,7 @@ def generate_revue_markdown(added, modified):
             ech = str(int(s["echantillon"])) if s.get("echantillon") else "—"
             date = fmt_date(s["terrain_fin"])
             for i, h in enumerate(s["hypotheses"]):
-                total = sum(h["scores"].values())
+                total = somme_hypothese(h)
                 flag = _somme_flag(total, h["tour"])
                 inst = s["institut"] if i == 0 else ""
                 d = date if i == 0 else ""

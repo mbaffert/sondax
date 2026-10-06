@@ -284,6 +284,8 @@ def portrait_html(slug, nom, fiche):
 def credit_html(slug):
     c = CREDITS.get(slug)
     if not c: return ""
+    if not c.get("page"):
+        return '<div class="credit">Portrait : photo de presse, auteur non identifié</div>'
     a = f'<a href="{c["page"]}" rel="nofollow">{c["licence"]}</a>'
     return f'<div class="credit">Portrait : {c["auteur"]} — {a}, via Wikimedia Commons</div>'
 

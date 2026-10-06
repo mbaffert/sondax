@@ -52,5 +52,11 @@
     "auteur": "Zouhair NAKARA",
     "licence": "CC BY-SA 4.0",
     "source": "https://commons.wikimedia.org/wiki/File:Roussel_Fabien_1.jpg"
+  },
+  "hollande": {
+    "fichier": "photos/hollande.jpg",
+    "auteur": "Inconnu (photo de presse, non vérifiée)",
+    "licence": "Non vérifiée",
+    "source": ""
   }
 }

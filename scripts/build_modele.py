@@ -178,7 +178,7 @@ def phrase_duel_principal(modele, candidats, historique):
             f"sondages les plus récents, le second tour le plus plausible.")
 
 
-def bloc_accueil(modele, candidats, historique):
+def bloc_accueil(modele, candidats, historique, partage=None):
     """Bloc d'accueil (§14.14.1) : surtitre, titre, phrase du duel principal,
     gaufre et liste des duels (variante « accueil » du composant de la page
     Modèle), lien vers la méthode."""
@@ -187,6 +187,7 @@ def bloc_accueil(modele, candidats, historique):
   <h2>Qui serait au second tour si on votait dimanche prochain&nbsp;?</h2>
   <p class="mo-phrase">{phrase_duel_principal(modele, candidats, historique)}</p>
   {composant_duels(modele, candidats, historique=historique, variante="accueil")}
+  {bouton_partage(partage)}
   <p class="mo-lien-accueil"><a href="modele-sondax.html#{ANCRE_EXPLICATION}">Comment ces probabilités sont-elles calculées&nbsp;? →</a></p>
 </div>'''
 
@@ -952,9 +953,9 @@ def main():
     index = charger_index_sondages()
     INDEX.update(index)
 
-    bloc = bloc_accueil(modele, candidats, historique)
-    CANDIDATS_REF.update(candidats)
     partage = json.loads(PARTAGE_PATH.read_text()) if PARTAGE_PATH.exists() else None
+    bloc = bloc_accueil(modele, candidats, historique, partage)
+    CANDIDATS_REF.update(candidats)
     corps = page_modele(modele, candidats, pages, historique)
     verifier_vocabulaire(bloc, "le bloc d'accueil")
     # L'explication est un texte fourni tel quel : hors du contrôle de vocabulaire.

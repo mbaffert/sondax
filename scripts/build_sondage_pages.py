@@ -28,7 +28,7 @@ sys.path.insert(0, str(SCRIPTS))
 from site_template import render_page
 from instituts import charger_referentiel, lien_institut
 from balise_time import time_tag
-from pages_second_tour import load_duels
+from pages_second_tour import load_duels, duels_frais
 
 referentiel = charger_referentiel()
 
@@ -50,8 +50,9 @@ series_data = json.loads(series_path.read_text(encoding="utf-8")) if series_path
 slugs_avec_page = set(bios.keys())
 
 # Duels ayant une page /second-tour/<slug>.html (pages_second_tour.py en
-# génère une pour chaque duel mesuré ; slug = clés triées, jointes par un tiret)
-duels_avec_page = set(load_duels()[0].keys())
+# génère une pour chaque duel dont la dernière mesure est récente ; slug = clés
+# triées, jointes par un tiret)
+duels_avec_page = set(duels_frais(load_duels()[0]))
 
 
 # ---------- ordre chronologique ----------

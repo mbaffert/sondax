@@ -2,18 +2,24 @@
 
 Lit data/sondages.json et data/candidats.json, produit :
 - site/second-tour/index.html         page d'entrée listant tous les duels
-- site/second-tour/{slug}.html        une page par duel ≥ 5 mesures
+- site/second-tour/{slug}.html        une page par duel « frais » (dernière mesure
+                                      de moins de FRAICHEUR_JOURS jours)
 - site/second-tour/{slug-inv}.html    redirection vers le slug canonique
 """
 
-import json, pathlib, sys, html as html_mod
+import datetime, json, pathlib, sys, html as html_mod
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 DEFAULT_OUT = ROOT / "site" / "second-tour"
 
-SEUIL = 5
+SEUIL = 5  # mesures à partir desquelles un duel a un graphique (et une carte sur l'index)
+
+# Un duel n'a de page (ni de lien, ni de ligne dans le sélecteur de l'accueil) que
+# si sa dernière mesure date de moins de FRAICHEUR_JOURS jours : un duel qu'aucun
+# institut ne teste plus (candidat remplacé, retiré…) sort du site tout seul.
+FRAICHEUR_JOURS = 120
 BASE_URL = "https://sondax.fr"
 
 sys.path.insert(0, str(ROOT / "scripts"))
@@ -29,8 +35,21 @@ def duel_slug(cid_a, cid_b):
     return "-".join(sorted((cid_a, cid_b)))
 
 
+def duel_frais(entries, aujourdhui=None):
+    """Vrai si la mesure la plus récente du duel a moins de FRAICHEUR_JOURS jours."""
+    aujourdhui = aujourdhui or datetime.date.today()
+    derniere = max(datetime.date.fromisoformat(e["terrain_fin"]) for e in entries)
+    return (aujourdhui - derniere).days < FRAICHEUR_JOURS
+
+
+def duels_frais(duels, aujourdhui=None):
+    """Sous-ensemble de `duels` (slug → mesures) qui a une page."""
+    return {slug: entries for slug, entries in duels.items()
+            if duel_frais(entries, aujourdhui)}
+
+
 def page_duel(cid_a, cid_b, out_dir=DEFAULT_OUT):
-    """Slug du duel si sa page existe (≥ SEUIL mesures, déjà générée), sinon None."""
+    """Slug du duel si sa page existe (duel frais, déjà générée), sinon None."""
     slug = duel_slug(cid_a, cid_b)
     return slug if (out_dir / f"{slug}.html").exists() else None
 
@@ -569,7 +588,11 @@ def main():
 
     duels, candidats = load_duels()
 
-    print(f"{len(duels)} duels trouvés")
+    publies = duels_frais(duels)
+    perimes = sorted(set(duels) - set(publies))
+    print(f"{len(duels)} duels trouvés, {len(perimes)} sans page "
+          f"(dernière mesure de {FRAICHEUR_JOURS} jours ou plus) : {', '.join(perimes) or '—'}")
+    duels = publies
 
     generate_index_page(duels, candidats, out_dir)
     print(f"Page d'entrée : {out_dir / 'index.html'}")
@@ -580,7 +603,7 @@ def main():
         generate_duel_page(slug, entries, candidats, out_dir)
         n_pages += 1
 
-    print(f"{len(duels)} duels, {n_pages} pages générées")
+    print(f"{n_pages} pages générées")
 
 
 if __name__ == "__main__":

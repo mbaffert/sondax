@@ -615,6 +615,11 @@ class SecondTour {
     this.content = document.getElementById('t2-content');
     this.chart = null;
 
+    // Duels proposés : liste « a|b,c|d » posée au build (build_index_second_tour.py)
+    // selon le critère de fraîcheur ; absente → tous les duels.
+    const actifs = document.querySelector('.t2-selector')?.dataset.duelsActifs;
+    const actifsSet = actifs === undefined ? null : new Set(actifs.split(',').filter(Boolean));
+
     // Extract all T2 duels: "cid1|cid2" (sorted) → [{sondage, hyp}]
     this.duels = {};
     for (const s of sondages) {
@@ -622,6 +627,7 @@ class SecondTour {
         if (h.tour !== 2 || Object.keys(h.scores).length !== 2) continue;
         const pair = Object.keys(h.scores).sort();
         const key = pair.join('|');
+        if (actifsSet && !actifsSet.has(key)) continue;
         if (!this.duels[key]) this.duels[key] = [];
         this.duels[key].push({ sondage: s, hyp: h });
       }

@@ -17,6 +17,7 @@ CONFIG_PATH = ROOT / "data" / "config.json"
 sys.path.insert(0, str(ROOT / "scripts"))
 from pages_second_tour import (
     load_duels, nom_court, fmt_date, fmt_pct, find_pair_from_slug, page_duel, SEUIL,
+    duels_frais,
 )
 from build_header import REPERES_T2, JSONLD_T2
 from balise_time import time_tag
@@ -347,9 +348,12 @@ def generate_table_section(duels, candidats):
 # Sélecteur de détail (hydraté par JS)
 # ---------------------------------------------------------------------------
 
-def generate_selector_html():
+def generate_selector_html(duels_actifs):
+    """`duels_actifs` : clés « a|b » (candidats triés) proposées par le sélecteur ;
+    le JS écarte les autres duels, présents dans data/sondages.json mais périmés."""
+    actifs = html_mod.escape(",".join(sorted(duels_actifs)), quote=True)
     return (
-        '    <div class="t2-selector" style="margin-top:18px;">\n'
+        f'    <div class="t2-selector" data-duels-actifs="{actifs}" style="margin-top:18px;">\n'
         '      <h3 style="font-family:var(--titre);font-size:18px;'
         'font-weight:600;margin-bottom:12px;">Explorer un duel</h3>\n'
         '      <div class="duel-select">\n'
@@ -427,12 +431,18 @@ def generate_bardella_section(bardella_duels, candidats):
 def generate_bloc(duels, candidats):
     # Séparer les duels Bardella des duels actuels
     current_duels, bardella_duels = split_bardella_duels(duels, candidats)
+    # Critère de fraîcheur (pages_second_tour.FRAICHEUR_JOURS) : un duel périmé
+    # sort de l'aperçu et du sélecteur ; la section historique des duels du
+    # prédécesseur reste, avec sa phrase d'explication, mais sans lien de page.
+    frais = duels_frais(duels)
+    current_duels = {s: e for s, e in current_duels.items() if s in frais}
 
     factual = generate_factual_text()
     chapeau = generate_chapeau(current_duels, candidats)
     apercu, autres = generate_table_section(current_duels, candidats)
     bardella_section = generate_bardella_section(bardella_duels, candidats)
-    selector = generate_selector_html()
+    selector = generate_selector_html(
+        "|".join(sorted(pair(slug, candidats))) for slug in frais)
 
     # Duel principal visible ; tous les autres duels repliés sous un seul lien,
     # présents dans le HTML servi (référencement).

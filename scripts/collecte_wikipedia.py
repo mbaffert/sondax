@@ -24,6 +24,10 @@ MOIS = {'janvier':1,'février':2,'fevrier':2,'mars':3,'avril':4,'mai':5,'juin':6
 # arrête le run (spec §6) : un sondage qui disparaît en silence ne se voit pas.
 ANOMALIES = []
 
+# Marqueur interne : une cellule étiquetée [[vote blanc]] porte le score du vote
+# blanc, pas celui d'un candidat. Il est stocké à part, dans `vote_blanc`.
+VOTE_BLANC = '__vote_blanc__'
+
 def slug(s):
     s = unicodedata.normalize('NFKD', s).encode('ascii','ignore').decode()
     return re.sub(r'[^a-z0-9]+','-', s.lower()).strip('-')
@@ -54,6 +58,8 @@ def _une_valeur(txt):
     parts = re.split(r'<br\s*/?>', txt, maxsplit=1)
     val = clean_num(parts[0])
     sub = None
+    if len(parts) > 1 and re.search(r'\[\[\s*vote blanc\s*(\||\]\])', parts[1], re.I):
+        return val, VOTE_BLANC
     if len(parts) > 1:
         m = re.search(r'\[\[[^|\]]+\|([^\]]+)\]\]', parts[1])
         if m:
@@ -192,13 +198,18 @@ def parse_table(txt, annee, tour):
             continue
         hyps = []
         for v in s['hypotheses']:
-            scores = {}
+            scores, blanc = {}, None
             for nom_col, mesures in zip(colonnes, v):
                 for val, sub in mesures:
                     nom = sub or nom_col
-                    if nom != 'Autre' and val is not None: scores[slug(nom)] = val
-            if scores: hyps.append({'tour': tour, 'echantillon': None,
-                                    'candidats': sorted(scores), 'scores': scores})
+                    if nom == VOTE_BLANC:
+                        if val is not None: blanc = val
+                    elif nom != 'Autre' and val is not None: scores[slug(nom)] = val
+            if scores:
+                hyp = {'tour': tour, 'echantillon': None,
+                       'candidats': sorted(scores), 'scores': scores}
+                if blanc is not None: hyp['vote_blanc'] = blanc
+                hyps.append(hyp)
         if not hyps:
             ANOMALIES.append(f"aucune hypothèse exploitable : {s['institut']} — {s['_dates']!r}")
             continue
@@ -352,7 +363,7 @@ def main():
     bad = 0
     for s in res:
         for h in s['hypotheses']:
-            t = sum(h['scores'].values())
+            t = sum(h['scores'].values()) + (h.get('vote_blanc') or 0)
             lo, hi = (95, 105) if h['tour'] == 1 else (99, 101)
             if not lo <= t <= hi:
                 bad += 1

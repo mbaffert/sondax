@@ -33,6 +33,8 @@ MOIS = [
 
 PT_BEGIN = "<!-- BEGIN:premier-tour -->"
 PT_END = "<!-- END:premier-tour -->"
+SRC_BEGIN = "<!-- BEGIN:source-premier-tour -->"
+SRC_END = "<!-- END:source-premier-tour -->"
 BLOC_DS_BEGIN = "<!-- BEGIN:bloc-dernier-sondage -->"
 BLOC_DS_END = "<!-- END:bloc-dernier-sondage -->"
 
@@ -84,6 +86,27 @@ def candidates_in_window(series_data, fenetre_jours=30):
     return cands
 
 
+def derniers_scores(series_data):
+    """{candidat: dernière valeur de tendance} des candidats ayant au moins une
+    mesure dans la fenêtre glissante (§4 SPEC)."""
+    series = series_data.get("series", {})
+    latest = {}
+    for cid in candidates_in_window(series_data, series_data.get("fenetre_jours", 30)):
+        for p in reversed(series.get(cid, [])):
+            if p["v"] is not None:
+                latest[cid] = p["v"]
+                break
+    return latest
+
+
+def sondages_dans_fenetre(series_data, sondages):
+    """(début de la fenêtre ISO, sondages dont le terrain s'est achevé dedans) :
+    ceux que pondère la moyenne affichée."""
+    fin = date.fromisoformat(series_data["date_fin"])
+    debut = (fin - timedelta(days=series_data.get("fenetre_jours", 30))).isoformat()
+    return debut, [s for s in sondages if s["terrain_fin"] >= debut]
+
+
 def generate_chapeau(series_data, sondages, candidats):
     """Trois phrases : leader, volume, delta 3 mois.
 
@@ -92,19 +115,8 @@ def generate_chapeau(series_data, sondages, candidats):
     """
     series = series_data.get("series", {})
     date_fin = series_data.get("date_fin", "")
-    fenetre = series_data.get("fenetre_jours", 30)
 
-    # Candidats testés dans la fenêtre de 30 jours
-    cands_actifs = candidates_in_window(series_data, fenetre)
-
-    # Dernière valeur de tendance pour chaque candidat actif
-    latest = {}
-    for cid in cands_actifs:
-        pts = series.get(cid, [])
-        for p in reversed(pts):
-            if p["v"] is not None:
-                latest[cid] = p["v"]
-                break
+    latest = derniers_scores(series_data)
 
     if not latest:
         return '<p class="subtitle">Aucune donnée de premier tour disponible.</p>'
@@ -138,8 +150,7 @@ def generate_chapeau(series_data, sondages, candidats):
 
     # Phrase 2 : volume et instituts dans la fenêtre de 30 jours
     fin = date.fromisoformat(date_fin)
-    debut_fenetre = (fin - timedelta(days=fenetre)).isoformat()
-    sondages_fenetre = [s for s in sondages if s["terrain_fin"] >= debut_fenetre]
+    debut_fenetre, sondages_fenetre = sondages_dans_fenetre(series_data, sondages)
     n_sondages = len(sondages_fenetre)
     instituts = sorted(set(s["institut"] for s in sondages_fenetre))
 
@@ -338,6 +349,16 @@ def inject(content, begin, end, html_bloc):
     return content[:i_begin] + begin + "\n" + html_bloc + "\n" + end + content[i_end:]
 
 
+def generate_source_partage(sondages):
+    """Ligne de source sous le graphique, avec le bloc « Partager / Reprendre ».
+    En veille électorale, sans le bloc : la page de partage n'est alors pas produite."""
+    import veille
+    # import tardif : partage_premier_tour importe lui-même ce module
+    import partage_premier_tour
+    f = partage_premier_tour.faits()
+    return partage_premier_tour.source_html(f, avec_partage=not veille.en_veille()) if f else ""
+
+
 def main():
     series_data = load_json(SERIES_PATH)
     candidats = load_json(CANDIDATS_PATH)
@@ -358,6 +379,9 @@ def main():
     # 2. Bloc « Dernier sondage » (nouveau bloc compact)
     bloc_ds = generate_bloc_dernier_sondage(sondages, candidats, series_data)
     content = inject(content, BLOC_DS_BEGIN, BLOC_DS_END, bloc_ds)
+
+    # 3. Ligne de source et bloc « Partager / Reprendre » sous le graphique
+    content = inject(content, SRC_BEGIN, SRC_END, generate_source_partage(sondages))
 
     INDEX_PATH.write_text(content, encoding="utf-8")
     print("Premier tour injecté dans index.html")

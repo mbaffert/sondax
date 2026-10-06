@@ -215,7 +215,7 @@ NAV_ITEMS = [
     ("Données", "donnees.html", ["donnees.html"], None),
 ]
 
-SOUS_DOSSIERS = ("second-tour", "sondages", "instituts", "candidats")
+SOUS_DOSSIERS = ("second-tour", "sondages", "instituts", "candidats", "partage")
 RUBRIQUES = {"sondages": "Tous les sondages", "instituts": "Instituts"}
 
 

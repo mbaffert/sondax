@@ -1,0 +1,41 @@
+/* Bloc « Partager / Reprendre » du graphique du premier tour (accueil et
+   /partage/premier-tour.html). Généré par scripts/partage_premier_tour.py. */
+.pt-source { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between;
+  gap: 4px 16px; margin-top: 4px; }
+.bloc .pt-source .subtitle { margin: 0 0 8px; }
+.pt-partage { margin-left: auto; font-size: 13px; }
+.pt-partage[open] { flex-basis: 100%; }
+.pt-partage > summary { display: block; width: fit-content; margin-left: auto; cursor: pointer;
+  list-style: none; padding: 5px 11px; border: 1px solid #DDDFDA; border-radius: 8px; background: #fff;
+  color: var(--texte, #202632); font-weight: 500; }
+.pt-partage > summary::-webkit-details-marker { display: none; }
+.pt-partage > summary:hover { border-color: var(--bleu-vif, #0C6CF2); }
+.pt-partage > summary:focus-visible, .pt-bouton:focus-visible, .pt-code:focus-visible {
+  outline: 2px solid var(--bleu-vif, #0C6CF2); outline-offset: 2px; }
+.pt-partage-icone { vertical-align: -2px; margin-right: 6px; }
+.pt-partage-corps { margin-top: 10px; padding: 14px 16px; background: #F7F8F5; border: 1px solid #E3E5E0;
+  border-radius: 12px; }
+.pt-partage-corps p { margin: 0 0 10px; color: var(--gris, #66707D); }
+.pt-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 12px; }
+.pt-bouton { font: inherit; font-weight: 500; cursor: pointer; padding: 8px 14px; border: 1px solid #DDDFDA;
+  border-radius: 8px; background: #fff; color: var(--texte, #202632); text-decoration: none; }
+.pt-bouton:hover { border-color: var(--bleu-vif, #0C6CF2); text-decoration: none; }
+.pt-bouton[hidden] { display: none; }
+.pt-etiquette { display: block; font-weight: 600; margin-bottom: 4px; }
+.pt-code { display: block; width: 100%; resize: vertical; margin-bottom: 8px; padding: 10px;
+  font: 12px/1.5 var(--mono, monospace); color: var(--texte, #202632); background: #fff;
+  border: 1px solid #DDDFDA; border-radius: 8px; }
+.pt-etat { color: var(--gris, #66707D); }
+
+/* Page /partage/premier-tour.html */
+.pt-page { max-width: 860px; }
+.pt-page .pt-lecture { font-size: 16px; margin-bottom: 20px; }
+.pt-figure { margin: 0 0 14px; }
+.pt-figure img { display: block; width: 100%; height: auto; border: 1px solid #E3E5E0; border-radius: 12px; }
+.pt-figure figcaption { font-size: 13px; color: var(--gris, #66707D); margin-top: 6px; }
+.pt-page .pt-licence { font-size: 13.5px; color: var(--gris, #66707D); margin: 18px 0 10px; }
+
+@media (max-width: 600px) {
+  .pt-partage-corps { padding: 12px; }
+  .pt-bouton { padding: 10px 14px; }
+}

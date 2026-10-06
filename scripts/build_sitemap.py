@@ -18,6 +18,8 @@ la date du build. Une page qui ne relève d'aucune règle fait échouer le build
   scripts/bios.json ;
 - page duel : dernier sondage testant ce duel, dernier sondage du modèle si la
   page affiche son bloc ;
+- graphique à reprendre (partage/premier-tour.html) : date de fin de la série
+  de moyennes du premier tour ;
 - pages de liste (sondages, instituts, candidats, second tour, données) :
   dernier sondage qu'elles listent ;
 - accueil : dernier sondage, modèle, dernière collecte Polymarket ;
@@ -184,6 +186,10 @@ def date_page(rel):
 
     if rel in ("sondages.html", "instituts.html", "donnees.html"):
         return tous
+
+    if rel == "partage/premier-tour.html":
+        serie = json.loads((DATA / "derived" / "series-t1.json").read_text(encoding="utf-8"))
+        return serie["date_fin"]
 
     if rel == "modele-sondax.html":
         return date_modele or tous

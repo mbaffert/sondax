@@ -84,17 +84,32 @@ def agreger(lignes, dimensions, cle_sortie):
     return sortie
 
 
+def nommees_par_jour(lignes):
+    """Par date : (lignes distinctes date×requête, somme des impressions).
+
+    Google anonymise les requêtes rares : elles n'apparaissent pas dans
+    gsc-date-query.csv mais comptent dans les impressions de gsc-date.csv.
+    """
+    cumul = {}
+    for l in lignes:
+        n, imp = cumul.get(l[0], (0, 0))
+        cumul[l[0]] = (n + 1, imp + int(l[3]))
+    return cumul
+
+
 def main():
+    lignes_requetes = lire("gsc-date-query.csv", ["date", "query"])
+    nommees = nommees_par_jour(lignes_requetes)
     jours = [
         {"date": l[0], "clics": int(l[1]), "impressions": int(l[2]),
-         "position": round(float(l[4]), 2)}
+         "position": round(float(l[4]), 2),
+         "requetes_nommees": nommees.get(l[0], (0, 0))[0],
+         "impressions_nommees": nommees.get(l[0], (0, 0))[1]}
         for l in lire("gsc-date.csv", ["date"])
     ]
     jours.sort(key=lambda r: r["date"])
 
-    requetes = agreger(
-        lire("gsc-date-query.csv", ["date", "query"]),
-        ["date", "query"], "requete")
+    requetes = agreger(lignes_requetes, ["date", "query"], "requete")
     pages = agreger(
         lire("gsc-date-page.csv", ["date", "page"]),
         ["date", "page"], "url")
@@ -117,7 +132,10 @@ def main():
     tmp.replace(SORTIE)
 
     print(f"  gsc.json : {len(jours)} jours ({jours[0]['date']} → "
-          f"{jours[-1]['date']}), {len(requetes)} requêtes, {len(pages)} pages, "
+          f"{jours[-1]['date']}, dont requetes_nommees et impressions_nommees par "
+          f"jour : {sum(j['requetes_nommees'] for j in jours)} requêtes-jours, "
+          f"{sum(j['impressions_nommees'] for j in jours)} impressions nommées), "
+          f"{len(requetes)} requêtes, {len(pages)} pages, "
           f"{len(appareils)} appareils, {SORTIE.stat().st_size // 1024} Kio")
 
 

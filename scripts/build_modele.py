@@ -609,9 +609,10 @@ CSS = '''
   .mo-barre span { display: block; height: 100%; border-radius: 5px; }
   .mo-verdict { font-size: 13px; color: var(--gris); }
   .mo-evo { white-space: normal; }
-  .mo-partage { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 4px 0 12px; }
+  .mo-partage { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 18px 0 12px; }
   .mo-bouton { border: 0; cursor: pointer; font-family: var(--corps); }
   .mo-partage-menu { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13.5px; }
+  .mo-partage-menu[hidden] { display: none; }
   .mo-partage-menu button, .mo-partage-menu a { background: #fff; border: 1px solid #DDDFDA; border-radius: 8px;
     padding: 7px 12px; cursor: pointer; font: 500 13.5px var(--corps); color: var(--texte); }
   .mo-partage-ok { color: var(--gris); }

@@ -8,7 +8,6 @@
 .page-candidat a{color:var(--bleu-vif);text-decoration:none}
 .page-candidat a:hover{text-decoration:underline}
 
-@media(prefers-color-scheme:dark){.page-candidat{--fond:#14181E;--carte:#1C212A;--bord:#2B313A;--texte:#E9EBE6;--gris:#96A0AC}}
 .page-candidat main{max-width:1060px;margin:0 auto;padding:0 24px 64px}
 .page-candidat .fil{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gris);padding:22px 0 18px}
 .page-candidat .label{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--cand);margin-bottom:9px}
@@ -17,7 +16,7 @@
 .page-candidat h1{font-family:var(--titre);font-size:clamp(32px,5.5vw,48px);font-weight:700;letter-spacing:-.035em;line-height:1}
 .page-candidat h2{font-family:var(--titre);font-size:22px;font-weight:600;letter-spacing:-.02em}
 .page-candidat .sous{font-size:13.5px;color:var(--gris);margin-top:4px}
-.page-candidat .hero{background:linear-gradient(135deg,color-mix(in srgb,var(--cand) 14%,transparent),transparent 70%)}
+.page-candidat .hero{background:linear-gradient(135deg,color-mix(in srgb,var(--cand) 14%,transparent),transparent 70%),var(--carte)}
 .page-candidat .hero .pad{display:flex;gap:24px;align-items:center;flex-wrap:wrap;padding:34px 30px 22px}
 .page-candidat img.portrait{object-fit:cover;display:block}
 .page-candidat .portrait{width:104px;height:104px;border-radius:24px;flex-shrink:0;

@@ -106,5 +106,17 @@
    "<b>Candidat déclaré</b> depuis le 6 septembre 2026."
   ],
   "genre": "m"
+ },
+ "hollande": {
+  "nom": "François Hollande",
+  "parti": "Parti socialiste",
+  "couleur": "#FF8080",
+  "naissance": "1954-08-12",
+  "bio": [
+   "<b>Député de la Corrèze</b> depuis 2024.",
+   "<b>Président de la République</b> de 2012 à 2017.",
+   "<b>Pas candidat déclaré</b>. Il a annoncé une décision officielle en décembre 2026."
+  ],
+  "genre": "m"
  }
 }

@@ -15,6 +15,8 @@
     });
   }
   document.querySelectorAll('.pt-partage').forEach(function (bloc) {
+    if (bloc.dataset.pret) return;
+    bloc.dataset.pret = '1';
     var etat = bloc.querySelector('.pt-etat');
     bloc.querySelectorAll('button[data-copier], button[data-copier-cible]').forEach(function (b) {
       b.hidden = false;

@@ -146,7 +146,7 @@ def bloc_partage(prefix, ouvert=False, lien_page=True):
     </div>
   </div>
 </details>
-<script src="{prefix}assets/partage-premier-tour.js?v=1" defer></script>'''
+<script src="{prefix}assets/partage-premier-tour.js?v=2" defer></script>'''
 
 
 def source_html(f, prefix="", avec_partage=True):

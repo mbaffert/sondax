@@ -121,14 +121,23 @@
   .duels-repli[open] summary::before { content: '▾ '; }
 
   /* Galerie candidats */
-  .galerie-candidats { display: grid; grid-template-columns: repeat(9, 1fr); gap: 10px; text-align: center; }
-  .galerie-item { display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; transition: transform 0.15s; }
+  .galerie-candidats { overflow: hidden; text-align: center;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent); }
+  .galerie-piste { display: flex; width: max-content; animation: galerie-defile 45s linear infinite; }
+  .galerie-candidats:hover .galerie-piste, .galerie-candidats:focus-within .galerie-piste { animation-play-state: paused; }
+  .galerie-copie { display: contents; }
+  @keyframes galerie-defile { to { transform: translateX(-50%); } }
+  .galerie-item { display: flex; flex-direction: column; align-items: center; gap: 6px; width: 96px; flex: none; text-decoration: none; transition: transform 0.15s; }
   .galerie-item:hover { transform: translateY(-2px); text-decoration: none; }
   .galerie-item img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--cand-col); }
   .galerie-item span { font-size: 12px; color: var(--gris); line-height: 1.3; }
   .galerie-item:hover span { color: var(--texte); }
-  @media (max-width: 700px) { .galerie-candidats { grid-template-columns: repeat(5, 1fr); } }
-  @media (max-width: 420px) { .galerie-candidats { grid-template-columns: repeat(3, 1fr); gap: 10px 8px; } }
+  @media (prefers-reduced-motion: reduce) {
+    .galerie-candidats { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+    .galerie-piste { animation: none; }
+    .galerie-copie { display: none; }
+  }
 
   footer { background: var(--bleu-nuit); color: rgba(255,255,255,0.72); padding: 34px 28px 26px; font-size: 13px; }
   footer .footer-inner { max-width: 1180px; margin: 0 auto; display: grid;
@@ -320,6 +329,7 @@
     <div class="section-label">Candidats</div>
     <h2>Sondages par candidat</h2>
     <div class="galerie-candidats">
+      <div class="galerie-piste">
       <a href="le-pen.html" class="galerie-item" style="--cand-col:#0D378A"><img src="photos/le-pen.jpg" alt="Le Pen" width="120" height="120" loading="lazy"><span>Le Pen</span></a>
       <a href="melenchon.html" class="galerie-item" style="--cand-col:#CC2443"><img src="photos/melenchon.jpg" alt="Mélenchon" width="120" height="120" loading="lazy"><span>Mélenchon</span></a>
       <a href="philippe.html" class="galerie-item" style="--cand-col:#00B7FF"><img src="photos/philippe.jpg" alt="Philippe" width="120" height="120" loading="lazy"><span>Philippe</span></a>
@@ -330,6 +340,19 @@
       <a href="zemmour.html" class="galerie-item" style="--cand-col:#1A1A2E"><img src="photos/zemmour.jpg" alt="Zemmour" width="120" height="120" loading="lazy"><span>Zemmour</span></a>
       <a href="tondelier.html" class="galerie-item" style="--cand-col:#00C853"><img src="photos/tondelier.jpg" alt="Tondelier" width="120" height="120" loading="lazy"><span>Tondelier</span></a>
       <a href="roussel.html" class="galerie-item" style="--cand-col:#DD1111"><img src="photos/roussel.jpg" alt="Roussel" width="120" height="120" loading="lazy"><span>Roussel</span></a>
+      <span class="galerie-copie" aria-hidden="true">
+      <a href="le-pen.html" class="galerie-item" tabindex="-1" style="--cand-col:#0D378A"><img src="photos/le-pen.jpg" alt="Le Pen" width="120" height="120" loading="eager"><span>Le Pen</span></a>
+      <a href="melenchon.html" class="galerie-item" tabindex="-1" style="--cand-col:#CC2443"><img src="photos/melenchon.jpg" alt="Mélenchon" width="120" height="120" loading="eager"><span>Mélenchon</span></a>
+      <a href="philippe.html" class="galerie-item" tabindex="-1" style="--cand-col:#00B7FF"><img src="photos/philippe.jpg" alt="Philippe" width="120" height="120" loading="eager"><span>Philippe</span></a>
+      <a href="glucksmann.html" class="galerie-item" tabindex="-1" style="--cand-col:#FF7043"><img src="photos/glucksmann.jpg" alt="Glucksmann" width="120" height="120" loading="eager"><span>Glucksmann</span></a>
+      <a href="hollande.html" class="galerie-item" tabindex="-1" style="--cand-col:#FF8080"><img src="photos/hollande.jpg" alt="Hollande" width="120" height="120" loading="eager"><span>Hollande</span></a>
+      <a href="attal.html" class="galerie-item" tabindex="-1" style="--cand-col:#7E57C2"><img src="photos/attal.jpg" alt="Attal" width="120" height="120" loading="eager"><span>Attal</span></a>
+      <a href="retailleau.html" class="galerie-item" tabindex="-1" style="--cand-col:#0066CC"><img src="photos/retailleau.jpg" alt="Retailleau" width="120" height="120" loading="eager"><span>Retailleau</span></a>
+      <a href="zemmour.html" class="galerie-item" tabindex="-1" style="--cand-col:#1A1A2E"><img src="photos/zemmour.jpg" alt="Zemmour" width="120" height="120" loading="eager"><span>Zemmour</span></a>
+      <a href="tondelier.html" class="galerie-item" tabindex="-1" style="--cand-col:#00C853"><img src="photos/tondelier.jpg" alt="Tondelier" width="120" height="120" loading="eager"><span>Tondelier</span></a>
+      <a href="roussel.html" class="galerie-item" tabindex="-1" style="--cand-col:#DD1111"><img src="photos/roussel.jpg" alt="Roussel" width="120" height="120" loading="eager"><span>Roussel</span></a>
+      </span>
+      </div>
     </div>
   </div>
 

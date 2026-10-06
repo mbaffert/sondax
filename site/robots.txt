@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /donnees/gsc.json
 
 Sitemap: https://sondax.fr/sitemap.xml

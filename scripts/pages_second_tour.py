@@ -7,12 +7,14 @@ Lit data/sondages.json et data/candidats.json, produit :
 - site/second-tour/{slug-inv}.html    redirection vers le slug canonique
 """
 
-import datetime, json, pathlib, sys, html as html_mod
+import datetime, json, pathlib, re, sys, html as html_mod
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 DEFAULT_OUT = ROOT / "site" / "second-tour"
+
+TITRE_MAX = 65  # longueur max du <title> « dernier sondage », hors suffixe « — Sondax »
 
 SEUIL = 5  # mesures à partir desquelles un duel a un graphique (et une carte sur l'index)
 
@@ -412,8 +414,16 @@ def generate_duel_page(slug, entries, candidats, out_dir):
 
     nom_a = nom_court(cid_a, candidats)
     nom_b = nom_court(cid_b, candidats)
-    title = f"Sondages second tour 2027 : {nom_a} – {nom_b}"
-    description = f"Tous les sondages du duel {nom_a} – {nom_b} pour le second tour de la présidentielle 2027. Courbe et tableau."
+    title = f"Sondages second tour 2027 : {nom_a} – {nom_b}"   # H1 et fil d'Ariane
+    e = entries[0]
+    # <title> : « dernier sondage {institut} » seulement s'il tient, sans troncature
+    title_seo = f"Sondage second tour 2027 : {nom_a} – {nom_b}, dernier sondage {e['institut']}"
+    if len(title_seo) > TITRE_MAX:
+        title_seo = title
+    terrain = re.sub(r"<[^>]+>", "", terrain_court(e["terrain_debut"], e["terrain_fin"]))
+    description = (f"Dernier sondage\u00a0: {e['institut']}, {terrain}, "
+                   f"{nom_a} {fmt_score(e['scores'][cid_a])} – {nom_b} {fmt_score(e['scores'][cid_b])}. "
+                   f"Tous les sondages du duel {nom_a} – {nom_b} pour le second tour de la présidentielle 2027. Courbe et tableau.")
     canonical = f"{BASE_URL}/second-tour/{slug}.html"
     prefix = "../"
 
@@ -433,7 +443,7 @@ def generate_duel_page(slug, entries, candidats, out_dir):
 <html lang="fr">
 <head>
 {HEAD_COMMON.format(prefix=prefix)}
-<title>{html_mod.escape(title)} — Sondax</title>
+<title>{html_mod.escape(title_seo)} — Sondax</title>
 <meta name="description" content="{html_mod.escape(description)}">
 <link rel="canonical" href="{canonical}">
 <style>

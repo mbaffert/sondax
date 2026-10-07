@@ -201,6 +201,16 @@ def derniers_sondages(cid):
     return liste[:N_DERNIERS]
 
 
+def dernier_sondage(cid):
+    """(institut, terrain_debut, terrain_fin, score) du dernier sondage dont
+    l'hypothèse principale du premier tour teste le candidat, ou None."""
+    liste = derniers_sondages(cid)
+    if not liste:
+        return None
+    s, score = liste[0]
+    return s["institut"], s.get("terrain_debut"), s["terrain_fin"], score
+
+
 def tableau_derniers(cid):
     """Tableau HTML des derniers sondages du candidat, puis le lien vers
     tous les sondages. Chaîne vide si le candidat n'est dans aucune
@@ -435,6 +445,7 @@ for slug, fiche in bios.items():
         pages=pages,
         succession=succession,
         derniers=tableau_derniers(slug),
+        dernier=dernier_sondage(slug),
     )
 
     final_html = wrap_in_site_template(slug, fiche, raw_html)

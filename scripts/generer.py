@@ -3,7 +3,8 @@
 import json, math, datetime as dt, unicodedata, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from balise_time import time_tag, baliser_dates
-from pages_second_tour import page_duel
+from pages_second_tour import page_duel, terrain_court, fmt_score
+import html as html_mod
 
 HYP_CROIS = "R. Glucksmann, G. Attal, E. Philippe"
 AUJ = dt.date(2026, 9, 19)
@@ -293,8 +294,17 @@ def liens_autres(slug, noms):
     return " · ".join(f'<a href="/{s}.html">{n}</a>'
                       for s, n in noms.items() if s != slug)
 
+def phrase_dernier_sondage(dernier):
+    """« Dernier sondage : Ifop, 25–29 septembre 2026, 32 % au premier tour. »
+    `dernier` = (institut, terrain_debut, terrain_fin, score) ; chaîne vide s'il manque."""
+    if not dernier:
+        return ""
+    institut, debut, fin, score = dernier
+    return (f'<p class="dernier-sondage">Dernier sondage&nbsp;: {html_mod.escape(institut)}, '
+            f'{terrain_court(debut, fin)}, {fmt_score(score)} au premier tour.</p>')
+
 def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant,
-         duels=None, noms=None, pages=None, succession=None, derniers=""):
+         duels=None, noms=None, pages=None, succession=None, derniers="", dernier=None):
     nom = fiche["nom"]; coul = fiche["couleur"]
     pcs = {k: v[slug] for k, v in crois.get("pcs", {}).items()
            if slug in v and k in ORDRE_PCS}
@@ -328,7 +338,7 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
     return f'''<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{nom} — sondages présidentielle 2027 : intentions de vote et électorat | Sondax</title>
-<meta name="description" content="Sondages {nom} pour la présidentielle 2027 : moyenne des intentions de vote au premier tour, évolution, duels de second tour et profil de son électorat.">
+<meta name="description" content="Sondage {nom} pour la présidentielle 2027 : intention de vote {nom} au premier tour, évolution, duels de second tour et électorat.">
 <link rel="canonical" href="https://sondax.fr/{slug}.html">
 <meta property="og:title" content="{nom} — sondages présidentielle 2027">
 <meta property="og:description" content="Intentions de vote, second tour et électorat de {nom}.">
@@ -349,8 +359,9 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
 </div><ul class="bio">{bio}</ul></section>
 <section class="carte">
   <div class="pad" style="padding-bottom:12px"><div class="label">Tendance</div>
-  <h2>Sondages {nom} : évolution des intentions de vote</h2>
-  <div class="sous">Moyenne pondérée sur 30 jours · premier tour · hypothèse principale de chaque sondage</div></div>
+  <h2>Sondage {nom} : évolution de l'intention de vote</h2>
+  <div class="sous">Moyenne pondérée sur 30 jours · premier tour · hypothèse principale de chaque sondage</div>
+  {phrase_dernier_sondage(dernier)}</div>
   <div class="chart">{svg(serie, bruts, coul, succession)}</div>
   <div class="txt" style="padding-bottom:26px"><p>{texte_evolution(nom, serie, n_sondages, rangs, ecart_devant, fiche.get("genre","m"), succession)}</p></div>
   {derniers}

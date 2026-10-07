@@ -5,7 +5,8 @@ Remplace :
 - le contenu de <div id="footer-run"> dans le footer de toutes les pages
 - le contenu de <p id="compteur-sondages"> sous le H1 de l'accueil
 - dans sondages.html : <title>, meta description, og:title, og:description et
-  h1#titre-sondages, qui portent le nombre de sondages
+  h1#titre-sondages, qui portent le nombre de sondages, ainsi que le paragraphe
+  d'introduction p#intro-sondages
 - dans index.html : <title>, meta description, og:title et og:description, qui
   portent le dernier sondage (institut et date de fin de terrain). Le sondage est
   celui du bloc « Dernier sondage » (build_index_premier_tour.sondage_affiche) ;
@@ -81,7 +82,7 @@ def footer_html(n_sondages, last_date, last_revid, build_date, **_):
     return " · ".join(parts)
 
 
-def sondages_page_textes(n_sondages, **_):
+def sondages_page_textes(n_sondages, n_instituts, last_date, **_):
     """Textes de sondages.html qui portent le nombre de sondages."""
     titre = f"Les {n_sondages} sondages de la présidentielle 2027, par institut et par date"
     description = (f"Les {n_sondages} sondages de la présidentielle 2027, listés par institut "
@@ -94,6 +95,10 @@ def sondages_page_textes(n_sondages, **_):
         r'<meta property="og:description" content="[^"]*">': f'<meta property="og:description" content="{description}">',
         r'<h1 id="titre-sondages">.*?</h1>': (f'<h1 id="titre-sondages">Les {n_sondages}\u00a0sondages '
                                               f'de la présidentielle 2027, un par un</h1>'),
+        r'<p id="intro-sondages"[^>]*>.*?</p>': (
+            f'<p id="intro-sondages" style="font-size:14.5px;color:var(--gris);margin:0 0 18px;">Tous les sondages des présidentielles 2027, institut par '
+            f'institut\u00a0: {n_sondages}\u00a0sondages publiés par {n_instituts}\u00a0instituts, le plus récent '
+            f'terminé le {time_tag(last_date, date_lettres(last_date))}.</p>'),
     }
 
 

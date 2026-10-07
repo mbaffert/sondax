@@ -237,15 +237,23 @@ def portrait(cid, nom, couleur, photos):
     return f'<div class="ds-ph">{img}</div>'
 
 
-def generate_bloc_dernier_sondage(sondages, candidats, series_data):
-    """Génère le bloc compact « Dernier sondage » affiché en haut de page."""
+def sondage_affiche(sondages, candidats):
+    """(sondage, hypothèse principale) que montre le bloc « Dernier sondage »,
+    ou None. Source unique : le <title> de l'accueil (build_dates.py) s'en sert
+    pour ne jamais diverger du bloc."""
     latest = select_latest_sondage(sondages)
     if not latest:
-        return ""
-
+        return None
     hyp = select_hypothesis(latest, candidats)
-    if not hyp:
+    return (latest, hyp) if hyp else None
+
+
+def generate_bloc_dernier_sondage(sondages, candidats, series_data):
+    """Génère le bloc compact « Dernier sondage » affiché en haut de page."""
+    choix = sondage_affiche(sondages, candidats)
+    if not choix:
         return ""
+    latest, hyp = choix
 
     scores_raw = hyp.get("scores", {})
     # Tri décroissant, sans "autre"

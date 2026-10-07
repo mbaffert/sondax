@@ -119,10 +119,9 @@ def inject_accueil(html_content, textes):
 
 
 TITRE_ACCUEIL_MAX = 65
-DESCRIPTION_MAX = 160
-DESCRIPTION_ACCUEIL = ("Moyenne des sondages présidentielle 2027, dernier sondage {dernier}, "
-                       "duels de second tour et cotes des marchés de prédiction. "
-                       "Mise à jour quotidienne.")
+DESCRIPTION_ACCUEIL = ("Tous les sondages de la présidentielle 2027 : premier tour, second tour "
+                       "et cotes des marchés de prédiction. Mise à jour quotidienne et détail "
+                       "du dernier sondage paru.")
 
 
 def dates_courtes(iso):
@@ -158,7 +157,7 @@ def accueil_textes(sondages, candidats, referentiel):
 
     titre = premier_qui_tient("Sondages présidentielle 2027 : dernier sondage {dernier}",
                               TITRE_ACCUEIL_MAX - len(" — Sondax"))
-    description = premier_qui_tient(DESCRIPTION_ACCUEIL, DESCRIPTION_MAX)
+    description = DESCRIPTION_ACCUEIL
     titre, description = html_mod.escape(titre), html_mod.escape(description)
     return {
         r'<title>.*?</title>': f'<title>{titre} — Sondax</title>',

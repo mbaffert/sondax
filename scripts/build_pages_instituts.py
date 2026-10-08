@@ -30,6 +30,7 @@ sys.path.insert(0, str(SCRIPTS))
 from site_template import render_page
 from instituts import charger_referentiel, slug_institut, logo_disponible, est_notice
 from balise_time import time_tag, time_periode
+from sondages_io import charger as charger_sondages
 
 BASE = "https://sondax.fr"
 SEUIL_GRAPHIQUE = 5   # sondages de 1er tour, en deçà : pas de graphique
@@ -50,7 +51,7 @@ def charger(nom):
 
 
 referentiel = charger_referentiel()
-sondages = charger("sondages.json")
+sondages = charger_sondages(DATA / "sondages.json")
 candidats = charger("candidats.json")
 bios = json.loads((SCRIPTS / "bios.json").read_text(encoding="utf-8"))
 

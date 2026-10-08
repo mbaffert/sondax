@@ -2,6 +2,11 @@
 
 Récupère le wikitexte via l'API MediaWiki, conserve un snapshot horodaté,
 parse les tableaux et résout les noms via alias_wikipedia de candidats.json.
+
+data/sondages.json est la référence : le résultat Wikipédia (et les sondages
+manuels) y est FUSIONNÉ par `id`, jamais substitué. Un sondage absent de
+Wikipédia est conservé ; seul le champ `retire` (SPEC §3.2) l'exclut des
+calculs et des pages.
 """
 
 import re, json, unicodedata, datetime, pathlib, sys, urllib.request
@@ -293,15 +298,226 @@ def extract_sondages(raw):
     return res
 
 
-def main():
+# ---------------------------------------------------------------------------
+# Fusion avec data/sondages.json (la référence)
+# ---------------------------------------------------------------------------
+
+TOLERANCE_JOURS = 2   # même sondage si la fin de terrain bouge de ±2 jours
+CHAMPS_RETRAIT = ('retire', 'retire_motif', 'retire_le')
+
+
+def _hyp_comparable(h):
+    """Hypothèse sans les champs calculés ou saisis hors Wikipédia."""
+    return {k: v for k, v in h.items() if k != 'principale'}
+
+
+def _valeurs_hypotheses(s):
+    """Signature des valeurs d'hypothèses d'un sondage, indépendante de l'ordre."""
+    return sorted(json.dumps({'tour': h['tour'], 'scores': h['scores'],
+                              'vote_blanc': h.get('vote_blanc')}, sort_keys=True)
+                  for h in s['hypotheses'])
+
+
+def _ecart_jours(a, b):
+    return abs((datetime.date.fromisoformat(a) - datetime.date.fromisoformat(b)).days)
+
+
+def meme_sondage(existant, entrant):
+    """Même institut, fin de terrain à ±TOLERANCE_JOURS, mêmes valeurs d'hypothèses."""
+    return (existant['institut'] == entrant['institut']
+            and _ecart_jours(existant['terrain_fin'], entrant['terrain_fin']) <= TOLERANCE_JOURS
+            and _valeurs_hypotheses(existant) == _valeurs_hypotheses(entrant))
+
+
+def _champs_sources(entrant):
+    return [k for k in entrant if k not in ('id', 'revid') + CHAMPS_RETRAIT]
+
+
+def _apparier_hypotheses(anciennes, nouvelles):
+    """Apparie les hypothèses par (tour, candidats), puis, parmi les restes, par
+    tour seulement (une correction de colonne sur Wikipédia reste une correction,
+    pas une hypothèse en plus). Retourne (paires [(i_ancienne, nouvelle)],
+    anciennes sans équivalent, nouvelles sans équivalent)."""
+    cle = lambda h: (h['tour'], tuple(sorted(h['scores'])))
+    restantes = list(nouvelles)
+    paires, orphelines = [], []
+    for i, a in enumerate(anciennes):
+        j = next((j for j, n in enumerate(restantes) if cle(n) == cle(a)), None)
+        if j is None:
+            orphelines.append(i)
+        else:
+            paires.append((i, restantes.pop(j)))
+    encore = []
+    for i in orphelines:
+        a = anciennes[i]
+        j = next((j for j, n in enumerate(restantes) if n['tour'] == a['tour']), None)
+        if j is None:
+            encore.append(i)
+        else:
+            paires.append((i, restantes.pop(j)))
+    return paires, encore, restantes
+
+
+def fusionner_hypotheses(anciennes, nouvelles):
+    """Hypothèses fusionnées : celles de Wikipédia mettent à jour leur
+    équivalente (même place dans la liste), les nouvelles sont ajoutées à la fin
+    et celles que Wikipédia ne renvoie plus sont CONSERVÉES (page tronquée,
+    tableau en cours d'édition). Retourne (liste, lignes de journal)."""
+    paires, absentes, ajoutees = _apparier_hypotheses(anciennes, nouvelles)
+    fusion, lignes = list(anciennes), []
+    for i, n in sorted(paires, key=lambda p: p[0]):
+        a = anciennes[i]
+        n = dict(n)
+        if 'principale' in a and 'principale' not in n:
+            n['principale'] = a['principale']
+        fusion[i] = n
+        for c in sorted(set(a['scores']) | set(n['scores'])):
+            va, vn = a['scores'].get(c), n['scores'].get(c)
+            if va != vn:
+                lignes.append(f"hyp.{i+1} T{a['tour']} {c} : "
+                              f"{'—' if va is None else va} → {'—' if vn is None else vn}")
+        if a.get('vote_blanc') != n.get('vote_blanc'):
+            lignes.append(f"hyp.{i+1} T{a['tour']} vote_blanc : "
+                          f"{a.get('vote_blanc')} → {n.get('vote_blanc')}")
+        if a.get('echantillon') != n.get('echantillon'):
+            lignes.append(f"hyp.{i+1} T{a['tour']} echantillon : "
+                          f"{a.get('echantillon')} → {n.get('echantillon')}")
+    for i in absentes:
+        lignes.append(f"hyp.{i+1} T{anciennes[i]['tour']} absente de Wikipédia, conservée "
+                      f"({', '.join(sorted(anciennes[i]['scores']))})")
+    for n in ajoutees:
+        fusion.append(n)
+        lignes.append(f"hyp.{len(fusion)} T{n['tour']} ajoutée "
+                      f"({', '.join(f'{c} {v}' for c, v in sorted(n['scores'].items()))})")
+    return fusion, lignes
+
+
+def fusionner_sondage(existant, entrant):
+    """Valeurs de `entrant` appliquées sur `existant`. Retourne (champs à écrire,
+    lignes de journal) ; rien à écrire = aucun changement. Ignore revid,
+    `principale` et tout champ que l'entrant ne fournit pas."""
+    champs, lignes = {}, []
+    for champ in _champs_sources(entrant):
+        if champ == 'hypotheses':
+            fusion, diff = fusionner_hypotheses(existant.get('hypotheses', []), entrant['hypotheses'])
+            if [_hyp_comparable(h) for h in fusion] != [_hyp_comparable(h) for h in existant.get('hypotheses', [])]:
+                champs[champ] = fusion
+            lignes += diff
+        elif existant.get(champ) != entrant[champ]:
+            champs[champ] = entrant[champ]
+            lignes.append(f"{champ} : {existant.get(champ)!r} → {entrant[champ]!r}")
+    return champs, lignes
+
+
+def fusionner(existants, entrants, dedoublonner=True):
+    """Fusionne `entrants` dans `existants` par `id`, sans jamais rien supprimer.
+
+    - id nouveau : ajouté (sauf doublon à date décalée, voir `meme_sondage`) ;
+    - id connu, valeurs changées : mis à jour, revid compris ;
+    - id absent des entrants : conservé tel quel.
+    Les champs de retrait ne sont jamais touchés. Retourne (résultat, rapport)."""
+    resultat = [dict(s) for s in existants]
+    par_id = {s['id']: s for s in resultat}
+    ids_entrants = {e['id'] for e in entrants}
+    rapport = {'ajoutes': [], 'modifies': [], 'conserves': [], 'deplaces': [], 'retires_touches': [],
+               'absents': []}
+    vus = set()
+
+    def appliquer(cible, entrant):
+        champs, diff = fusionner_sondage(cible, entrant)
+        if champs:
+            cible.update(champs)
+            if entrant.get('revid') is not None:
+                cible['revid'] = entrant['revid']
+            if cible.get('retire'):
+                rapport['retires_touches'].append(cible['id'])
+        if champs:
+            rapport['modifies'].append((cible['id'], diff))
+        elif diff:      # seulement des hypothèses conservées : rien n'est écrit
+            rapport['conserves'].append((cible['id'], diff))
+        return diff
+
+    for e in sorted(entrants, key=lambda e: e['id']):
+        if e['id'] in par_id:
+            vus.add(e['id'])
+            appliquer(par_id[e['id']], e)
+            continue
+        # Id inconnu : le même sondage, avec une date de terrain décalée ?
+        candidats = []
+        if dedoublonner:
+            candidats = sorted(
+                (s for s in resultat if s['id'] not in ids_entrants
+                 and s['id'] not in vus and meme_sondage(s, e)),
+                key=lambda s: (_ecart_jours(s['terrain_fin'], e['terrain_fin']), s['id']))
+        if candidats:
+            cible = candidats[0]
+            vus.add(cible['id'])
+            diff = appliquer(cible, e)
+            rapport['deplaces'].append((cible['id'], e['id'], diff))
+        else:
+            nouveau = dict(e)
+            resultat.append(nouveau)
+            par_id[nouveau['id']] = nouveau
+            vus.add(nouveau['id'])
+            rapport['ajoutes'].append(nouveau['id'])
+
+    rapport['absents'] = [s['id'] for s in resultat if s['id'] not in vus]
+    resultat.sort(key=lambda s: s['terrain_fin'], reverse=True)
+    return resultat, rapport
+
+
+def afficher_rapport(rapport, existants_par_id):
+    """Journal des écarts : ajouts, diffs, sondages conservés mais absents de Wikipédia."""
+    print(f"\n== Journal des écarts ==")
+    print(f"{len(rapport['ajoutes'])} ajouté(s), {len(rapport['modifies'])} mis à jour, "
+          f"{len(rapport['absents'])} absent(s) de Wikipédia (conservés)")
+    for id_ in rapport['ajoutes']:
+        print(f"  + ajouté : {id_}")
+    deplaces = {a: n for a, n, _ in rapport['deplaces']}
+    for id_, diff in rapport['modifies']:
+        suffixe = f" (id Wikipédia {deplaces[id_]}, date décalée)" if id_ in deplaces else ""
+        print(f"  ~ modifié : {id_}{suffixe}")
+        for l in diff:
+            print(f"      {l}")
+    for id_, nouvel_id, diff in rapport['deplaces']:
+        if not diff:
+            print(f"  = {id_} : retrouvé sous l'id Wikipédia {nouvel_id}, rien à changer")
+    for id_, diff in rapport['conserves']:
+        print(f"  = {id_} : Wikipédia ne renvoie pas tout, rien n'est supprimé")
+        for l in diff:
+            print(f"      {l}")
+    for id_ in rapport['retires_touches']:
+        print(f"  ! {id_} est retiré mais Wikipédia l'a modifié : il reste retiré")
+    if rapport['absents']:
+        print("  Présents chez nous, absents de Wikipédia (conservés tels quels) :")
+        for id_ in rapport['absents']:
+            s = existants_par_id.get(id_, {})
+            note = ", ".join(n for n in (s.get('source') == 'manuel' and 'manuel',
+                                         s.get('retire') and 'retiré') if n)
+            print(f"    - {id_}" + (f" [{note}]" if note else ""))
+
+
+def main(argv=None):
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--snapshot', help="wikitexte local (<revid>.wikitext) au lieu de l'API")
+    ap.add_argument('--sortie', help="fichier de sortie (défaut : data/sondages.json)")
+    args = ap.parse_args(argv)
+    sortie = pathlib.Path(args.sortie) if args.sortie else OUTPUT_PATH
+
     candidats = json.loads(CANDIDATS_PATH.read_text())
     alias_map = build_alias_map(candidats)
 
     # Récupération du wikitexte
-    print("Appel à l'API MediaWiki...")
-    raw, revid = fetch_wikitext()
-    print(f"revid : {revid}, {len(raw)} caractères")
-    save_snapshot(raw, revid)
+    if args.snapshot:
+        chemin = pathlib.Path(args.snapshot)
+        raw, revid = chemin.read_text(encoding="utf-8"), int(chemin.stem)
+        print(f"Snapshot local : {chemin.name}, {len(raw)} caractères")
+    else:
+        print("Appel à l'API MediaWiki...")
+        raw, revid = fetch_wikitext()
+        print(f"revid : {revid}, {len(raw)} caractères")
+        save_snapshot(raw, revid)
 
     # Parsing
     res = extract_sondages(raw)
@@ -331,7 +547,8 @@ def main():
         print(f"ERREUR : candidats inconnus dans le référentiel : {sorted(unknown)}", file=sys.stderr)
         sys.exit(1)
 
-    # Sondages manuels
+    # Sondages manuels : contrôles avant fusion
+    manuels = []
     wiki_ids = {s['id'] for s in res}
     if MANUELS_PATH.exists():
         manuels = json.loads(MANUELS_PATH.read_text())
@@ -349,16 +566,28 @@ def main():
                         print(f"ERREUR : candidat inconnu '{cid}' dans le sondage "
                               f"manuel '{s['id']}'", file=sys.stderr)
                         sys.exit(1)
-            res.append(s)
-        print(f"{len(manuels)} sondage(s) manuel(s) ajouté(s)")
-    res = sorted(res, key=lambda s: s['terrain_fin'], reverse=True)
+
+    # Fusion dans la référence existante : on ajoute et on met à jour, on ne supprime jamais
+    existants = json.loads(OUTPUT_PATH.read_text()) if OUTPUT_PATH.exists() else []
+    existants_par_id = {s['id']: s for s in existants}
+    final, rapport = fusionner(existants, res)
+    final, _ = fusionner(final, manuels, dedoublonner=False)
+    if len(final) < len(existants):   # impossible sans bug de fusion
+        print(f"ERREUR : la fusion a perdu des sondages ({len(final)} < {len(existants)}), "
+              f"aucune écriture", file=sys.stderr)
+        sys.exit(1)
+    afficher_rapport(rapport, existants_par_id)
+    print(f"{len(manuels)} sondage(s) manuel(s) fusionné(s)")
+    res = final
 
     # Écriture
-    OUTPUT_PATH.write_text(json.dumps(res, ensure_ascii=False, indent=1) + "\n")
+    sortie.write_text(json.dumps(res, ensure_ascii=False, indent=1) + "\n")
 
     # Rapport
-    nh = sum(len(s['hypotheses']) for s in res)
-    print(f"\n{len(res)} sondages, {nh} hypothèses")
+    actifs = [s for s in res if not s.get('retire')]
+    nh = sum(len(s['hypotheses']) for s in actifs)
+    print(f"\n{len(res)} sondages dans le fichier ({len(res) - len(actifs)} retiré(s)), "
+          f"{len(actifs)} actifs, {nh} hypothèses")
     print(f"période : {res[-1]['terrain_fin']} → {res[0]['terrain_fin']}")
     bad = 0
     for s in res:

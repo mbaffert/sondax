@@ -24,6 +24,7 @@ from collections import Counter
 from series import calculer_series
 from principale import calculer as calculer_principale
 from series_historique import TOUR1_2027, nom_court, PARTI_COUL
+from sondages_io import charger as charger_sondages
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 HISTORIQUE_PATH = ROOT / "data" / "historique.json"
@@ -231,7 +232,7 @@ def election_2027():
         candidats[cid] = {"nom": nom, "type": c.get("type", "personne"), "partis": [c["parti"]]}
         derived[cid] = {"couleur": c.get("couleur")}
     election = {"tour1": TOUR1_2027.isoformat(), "url": "", "revid": None, "candidats": candidats,
-                "sondages": json.loads(SONDAGES_PATH.read_text())}
+                "sondages": charger_sondages(SONDAGES_PATH)}
     return election, {"candidats": derived}, declares
 
 

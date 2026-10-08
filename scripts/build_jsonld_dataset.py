@@ -2,6 +2,7 @@
 """Injecte le balisage JSON-LD schema.org/Dataset : sondages sur donnees.html, cotes sur index.html."""
 
 import json, pathlib, datetime, re
+from sondages_io import charger as charger_sondages
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
@@ -10,7 +11,7 @@ MARKER = "<!-- BUILD:jsonld-dataset -->"
 
 
 def compute_dataset():
-    sondages = json.loads((ROOT / "data" / "sondages.json").read_text())
+    sondages = charger_sondages(ROOT / "data" / "sondages.json")
     dates = [s["terrain_fin"] for s in sondages]
     first = min(dates)
     last = max(dates)

@@ -27,6 +27,7 @@ BASE_URL = "https://sondax.fr"
 sys.path.insert(0, str(ROOT / "scripts"))
 from instituts import charger_referentiel, lien_institut
 from balise_time import time_tag
+from sondages_io import charger as charger_sondages
 
 # ---------------------------------------------------------------------------
 # Données
@@ -57,7 +58,7 @@ def page_duel(cid_a, cid_b, out_dir=DEFAULT_OUT):
 
 
 def load_duels():
-    sondages = json.loads(SONDAGES_PATH.read_text())
+    sondages = charger_sondages(SONDAGES_PATH)
     candidats = json.loads(CANDIDATS_PATH.read_text())
 
     duels = {}  # "a-b" → [{"institut", "terrain_fin", "terrain_debut", "echantillon", "url_source", "scores"}]

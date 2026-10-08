@@ -26,6 +26,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from balise_time import time_tag  # noqa: E402
 from courbes_modele import MOIS_COURTS  # noqa: E402
 from partage_modele import police  # noqa: E402
+from sondages_io import charger as charger_sondages
 
 SORTIE = ROOT / "site" / "partage"
 SERIES_PATH = ROOT / "data" / "derived" / "series-t1.json"
@@ -60,7 +61,7 @@ def faits():
     from build_header import candidate_full_name
 
     series_data = json.loads(SERIES_PATH.read_text(encoding="utf-8"))
-    sondages = json.loads(SONDAGES_PATH.read_text(encoding="utf-8"))
+    sondages = charger_sondages(SONDAGES_PATH)
     candidats = json.loads(CANDIDATS_PATH.read_text(encoding="utf-8"))
 
     derniers = sorted(derniers_scores(series_data).items(), key=lambda kv: -kv[1])

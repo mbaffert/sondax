@@ -16,12 +16,13 @@ SITE = ROOT / "site"
 sys.path.insert(0, str(ROOT / "scripts"))
 from site_template import render_page
 from balise_time import time_tag
+from sondages_io import charger as charger_sondages
 
 # ---------- chargement ----------
 
 candidats = json.loads((ROOT / "data" / "candidats.json").read_text(encoding="utf-8"))
 series_data = json.loads((ROOT / "data" / "derived" / "series-t1.json").read_text(encoding="utf-8"))
-sondages = json.loads((ROOT / "data" / "sondages.json").read_text(encoding="utf-8"))
+sondages = charger_sondages(ROOT / "data" / "sondages.json")
 bios = json.loads((ROOT / "scripts" / "bios.json").read_text(encoding="utf-8"))
 
 # ---------- helpers ----------

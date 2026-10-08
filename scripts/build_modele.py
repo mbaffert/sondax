@@ -21,6 +21,7 @@ from site_template import render_page
 from balise_time import time_tag
 import courbes_modele as C
 import textes_modele as T
+from sondages_io import charger as charger_sondages
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
@@ -910,7 +911,7 @@ def injecter_duels(modele, candidats, historique):
 
 def charger_index_sondages():
     try:
-        return {s["id"]: s for s in json.loads(SONDAGES_PATH.read_text())}
+        return {s["id"]: s for s in charger_sondages(SONDAGES_PATH)}
     except FileNotFoundError:
         return {}
 

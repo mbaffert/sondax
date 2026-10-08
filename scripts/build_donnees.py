@@ -15,6 +15,7 @@ import csv, json, pathlib, datetime, html
 
 from site_template import render_page
 from balise_time import time_tag
+from sondages_io import charger as charger_sondages
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -177,7 +178,7 @@ ou corrigez directement Wikipédia&nbsp;: la correction apparaît ici au passage
 
 
 def main():
-    sondages = json.loads((DATA / "sondages.json").read_text(encoding="utf-8"))
+    sondages = charger_sondages(DATA / "sondages.json")
     candidats = json.loads((DATA / "candidats.json").read_text(encoding="utf-8"))
     rows = list(lignes(sondages, candidats))
     out = ecrire_csv(rows)

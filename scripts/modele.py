@@ -14,6 +14,7 @@ Historique : data/modele_history.json, versionné (§14.13). Options :
 import collections, datetime, json, pathlib, sys
 
 import numpy as np
+from sondages_io import charger as charger_sondages
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
@@ -505,7 +506,7 @@ def charger():
     obtiennent ainsi les mêmes chiffres."""
     import principale
     from series import calculer_series
-    sondages = json.loads(SONDAGES_PATH.read_text())
+    sondages = charger_sondages(SONDAGES_PATH)
     candidats = json.loads(CANDIDATS_PATH.read_text())
     principale.calculer(sondages, candidats)
     series = calculer_series(sondages, candidats)

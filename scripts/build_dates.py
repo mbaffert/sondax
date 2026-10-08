@@ -26,6 +26,7 @@ from instituts import charger_referentiel, compter_instituts, slug_institut
 from balise_time import time_tag
 from build_header import load_all_sondages
 from build_index_premier_tour import sondage_affiche, load_json, CANDIDATS_PATH, MOIS_ABBREV
+from sondages_io import charger as charger_sondages
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
@@ -42,7 +43,7 @@ def date_lettres(iso):
 
 
 def compute_dates():
-    sondages = json.loads((ROOT / "data" / "sondages.json").read_text())
+    sondages = charger_sondages(ROOT / "data" / "sondages.json")
 
     # Dernier sondage
     last_sondage = max(sondages, key=lambda s: s["terrain_fin"])

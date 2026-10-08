@@ -25,6 +25,7 @@ sys.path.insert(0, str(SCRIPTS))
 import generer
 from balise_time import time_tag
 from instituts import charger_referentiel, lien_institut, est_notice
+from sondages_io import charger as charger_sondages
 
 # ---------- chargement ----------
 
@@ -68,7 +69,7 @@ date_fin = series_data["date_fin"]
 source_id = croisements_raw.get("_source")
 if not source_id:
     sys.exit("croisements.json : clé \"_source\" absente (identifiant du sondage des croisements)")
-sondages = json.loads((ROOT / "data" / "sondages.json").read_text())
+sondages = charger_sondages(ROOT / "data" / "sondages.json")
 sondage = next((s for s in sondages if s["id"] == source_id), None)
 if sondage is None:
     sys.exit(f"croisements.json : sondage source « {source_id} » introuvable dans data/sondages.json")
@@ -146,7 +147,7 @@ def rangs_et_ecart(cid):
 
     # Écart : depuis le dernier sondage réel (hypothèse principale)
     ecart_devant = None
-    sondages_raw = json.loads((ROOT / "data" / "sondages.json").read_text())
+    sondages_raw = charger_sondages(ROOT / "data" / "sondages.json")
     # Parcourir les sondages du plus récent au plus ancien
     sondages_raw.sort(key=lambda s: s["terrain_fin"], reverse=True)
     for s in sondages_raw:
@@ -179,7 +180,7 @@ def rangs_et_ecart(cid):
 # ---------- derniers sondages ----------
 
 N_DERNIERS = 5
-sondages_t1 = json.loads((ROOT / "data" / "sondages.json").read_text())
+sondages_t1 = charger_sondages(ROOT / "data" / "sondages.json")
 referentiel = charger_referentiel()
 
 

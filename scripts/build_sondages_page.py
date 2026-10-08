@@ -15,6 +15,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from instituts import charger_referentiel, lien_institut
 from balise_time import time_tag
 from build_header import select_hypothesis, select_latest_sondage
+from sondages_io import charger as charger_sondages
 
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
@@ -162,7 +163,7 @@ def inject(content, begin, end, html_bloc):
 
 
 def main():
-    sondages = json.loads(SONDAGES_PATH.read_text(encoding="utf-8"))
+    sondages = charger_sondages(SONDAGES_PATH)
     candidats = json.loads(CANDIDATS_PATH.read_text(encoding="utf-8"))
     referentiel = charger_referentiel()
 

@@ -15,6 +15,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import textes_modele as T  # noqa: E402
+from sondages_io import charger as charger_sondages
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MODELE_PATH = ROOT / "data" / "derived" / "modele.json"
@@ -138,7 +139,7 @@ def main():
         return
     modele = json.loads(MODELE_PATH.read_text())
     candidats = json.loads(CANDIDATS_PATH.read_text())
-    index = {s["id"]: s for s in json.loads(SONDAGES_PATH.read_text())}
+    index = {s["id"]: s for s in charger_sondages(SONDAGES_PATH)}
     jour = jour_paris(modele)
     gabarit, titre, sous = choisir(modele, candidats, index)
 

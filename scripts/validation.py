@@ -4,7 +4,10 @@ Trois contrôles, tous bloquants :
 1. Somme des scores par hypothèse (vote blanc compris, s'il est proposé) dans
    [95, 105] (T1) ou [99, 101] (T2).
 2. Tous les candidats existent dans candidats.json.
-3. Le nombre total de sondages n'a pas diminué par rapport au run précédent.
+3. Aucun sondage n'a disparu du fichier par rapport au run précédent : le
+   nombre total (retirés compris) n'a pas diminué et tous les `id` précédents
+   sont encore là. La collecte fusionne et ne supprime jamais, donc une baisse
+   signale un bug de fusion ; un retrait volontaire passe par le champ `retire`.
 
 Produit data/derived/revue.html listant les sondages ajoutés ou modifiés, ainsi
 que les signalements non bloquants (commanditaires non reconnus, instituts absents
@@ -12,6 +15,7 @@ de data/instituts.json).
 """
 
 import json, re, sys, pathlib, subprocess, datetime, urllib.request
+from sondages_io import actifs
 
 
 def fmt_date(iso):
@@ -70,12 +74,17 @@ def validate(sondages, candidats):
     if unknown:
         errors.append(f"[candidats] inconnus du référentiel : {sorted(unknown)}")
 
-    # Contrôle 3 : pas de régression du nombre de sondages
+    # Contrôle 3 : aucun sondage ne disparaît (la collecte fusionne, ne supprime pas)
     previous = load_previous_sondages()
     if previous and len(sondages) < len(previous):
         errors.append(
-            f"[régression] {len(sondages)} sondages contre {len(previous)} au run précédent"
+            f"[régression] {len(sondages)} sondages contre {len(previous)} au run précédent : "
+            f"la collecte ne doit jamais supprimer (bug de fusion ?), "
+            f"un retrait volontaire passe par le champ `retire`"
         )
+    disparus = sorted({s["id"] for s in previous} - {s["id"] for s in sondages})
+    if disparus:
+        errors.append(f"[régression] sondages disparus du fichier : {disparus}")
 
     return len(errors) == 0, errors
 
@@ -358,6 +367,8 @@ def valider_modele():
     sys.path.insert(0, str(ROOT / "scripts"))
     import test_modele
     test_modele.main()   # sortie 1 au premier échec
+    import test_fusion
+    test_fusion.main()
 
 
 def main():
@@ -395,13 +406,18 @@ def main():
             print(f"    {w}")
 
     # Contrôle non bloquant : commanditaires et référentiel des instituts
-    alertes_inst = alertes_instituts(sondages)
+    alertes_inst = alertes_instituts(actifs(sondages))
     if alertes_inst:
         print(f"  {len(alertes_inst)} signalement(s) instituts/commanditaires :")
         for s, motif in alertes_inst:
             print(f"    {s['id']} : {re.sub('<[^>]+>', '', motif)}")
 
     generate_revue(sondages, candidats, added, modified, poly_warnings, alertes_inst)
+    retires = [s for s in sondages if s.get("retire")]
+    if retires:
+        print(f"  {len(retires)} sondage(s) retiré(s) (exclus des calculs et des pages) :")
+        for s in retires:
+            print(f"    {s['id']} : {s.get('retire_motif', '—')} ({s.get('retire_le', '—')})")
 
     # Résumé pour le workflow (GITHUB_OUTPUT + fichier mail)
     import os

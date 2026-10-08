@@ -38,6 +38,7 @@ BASE = "https://sondax.fr"
 sys.path.insert(0, str(ROOT / "scripts"))
 from instituts import charger_referentiel, slug_institut
 from pages_second_tour import find_pair_from_slug
+from sondages_io import charger as charger_sondages
 
 RE_REFRESH = re.compile(r'<meta\s[^>]*http-equiv=["\']refresh["\']', re.I)
 RE_NOINDEX = re.compile(r'<meta\s[^>]*name=["\']robots["\'][^>]*content=["\'][^"\']*noindex', re.I)
@@ -102,7 +103,7 @@ def date_sondage(s):
 
 @lru_cache(maxsize=None)
 def donnees():
-    sondages = json.loads((DATA / "sondages.json").read_text(encoding="utf-8"))
+    sondages = charger_sondages(DATA / "sondages.json")
     candidats = json.loads((DATA / "candidats.json").read_text(encoding="utf-8"))
     polymarket = json.loads((DATA / "polymarket.json").read_text(encoding="utf-8"))
     chemin_modele = DATA / "derived" / "modele.json"

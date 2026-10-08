@@ -254,6 +254,24 @@ Règles :
   faire échouer le run.
   Une collision d'identifiant (même institut, même date de fin) est une erreur
   bloquante, jamais un écrasement silencieux.
+- **`sondages.json` est la référence ; Wikipédia n'est qu'une source d'entrée.**
+  La collecte charge le fichier existant et y fusionne le résultat par `id` :
+  `id` nouveau → ajouté ; `id` connu → mis à jour si les valeurs ont changé (le
+  `revid` n'est alors mis à jour qu'avec elles) ; `id` absent de Wikipédia →
+  conservé tel quel, **jamais supprimé automatiquement**. Même logique pour les
+  hypothèses d'un sondage : une hypothèse que Wikipédia ne renvoie plus est
+  conservée. Un `id` nouveau qui désigne en fait un sondage déjà connu dont la
+  date de terrain a bougé (même institut, `terrain_fin` à ±2 jours, mêmes
+  valeurs d'hypothèses) met à jour l'entrée existante, qui garde son `id`.
+  Chaque run écrit dans son log les sondages absents de Wikipédia et, pour
+  chaque sondage modifié, un diff « ancienne valeur → nouvelle valeur ».
+- **Retrait volontaire.** Seule voie de suppression : `retire: true`, avec
+  `retire_motif` (texte) et `retire_le` (date ISO), posés à la main dans
+  `sondages.json`. L'entrée reste dans le fichier (et la collecte ne touche
+  jamais à ces trois champs) mais est exclue de tous les calculs et de toutes
+  les pages : les scripts lisent le fichier via `scripts/sondages_io.py`
+  (`charger`), jamais directement. La validation (§8) bloque si un `id`
+  précédent disparaît du fichier ou si le total baisse.
 - Un candidat **absent d'une hypothèse est absent de `scores`**. Ne jamais écrire `0`.
 - `echantillon` au niveau de l'hypothèse est la base de calcul réelle de la marge
   d'erreur ; il vaut `null` s'il n'est pas publié, et on retombe alors sur l'échantillon

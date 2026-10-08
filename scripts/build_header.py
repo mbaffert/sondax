@@ -18,6 +18,7 @@ import re
 import sys
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from sondages_io import charger as charger_sondages
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -171,7 +172,7 @@ def select_latest_sondage(sondages):
 
 def load_all_sondages():
     """Charge sondages.json (contient déjà les manuels, fusionnés par le collecteur)."""
-    return load_json(DATA / "sondages.json")
+    return charger_sondages(DATA / "sondages.json")
 
 
 # ---------------------------------------------------------------------------

@@ -7,6 +7,7 @@ data/derived/series-t1.json.
 """
 
 import json, pathlib, datetime, copy
+from sondages_io import charger as charger_sondages
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
@@ -252,7 +253,7 @@ def calculer_series(sondages_raw, candidats=None, jusqu_au=None):
 
 
 def main():
-    sondages_raw = json.loads(SONDAGES_PATH.read_text())
+    sondages_raw = charger_sondages(SONDAGES_PATH)
     candidats = json.loads(CANDIDATS_PATH.read_text())
 
     output = calculer_series(sondages_raw, candidats)

@@ -29,6 +29,7 @@ from site_template import render_page
 from instituts import charger_referentiel, lien_institut
 from balise_time import time_tag
 from pages_second_tour import load_duels, duels_frais
+from sondages_io import charger as charger_sondages
 
 referentiel = charger_referentiel()
 
@@ -39,7 +40,7 @@ MOIS = [
 
 # ---------- chargement ----------
 
-sondages = json.loads((ROOT / "data" / "sondages.json").read_text(encoding="utf-8"))
+sondages = charger_sondages(ROOT / "data" / "sondages.json")
 candidats = json.loads((ROOT / "data" / "candidats.json").read_text(encoding="utf-8"))
 bios = json.loads((SCRIPTS / "bios.json").read_text(encoding="utf-8"))
 

@@ -18,6 +18,7 @@ import json
 import pathlib
 import re
 import unicodedata
+from sondages_io import charger as charger_sondages
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
@@ -142,7 +143,7 @@ def calculer_commanditaires(sondages, referentiel=None, table=None):
 
 
 def main():
-    sondages = json.loads((DATA / "sondages.json").read_text(encoding="utf-8"))
+    sondages = charger_sondages(DATA / "sondages.json")
     resultat = calculer_commanditaires(sondages)
     out = DATA / "derived" / "commanditaires.json"
     out.parent.mkdir(parents=True, exist_ok=True)

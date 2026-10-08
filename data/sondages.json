@@ -1974,7 +1974,7 @@
   "institut": "Elabe",
   "terrain_debut": "2026-08-26",
   "terrain_fin": "2026-08-28",
-  "echantillon": 1501.0,
+  "echantillon": 1503.0,
   "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10245-pres-iv-elabe-29-aout.pdf",
   "hypotheses": [
    {
@@ -2204,7 +2204,7 @@
     }
    }
   ],
-  "revid": 240133071
+  "revid": 240180750
  },
  {
   "id": "ifop-2026-08-25",
@@ -3173,7 +3173,7 @@
   "institut": "Ifop",
   "terrain_debut": "2026-07-07",
   "terrain_fin": "2026-07-08",
-  "echantillon": null,
+  "echantillon": 984.0,
   "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10222-pres-ifop-le-figaro-8-juillet.pdf",
   "hypotheses": [
    {
@@ -3269,7 +3269,7 @@
     }
    }
   ],
-  "revid": 240133071
+  "revid": 240180750
  },
  {
   "id": "harris-2026-07-08",

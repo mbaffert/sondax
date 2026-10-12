@@ -557,8 +557,8 @@ def generate_index_page(duels, candidats, out_dir):
 <html lang="fr">
 <head>
 {HEAD_COMMON.format(prefix=prefix)}
-<title>Second tour — Sondax</title>
-<meta name="description" content="Tous les duels de second tour testés pour la présidentielle 2027 : courbes, tableaux et sources.">
+<title>Sondages second tour présidentielle 2027 — Sondax</title>
+<meta name="description" content="Tous les duels de second tour testés par les sondages de la présidentielle 2027 : courbes, tableaux par institut et sources. Mis à jour chaque jour.">
 <link rel="canonical" href="{canonical}">
 <style>
 {CSS}
@@ -569,7 +569,7 @@ def generate_index_page(duels, candidats, out_dir):
 {header("Second tour 2027", depth=1)}
 
 <main>
-  <h1>Sondages de second tour</h1>
+  <h1>Sondages de second tour de la présidentielle 2027</h1>
   <p class="subtitle">Tous les duels testés pour la présidentielle 2027.</p>
 
 {cards_html}

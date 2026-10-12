@@ -168,9 +168,9 @@ ou corrigez directement Wikipédia&nbsp;: la correction apparaît ici au passage
 </style>"""
     return render_page(
         title="Données des sondages de la présidentielle 2027 (CSV) — Sondax",
-        meta_description=(f"Téléchargez les {nb_sondages} sondages d’intentions de vote de la "
-                          "présidentielle 2027 en CSV : une ligne par candidat et par "
-                          "configuration testée, mise à jour quotidienne, licence CC BY-SA."),
+        meta_description=(f"Les {nb_sondages} sondages de la présidentielle 2027, d’après la liste de "
+                          "Wikipédia, en CSV : une ligne par candidat et par configuration "
+                          "testée, mise à jour quotidienne, licence CC BY-SA."),
         canonical=URL_PAGE,
         body_content=body,
         extra_head=style,

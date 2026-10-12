@@ -30,6 +30,148 @@
      "philippe": 44.0,
      "le-pen": 56.0
     }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "hollande",
+     "le-pen",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 19.0,
+     "roussel": 2.0,
+     "tondelier": 5.0,
+     "hollande": 7.0,
+     "attal": 12.0,
+     "retailleau": 10.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 37.0,
+     "zemmour": 5.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "hollande",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 18.0,
+     "roussel": 3.0,
+     "tondelier": 4.0,
+     "hollande": 7.0,
+     "philippe": 17.0,
+     "retailleau": 8.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 36.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 18.0,
+     "roussel": 2.0,
+     "tondelier": 3.0,
+     "glucksmann": 11.0,
+     "attal": 12.0,
+     "retailleau": 10.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 36.0,
+     "zemmour": 5.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 18.0,
+     "roussel": 2.0,
+     "tondelier": 3.0,
+     "glucksmann": 10.0,
+     "philippe": 17.0,
+     "retailleau": 7.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 36.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 18.0,
+     "roussel": 2.0,
+     "tondelier": 2.0,
+     "glucksmann": 10.0,
+     "attal": 5.0,
+     "philippe": 13.0,
+     "retailleau": 7.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 35.0,
+     "zemmour": 5.0
+    }
    }
   ],
   "revid": 240300215
@@ -900,18 +1042,17 @@
     ],
     "scores": {
      "arthaud": 0.5,
-     "melenchon": 16.0,
+     "melenchon": 17.0,
      "roussel": 2.0,
-     "tondelier": 2.5,
-     "glucksmann": 8.0,
-     "attal": 6.0,
-     "philippe": 13.0,
-     "retailleau": 6.0,
+     "tondelier": 3.0,
+     "glucksmann": 9.0,
+     "attal": 7.0,
+     "philippe": 14.0,
+     "retailleau": 6.5,
      "dupont-aignan": 2.0,
-     "le-pen": 34.0,
+     "le-pen": 35.0,
      "zemmour": 4.0
-    },
-    "vote_blanc": 6.0
+    }
    },
    {
     "tour": 1,
@@ -944,7 +1085,7 @@
     }
    }
   ],
-  "revid": 240133071
+  "revid": 240300215
  },
  {
   "id": "opinionway-2026-09-10",
@@ -2009,7 +2150,7 @@
   "institut": "Elabe",
   "terrain_debut": "2026-08-26",
   "terrain_fin": "2026-08-28",
-  "echantillon": 1503.0,
+  "echantillon": 1501.0,
   "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/aout/10245-pres-iv-elabe-29-aout.pdf",
   "hypotheses": [
    {
@@ -2239,7 +2380,7 @@
     }
    }
   ],
-  "revid": 240180750
+  "revid": 240300215
  },
  {
   "id": "ifop-2026-08-25",
@@ -3208,7 +3349,7 @@
   "institut": "Ifop",
   "terrain_debut": "2026-07-07",
   "terrain_fin": "2026-07-08",
-  "echantillon": 984.0,
+  "echantillon": null,
   "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10222-pres-ifop-le-figaro-8-juillet.pdf",
   "hypotheses": [
    {
@@ -3304,7 +3445,7 @@
     }
    }
   ],
-  "revid": 240180750
+  "revid": 240300215
  },
  {
   "id": "harris-2026-07-08",

@@ -289,8 +289,19 @@ def extract_sondages(raw):
         d = raw.find(titre)
         if d < 0: continue
         seg = raw[d:]
-        seg = seg[:seg.find('\n====', 10) if seg.find('\n====', 10) > 0 else len(seg)]
-        res += parse_table(seg, annee, tour)
+        # Fin de section : prochain titre de niveau 4 ou moins. Les sous-sections
+        # de niveau 5 (« ===== Octobre-décembre 2026 ====="), apparues sur
+        # Wikipédia le 11/10/2026, restent DANS la section : l'ancien test
+        # '\n====' coupait au premier '=====' et ne laissait aucune ligne.
+        fin = re.search(r'\n={2,4}[^=]', seg[10:])
+        seg = seg[:fin.start() + 10] if fin else seg
+        n_avant = len(res)
+        # Un tableau (donc un en-tête) par sous-section de niveau 5, sinon un seul.
+        morceaux = re.split(r'\n={5}[^=][^\n]*\n', seg)
+        for morceau in (morceaux[1:] if len(morceaux) > 1 else morceaux):
+            res += parse_table(morceau, annee, tour)
+        if len(res) == n_avant:
+            ANOMALIES.append(f"section {titre!r} trouvée mais aucune ligne parsée")
 
     for m in re.finditer(r'==== Hypothèse ([^=]+) ====\n(.*?)(?=\n====|\n== )', raw, re.S):
         for s in parse_table(m.group(2), 2026, 2):

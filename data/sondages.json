@@ -1,5 +1,40 @@
 [
  {
+  "id": "harris-2026-10-08",
+  "institut": "Harris",
+  "terrain_debut": "2026-10-05",
+  "terrain_fin": "2026-10-08",
+  "echantillon": 2004.0,
+  "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10305-pres-iv-toluna-harris-interactive-12-octobre.pdf",
+  "hypotheses": [
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "melenchon"
+    ],
+    "scores": {
+     "melenchon": 33.0,
+     "le-pen": 67.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "philippe"
+    ],
+    "scores": {
+     "philippe": 44.0,
+     "le-pen": 56.0
+    }
+   }
+  ],
+  "revid": 240300215
+ },
+ {
   "id": "ifop-2026-09-29",
   "institut": "Ifop",
   "terrain_debut": "2026-09-25",

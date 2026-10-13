@@ -318,6 +318,7 @@ def wrap_in_site_template(slug, fiche, raw_html):
 <meta name="twitter:card" content="summary_large_image">
 <script data-goatcounter="https://sondax.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="205c9a15-ea11-4c8f-a575-e932120d1306"></script>
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">

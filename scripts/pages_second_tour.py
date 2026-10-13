@@ -271,7 +271,8 @@ HEAD_COMMON = """\
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{prefix}assets/header.css?v=5">
 <script data-goatcounter="https://sondax.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>"""
+        async src="//gc.zgo.at/count.js"></script>
+<script defer src="https://cloud.umami.is/script.js" data-website-id="205c9a15-ea11-4c8f-a575-e932120d1306"></script>"""
 
 
 # ---------------------------------------------------------------------------

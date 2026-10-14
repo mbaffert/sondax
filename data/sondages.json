@@ -1,5 +1,134 @@
 [
  {
+  "id": "ifop-2026-10-14",
+  "institut": "Ifop",
+  "terrain_debut": "2026-10-12",
+  "terrain_fin": "2026-10-14",
+  "echantillon": 1525.0,
+  "url_source": "https://www.sudradio.fr/ifop/exclu-presidentielle-2027-glucksmann-grignote-le-pen-reste-intouchable",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "ruffin",
+     "tondelier",
+     "villepin",
+     "zemmour"
+    ],
+    "scores": {
+     "melenchon": 16.0,
+     "roussel": 2.0,
+     "tondelier": 2.0,
+     "glucksmann": 11.5,
+     "attal": 5.0,
+     "philippe": 13.0,
+     "retailleau": 5.0,
+     "dupont-aignan": 1.0,
+     "le-pen": 32.0,
+     "zemmour": 3.0,
+     "lisnard": 6.0,
+     "ruffin": 2.0,
+     "villepin": 1.5
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 17.0,
+     "roussel": 2.5,
+     "tondelier": 2.0,
+     "glucksmann": 16.0,
+     "attal": 13.0,
+     "retailleau": 8.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 36.0,
+     "zemmour": 3.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 16.0,
+     "roussel": 3.0,
+     "tondelier": 2.5,
+     "glucksmann": 13.5,
+     "philippe": 18.0,
+     "retailleau": 6.5,
+     "dupont-aignan": 2.0,
+     "le-pen": 35.0,
+     "zemmour": 3.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "melenchon": 16.0,
+     "roussel": 2.5,
+     "tondelier": 2.0,
+     "glucksmann": 14.0,
+     "attal": 6.0,
+     "philippe": 14.0,
+     "retailleau": 6.5,
+     "dupont-aignan": 2.0,
+     "le-pen": 34.0,
+     "zemmour": 3.0
+    }
+   }
+  ],
+  "revid": 240369568
+ },
+ {
   "id": "harris-2026-10-08",
   "institut": "Harris",
   "terrain_debut": "2026-10-05",
@@ -175,6 +304,97 @@
    }
   ],
   "revid": 240300215
+ },
+ {
+  "id": "odoxa-2026-10-07",
+  "institut": "Odoxa",
+  "terrain_debut": "2026-09-24",
+  "terrain_fin": "2026-10-07",
+  "echantillon": 12005.0,
+  "url_source": "https://www.odoxa.fr/sondage/melenchon-est-passe-devant-philippe-au-premier-tour-marine-le-pen-est-plus-que-jamais-la-grande-favorite-pour-2027-a-la-fois-au-premier-et-au-second-tour/",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 18.0,
+     "roussel": 2.0,
+     "tondelier": 3.0,
+     "glucksmann": 9.5,
+     "philippe": 17.0,
+     "retailleau": 6.5,
+     "dupont-aignan": 2.0,
+     "le-pen": 37.0,
+     "zemmour": 4.5
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 18.5,
+     "roussel": 2.0,
+     "tondelier": 3.5,
+     "glucksmann": 10.5,
+     "attal": 11.0,
+     "retailleau": 9.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 38.0,
+     "zemmour": 4.5
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "melenchon"
+    ],
+    "scores": {
+     "melenchon": 32.0,
+     "le-pen": 68.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "philippe"
+    ],
+    "scores": {
+     "philippe": 47.0,
+     "le-pen": 53.0
+    }
+   }
+  ],
+  "revid": 240369568
  },
  {
   "id": "ifop-2026-09-29",

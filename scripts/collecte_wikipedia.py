@@ -477,6 +477,19 @@ def fusionner(existants, entrants, dedoublonner=True):
     return resultat, rapport
 
 
+def marquer_integration(sondages, aujourd_hui=None):
+    """Pose `integre_le` (date de Paris) sur chaque sondage qui n'en a pas : la
+    date à laquelle Sondax l'a vu pour la première fois, qui sert à choisir le
+    « dernier sondage sorti ». Un sondage manuel prend sa date de saisie.
+    Jamais réécrit ensuite (la fusion ne touche que les champs de Wikipédia)."""
+    if aujourd_hui is None:
+        from zoneinfo import ZoneInfo
+        aujourd_hui = datetime.datetime.now(ZoneInfo("Europe/Paris")).date().isoformat()
+    for s in sondages:
+        if not s.get('integre_le'):
+            s['integre_le'] = s.get('saisi_le') or aujourd_hui
+
+
 def afficher_rapport(rapport, existants_par_id):
     """Journal des écarts : ajouts, diffs, sondages conservés mais absents de Wikipédia."""
     print(f"\n== Journal des écarts ==")
@@ -589,6 +602,7 @@ def main(argv=None):
         sys.exit(1)
     afficher_rapport(rapport, existants_par_id)
     print(f"{len(manuels)} sondage(s) manuel(s) fusionné(s)")
+    marquer_integration(final)
     res = final
 
     # Écriture

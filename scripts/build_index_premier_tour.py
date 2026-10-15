@@ -22,7 +22,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from instituts import charger_referentiel, lien_institut
 from balise_time import time_tag, time_periode
 from build_header import (
-    select_hypothesis, select_latest_sondage, candidate_full_name, load_all_sondages,
+    select_hypothesis, candidate_full_name, load_all_sondages,
     REPERES_T1, JSONLD_T1, CANDIDATS_PAGES,
 )
 
@@ -237,11 +237,43 @@ def portrait(cid, nom, couleur, photos):
     return f'<div class="ds-ph">{img}</div>'
 
 
+# Un sondage sort en général 1 à 8 jours après la fin du terrain. Au-delà de ce
+# délai, une intégration tardive (ajout après coup sur Wikipédia, saisie
+# manuelle d'un vieux sondage) ne fait pas de lui le « dernier sorti ».
+DELAI_SORTIE_MAX = 14
+
+
+def date_sortie(s):
+    """Date de sortie approchée par `integre_le` (premier passage de la collecte
+    qui l'a vu), plafonnée à terrain_fin + DELAI_SORTIE_MAX. Sans `integre_le` :
+    terrain_fin."""
+    fin = s["terrain_fin"]
+    integre = s.get("integre_le")
+    if not integre:
+        return fin
+    plafond = (date.fromisoformat(fin) + timedelta(days=DELAI_SORTIE_MAX)).isoformat()
+    return min(integre, plafond)
+
+
+def select_dernier_sorti(sondages):
+    """Dernier sondage sorti : date de sortie la plus récente, puis terrain_fin,
+    puis le plus grand échantillon, puis l'ordre du fichier. Propre au bloc
+    « Dernier sondage » de l'accueil ; le reste du site garde
+    select_latest_sondage (dernier terrain)."""
+    if not sondages:
+        return None
+    return max(
+        enumerate(sondages),
+        key=lambda t: (date_sortie(t[1]), t[1]["terrain_fin"],
+                       t[1].get("echantillon") or 0, -t[0]),
+    )[1]
+
+
 def sondage_affiche(sondages, candidats):
     """(sondage, hypothèse principale) que montre le bloc « Dernier sondage »,
     ou None. Source unique : le <title> de l'accueil (build_dates.py) s'en sert
     pour ne jamais diverger du bloc."""
-    latest = select_latest_sondage(sondages)
+    latest = select_dernier_sorti(sondages)
     if not latest:
         return None
     hyp = select_hypothesis(latest, candidats)

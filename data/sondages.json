@@ -4,13 +4,14 @@
   "institut": "Ifop",
   "terrain_debut": "2026-10-12",
   "terrain_fin": "2026-10-14",
-  "echantillon": 1525.0,
-  "url_source": "https://www.sudradio.fr/ifop/exclu-presidentielle-2027-glucksmann-grignote-le-pen-reste-intouchable",
+  "echantillon": 1390.0,
+  "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10314-pres-climat-politique-post-primaire-ps-pp-ifop-lci-14-octobre.pdf",
   "hypotheses": [
    {
     "tour": 1,
     "echantillon": null,
     "candidats": [
+     "arthaud",
      "attal",
      "dupont-aignan",
      "glucksmann",
@@ -26,6 +27,7 @@
      "zemmour"
     ],
     "scores": {
+     "arthaud": 0.0,
      "melenchon": 16.0,
      "roussel": 2.0,
      "tondelier": 2.0,
@@ -101,6 +103,7 @@
     "tour": 1,
     "echantillon": null,
     "candidats": [
+     "arthaud",
      "attal",
      "dupont-aignan",
      "glucksmann",
@@ -113,6 +116,7 @@
      "zemmour"
     ],
     "scores": {
+     "arthaud": 0.0,
      "melenchon": 16.0,
      "roussel": 2.5,
      "tondelier": 2.0,
@@ -126,7 +130,7 @@
     }
    }
   ],
-  "revid": 240369568
+  "revid": 240394179
  },
  {
   "id": "harris-2026-10-08",

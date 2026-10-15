@@ -133,6 +133,103 @@
   "revid": 240394179
  },
  {
+  "id": "opinionway-2026-10-14",
+  "institut": "OpinionWay",
+  "terrain_debut": "2026-10-13",
+  "terrain_fin": "2026-10-14",
+  "echantillon": 1043.0,
+  "url_source": "https://f.dviz.factoviz.com/UserFiles/0/9/2/2027/OpinionWay%20pour%20Les%20Echos%20et%20Radio%20Classique%20-%20Barom%C3%A8tre%20Pr%C3%A9sitrack%202027%20Vague%203%20-%20Octobre%202026.pdf",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 14.0,
+     "roussel": 3.0,
+     "tondelier": 3.0,
+     "glucksmann": 13.0,
+     "attal": 7.0,
+     "philippe": 12.0,
+     "retailleau": 7.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 35.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 15.0,
+     "roussel": 2.0,
+     "tondelier": 3.0,
+     "glucksmann": 16.0,
+     "attal": 11.0,
+     "retailleau": 9.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 37.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 15.0,
+     "roussel": 2.0,
+     "tondelier": 3.0,
+     "glucksmann": 15.0,
+     "philippe": 15.0,
+     "retailleau": 8.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 35.0,
+     "zemmour": 4.0
+    }
+   }
+  ],
+  "revid": 240404649
+ },
+ {
   "id": "harris-2026-10-08",
   "institut": "Harris",
   "terrain_debut": "2026-10-05",

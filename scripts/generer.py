@@ -354,7 +354,7 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
 <div class="fil"><a href="/">Sondax</a> › Candidats › {nom}</div>
 <section class="carte hero"><div class="pad">
   {portrait_html(slug, nom, fiche)}
-  <div class="ident"><span class="parti">{fiche["parti"]}</span><h1>{nom.replace(' ','&nbsp;',1)}</h1>
+  <div class="ident"><span class="parti">{fiche["parti"]}</span><h1>{nom.replace(' ','&nbsp;',1)}<span class="h1-suite">Sondages présidentielle 2027</span></h1>
   <div class="statut">{age(fiche["naissance"])} ans</div></div>
 </div><ul class="bio">{bio}</ul></section>
 <section class="carte">

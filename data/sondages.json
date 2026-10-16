@@ -139,7 +139,7 @@
   "terrain_debut": "2026-10-13",
   "terrain_fin": "2026-10-14",
   "echantillon": 1043.0,
-  "url_source": "https://f.dviz.factoviz.com/UserFiles/0/9/2/2027/OpinionWay%20pour%20Les%20Echos%20et%20Radio%20Classique%20-%20Barom%C3%A8tre%20Pr%C3%A9sitrack%202027%20Vague%203%20-%20Octobre%202026.pdf",
+  "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10319-pres-iv-opinionway-cnews-15-octobre.pdf",
   "hypotheses": [
    {
     "tour": 1,
@@ -226,9 +226,79 @@
      "le-pen": 35.0,
      "zemmour": 4.0
     }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "bouamrane",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 15.0,
+     "roussel": 1.0,
+     "tondelier": 2.0,
+     "glucksmann": 13.0,
+     "attal": 5.0,
+     "philippe": 12.0,
+     "retailleau": 6.0,
+     "dupont-aignan": 1.0,
+     "le-pen": 35.0,
+     "zemmour": 5.0,
+     "lisnard": 4.0,
+     "bouamrane": 1.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "glucksmann",
+     "le-pen"
+    ],
+    "scores": {
+     "glucksmann": 44.0,
+     "le-pen": 56.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "melenchon"
+    ],
+    "scores": {
+     "melenchon": 32.0,
+     "le-pen": 68.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "philippe"
+    ],
+    "scores": {
+     "philippe": 44.0,
+     "le-pen": 56.0
+    }
    }
   ],
-  "revid": 240404649,
+  "revid": 240420557,
   "integre_le": "2026-10-15"
  },
  {

@@ -1,5 +1,467 @@
 [
  {
+  "id": "elabe-2026-10-16",
+  "institut": "Elabe",
+  "terrain_debut": "2026-10-14",
+  "terrain_fin": "2026-10-16",
+  "echantillon": 1701.0,
+  "url_source": "https://elabe.fr/fichier-pdf/13329-les-francais-et-lelection-presidentielle-2027/",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "villepin",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 15.0,
+     "roussel": 1.5,
+     "tondelier": 3.0,
+     "glucksmann": 15.5,
+     "philippe": 16.5,
+     "retailleau": 7.0,
+     "dupont-aignan": 2.5,
+     "le-pen": 32.5,
+     "zemmour": 3.5,
+     "villepin": 2.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "villepin",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 16.0,
+     "roussel": 2.0,
+     "tondelier": 2.5,
+     "glucksmann": 16.5,
+     "attal": 10.5,
+     "retailleau": 9.5,
+     "dupont-aignan": 2.0,
+     "le-pen": 33.5,
+     "zemmour": 3.5,
+     "villepin": 3.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 15.5,
+     "roussel": 1.5,
+     "tondelier": 2.5,
+     "glucksmann": 15.0,
+     "philippe": 15.5,
+     "retailleau": 6.5,
+     "dupont-aignan": 3.0,
+     "le-pen": 31.5,
+     "zemmour": 3.0,
+     "lisnard": 5.5
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "ruffin",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 16.0,
+     "roussel": 1.5,
+     "glucksmann": 16.5,
+     "attal": 9.5,
+     "retailleau": 9.0,
+     "dupont-aignan": 2.5,
+     "le-pen": 31.0,
+     "zemmour": 3.5,
+     "ruffin": 3.0,
+     "lisnard": 6.5
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 15.5,
+     "roussel": 1.5,
+     "tondelier": 2.5,
+     "glucksmann": 15.5,
+     "attal": 4.5,
+     "philippe": 13.5,
+     "retailleau": 7.5,
+     "dupont-aignan": 3.0,
+     "le-pen": 32.5,
+     "zemmour": 3.5
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "polony",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 15.0,
+     "roussel": 1.0,
+     "tondelier": 2.5,
+     "glucksmann": 16.0,
+     "philippe": 16.5,
+     "retailleau": 7.5,
+     "dupont-aignan": 2.5,
+     "le-pen": 33.5,
+     "zemmour": 3.0,
+     "polony": 1.5
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "glucksmann",
+     "le-pen"
+    ],
+    "scores": {
+     "glucksmann": 46.5,
+     "le-pen": 53.5
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "melenchon"
+    ],
+    "scores": {
+     "melenchon": 31.0,
+     "le-pen": 69.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "philippe"
+    ],
+    "scores": {
+     "philippe": 47.5,
+     "le-pen": 52.5
+    }
+   }
+  ],
+  "revid": 240480507,
+  "integre_le": "2026-10-18"
+ },
+ {
+  "id": "yougov-2026-10-15",
+  "institut": "YouGov",
+  "terrain_debut": "2026-10-12",
+  "terrain_fin": "2026-10-15",
+  "echantillon": 1094.0,
+  "url_source": "https://ygo-assets-websites-editorial-emea.yougov.net/documents/R%C3%A9sultats_YouGov_pour_le_HuffPost_Intentions_de_vote_Octobre_2026_as_sent_16.10.2026.pdf",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.0,
+     "melenchon": 15.0,
+     "roussel": 3.0,
+     "tondelier": 6.0,
+     "glucksmann": 12.0,
+     "attal": 6.0,
+     "philippe": 10.0,
+     "retailleau": 6.0,
+     "dupont-aignan": 3.0,
+     "le-pen": 36.0,
+     "zemmour": 3.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.0,
+     "melenchon": 15.0,
+     "roussel": 3.0,
+     "tondelier": 6.0,
+     "glucksmann": 14.0,
+     "attal": 10.0,
+     "retailleau": 9.0,
+     "dupont-aignan": 3.0,
+     "le-pen": 37.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.0,
+     "melenchon": 15.0,
+     "roussel": 3.0,
+     "tondelier": 6.0,
+     "glucksmann": 13.0,
+     "philippe": 13.0,
+     "retailleau": 7.0,
+     "dupont-aignan": 3.0,
+     "le-pen": 36.0,
+     "zemmour": 3.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "hollande",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 16.0,
+     "roussel": 3.0,
+     "tondelier": 6.0,
+     "hollande": 9.0,
+     "philippe": 15.0,
+     "retailleau": 7.0,
+     "dupont-aignan": 3.0,
+     "le-pen": 37.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "ruffin",
+     "tondelier",
+     "villepin",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.0,
+     "melenchon": 13.0,
+     "roussel": 2.0,
+     "tondelier": 5.0,
+     "glucksmann": 12.0,
+     "attal": 6.0,
+     "philippe": 8.0,
+     "retailleau": 5.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 35.0,
+     "zemmour": 4.0,
+     "lisnard": 4.0,
+     "ruffin": 2.0,
+     "villepin": 1.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "attal",
+     "le-pen"
+    ],
+    "scores": {
+     "attal": 45.0,
+     "le-pen": 55.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "glucksmann",
+     "le-pen"
+    ],
+    "scores": {
+     "glucksmann": 45.0,
+     "le-pen": 55.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "hollande",
+     "le-pen"
+    ],
+    "scores": {
+     "hollande": 45.0,
+     "le-pen": 55.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "melenchon"
+    ],
+    "scores": {
+     "melenchon": 32.0,
+     "le-pen": 68.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "philippe"
+    ],
+    "scores": {
+     "philippe": 48.0,
+     "le-pen": 52.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "melenchon",
+     "philippe"
+    ],
+    "scores": {
+     "melenchon": 34.0,
+     "philippe": 66.0
+    }
+   }
+  ],
+  "revid": 240480507,
+  "integre_le": "2026-10-18"
+ },
+ {
   "id": "ifop-2026-10-14",
   "institut": "Ifop",
   "terrain_debut": "2026-10-12",

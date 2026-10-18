@@ -407,5 +407,18 @@
     "declare_le": null,
     "prenom": "Emmanuel",
     "genre": "m"
+  },
+  "polony": {
+    "nom": "Polony",
+    "parti": "SE",
+    "type": "personne",
+    "couleur": "#6E7B8B",
+    "alias_wikipedia": [
+      "polony"
+    ],
+    "condition_polymarket": null,
+    "declare_le": null,
+    "prenom": "Natacha",
+    "genre": "f"
   }
 }

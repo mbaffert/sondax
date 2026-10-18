@@ -79,14 +79,13 @@ def generate_factual_text():
 # Chapeau
 # ---------------------------------------------------------------------------
 
-def generate_chapeau(duels, candidats):
-    if not duels:
-        return (
-            '<p class="subtitle">'
-            'Aucun duel de second tour n\u2019a été testé par les instituts.'
-            '</p>'
-        )
-
+def phrases_synthese(duels, candidats, nom=None):
+    """Deux premières phrases du chapeau : volume des duels testés, puis meneur sur
+    l'ensemble des duels. Source unique du bloc second tour de l'accueil et de la
+    FAQ. `nom(cid)` donne le nom affiché d'un candidat (nom court par défaut)."""
+    if nom is None:
+        def nom(cid):
+            return nom_court(cid, candidats)
     n_duels = len(duels)
     n_mesures = sum(len(e) for e in duels.values())
     # Nombre de sondages distincts portant au moins un duel
@@ -109,6 +108,67 @@ def generate_chapeau(duels, candidats):
             wins[cid_a] = wins.get(cid_a, 0) + 1
         elif sb > sa:
             wins[cid_b] = wins.get(cid_b, 0) + 1
+
+    phrases = []
+
+    # Phrase 1 : volume
+    if n_duels == 1:
+        slug = list(duels.keys())[0]
+        cid_a, cid_b = pair(slug, candidats)
+        nom_a = nom(cid_a)
+        nom_b = nom(cid_b)
+        mes = "mesure" if n_mesures == 1 else "mesures"
+        phrases.append(
+            f"Un seul duel a été testé\u00a0: {nom_a} contre {nom_b}, "
+            f"avec {n_mesures}\u00a0{mes}."
+        )
+    else:
+        phrases.append(
+            f"{n_duels}\u00a0duels de second tour testés dans "
+            f"{n_sondages_distincts}\u00a0sondages, "
+            f"pour un total de {n_mesures}\u00a0mesures."
+        )
+
+    # Phrase 2 : leader avec dénominateur explicite
+    if wins and n_duels > 1:
+        leader_cid = max(wins, key=lambda c: wins[c])
+        nom_leader = nom(leader_cid)
+        nw = wins[leader_cid]
+        na = appearances[leader_cid]
+        g = genre(leader_cid, candidats)
+        e_accord = "e" if g == "f" else ""
+        na_lettres = nombre_lettres(na)
+
+        if nw == na:
+            if na == 1:
+                phrases.append(
+                    f"{nom_leader} l\u2019emporte dans le seul duel "
+                    f"où {('elle' if g == 'f' else 'il')} est testé{e_accord}."
+                )
+            else:
+                phrases.append(
+                    f"{nom_leader} l\u2019emporte dans les {na_lettres}\u00a0duels "
+                    f"où {('elle' if g == 'f' else 'il')} est testé{e_accord}."
+                )
+        else:
+            phrases.append(
+                f"{nom_leader} l\u2019emporte dans "
+                f"{nombre_lettres(nw)} des {na_lettres}\u00a0duels "
+                f"où {('elle' if g == 'f' else 'il')} est testé{e_accord}."
+            )
+
+    return phrases
+
+
+def generate_chapeau(duels, candidats):
+    if not duels:
+        return (
+            '<p class="subtitle">'
+            'Aucun duel de second tour n\u2019a été testé par les instituts.'
+            '</p>'
+        )
+
+    n_duels = len(duels)
 
     # Duel le plus serré
     tightest_slug = None
@@ -134,53 +194,7 @@ def generate_chapeau(duels, candidats):
         if first_leader != last_leader:
             reversals.append(slug)
 
-    phrases = []
-
-    # Phrase 1 : volume
-    if n_duels == 1:
-        slug = list(duels.keys())[0]
-        cid_a, cid_b = pair(slug, candidats)
-        nom_a = nom_court(cid_a, candidats)
-        nom_b = nom_court(cid_b, candidats)
-        mes = "mesure" if n_mesures == 1 else "mesures"
-        phrases.append(
-            f"Un seul duel a été testé\u00a0: {nom_a} contre {nom_b}, "
-            f"avec {n_mesures}\u00a0{mes}."
-        )
-    else:
-        phrases.append(
-            f"{n_duels}\u00a0duels de second tour testés dans "
-            f"{n_sondages_distincts}\u00a0sondages, "
-            f"pour un total de {n_mesures}\u00a0mesures."
-        )
-
-    # Phrase 2 : leader avec dénominateur explicite
-    if wins and n_duels > 1:
-        leader_cid = max(wins, key=lambda c: wins[c])
-        nom = nom_court(leader_cid, candidats)
-        nw = wins[leader_cid]
-        na = appearances[leader_cid]
-        g = genre(leader_cid, candidats)
-        e_accord = "e" if g == "f" else ""
-        na_lettres = nombre_lettres(na)
-
-        if nw == na:
-            if na == 1:
-                phrases.append(
-                    f"{nom} l\u2019emporte dans le seul duel "
-                    f"où {('elle' if g == 'f' else 'il')} est testé{e_accord}."
-                )
-            else:
-                phrases.append(
-                    f"{nom} l\u2019emporte dans les {na_lettres}\u00a0duels "
-                    f"où {('elle' if g == 'f' else 'il')} est testé{e_accord}."
-                )
-        else:
-            phrases.append(
-                f"{nom} l\u2019emporte dans "
-                f"{nombre_lettres(nw)} des {na_lettres}\u00a0duels "
-                f"où {('elle' if g == 'f' else 'il')} est testé{e_accord}."
-            )
+    phrases = phrases_synthese(duels, candidats)
 
     # Phrase 3 : inversion ou duel le plus serré
     if reversals and n_duels > 1:
@@ -428,14 +442,23 @@ def generate_bardella_section(bardella_duels, candidats):
     )
 
 
+def duels_du_bloc(duels, candidats):
+    """Duels que montre le bloc de l'accueil (aperçu, chapeau, sélecteur) : ni ceux
+    du prédécesseur, ni ceux dont la dernière mesure est périmée
+    (pages_second_tour.FRAICHEUR_JOURS). Source unique du bloc et de la FAQ."""
+    current_duels, _ = split_bardella_duels(duels, candidats)
+    frais = duels_frais(duels)
+    return {s: e for s, e in current_duels.items() if s in frais}
+
+
 def generate_bloc(duels, candidats):
     # Séparer les duels Bardella des duels actuels
-    current_duels, bardella_duels = split_bardella_duels(duels, candidats)
-    # Critère de fraîcheur (pages_second_tour.FRAICHEUR_JOURS) : un duel périmé
-    # sort de l'aperçu et du sélecteur ; la section historique des duels du
-    # prédécesseur reste, avec sa phrase d'explication, mais sans lien de page.
+    _, bardella_duels = split_bardella_duels(duels, candidats)
+    # Critère de fraîcheur : un duel périmé sort de l'aperçu et du sélecteur ; la
+    # section historique des duels du prédécesseur reste, avec sa phrase
+    # d'explication, mais sans lien de page.
     frais = duels_frais(duels)
-    current_duels = {s: e for s, e in current_duels.items() if s in frais}
+    current_duels = duels_du_bloc(duels, candidats)
 
     factual = generate_factual_text()
     chapeau = generate_chapeau(current_duels, candidats)

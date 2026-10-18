@@ -41,13 +41,24 @@ def load_json(path):
 # formulation si elles devaient changer.
 # ---------------------------------------------------------------------------
 
+def _jour_long(iso):
+    """'2027-03-12' → '12\u00a0mars\u00a02027'"""
+    y, m, d = iso.split("-")
+    mois = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet",
+            "août", "septembre", "octobre", "novembre", "décembre"]
+    return f"{int(d)}\u00a0{mois[int(m) - 1]}\u00a0{y}"
+
+
+CLOTURE_PARRAINAGES = load_json(ROOT / "data" / "config.json")["election"]["cloture_parrainages"]
+
 REPERES_T1 = (
     'Le premier tour de l\u2019élection présidentielle se tient le dimanche '
     '<time datetime="2027-04-18">18\u00a0avril\u00a02027</time>. Les deux candidats arrivés en tête s\u2019affrontent '
     'au second tour, sauf si l\u2019un obtient la majorité absolue des suffrages '
     'exprimés dès le premier tour \u2014 ce qui n\u2019est jamais arrivé sous la '
     'V\u1d49\u00a0République. La liste officielle des candidats ne sera connue '
-    'qu\u2019après la clôture des parrainages, le <time datetime="2027-03-12">12\u00a0mars\u00a02027</time>\u00a0: '
+    'qu\u2019après la clôture des parrainages, le '
+    f'<time datetime="{CLOTURE_PARRAINAGES}">{_jour_long(CLOTURE_PARRAINAGES)}</time>\u00a0: '
     'les instituts testent d\u2019ici là des hypothèses de candidatures, qui '
     'varient d\u2019un sondage à l\u2019autre.'
 )

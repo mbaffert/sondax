@@ -30,7 +30,6 @@ import collections, datetime, html as html_mod, json, pathlib, re, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 INDEX_PATH = SITE / "index.html"
-CONFIG_PATH = ROOT / "data" / "config.json"
 
 sys.path.insert(0, str(ROOT / "scripts"))
 import veille
@@ -48,7 +47,6 @@ from instituts import charger_referentiel, lien_institut
 from pages_second_tour import fmt_pct as fmt_pct_t2, jour_mois, load_duels, nom_court
 
 NBSP = " "
-JOURS = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
         "septembre", "octobre", "novembre", "décembre"]
 
@@ -74,12 +72,6 @@ def date_lettres(iso):
     y, m, d = iso.split("-")
     jour = "1er" if int(d) == 1 else str(int(d))
     return time_tag(iso, f"{jour}{NBSP}{MOIS[int(m) - 1]}{NBSP}{y}")
-
-
-def date_avec_jour(iso):
-    """'2027-04-18' → 'dimanche 18 avril 2027', la date balisée <time>."""
-    jour = JOURS[datetime.date.fromisoformat(iso).weekday()]
-    return f"{jour} {date_lettres(iso)}"
 
 
 def lien(href, texte):
@@ -142,7 +134,7 @@ def phrase_terrain(debut, fin):
 
 def faq_accueil(d):
     """Questions de l'accueil. `d` : sondages, candidats, series_data, duels (tous
-    les duels), dates (build_dates.compute_dates) et config (data/config.json)."""
+    les duels) et dates (build_dates.compute_dates)."""
     qr = []
     maj = date_lettres(d["dates"]["build_date"])
     candidats = d["candidats"]
@@ -222,19 +214,6 @@ def faq_accueil(d):
                      f"2027, réalisés par {m}{NBSP}instituts. Le terrain du plus ancien s’est "
                      f"terminé le {date_lettres(premier)}. "
                      + lien("sondages.html", "Voir tous les sondages")))
-
-    # 5. Dates de l'élection (data/config.json)
-    el = d["config"].get("election", {})
-    if el.get("premier_tour") and el.get("second_tour"):
-        s1 = (f"Au {maj}, le premier tour de l’élection présidentielle 2027 a lieu le "
-              f"{date_avec_jour(el['premier_tour'])} et le second tour le "
-              f"{date_avec_jour(el['second_tour'])}")
-        s2 = ""
-        if el.get("cloture_parrainages"):
-            s2 = (" La liste officielle des candidats ne sera connue qu’après la clôture des "
-                  f"parrainages, le {date_lettres(el['cloture_parrainages'])}.")
-        qr.append(QR(f"Quand a lieu l’élection présidentielle 2027{NBSP}?",
-                     f"{s1}.{s2} " + lien("#bloc-sondages", "Voir les repères du premier tour")))
     return qr
 
 
@@ -255,7 +234,6 @@ def donnees_accueil():
         "series_data": load_json(SERIES_PATH),
         "duels": load_duels()[0],
         "dates": compute_dates(),
-        "config": load_json(CONFIG_PATH),
     }
 
 

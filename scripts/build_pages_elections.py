@@ -39,6 +39,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from series import score_candidat
 from balise_time import time_tag
 from build_retro import rendre_bloc_page, j_du_jour
+import build_faq
 
 ANNEES = ["2002", "2007", "2012", "2017", "2022"]
 
@@ -168,12 +169,17 @@ def barres(lignes, classe=""):
     return f'<ul class="barres{" " + classe if classe else ""}">{items}</ul>'
 
 
-def titre_synthese(e, elections):
-    gagnant = e.vainqueur
+def verbe_election(e, elections):
+    """« réélu » si le vainqueur est le sortant, sinon « élu »."""
     precedent = str(int(e.annee) - 5)
     sortant = (elections[precedent].vainqueur["nom"] if precedent in elections
                else SORTANT_HORS_FICHIER.get(e.annee))
-    verbe = "réélu" if sortant == gagnant["nom"] else "élu"
+    return "réélu" if sortant == e.vainqueur["nom"] else "élu"
+
+
+def titre_synthese(e, elections):
+    gagnant = e.vainqueur
+    verbe = verbe_election(e, elections)
     return f'{esc(gagnant["nom"])} {verbe} avec {fmt_pct(gagnant["pct_exprimes"])} des suffrages exprimés'
 
 
@@ -422,7 +428,7 @@ def page_election(e, elections):
                    f"et évolution des sondages.")
     tete = tete_page(f"Résultats et sondages de la présidentielle {a}, premier et second tour — Sondax",
                      description, f"Résultats et sondages de la présidentielle {a}",
-                     f"presidentielle-{a}.html", ["historique.css?v=2"])
+                     f"presidentielle-{a}.html", ["historique.css?v=3"])
     corps = f"""<main>
   <p class="retour"><a href="precedentes-elections.html">← Toutes les présidentielles</a></p>
   <header class="hero">
@@ -442,6 +448,7 @@ def page_election(e, elections):
 {bloc_resultats(e, 2)}
 
 {navigation(a)}
+{build_faq.bloc_page("election", f"sur la présidentielle {a}", {"e": e, "elections": elections})}
 </main>
 
 <footer>
@@ -482,7 +489,7 @@ def page_precedentes(elections, retro):
         "Sondages des présidentielles de 2002 à 2022 — Sondax",
         "Sondages des présidentielles de 2002 à 2022 comparés à 2027, au même nombre de jours avant le scrutin.",
         "Sondages des présidentielles de 2002 à 2022", "precedentes-elections.html",
-        ["bloc-retro.css?v=1", "historique.css?v=2"])
+        ["bloc-retro.css?v=1", "historique.css?v=3"])
     cartes = "\n".join(carte_election(elections[a]) for a in reversed(ANNEES))
     x = j_du_jour()
     corps = f"""<main>

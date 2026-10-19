@@ -91,7 +91,7 @@ def rang_mot(n, f=False):
     m = {1:"premier",2:"deuxième",3:"troisième",4:"quatrième",5:"cinquième",
          6:"sixième",7:"septième",8:"huitième",9:"neuvième",10:"dixième",
          11:"onzième",12:"douzième"}.get(n, f"{n}e")
-    return m + "e" if (f and n == 1) else m
+    return "première" if (f and n == 1) else m
 
 def texte_evolution(nom, serie, n_sondages, rangs, ecart_devant, genre="m", succession=None):
     F = (genre == "f")
@@ -176,15 +176,21 @@ def lien_adv(slug, noms, pages):
     n = noms.get(slug, slug)
     return f'<a href="/{slug}.html">{n}</a>' if pages and slug in pages else f'<b>{n}</b>'
 
-def bloc_second_tour(slug, nom, duels, noms, genre="m", pages=None):
+def duels_du_candidat(slug, duels):
+    """[(adversaire, mesures)] des duels du candidat, les plus mesurés d'abord.
+    Source unique du bloc second tour de la page et de sa FAQ."""
     mes = []
     for cle, v in duels.items():
         a, b = cle.split("|")
         if slug not in (a, b): continue
         adv = b if slug == a else a
         mes.append((adv, v))
-    if not mes: return "", ""
     mes.sort(key=lambda x: -len(x[1]))
+    return mes
+
+def bloc_second_tour(slug, nom, duels, noms, genre="m", pages=None):
+    mes = duels_du_candidat(slug, duels)
+    if not mes: return "", ""
     F = (genre == "f")
     lignes = ""
     gagne, perd = [], []
@@ -304,7 +310,8 @@ def phrase_dernier_sondage(dernier):
             f'{terrain_court(debut, fin)}, {fmt_score(score)} au premier tour.</p>')
 
 def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant,
-         duels=None, noms=None, pages=None, succession=None, derniers="", dernier=None):
+         duels=None, noms=None, pages=None, succession=None, derniers="", dernier=None,
+         faq=""):
     nom = fiche["nom"]; coul = fiche["couleur"]
     pcs = {k: v[slug] for k, v in crois.get("pcs", {}).items()
            if slug in v and k in ORDRE_PCS}
@@ -368,6 +375,7 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
 </section>
 {''.join(blocs)}
 <nav class="autres"><span>Autres candidats :</span> {liens_autres(slug, pages or {})}</nav>
+{faq}
 <footer><p>Sondages issus de la page Wikipédia « Liste de sondages sur l'élection présidentielle
 française de 2027 », sous licence CC BY-SA. Croisements issus de la notice déposée par Ipsos bva
 auprès de la commission des sondages.</p>

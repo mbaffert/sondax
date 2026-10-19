@@ -21,11 +21,17 @@ Accueil : le bloc est réécrit entre <!-- BEGIN:bloc-faq --> et <!-- END:bloc-f
 l'entrée « Questions » de la sous-navigation entre <!-- BEGIN:nav-faq --> et
 <!-- END:nav-faq -->, retirée avec le bloc.
 
+Autres pages : le bloc est construit par `bloc_page(type, complement, données)` appelé par
+le générateur de la page (build_pages_candidats.py, build_pages_elections.py,
+pages_second_tour.py), en bas de page, sans entrée dans la navigation. Les pages 2027
+(candidat, duel) ouvrent chaque réponse sur « Au {date de build}, … » et perdent leur bloc
+en veille ; les présidentielles passées (résultats arrêtés) sont hors veille.
+
 À lancer après build_modele.py et build_dates.py (accueil), avant
 build_header.py --injecter ; `--verifier` une fois toutes les pages générées.
 """
 
-import collections, datetime, html as html_mod, json, pathlib, re, sys
+import collections, datetime, functools, html as html_mod, json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
@@ -43,8 +49,12 @@ from build_index_premier_tour import (
 from build_index_second_tour import (
     duels_du_bloc, genre, meneur_des_duels, nombre_lettres, pair, sorted_duel_slugs,
 )
-from instituts import charger_referentiel, lien_institut
-from pages_second_tour import fmt_pct as fmt_pct_t2, jour_mois, load_duels, nom_court
+import generer
+from instituts import charger_referentiel, compter_instituts, lien_institut
+from pages_second_tour import (
+    SEUIL, fmt_pct as fmt_pct_t2, fmt_score, jour_mois, load_duels, nom_court,
+    phrase_dernier_sondage as phrase_duel, terrain_court,
+)
 
 NBSP = " "
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
@@ -260,8 +270,228 @@ def texte_date(iso):
     return f"{'1er' if int(d) == 1 else int(d)}{NBSP}{MOIS[int(m) - 1]}{NBSP}{y}"
 
 
+# ---------------------------------------------------------------------------
+# Pages candidat
+# ---------------------------------------------------------------------------
+
+@functools.lru_cache(maxsize=1)
+def date_build():
+    return compute_dates()["build_date"]
+
+
+def faq_candidat(d):
+    """Questions d'une page candidat. `d` : slug, fiche (bios), noms, duels (ceux de la
+    page), serie, n_sondages, rangs, ecart_devant et derniers (build_pages_candidats)."""
+    qr = []
+    maj = date_lettres(date_build())
+    slug, fiche, noms = d["slug"], d["fiche"], d["noms"]
+    nom, fem = fiche["nom"], fiche.get("genre") == "f"
+    il = "Elle" if fem else "Il"
+
+    # 1. Moyenne du premier tour (mêmes données que la section « Tendance »)
+    if d["serie"]:
+        s1 = (f"Au {maj}, {e(nom)} est {'mesurée' if fem else 'mesuré'} à "
+              f"{generer.fr(d['serie'][-1][1])}{NBSP}% des intentions de vote au premier tour")
+        if d["n_sondages"]:
+            s1 += (f", moyenne pondérée de {d['n_sondages']}{NBSP}sondages sur les trente "
+                   f"derniers jours")
+        phrases = [f"{s1}."]
+        if d["rangs"]:
+            phrases.append(f"{e(nom)} est {generer.rang_mot(d['rangs'][-1][1], fem)} des "
+                           f"intentions de vote au premier tour.")
+        if d["ecart_devant"]:
+            devant, ecart = d["ecart_devant"]
+            phrases.append(f"{il} compte {generer.fr(ecart)}{NBSP}point"
+                           f"{'s' if ecart >= 2 else ''} de retard sur {e(devant)}.")
+        qr.append(QR(f"Quel est le score de {nom} dans les sondages de la présidentielle "
+                     f"2027{NBSP}?",
+                     " ".join(phrases) + " " + lien("/#bloc-sondages",
+                                                   "Voir la moyenne du premier tour")))
+
+    # 2. Dernier sondage testant le candidat (celui du tableau « Derniers sondages »)
+    if d["derniers"]:
+        latest, score = d["derniers"][0]
+        institut = lien_institut(latest["institut"], charger_referentiel(), "/")
+        s1 = (f"Au {maj}, le dernier sondage testant {e(nom)} au premier tour est un sondage "
+              f"{institut}, réalisé "
+              f"{phrase_terrain(latest.get('terrain_debut'), latest['terrain_fin'])}")
+        if latest.get("echantillon"):
+            s1 += f" auprès de {fmt_ech(latest['echantillon'])}{NBSP}personnes interrogées"
+        s2 = f"{il} y est {'mesurée' if fem else 'mesuré'} à {generer.fr(score)}{NBSP}%."
+        qr.append(QR(f"Quel est le dernier sondage de {nom}{NBSP}?",
+                     f"{s1}. {s2} "
+                     + lien(f"/sondages/{latest['id']}.html", "Voir la fiche du sondage")))
+
+    # 3. Second tour : dernière mesure de chaque duel (celles du bloc « au second tour »)
+    mesures = generer.duels_du_candidat(slug, d["duels"])
+    if mesures:
+        n = len(mesures)
+        faits = []
+        for adv, v in mesures[:3]:
+            der = v[-1]
+            faits.append(f"face à {e(noms.get(adv, adv))}, {generer.fr(der['s'][slug], 0)}"
+                         f"{NBSP}% contre {generer.fr(der['s'][adv], 0)}{NBSP}% "
+                         f"({time_tag(der['d'], texte_date(der['d']))})")
+        phrases = [f"Au {maj}, {e(nom)} est {'testée' if fem else 'testé'} dans {n}{NBSP}duel"
+                   f"{'s' if n > 1 else ''} de second tour par les instituts.",
+                   ("Dernières mesures des trois duels les plus mesurés" if n > 3
+                    else "Dernières mesures") + f"{NBSP}: " + f"{NBSP}; ".join(faits) + "."]
+        page = generer.page_duel(slug, mesures[0][0])
+        cible = (lien(f"/second-tour/{page}.html",
+                      f"Voir le duel {e(nom)} – {e(noms.get(mesures[0][0], mesures[0][0]))}")
+                 if page else lien("/second-tour/", "Voir tous les duels de second tour"))
+        qr.append(QR(f"Que donnent les sondages de second tour pour {nom}{NBSP}?",
+                     " ".join(phrases) + " " + cible))
+    return qr
+
+
+# ---------------------------------------------------------------------------
+# Pages des présidentielles passées
+# ---------------------------------------------------------------------------
+
+def faq_election(d):
+    """Questions d'une page « présidentielle {année} ». `d` : e (Election) et elections
+    (build_pages_elections.charger). Pas de date de build : les chiffres sont arrêtés."""
+    import build_pages_elections as be      # importé ici : ce module importe build_faq
+    el, elections = d["e"], d["elections"]
+    a = el.annee
+    qr = []
+
+    # 1. Vainqueur (comme le titre de la synthèse) et score du second tour
+    gagnant = el.vainqueur
+    perdant = min(el.t2["candidats"], key=lambda c: c["voix"])
+    qr.append(QR(f"Qui a remporté la présidentielle {a}{NBSP}?",
+                 f"{be.esc(gagnant['nom'])} a été {be.verbe_election(el, elections)} le "
+                 f"{be.date_tag(el.tour2)} avec {be.fmt_pct(gagnant['pct_exprimes'])} des suffrages "
+                 f"exprimés au second tour, face à {be.esc(perdant['nom'])} "
+                 f"({be.fmt_pct(perdant['pct_exprimes'])}). "
+                 + lien(f"presidentielle-{a}.html#resultats-second-tour",
+                        "Voir les résultats du second tour")))
+
+    # 2. Trois premiers du premier tour (barres de la synthèse)
+    top = el.t1["candidats"][:3]
+    suite = enumeration_fr([f"{be.esc(c['nom'])} ({be.fmt_pct(c['pct_exprimes'])})"
+                            for c in top[1:]])
+    qr.append(QR(f"Quels ont été les résultats du premier tour de la présidentielle {a}{NBSP}?",
+                 f"Le {be.date_tag(el.tour1)}, {be.esc(top[0]['nom'])} arrive en tête avec "
+                 f"{be.fmt_pct(top[0]['pct_exprimes'])} des suffrages exprimés, devant {suite}. "
+                 + lien(f"presidentielle-{a}.html#resultats-premier-tour",
+                        "Voir les résultats du premier tour")))
+
+    # 3. Participation (celle de la synthèse, et celle du premier tour)
+    p1 = be.pct_exact(el.t1["votants"], el.t1["inscrits"])
+    p2 = be.pct_exact(el.t2["votants"], el.t2["inscrits"])
+    qr.append(QR(f"Quelle a été la participation à la présidentielle {a}{NBSP}?",
+                 f"La participation s’est élevée à {be.fmt_pct(p1)} au premier tour "
+                 f"({be.date_tag(el.tour1)}) et à {be.fmt_pct(p2)} au second "
+                 f"({be.date_tag(el.tour2)}), soit {be.fmt_entier(el.t2['votants'])}{NBSP}votants "
+                 f"sur {be.fmt_entier(el.t2['inscrits'])}{NBSP}inscrits. "
+                 + lien(f"presidentielle-{a}.html#resultats-second-tour",
+                        "Voir le détail du scrutin")))
+
+    # 4. Nombre de sondages du premier tour (le résumé du graphique)
+    der = el.derive
+    if der.get("nb_sondages_t1"):
+        borne = der["borne"]
+        s = (f"{der['nb_sondages_t1']}{NBSP}sondages du premier tour ont été publiés depuis "
+             f"{time_tag(borne[:7], f'{be.MOIS[int(borne[5:7]) - 1]} {borne[:4]}')}")
+        if der.get("nb_rollings_t1", 0) > 0:
+            s += f", dont {der['nb_rollings_t1']}{NBSP}vagues de rolling"
+        qr.append(QR(f"Combien de sondages ont été publiés avant la présidentielle {a}{NBSP}?",
+                     f"{s}. " + lien(f"presidentielle-{a}.html#sondages-premier-tour",
+                                     "Voir l’évolution des sondages")))
+
+    # 5. Dernière moyenne mensuelle comparée au résultat (le tableau des moyennes)
+    moyennes = be.moyennes_mensuelles(el.brut, der)
+    cands = der["candidats"]
+    principaux = sorted((c for c in cands if cands[c].get("resultat") is not None
+                         and c in moyennes), key=lambda c: -cands[c]["resultat"])[:3]
+    mois = max((m for c in principaux for m in moyennes[c]), default=None)
+    lignes = [f"{be.esc(cands[c]['nom'])} à {be.fmt_pct1(moyennes[c][mois])} "
+              f"(résultat{NBSP}: {be.fmt_pct(cands[c]['resultat'])})"
+              for c in principaux if mois in moyennes[c]]
+    if mois and lignes:
+        y, m = mois.split("-")
+        qr.append(QR(f"Que montraient les sondages avant le premier tour de la présidentielle "
+                     f"{a}{NBSP}?",
+                     f"En {time_tag(mois, f'{be.MOIS[int(m) - 1]} {y}')}, dernier mois de sondages "
+                     f"avant le premier tour, la moyenne des sondages mesurait "
+                     + enumeration_fr(lignes) + ". "
+                     + lien(f"presidentielle-{a}.html#sondages-premier-tour",
+                            "Voir les moyennes mensuelles")))
+    return qr
+
+
+# ---------------------------------------------------------------------------
+# Pages de duel
+# ---------------------------------------------------------------------------
+
+def faq_duel(d):
+    """Questions d'une page de duel. `d` : slug, cid_a, cid_b, entries (mesures du duel,
+    la plus récente en premier) et candidats (pages_second_tour.generate_duel_page)."""
+    qr = []
+    maj = date_lettres(date_build())
+    entries, candidats = d["entries"], d["candidats"]
+    cid_a, cid_b = d["cid_a"], d["cid_b"]
+    nom_a, nom_b = e(nom_court(cid_a, candidats)), e(nom_court(cid_b, candidats))
+    duel = f"{nom_a} – {nom_b}"
+    if not entries:
+        return qr
+
+    # 1. Dernière mesure (la phrase sous le titre de la page)
+    phrase = phrase_duel(entries, cid_a, cid_b, candidats)
+    qr.append(QR(f"Que donne le dernier sondage du duel {texte_brut(duel)}{NBSP}?",
+                 f"Au {maj}, {phrase[0].lower()}{phrase[1:]} "
+                 + lien("/second-tour/", "Voir tous les duels de second tour")))
+
+    # 2. Nombre de mesures (le sous-titre de la page) et d'instituts
+    n = len(entries)
+    ancien, recent = entries[-1]["terrain_fin"], entries[0]["terrain_fin"]
+    if n == 1:
+        instituts = lien_institut(entries[0]["institut"], charger_referentiel(), "/")
+        r = (f"Au {maj}, un seul sondage a testé le duel {duel}\u00a0: celui de {instituts}, "
+             f"dont le terrain s’est terminé le {date_lettres(recent)}.")
+    else:
+        m = compter_instituts(entries, charger_referentiel())
+        r = (f"Au {maj}, {n}{NBSP}sondages ont testé le duel {duel}, réalisés par "
+             f"{m}{NBSP}institut{'s' if m > 1 else ''}. Le terrain du plus ancien s’est terminé "
+             f"le {date_lettres(ancien)}, celui du plus récent le {date_lettres(recent)}.")
+    qr.append(QR(f"Combien de sondages ont testé le duel {texte_brut(duel)}{NBSP}?",
+                 r + " " + lien("/sondages.html", "Voir tous les sondages")))
+
+    # 3. Étendue des scores (seulement quand la page a son graphique)
+    if n >= SEUIL:
+        def etendue(cid):
+            xs = [x["scores"][cid] for x in entries]
+            return f"entre {fmt_score(min(xs))} et {fmt_score(max(xs))}"
+        debut = entries[-1]["terrain_fin"]
+        pages = json.loads((ROOT / "scripts" / "bios.json").read_text(encoding="utf-8"))
+        cible = next((c for c in (cid_a, cid_b) if c in pages), None)
+        qr.append(QR(f"Entre quelles valeurs se situent les scores du duel "
+                     f"{texte_brut(duel)}{NBSP}?",
+                     f"Au {maj}, sur {n}{NBSP}mesures depuis "
+                     f"{time_tag(debut[:7], f'{MOIS[int(debut[5:7]) - 1]} {debut[:4]}')}, "
+                     f"{nom_a} obtient {etendue(cid_a)} et {nom_b} {etendue(cid_b)}. "
+                     + (lien(f"/{cible}.html", f"Voir la page de {e(nom_court(cible, candidats))}")
+                        if cible else lien("/second-tour/", "Voir tous les duels de second tour"))))
+    return qr
+
+
 # Un type de page → sa fonction de questions. Les autres types s'ajoutent ici.
-TYPES = {"accueil": faq_accueil}
+TYPES = {"accueil": faq_accueil, "candidat": faq_candidat, "election": faq_election,
+         "duel": faq_duel}
+
+# Types de pages 2027 : soumis à la veille électorale (pas les présidentielles passées).
+PAGES_2027 = {"accueil", "candidat", "duel"}
+
+
+def bloc_page(type_page, complement, d):
+    """Bloc FAQ prêt à insérer dans une page générée (hors accueil) : "" en veille
+    électorale pour une page 2027, ou quand aucune question n'a de donnée."""
+    if type_page in PAGES_2027 and veille.en_veille():
+        return ""
+    return bloc_faq(complement, TYPES[type_page](d))
+
 
 
 def donnees_accueil():
@@ -303,6 +533,10 @@ DETAILS = re.compile(r"<details>\s*<summary>(.*?)</summary>\s*<p>(.*?)</p>\s*</d
 LDJSON = re.compile(r'<script type="application/ld\+json">(.*?)</script>', re.S)
 
 
+PASSEE = re.compile(r"presidentielle-\d{4}\.html")        # présidentielles passées
+MODELE = re.compile(r"mod[eè]le|prévi|projection|pronostic", re.I)
+
+
 def normaliser(s):
     s = texte_brut(s).replace("’", "'").lower()
     return " ".join(s.split())
@@ -327,8 +561,14 @@ def verifier():
             erreurs.append(f"{rel} : titre « Questions fréquentes » absent")
         if rel == pathlib.Path("index.html") and 'href="#bloc-faq"' not in contenu:
             erreurs.append(f"{rel} : bloc sans entrée « Questions » dans la sous-navigation")
-        if not re.search(r"</section>\s*(?:<!--.*?-->\s*)*</main>\s*<footer", contenu, re.S):
+        if not re.search(r"</section>\s*(?:<!--.*?-->\s*)*(?:</main>\s*(?:</div>\s*)?)?<footer",
+                         contenu, re.S):
             erreurs.append(f"{rel} : le bloc n'est pas le dernier avant le pied de page")
+        passee = PASSEE.fullmatch(rel.name) is not None
+        if rel != pathlib.Path("index.html") and 'href="#bloc-faq"' in contenu:
+            erreurs.append(f"{rel} : entrée « Questions » dans la navigation")
+        if not passee and veille.en_veille():
+            erreurs.append(f"{rel} : bloc affiché pendant la veille électorale")
         ld = LDJSON.search(corps)
         try:
             data = json.loads(ld.group(1)) if ld else None
@@ -343,6 +583,10 @@ def verifier():
         for (q, r), ent in zip(details, entites):
             if ent.get("name") != texte_brut(q) or ent["acceptedAnswer"]["text"] != texte_brut(r):
                 erreurs.append(f"{rel} : JSON-LD différent du HTML pour « {texte_brut(q)} »")
+            if not passee and not re.match(r"Au <time ", r):
+                erreurs.append(f"{rel} : « {texte_brut(q)} » ne s'ouvre pas sur « Au {{date}} »")
+            if MODELE.search(texte_brut(q) + " " + texte_brut(r)):
+                erreurs.append(f"{rel} : « {texte_brut(q)} » parle du modèle ou de prévision")
             if "<time" not in r:
                 erreurs.append(f"{rel} : « {texte_brut(q)} » sans date balisée")
             if not re.search(r"<a href=\"[^\"]+\">[^<]+</a>\s*$", r):
@@ -352,6 +596,9 @@ def verifier():
                 erreurs.append(f"question en double : « {texte_brut(q)} » "
                                f"({vues[cle]} et {rel})")
             vues.setdefault(cle, rel)
+    for chemin in sorted(SITE.glob("presidentielle-*.html")):   # ces pages ont toujours un bloc
+        if PASSEE.fullmatch(chemin.name) and not SECTION.search(chemin.read_text(encoding="utf-8")):
+            erreurs.append(f"{chemin.name} : bloc « Questions fréquentes » absent")
     return erreurs, n_pages, len(vues)
 
 

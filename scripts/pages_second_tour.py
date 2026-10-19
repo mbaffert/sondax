@@ -254,6 +254,17 @@ CSS = """\
   .duel-card .duel-noms { font-family: var(--titre); font-size: 1.1em; font-weight: 600; }
   .duel-card .duel-count { font-size: 13px; color: var(--gris); margin-top: 2px; }
 
+  .bloc-faq { background: #fff; border: 1px solid #E3E5E0; border-radius: 12px;
+    padding: 6px 22px 14px; margin-top: 1.5em; }
+  .bloc-faq h2 { margin-top: 0.8em; }
+  .bloc-faq details { margin-top: 12px; }
+  .bloc-faq summary { cursor: pointer; font-size: 13.5px; font-weight: 500;
+    color: var(--bleu-vif); padding: 8px 0; list-style: none; }
+  .bloc-faq summary::-webkit-details-marker { display: none; }
+  .bloc-faq summary::before { content: '▸ '; }
+  .bloc-faq details[open] summary::before { content: '▾ '; }
+  .bloc-faq details p { margin: 0 0 10px 18px; }
+
   @media (max-width: 600px) {
     main { padding: 14px 12px 30px; }
     .chart-wrap { height: 300px; }
@@ -428,6 +439,9 @@ def generate_duel_page(slug, entries, candidats, out_dir):
                    f"Tous les sondages du duel {nom_a} – {nom_b} pour le second tour de la présidentielle 2027. Courbe et tableau.")
     canonical = f"{BASE_URL}/second-tour/{slug}.html"
     prefix = "../"
+    import build_faq                       # importé ici : build_faq importe ce module
+    faq = build_faq.bloc_page("duel", f"sur le duel {nom_a} – {nom_b}", {
+        "slug": slug, "cid_a": cid_a, "cid_b": cid_b, "entries": entries, "candidats": candidats})
 
     # Graphique seulement si >= SEUIL mesures (SPEC §5)
     if len(entries) >= SEUIL:
@@ -466,6 +480,7 @@ def generate_duel_page(slug, entries, candidats, out_dir):
 
 {chart_section}
   {render_table_html(entries, cid_a, cid_b, candidats)}
+{faq}
 </main>
 
 {footer(depth=1)}

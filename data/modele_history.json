@@ -7121,5 +7121,145 @@
    "philippe": 2.2,
    "glucksmann": 3.3
   }
+ },
+ {
+  "date": "2026-10-19T19:19:43Z",
+  "reconstitue": false,
+  "jour_moyenne": "2026-10-16",
+  "configuration": [
+   "arthaud",
+   "attal",
+   "dupont-aignan",
+   "glucksmann",
+   "le-pen",
+   "melenchon",
+   "philippe",
+   "retailleau",
+   "roussel",
+   "tondelier",
+   "zemmour"
+  ],
+  "sondages_utilises": [
+   "cluster17-2026-09-16",
+   "cluster17-2026-10-15",
+   "elabe-2026-10-16",
+   "harris-2026-09-24",
+   "harris-2026-10-08",
+   "ifop-2026-09-29",
+   "ifop-2026-10-14",
+   "odoxa-2026-10-07",
+   "opinionway-2026-10-14",
+   "yougov-2026-09-21",
+   "yougov-2026-10-15"
+  ],
+  "moyennes": {
+   "le-pen": 33.61,
+   "melenchon": 15.98,
+   "philippe": 13.62,
+   "glucksmann": 12.45,
+   "attal": 7.68,
+   "retailleau": 6.12,
+   "zemmour": 3.75,
+   "dupont-aignan": 1.93,
+   "tondelier": 2.75,
+   "roussel": 1.68,
+   "arthaud": 0.45
+  },
+  "qualification": {
+   "le-pen": 99.9,
+   "melenchon": 71.58,
+   "philippe": 18.94,
+   "glucksmann": 8.97,
+   "attal": 0.41,
+   "retailleau": 0.11,
+   "zemmour": 0.05,
+   "dupont-aignan": 0.02,
+   "tondelier": 0.02,
+   "roussel": 0.01,
+   "arthaud": 0.0
+  },
+  "rangs": {
+   "le-pen": {
+    "1": 99.46,
+    "2": 0.43,
+    "3plus": 0.1
+   },
+   "melenchon": {
+    "1": 0.25,
+    "2": 71.33,
+    "3plus": 28.42
+   },
+   "philippe": {
+    "1": 0.14,
+    "2": 18.8,
+    "3plus": 81.06
+   },
+   "glucksmann": {
+    "1": 0.11,
+    "2": 8.86,
+    "3plus": 91.03
+   },
+   "attal": {
+    "1": 0.02,
+    "2": 0.38,
+    "3plus": 99.59
+   },
+   "retailleau": {
+    "1": 0.01,
+    "2": 0.1,
+    "3plus": 99.89
+   },
+   "zemmour": {
+    "1": 0.0,
+    "2": 0.05,
+    "3plus": 99.95
+   },
+   "dupont-aignan": {
+    "1": 0.0,
+    "2": 0.02,
+    "3plus": 99.98
+   },
+   "tondelier": {
+    "1": 0.0,
+    "2": 0.01,
+    "3plus": 99.98
+   },
+   "roussel": {
+    "1": 0.0,
+    "2": 0.0,
+    "3plus": 99.99
+   },
+   "arthaud": {
+    "1": 0.0,
+    "2": 0.0,
+    "3plus": 100.0
+   }
+  },
+  "duels": {
+   "le-pen+melenchon": 71.51,
+   "le-pen+philippe": 18.88,
+   "glucksmann+le-pen": 8.91,
+   "attal+le-pen": 0.4,
+   "le-pen+retailleau": 0.11,
+   "le-pen+zemmour": 0.05,
+   "glucksmann+melenchon": 0.04,
+   "dupont-aignan+le-pen": 0.02,
+   "glucksmann+philippe": 0.02,
+   "le-pen+tondelier": 0.02,
+   "melenchon+philippe": 0.02,
+   "le-pen+roussel": 0.01,
+   "melenchon+zemmour": 0.01,
+   "arthaud+le-pen": 0.0,
+   "attal+glucksmann": 0.0,
+   "attal+melenchon": 0.0,
+   "attal+philippe": 0.0,
+   "dupont-aignan+philippe": 0.0,
+   "glucksmann+zemmour": 0.0,
+   "philippe+retailleau": 0.0
+  },
+  "delta_bascule": {
+   "philippe": 2.2,
+   "glucksmann": 3.3
+  }
  }
 ]

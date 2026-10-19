@@ -2,6 +2,7 @@
   "election": {
     "premier_tour": "2027-04-18",
     "second_tour": "2027-05-02",
+    "cloture_parrainages": "2027-03-12",
     "officielles": false
   },
   "modele": {

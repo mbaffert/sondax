@@ -67,9 +67,12 @@ jobs:
           python scripts/build_jsonld_dataset.py
           python scripts/build_jsonld_navigation.py
           python scripts/build_dates.py
+          # Bloc « Questions fréquentes » : après le modèle (build_modele) et les dates
+          python scripts/build_faq.py
           # Bandeau statique dans toutes les pages, une fois celles-ci générées
           python scripts/build_header.py --injecter
           python scripts/build_sitemap.py
+          python scripts/build_faq.py --verifier
           python scripts/validate_urls.py
 
       - name: Préparer l'artefact

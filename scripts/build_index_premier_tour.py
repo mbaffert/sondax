@@ -107,6 +107,25 @@ def sondages_dans_fenetre(series_data, sondages):
     return debut, [s for s in sondages if s["terrain_fin"] >= debut]
 
 
+def faits_premier_tour(series_data, sondages):
+    """Faits de la moyenne du premier tour, source unique du chapeau de l'accueil
+    et de la FAQ : les trois premiers (cid, score), la date de fin des séries, le
+    début de la fenêtre, le nombre de sondages pondérés et leurs instituts triés.
+    None sans donnée."""
+    latest = derniers_scores(series_data)
+    if not latest:
+        return None
+    date_fin = series_data.get("date_fin", "")
+    debut_fenetre, sondages_fenetre = sondages_dans_fenetre(series_data, sondages)
+    return {
+        "top": sorted(latest.items(), key=lambda x: -x[1])[:3],
+        "date_fin": date_fin,
+        "debut_fenetre": debut_fenetre,
+        "n_sondages": len(sondages_fenetre),
+        "instituts": sorted(set(s["institut"] for s in sondages_fenetre)),
+    }
+
+
 def generate_chapeau(series_data, sondages, candidats):
     """Trois phrases : leader, volume, delta 3 mois.
 
@@ -116,13 +135,12 @@ def generate_chapeau(series_data, sondages, candidats):
     series = series_data.get("series", {})
     date_fin = series_data.get("date_fin", "")
 
-    latest = derniers_scores(series_data)
-
-    if not latest:
+    faits = faits_premier_tour(series_data, sondages)
+    if not faits:
         return '<p class="subtitle">Aucune donnée de premier tour disponible.</p>'
 
     # Top 3 par score décroissant
-    top = sorted(latest.items(), key=lambda x: -x[1])[:3]
+    top = faits["top"]
 
     # Phrase 1 : leader
     leader_cid, leader_v = top[0]
@@ -150,9 +168,9 @@ def generate_chapeau(series_data, sondages, candidats):
 
     # Phrase 2 : volume et instituts dans la fenêtre de 30 jours
     fin = date.fromisoformat(date_fin)
-    debut_fenetre, sondages_fenetre = sondages_dans_fenetre(series_data, sondages)
-    n_sondages = len(sondages_fenetre)
-    instituts = sorted(set(s["institut"] for s in sondages_fenetre))
+    debut_fenetre = faits["debut_fenetre"]
+    n_sondages = faits["n_sondages"]
+    instituts = faits["instituts"]
 
     debut_date_lettres = time_tag(debut_fenetre, date_lettres(debut_fenetre))
     if n_sondages == 1:
@@ -280,6 +298,14 @@ def sondage_affiche(sondages, candidats):
     return (latest, hyp) if hyp else None
 
 
+def scores_tries(hyp):
+    """Scores de l'hypothèse par ordre décroissant, sans « autre »."""
+    return sorted(
+        ((cid, v) for cid, v in hyp.get("scores", {}).items() if cid != "autre"),
+        key=lambda kv: -kv[1],
+    )
+
+
 def generate_bloc_dernier_sondage(sondages, candidats, series_data):
     """Génère le bloc compact « Dernier sondage » affiché en haut de page."""
     choix = sondage_affiche(sondages, candidats)
@@ -287,12 +313,7 @@ def generate_bloc_dernier_sondage(sondages, candidats, series_data):
         return ""
     latest, hyp = choix
 
-    scores_raw = hyp.get("scores", {})
-    # Tri décroissant, sans "autre"
-    scores = sorted(
-        ((cid, v) for cid, v in scores_raw.items() if cid != "autre"),
-        key=lambda kv: -kv[1],
-    )
+    scores = scores_tries(hyp)
     top4 = scores[:4]
     others = scores[4:]
     photos = json.loads(PHOTOS_PATH.read_text(encoding="utf-8"))

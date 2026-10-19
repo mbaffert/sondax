@@ -79,6 +79,28 @@ def generate_factual_text():
 # Chapeau
 # ---------------------------------------------------------------------------
 
+def meneur_des_duels(duels, candidats):
+    """(candidat, duels gagnés, duels testés) pour le candidat qui l'emporte dans le
+    plus de duels (dernière mesure de chaque duel), ou None si aucun duel n'a de
+    vainqueur. Source unique du chapeau du bloc second tour et de la FAQ."""
+    appearances = {}  # cid → nombre de duels
+    wins = {}  # cid → nombre de duels gagnés (dernière mesure)
+    for slug, entries in duels.items():
+        cid_a, cid_b = pair(slug, candidats)
+        appearances[cid_a] = appearances.get(cid_a, 0) + 1
+        appearances[cid_b] = appearances.get(cid_b, 0) + 1
+        latest = entries[0]["scores"]
+        sa, sb = latest.get(cid_a, 0), latest.get(cid_b, 0)
+        if sa > sb:
+            wins[cid_a] = wins.get(cid_a, 0) + 1
+        elif sb > sa:
+            wins[cid_b] = wins.get(cid_b, 0) + 1
+    if not wins:
+        return None
+    leader = max(wins, key=lambda c: wins[c])
+    return leader, wins[leader], appearances[leader]
+
+
 def phrases_synthese(duels, candidats, nom=None):
     """Deux premières phrases du chapeau : volume des duels testés, puis meneur sur
     l'ensemble des duels. Source unique du bloc second tour de l'accueil et de la
@@ -95,19 +117,7 @@ def phrases_synthese(duels, candidats, nom=None):
             sondage_ids.add(e["terrain_fin"] + "|" + e["institut"])
     n_sondages_distincts = len(sondage_ids)
 
-    # Compter, par candidat : dans combien de duels il apparaît, et combien il gagne
-    appearances = {}  # cid → nombre de duels
-    wins = {}  # cid → nombre de duels gagnés (dernière mesure)
-    for slug, entries in duels.items():
-        cid_a, cid_b = pair(slug, candidats)
-        appearances[cid_a] = appearances.get(cid_a, 0) + 1
-        appearances[cid_b] = appearances.get(cid_b, 0) + 1
-        latest = entries[0]["scores"]
-        sa, sb = latest.get(cid_a, 0), latest.get(cid_b, 0)
-        if sa > sb:
-            wins[cid_a] = wins.get(cid_a, 0) + 1
-        elif sb > sa:
-            wins[cid_b] = wins.get(cid_b, 0) + 1
+    meneur = meneur_des_duels(duels, candidats)
 
     phrases = []
 
@@ -130,11 +140,9 @@ def phrases_synthese(duels, candidats, nom=None):
         )
 
     # Phrase 2 : leader avec dénominateur explicite
-    if wins and n_duels > 1:
-        leader_cid = max(wins, key=lambda c: wins[c])
+    if meneur and n_duels > 1:
+        leader_cid, nw, na = meneur
         nom_leader = nom(leader_cid)
-        nw = wins[leader_cid]
-        na = appearances[leader_cid]
         g = genre(leader_cid, candidats)
         e_accord = "e" if g == "f" else ""
         na_lettres = nombre_lettres(na)

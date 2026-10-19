@@ -41,7 +41,7 @@ from build_index_premier_tour import (
     fmt_pct, load_json, scores_tries, sondage_affiche,
 )
 from build_index_second_tour import (
-    duels_du_bloc, pair, phrases_synthese, sorted_duel_slugs,
+    duels_du_bloc, genre, meneur_des_duels, nombre_lettres, pair, sorted_duel_slugs,
 )
 from instituts import charger_referentiel, lien_institut
 from pages_second_tour import fmt_pct as fmt_pct_t2, jour_mois, load_duels, nom_court
@@ -170,39 +170,76 @@ def faq_accueil(d):
               f"sondage {institut}, réalisé "
               f"{phrase_terrain(latest['terrain_debut'], latest['terrain_fin'])}")
         if latest.get("echantillon"):
-            s1 += f" auprès de {fmt_ech(latest['echantillon'])}{NBSP}personnes interrogées"
+            s1 += f" auprès de {fmt_ech(latest['echantillon'])}{NBSP}personnes"
         s2 = "Il mesure " + enumeration_fr(
             [f"{e(nom(c))} à {fmt_pct(v)}" for c, v in scores]) + "."
         qr.append(QR(f"Quel est le dernier sondage sur la présidentielle 2027{NBSP}?",
                      f"{s1}. {s2} "
                      + lien(f"sondages/{latest['id']}.html", "Voir la fiche du sondage")))
 
-    # 3. Second tour : duel principal du bloc, puis synthèse sur l'ensemble des duels
+    # 3. Second tour : combien de duels le meneur remporte, duel principal du bloc, volume
     duels = duels_du_bloc(d["duels"], candidats)
     if duels:
-        slug = sorted_duel_slugs(duels)[0]
-        entries = duels[slug]
-        cid_a, cid_b = pair(slug, candidats)
-        dernier = entries[0]
-        sa, sb = dernier["scores"].get(cid_a, 0), dernier["scores"].get(cid_b, 0)
-        if sb > sa:                                  # le tableau met le meneur en premier
-            cid_a, cid_b, sa, sb = cid_b, cid_a, sb, sa
-        institut = lien_institut(dernier["institut"], charger_referentiel())
-        s1 = (f"Au {maj}, le duel de second tour le plus récemment mesuré oppose "
-              f"{e(nom(cid_a))} ({fmt_pct_t2(sa)}) à {e(nom(cid_b))} ({fmt_pct_t2(sb)}), "
-              f"selon la dernière mesure ({institut}, "
-              f"{time_tag(dernier['terrain_fin'], texte_date(dernier['terrain_fin']))}) "
-              f"parmi {len(entries)}{NBSP}sondages testant ce duel")
-        vus = {cid_a, cid_b}
+        phrases = []
+        vus = set()
 
         def nom_t2(cid):                             # prénom + nom à la première mention
             if cid in vus:
                 return nom_court(cid, candidats)
             vus.add(cid)
             return e(nom(cid))
-        synthese = phrases_synthese(duels, candidats, nom=nom_t2)
+
+        meneur = meneur_des_duels(duels, candidats)
+        if meneur:
+            cid, nw, na = meneur
+            g = genre(cid, candidats)
+            pronom, accord = ("elle", "e") if g == "f" else ("il", "")
+            if na == 1:
+                portee = "le seul duel de second tour"
+            elif nw == na:
+                portee = f"les {nombre_lettres(na)}{NBSP}duels de second tour"
+            else:
+                portee = f"{nombre_lettres(nw)} des {nombre_lettres(na)}{NBSP}duels de second tour"
+            phrases.append(f"Au {maj}, {nom_t2(cid)} l’emporte dans {portee} où {pronom} est "
+                           f"testé{accord}.")
+            debut_s2 = ""
+        else:
+            debut_s2 = f"Au {maj}, "
+
+        # Duel principal du bloc : mesuré le plus récemment ; à date égale, le plus testé
+        slug = sorted_duel_slugs(duels)[0]
+        entries = duels[slug]
+        dernier = entries[0]
+        a_egalite = sum(1 for en in duels.values()
+                        if en[0]["terrain_fin"] == dernier["terrain_fin"])
+        cid_a, cid_b = pair(slug, candidats)
+        sa, sb = dernier["scores"].get(cid_a, 0), dernier["scores"].get(cid_b, 0)
+        if sb > sa:                                  # le tableau met le meneur en premier
+            cid_a, cid_b, sa, sb = cid_b, cid_a, sb, sa
+        if a_egalite > 1:
+            critere = (f"Parmi les {nombre_lettres(a_egalite)}{NBSP}duels mesurés le plus "
+                       f"récemment, le plus testé")
+        else:
+            critere = "Le duel mesuré le plus récemment"
+        institut = lien_institut(dernier["institut"], charger_referentiel())
+        phrases.append(
+            f"{debut_s2}{critere} oppose {nom_t2(cid_a)} à {nom_t2(cid_b)} "
+            f"({len(entries)}{NBSP}sondages){NBSP}: la dernière mesure donne "
+            f"{fmt_pct_t2(sa)} à {nom_court(cid_a, candidats)} contre {fmt_pct_t2(sb)} "
+            f"à {nom_court(cid_b, candidats)} ({institut}, "
+            f"{time_tag(dernier['terrain_fin'], texte_date(dernier['terrain_fin']))}).")
+
+        n_duels = len(duels)
+        n_mesures = sum(len(en) for en in duels.values())
+        mesures = "mesure" if n_mesures == 1 else "mesures"
+        if n_duels == 1:
+            phrases.append(f"Au total, les instituts ont testé un seul duel, pour "
+                           f"{n_mesures}{NBSP}{mesures}.")
+        else:
+            phrases.append(f"Au total, les instituts ont testé {n_duels}{NBSP}duels, pour "
+                           f"{n_mesures}{NBSP}{mesures}.")
         qr.append(QR(f"Qui gagnerait au second tour d’après les sondages{NBSP}?",
-                     " ".join([f"{s1}."] + synthese) + " "
+                     " ".join(phrases) + " "
                      + lien("second-tour/", "Voir tous les duels de second tour")))
 
     # 4. Nombre de sondages (le compteur du H1 ; seule la date du plus ancien est ajoutée)

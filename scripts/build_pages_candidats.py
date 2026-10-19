@@ -22,6 +22,7 @@ SITE = ROOT / "site"
 
 import sys, html as html_mod
 sys.path.insert(0, str(SCRIPTS))
+import build_faq
 import generer
 from balise_time import time_tag
 from instituts import charger_referentiel, lien_institut, est_notice
@@ -448,6 +449,11 @@ for slug, fiche in bios.items():
         succession=succession,
         derniers=tableau_derniers(slug),
         dernier=dernier_sondage(slug),
+        faq=build_faq.bloc_page("candidat", f"sur {fiche['nom']}", {
+            "slug": slug, "fiche": fiche, "noms": noms, "duels": duels,
+            "serie": serie, "n_sondages": n_sondages, "rangs": rangs,
+            "ecart_devant": ecart_devant, "derniers": derniers_sondages(slug),
+        }),
     )
 
     final_html = wrap_in_site_template(slug, fiche, raw_html)

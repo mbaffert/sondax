@@ -6,6 +6,7 @@ prépare les duels T2, et écrit data/derived/historique.json.
 
 import json, pathlib, datetime, colorsys
 from collections import defaultdict
+from alternatives import groupes_alternatifs
 from series import calculer_series, score_candidat, poids, choisir_demi_vie, FENETRE_JOURS, MIN_SONDAGES
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -114,6 +115,15 @@ def traiter_election(annee_str, election, ref_2027):
         mx = max((v for v in vals if v is not None), default=0)
         cands_t1.append((cid, vals, mx))
 
+    # Candidats interchangeables (Juppé / Fillon / Sarkozy…) : regroupés dans l'infobulle
+    def parti_de(cid):
+        ci = candidats_info.get(cid, {})
+        partis = ci.get('partis') or [ci.get('parti')]
+        return partis[0] if partis and partis[0] else None
+    groupes = groupes_alternatifs(
+        (h['scores'] for s in sondages if s['terrain_debut'] >= borne
+         for h in s['hypotheses'] if h['tour'] == 1), parti_de)
+
     # Couleurs
     used, taken = {}, set()
     cands_t1.sort(key=lambda x: -(res_t1.get(x[0], 0) * 10 + x[2]))
@@ -142,6 +152,7 @@ def traiter_election(annee_str, election, ref_2027):
         cands_out[cid] = {
             'nom': nom_court(cid, ci),
             'parti': parti,
+            'groupe': groupes.get(cid),
             'couleur': col,
             'resultat': res_t1.get(cid),
             'visible': visible,

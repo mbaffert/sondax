@@ -668,6 +668,10 @@ class BlocChart {
       mode: this.fond ? 'nearestHorsFond' : 'nearest', axis: 'x', intersect: false,
     };
 
+    const groupes = this.groupes;
+    const grp = (groupes && typeof SondaxGroupes !== 'undefined')
+      ? SondaxGroupes.creer(it => it.dataset._cid, cid => groupes[cid]) : null;
+
     this.chart = new Chart(this.canvas, {
       type: 'line',
       data: { datasets },
@@ -693,12 +697,18 @@ class BlocChart {
           legend: { display: false },
           tooltip: {
             ...interaction,
+            // Candidats interchangeables (Le Pen / Bardella…) regroupés : leurs
+            // scores viennent de scénarios différents (tooltip-groupes.js).
             filter: (item, _idx, arr) => {
-              if (item.dataset._isGhost || item.dataset._isFond) return false;
               const hasBrut = arr.some(a => a.dataset._isBrut);
-              if (hasBrut) return item.dataset._isBrut;
-              return true;
+              const garder = (it) => {
+                if (it.dataset._isGhost || it.dataset._isFond) return false;
+                return hasBrut ? !!it.dataset._isBrut : true;
+              };
+              if (grp) grp.preparer(arr, garder);
+              return garder(item);
             },
+            itemSort: grp ? grp.itemSort : undefined,
             callbacks: {
               title: (items) => {
                 if (!items.length) return '';
@@ -715,9 +725,11 @@ class BlocChart {
                 const opts = { day: 'numeric', month: 'long', year: 'numeric' };
                 return 'Moyenne au ' + d.toLocaleDateString('fr-FR', opts);
               },
+              beforeLabel: grp ? grp.beforeLabel : undefined,
               label: (ctx) => {
                 if (ctx.parsed.y === null || isNaN(ctx.parsed.y)) return '';
-                return `${nomCourt(ctx.dataset._cid)} : ${fmtPct(ctx.parsed.y)}`;
+                const ou = grp ? grp.prefixe(ctx) : '';
+                return `${ou}${nomCourt(ctx.dataset._cid)} : ${fmtPct(ctx.parsed.y)}`;
               }
             }
           }

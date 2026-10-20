@@ -645,7 +645,8 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/date-fns@3/locale/fr/cdn.min.js"></script>
-<script src="assets/bloc-chart.js?v=1"></script>
+<script src="assets/tooltip-groupes.js?v=1"></script>
+<script src="assets/bloc-chart.js?v=2"></script>
 <script>
 const PAGES_CANDIDATS = new Set(["attal","glucksmann","le-pen","melenchon","philippe","retailleau","roussel","tondelier","zemmour"]);
 
@@ -967,6 +968,7 @@ async function init() {
     }
   }
   sondagesBloc.pointsBruts = pointsBruts;
+  sondagesBloc.groupes = seriesData.groupes || null;
   sondagesBloc.enableEndLabels = true;
 
   sondagesBloc.setCandidats(sondagesCandidats, (a, b) => {

@@ -1,5 +1,214 @@
 [
  {
+  "id": "ifop-2026-10-19",
+  "institut": "Ifop",
+  "commanditaire": "LCI, Le Figaro et Sud Radio",
+  "terrain_debut": "2026-10-17",
+  "terrain_fin": "2026-10-19",
+  "echantillon": 1928,
+  "url_source": "https://www.ifopgroup.com/wp-content/uploads/2026/10/122853-barometre-de-lelection-presidentielle-vague-7-resultats-densemble.pdf",
+  "source": "manuel",
+  "saisi_le": "2026-10-20",
+  "revid": null,
+  "hypotheses": [
+   {
+    "tour": 1,
+    "libelle": "Philippe et Attal",
+    "echantillon": null,
+    "principale": true,
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 16.5,
+     "roussel": 3,
+     "tondelier": 3,
+     "glucksmann": 13.5,
+     "attal": 5,
+     "philippe": 12,
+     "retailleau": 5,
+     "dupont-aignan": 2,
+     "le-pen": 36,
+     "zemmour": 3.5
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Philippe seul candidat du bloc central",
+    "echantillon": null,
+    "principale": false,
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 16.5,
+     "roussel": 2.5,
+     "tondelier": 3,
+     "glucksmann": 14,
+     "philippe": 15,
+     "retailleau": 7.5,
+     "dupont-aignan": 1.5,
+     "le-pen": 36,
+     "zemmour": 3.5
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Attal seul candidat du bloc central",
+    "echantillon": null,
+    "principale": false,
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 16,
+     "roussel": 2,
+     "tondelier": 3,
+     "glucksmann": 16,
+     "attal": 13,
+     "retailleau": 7,
+     "dupont-aignan": 1.5,
+     "le-pen": 38,
+     "zemmour": 3
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Mélenchon et Glucksmann seuls candidats de gauche",
+    "echantillon": null,
+    "principale": false,
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 18,
+     "glucksmann": 16,
+     "philippe": 16,
+     "retailleau": 6.5,
+     "dupont-aignan": 2.5,
+     "le-pen": 37,
+     "zemmour": 3.5
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Mélenchon et Hollande seuls candidats de gauche",
+    "echantillon": null,
+    "principale": false,
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 20,
+     "hollande": 10,
+     "attal": 6.5,
+     "philippe": 14,
+     "retailleau": 6,
+     "dupont-aignan": 2,
+     "le-pen": 38,
+     "zemmour": 3
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Ruffin, Villepin et Lisnard candidats",
+    "echantillon": null,
+    "principale": false,
+    "scores": {
+     "arthaud": 0,
+     "melenchon": 15,
+     "roussel": 2,
+     "ruffin": 1.5,
+     "tondelier": 2.5,
+     "glucksmann": 12,
+     "attal": 4,
+     "philippe": 12,
+     "villepin": 1.5,
+     "retailleau": 5.5,
+     "lisnard": 5.5,
+     "dupont-aignan": 1.5,
+     "le-pen": 34,
+     "zemmour": 3
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Lisnard seul candidat de droite",
+    "echantillon": null,
+    "principale": false,
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 15.5,
+     "roussel": 2,
+     "tondelier": 3,
+     "glucksmann": 13,
+     "attal": 5,
+     "philippe": 13,
+     "lisnard": 7,
+     "dupont-aignan": 2,
+     "le-pen": 36,
+     "zemmour": 3
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Ruffin et Polony candidats",
+    "echantillon": null,
+    "principale": false,
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 15,
+     "roussel": 2,
+     "ruffin": 2,
+     "tondelier": 3,
+     "glucksmann": 12,
+     "attal": 6,
+     "philippe": 12,
+     "retailleau": 6,
+     "dupont-aignan": 2,
+     "le-pen": 35,
+     "zemmour": 3.5,
+     "polony": 1
+    }
+   },
+   {
+    "tour": 2,
+    "libelle": "Mélenchon / Le Pen",
+    "echantillon": null,
+    "scores": {
+     "melenchon": 32,
+     "le-pen": 68
+    }
+   },
+   {
+    "tour": 2,
+    "libelle": "Glucksmann / Le Pen",
+    "echantillon": null,
+    "scores": {
+     "glucksmann": 43,
+     "le-pen": 57
+    }
+   },
+   {
+    "tour": 2,
+    "libelle": "Hollande / Le Pen",
+    "echantillon": null,
+    "scores": {
+     "hollande": 41,
+     "le-pen": 59
+    }
+   },
+   {
+    "tour": 2,
+    "libelle": "Attal / Le Pen",
+    "echantillon": null,
+    "scores": {
+     "attal": 42,
+     "le-pen": 58
+    }
+   },
+   {
+    "tour": 2,
+    "libelle": "Philippe / Le Pen",
+    "echantillon": null,
+    "scores": {
+     "philippe": 44,
+     "le-pen": 56
+    }
+   }
+  ]
+ },
+ {
   "id": "opinionway-2026-03-26",
   "institut": "OpinionWay",
   "commanditaire": "Pollitics / L'Opinion",

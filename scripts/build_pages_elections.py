@@ -462,7 +462,8 @@ def page_election(e, elections):
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script src="assets/end-labels.js?v=1"></script>
-<script src="assets/historique.js?v=3"></script>
+<script src="assets/tooltip-groupes.js?v=1"></script>
+<script src="assets/historique.js?v=4"></script>
 <script>initHistorique('{a}');</script>
 
 </body>

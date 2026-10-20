@@ -8,6 +8,7 @@ data/derived/series-t1.json.
 
 import json, pathlib, datetime, copy
 from sondages_io import charger as charger_sondages
+from alternatives import groupes_alternatifs
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SONDAGES_PATH = ROOT / "data" / "sondages.json"
@@ -260,6 +261,11 @@ def main():
     if output is None:
         print("Aucun sondage T1 trouvé.")
         return
+
+    # Candidats interchangeables (Le Pen / Bardella…) : regroupés dans l'infobulle
+    output["groupes"] = groupes_alternatifs(
+        (h["scores"] for s in sondages_raw for h in s["hypotheses"] if h["tour"] == 1),
+        lambda cid: candidats.get(cid, {}).get("parti"))
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(json.dumps(output, ensure_ascii=False, indent=1) + "\n")

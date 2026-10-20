@@ -212,6 +212,9 @@ function renderT1() {
   }
   yMax = Math.max(10, Math.ceil(yMax / 5) * 5);
 
+  const garderT1 = item => !item.dataset._isGhost && !item.dataset._isRaw && !item.dataset._isResult;
+  const grpT1 = SondaxGroupes.creer(item => item.dataset._cid, cid => cands[cid]?.groupe);
+
   if (chartT1) chartT1.destroy();
   chartT1 = new Chart(document.getElementById('chart-t1'), {
     type: 'line',
@@ -228,10 +231,14 @@ function renderT1() {
       plugins: {
         legend: { display: false },
         tooltip: {
-          filter: item => !item.dataset._isGhost && !item.dataset._isRaw && !item.dataset._isResult,
+          // Candidats interchangeables (même parti, scénarios différents)
+          // regroupés : leurs scores ne s'additionnent pas (tooltip-groupes.js).
+          filter: (item, _i, arr) => grpT1.preparer(arr, garderT1) && garderT1(item),
+          itemSort: grpT1.itemSort,
           callbacks: {
             title: items => items.length ? fmtTooltipDate(items[0].parsed.x) : '',
-            label: ctx => `${ctx.dataset.label}\u00a0: ${fmtPct(ctx.parsed.y)}`,
+            beforeLabel: grpT1.beforeLabel,
+            label: ctx => `${grpT1.prefixe(ctx)}${ctx.dataset.label}\u00a0: ${fmtPct(ctx.parsed.y)}`,
           },
         },
       },

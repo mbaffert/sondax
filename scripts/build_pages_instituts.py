@@ -303,7 +303,7 @@ def bloc_graphique(inst, graph):
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/date-fns@3/locale/fr/cdn.min.js"></script>
-    <script src="../assets/bloc-chart.js?v=1"></script>
+    <script src="../assets/bloc-chart.js?v=2"></script>
     <script>
     const PAGES_CANDIDATS = new Set({pages});
     (function () {{

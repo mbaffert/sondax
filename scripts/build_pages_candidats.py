@@ -248,6 +248,24 @@ def tableau_derniers(cid):
     )
 
 
+def liste_derniers(cid):
+    """Bloc « Ses derniers sondages » : une ligne par sondage (institut, fin de
+    terrain, score) liée à sa fiche, puis le lien vers tous les sondages.
+    Chaîne vide si le candidat n'est dans aucune hypothèse principale."""
+    items = "".join(
+        f'<li><a href="/sondages/{html_mod.escape(s["id"])}.html">'
+        f'<span class="rec-inst">{html_mod.escape(s["institut"])}</span>'
+        f'<span class="rec-date">{time_tag(s["terrain_fin"], fmt_date(s["terrain_fin"]))}</span>'
+        f'<span class="rec-score">{generer.fr(score)}&nbsp;%</span></a></li>'
+        for s, score in derniers_sondages(cid))
+    if not items:
+        return ""
+    return ('<section class="carte"><div class="pad"><h2>Ses derniers sondages</h2>'
+            f'<ul class="recents">{items}</ul>'
+            '<p class="recents-tous"><a href="/sondages.html">Tous les sondages →</a></p>'
+            '</div></section>')
+
+
 # ---------- extraction du HTML de generer.py ----------
 
 def extract_seo(head_html):
@@ -448,6 +466,7 @@ for slug, fiche in bios.items():
         pages=pages,
         succession=succession,
         derniers=tableau_derniers(slug),
+        recents=liste_derniers(slug),
         dernier=dernier_sondage(slug),
         faq=build_faq.bloc_page("candidat", f"sur {fiche['nom']}", {
             "slug": slug, "fiche": fiche, "noms": noms, "duels": duels,

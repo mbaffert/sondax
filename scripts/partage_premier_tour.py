@@ -280,7 +280,8 @@ def page(f, image_datee):
   Détails sur la page <a href="../donnees.html">Données</a>.</p>
   <p><a href="../">Voir le graphique interactif</a> · <a href="../methodologie.html">Méthode</a></p>
 </main>'''
-    extra = (f'<meta property="og:image:alt" content="{esc(alt_page(f))}">\n'
+    extra = (f'<meta name="robots" content="noindex, follow">\n'
+             f'<meta property="og:image:alt" content="{esc(alt_page(f))}">\n'
              f'<link rel="stylesheet" href="../assets/partage-premier-tour.css?v=1">\n'
              f'<script type="application/ld+json">'
              f'{json.dumps(jsonld(f, titre, description, image_datee), ensure_ascii=False)}</script>')

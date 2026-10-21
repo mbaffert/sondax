@@ -311,7 +311,7 @@ def phrase_dernier_sondage(dernier):
 
 def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant,
          duels=None, noms=None, pages=None, succession=None, derniers="", dernier=None,
-         faq=""):
+         faq="", recents=""):
     nom = fiche["nom"]; coul = fiche["couleur"]
     pcs = {k: v[slug] for k, v in crois.get("pcs", {}).items()
            if slug in v and k in ORDRE_PCS}
@@ -325,6 +325,7 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
     blocs = []
     bloc2t, _ = bloc_second_tour(slug, nom, duels or {}, noms or {}, fiche.get("genre","m"), pages)
     if bloc2t: blocs.append(bloc2t)
+    if recents: blocs.append(recents)
     if (pcs or sexe or ages) and nat is not None:
         rows_pcs = sorted(((k, pcs[k]) for k in ORDRE_PCS if k in pcs), key=lambda x: -x[1])
         rows_sexe = [(k, sexe[k]) for k in ("Hommes", "Femmes") if k in sexe]

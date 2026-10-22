@@ -1,5 +1,75 @@
 [
  {
+  "id": "opinionway-2026-10-22",
+  "institut": "OpinionWay",
+  "terrain_debut": "2026-10-21",
+  "terrain_fin": "2026-10-22",
+  "echantillon": 973.0,
+  "url_source": "https://www.cnews.fr/france/2026-10-22/sondage-marine-le-pen-conforte-son-avance-au-premier-tour-de-lelection",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "bouamrane",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 16.0,
+     "roussel": 1.0,
+     "tondelier": 1.0,
+     "glucksmann": 13.0,
+     "attal": 4.0,
+     "philippe": 12.0,
+     "lisnard": 6.0,
+     "retailleau": 6.0,
+     "dupont-aignan": 1.0,
+     "le-pen": 36.0,
+     "zemmour": 4.0,
+     "bouamrane": 1.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "glucksmann",
+     "le-pen"
+    ],
+    "scores": {
+     "glucksmann": 44.0,
+     "le-pen": 56.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "melenchon"
+    ],
+    "scores": {
+     "melenchon": 31.0,
+     "le-pen": 69.0
+    }
+   }
+  ],
+  "revid": 240614001,
+  "integre_le": "2026-10-22"
+ },
+ {
   "id": "ifop-2026-10-19",
   "institut": "Ifop",
   "commanditaire": "LCI, Le Figaro et Sud Radio",

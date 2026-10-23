@@ -5,7 +5,7 @@
   "terrain_debut": "2026-10-21",
   "terrain_fin": "2026-10-22",
   "echantillon": 973.0,
-  "url_source": "https://www.cnews.fr/france/2026-10-22/sondage-marine-le-pen-conforte-son-avance-au-premier-tour-de-lelection",
+  "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10333-pres-iv-opinionway-cnews-22-octobre.pdf",
   "hypotheses": [
    {
     "tour": 1,
@@ -64,9 +64,21 @@
      "melenchon": 31.0,
      "le-pen": 69.0
     }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "philippe"
+    ],
+    "scores": {
+     "philippe": 44.0,
+     "le-pen": 56.0
+    }
    }
   ],
-  "revid": 240614001,
+  "revid": 240632023,
   "integre_le": "2026-10-22"
  },
  {
@@ -75,7 +87,7 @@
   "terrain_debut": "2026-10-19",
   "terrain_fin": "2026-10-21",
   "echantillon": 2094.0,
-  "url_source": "https://tolunacorporate.com/wp-content/uploads/2026/10/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-8-M6-RTL-23-octobre-2026-1.pdf",
+  "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10332-pres-iv-toluna-harris-interactive-23-octobre.pdf",
   "hypotheses": [
    {
     "tour": 1,
@@ -259,12 +271,12 @@
      "philippe"
     ],
     "scores": {
-     "philippe": 47.0,
-     "le-pen": 53.0
+     "philippe": 43.0,
+     "le-pen": 57.0
     }
    }
   ],
-  "revid": 240628865,
+  "revid": 240632023,
   "integre_le": "2026-10-23"
  },
  {

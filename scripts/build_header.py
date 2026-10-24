@@ -207,6 +207,7 @@ CANDIDATS_PAGES = [
     ("melenchon", "Jean-Luc Mélenchon"),
     ("glucksmann", "Raphaël Glucksmann"),
     ("hollande", "François Hollande"),
+    ("lisnard", "David Lisnard"),
     ("attal", "Gabriel Attal"),
     ("retailleau", "Bruno Retailleau"),
     ("tondelier", "Marine Tondelier"),

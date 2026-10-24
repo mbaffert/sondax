@@ -82,6 +82,134 @@
   "integre_le": "2026-10-22"
  },
  {
+  "id": "ipsos-2026-10-22",
+  "institut": "Ipsos",
+  "terrain_debut": "2026-10-21",
+  "terrain_fin": "2026-10-22",
+  "echantillon": 1500.0,
+  "url_source": "https://www.ipsos.com/fr-fr/presidentielle-2027-melenchon-progresse-le-pen-reste-en-tete",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 17.0,
+     "roussel": 2.0,
+     "tondelier": 3.5,
+     "glucksmann": 13.0,
+     "attal": 4.0,
+     "philippe": 13.0,
+     "retailleau": 7.5,
+     "dupont-aignan": 1.5,
+     "le-pen": 33.5,
+     "zemmour": 4.5
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 17.0,
+     "roussel": 2.0,
+     "tondelier": 3.5,
+     "glucksmann": 14.0,
+     "philippe": 15.0,
+     "retailleau": 8.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 33.5,
+     "zemmour": 4.5
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 17.0,
+     "roussel": 2.5,
+     "tondelier": 3.5,
+     "glucksmann": 15.5,
+     "attal": 9.5,
+     "retailleau": 11.5,
+     "dupont-aignan": 2.0,
+     "le-pen": 33.5,
+     "zemmour": 4.5
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 17.0,
+     "roussel": 2.5,
+     "tondelier": 3.5,
+     "glucksmann": 13.0,
+     "philippe": 14.0,
+     "lisnard": 6.5,
+     "retailleau": 5.5,
+     "dupont-aignan": 1.5,
+     "le-pen": 32.0,
+     "zemmour": 4.0
+    }
+   }
+  ],
+  "revid": 240671317,
+  "integre_le": "2026-10-24"
+ },
+ {
   "id": "harris-2026-10-21",
   "institut": "Harris",
   "terrain_debut": "2026-10-19",

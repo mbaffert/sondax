@@ -58,5 +58,11 @@
     "auteur": "Inconnu (photo de presse, non vérifiée)",
     "licence": "Non vérifiée",
     "source": ""
+  },
+  "lisnard": {
+    "fichier": "photos/lisnard.jpg",
+    "auteur": "Inconnu (photo fournie, non vérifiée)",
+    "licence": "Non vérifiée",
+    "source": ""
   }
 }

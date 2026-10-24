@@ -118,5 +118,17 @@
    "<b>Pas candidat déclaré</b>. Il a annoncé une décision officielle en décembre 2026."
   ],
   "genre": "m"
+ },
+ "lisnard": {
+  "nom": "David Lisnard",
+  "parti": "Nouvelle Énergie",
+  "couleur": "#3399FF",
+  "naissance": "1969-02-02",
+  "bio": [
+   "<b>Maire de Cannes</b> depuis 2014, président de l'Association des maires de France depuis 2021.",
+   "<b>Président de Nouvelle Énergie</b>, le parti qu'il a fondé. Il a quitté Les Républicains en mars 2026.",
+   "<b>Candidat déclaré</b> depuis le 17 janvier 2025. Première participation."
+  ],
+  "genre": "m"
  }
 }

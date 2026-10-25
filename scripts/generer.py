@@ -32,8 +32,15 @@ def age(naissance):
     return AUJ.year - n.year - ((AUJ.month, AUJ.day) < (n.month, n.day))
 
 # ---------- graphique ----------
-def svg(serie, bruts, couleur, succession=None):
-    W, H, MB, MT = 1000, 400, 30, 22
+def _svg(serie, bruts, couleur, succession, mobile):
+    if mobile:
+        W, H, MB, MT = 360, 240, 26, 20
+        fs, fs_rep, r_pt, r_fin, tr, r_brut, op_brut = 11, 11, 5, 5, 2.5, 2.5, ".35"
+        taille = f'height="{H}"'
+    else:
+        W, H, MB, MT = 1000, 400, 30, 22
+        fs, fs_rep, r_pt, r_fin, tr, r_brut, op_brut = 11, 11.5, 6, 6, 3.2, 3, ".25"
+        taille = f'height="{H}"'
     xs = [dt.date.fromisoformat(d).toordinal() for d, _ in serie] + \
          [dt.date.fromisoformat(d).toordinal() for d, _ in bruts]
     x0, x1 = min(xs), max(xs)
@@ -46,42 +53,79 @@ def svg(serie, bruts, couleur, succession=None):
         (ax, ay), (bx, by) = P[i-1], P[i]; m = (ax + bx) / 2
         ligne += f" C{m:.1f},{ay:.1f} {m:.1f},{by:.1f} {bx:.1f},{by:.1f}"
     aire = ligne + f" L{P[-1][0]:.1f},{H-MB} L{P[0][0]:.1f},{H-MB} Z"
-    pas = 5 if ymax <= 22 else 10
+    pas = 2 if ymax <= 10 else 5 if ymax <= 22 else 10
+    reperes = list(range(pas, int(ymax), pas))
+    if len(reperes) < 2:
+        reperes = list(range(1, int(ymax) + 1))
     grille = "".join(
         f'<line x1="0" y1="{py(v):.1f}" x2="{W}" y2="{py(v):.1f}" stroke="currentColor" opacity=".10"/>'
-        f'<text x="6" y="{py(v)-5:.1f}" font-size="11" fill="currentColor" opacity=".45" '
+        f'<text x="6" y="{py(v)-5:.1f}" font-size="{fs}" fill="currentColor" opacity=".45" '
         f'font-family="IBM Plex Mono,monospace">{v}%</text>'
-        for v in range(pas, int(ymax), pas))
-    mois = ""; cur = dt.date.fromordinal(x0).replace(day=1)
+        for v in reperes)
+    ticks = []; cur = dt.date.fromordinal(x0).replace(day=1)
     while cur.toordinal() <= x1:
         if cur.toordinal() >= x0:
-            mois += (f'<text x="{px(cur.toordinal()):.1f}" y="{H-8}" text-anchor="middle" '
-                     f'font-size="11" fill="currentColor" opacity=".45">{MOIS[cur.month-1]}</text>')
+            ticks.append(cur)
         cur = (cur.replace(day=28) + dt.timedelta(days=8)).replace(day=1)
+    if mobile and len(ticks) > 6:
+        ticks = [c for i, c in enumerate(ticks) if (len(ticks) - 1 - i) % 2 == 0]
+    mois = "".join(f'<text x="{px(c.toordinal()):.1f}" y="{H-8}" text-anchor="middle" '
+                   f'font-size="{fs}" fill="currentColor" opacity=".45">{MOIS[c.month-1]}</text>'
+                   for c in ticks)
     pts = "".join(f'<circle cx="{px(dt.date.fromisoformat(d).toordinal()):.1f}" cy="{py(v):.1f}" '
-                  f'r="3" fill="{couleur}" opacity=".25"/>' for d, v in bruts)
-    repere = ""
+                  f'r="{r_brut}" fill="{couleur}" opacity="{op_brut}"/>' for d, v in bruts)
+    repere = ""; boite = None
     if succession:
         dsucc, avant, apres = succession
         xo = dt.date.fromisoformat(dsucc).toordinal()
         if x0 <= xo <= x1:
             X = px(xo)
-            cote = "end" if X > W * 0.62 else "start"
+            if mobile:
+                l1, l2 = apres, f"remplace {avant}"
+                larg = max(len(l1), len(l2)) * 6 + 8
+                cote = "start" if X + larg <= W - 4 or X < larg else "end"
+            else:
+                cote = "end" if X > W * 0.62 else "start"
             dx = -8 if cote == "end" else 8
+            if mobile:
+                texte = (f'<tspan x="{X+dx:.1f}">{l1}</tspan>'
+                         f'<tspan x="{X+dx:.1f}" dy="13">{l2}</tspan>')
+            else:
+                texte = f'{apres} remplace {avant}'
+            if mobile:
+                xa = X + dx - larg if cote == "end" else X + dx
+                boite = (xa, xa + larg, MT, MT + 13 + 13 + 4)
             repere = (f'<line x1="{X:.1f}" y1="{MT}" x2="{X:.1f}" y2="{H-MB}" '
                       f'stroke="currentColor" stroke-width="1.5" stroke-dasharray="4 4" opacity=".45"/>'
-                      f'<text x="{X+dx:.1f}" y="{MT+13}" text-anchor="{cote}" font-size="11.5" '
-                      f'fill="currentColor" opacity=".7">{apres} remplace {avant}</text>')
-    gid = "g" + slugify(couleur)
-    return (f'<svg viewBox="0 0 {W} {H}" width="100%" preserveAspectRatio="none" '
-            f'style="display:block;color:var(--texte)" role="img">'
+                      f'<text x="{X+dx:.1f}" y="{MT+13}" text-anchor="{cote}" font-size="{fs_rep}" '
+                      f'fill="currentColor" opacity=".7">{texte}</text>')
+    valeur = ""
+    if mobile:
+        fx, fy = P[-1]
+        ty = fy - 10 if fy - 10 - 12 >= 2 else fy + 20
+        if boite and ty - 12 < boite[3] and ty > boite[2] and fx > boite[0] and fx - 44 < boite[1]:
+            ty = fy + 20
+        valeur = (f'<text x="{fx:.1f}" y="{ty:.1f}" text-anchor="end" font-size="12" '
+                  f'font-weight="600" fill="{couleur}" stroke="var(--carte)" stroke-width="3" '
+                  f'paint-order="stroke">{fr(serie[-1][1])}&nbsp;%</text>')
+    gid = "g" + slugify(couleur) + ("-m" if mobile else "-l")
+    return (f'<svg class="chart-{"mobile" if mobile else "large"}" viewBox="0 0 {W} {H}" width="100%" {taille} '
+            f'style="color:var(--texte)" role="img">'
             f'<defs><linearGradient id="{gid}" x1="0" y1="0" x2="0" y2="1">'
             f'<stop offset="0%" stop-color="{couleur}" stop-opacity=".28"/>'
             f'<stop offset="100%" stop-color="{couleur}" stop-opacity="0"/></linearGradient></defs>'
             f'{grille}{mois}<path d="{aire}" fill="url(#{gid})"/>{pts}{repere}'
-            f'<path d="{ligne}" fill="none" stroke="{couleur}" stroke-width="3.2" stroke-linecap="round"/>'
-            f'<circle cx="{P[-1][0]:.1f}" cy="{P[-1][1]:.1f}" r="6" fill="{couleur}" '
-            f'stroke="var(--carte)" stroke-width="2.5"/></svg>')
+            f'<path d="{ligne}" fill="none" stroke="{couleur}" stroke-width="{tr}" stroke-linecap="round"/>'
+            f'<circle cx="{P[-1][0]:.1f}" cy="{P[-1][1]:.1f}" r="{r_fin}" fill="{couleur}" '
+            f'stroke="var(--carte)" stroke-width="2.5"/>{valeur}</svg>')
+
+CSS_CHART = ("<style>.chart-large,.chart-mobile{display:block}.chart-large{height:auto}"
+             ".chart-mobile{display:none}"
+             "@media (max-width:599.98px){.chart-large{display:none}.chart-mobile{display:block}}</style>")
+
+def svg(serie, bruts, couleur, succession=None):
+    return (CSS_CHART + _svg(serie, bruts, couleur, succession, False) +
+            _svg(serie, bruts, couleur, succession, True))
 
 # ---------- textes ----------
 MOIS_LONG = ['janvier','février','mars','avril','mai','juin','juillet','août',
@@ -277,7 +321,6 @@ def barres_simple(rows):
                    f'<div class="val">{fr(v,0)}&nbsp;%</div></div>' for lab, v in rows)
 
 CSS = open(os.path.join(os.path.dirname(__file__), "style-candidat.css")).read()
-
 PHOTOS = {}      # slug -> data-URI ou chemin, injecté par le script appelant
 CREDITS = {}     # slug -> {"auteur":..., "licence":..., "page":...}
 

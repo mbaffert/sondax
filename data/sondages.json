@@ -87,7 +87,7 @@
   "terrain_debut": "2026-10-21",
   "terrain_fin": "2026-10-22",
   "echantillon": 1500.0,
-  "url_source": "https://www.ipsos.com/fr-fr/presidentielle-2027-melenchon-progresse-le-pen-reste-en-tete",
+  "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10338-pres-iv-ipsos-bva-le-parisien-24-octobre.pdf",
   "hypotheses": [
    {
     "tour": 1,
@@ -206,8 +206,78 @@
     }
    }
   ],
-  "revid": 240671317,
+  "revid": 240731388,
   "integre_le": "2026-10-24"
+ },
+ {
+  "id": "cluster-17-2026-10-22",
+  "institut": "Cluster 17",
+  "terrain_debut": "2026-10-19",
+  "terrain_fin": "2026-10-22",
+  "echantillon": 3000.0,
+  "url_source": "https://www.politico.eu/article/sondage-exclusif-2027-la-chute-de-philippe-relegue-derriere-melenchon/",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 18.5,
+     "roussel": 2.0,
+     "tondelier": 2.0,
+     "glucksmann": 13.0,
+     "philippe": 16.0,
+     "retailleau": 8.0,
+     "dupont-aignan": 3.0,
+     "le-pen": 33.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "hollande",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 19.5,
+     "roussel": 2.0,
+     "tondelier": 2.5,
+     "hollande": 6.5,
+     "philippe": 17.0,
+     "lisnard": 8.0,
+     "retailleau": 7.0,
+     "dupont-aignan": 3.0,
+     "le-pen": 30.5,
+     "zemmour": 3.5
+    }
+   }
+  ],
+  "revid": 240731388,
+  "integre_le": "2026-10-26"
  },
  {
   "id": "harris-2026-10-21",

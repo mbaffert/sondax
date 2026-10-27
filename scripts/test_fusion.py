@@ -89,6 +89,27 @@ def test_pas_de_doublon_si_valeurs_ou_institut_differents():
         assert len(res) == 2 and rap["ajoutes"] == [entrant["id"]], res
 
 
+def test_doublon_institut_renomme_sur_wikipedia():
+    """Le 26/10, Wikipédia écrit « Cluster 17 » ; le 27/10, « Cluster17 ». L'id
+    calculé change, mais c'est le même sondage : l'entrée existante est
+    retrouvée et garde son id (URL publique), rien n'est ajouté."""
+    ancien = sondage("cluster-17-2026-10-22", "Cluster 17", "2026-10-22")
+    entrant = sondage("cluster17-2026-10-22", "Cluster17", "2026-10-22", revid=200)
+    res, rap = cw.fusionner([ancien], [entrant])
+    assert len(res) == 1 and not rap["ajoutes"], res
+    assert res[0]["id"] == "cluster-17-2026-10-22"
+    assert res[0]["institut"] == "Cluster17"
+    res2, rap2 = cw.fusionner(res, [entrant])
+    assert len(res2) == 1 and not rap2["ajoutes"] and not rap2["modifies"], rap2
+    # Le cas réel : renommage et hypothèse ajoutée dans la même révision.
+    plus = sondage("cluster17-2026-10-22", "Cluster17", "2026-10-22", revid=300)
+    plus["hypotheses"].append({"tour": 1, "echantillon": None, "candidats": ["attal", "le-pen"],
+                               "scores": {"attal": 12.0, "le-pen": 32.5}})
+    res, rap = cw.fusionner([ancien], [plus])
+    assert len(res) == 1 and not rap["ajoutes"], res
+    assert res[0]["id"] == "cluster-17-2026-10-22" and len(res[0]["hypotheses"]) == 2
+
+
 def test_deux_sondages_distincts_proches_ne_fusionnent_pas():
     """Deux vagues du même institut à un jour d'écart, toutes deux sur Wikipédia :
     chacune reste ce qu'elle est (appariement par id d'abord)."""
@@ -176,6 +197,7 @@ def test_fichier_actuel_inchange_par_la_fusion():
 TESTS = [test_ajout, test_mise_a_jour_et_revid, test_inchange_garde_revid,
          test_conservation_sondage_disparu, test_doublon_date_decalee,
          test_pas_de_doublon_si_valeurs_ou_institut_differents,
+         test_doublon_institut_renomme_sur_wikipedia,
          test_deux_sondages_distincts_proches_ne_fusionnent_pas,
          test_sondage_retire, test_sondage_retire_exclu_du_chargement_et_des_calculs,
          test_validation_bloque_si_le_total_baisse,

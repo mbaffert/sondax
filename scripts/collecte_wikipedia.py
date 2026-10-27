@@ -333,10 +333,35 @@ def _ecart_jours(a, b):
     return abs((datetime.date.fromisoformat(a) - datetime.date.fromisoformat(b)).days)
 
 
+_REFERENTIEL_INSTITUTS = None
+
+
+def _meme_institut(a, b):
+    """Compare deux libellés d'institut via les alias de data/instituts.json :
+    Wikipédia écrit parfois « Cluster 17 » puis corrige en « Cluster17 », ou
+    « Harris » / « Harris Interactive » ; c'est le même institut."""
+    global _REFERENTIEL_INSTITUTS
+    if a == b:
+        return True
+    import instituts
+    if _REFERENTIEL_INSTITUTS is None:
+        _REFERENTIEL_INSTITUTS = instituts.charger_referentiel()
+    return (instituts.cle_institut(a, _REFERENTIEL_INSTITUTS)
+            == instituts.cle_institut(b, _REFERENTIEL_INSTITUTS))
+
+
 def meme_sondage(existant, entrant):
-    """Même institut, fin de terrain à ±TOLERANCE_JOURS, mêmes valeurs d'hypothèses."""
-    return (existant['institut'] == entrant['institut']
-            and _ecart_jours(existant['terrain_fin'], entrant['terrain_fin']) <= TOLERANCE_JOURS
+    """Même institut (alias compris), et soit exactement le même terrain (début
+    et fin), soit une fin de terrain à ±TOLERANCE_JOURS avec les mêmes valeurs
+    d'hypothèses. Le premier cas couvre une ligne Wikipédia dont le libellé
+    d'institut change en même temps qu'une hypothèse est ajoutée ou corrigée :
+    l'id calculé change, mais c'est le même sondage."""
+    if not _meme_institut(existant['institut'], entrant['institut']):
+        return False
+    if (existant.get('terrain_debut') == entrant.get('terrain_debut')
+            and existant['terrain_fin'] == entrant['terrain_fin']):
+        return True
+    return (_ecart_jours(existant['terrain_fin'], entrant['terrain_fin']) <= TOLERANCE_JOURS
             and _valeurs_hypotheses(existant) == _valeurs_hypotheses(entrant))
 
 

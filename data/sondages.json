@@ -280,6 +280,104 @@
   "integre_le": "2026-10-26"
  },
  {
+  "id": "cluster17-2026-10-22",
+  "institut": "Cluster17",
+  "terrain_debut": "2026-10-19",
+  "terrain_fin": "2026-10-22",
+  "echantillon": 2817.0,
+  "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/octobre/10339-pres-iv-cluster17-politico-26-octobre.pdf",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 18.5,
+     "roussel": 2.0,
+     "tondelier": 2.0,
+     "glucksmann": 13.0,
+     "philippe": 16.0,
+     "retailleau": 8.0,
+     "dupont-aignan": 3.0,
+     "le-pen": 33.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 19.5,
+     "roussel": 2.0,
+     "tondelier": 2.0,
+     "glucksmann": 14.0,
+     "attal": 12.0,
+     "retailleau": 10.0,
+     "dupont-aignan": 3.5,
+     "le-pen": 32.5,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "hollande",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 19.5,
+     "roussel": 2.0,
+     "tondelier": 2.5,
+     "hollande": 6.5,
+     "philippe": 17.0,
+     "lisnard": 8.0,
+     "retailleau": 7.0,
+     "dupont-aignan": 3.0,
+     "le-pen": 30.5,
+     "zemmour": 3.5
+    }
+   }
+  ],
+  "revid": 240766888,
+  "integre_le": "2026-10-28"
+ },
+ {
   "id": "harris-2026-10-21",
   "institut": "Harris",
   "terrain_debut": "2026-10-19",

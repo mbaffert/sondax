@@ -340,6 +340,17 @@ def meme_sondage(existant, entrant):
             and _valeurs_hypotheses(existant) == _valeurs_hypotheses(entrant))
 
 
+def meme_terrain(existant, entrant, referentiel):
+    """Même institut (alias du référentiel compris : « Cluster 17 » = « Cluster17 »)
+    et mêmes dates de début et de fin de terrain. Wikipédia corrige parfois le
+    libellé de l'institut, l'échantillon ou une hypothèse : l'id, bâti sur le
+    libellé, change alors, mais c'est le même sondage."""
+    from instituts import cle_institut
+    return (cle_institut(existant['institut'], referentiel) == cle_institut(entrant['institut'], referentiel)
+            and existant.get('terrain_debut') == entrant.get('terrain_debut')
+            and existant['terrain_fin'] == entrant['terrain_fin'])
+
+
 def _champs_sources(entrant):
     return [k for k in entrant if k not in ('id', 'revid') + CHAMPS_RETRAIT]
 
@@ -430,6 +441,9 @@ def fusionner(existants, entrants, dedoublonner=True):
     resultat = [dict(s) for s in existants]
     par_id = {s['id']: s for s in resultat}
     ids_entrants = {e['id'] for e in entrants}
+    if dedoublonner:
+        from instituts import charger_referentiel
+        referentiel = charger_referentiel()
     rapport = {'ajoutes': [], 'modifies': [], 'conserves': [], 'deplaces': [], 'retires_touches': [],
                'absents': []}
     vus = set()
@@ -456,6 +470,9 @@ def fusionner(existants, entrants, dedoublonner=True):
         # Id inconnu : le même sondage, avec une date de terrain décalée ?
         candidats = []
         if dedoublonner:
+            candidats = [s for s in resultat if s['id'] not in ids_entrants
+                         and s['id'] not in vus and meme_terrain(s, e, referentiel)]
+        if dedoublonner and not candidats:
             candidats = sorted(
                 (s for s in resultat if s['id'] not in ids_entrants
                  and s['id'] not in vus and meme_sondage(s, e)),

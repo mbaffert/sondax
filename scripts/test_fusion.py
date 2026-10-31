@@ -173,13 +173,38 @@ def test_fichier_actuel_inchange_par_la_fusion():
     assert len(res) == len(actuel) and len(rap["absents"]) >= len(actuel) - 24 - 1
 
 
+
+def test_libelle_institut_corrige_sur_wikipedia():
+    """Cluster17, 31/10/2026 : « Cluster 17 » corrigé en « Cluster17 », échantillon
+    et hypothèses modifiés. Même institut, mêmes dates : mise à jour, pas d'ajout."""
+    ancien = sondage("cluster-17-2026-10-22", "Cluster 17", "2026-10-22", echantillon=3000.0)
+    entrant = sondage("cluster17-2026-10-22", "Cluster17", "2026-10-22", echantillon=2817.0,
+                      scores={"le-pen": 33.0, "philippe": 16.0, "melenchon": 18.5})
+    res, rap = cw.fusionner([ancien], [entrant])
+    assert len(res) == 1, f"doublon créé : {[s['id'] for s in res]}"
+    assert rap['ajoutes'] == [], rap['ajoutes']
+    assert res[0]['id'] == "cluster-17-2026-10-22"
+    assert res[0]['institut'] == "Cluster17" and res[0]['echantillon'] == 2817.0
+    res2, rap2 = cw.fusionner(res, [entrant])
+    assert len(res2) == 1 and rap2['ajoutes'] == [], "le doublon revient à la collecte suivante"
+
+
+def test_meme_institut_autres_dates_reste_un_ajout():
+    res, rap = cw.fusionner([sondage("ifop-2026-09-10")],
+                            [sondage("ifop-2026-09-20", fin="2026-09-20",
+                                     scores={"le-pen": 30.0, "philippe": 18.0, "melenchon": 16.0})])
+    assert len(res) == 2 and rap['ajoutes'] == ["ifop-2026-09-20"]
+
+
 TESTS = [test_ajout, test_mise_a_jour_et_revid, test_inchange_garde_revid,
          test_conservation_sondage_disparu, test_doublon_date_decalee,
          test_pas_de_doublon_si_valeurs_ou_institut_differents,
          test_deux_sondages_distincts_proches_ne_fusionnent_pas,
          test_sondage_retire, test_sondage_retire_exclu_du_chargement_et_des_calculs,
          test_validation_bloque_si_le_total_baisse,
-         test_fichier_actuel_inchange_par_la_fusion]
+         test_fichier_actuel_inchange_par_la_fusion,
+         test_libelle_institut_corrige_sur_wikipedia,
+         test_meme_institut_autres_dates_reste_un_ajout]
 
 
 def main():

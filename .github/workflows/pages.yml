@@ -91,3 +91,10 @@ jobs:
       - uses: actions/deploy-pages@v4
         id: deploy
 
+      # Après la mise en ligne : on ne notifie que des pages réellement publiées.
+      # Seulement sur push (merge d'une collecte), pas sur le cron quotidien ;
+      # un échec IndexNow ne doit jamais faire échouer le déploiement.
+      - name: Notifier IndexNow
+        if: github.event_name == 'push'
+        continue-on-error: true
+        run: python scripts/indexnow.py _site/sitemap.xml

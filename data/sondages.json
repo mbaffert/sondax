@@ -1,5 +1,203 @@
 [
  {
+  "id": "harris-2026-11-05",
+  "institut": "Harris",
+  "terrain_debut": "2026-11-03",
+  "terrain_fin": "2026-11-05",
+  "echantillon": 2101.0,
+  "url_source": "https://tolunacorporate.com/wp-content/uploads/2026/11/Rapport-Toluna-Barometre-Presidentielle-2027-Vague-9-M6-RTL-9-novembre-2026.pdf",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "villepin",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 19.0,
+     "roussel": 1.0,
+     "tondelier": 2.0,
+     "glucksmann": 11.0,
+     "philippe": 12.0,
+     "lisnard": 9.0,
+     "retailleau": 5.0,
+     "dupont-aignan": 1.0,
+     "le-pen": 34.0,
+     "zemmour": 3.0,
+     "villepin": 2.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "villepin",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 19.0,
+     "roussel": 1.0,
+     "tondelier": 2.0,
+     "glucksmann": 12.0,
+     "attal": 9.0,
+     "lisnard": 9.0,
+     "retailleau": 6.0,
+     "dupont-aignan": 1.0,
+     "le-pen": 35.0,
+     "zemmour": 3.0,
+     "villepin": 2.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 18.0,
+     "roussel": 2.0,
+     "tondelier": 2.0,
+     "glucksmann": 11.0,
+     "attal": 6.0,
+     "philippe": 11.0,
+     "retailleau": 7.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 36.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 19.0,
+     "roussel": 2.0,
+     "tondelier": 2.0,
+     "glucksmann": 12.0,
+     "philippe": 14.0,
+     "retailleau": 8.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 36.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 19.0,
+     "roussel": 2.0,
+     "tondelier": 3.0,
+     "glucksmann": 13.0,
+     "attal": 10.0,
+     "retailleau": 10.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 36.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "glucksmann",
+     "le-pen"
+    ],
+    "scores": {
+     "glucksmann": 40.0,
+     "le-pen": 60.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "melenchon"
+    ],
+    "scores": {
+     "melenchon": 32.0,
+     "le-pen": 68.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "philippe"
+    ],
+    "scores": {
+     "philippe": 42.0,
+     "le-pen": 58.0
+    }
+   }
+  ],
+  "revid": 241172647,
+  "integre_le": "2026-11-09"
+ },
+ {
   "id": "ifop-2026-10-29",
   "institut": "Ifop",
   "commanditaire": "LCI",

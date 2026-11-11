@@ -1,5 +1,121 @@
 [
  {
+  "id": "cluster17-2026-11-10",
+  "institut": "Cluster17",
+  "terrain_debut": "2026-11-09",
+  "terrain_fin": "2026-11-10",
+  "echantillon": null,
+  "url_source": "https://www.politico.eu/article/sondage-exclusif-2027-christine-lagarde-bien-accueillie-par-les-electeurs-du-centre/",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "lagarde",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 20.5,
+     "roussel": 2.5,
+     "tondelier": 1.5,
+     "glucksmann": 10.0,
+     "lisnard": 10.0,
+     "retailleau": 5.5,
+     "dupont-aignan": 2.0,
+     "le-pen": 30.5,
+     "zemmour": 3.0,
+     "lagarde": 14.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 20.0,
+     "roussel": 2.0,
+     "tondelier": 1.5,
+     "glucksmann": 11.0,
+     "philippe": 13.5,
+     "lisnard": 10.0,
+     "retailleau": 5.0,
+     "dupont-aignan": 3.0,
+     "le-pen": 30.5,
+     "zemmour": 3.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "asselineau",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "lagarde",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "polony",
+     "retailleau",
+     "riner",
+     "roussel",
+     "ruffin",
+     "tondelier",
+     "villepin",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 19.0,
+     "roussel": 1.5,
+     "tondelier": 1.0,
+     "glucksmann": 8.0,
+     "attal": 2.0,
+     "philippe": 8.0,
+     "lisnard": 8.0,
+     "retailleau": 5.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 27.0,
+     "zemmour": 2.0,
+     "asselineau": 1.0,
+     "lagarde": 8.0,
+     "polony": 2.5,
+     "riner": 2.0,
+     "ruffin": 1.5,
+     "villepin": 1.0
+    }
+   }
+  ],
+  "revid": 241254292,
+  "integre_le": "2026-11-11"
+ },
+ {
   "id": "harris-2026-11-05",
   "institut": "Harris",
   "terrain_debut": "2026-11-03",

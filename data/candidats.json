@@ -420,5 +420,44 @@
     "declare_le": null,
     "prenom": "Natacha",
     "genre": "f"
+  },
+  "lagarde": {
+    "nom": "Lagarde",
+    "parti": "SE",
+    "type": "personne",
+    "couleur": "#5B7C99",
+    "alias_wikipedia": [
+      "lagarde"
+    ],
+    "condition_polymarket": null,
+    "declare_le": null,
+    "prenom": "Christine",
+    "genre": "f"
+  },
+  "asselineau": {
+    "nom": "Asselineau",
+    "parti": "UPR",
+    "type": "personne",
+    "couleur": "#556B2F",
+    "alias_wikipedia": [
+      "asselineau"
+    ],
+    "condition_polymarket": null,
+    "declare_le": null,
+    "prenom": "François",
+    "genre": "m"
+  },
+  "riner": {
+    "nom": "Riner",
+    "parti": "SE",
+    "type": "personne",
+    "couleur": "#7A8A99",
+    "alias_wikipedia": [
+      "riner"
+    ],
+    "condition_polymarket": null,
+    "declare_le": null,
+    "prenom": "Teddy",
+    "genre": "m"
   }
 }

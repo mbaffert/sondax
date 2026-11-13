@@ -76,7 +76,7 @@ def clean_num(txt):
     t = txt.strip()
     t = re.sub(r"'''|''", '', t)
     t = re.sub(r'\{\{blanc\|([^}]*)\}\}', r'\1', t)
-    t = re.sub(r'\{\{formatnum:([^}]*)\}\}', r'\1', t)
+    t = re.sub(r'\{\{\s*formatnum\s*[:|]\s*([^}|]*)[^}]*\}\}', r'\1', t, flags=re.I)
     t = re.sub(r'<ref[^>]*>.*?</ref>|<ref[^>]*/>', '', t, flags=re.S)
     t = re.sub(r'<[^>]+>', '', t)
     t = t.replace('\u00a0','').replace('\u202f','').replace(' ','')

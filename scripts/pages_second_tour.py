@@ -563,7 +563,9 @@ def generate_index_page(duels, candidats, out_dir):
         nom_a = html_mod.escape(nom_court(cid_a, candidats))
         nom_b = html_mod.escape(nom_court(cid_b, candidats))
         n = len(entries)
-        tables_html += f'<h2>{nom_a} – {nom_b} ({n} sondage{"s" if n > 1 else ""})</h2>\n'
+        # Chaque duel frais a sa page : le titre y mène (maillage interne)
+        tables_html += (f'<h2><a href="{slug}.html">{nom_a} – {nom_b}</a> '
+                        f'({n} sondage{"s" if n > 1 else ""})</h2>\n')
         tables_html += render_table_html(entries, cid_a, cid_b, candidats) + "\n"
 
     canonical = f"{BASE_URL}/second-tour/"

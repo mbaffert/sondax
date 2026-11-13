@@ -130,5 +130,77 @@
    "<b>Candidat déclaré</b> depuis le 17 janvier 2025. Première participation."
   ],
   "genre": "m"
+ },
+ "riner": {
+  "nom": "Teddy Riner",
+  "parti": "Sans étiquette",
+  "couleur": "#7A8A99",
+  "naissance": "1989-04-07",
+  "bio": [
+   "<b>Judoka</b>, quintuple champion olympique et onze fois champion du monde.",
+   "<b>Sans parti</b> : il se dit « ni de droite, ni de gauche ».",
+   "<b>Candidat déclaré</b> depuis le 9 novembre 2026. Première participation."
+  ],
+  "genre": "m"
+ },
+ "polony": {
+  "nom": "Natacha Polony",
+  "parti": "Nous sommes la France",
+  "couleur": "#6E7B8B",
+  "naissance": "1975-04-15",
+  "bio": [
+   "<b>Journaliste et essayiste</b>, ancienne directrice de la rédaction de <i>Marianne</i>.",
+   "<b>Fondatrice de Nous sommes la France</b>, le mouvement qu'elle a lancé fin août 2026.",
+   "<b>Candidate déclarée</b> depuis le 14 octobre 2026. Première participation."
+  ],
+  "genre": "f"
+ },
+ "dupont-aignan": {
+  "nom": "Nicolas Dupont-Aignan",
+  "parti": "Debout la France",
+  "couleur": "#0055A4",
+  "naissance": "1961-03-07",
+  "bio": [
+   "<b>Président de Debout la France</b>, le parti qu'il a fondé en 1999.",
+   "<b>Maire de Yerres</b> de 1995 à 2017, longtemps député de l'Essonne.",
+   "<b>Candidat déclaré</b> depuis le 8 mars 2025. Quatrième candidature, après 2012, 2017 et 2022."
+  ],
+  "genre": "m"
+ },
+ "ruffin": {
+  "nom": "François Ruffin",
+  "parti": "Debout !",
+  "couleur": "#CC3366",
+  "naissance": "1975-10-18",
+  "bio": [
+   "<b>Député de la Somme</b> depuis 2017.",
+   "<b>Fondateur de Debout !</b> Il a quitté La France insoumise en 2024. Journaliste, fondateur du journal <i>Fakir</i>.",
+   "<b>Candidat déclaré</b> depuis le 26 janvier 2026. Première participation."
+  ],
+  "genre": "m"
+ },
+ "arthaud": {
+  "nom": "Nathalie Arthaud",
+  "parti": "Lutte ouvrière",
+  "couleur": "#8B0000",
+  "naissance": "1970-02-23",
+  "bio": [
+   "<b>Porte-parole de Lutte ouvrière</b> depuis 2008, professeure d'économie-gestion.",
+   "<b>Candidate en 2012, 2017 et 2022</b>, à chaque fois autour de 0,6&nbsp;%.",
+   "<b>Candidate déclarée</b> depuis le 8 décembre 2025. Quatrième candidature."
+  ],
+  "genre": "f"
+ },
+ "asselineau": {
+  "nom": "François Asselineau",
+  "parti": "Union populaire républicaine",
+  "couleur": "#556B2F",
+  "naissance": "1957-09-14",
+  "bio": [
+   "<b>Président de l'Union populaire républicaine</b> (UPR), le parti qu'il a fondé en 2007.",
+   "<b>Candidat en 2017</b> (0,92&nbsp;%). En 2022, il n'a pas obtenu les 500 parrainages.",
+   "<b>Candidat déclaré</b> depuis le 31 août 2023."
+  ],
+  "genre": "m"
  }
 }

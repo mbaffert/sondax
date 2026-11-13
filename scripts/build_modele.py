@@ -966,7 +966,7 @@ def main():
     a = modele["accroche"]
     description = f"{a['titre']} {a['detail']} Chances d’être au second tour si on votait dimanche."
     page = render_page(
-        title="Qui serait au second tour si on votait dimanche&nbsp;? — Modèle Sondax",
+        title="Qui au second tour si on votait dimanche&nbsp;? — Sondax",
         meta_description=e(description),
         canonical=PAGE_URL,
         body_content=corps,

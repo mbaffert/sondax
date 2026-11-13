@@ -167,7 +167,7 @@ ou corrigez directement Wikipédia&nbsp;: la correction apparaît ici au passage
   main.donnees .table-scroll { overflow-x: auto; }
 </style>"""
     return render_page(
-        title="Données des sondages de la présidentielle 2027 (CSV) — Sondax",
+        title="Données des sondages présidentielle 2027 (CSV) — Sondax",
         meta_description=(f"Les {nb_sondages} sondages de la présidentielle 2027, d’après la liste de "
                           "Wikipédia, en CSV : une ligne par candidat et par configuration "
                           "testée, mise à jour quotidienne, licence CC BY-SA."),

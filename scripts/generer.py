@@ -388,7 +388,7 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
     bio = "".join(f"<li>{baliser_dates(x)}</li>" for x in fiche["bio"])
     return f'''<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>{nom} — sondages présidentielle 2027 : intentions de vote et électorat | Sondax</title>
+<title>{nom} : sondages présidentielle 2027 — Sondax</title>
 <meta name="description" content="Sondage {nom} pour la présidentielle 2027 : intention de vote {nom} au premier tour, évolution, duels de second tour et électorat.">
 <link rel="canonical" href="https://sondax.fr/{slug}.html">
 <meta property="og:title" content="{nom} — sondages présidentielle 2027">

@@ -57,7 +57,7 @@ def bloc_comparaison(comp, noms):
     def surprise(c, an):
         return fr(c["qualifie_le_moins_attendu"][an], 1)
     lignes = "".join(
-        f'<tr><td>{an}</td><td class="n">{surprise(a, an)}</td><td class="n">{surprise(b, an)}</td></tr>'
+        f'<tr><th scope="row">{an}</th><td class="n">{surprise(a, an)}</td><td class="n">{surprise(b, an)}</td></tr>'
         for an in b["qualifie_le_moins_attendu"])
     return f'''<p><strong>Correction de la méthode.</strong> Une première version calibrait le
 moteur sur la moyenne simple des sondages de la dernière semaine, sans variation de
@@ -65,7 +65,7 @@ l'ampleur des erreurs. Elle était trop sûre d'elle&nbsp;: perte logarithmique 
 {fr(a["perte_log"], 3)} contre {fr(b["perte_log"], 3)} aujourd'hui (plus bas = mieux),
 score de Brier de {fr(a["brier"], 4)} contre {fr(b["brier"], 4)}. Chances données, par
 élection, au qualifié le moins attendu&nbsp;:</p>
-<table class="mm"><tr><th>Élection</th><th class="n">Première version</th><th class="n">Version actuelle</th></tr>{lignes}</table>'''
+<table class="mm"><tr><th scope="col">Élection</th><th scope="col" class="n">Première version</th><th scope="col" class="n">Version actuelle</th></tr>{lignes}</table>'''
 
 
 def section(cal, bt, reglages, noms):
@@ -75,7 +75,7 @@ def section(cal, bt, reglages, noms):
     faux = [a for a, ok in pres["qualifies_annonces_justes"].items() if not ok]
 
     lignes_jeux = "".join(
-        f'<tr><td>{JEUX.get(k, k)}</td><td>{", ".join(j["elections"])}</td>'
+        f'<tr><th scope="row">{JEUX.get(k, k)}</th><td>{", ".join(j["elections"])}</td>'
         f'<td class="n">{j["n_comparaisons"]}</td><td class="n">{fr(j["erreur_absolue_moyenne"])}</td>'
         f'<td class="n">{fr(j["ecart_type"])}</td><td class="n">{fr(j["N_eff"], 0)}</td>'
         f'<td class="n">{fr(j["moyenne_sondax_j7"]["ecart_type"])}</td>'
@@ -88,11 +88,11 @@ def section(cal, bt, reglages, noms):
     k_mel = reglages.get("k_melange")
     comp = bt.get("comparaison", {})
     lignes_tranches = "".join(
-        f'<tr><td>{TRANCHES[k]}</td><td class="n">{t["n"]}</td>'
+        f'<tr><th scope="row">{TRANCHES[k]}</th><td class="n">{t["n"]}</td>'
         f'<td class="n">{fr(t["erreur_absolue_moyenne"])}</td><td class="n">{fr(t["ecart_type"])}</td></tr>'
         for k, t in pres["par_tranche"].items())
     lignes_erreurs = "".join(
-        f'<tr><td>{p["election"]}</td><td>{e(nom(noms, p["election"], p["candidat"]))}</td>'
+        f'<tr><th scope="row">{p["election"]}</th><td>{e(nom(noms, p["election"], p["candidat"]))}</td>'
         f'<td class="n">{fr(p["moyenne"], 1)}</td><td class="n">{fr(p["resultat"], 1)}</td>'
         f'<td class="n">{"+" if p["erreur"] > 0 else "−"}{fr(abs(p["erreur"]), 1)}</td></tr>'
         for p in pres["principales_erreurs"][:6])
@@ -109,11 +109,11 @@ def section(cal, bt, reglages, noms):
     for r in runs:
         for l in r["candidats"][:4]:
             lignes_bt.append(
-                f'<tr><td>{r["election"]}</td><td>{e(l["nom"])}</td><td class="n">{fr(l["moyenne"], 1)}</td>'
+                f'<tr><th scope="row">{r["election"]}</th><td>{e(l["nom"])}</td><td class="n">{fr(l["moyenne"], 1)}</td>'
                 f'<td class="n">{fr(l["qualification"], 1)}</td><td class="n">{fr(l["resultat"], 1)}</td>'
                 f'<td>{"qualifié" if l["qualifie"] else ""}</td></tr>')
     lignes_duels = "".join(
-        f'<tr><td>{r["election"]}</td>'
+        f'<tr><th scope="row">{r["election"]}</th>'
         f'<td>{" – ".join(e(nom(noms, r["election"], c)) for c in r["duel_principal"]["candidats"])}</td>'
         f'<td class="n">{fr(r["duel_principal"]["chance"], 1)}</td>'
         f'<td>{" – ".join(e(nom(noms, r["election"], c)) for c in r["duel_reel"]["candidats"])}</td>'
@@ -121,7 +121,7 @@ def section(cal, bt, reglages, noms):
         for r in runs)
     fia = bt["fiabilite"]
     lignes_fia = "".join(
-        f'<tr><td>{t["de"]} à {t["a"]:.0f}</td><td class="n">{t["n"]}</td>'
+        f'<tr><th scope="row">{t["de"]} à {t["a"]:.0f}</th><td class="n">{t["n"]}</td>'
         f'<td class="n">{fr(t["annonce"], 1) if t["annonce"] is not None else "—"}</td>'
         f'<td class="n">{fr(t["observe"], 1) if t["observe"] is not None else "—"}</td></tr>'
         for t in fia["table"])
@@ -129,7 +129,7 @@ def section(cal, bt, reglages, noms):
     loi = bt["loi"]
     niv = loi["par_niveau"]
     lignes_loi = "".join(
-        f'<tr><td>{TRANCHES[k]}</td><td class="n">{t["n"]}</td><td class="n">{fr(t["ecart_type_observe"])}</td>'
+        f'<tr><th scope="row">{TRANCHES[k]}</th><td class="n">{t["n"]}</td><td class="n">{fr(t["ecart_type_observe"])}</td>'
         f'<td class="n">{fr(t["ecart_type_attendu"])}</td><td class="n">{fr(t["rapport_variance"])}</td></tr>'
         for k, t in niv.items() if t["n"])
     q2, q3 = loi["queues"]["au_dela_2_ecarts_types"], loi["queues"]["au_dela_3_ecarts_types"]
@@ -172,11 +172,11 @@ Sur les présidentielles de {pres["elections"][0]} à {pres["elections"][-1]}&nb
 <strong>{fr(pres["erreur_absolue_moyenne"])} point</strong>, écart-type de
 <strong>{fr(pres["ecart_type"])} point</strong>.
 {("En " + ", ".join(faux) + ", les deux premiers des sondages n'étaient pas les deux qualifiés ; c'est la seule fois." if len(faux) == 1 else "")}</p>
-<table class="mm"><tr><th rowspan="2">Jeu</th><th rowspan="2">Élections</th><th colspan="4">Moyenne simple, dernière semaine</th><th colspan="2">Moyenne Sondax à J−7</th></tr><tr><th class="n">Comparaisons</th><th class="n">Erreur absolue moyenne</th><th class="n">Écart-type</th><th class="n">N<sub>eff</sub></th><th class="n">Écart-type</th><th class="n">N<sub>eff</sub></th></tr>{lignes_jeux}</table>
+<table class="mm"><tr><th scope="col" rowspan="2">Jeu</th><th scope="col" rowspan="2">Élections</th><th scope="colgroup" colspan="4">Moyenne simple, dernière semaine</th><th scope="colgroup" colspan="2">Moyenne Sondax à J−7</th></tr><tr><th scope="col" class="n">Comparaisons</th><th scope="col" class="n">Erreur absolue moyenne</th><th scope="col" class="n">Écart-type</th><th scope="col" class="n">N<sub>eff</sub></th><th scope="col" class="n">Écart-type</th><th scope="col" class="n">N<sub>eff</sub></th></tr>{lignes_jeux}</table>
 <p class="mm-legende">Répartition des erreurs (moyenne des sondages − résultat), par tranche de 0,5 point, de {fr(h_de, 1)} à {fr(h_a, 1)} point&nbsp;:</p>
 <div class="mm-histo" aria-hidden="true">{histo}</div>
-<table class="mm"><tr><th>Niveau du candidat</th><th class="n">Cas</th><th class="n">Erreur absolue moyenne</th><th class="n">Écart-type</th></tr>{lignes_tranches}</table>
-<table class="mm"><tr><th>Élection</th><th>Candidat</th><th class="n">Moyenne</th><th class="n">Résultat</th><th class="n">Erreur</th></tr>{lignes_erreurs}</table>
+<table class="mm"><tr><th scope="col">Niveau du candidat</th><th scope="col" class="n">Cas</th><th scope="col" class="n">Erreur absolue moyenne</th><th scope="col" class="n">Écart-type</th></tr>{lignes_tranches}</table>
+<table class="mm"><tr><th scope="col">Élection</th><th scope="col">Candidat</th><th scope="col" class="n">Moyenne</th><th scope="col" class="n">Résultat</th><th scope="col" class="n">Erreur</th></tr>{lignes_erreurs}</table>
 
 <h3>3. {tirages} premiers tours</h3>
 <p>À partir de la moyenne du jour, nous tirons {tirages} premiers tours selon une loi de
@@ -213,11 +213,11 @@ qualifications divisé par {tirages}. Même comptage pour les rangs et pour les 
 élections (<em>leave-one-out</em>), calculons la moyenne Sondax avec les seuls sondages
 disponibles {bt["horizon_jours"]} jours avant le scrutin, puis appliquons exactement le
 moteur actuel.</p>
-<table class="mm"><tr><th>Élection</th><th>Candidat</th><th class="n">Moyenne</th><th class="n">Chances de qualification</th><th class="n">Résultat</th><th></th></tr>{"".join(lignes_bt)}</table>
-<table class="mm"><tr><th>Élection</th><th>Duel principal Sondax</th><th class="n">Chances</th><th>Duel réel</th><th class="n">Chances du duel réel</th></tr>{lignes_duels}</table>
+<table class="mm"><tr><th scope="col">Élection</th><th scope="col">Candidat</th><th scope="col" class="n">Moyenne</th><th scope="col" class="n">Chances de qualification</th><th scope="col" class="n">Résultat</th><th scope="col"><span class="sr-only">Qualification</span></th></tr>{"".join(lignes_bt)}</table>
+<table class="mm"><tr><th scope="col">Élection</th><th scope="col">Duel principal Sondax</th><th scope="col" class="n">Chances</th><th scope="col">Duel réel</th><th scope="col" class="n">Chances du duel réel</th></tr>{lignes_duels}</table>
 <p>Fiabilité&nbsp;: dans chaque tranche de chances annoncées, la part de candidats
 effectivement qualifiés (score de Brier&nbsp;: {fr(fia["brier"], 3)} sur {fia["n"]} cas).</p>
-<table class="mm"><tr><th>Chances annoncées</th><th class="n">Cas</th><th class="n">Moyenne annoncée</th><th class="n">Qualifiés observés (%)</th></tr>{lignes_fia}</table>
+<table class="mm"><tr><th scope="col">Chances annoncées</th><th scope="col" class="n">Cas</th><th scope="col" class="n">Moyenne annoncée</th><th scope="col" class="n">Qualifiés observés (%)</th></tr>{lignes_fia}</table>
 {bloc_comparaison(comp, noms)}
 <p><strong>Une réserve.</strong> Cinq élections, c'est peu&nbsp;: toute conclusion reste
 prudente.</p>
@@ -228,7 +228,7 @@ l'écart-type observé ({fr(loi["global"]["ecart_type_observe"])}) est celui de 
 ({fr(loi["global"]["ecart_type_attendu"])}). Les grandes erreurs ne sont pas plus
 fréquentes que prévu&nbsp;: {q2["observe"]} au-delà de deux écarts-types pour {fr(q2["attendu"], 1)}
 attendues, {q3["observe"]} au-delà de trois pour {fr(q3["attendu"], 1)}.</p>
-<table class="mm"><tr><th>Niveau du candidat</th><th class="n">Cas</th><th class="n">Écart-type observé</th><th class="n">Écart-type de la loi</th><th class="n">Rapport des variances</th></tr>{lignes_loi}</table>
+<table class="mm"><tr><th scope="col">Niveau du candidat</th><th scope="col" class="n">Cas</th><th scope="col" class="n">Écart-type observé</th><th scope="col" class="n">Écart-type de la loi</th><th scope="col" class="n">Rapport des variances</th></tr>{lignes_loi}</table>
 <p><strong>La loi se trompe selon le niveau du candidat.</strong> Pour les candidats entre 10
 et 20&nbsp;%, les erreurs réelles ont été {fr(ratio_10_20, 1)} fois plus dispersées (en
 variance) que ce que la loi prévoit&nbsp;; au-dessus de 20&nbsp;%, {fr(ratio_20, 2)} fois
@@ -257,6 +257,8 @@ publiés à chaque date.</p>
 .methode-modele h2 {{ margin-top: 40px; }}
 .methode-modele table.mm {{ margin: 12px 0 18px; font-size: 13.5px; }}
 .methode-modele table.mm .n {{ text-align: right; white-space: nowrap; }}
+.methode-modele table.mm th[scope="row"] {{ font-weight: normal; text-align: left; }}
+.methode-modele .sr-only {{ position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }}
 .methode-modele code {{ font-family: var(--mono, monospace); font-size: 13px; background: #F2F3F0; padding: 1px 5px; border-radius: 4px; }}
 .methode-modele .mm-legende {{ font-size: 13px; color: var(--gris); margin-bottom: 4px; }}
 .methode-modele .mm-histo {{ display: flex; align-items: flex-end; gap: 2px; height: 90px; margin-bottom: 16px; max-width: 520px; }}

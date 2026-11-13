@@ -22,13 +22,14 @@
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css?v=1">
+<link rel="ard" href="/.well-known/ard.json">
 <link rel="stylesheet" href="assets/header.css?v=5">
 <style>
   :root {
-    --bleu-vif: #0C6CF2;
+    --bleu-vif: #0A62DC;
     --bleu-nuit: #0B2E6F;
     --fond: #F7F8F5;
     --texte: #202632;
@@ -53,6 +54,7 @@
   footer.site-footer .footer-col-title { color: #fff; font-weight: 600; margin-bottom: 9px; font-size: 12.5px; }
   footer.site-footer a { color: rgba(255,255,255,0.72); text-decoration: none; }
   footer.site-footer a:hover { color: #fff; text-decoration: none; }
+  footer.site-footer a[href^="mailto:"] { display: inline-block; padding: 2px 0; }
   footer.site-footer .disclaimer { font-size: 12.5px; line-height: 1.6; }
   @media (max-width: 900px) {
     footer.site-footer { padding: 24px 16px; }
@@ -63,8 +65,8 @@
 <body>
 
 <div id="site-header" class="sh"></div>
-<script src="assets/header-data.js?v=3"></script>
-<script src="assets/header.js?v=8"></script>
+<script defer src="assets/header-data.js?v=3"></script>
+<script defer src="assets/header.js?v=8"></script>
 
 <main>
 <h1>À propos de Sondax</h1>
@@ -115,7 +117,7 @@ la seule responsabilité de l'auteur du site.</p>
   <div class="footer-inner">
     <div>
       <div style="margin-bottom:10px;">
-        <img src="assets/logo-sondax-blanc.svg" alt="Sondax" style="height:22px;">
+        <img src="assets/logo-sondax-blanc.svg" alt="Sondax" width="71" height="22" style="height:22px;">
       </div>
     </div>
     <div>

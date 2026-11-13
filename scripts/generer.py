@@ -3,6 +3,7 @@
 import json, math, datetime as dt, unicodedata, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from balise_time import time_tag, baliser_dates
+from site_template import head_commun, photo_attrs
 from pages_second_tour import page_duel, terrain_court, fmt_score
 import html as html_mod
 
@@ -32,7 +33,7 @@ def age(naissance):
     return AUJ.year - n.year - ((AUJ.month, AUJ.day) < (n.month, n.day))
 
 # ---------- graphique ----------
-def _svg(serie, bruts, couleur, succession, mobile):
+def _svg(serie, bruts, couleur, succession, mobile, nom=""):
     if mobile:
         W, H, MB, MT = 360, 240, 26, 20
         fs, fs_rep, r_pt, r_fin, tr, r_brut, op_brut = 11, 11, 5, 5, 2.5, 2.5, ".35"
@@ -110,7 +111,8 @@ def _svg(serie, bruts, couleur, succession, mobile):
                   f'paint-order="stroke">{fr(serie[-1][1])}&nbsp;%</text>')
     gid = "g" + slugify(couleur) + ("-m" if mobile else "-l")
     return (f'<svg class="chart-{"mobile" if mobile else "large"}" viewBox="0 0 {W} {H}" width="100%" {taille} '
-            f'style="color:var(--texte)" role="img">'
+            f'style="color:var(--texte)" role="img" '
+            f'aria-label="Évolution de {html_mod.escape(nom, quote=True)} dans les sondages">'
             f'<defs><linearGradient id="{gid}" x1="0" y1="0" x2="0" y2="1">'
             f'<stop offset="0%" stop-color="{couleur}" stop-opacity=".28"/>'
             f'<stop offset="100%" stop-color="{couleur}" stop-opacity="0"/></linearGradient></defs>'
@@ -123,9 +125,9 @@ CSS_CHART = ("<style>.chart-large,.chart-mobile{display:block}.chart-large{heigh
              ".chart-mobile{display:none}"
              "@media (max-width:599.98px){.chart-large{display:none}.chart-mobile{display:block}}</style>")
 
-def svg(serie, bruts, couleur, succession=None):
-    return (CSS_CHART + _svg(serie, bruts, couleur, succession, False) +
-            _svg(serie, bruts, couleur, succession, True))
+def svg(serie, bruts, couleur, succession=None, nom=""):
+    return (CSS_CHART + _svg(serie, bruts, couleur, succession, False, nom) +
+            _svg(serie, bruts, couleur, succession, True, nom))
 
 # ---------- textes ----------
 MOIS_LONG = ['janvier','février','mars','avril','mai','juin','juillet','août',
@@ -329,7 +331,8 @@ def portrait_html(slug, nom, fiche):
     if not src:
         ini = ''.join(w[0] for w in nom.split()[:2]).upper()
         return f'<div class="portrait" aria-hidden="true">{ini}</div>'
-    return f'<img class="portrait" src="{src}" alt="{nom}" width="104" height="104" loading="lazy">'
+    attrs = f'src="{src}"' if src.startswith("data:") else photo_attrs(src, 104)
+    return f'<img class="portrait" {attrs} alt="{nom}" width="104" height="104" loading="lazy">'
 
 def credit_html(slug):
     c = CREDITS.get(slug)
@@ -394,8 +397,7 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
 <meta property="og:title" content="{nom} — sondages présidentielle 2027">
 <meta property="og:description" content="Intentions de vote, second tour et électorat de {nom}.">
 <meta property="og:type" content="article">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+{head_commun()}
 <style>{CSS.replace("__COULEUR__", coul)}</style><script type="application/ld+json">{{
 "@context":"https://schema.org","@type":"Person","name":"{nom}",
 "affiliation":{{"@type":"Organization","name":"{fiche['parti']}"}},
@@ -413,7 +415,7 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
   <h2>Sondage {nom} : évolution de l'intention de vote</h2>
   <div class="sous">Moyenne pondérée sur 30 jours · premier tour · hypothèse principale de chaque sondage</div>
   {phrase_dernier_sondage(dernier)}</div>
-  <div class="chart">{svg(serie, bruts, coul, succession)}</div>
+  <div class="chart">{svg(serie, bruts, coul, succession, nom)}</div>
   <div class="txt" style="padding-bottom:26px"><p>{texte_evolution(nom, serie, n_sondages, rangs, ecart_devant, fiche.get("genre","m"), succession)}</p></div>
   {derniers}
 </section>

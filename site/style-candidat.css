@@ -1,4 +1,4 @@
-.page-candidat{--bleu-vif:#0C6CF2;--fond:#F7F8F5;--carte:#fff;--bord:#E3E5E0;--texte:#202632;--gris:#66707D;
+.page-candidat{--bleu-vif:#0A62DC;--fond:#F7F8F5;--carte:#fff;--bord:#E3E5E0;--texte:#202632;--gris:#66707D;
 --cand:__COULEUR__;--brique:#8A241F;--titre:'Space Grotesk',system-ui,sans-serif;
 --corps:'IBM Plex Sans',system-ui,sans-serif;--mono:'IBM Plex Mono',monospace}
 .page-candidat,.page-candidat *{box-sizing:border-box}
@@ -102,3 +102,5 @@
 .page-candidat .derniers .dates{font-variant-numeric:tabular-nums}
 .page-candidat .derniers-tous{margin-top:12px;font-size:13.5px}
 @media(max-width:620px){.page-candidat .derniers{padding:0 20px 22px}.page-candidat .derniers table{font-size:12.5px}.page-candidat .derniers th,.page-candidat .derniers td{padding:7px 5px}.page-candidat .derniers th{letter-spacing:.04em}.page-candidat .derniers td.dates{white-space:normal;min-width:78px}}
+.page-candidat .fil a{text-decoration:underline;text-underline-offset:2px}
+.page-candidat .bloc-faq summary{padding:4px 0}

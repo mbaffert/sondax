@@ -1,5 +1,87 @@
 [
  {
+  "id": "opinionway-2026-11-12",
+  "institut": "OpinionWay",
+  "terrain_debut": "2026-11-10",
+  "terrain_fin": "2026-11-12",
+  "echantillon": null,
+  "url_source": "https://www.cnews.fr/france/2026-11-12/presidentielle-2027-marine-le-pen-reste-en-tete-des-intentions-de-vote-teddy",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "bouamrane",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "riner",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 16.0,
+     "roussel": 2.0,
+     "tondelier": 3.0,
+     "glucksmann": 10.0,
+     "attal": 3.0,
+     "philippe": 12.0,
+     "lisnard": 9.0,
+     "retailleau": 4.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 31.0,
+     "zemmour": 3.0,
+     "bouamrane": 1.0,
+     "riner": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "bouamrane",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 16.0,
+     "roussel": 2.0,
+     "tondelier": 3.0,
+     "glucksmann": 10.0,
+     "attal": 4.0,
+     "philippe": 12.0,
+     "lisnard": 10.0,
+     "retailleau": 5.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 32.0,
+     "zemmour": 2.0,
+     "bouamrane": 1.0
+    }
+   }
+  ],
+  "revid": 241312018,
+  "integre_le": "2026-11-13"
+ },
+ {
   "id": "cluster17-2026-11-10",
   "institut": "Cluster17",
   "terrain_debut": "2026-11-09",

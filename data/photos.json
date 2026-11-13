@@ -64,5 +64,41 @@
     "auteur": "Inconnu (photo fournie, non vérifiée)",
     "licence": "Non vérifiée",
     "source": ""
+  },
+  "riner": {
+    "fichier": "photos/riner.jpg",
+    "auteur": "Georges Biard",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Teddy_Riner_Cannes_2016.jpg"
+  },
+  "polony": {
+    "fichier": "photos/polony.jpg",
+    "auteur": "Georges Biard",
+    "licence": "CC BY-SA 3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Natacha_Polony_Cannes_2015.jpg"
+  },
+  "dupont-aignan": {
+    "fichier": "photos/dupont-aignan.jpg",
+    "auteur": "Debout la France",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Nicolas_Dupont-Aignan,_homme_politique_fran%C3%A7ais.jpg"
+  },
+  "ruffin": {
+    "fichier": "photos/ruffin.jpg",
+    "auteur": "Thinkerview",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Fran%C3%A7ois_Ruffin_(cropped).jpg"
+  },
+  "arthaud": {
+    "fichier": "photos/arthaud.jpg",
+    "auteur": "Kokluts",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Nathalie_Arthaud_(LO)_19-05-2024.jpg"
+  },
+  "asselineau": {
+    "fichier": "photos/asselineau.jpg",
+    "auteur": "Union Populaire Républicaine",
+    "licence": "CC BY-SA 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Fran%C3%A7ois_ASSELINEAU.jpg"
   }
 }

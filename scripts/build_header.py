@@ -213,6 +213,12 @@ CANDIDATS_PAGES = [
     ("tondelier", "Marine Tondelier"),
     ("zemmour", "Éric Zemmour"),
     ("roussel", "Fabien Roussel"),
+    ("riner", "Teddy Riner"),
+    ("polony", "Natacha Polony"),
+    ("dupont-aignan", "Nicolas Dupont-Aignan"),
+    ("ruffin", "François Ruffin"),
+    ("arthaud", "Nathalie Arthaud"),
+    ("asselineau", "François Asselineau"),
 ]
 
 # (libellé, href, pages qui l'activent, préfixe qui l'active) ;

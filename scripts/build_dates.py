@@ -85,7 +85,7 @@ def footer_html(n_sondages, last_date, last_revid, build_date, **_):
 
 def sondages_page_textes(n_sondages, n_instituts, last_date, **_):
     """Textes de sondages.html qui portent le nombre de sondages."""
-    titre = f"Les {n_sondages} sondages de la présidentielle 2027, par institut et par date"
+    titre = f"Sondages présidentielle 2027 : les {n_sondages} sondages"
     description = (f"Les {n_sondages} sondages de la présidentielle 2027, listés par institut "
                    f"et par date, avec le détail de chaque sondage : scores, marges "
                    f"d’erreur et configurations testées.")
@@ -119,7 +119,7 @@ def inject_accueil(html_content, textes):
     return inject_textes(html_content, textes, "index.html")
 
 
-TITRE_ACCUEIL_MAX = 65
+TITRE_ACCUEIL = "Sondage présidentielle 2027 : moyenne et derniers sondages (màj {maj}) — Sondax"
 DESCRIPTION_MAX = 160
 DESCRIPTION_ACCUEIL = ("Moyenne des sondages présidentielle 2027, dernier sondage {dernier}, "
                        "duels de second tour et cotes des marchés de prédiction. "
@@ -135,12 +135,13 @@ def dates_courtes(iso):
             f"{int(d):02d}/{m}"]
 
 
-def accueil_textes(sondages, candidats, referentiel):
+def accueil_textes(sondages, candidats, referentiel, build_date):
     """Textes de index.html qui portent le dernier sondage, ou None sans sondage.
 
-    Le sondage est celui du bloc « Dernier sondage ». La date est raccourcie
-    plutôt que de perdre « Sondages présidentielle 2027 » ou de dépasser les
-    longueurs visées.
+    Le titre est fixe, seule la date de mise à jour (build_date, celle du
+    compteur sous le H1) varie. La description porte le dernier sondage, celui du
+    bloc « Dernier sondage » ; sa date est raccourcie pour tenir en
+    DESCRIPTION_MAX.
     """
     choix = sondage_affiche(sondages, candidats)
     if not choix:
@@ -157,8 +158,8 @@ def accueil_textes(sondages, candidats, referentiel):
                 return texte
         return modele.format(dernier=f"{institut} du {dates[-1]}")
 
-    titre = premier_qui_tient("Sondages présidentielle 2027 : dernier sondage {dernier}",
-                              TITRE_ACCUEIL_MAX - len(" — Sondax"))
+    _, m, d = build_date.split("-")
+    titre = TITRE_ACCUEIL.format(maj=f"{d}/{m}").removesuffix(" — Sondax")
     description = premier_qui_tient(DESCRIPTION_ACCUEIL, DESCRIPTION_MAX)
     titre, description = html_mod.escape(titre), html_mod.escape(description)
     return {
@@ -188,7 +189,7 @@ def main():
     compteur_text = compteur_html(**stats)
     textes_sondages = sondages_page_textes(**stats)
     textes_accueil = accueil_textes(load_all_sondages(), load_json(CANDIDATS_PATH),
-                                    charger_referentiel())
+                                    charger_referentiel(), stats["build_date"])
 
     # Injecter dans toutes les pages HTML du site
     count = 0

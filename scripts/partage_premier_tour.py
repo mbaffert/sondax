@@ -260,7 +260,7 @@ def jsonld(f, titre, description, image_datee):
 def page(f, image_datee):
     from site_template import render_page
     esc = html_mod.escape
-    titre = "Sondages du premier tour 2027 : le graphique à reprendre — Sondax"
+    titre = "Sondages premier tour 2027 : graphique à reprendre — Sondax"
     (a, va), (b, vb) = f["classement"][:2]
     description = (f"{f['candidats'][a]['nom']} ({f['pct'](va)}) devant {f['candidats'][b]['nom']} "
                    f"({f['pct'](vb)}) au premier tour de la présidentielle 2027, au {f['jour_lettres']}. "

@@ -109,10 +109,15 @@ def candidate_full_name(cid):
     return " ".join(parts) if parts else cid
 
 
-def date_lettres(iso):
-    """'2026-08-25' → '25 août 2026'"""
+MOIS_ABREGES = ["janv.", "févr.", "mars", "avr.", "mai", "juin",
+                "juil.", "août", "sept.", "oct.", "nov.", "déc."]
+
+
+def date_lettres(iso, abrege=False):
+    """'2026-08-25' → '25 août 2026' ; abrege=True → '10 sept. 2026'"""
     y, m, d = iso.split("-")
-    return f"{int(d)} {MOIS[int(m) - 1]} {y}"
+    mois = (MOIS_ABREGES if abrege else MOIS)[int(m) - 1]
+    return f"{int(d)} {mois} {y}"
 
 
 def fmt_ech(n):
@@ -644,6 +649,9 @@ def build_page(sondage):
     # Titre et SEO
     date_titre = date_lettres(terrain_fin)
     title = f"Sondage {html_mod.escape(institut)} du {date_titre} \u2013 présidentielle 2027"
+    if len(title) > 60:  # mois abrégé pour tenir en 60 caractères
+        title = (f"Sondage {html_mod.escape(institut)} du {date_lettres(terrain_fin, abrege=True)} "
+                 f"\u2013 présidentielle 2027")
     canonical = f"https://sondax.fr/sondages/{html_mod.escape(sid)}.html"
     phrases = chapo_phrases(sondage)
     meta_desc = meta_description_chapo(phrases)

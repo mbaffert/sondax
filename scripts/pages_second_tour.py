@@ -14,7 +14,7 @@ SONDAGES_PATH = ROOT / "data" / "sondages.json"
 CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 DEFAULT_OUT = ROOT / "site" / "second-tour"
 
-TITRE_MAX = 65  # longueur max du <title> « dernier sondage », hors suffixe « — Sondax »
+TITRE_MAX = 51  # longueur max du <title> « dernier sondage », hors suffixe « — Sondax » (60 au total)
 
 SEUIL = 5  # mesures à partir desquelles un duel a un graphique (et une carte sur l'index)
 

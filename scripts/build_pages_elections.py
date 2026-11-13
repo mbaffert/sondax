@@ -426,7 +426,7 @@ def page_election(e, elections):
     a = e.annee
     description = (f"Résultats de la présidentielle {a} : voix et pourcentages par candidat aux deux tours, "
                    f"et évolution des sondages.")
-    tete = tete_page(f"Résultats et sondages de la présidentielle {a}, premier et second tour — Sondax",
+    tete = tete_page(f"Présidentielle {a} : résultats et sondages — Sondax",
                      description, f"Résultats et sondages de la présidentielle {a}",
                      f"presidentielle-{a}.html", ["historique.css?v=3"])
     corps = f"""<main>

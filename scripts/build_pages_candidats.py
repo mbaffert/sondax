@@ -25,6 +25,7 @@ sys.path.insert(0, str(SCRIPTS))
 import build_faq
 import generer
 from balise_time import time_tag
+from site_template import head_commun
 from instituts import charger_referentiel, lien_institut, est_notice
 from sondages_io import charger as charger_sondages
 
@@ -341,13 +342,11 @@ def wrap_in_site_template(slug, fiche, raw_html):
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+{head_commun()}
 <link rel="stylesheet" href="assets/header.css?v=5">
 <style>
   :root {{
-    --bleu-vif: #0C6CF2;
+    --bleu-vif: #0A62DC;
     --bleu-nuit: #0B2E6F;
     --fond: #F7F8F5;
     --carte: #fff;
@@ -371,6 +370,7 @@ def wrap_in_site_template(slug, fiche, raw_html):
   footer.site-footer .footer-col-title {{ color: #fff; font-weight: 600; margin-bottom: 9px; font-size: 12.5px; }}
   footer.site-footer a {{ color: rgba(255,255,255,0.72); text-decoration: none; }}
   footer.site-footer a:hover {{ color: #fff; text-decoration: none; }}
+  footer.site-footer a[href^="mailto:"] {{ display: inline-block; padding: 2px 0; }}
   footer.site-footer .disclaimer {{ font-size: 12.5px; line-height: 1.6; }}
   @media (max-width: 900px) {{
     footer.site-footer {{ padding: 24px 16px; }}
@@ -385,8 +385,8 @@ def wrap_in_site_template(slug, fiche, raw_html):
 <body>
 
 <div id="site-header" class="sh"></div>
-<script src="assets/header-data.js?v=3"></script>
-<script src="assets/header.js?v=8"></script>
+<script defer src="assets/header-data.js?v=3"></script>
+<script defer src="assets/header.js?v=8"></script>
 
 <div class="page-candidat">
 <main>
@@ -398,7 +398,7 @@ def wrap_in_site_template(slug, fiche, raw_html):
   <div class="footer-inner">
     <div>
       <div style="margin-bottom:10px;">
-        <img src="assets/logo-sondax-blanc.svg" alt="Sondax" style="height:22px;">
+        <img src="assets/logo-sondax-blanc.svg" alt="Sondax" width="71" height="22" style="height:22px;">
       </div>
     </div>
     <div>

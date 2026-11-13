@@ -27,6 +27,7 @@ BASE_URL = "https://sondax.fr"
 sys.path.insert(0, str(ROOT / "scripts"))
 from instituts import charger_referentiel, lien_institut
 from balise_time import time_tag
+from site_template import head_commun
 from sondages_io import charger as charger_sondages
 
 # ---------------------------------------------------------------------------
@@ -166,8 +167,8 @@ def header(title_text, depth=1):
     prefix = "../" * depth
     return f"""\
 <div id="site-header" class="sh"></div>
-<script src="{prefix}assets/header-data.js"></script>
-<script src="{prefix}assets/header.js?v=8"></script>"""
+<script defer src="{prefix}assets/header-data.js"></script>
+<script defer src="{prefix}assets/header.js?v=8"></script>"""
 
 
 def footer(depth=1):
@@ -177,7 +178,7 @@ def footer(depth=1):
   <div class="footer-inner">
     <div>
       <div style="margin-bottom:10px;">
-        <img src="{prefix}assets/logo-sondax-blanc.svg" alt="Sondax" style="height:22px;">
+        <img src="{prefix}assets/logo-sondax-blanc.svg" alt="Sondax" width="71" height="22" style="height:22px;">
       </div>
     </div>
     <div>
@@ -208,7 +209,7 @@ def footer(depth=1):
 
 CSS = """\
   :root {
-    --bleu-vif: #0C6CF2;
+    --bleu-vif: #0A62DC;
     --bleu-nuit: #0B2E6F;
     --fond: #F7F8F5;
     --texte: #202632;
@@ -229,6 +230,7 @@ CSS = """\
   footer.site-footer .footer-col-title { color: #fff; font-weight: 600; margin-bottom: 9px; font-size: 12.5px; }
   footer.site-footer a { color: rgba(255,255,255,0.72); text-decoration: none; }
   footer.site-footer a:hover { color: #fff; text-decoration: none; }
+  footer.site-footer a[href^="mailto:"] { display: inline-block; padding: 2px 0; }
   footer.site-footer .disclaimer { font-size: 12.5px; line-height: 1.6; }
   @media (max-width: 900px) {
     footer.site-footer { padding: 24px 16px; }
@@ -277,9 +279,7 @@ HEAD_COMMON = """\
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+{polices}
 <link rel="stylesheet" href="{prefix}assets/header.css?v=5">
 <script data-goatcounter="https://sondax.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
@@ -458,7 +458,7 @@ def generate_duel_page(slug, entries, candidats, out_dir):
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-{HEAD_COMMON.format(prefix=prefix)}
+{HEAD_COMMON.format(prefix=prefix, polices=head_commun(prefix))}
 <title>{html_mod.escape(title_seo)} — Sondax</title>
 <meta name="description" content="{html_mod.escape(description)}">
 <link rel="canonical" href="{canonical}">
@@ -574,7 +574,7 @@ def generate_index_page(duels, candidats, out_dir):
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-{HEAD_COMMON.format(prefix=prefix)}
+{HEAD_COMMON.format(prefix=prefix, polices=head_commun(prefix))}
 <title>Sondages second tour présidentielle 2027 — Sondax</title>
 <meta name="description" content="Tous les duels de second tour testés par les sondages de la présidentielle 2027 : courbes, tableaux par institut et sources. Mis à jour chaque jour.">
 <link rel="canonical" href="{canonical}">

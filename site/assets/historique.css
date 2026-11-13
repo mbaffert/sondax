@@ -3,7 +3,7 @@
    Les cellules du Rétro-Sondax viennent de bloc-retro.css (chargé avant). */
 
 :root {
-  --bleu-vif: #0C6CF2;
+  --bleu-vif: #0A62DC;
   --bleu-nuit: #0B2E6F;
   --fond: #F7F8F5;
   --texte: #202632;
@@ -85,7 +85,7 @@ main { max-width: 1180px; margin: 0 auto; padding: 26px 28px 48px; }
 .resume { font-size: 13px; color: var(--gris); margin: 10px 0 4px; }
 
 .candidats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px 18px; margin-top: 14px; font-size: 13px; }
-.cand { display: grid; grid-template-columns: auto 10px 1fr auto; align-items: center; gap: 6px; cursor: pointer; user-select: none; }
+.cand { display: grid; grid-template-columns: auto 10px 1fr auto; align-items: center; gap: 6px; min-height: 24px; cursor: pointer; user-select: none; }
 .cand .pastille { width: 10px; height: 10px; border-radius: 50%; }
 .cand .nom { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cand .res { color: var(--gris); font-variant-numeric: tabular-nums; }

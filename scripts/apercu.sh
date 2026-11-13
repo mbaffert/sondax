@@ -31,6 +31,7 @@ done
 
 mkdir -p _site/data/derived
 cp -r site/* _site/
+cp -r site/.well-known _site/.well-known  # « cp -r site/* » ignore les dossiers cachés
 cp data/*.json _site/data/
 cp data/derived/*.json _site/data/derived/
 rm -f _site/data/historique.json

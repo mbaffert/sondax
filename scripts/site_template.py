@@ -23,6 +23,40 @@ def _prefix(depth):
     return "../" * depth if depth else ""
 
 
+# Polices auto-hébergées (assets/fonts/, licence OFL : assets/fonts/LICENSE).
+# Seules deux polices sont préchargées : celles visibles dès le haut de page
+# (texte courant IBM Plex Sans 400, titres et logo Space Grotesk 700).
+POLICES_PRELOAD = ("ibm-plex-sans-latin-400-normal.woff2",
+                   "space-grotesk-latin-700-normal.woff2")
+
+
+def head_commun(p=""):
+    """Balises <head> communes à toutes les pages : polices auto-hébergées
+    (préchargement + @font-face) et manifeste pour agents IA (ARD).
+    `p` : préfixe relatif vers la racine du site ("" ou "../")."""
+    preload = "\n".join(
+        f'<link rel="preload" href="{p}assets/fonts/{f}" as="font" type="font/woff2" crossorigin>'
+        for f in POLICES_PRELOAD)
+    return (f'{preload}\n'
+            f'<link rel="stylesheet" href="{p}assets/fonts.css?v=1">\n'
+            f'<link rel="ard" href="/.well-known/ard.json">')
+
+
+def photo_attrs(chemin, taille, prefixe=""):
+    """Attributs src/srcset/sizes d'un portrait de candidat affiché à `taille` px.
+
+    `chemin` : JPEG relatif à la racine du site (« photos/le-pen.jpg »). scripts/photos.py
+    écrit à côté <slug>-96.webp et <slug>-240.webp : le navigateur prend le 96 px
+    pour un affichage ≤ 48 px (écran normal ou 2x) et le 240 px au-delà. Le JPEG
+    reste en src (navigateurs sans srcset) ; si les WebP manquent, seul src est émis."""
+    src = f'src="{prefixe}{chemin}"'
+    base = chemin[:-4] if chemin.endswith(".jpg") else None
+    if base and all((SITE / f"{base}-{t}.webp").exists() for t in (96, 240)):
+        return (f'{src} srcset="{prefixe}{base}-96.webp 96w, {prefixe}{base}-240.webp 240w" '
+                f'sizes="{taille}px"')
+    return src
+
+
 def render_page(*, title, meta_description, canonical, body_content,
                 extra_head="", depth=0, og_type="website",
                 og_image="https://sondax.fr/assets/og-default.png"):
@@ -51,13 +85,11 @@ def render_page(*, title, meta_description, canonical, body_content,
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+{head_commun(p)}
 <link rel="stylesheet" href="{p}assets/header.css?v=5">
 <style>
   :root {{
-    --bleu-vif: #0C6CF2;
+    --bleu-vif: #0A62DC;
     --bleu-nuit: #0B2E6F;
     --fond: #F7F8F5;
     --carte: #fff;
@@ -97,6 +129,7 @@ def render_page(*, title, meta_description, canonical, body_content,
   footer.site-footer .footer-col-title {{ color: #fff; font-weight: 600; margin-bottom: 9px; font-size: 12.5px; }}
   footer.site-footer a {{ color: rgba(255,255,255,0.72); text-decoration: none; }}
   footer.site-footer a:hover {{ color: #fff; text-decoration: none; }}
+  footer.site-footer a[href^="mailto:"] {{ display: inline-block; padding: 2px 0; }}
   footer.site-footer .disclaimer {{ font-size: 12.5px; line-height: 1.6; }}
   @media (max-width: 900px) {{
     footer.site-footer {{ padding: 24px 16px; }}
@@ -108,8 +141,8 @@ def render_page(*, title, meta_description, canonical, body_content,
 <body>
 
 <div id="site-header" class="sh"></div>
-<script src="{p}assets/header-data.js?v=3"></script>
-<script src="{p}assets/header.js?v=8"></script>
+<script defer src="{p}assets/header-data.js?v=3"></script>
+<script defer src="{p}assets/header.js?v=8"></script>
 
 {body_content}
 
@@ -117,7 +150,7 @@ def render_page(*, title, meta_description, canonical, body_content,
   <div class="footer-inner">
     <div>
       <div style="margin-bottom:10px;">
-        <img src="{p}assets/logo-sondax-blanc.svg" alt="Sondax" style="height:22px;">
+        <img src="{p}assets/logo-sondax-blanc.svg" alt="Sondax" width="71" height="22" style="height:22px;">
       </div>
     </div>
     <div>

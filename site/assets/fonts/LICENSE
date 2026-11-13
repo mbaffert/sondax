@@ -1,0 +1,10 @@
+Polices auto-hébergées (sous-ensemble latin, format woff2), issues des paquets
+@fontsource 5.3.0 (https://fontsource.org).
+
+- IBM Plex Sans, IBM Plex Mono — Copyright 2019 IBM Corp.
+- Space Grotesk — Copyright 2020 The Space Grotesk Project Authors
+  (https://github.com/floriankarsten/space-grotesk)
+
+Toutes ces polices sont publiées sous la licence SIL Open Font License,
+Version 1.1 (https://openfontlicense.org). Textes complets des licences :
+scripts/fonts/OFL-ibm-plex-sans.txt et scripts/fonts/OFL-space-grotesk.txt.

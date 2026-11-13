@@ -38,6 +38,7 @@ RETRO_PATH = ROOT / "data" / "derived" / "retro.json"
 sys.path.insert(0, str(ROOT / "scripts"))
 from series import score_candidat
 from balise_time import time_tag
+from site_template import head_commun
 from build_retro import rendre_bloc_page, j_du_jour
 import build_faq
 
@@ -408,16 +409,14 @@ def tete_page(titre, description, og_titre, url, extra_css=()):
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+{head_commun()}
 <link rel="stylesheet" href="assets/header.css?v=5">
 {css}</head>
 <body>
 
 <div id="site-header" class="sh"></div>
-<script src="assets/header-data.js"></script>
-<script src="assets/header.js?v=8"></script>
+<script defer src="assets/header-data.js"></script>
+<script defer src="assets/header.js?v=8"></script>
 
 """
 

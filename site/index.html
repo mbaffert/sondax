@@ -27,15 +27,16 @@
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css?v=1">
+<link rel="ard" href="/.well-known/ard.json">
 <link rel="stylesheet" href="assets/header.css?v=5">
 <link rel="stylesheet" href="assets/bloc-chart.css?v=1">
 <link rel="stylesheet" href="assets/bloc-retro.css?v=1">
 <style>
   :root {
-    --bleu-vif: #0C6CF2;
+    --bleu-vif: #0A62DC;
     --bleu-nuit: #0B2E6F;
     --rose: #F23D5B;
     --brique: #8A241F;
@@ -111,6 +112,8 @@
   .duels-repli .duels-libelle { font-size: 13.5px; font-weight: 600; margin: 14px 0 4px; }
 
   .t2-duels { table-layout: auto; }
+  /* Institut en lien au milieu de « date (institut) » : souligné (lien dans un texte courant) */
+  .t2-duels td:last-child a { text-decoration: underline; text-underline-offset: 2px; }
   .t2-score-col { width: 5.5em; }
   .t2-score-cell { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
@@ -154,6 +157,7 @@
   footer .footer-col-title { color: #fff; font-weight: 600; margin-bottom: 9px; font-size: 12.5px; }
   footer a { color: rgba(255,255,255,0.72); }
   footer a:hover { color: #fff; text-decoration: none; }
+  footer a[href^="mailto:"] { display: inline-block; padding: 2px 0; }
   footer .disclaimer { font-size: 12.5px; line-height: 1.6; }
   footer .footer-meta { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; line-height: 1.8; }
 
@@ -196,7 +200,8 @@
   .ds-lien, .ds-lien:hover { text-decoration: none; }
   .ds-lien { color: inherit; display: block; }
   .ds-lien:hover .ds-cand-name { color: var(--bleu-vif); }
-  .ds-others .ds-lien { display: inline; }
+  /* Zone cliquable >= 24 px de haut, sans changer la hauteur de la ligne (marge négative) */
+  .ds-others .ds-lien { display: inline-block; padding: 3px 0; margin: -3px 0; }
   .ds-others .ds-lien:hover { color: var(--bleu-vif); }
 
   /* Mobile */
@@ -232,7 +237,7 @@
     .ds-cand-score { font-size: 16px; text-align: right; }
     .ds-cand-score .pct { font-size: 11px; }
     .ds-bar-wrap { grid-column: 1 / -1; height: 3px; margin: 2px 0 0; }
-    .ds-others { font-size: 12.5px; gap: 4px 12px; }
+    .ds-others { font-size: 12.5px; gap: 6px 12px; }
     .ds-others b { font-weight: 600; }
   }
 </style>
@@ -242,9 +247,8 @@
 <body>
 
 <div id="site-header" class="sh"></div>
-<script src="assets/header-data.js?v=3"></script>
-<script src="assets/header.js?v=8"></script>
-<script src="assets/end-labels.js?v=1"></script>
+<script defer src="assets/header-data.js?v=3"></script>
+<script defer src="assets/header.js?v=8"></script>
 <script src="assets/bloc-retro.js?v=1" defer></script>
 
 <nav class="sub-nav" id="sub-nav" aria-label="Sections de la page">
@@ -344,41 +348,41 @@
     <h2>Sondages par candidat</h2>
     <div class="galerie-candidats">
       <div class="galerie-piste">
-      <a href="le-pen.html" class="galerie-item" style="--cand-col:#0D378A"><img src="photos/le-pen.jpg" alt="Le Pen" width="120" height="120" loading="lazy"><span>Le Pen</span></a>
-      <a href="melenchon.html" class="galerie-item" style="--cand-col:#CC2443"><img src="photos/melenchon.jpg" alt="Mélenchon" width="120" height="120" loading="lazy"><span>Mélenchon</span></a>
-      <a href="philippe.html" class="galerie-item" style="--cand-col:#00B7FF"><img src="photos/philippe.jpg" alt="Philippe" width="120" height="120" loading="lazy"><span>Philippe</span></a>
-      <a href="glucksmann.html" class="galerie-item" style="--cand-col:#FF7043"><img src="photos/glucksmann.jpg" alt="Glucksmann" width="120" height="120" loading="lazy"><span>Glucksmann</span></a>
-      <a href="hollande.html" class="galerie-item" style="--cand-col:#FF8080"><img src="photos/hollande.jpg" alt="Hollande" width="120" height="120" loading="lazy"><span>Hollande</span></a>
-      <a href="lisnard.html" class="galerie-item" style="--cand-col:#3399FF"><img src="photos/lisnard.jpg" alt="Lisnard" width="120" height="120" loading="lazy"><span>Lisnard</span></a>
-      <a href="attal.html" class="galerie-item" style="--cand-col:#7E57C2"><img src="photos/attal.jpg" alt="Attal" width="120" height="120" loading="lazy"><span>Attal</span></a>
-      <a href="retailleau.html" class="galerie-item" style="--cand-col:#0066CC"><img src="photos/retailleau.jpg" alt="Retailleau" width="120" height="120" loading="lazy"><span>Retailleau</span></a>
-      <a href="zemmour.html" class="galerie-item" style="--cand-col:#1A1A2E"><img src="photos/zemmour.jpg" alt="Zemmour" width="120" height="120" loading="lazy"><span>Zemmour</span></a>
-      <a href="tondelier.html" class="galerie-item" style="--cand-col:#00C853"><img src="photos/tondelier.jpg" alt="Tondelier" width="120" height="120" loading="lazy"><span>Tondelier</span></a>
-      <a href="roussel.html" class="galerie-item" style="--cand-col:#DD1111"><img src="photos/roussel.jpg" alt="Roussel" width="120" height="120" loading="lazy"><span>Roussel</span></a>
-      <a href="riner.html" class="galerie-item" style="--cand-col:#7A8A99"><img src="photos/riner.jpg" alt="Riner" width="120" height="120" loading="lazy"><span>Riner</span></a>
-      <a href="polony.html" class="galerie-item" style="--cand-col:#6E7B8B"><img src="photos/polony.jpg" alt="Polony" width="120" height="120" loading="lazy"><span>Polony</span></a>
-      <a href="dupont-aignan.html" class="galerie-item" style="--cand-col:#0055A4"><img src="photos/dupont-aignan.jpg" alt="Dupont-Aignan" width="120" height="120" loading="lazy"><span>Dupont-Aignan</span></a>
-      <a href="ruffin.html" class="galerie-item" style="--cand-col:#CC3366"><img src="photos/ruffin.jpg" alt="Ruffin" width="120" height="120" loading="lazy"><span>Ruffin</span></a>
-      <a href="arthaud.html" class="galerie-item" style="--cand-col:#8B0000"><img src="photos/arthaud.jpg" alt="Arthaud" width="120" height="120" loading="lazy"><span>Arthaud</span></a>
-      <a href="asselineau.html" class="galerie-item" style="--cand-col:#556B2F"><img src="photos/asselineau.jpg" alt="Asselineau" width="120" height="120" loading="lazy"><span>Asselineau</span></a>
+      <a href="le-pen.html" class="galerie-item" style="--cand-col:#0D378A"><img src="photos/le-pen.jpg" srcset="photos/le-pen-96.webp 96w, photos/le-pen-240.webp 240w" sizes="60px" alt="Le Pen" width="120" height="120" loading="lazy"><span>Le Pen</span></a>
+      <a href="melenchon.html" class="galerie-item" style="--cand-col:#CC2443"><img src="photos/melenchon.jpg" srcset="photos/melenchon-96.webp 96w, photos/melenchon-240.webp 240w" sizes="60px" alt="Mélenchon" width="120" height="120" loading="lazy"><span>Mélenchon</span></a>
+      <a href="philippe.html" class="galerie-item" style="--cand-col:#00B7FF"><img src="photos/philippe.jpg" srcset="photos/philippe-96.webp 96w, photos/philippe-240.webp 240w" sizes="60px" alt="Philippe" width="120" height="120" loading="lazy"><span>Philippe</span></a>
+      <a href="glucksmann.html" class="galerie-item" style="--cand-col:#FF7043"><img src="photos/glucksmann.jpg" srcset="photos/glucksmann-96.webp 96w, photos/glucksmann-240.webp 240w" sizes="60px" alt="Glucksmann" width="120" height="120" loading="lazy"><span>Glucksmann</span></a>
+      <a href="hollande.html" class="galerie-item" style="--cand-col:#FF8080"><img src="photos/hollande.jpg" srcset="photos/hollande-96.webp 96w, photos/hollande-240.webp 240w" sizes="60px" alt="Hollande" width="120" height="120" loading="lazy"><span>Hollande</span></a>
+      <a href="lisnard.html" class="galerie-item" style="--cand-col:#3399FF"><img src="photos/lisnard.jpg" srcset="photos/lisnard-96.webp 96w, photos/lisnard-240.webp 240w" sizes="60px" alt="Lisnard" width="120" height="120" loading="lazy"><span>Lisnard</span></a>
+      <a href="attal.html" class="galerie-item" style="--cand-col:#7E57C2"><img src="photos/attal.jpg" srcset="photos/attal-96.webp 96w, photos/attal-240.webp 240w" sizes="60px" alt="Attal" width="120" height="120" loading="lazy"><span>Attal</span></a>
+      <a href="retailleau.html" class="galerie-item" style="--cand-col:#0066CC"><img src="photos/retailleau.jpg" srcset="photos/retailleau-96.webp 96w, photos/retailleau-240.webp 240w" sizes="60px" alt="Retailleau" width="120" height="120" loading="lazy"><span>Retailleau</span></a>
+      <a href="zemmour.html" class="galerie-item" style="--cand-col:#1A1A2E"><img src="photos/zemmour.jpg" srcset="photos/zemmour-96.webp 96w, photos/zemmour-240.webp 240w" sizes="60px" alt="Zemmour" width="120" height="120" loading="lazy"><span>Zemmour</span></a>
+      <a href="tondelier.html" class="galerie-item" style="--cand-col:#00C853"><img src="photos/tondelier.jpg" srcset="photos/tondelier-96.webp 96w, photos/tondelier-240.webp 240w" sizes="60px" alt="Tondelier" width="120" height="120" loading="lazy"><span>Tondelier</span></a>
+      <a href="roussel.html" class="galerie-item" style="--cand-col:#DD1111"><img src="photos/roussel.jpg" srcset="photos/roussel-96.webp 96w, photos/roussel-240.webp 240w" sizes="60px" alt="Roussel" width="120" height="120" loading="lazy"><span>Roussel</span></a>
+      <a href="riner.html" class="galerie-item" style="--cand-col:#7A8A99"><img src="photos/riner.jpg" srcset="photos/riner-96.webp 96w, photos/riner-240.webp 240w" sizes="60px" alt="Riner" width="120" height="120" loading="lazy"><span>Riner</span></a>
+      <a href="polony.html" class="galerie-item" style="--cand-col:#6E7B8B"><img src="photos/polony.jpg" srcset="photos/polony-96.webp 96w, photos/polony-240.webp 240w" sizes="60px" alt="Polony" width="120" height="120" loading="lazy"><span>Polony</span></a>
+      <a href="dupont-aignan.html" class="galerie-item" style="--cand-col:#0055A4"><img src="photos/dupont-aignan.jpg" srcset="photos/dupont-aignan-96.webp 96w, photos/dupont-aignan-240.webp 240w" sizes="60px" alt="Dupont-Aignan" width="120" height="120" loading="lazy"><span>Dupont-Aignan</span></a>
+      <a href="ruffin.html" class="galerie-item" style="--cand-col:#CC3366"><img src="photos/ruffin.jpg" srcset="photos/ruffin-96.webp 96w, photos/ruffin-240.webp 240w" sizes="60px" alt="Ruffin" width="120" height="120" loading="lazy"><span>Ruffin</span></a>
+      <a href="arthaud.html" class="galerie-item" style="--cand-col:#8B0000"><img src="photos/arthaud.jpg" srcset="photos/arthaud-96.webp 96w, photos/arthaud-240.webp 240w" sizes="60px" alt="Arthaud" width="120" height="120" loading="lazy"><span>Arthaud</span></a>
+      <a href="asselineau.html" class="galerie-item" style="--cand-col:#556B2F"><img src="photos/asselineau.jpg" srcset="photos/asselineau-96.webp 96w, photos/asselineau-240.webp 240w" sizes="60px" alt="Asselineau" width="120" height="120" loading="lazy"><span>Asselineau</span></a>
       <span class="galerie-copie" aria-hidden="true">
-      <a href="le-pen.html" class="galerie-item" tabindex="-1" style="--cand-col:#0D378A"><img src="photos/le-pen.jpg" alt="Le Pen" width="120" height="120" loading="eager"><span>Le Pen</span></a>
-      <a href="melenchon.html" class="galerie-item" tabindex="-1" style="--cand-col:#CC2443"><img src="photos/melenchon.jpg" alt="Mélenchon" width="120" height="120" loading="eager"><span>Mélenchon</span></a>
-      <a href="philippe.html" class="galerie-item" tabindex="-1" style="--cand-col:#00B7FF"><img src="photos/philippe.jpg" alt="Philippe" width="120" height="120" loading="eager"><span>Philippe</span></a>
-      <a href="glucksmann.html" class="galerie-item" tabindex="-1" style="--cand-col:#FF7043"><img src="photos/glucksmann.jpg" alt="Glucksmann" width="120" height="120" loading="eager"><span>Glucksmann</span></a>
-      <a href="hollande.html" class="galerie-item" tabindex="-1" style="--cand-col:#FF8080"><img src="photos/hollande.jpg" alt="Hollande" width="120" height="120" loading="eager"><span>Hollande</span></a>
-      <a href="lisnard.html" class="galerie-item" tabindex="-1" style="--cand-col:#3399FF"><img src="photos/lisnard.jpg" alt="Lisnard" width="120" height="120" loading="eager"><span>Lisnard</span></a>
-      <a href="attal.html" class="galerie-item" tabindex="-1" style="--cand-col:#7E57C2"><img src="photos/attal.jpg" alt="Attal" width="120" height="120" loading="eager"><span>Attal</span></a>
-      <a href="retailleau.html" class="galerie-item" tabindex="-1" style="--cand-col:#0066CC"><img src="photos/retailleau.jpg" alt="Retailleau" width="120" height="120" loading="eager"><span>Retailleau</span></a>
-      <a href="zemmour.html" class="galerie-item" tabindex="-1" style="--cand-col:#1A1A2E"><img src="photos/zemmour.jpg" alt="Zemmour" width="120" height="120" loading="eager"><span>Zemmour</span></a>
-      <a href="tondelier.html" class="galerie-item" tabindex="-1" style="--cand-col:#00C853"><img src="photos/tondelier.jpg" alt="Tondelier" width="120" height="120" loading="eager"><span>Tondelier</span></a>
-      <a href="roussel.html" class="galerie-item" tabindex="-1" style="--cand-col:#DD1111"><img src="photos/roussel.jpg" alt="Roussel" width="120" height="120" loading="eager"><span>Roussel</span></a>
-      <a href="riner.html" class="galerie-item" tabindex="-1" style="--cand-col:#7A8A99"><img src="photos/riner.jpg" alt="Riner" width="120" height="120" loading="eager"><span>Riner</span></a>
-      <a href="polony.html" class="galerie-item" tabindex="-1" style="--cand-col:#6E7B8B"><img src="photos/polony.jpg" alt="Polony" width="120" height="120" loading="eager"><span>Polony</span></a>
-      <a href="dupont-aignan.html" class="galerie-item" tabindex="-1" style="--cand-col:#0055A4"><img src="photos/dupont-aignan.jpg" alt="Dupont-Aignan" width="120" height="120" loading="eager"><span>Dupont-Aignan</span></a>
-      <a href="ruffin.html" class="galerie-item" tabindex="-1" style="--cand-col:#CC3366"><img src="photos/ruffin.jpg" alt="Ruffin" width="120" height="120" loading="eager"><span>Ruffin</span></a>
-      <a href="arthaud.html" class="galerie-item" tabindex="-1" style="--cand-col:#8B0000"><img src="photos/arthaud.jpg" alt="Arthaud" width="120" height="120" loading="eager"><span>Arthaud</span></a>
-      <a href="asselineau.html" class="galerie-item" tabindex="-1" style="--cand-col:#556B2F"><img src="photos/asselineau.jpg" alt="Asselineau" width="120" height="120" loading="eager"><span>Asselineau</span></a>
+      <a href="le-pen.html" class="galerie-item" tabindex="-1" style="--cand-col:#0D378A"><img src="photos/le-pen.jpg" srcset="photos/le-pen-96.webp 96w, photos/le-pen-240.webp 240w" sizes="60px" alt="Le Pen" width="120" height="120" loading="eager"><span>Le Pen</span></a>
+      <a href="melenchon.html" class="galerie-item" tabindex="-1" style="--cand-col:#CC2443"><img src="photos/melenchon.jpg" srcset="photos/melenchon-96.webp 96w, photos/melenchon-240.webp 240w" sizes="60px" alt="Mélenchon" width="120" height="120" loading="eager"><span>Mélenchon</span></a>
+      <a href="philippe.html" class="galerie-item" tabindex="-1" style="--cand-col:#00B7FF"><img src="photos/philippe.jpg" srcset="photos/philippe-96.webp 96w, photos/philippe-240.webp 240w" sizes="60px" alt="Philippe" width="120" height="120" loading="eager"><span>Philippe</span></a>
+      <a href="glucksmann.html" class="galerie-item" tabindex="-1" style="--cand-col:#FF7043"><img src="photos/glucksmann.jpg" srcset="photos/glucksmann-96.webp 96w, photos/glucksmann-240.webp 240w" sizes="60px" alt="Glucksmann" width="120" height="120" loading="eager"><span>Glucksmann</span></a>
+      <a href="hollande.html" class="galerie-item" tabindex="-1" style="--cand-col:#FF8080"><img src="photos/hollande.jpg" srcset="photos/hollande-96.webp 96w, photos/hollande-240.webp 240w" sizes="60px" alt="Hollande" width="120" height="120" loading="eager"><span>Hollande</span></a>
+      <a href="lisnard.html" class="galerie-item" tabindex="-1" style="--cand-col:#3399FF"><img src="photos/lisnard.jpg" srcset="photos/lisnard-96.webp 96w, photos/lisnard-240.webp 240w" sizes="60px" alt="Lisnard" width="120" height="120" loading="eager"><span>Lisnard</span></a>
+      <a href="attal.html" class="galerie-item" tabindex="-1" style="--cand-col:#7E57C2"><img src="photos/attal.jpg" srcset="photos/attal-96.webp 96w, photos/attal-240.webp 240w" sizes="60px" alt="Attal" width="120" height="120" loading="eager"><span>Attal</span></a>
+      <a href="retailleau.html" class="galerie-item" tabindex="-1" style="--cand-col:#0066CC"><img src="photos/retailleau.jpg" srcset="photos/retailleau-96.webp 96w, photos/retailleau-240.webp 240w" sizes="60px" alt="Retailleau" width="120" height="120" loading="eager"><span>Retailleau</span></a>
+      <a href="zemmour.html" class="galerie-item" tabindex="-1" style="--cand-col:#1A1A2E"><img src="photos/zemmour.jpg" srcset="photos/zemmour-96.webp 96w, photos/zemmour-240.webp 240w" sizes="60px" alt="Zemmour" width="120" height="120" loading="eager"><span>Zemmour</span></a>
+      <a href="tondelier.html" class="galerie-item" tabindex="-1" style="--cand-col:#00C853"><img src="photos/tondelier.jpg" srcset="photos/tondelier-96.webp 96w, photos/tondelier-240.webp 240w" sizes="60px" alt="Tondelier" width="120" height="120" loading="eager"><span>Tondelier</span></a>
+      <a href="roussel.html" class="galerie-item" tabindex="-1" style="--cand-col:#DD1111"><img src="photos/roussel.jpg" srcset="photos/roussel-96.webp 96w, photos/roussel-240.webp 240w" sizes="60px" alt="Roussel" width="120" height="120" loading="eager"><span>Roussel</span></a>
+      <a href="riner.html" class="galerie-item" tabindex="-1" style="--cand-col:#7A8A99"><img src="photos/riner.jpg" srcset="photos/riner-96.webp 96w, photos/riner-240.webp 240w" sizes="60px" alt="Riner" width="120" height="120" loading="eager"><span>Riner</span></a>
+      <a href="polony.html" class="galerie-item" tabindex="-1" style="--cand-col:#6E7B8B"><img src="photos/polony.jpg" srcset="photos/polony-96.webp 96w, photos/polony-240.webp 240w" sizes="60px" alt="Polony" width="120" height="120" loading="eager"><span>Polony</span></a>
+      <a href="dupont-aignan.html" class="galerie-item" tabindex="-1" style="--cand-col:#0055A4"><img src="photos/dupont-aignan.jpg" srcset="photos/dupont-aignan-96.webp 96w, photos/dupont-aignan-240.webp 240w" sizes="60px" alt="Dupont-Aignan" width="120" height="120" loading="eager"><span>Dupont-Aignan</span></a>
+      <a href="ruffin.html" class="galerie-item" tabindex="-1" style="--cand-col:#CC3366"><img src="photos/ruffin.jpg" srcset="photos/ruffin-96.webp 96w, photos/ruffin-240.webp 240w" sizes="60px" alt="Ruffin" width="120" height="120" loading="eager"><span>Ruffin</span></a>
+      <a href="arthaud.html" class="galerie-item" tabindex="-1" style="--cand-col:#8B0000"><img src="photos/arthaud.jpg" srcset="photos/arthaud-96.webp 96w, photos/arthaud-240.webp 240w" sizes="60px" alt="Arthaud" width="120" height="120" loading="eager"><span>Arthaud</span></a>
+      <a href="asselineau.html" class="galerie-item" tabindex="-1" style="--cand-col:#556B2F"><img src="photos/asselineau.jpg" srcset="photos/asselineau-96.webp 96w, photos/asselineau-240.webp 240w" sizes="60px" alt="Asselineau" width="120" height="120" loading="eager"><span>Asselineau</span></a>
       </span>
       </div>
     </div>
@@ -569,9 +573,9 @@
     <div class="t2-selector" style="margin-top:18px;">
       <h3 style="font-family:var(--titre);font-size:18px;font-weight:600;margin-bottom:12px;">Explorer un duel</h3>
       <div class="duel-select">
-        <span style="color:var(--gris);">Candidat :</span>
+        <label for="duel-cand1" style="color:var(--gris);">Candidat :</label>
         <select id="duel-cand1"></select>
-        <span style="color:var(--gris);">contre :</span>
+        <label for="duel-cand2" style="color:var(--gris);">contre :</label>
         <select id="duel-cand2"></select>
       </div>
       <div id="t2-content"></div>
@@ -611,7 +615,7 @@
     <p style="font-size:0.82em;color:var(--gris);margin-top:1em;line-height:1.5;">Ces chiffres sont des probabilités issues des marchés de prédiction, pas des intentions de vote.
     Les deux graphiques ne mesurent pas la même chose et ne se comparent pas.
     Polymarket n'est pas autorisé en France. Ces cotes sont publiées à titre d'information et ne constituent pas une incitation à parier.
-    <a href="methodologie.html" style="color:var(--bleu-vif);">En savoir plus.</a></p>
+    <a href="methodologie.html" style="color:var(--bleu-vif);text-decoration:underline;text-underline-offset:2px;">En savoir plus.</a></p>
     <div class="pt-source">
     <!-- BEGIN:partage-polymarket -->
     <!-- END:partage-polymarket -->
@@ -626,7 +630,7 @@
   <div class="footer-inner">
     <div>
       <div style="margin-bottom:10px;">
-        <img src="assets/logo-sondax-blanc.svg" alt="Sondax" style="height:22px;">
+        <img src="assets/logo-sondax-blanc.svg" alt="Sondax" width="71" height="22" style="height:22px;">
       </div>
     </div>
     <div>
@@ -656,6 +660,7 @@
   </div>
 </footer>
 
+<script src="assets/end-labels.js?v=1"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4/dist/chart.umd.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/date-fns@3/locale/fr/cdn.min.js"></script>
@@ -919,6 +924,8 @@ async function init() {
     fetch('data/candidats.json'),
     fetch('data/sondages.json'),
   ]);
+  // header-data.js est en defer : attendre son exécution (lienInstitut lit HEADER_DATA)
+  if (document.readyState === 'loading') await new Promise(r => document.addEventListener('DOMContentLoaded', r));
   const seriesData = await seriesResp.json();
   const polyData = await polyResp.json();
   CANDIDATS = await candsResp.json();

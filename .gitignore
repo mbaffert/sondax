@@ -12,3 +12,5 @@ _site/
 site/donnees/
 site/donnees.html
 site/partage/
+site/llms.txt
+site/.well-known/

@@ -19,13 +19,14 @@
 <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/space-grotesk-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css?v=1">
+<link rel="ard" href="/.well-known/ard.json">
 <link rel="stylesheet" href="assets/header.css?v=5">
 <style>
   :root {
-    --bleu-vif: #0C6CF2;
+    --bleu-vif: #0A62DC;
     --bleu-nuit: #0B2E6F;
     --fond: #F7F8F5;
     --texte: #202632;
@@ -41,6 +42,8 @@
   main h2 { font-family: var(--titre); font-size: 1.3em; font-weight: 700; margin: 2em 0 0.5em; color: var(--texte); }
   main h2:first-child { margin-top: 0; }
   main h3 { font-family: var(--titre); font-size: 1.05em; font-weight: 600; margin: 1.8em 0 0.4em; color: var(--texte); }
+  /* Rubriques de premier niveau (h2 pour l'ordre des titres), rendues comme des h3 */
+  main h2.rub { font-size: 1.05em; font-weight: 600; margin: 1.8em 0 0.4em; }
   main p { margin-bottom: 0.8em; }
   main strong { font-weight: 600; }
 
@@ -50,6 +53,7 @@
   footer.site-footer .footer-col-title { color: #fff; font-weight: 600; margin-bottom: 9px; font-size: 12.5px; }
   footer.site-footer a { color: rgba(255,255,255,0.72); text-decoration: none; }
   footer.site-footer a:hover { color: #fff; text-decoration: none; }
+  footer.site-footer a[href^="mailto:"] { display: inline-block; padding: 2px 0; }
   footer.site-footer .disclaimer { font-size: 12.5px; line-height: 1.6; }
   @media (max-width: 900px) {
     footer.site-footer { padding: 24px 16px; }
@@ -60,13 +64,13 @@
 <body>
 
 <div id="site-header" class="sh"></div>
-<script src="assets/header-data.js"></script>
-<script src="assets/header.js?v=8"></script>
+<script defer src="assets/header-data.js"></script>
+<script defer src="assets/header.js?v=8"></script>
 
 <main>
 <h1>Comment Sondax calcule la moyenne des sondages</h1>
 
-<h3>D'où viennent les chiffres</h3>
+<h2 class="rub">D'où viennent les chiffres</h2>
 
 <p><strong>Les sondages</strong> proviennent de la page Wikipédia consacrée aux sondages de l'élection
 présidentielle de 2027, mise à jour par ses contributeurs à partir des notices déposées
@@ -78,13 +82,13 @@ achètent et vendent des contrats liés à l'élection. Le prix d'un contrat s'i
 comme la probabilité que le marché attribue à l'élection du candidat. Nous affichons ces
 prix bruts, sans retraitement.</p>
 
-<h3>Une précision sur les cotes Polymarket</h3>
+<h2 class="rub">Une précision sur les cotes Polymarket</h2>
 
 <p>Ces chiffres sont des probabilités d'être élu, pas des intentions de vote. Un candidat
 peut réunir 35&nbsp;% des intentions au premier tour et une probabilité de victoire bien
 différente. Les deux graphiques ne mesurent pas la même chose et ne se comparent pas.</p>
 
-<h3>Comment la courbe de tendance est calculée</h3>
+<h2 class="rub">Comment la courbe de tendance est calculée</h2>
 
 <p>Un sondage n'est pas un point de la courbe&nbsp;: c'est une mesure isolée, assortie d'une
 marge d'erreur de deux à trois points. Relier les sondages entre eux donnerait une ligne
@@ -110,7 +114,7 @@ trente jours. Elle donne le sens et l'ampleur du mouvement récent, mais ne doit
 confondue avec un résultat de sondage&nbsp;: c'est un indicateur de tendance calculé, pas une
 mesure brute.</p>
 
-<h3>Pourquoi les courbes ne s'additionnent pas à 100&nbsp;%</h3>
+<h2 class="rub">Pourquoi les courbes ne s'additionnent pas à 100&nbsp;%</h2>
 
 <p>Un institut ne pose pas une question, il en pose plusieurs. Une même enquête teste
 souvent six ou dix configurations différentes&nbsp;: avec tel candidat, sans tel autre, avec
@@ -138,7 +142,7 @@ configurations hétérogènes&nbsp;: le score d'un candidat du centre peut varie
 points selon que l'autre y figure ou non. Les niveaux de cette période ne sont pas
 strictement comparables à ceux de la période suivante.</p>
 
-<h3>Ce que nous ne faisons pas</h3>
+<h2 class="rub">Ce que nous ne faisons pas</h2>
 
 <p><strong>Nous ne corrigeons pas les biais d'institut.</strong> Certains agrégateurs ajustent les
 résultats selon les écarts historiques observés entre instituts. Nous ne le faisons pas&nbsp;:
@@ -153,7 +157,7 @@ présentées dans deux graphiques distincts.</p>
 <p><strong>Nous ne faisons pas de prévision.</strong> Ce site montre ce qui a été mesuré. Il ne dit pas
 qui sera élu.</p>
 
-<h3>Marges d'erreur</h3>
+<h2 class="rub">Marges d'erreur</h2>
 
 <p>Un sondage sur mille personnes donne un résultat à environ trois points près pour un
 candidat autour de 30&nbsp;%, moins d'un point pour un candidat à 2&nbsp;%. Deux candidats séparés
@@ -163,14 +167,14 @@ de deux points ne sont pas départageables.</p>
 configuration. Nos marges d'erreur sont donc calculées sur l'échantillon total de
 l'enquête et signalées comme approximatives.</p>
 
-<h3>Précision sur les sondages d'intention de vote</h3>
+<h2 class="rub">Précision sur les sondages d'intention de vote</h2>
 
 <p>Les enquêtes réalisées un an avant un scrutin se sont historiquement révélées éloignées
 des résultats finaux&nbsp;: les candidatures ne sont pas toutes déclarées, les alliances pas
 formées, et une partie des électeurs n'a pas arrêté son choix. Ces chiffres décrivent un
 rapport de force à un instant donné. Ils ne prédisent pas une élection.</p>
 
-<h3 id="retro-sondax">Rétro-Sondax</h3>
+<h2 class="rub" id="retro-sondax">Rétro-Sondax</h2>
 
 <p>Le bloc «&nbsp;Rétro-Sondax&nbsp;» de l'accueil montre qui était en tête des sondages
 en 2022, 2017, 2012 et 2007 au même nombre de jours avant le premier tour qu'aujourd'hui.
@@ -186,7 +190,7 @@ Juppé, Sarkozy ou Fillon avant la primaire de 2016 ne mesuraient pas la même c
 candidat désigné. Aucun résultat d'élection n'y figure, seulement ce que disaient les
 sondages à cette date.</p>
 
-<h3>Corrections</h3>
+<h2 class="rub">Corrections</h2>
 
 <p>Les données sont relues automatiquement à chaque mise à jour&nbsp;: les scores d'une
 configuration doivent totaliser environ 100&nbsp;%, les candidats doivent être connus, et le
@@ -325,7 +329,7 @@ publiés à chaque date.</p>
   <div class="footer-inner">
     <div>
       <div style="margin-bottom:10px;">
-        <img src="assets/logo-sondax-blanc.svg" alt="Sondax" style="height:22px;">
+        <img src="assets/logo-sondax-blanc.svg" alt="Sondax" width="71" height="22" style="height:22px;">
       </div>
     </div>
     <div>

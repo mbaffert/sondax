@@ -21,6 +21,7 @@ PHOTOS_PATH = ROOT / "data" / "photos.json"
 sys.path.insert(0, str(ROOT / "scripts"))
 from instituts import charger_referentiel, lien_institut
 from balise_time import time_tag, time_periode
+from site_template import photo_attrs
 from build_header import (
     select_hypothesis, candidate_full_name, load_all_sondages,
     REPERES_T1, JSONLD_T1, CANDIDATS_PAGES,
@@ -248,7 +249,7 @@ def portrait(cid, nom, couleur, photos):
     c = f"--c:{couleur}"
     if cid in photos:
         fichier = html_mod.escape(photos[cid]["fichier"], quote=True)
-        img = (f'<img class="ds-photo" style="{c}" src="{fichier}" alt="" '
+        img = (f'<img class="ds-photo" style="{c}" {photo_attrs(fichier, 46)} alt="" '
                f'width="46" height="46" loading="lazy">')
     else:
         img = f'<span class="ds-photo ds-mono" style="{c}">{html_mod.escape(initiales(nom))}</span>'

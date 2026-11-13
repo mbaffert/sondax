@@ -17,7 +17,7 @@ apparaît dans le texte rendu (§14.3).
 import datetime, html, json, pathlib, re, sys
 from zoneinfo import ZoneInfo
 
-from site_template import render_page
+from site_template import render_page, photo_attrs
 from balise_time import time_tag
 import courbes_modele as C
 import textes_modele as T
@@ -120,7 +120,7 @@ def portrait(candidats, slug, p=""):
     photo = SITE / "photos" / f"{slug}.jpg"
     couleur = candidats[slug]["couleur"]
     if photo.exists():
-        return (f'<img class="mo-photo" src="{p}photos/{slug}.jpg" alt="" width="40" '
+        return (f'<img class="mo-photo" {photo_attrs(f"photos/{slug}.jpg", 40, p)} alt="" width="40" '
                 f'height="40" loading="lazy" style="--c:{couleur}">')
     initiales = "".join(m[0] for m in nom_complet(candidats, slug).split()[:2])
     return f'<span class="mo-photo mo-initiales" style="--c:{couleur}">{e(initiales)}</span>'

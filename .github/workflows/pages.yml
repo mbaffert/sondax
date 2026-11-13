@@ -71,7 +71,11 @@ jobs:
           python scripts/build_faq.py
           # Bandeau statique dans toutes les pages, une fois celles-ci générées
           python scripts/build_header.py --injecter
+          # Petites feuilles CSS intégrées en <style> dans chaque page (après toute écriture de page)
+          python scripts/inline_css.py
           python scripts/build_sitemap.py
+          # llms.txt et .well-known/ard.json ; avant validate_urls.py, qui vérifie <link rel="ard">
+          python scripts/build_llms.py
           python scripts/build_faq.py --verifier
           python scripts/validate_urls.py
 
@@ -79,6 +83,10 @@ jobs:
         run: |
           mkdir -p _site/data/derived
           cp -r site/* _site/
+          # « cp -r site/* » ignore les dossiers cachés : .well-known (ard.json) est copié à part.
+          # upload-pages-artifact@v3 archive tout _site/ (tar de « . », sans .git ni .github) :
+          # .well-known part donc bien avec l'artefact.
+          cp -r site/.well-known _site/.well-known
           cp -r data/*.json _site/data/
           cp -r data/derived/*.json _site/data/derived/
           rm -f _site/data/historique.json

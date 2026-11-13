@@ -171,7 +171,7 @@ EXTRA_CSS = """<style>
 /* Graphique : carte blanche comme les blocs de la home, y compris en thème
    sombre (couleurs des candidats et grille pensées pour un fond clair). */
 .inst-graph { background: #fff; color: #202632; border: 1px solid #E3E5E0; border-radius: 16px;
-  padding: 18px 20px 16px; --gris: #66707D; --bleu-vif: #0C6CF2; }
+  padding: 18px 20px 16px; --gris: #66707D; --bleu-vif: #0A62DC; }
 .inst-graph .candidat-cb { font-size: 14px; }
 
 .section-sep { border-top: 1px solid var(--bord); margin: 24px 0 20px; }

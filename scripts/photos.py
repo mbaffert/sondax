@@ -1,12 +1,25 @@
 #!/usr/bin/env python3
-"""Télécharge les portraits depuis Wikimedia Commons et les recadre en 240×240."""
+"""Télécharge les portraits depuis Wikimedia Commons et les recadre en 240×240.
 
-import json, os, re, subprocess, tempfile, urllib.request, urllib.parse
+Produit pour chaque portrait site/photos/<slug>.jpg (240×240) et, en plus, deux
+WebP : <slug>-96.webp (affichage ≤ 48 px) et <slug>-240.webp (affichage jusqu'à
+120 px, écrans denses), qualité 80. Les gabarits servent le WebP via srcset.
+
+Usage :
+    python scripts/photos.py          # télécharge, recadre (sips, macOS), puis WebP
+    python scripts/photos.py --webp   # WebP seulement, depuis les JPEG déjà présents
+                                      # (inclut les photos ajoutées à la main, ex. hollande.jpg)
+"""
+
+import glob, json, os, re, subprocess, sys, tempfile, urllib.request, urllib.parse
 
 UA = "SondaxBot/1.0 (https://sondax.fr; contact@sondax.fr)"
 API = "https://commons.wikimedia.org/w/api.php"
 OUT = os.path.join(os.path.dirname(__file__), "..", "site", "photos")
 DATA = os.path.join(os.path.dirname(__file__), "..", "data", "photos.json")
+
+WEBP_TAILLES = (96, 240)
+WEBP_QUALITE = 80
 
 os.makedirs(OUT, exist_ok=True)
 
@@ -76,17 +89,37 @@ def crop_square(src, dest, size=240):
                      "--out", dest], check=True, capture_output=True)
 
 
-for slug, info in photos.items():
-    dest = os.path.join(OUT, f"{slug}.jpg")
-    print(f"{slug}...", end=" ", flush=True)
-    try:
-        title = filename_from_url(info["source"])
-        thumb = get_thumb_url(title)
-        with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as tmp:
-            tmp_path = tmp.name
-        download(thumb, tmp_path)
-        crop_square(tmp_path, dest)
-        os.unlink(tmp_path)
-        print("OK")
-    except Exception as e:
-        print(f"ERREUR: {e}")
+def produire_webp():
+    """Écrit <slug>-96.webp et <slug>-240.webp pour tous les JPEG de site/photos/
+    (Pillow, déjà dans requirements.txt)."""
+    from PIL import Image
+    n = 0
+    for jpg in sorted(glob.glob(os.path.join(OUT, "*.jpg"))):
+        base = os.path.splitext(jpg)[0]
+        with Image.open(jpg) as im:
+            im = im.convert("RGB")
+            for taille in WEBP_TAILLES:
+                sortie = f"{base}-{taille}.webp"
+                im.resize((taille, taille), Image.LANCZOS).save(
+                    sortie, "WEBP", quality=WEBP_QUALITE, method=6)
+                n += 1
+    print(f"WebP : {n} fichiers écrits dans {os.path.normpath(OUT)}")
+
+
+if "--webp" not in sys.argv:
+    for slug, info in photos.items():
+        dest = os.path.join(OUT, f"{slug}.jpg")
+        print(f"{slug}...", end=" ", flush=True)
+        try:
+            title = filename_from_url(info["source"])
+            thumb = get_thumb_url(title)
+            with tempfile.NamedTemporaryFile(suffix=".jpg", delete=False) as tmp:
+                tmp_path = tmp.name
+            download(thumb, tmp_path)
+            crop_square(tmp_path, dest)
+            os.unlink(tmp_path)
+            print("OK")
+        except Exception as e:
+            print(f"ERREUR: {e}")
+
+produire_webp()

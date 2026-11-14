@@ -4,8 +4,8 @@
   "institut": "OpinionWay",
   "terrain_debut": "2026-11-10",
   "terrain_fin": "2026-11-12",
-  "echantillon": null,
-  "url_source": "https://www.cnews.fr/france/2026-11-12/presidentielle-2027-marine-le-pen-reste-en-tete-des-intentions-de-vote-teddy",
+  "echantillon": 964.0,
+  "url_source": "http://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10371-pres-iv-opinionway-cnews-12-novembre.pdf",
   "hypotheses": [
    {
     "tour": 1,
@@ -64,9 +64,9 @@
     "scores": {
      "arthaud": 1.0,
      "melenchon": 16.0,
-     "roussel": 2.0,
+     "roussel": 1.0,
      "tondelier": 3.0,
-     "glucksmann": 10.0,
+     "glucksmann": 11.0,
      "attal": 4.0,
      "philippe": 12.0,
      "lisnard": 10.0,
@@ -76,9 +76,45 @@
      "zemmour": 2.0,
      "bouamrane": 1.0
     }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "glucksmann",
+     "le-pen"
+    ],
+    "scores": {
+     "glucksmann": 42.0,
+     "le-pen": 58.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "melenchon"
+    ],
+    "scores": {
+     "melenchon": 32.0,
+     "le-pen": 68.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "philippe"
+    ],
+    "scores": {
+     "philippe": 44.0,
+     "le-pen": 56.0
+    }
    }
   ],
-  "revid": 241312018,
+  "revid": 241335013,
   "integre_le": "2026-11-13"
  },
  {
@@ -86,7 +122,7 @@
   "institut": "Cluster17",
   "terrain_debut": "2026-11-09",
   "terrain_fin": "2026-11-10",
-  "echantillon": null,
+  "echantillon": 1164.0,
   "url_source": "https://cluster17.com/wp-content/uploads/2026/11/Sondage_Cluster17_ITV_P2027-Politico.pdf",
   "hypotheses": [
    {
@@ -224,7 +260,7 @@
     }
    }
   ],
-  "revid": 241284952,
+  "revid": 241335013,
   "integre_le": "2026-11-11"
  },
  {
@@ -232,7 +268,7 @@
   "institut": "Opinionway",
   "terrain_debut": "2026-11-09",
   "terrain_fin": "2026-11-10",
-  "echantillon": null,
+  "echantillon": 982.0,
   "url_source": "https://f.dviz.factoviz.com/UserFiles/0/9/2/2027/OpinionWay%20pour%20Les%20Echos%20et%20Radio%20Classique%20-%20Barom%C3%A8tre%20Pr%C3%A9sitrack%202027%20Vague%204%20-%20Novembre%202026.pdf",
   "hypotheses": [
    {
@@ -328,7 +364,7 @@
     }
    }
   ],
-  "revid": 241284952,
+  "revid": 241335013,
   "integre_le": "2026-11-12"
  },
  {
@@ -5864,7 +5900,7 @@
   "institut": "Ifop",
   "terrain_debut": "2026-07-07",
   "terrain_fin": "2026-07-08",
-  "echantillon": null,
+  "echantillon": 984.0,
   "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/juillet/10222-pres-ifop-le-figaro-8-juillet.pdf",
   "hypotheses": [
    {
@@ -5960,7 +5996,7 @@
     }
    }
   ],
-  "revid": 240300215,
+  "revid": 241335013,
   "integre_le": "2026-09-08"
  },
  {

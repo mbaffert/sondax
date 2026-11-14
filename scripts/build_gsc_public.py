@@ -6,7 +6,11 @@ consommé par le relevé quotidien du tableau de bord « Sondax — audience et
 référencement ». Voir claude/contrat-gsc-json.md dans le projet Claude.
 
 Les CSV croisent toutes les dimensions avec la date. Ici, les journées passent
-telles quelles ; requêtes, pages et appareils sont agrégés sur toute la période.
+telles quelles ; requêtes, pages, appareils et couples requête × page
+(« requetes_pages », non tronqué : {requete, url, clics, impressions, position})
+sont agrégés sur toute la période. Si gsc-date-query-page.csv n'existe pas encore,
+« requetes_pages » est un tableau vide. Les quatre autres tableaux gardent leur
+forme : le relevé quotidien (gsc_maj.py) les lit tels quels.
 
 Aucune authentification : ce script ne lit que des fichiers déjà collectés.
 """
@@ -52,6 +56,36 @@ def lire(nom, dimensions):
     if not lignes:
         erreur(f"{nom} : aucune ligne")
     return lignes
+
+
+def lire_facultatif(nom, dimensions):
+    """Comme lire(), mais renvoie [] si le CSV n'existe pas encore ou est vide."""
+    chemin = SOURCE_DIR / nom
+    if not chemin.exists():
+        return []
+    entete_attendue = dimensions + METRIQUES
+    with chemin.open(newline="", encoding="utf-8") as f:
+        lecteur = csv.reader(f)
+        if next(lecteur, None) != entete_attendue:
+            erreur(f"{nom} : entête inattendue, attendu {entete_attendue}")
+        return [l for l in lecteur if l]
+
+
+def agreger_requetes_pages(lignes):
+    """Couples (requête, page) agrégés sur la période, comme agreger()."""
+    cumul = {}
+    for l in lignes:
+        e = cumul.setdefault((l[1], l[2]), {"clics": 0, "impressions": 0, "pos_pond": 0.0})
+        imp = int(l[4])
+        e["clics"] += int(l[3])
+        e["impressions"] += imp
+        e["pos_pond"] += float(l[6]) * imp
+    sortie = [{"requete": q, "url": u, "clics": e["clics"],
+               "impressions": e["impressions"],
+               "position": round(e["pos_pond"] / e["impressions"], 2) if e["impressions"] else 0.0}
+              for (q, u), e in cumul.items()]
+    sortie.sort(key=lambda r: (-r["impressions"], r["requete"], r["url"]))
+    return sortie
 
 
 def agreger(lignes, dimensions, cle_sortie):
@@ -117,6 +151,9 @@ def main():
         lire("gsc-date-device.csv", ["date", "device"]),
         ["date", "device"], "appareil")
 
+    requetes_pages = agreger_requetes_pages(
+        lire_facultatif("gsc-date-query-page.csv", ["date", "query", "page"]))
+
     donnees = {
         "maj": datetime.date.today().isoformat(),
         "propriete": SITE_URL,
@@ -124,6 +161,7 @@ def main():
         "requetes": requetes,
         "pages": pages,
         "appareils": appareils,
+        "requetes_pages": requetes_pages,
     }
 
     SORTIE.parent.mkdir(parents=True, exist_ok=True)
@@ -136,7 +174,7 @@ def main():
           f"jour : {sum(j['requetes_nommees'] for j in jours)} requêtes-jours, "
           f"{sum(j['impressions_nommees'] for j in jours)} impressions nommées), "
           f"{len(requetes)} requêtes, {len(pages)} pages, "
-          f"{len(appareils)} appareils, {SORTIE.stat().st_size // 1024} Kio")
+          f"{len(appareils)} appareils, {len(requetes_pages)} couples requête × page, {SORTIE.stat().st_size // 1024} Kio")
 
 
 if __name__ == "__main__":

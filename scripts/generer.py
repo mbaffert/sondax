@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Génère une page par candidat : identité, courbe, évolution, électorat, origine des voix."""
-import json, math, datetime as dt, unicodedata, os, sys
+import json, math, re, datetime as dt, unicodedata, os, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from balise_time import time_tag, baliser_dates
 from site_template import head_commun, photo_attrs
@@ -355,6 +355,22 @@ def phrase_dernier_sondage(dernier):
     return (f'<p class="dernier-sondage">Dernier sondage&nbsp;: {html_mod.escape(institut)}, '
             f'{terrain_court(debut, fin)}, {fmt_score(score)} au premier tour.</p>')
 
+def descriptions_meta(nom, dernier):
+    """(meta description, og:description), échappées pour un attribut HTML.
+    Texte brut tiré du dernier sondage ; descriptions génériques s'il manque."""
+    if not dernier:
+        return (f"Sondage {nom} pour la présidentielle 2027 : intention de vote {nom} au premier "
+                f"tour, évolution, duels de second tour et électorat.",
+                f"Intentions de vote, second tour et électorat de {nom}.")
+    institut, debut, fin, score = dernier
+    terrain = re.sub(r"<[^>]+>", "", terrain_court(debut, fin)).replace("\u2013", "-")
+    sc = fmt_score(score).replace("\u00a0", " ")
+    desc = (f"Sondage {nom} présidentielle 2027 : {sc} au premier tour selon le dernier sondage "
+            f"{institut} ({terrain}). Évolution des intentions de vote, duels de second tour et électorat.")
+    og = (f"{nom} : {sc} au premier tour (dernier sondage {institut}, {terrain}). "
+          f"Intentions de vote, second tour et électorat.")
+    return html_mod.escape(desc, quote=True), html_mod.escape(og, quote=True)
+
 def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant,
          duels=None, noms=None, pages=None, succession=None, derniers="", dernier=None,
          faq="", recents=""):
@@ -389,13 +405,14 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
 </div></section>''')
 
     bio = "".join(f"<li>{baliser_dates(x)}</li>" for x in fiche["bio"])
+    meta_desc, og_desc = descriptions_meta(nom, dernier)
     return f'''<!DOCTYPE html><html lang="fr"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{nom} : sondages présidentielle 2027 — Sondax</title>
-<meta name="description" content="Sondage {nom} pour la présidentielle 2027 : intention de vote {nom} au premier tour, évolution, duels de second tour et électorat.">
+<meta name="description" content="{meta_desc}">
 <link rel="canonical" href="https://sondax.fr/{slug}.html">
 <meta property="og:title" content="{nom} — sondages présidentielle 2027">
-<meta property="og:description" content="Intentions de vote, second tour et électorat de {nom}.">
+<meta property="og:description" content="{og_desc}">
 <meta property="og:type" content="article">
 {head_commun()}
 <style>{CSS.replace("__COULEUR__", coul)}</style><script type="application/ld+json">{{

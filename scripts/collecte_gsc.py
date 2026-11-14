@@ -12,6 +12,12 @@ Pour chaque jeu de dimensions, un CSV dans data/gsc/. Les dates présentes dans
 la réponse remplacent intégralement les lignes de ces dates dans le fichier
 (Google révise les derniers jours après coup). Toute erreur ou réponse vide fait
 échouer le script sans rien écrire.
+
+Exception : gsc-date-query-page.csv (croisement requête × page, pour savoir
+quelle page Google affiche pour chaque requête). Les jours de très faible
+trafic, ce croisement peut légitimement revenir vide : un avertissement est
+alors écrit, le jeu est ignoré et son fichier n'est pas touché. Les quatre
+autres jeux restent stricts.
 """
 
 import csv, datetime, json, os, pathlib, sys, time
@@ -33,7 +39,10 @@ JEUX = {
     "gsc-date-query.csv": ["date", "query"],
     "gsc-date-page.csv": ["date", "page"],
     "gsc-date-device.csv": ["date", "device"],
+    "gsc-date-query-page.csv": ["date", "query", "page"],
 }
+# Jeux dont une réponse vide est tolérée (avertissement, fichier intact).
+JEUX_VIDE_TOLERE = {"gsc-date-query-page.csv"}
 METRIQUES = ["clicks", "impressions", "ctr", "position"]
 
 
@@ -180,6 +189,10 @@ def main():
     resultats = []
     for nom, dimensions in JEUX.items():
         lignes_api = requete(sess, debut.isoformat(), fin.isoformat(), dimensions)
+        if not lignes_api and nom in JEUX_VIDE_TOLERE:
+            print(f"  Avertissement : réponse vide pour {dimensions}, {nom} non modifié",
+                  file=sys.stderr)
+            continue
         if not lignes_api:
             erreur(f"réponse vide pour {dimensions} : aucun fichier modifié")
         entete, lignes, dates = fusionner(OUTPUT_DIR / nom, dimensions, lignes_api)

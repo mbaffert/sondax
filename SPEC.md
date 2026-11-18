@@ -252,8 +252,9 @@ Règles :
   de l'institut), quand le nom de fichier n'en porte pas, ou quand le slug est
   absent de la table ; ce dernier cas est signalé sur la page de revue (§8), sans
   faire échouer le run.
-  Une collision d'identifiant (même institut, même date de fin) est une erreur
-  bloquante, jamais un écrasement silencieux.
+  Une collision d'identifiant (même institut, même date de fin) entre un sondage
+  manuel et Wikipédia se résout en faveur de la saisie manuelle, avec avertissement
+  (§3.3), jamais en silence.
 - **`sondages.json` est la référence ; Wikipédia n'est qu'une source d'entrée.**
   La collecte charge le fichier existant et y fusionne le résultat par `id` :
   `id` nouveau → ajouté ; `id` connu → mis à jour si les valeurs ont changé (le
@@ -295,10 +296,13 @@ supplémentaires :
 Le pipeline concatène ce fichier à la liste issue du wikitexte **avant** la
 validation. Tous les contrôles du §8 s'appliquent à l'identique.
 
-En cas de collision d'identifiant avec une entrée issue du wikitexte, le run
-échoue avec un message indiquant que le sondage est désormais présent sur
-Wikipédia et que l'entrée manuelle doit être supprimée. Jamais d'écrasement
-silencieux (§3.2).
+En cas de collision d'identifiant avec une entrée issue du wikitexte, la saisie
+manuelle l'emporte : l'entrée manuelle est gardée telle quelle, la version
+Wikipédia de ce sondage est écartée et la collecte continue. Un avertissement
+(non bloquant) « <id> : présent sur Wikipédia, version manuelle conservée » est
+affiché, avec la liste des écarts de scores (hypothèse, candidat, valeur manuelle /
+valeur Wikipédia), écrit dans `data/derived/avertissements_collecte.txt` et repris
+dans le mail de collecte. Jamais d'écrasement silencieux (§3.2).
 
 ### 3.4 `polymarket.json`
 

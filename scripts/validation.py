@@ -434,6 +434,11 @@ def main():
             mail_lines.append(f"- {s['institut']} — {fmt_date(s['terrain_debut'])} → {fmt_date(s['terrain_fin'])}")
     else:
         mail_lines.append("Aucun nouveau sondage.")
+    # Avertissements de la collecte (ex. sondage manuel aussi présent sur Wikipédia)
+    avert = ROOT / "data" / "derived" / "avertissements_collecte.txt"
+    if avert.exists() and avert.read_text(encoding="utf-8").strip():
+        mail_lines += ["", "⚠ Avertissements de collecte :",
+                       avert.read_text(encoding="utf-8").rstrip()]
     REVUE_MAIL_PATH = ROOT / "data" / "derived" / "mail_body.txt"
     REVUE_MAIL_PATH.parent.mkdir(parents=True, exist_ok=True)
     REVUE_MAIL_PATH.write_text("\n".join(mail_lines), encoding="utf-8")

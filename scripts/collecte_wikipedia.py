@@ -16,6 +16,8 @@ CANDIDATS_PATH = ROOT / "data" / "candidats.json"
 MANUELS_PATH = ROOT / "data" / "sondages_manuels.json"
 OUTPUT_PATH = ROOT / "data" / "sondages.json"
 SNAPSHOTS_DIR = ROOT / "data" / "snapshots"
+# Avertissements de collecte (non bloquants) repris dans le mail par validation.py.
+AVERTISSEMENTS_PATH = ROOT / "data" / "derived" / "avertissements_collecte.txt"
 
 WIKI_API = ("https://fr.wikipedia.org/w/api.php"
             "?action=parse"
@@ -527,6 +529,58 @@ def marquer_integration(sondages, aujourd_hui=None):
             s['integre_le'] = s.get('saisi_le') or aujourd_hui
 
 
+def ecarts_manuel_wikipedia(manuel, wiki):
+    """Écarts de scores entre la version manuelle et la version Wikipédia d'un même
+    sondage : lignes « hypothèse, candidat, manuel / Wikipédia ». Les hypothèses
+    sont appariées par (tour, candidats), puis par tour seulement."""
+    paires, absentes, ajoutees = _apparier_hypotheses(manuel['hypotheses'], wiki['hypotheses'])
+    lignes = []
+    for i, w in sorted(paires, key=lambda p: p[0]):
+        m = manuel['hypotheses'][i]
+        nom = m.get('libelle') or f"hyp.{i+1} T{m['tour']}"
+        for c in sorted(set(m['scores']) | set(w['scores'])):
+            vm, vw = m['scores'].get(c), w['scores'].get(c)
+            if vm != vw:
+                lignes.append(f"{nom}, {c} : manuel {'—' if vm is None else vm} / "
+                              f"Wikipédia {'—' if vw is None else vw}")
+    for i in absentes:
+        m = manuel['hypotheses'][i]
+        lignes.append(f"{m.get('libelle') or f'hyp.{i+1} T' + str(m['tour'])} : "
+                      f"hypothèse absente de Wikipédia")
+    for w in ajoutees:
+        lignes.append(f"T{w['tour']} ({', '.join(sorted(w['scores']))}) : "
+                      f"hypothèse présente sur Wikipédia seulement, écartée")
+    return lignes
+
+
+def ecarter_doublons_wikipedia(res, manuels):
+    """La saisie manuelle l'emporte : un sondage collecté sur Wikipédia qui a le
+    même id qu'un sondage manuel est écarté, l'entrée manuelle est gardée telle
+    quelle. Retourne (res sans les doublons, avertissements)."""
+    manuels_par_id = {m['id']: m for m in manuels}
+    avertissements, gardes = [], []
+    for w in res:
+        m = manuels_par_id.get(w['id'])
+        if m is None:
+            gardes.append(w)
+            continue
+        msg = f"{w['id']} : présent sur Wikipédia, version manuelle conservée"
+        ecarts = ecarts_manuel_wikipedia(m, w)
+        if ecarts:
+            msg += "\n" + "\n".join(f"    - {e}" for e in ecarts)
+        avertissements.append(msg)
+    return gardes, avertissements
+
+
+def ecrire_avertissements(avertissements):
+    """Écrit (ou supprime, s'il n'y en a pas) le fichier repris dans le mail."""
+    if avertissements:
+        AVERTISSEMENTS_PATH.parent.mkdir(parents=True, exist_ok=True)
+        AVERTISSEMENTS_PATH.write_text("\n".join(avertissements) + "\n", encoding="utf-8")
+    elif AVERTISSEMENTS_PATH.exists():
+        AVERTISSEMENTS_PATH.unlink()
+
+
 def afficher_rapport(rapport, existants_par_id):
     """Journal des écarts : ajouts, diffs, sondages conservés mais absents de Wikipédia."""
     print(f"\n== Journal des écarts ==")
@@ -610,16 +664,11 @@ def main(argv=None):
 
     # Sondages manuels : contrôles avant fusion
     manuels = []
-    wiki_ids = {s['id'] for s in res}
+    avertissements = []
     if MANUELS_PATH.exists():
         manuels = json.loads(MANUELS_PATH.read_text())
         candidat_ids = set(candidats.keys())
         for s in manuels:
-            if s['id'] in wiki_ids:
-                print(f"ERREUR : collision d'id '{s['id']}' — ce sondage est désormais "
-                      f"présent sur Wikipédia, supprimer l'entrée manuelle de "
-                      f"sondages_manuels.json", file=sys.stderr)
-                sys.exit(1)
             # Valider les candidats
             for h in s['hypotheses']:
                 for cid in h['scores']:
@@ -627,6 +676,11 @@ def main(argv=None):
                         print(f"ERREUR : candidat inconnu '{cid}' dans le sondage "
                               f"manuel '{s['id']}'", file=sys.stderr)
                         sys.exit(1)
+        # Doublon avec Wikipédia : la saisie manuelle l'emporte (avertissement)
+        res, avertissements = ecarter_doublons_wikipedia(res, manuels)
+    for a in avertissements:
+        print(f"AVERTISSEMENT : {a}")
+    ecrire_avertissements(avertissements)
 
     # Fusion dans la référence existante : on ajoute et on met à jour, on ne supprime jamais
     existants = json.loads(OUTPUT_PATH.read_text()) if OUTPUT_PATH.exists() else []

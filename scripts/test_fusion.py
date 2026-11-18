@@ -174,6 +174,25 @@ def test_fichier_actuel_inchange_par_la_fusion():
 
 
 
+def test_saisie_manuelle_l_emporte_sur_wikipedia():
+    sc = {"philippe": 15.0, "retailleau": 7.0, "dupont-aignan": 2.0}
+    manuel = sondage("ifop-2026-11-16", scores=sc, revid=None, source="manuel")
+    manuel["hypotheses"][0]["libelle"] = "Philippe / Retailleau"
+    wiki = sondage("ifop-2026-11-16", scores={**sc, "dupont-aignan": 3.0})
+    autre = sondage("harris-2026-11-10", "Harris", "2026-11-10")
+    gardes, avert = cw.ecarter_doublons_wikipedia([wiki, autre], [manuel])
+    assert [s["id"] for s in gardes] == ["harris-2026-11-10"], gardes
+    assert len(avert) == 1 and avert[0].startswith(
+        "ifop-2026-11-16 : présent sur Wikipédia, version manuelle conservée"), avert
+    assert "Philippe / Retailleau, dupont-aignan : manuel 2.0 / Wikipédia 3.0" in avert[0], avert
+    # identiques : avertissement sans liste d'écarts
+    _, avert = cw.ecarter_doublons_wikipedia([sondage("ifop-2026-11-16", scores=sc)], [manuel])
+    assert avert == ["ifop-2026-11-16 : présent sur Wikipédia, version manuelle conservée"], avert
+    # la fusion garde la valeur manuelle
+    res, _ = cw.fusionner([wiki], [manuel], dedoublonner=False)
+    assert res[0]["hypotheses"][0]["scores"]["dupont-aignan"] == 2.0
+
+
 def test_libelle_institut_corrige_sur_wikipedia():
     """Cluster17, 31/10/2026 : « Cluster 17 » corrigé en « Cluster17 », échantillon
     et hypothèses modifiés. Même institut, mêmes dates : mise à jour, pas d'ajout."""

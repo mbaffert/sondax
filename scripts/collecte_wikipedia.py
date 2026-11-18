@@ -116,20 +116,40 @@ def colspan_entete(ligne):
     return int(m.group(1)) if m else 1
 
 
+COLONNES_FIXES = {'sondeur', 'date', 'échantillon', 'echantillon', 'autres', 'autre'}
+
+
+def _sans_image(ligne):
+    """Retire les vignettes d'une cellule d'en-tête.
+
+    Depuis le 18/11/2026, Wikipédia met photo et nom dans la même cellule
+    ('[[Fichier:…]]<br>[[Nathalie Arthaud|Arthaud]]<br><small>…') au lieu de
+    deux lignes d'en-têtes distinctes. On enlève la vignette et le <br> qui la
+    suit pour retrouver la forme d'avant ('[[Nathalie Arthaud|Arthaud]]<br>…')."""
+    ligne = re.sub(r'\[\[(?:Fichier|File|Image)\s*:[^\]]*\]\]', '', ligne)
+    return re.sub(r'(\|\s*)(?:<br\s*/?>\s*)+', r'\1', ligne)
+
+
+def _colonne_fixe(ligne):
+    contenu = re.sub(r'^!.*?\|', '', ligne).strip()
+    return re.sub(r'<[^>]+>', '', contenu).strip().lower() in COLONNES_FIXES
+
+
 def parse_table(txt, annee, tour):
     lines = [l.rstrip() for l in txt.split('\n')]
     # --- en-tête : la ligne d'en-têtes contenant les noms liés
     cands, header_end = [], 0
-    # la ligne des noms est le dernier bloc de '!' avant la ligne de couleurs de parti
+    # la ligne des noms est le dernier bloc de '!' avant la ligne de couleurs de
+    # parti qui contient des noms liés (une fois les vignettes retirées)
     bloc, dernier = [], []
     for i, l in enumerate(lines):
         if l.startswith('!'):
-            bloc.append(l)
+            bloc.append(_sans_image(l))
         else:
             if 'couleurs|' in l:
                 break
-            if bloc and not any('Fichier:' in b or 'File:' in b for b in bloc):
-                dernier = bloc
+            if bloc and any(re.search(r'\[\[[^\]]+\]\]', b) for b in bloc):
+                dernier = [b for b in bloc if not _colonne_fixe(b)]
             bloc = []
     for l in dernier:
         tete = l.split('<br')[0]

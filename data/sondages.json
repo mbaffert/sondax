@@ -1,5 +1,229 @@
 [
  {
+  "id": "yougov-2026-11-17",
+  "institut": "YouGov",
+  "terrain_debut": "2026-11-12",
+  "terrain_fin": "2026-11-17",
+  "echantillon": 952.0,
+  "url_source": "https://www.huffingtonpost.fr/politique/article/dans-notre-sondage-sur-la-presidentielle-2027-edouard-philippe-atteint-la-cote-d-alerte_360406.html",
+  "hypotheses": [
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 19.0,
+     "roussel": 2.0,
+     "tondelier": 4.0,
+     "glucksmann": 9.0,
+     "attal": 5.0,
+     "philippe": 8.0,
+     "lisnard": 9.0,
+     "retailleau": 6.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 32.0,
+     "zemmour": 3.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 19.0,
+     "roussel": 3.0,
+     "tondelier": 4.0,
+     "glucksmann": 10.0,
+     "philippe": 9.0,
+     "lisnard": 10.0,
+     "retailleau": 7.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 33.0,
+     "zemmour": 3.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "melenchon",
+     "philippe",
+     "roussel",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 22.0,
+     "roussel": 3.0,
+     "glucksmann": 12.0,
+     "philippe": 16.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 40.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "retailleau",
+     "roussel",
+     "tondelier",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 19.0,
+     "roussel": 2.0,
+     "tondelier": 6.0,
+     "glucksmann": 10.0,
+     "attal": 7.0,
+     "lisnard": 10.0,
+     "retailleau": 8.0,
+     "dupont-aignan": 1.0,
+     "le-pen": 34.0,
+     "zemmour": 3.0
+    }
+   },
+   {
+    "tour": 1,
+    "echantillon": null,
+    "candidats": [
+     "arthaud",
+     "attal",
+     "dupont-aignan",
+     "glucksmann",
+     "le-pen",
+     "lisnard",
+     "melenchon",
+     "philippe",
+     "retailleau",
+     "riner",
+     "roussel",
+     "tondelier",
+     "villepin",
+     "zemmour"
+    ],
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 17.0,
+     "roussel": 2.0,
+     "tondelier": 5.0,
+     "glucksmann": 9.0,
+     "attal": 4.0,
+     "philippe": 7.0,
+     "lisnard": 9.0,
+     "retailleau": 6.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 32.0,
+     "zemmour": 3.0,
+     "riner": 3.0,
+     "villepin": 2.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "attal",
+     "le-pen"
+    ],
+    "scores": {
+     "attal": 45.0,
+     "le-pen": 55.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "glucksmann",
+     "le-pen"
+    ],
+    "scores": {
+     "glucksmann": 42.0,
+     "le-pen": 58.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "melenchon"
+    ],
+    "scores": {
+     "melenchon": 37.0,
+     "le-pen": 63.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "le-pen",
+     "philippe"
+    ],
+    "scores": {
+     "philippe": 46.0,
+     "le-pen": 54.0
+    }
+   },
+   {
+    "tour": 2,
+    "echantillon": null,
+    "candidats": [
+     "melenchon",
+     "philippe"
+    ],
+    "scores": {
+     "melenchon": 39.0,
+     "philippe": 61.0
+    }
+   }
+  ],
+  "revid": 241460275,
+  "integre_le": "2026-11-18"
+ },
+ {
   "id": "ifop-2026-11-16",
   "institut": "Ifop",
   "commanditaire": "TF1, LCI, Le Figaro et Sud Radio",

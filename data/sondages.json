@@ -5,7 +5,7 @@
   "terrain_debut": "2026-11-12",
   "terrain_fin": "2026-11-17",
   "echantillon": 952.0,
-  "url_source": "https://www.huffingtonpost.fr/politique/article/dans-notre-sondage-sur-la-presidentielle-2027-edouard-philippe-atteint-la-cote-d-alerte_360406.html",
+  "url_source": "http://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10382-pres-iv-yougov-le-huffpost-19-novembre.pdf",
   "hypotheses": [
    {
     "tour": 1,
@@ -220,7 +220,7 @@
     }
    }
   ],
-  "revid": 241460275,
+  "revid": 241480048,
   "integre_le": "2026-11-18"
  },
  {

@@ -205,5 +205,70 @@
     }
    }
   ]
+ },
+ {
+  "id": "ifop-2026-11-04",
+  "institut": "Ifop",
+  "commanditaire": "Sud Radio",
+  "terrain_debut": "2026-11-02",
+  "terrain_fin": "2026-11-04",
+  "echantillon": 1834,
+  "url_source": "https://www.commission-des-sondages.fr/notices/files/notices/2026/novembre/10392-pres-iv-ifop-sud-radio-20-novembre.pdf",
+  "source": "manuel",
+  "saisi_le": "2026-11-20",
+  "revid": null,
+  "hypotheses": [
+   {
+    "tour": 1,
+    "libelle": "Philippe candidat unique de la droite et du centre",
+    "echantillon": 1346,
+    "principale": true,
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 18.0,
+     "roussel": 3.0,
+     "tondelier": 3.0,
+     "glucksmann": 13.0,
+     "philippe": 19.0,
+     "dupont-aignan": 1.5,
+     "le-pen": 37.0,
+     "zemmour": 5.0
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Retailleau candidat unique de la droite et du centre",
+    "echantillon": 1297,
+    "principale": false,
+    "scores": {
+     "arthaud": 0.5,
+     "melenchon": 18.0,
+     "roussel": 3.0,
+     "tondelier": 3.5,
+     "glucksmann": 17.0,
+     "retailleau": 14.0,
+     "dupont-aignan": 2.0,
+     "le-pen": 38.0,
+     "zemmour": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Attal candidat unique de la droite et du centre",
+    "echantillon": 1293,
+    "principale": false,
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 18.0,
+     "roussel": 3.0,
+     "tondelier": 3.0,
+     "glucksmann": 16.0,
+     "attal": 13.0,
+     "dupont-aignan": 3.0,
+     "le-pen": 38.0,
+     "zemmour": 5.0
+    }
+   }
+  ]
  }
 ]

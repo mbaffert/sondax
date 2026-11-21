@@ -1,5 +1,98 @@
 [
  {
+  "id": "harris-2026-11-19",
+  "institut": "Harris",
+  "commanditaire": "M6, RTL et L'Express",
+  "terrain_debut": "2026-11-18",
+  "terrain_fin": "2026-11-19",
+  "echantillon": 2088,
+  "url_source": "",
+  "source": "manuel",
+  "saisi_le": "2026-11-21",
+  "revid": null,
+  "hypotheses": [
+   {
+    "tour": 1,
+    "libelle": "Attal et Philippe",
+    "echantillon": null,
+    "principale": true,
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 18.0,
+     "roussel": 1.0,
+     "tondelier": 1.0,
+     "glucksmann": 11.0,
+     "attal": 4.0,
+     "philippe": 9.0,
+     "villepin": 1.0,
+     "lisnard": 11.0,
+     "retailleau": 4.0,
+     "dupont-aignan": 1.0,
+     "le-pen": 31.0,
+     "zemmour": 3.0,
+     "riner": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Philippe candidat unique du centre",
+    "echantillon": null,
+    "principale": false,
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 19.0,
+     "roussel": 1.0,
+     "tondelier": 1.0,
+     "glucksmann": 11.0,
+     "philippe": 10.0,
+     "villepin": 2.0,
+     "lisnard": 11.0,
+     "retailleau": 4.0,
+     "dupont-aignan": 1.0,
+     "le-pen": 31.0,
+     "zemmour": 4.0,
+     "riner": 4.0
+    }
+   },
+   {
+    "tour": 1,
+    "libelle": "Attal candidat unique du centre",
+    "echantillon": null,
+    "principale": false,
+    "scores": {
+     "arthaud": 1.0,
+     "melenchon": 19.0,
+     "roussel": 1.0,
+     "tondelier": 2.0,
+     "glucksmann": 11.0,
+     "attal": 7.0,
+     "villepin": 2.0,
+     "lisnard": 12.0,
+     "retailleau": 5.0,
+     "dupont-aignan": 1.0,
+     "le-pen": 30.0,
+     "zemmour": 4.0,
+     "riner": 5.0
+    }
+   },
+   {
+    "tour": 2,
+    "libelle": "Le Pen / Mélenchon",
+    "echantillon": null,
+    "principale": false,
+    "candidats": [
+     "le-pen",
+     "melenchon"
+    ],
+    "scores": {
+     "melenchon": 35.0,
+     "le-pen": 65.0
+    }
+   }
+  ],
+  "integre_le": "2026-11-21"
+ },
+ {
   "id": "yougov-2026-11-17",
   "institut": "YouGov",
   "terrain_debut": "2026-11-12",

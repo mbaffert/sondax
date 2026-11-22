@@ -28,6 +28,7 @@ from balise_time import time_tag
 from site_template import head_commun
 from instituts import charger_referentiel, lien_institut, est_notice
 from sondages_io import charger as charger_sondages
+import surete_choix
 
 # ---------- chargement ----------
 
@@ -267,6 +268,24 @@ def liste_derniers(cid):
             '</div></section>')
 
 
+# ---------- sûreté du choix (Elabe) ----------
+
+# None quand la vague la plus récente a plus de dix semaines : aucune fiche n'affiche rien.
+SURETE = surete_choix.vue(candidats=candidats)
+
+
+def bloc_surete(cid):
+    """Ligne « sûreté du choix » de la fiche et ses mentions. Chaîne vide si le
+    candidat n'est pas dans la dernière vague (attal, roussel) ou si l'affichage
+    est masqué."""
+    phrase = surete_choix.ligne_fiche(SURETE, cid, candidats[cid].get("genre", "m"))
+    if not phrase:
+        return ""
+    return ('<div class="surete-choix"><p class="surete-ligne">' + phrase + '</p>'
+            '<div class="surete-mentions">'
+            + surete_choix.mentions_html(SURETE["vague"], SURETE["base"], prefix="/") + '</div></div>')
+
+
 # ---------- extraction du HTML de generer.py ----------
 
 def extract_seo(head_html):
@@ -467,6 +486,7 @@ for slug, fiche in bios.items():
         succession=succession,
         derniers=tableau_derniers(slug),
         recents=liste_derniers(slug),
+        surete=bloc_surete(slug),
         dernier=dernier_sondage(slug),
         faq=build_faq.bloc_page("candidat", f"sur {fiche['nom']}", {
             "slug": slug, "fiche": fiche, "noms": noms, "duels": duels,

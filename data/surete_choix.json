@@ -1,0 +1,87 @@
+{
+  "_regle": "Ce fichier ne porte que des valeurs relevées. Les évolutions entre vagues sont calculées au build, jamais stockées.",
+  "question": "Et diriez-vous que vous êtes sûr(e) de votre choix ou que vous pourriez changer d'avis d'ici à l'élection ?",
+  "items": [
+    "Je suis sûr(e) de mon choix",
+    "Je pourrais changer d'avis d'ici à l'élection"
+  ],
+  "base": "En % des intentions de vote (probabilité d'aller voter notes 8 à 10)",
+  "vagues": [
+    {
+      "id": "elabe-2026-10-16",
+      "terrain_debut": "2026-10-14",
+      "terrain_fin": "2026-10-16",
+      "publiee_le": "2026-10-17",
+      "echantillon": 1701,
+      "dont_inscrits": 1553,
+      "effectifs_utiles": null,
+      "institut": "elabe",
+      "commanditaires": [
+        "bfmtv",
+        "la-tribune"
+      ],
+      "configuration": "premier-tour-1",
+      "configuration_libelle": "1er tour, configuration 1",
+      "configuration_note": "M. Tondelier écologiste, E. Philippe bloc central, D. de Villepin candidat",
+      "omis": [
+        "arthaud",
+        "roussel",
+        "dupont-aignan"
+      ],
+      "omis_motif": "bases trop faibles",
+      "ensemble": 54,
+      "candidats": {
+        "le-pen": 79,
+        "melenchon": 76,
+        "zemmour": 67,
+        "glucksmann": 39,
+        "philippe": 38,
+        "retailleau": 37,
+        "villepin": 35,
+        "tondelier": 28
+      },
+      "url_publication": "https://elabe.fr/presidentielle-2027-octobre/",
+      "url_rapport": "https://elabe.fr/fichier-pdf/13329-les-francais-et-lelection-presidentielle-2027/",
+      "page_pdf": 11,
+      "notice": "10324"
+    },
+    {
+      "id": "elabe-2026-11-13",
+      "terrain_debut": "2026-11-12",
+      "terrain_fin": "2026-11-13",
+      "publiee_le": "2026-11-14",
+      "echantillon": 1500,
+      "dont_inscrits": 1391,
+      "effectifs_utiles": 1177,
+      "institut": "elabe",
+      "commanditaires": [
+        "bfmtv",
+        "la-tribune"
+      ],
+      "configuration": "premier-tour-1",
+      "configuration_libelle": "1er tour, configuration 1",
+      "configuration_note": "M. Tondelier écologiste, E. Philippe bloc central, D. de Villepin candidat",
+      "omis": [
+        "arthaud",
+        "roussel",
+        "dupont-aignan"
+      ],
+      "omis_motif": "bases trop faibles",
+      "ensemble": 55,
+      "candidats": {
+        "le-pen": 82,
+        "melenchon": 75,
+        "zemmour": 65,
+        "glucksmann": 44,
+        "retailleau": 36,
+        "tondelier": 31,
+        "philippe": 28,
+        "villepin": 26
+      },
+      "url_publication": "https://elabe.fr/presidentielle-2027-novembre/",
+      "url_rapport": "https://elabe.fr/fichier-pdf/13399-les-francais-et-lelection-presidentielle-2027/",
+      "page_pdf": 12,
+      "notice": "10375"
+    }
+  ]
+}

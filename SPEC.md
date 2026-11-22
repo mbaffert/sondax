@@ -372,6 +372,32 @@ lié, il n'a pas de page, et il est signalé sur la page de revue.
 
 ---
 
+### 3.6 `surete_choix.json` — sûreté du choix par candidat, saisie manuelle
+
+Part des électeurs de chaque candidat qui se déclarent sûrs de leur choix (Q3bis d'Elabe pour
+BFMTV et La Tribune Dimanche), une vague après l'autre. Relevé à la main dans les rapports PDF de
+l'institut : la donnée n'est ni dans les notices de la commission des sondages (qui ne publient
+que le chiffre d'ensemble) ni sur Wikipédia, `collecte_wikipedia.py` ne la voit pas.
+
+- **Source unique : Elabe.** Ce n'est pas un agrégat Sondax et ne doit jamais être présenté comme
+  tel. Ce n'est pas la certitude d'aller voter, qui est une autre mesure.
+- `_regle` : le fichier ne porte que des valeurs relevées ; les évolutions entre vagues sont
+  calculées au build, jamais stockées. Tête de fichier : `question`, `items`, `base`.
+- `vagues` : triées par `terrain_fin` croissant. `candidats` : id de `candidats.json` → part
+  (entier). `effectifs_utiles` peut être `null`. `omis` : candidats que l'institut n'a pas
+  ventilés (`omis_motif`).
+- Un candidat absent de la ventilation n'est pas un candidat à 0 % : sa fiche n'affiche rien.
+- Évolution : contre la vague précédente de la **même configuration**. Absent de cette vague
+  précédente : pas d'évolution (pas un zéro).
+- **Péremption** : si la vague la plus récente a plus de 70 jours (dix semaines, la cadence
+  observée étant de quatre), tout l'affichage se masque : fiches et bloc d'accueil.
+- Deux points de série : l'évolution entre vagues s'affiche, pas de courbe ni de tendance. À
+  rouvrir à quatre ou cinq vagues.
+- Code : `scripts/surete_choix.py` (lecture, validation, calculs, textes communs),
+  `scripts/build_index_surete_choix.py` (bloc `#surete-choix` de l'accueil, entre
+  `bloc-modele` et `second-tour`), ligne « électorat » des fiches dans `build_pages_candidats.py`.
+  Tests : `scripts/test_surete_choix.py`.
+
 ## 4. Traitement des sondages
 
 **Sélection de l'hypothèse (tour 1) — par candidat, pas par sondage.** Pour chaque

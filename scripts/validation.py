@@ -369,6 +369,8 @@ def valider_modele():
     test_modele.main()   # sortie 1 au premier échec
     import test_fusion
     test_fusion.main()
+    import test_surete_choix
+    test_surete_choix.main()
 
 
 def main():

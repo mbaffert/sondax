@@ -373,7 +373,7 @@ def descriptions_meta(nom, dernier):
 
 def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant,
          duels=None, noms=None, pages=None, succession=None, derniers="", dernier=None,
-         faq="", recents=""):
+         faq="", recents="", surete=""):
     nom = fiche["nom"]; coul = fiche["couleur"]
     pcs = {k: v[slug] for k, v in crois.get("pcs", {}).items()
            if slug in v and k in ORDRE_PCS}
@@ -395,6 +395,7 @@ def page(slug, fiche, serie, bruts, n_sondages, crois, base, rangs, ecart_devant
         blocs.append(f'''<section class="carte"><div class="pad">
   <div class="label">Électorat</div><h2>Qui vote pour {nom}&nbsp;?</h2>
   {f'<div class="txt"><p>{texte}</p></div>' if texte else ''}
+  {surete}
   {graphiques_electorat([("Sexe", rows_sexe), ("Âge", ages_affiches(ages)), ("Profession", rows_pcs)], nat)}
 </div></section>''')
     if rep:

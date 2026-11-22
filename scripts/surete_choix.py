@@ -33,10 +33,6 @@ NB_CONFIGURATIONS_T1 = 6       # configurations de premier tour testées par Ela
 MOIS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août",
         "septembre", "octobre", "novembre", "décembre"]
 
-# La table data/commanditaires.json nomme « la-tribune » « La Tribune » ; le
-# commanditaire d'Elabe est la Tribune Dimanche, et la mention doit le dire.
-LIBELLES_COMMANDITAIRES = {"la-tribune": "La Tribune Dimanche"}
-
 CHAMPS_VAGUE = ("id", "terrain_debut", "terrain_fin", "publiee_le", "echantillon",
                 "dont_inscrits", "effectifs_utiles", "institut", "commanditaires",
                 "configuration", "configuration_libelle", "configuration_note",
@@ -244,7 +240,7 @@ def _nombre(n):
 
 def libelle_commanditaires(vague, table=None):
     table = _json("commanditaires.json") if table is None else table
-    noms = [LIBELLES_COMMANDITAIRES.get(c) or table[c] for c in vague["commanditaires"]]
+    noms = [table[c] for c in vague["commanditaires"]]
     return " et ".join([", ".join(noms[:-1]), noms[-1]] if len(noms) > 1 else noms)
 
 

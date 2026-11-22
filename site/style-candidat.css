@@ -104,3 +104,7 @@
 @media(max-width:620px){.page-candidat .derniers{padding:0 20px 22px}.page-candidat .derniers table{font-size:12.5px}.page-candidat .derniers th,.page-candidat .derniers td{padding:7px 5px}.page-candidat .derniers th{letter-spacing:.04em}.page-candidat .derniers td.dates{white-space:normal;min-width:78px}}
 .page-candidat .fil a{text-decoration:underline;text-underline-offset:2px}
 .page-candidat .bloc-faq summary{padding:4px 0}
+.page-candidat .surete-choix{padding:0 0 18px}
+.page-candidat .surete-ligne{font-size:15px;font-weight:500;margin:0 0 6px}
+.page-candidat .surete-mentions{font-size:12px;line-height:1.5;color:var(--gris)}
+.page-candidat .surete-mentions p{margin:0 0 4px}

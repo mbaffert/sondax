@@ -35,6 +35,23 @@ ANOMALIES = []
 # blanc, pas celui d'un candidat. Il est stocké à part, dans `vote_blanc`.
 VOTE_BLANC = '__vote_blanc__'
 
+def nom_institut(attrs, content, inst):
+    """Nom de l'institut : modèle {{Sondeur|…}} des attributs s'il existe (le texte du
+    lien de la notice peut contenir une faute de frappe), sinon texte du lien. Un nom
+    connu du référentiel est remplacé par son nom canonique."""
+    m = re.search(r'\{\{\s*Sondeur\s*\|\s*([^|}]+?)\s*(?:\||\}\})', attrs, re.I)
+    if m:
+        nom = m.group(1).strip()
+    elif inst:
+        nom = inst.group(2).strip()
+    else:
+        nom = re.sub(r'\W+', '', content).strip()
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import instituts
+    ref = instituts.charger_referentiel()
+    cle = instituts.slug_institut(nom, ref)
+    return ref[cle]["nom"] if cle else nom
+
 def slug(s):
     s = unicodedata.normalize('NFKD', s).encode('ascii','ignore').decode()
     return re.sub(r'[^a-z0-9]+','-', s.lower()).strip('-')
@@ -190,7 +207,7 @@ def parse_table(txt, annee, tour):
         if 'Sondeur' in attrs or (rs and '[http' in content):
             nb = int(rs.group(1)) if rs else 1
             inst = re.search(r'\[(https?://\S+)\s+([^\]]+)\]', content)
-            cur = {'institut': (inst.group(2) if inst else re.sub(r'\W+','',content)).strip(),
+            cur = {'institut': nom_institut(attrs, content, inst),
                    'url_source': inst.group(1) if inst else None,
                    'nb_hyp': nb, 'hypotheses': []}
             sondages.append(cur)
